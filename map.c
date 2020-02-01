@@ -10,7 +10,8 @@
 #define C 4
 #define M 5
 #define B 6
-#define W 7
+#define O 7
+#define W 8
 
 int range(int a,int b){ // generates random number in range
   return (rand()%(b-a+1))+a;
@@ -38,29 +39,29 @@ void initBorder(int map[D][D]){ //spawns border of the map
     for(i=0; i<D;i++){
       map[D-1][i]=M;
       map[i][0]=B;
-      map[0][i]=W;
-      map[i][D-1]=0;
+      map[0][i]=O;
+      map[i][D-1]=W;
     }
   }else if(t==2){
     for(i=0; i<D;i++){
       map[i][0]=M;
       map[0][i]=B;
-      map[i][D-1]=W;
-      map[D-1][i]=0;
+      map[i][D-1]=O;
+      map[D-1][i]=W;
     }
   }else if(t==3){
     for(i=0; i<D;i++){
       map[0][i]=M;
       map[i][D-1]=B;
-      map[D-1][i]=W;
-      map[i][0]=0;
+      map[D-1][i]=O;
+      map[i][0]=W;
     }
   }else if(t==4){
     for(i=0; i<D;i++){
       map[i][D-1]=M;
       map[D-1][i]=B;
-      map[i][0]=W;
-      map[0][i]=0;
+      map[i][0]=O;
+      map[0][i]=W;
     }
   }
 }
