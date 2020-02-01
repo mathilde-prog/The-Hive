@@ -3,7 +3,7 @@ typedef enum {none,sprinter,metabolism,luck,scout} skill_t; /* possibilité comp
 
 typedef enum {armor,weapon,misc,food} item_t; /* possibilité item */
 
-typedef enum {inconnu,bandit,maraudeur,animal,paysan, }
+typedef enum {inconnu,bandit,maraudeur,animal,paysan};
 
 typedef struct obj_s{
   char nom[20];
