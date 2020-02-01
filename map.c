@@ -10,6 +10,8 @@
 #define C 4
 #define M 5
 #define B 6
+#define O 7
+#define W 8
 
 int range(int a,int b){ // generates random number in range
   return (rand()%(b-a+1))+a;
@@ -35,23 +37,31 @@ void initBorder(int map[D][D]){ //spawns border of the map
   int t = range(low,high);
   if(t==1){
     for(i=0; i<D;i++){
-      map[i][0]=M;
-      map[0][i]=B;
+      map[D-1][i]=M;
+      map[i][0]=B;
+      map[0][i]=O;
+      map[i][D-1]=W;
     }
   }else if(t==2){
     for(i=0; i<D;i++){
-      map[0][i]=M;
-      map[i][D-1]=B;
+      map[i][0]=M;
+      map[0][i]=B;
+      map[i][D-1]=O;
+      map[D-1][i]=W;
     }
   }else if(t==3){
     for(i=0; i<D;i++){
-      map[i][D-1]=M;
-      map[D-1][i]=B;
+      map[0][i]=M;
+      map[i][D-1]=B;
+      map[D-1][i]=O;
+      map[i][0]=W;
     }
   }else if(t==4){
     for(i=0; i<D;i++){
-      map[D-1][i]=M;
-      map[i][0]=B;
+      map[i][D-1]=M;
+      map[D-1][i]=B;
+      map[i][0]=O;
+      map[0][i]=W;
     }
   }
 }
@@ -227,8 +237,6 @@ int main(){
   srand(time(NULL));
   initBase(map);
   initBorder(map);
-  initObj(map);
-  topup(map);
   displayMap(map);
   count(map);
   //displayMapV(map, mapV);
