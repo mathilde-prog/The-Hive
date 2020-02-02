@@ -3,7 +3,7 @@
 #include <time.h>
 #include <locale.h>
 
-#define D 10
+#define D 30
 #define H 1
 #define F 2
 #define V 3
@@ -30,7 +30,7 @@ int rng(int prob){ // returns 0 or 1 with a given chance
   return tab[r];
 }
 
-void initBorder(int map[D][D]){ //spawns border of the map
+void init_border(int map[D][D]){ //spawns border of the map
   int i;
   int low=1;
   int high=4;
@@ -66,7 +66,7 @@ void initBorder(int map[D][D]){ //spawns border of the map
   }
 }
 
-void initObj(int map[D][D]){ // spawns fixed amount of cities on random coordinates
+void init_city(int map[D][D]){ // spawns fixed amount of cities on random coordinates
   int c,s,i,j;
   int low=0;
   int high=9;
@@ -82,13 +82,13 @@ void initObj(int map[D][D]){ // spawns fixed amount of cities on random coordina
       }
     }
 
-    if(D == 10){
+    if(D == 15){
       for(s=1; s!=0;s--){
         i = range(low,high);
         j = range(low,high);
         map[i][j]=C;
       }
-    }else if(D == 25){
+    }else if(D == 30){
       for(s=3; s!=0;s--){
         i = range(low,high);
         j = range(low,high);
@@ -153,17 +153,17 @@ int spawntype(int l, int c, int map[D][D]){ // returns hex type that must be spa
 }
 
 void topup(int map[D][D]){ // generates additional hexes on the map with different chance
-  int i,j;
-  for(int c=0;c<5;c++){
+  int i,j,c;
+  for(c=0;c<5;c++){
     for(i=1;i<D-1;i++){
       for(j=1;j<D-1;j++){
-        map[i][j]=spawntype(i,j,map);
+          map[i][j]=spawntype(i,j,map);
       }
     }
   }
 }
 
-void displayMap(int map[D][D]){
+void display_map(int map[D][D]){
   int i,j;
 
   for(i=0;i<D; i++){
@@ -174,36 +174,7 @@ void displayMap(int map[D][D]){
   }
 }
 
-void displayMapV(int map[D][D], wchar_t mapV[D][D]){
-  int i,j;
-  wchar_t mountain = 0x25ee;
-  wchar_t border = 0x25a4;
-  wchar_t hill = 0x25cf;
-  wchar_t village = 0x2bc2;
-  wchar_t city = 0x2bc4;
-  wchar_t forest = 0x29f0;
-
-  for(i=0;i<D; i++){
-    for(j=0;j<D;j++){
-      if(map[D][D]==1){
-        printf(" %lc ", hill);
-      }else if(map[D][D]==2){
-        printf(" %lc ", forest);
-      }else if(map[D][D]==3){
-        printf(" %lc ", village);
-      }else if(map[D][D]==4){
-        printf(" %lc ", city);
-      }else if(map[D][D]==5){
-        printf(" %lc ", mountain);
-      }else if(map[D][D]==6){
-        printf(" %lc ", border);
-      }
-    }
-    printf("\n");
-  }
-}
-
-void initBase(int map[D][D]){
+void init_base(int map[D][D]){
   int i,j;
   for(i=0;i<D; i++){
     for(j=0;j<D;j++){
@@ -231,13 +202,12 @@ void count(int map[D][D]){
 }
 
 int main(){
-  setlocale(LC_CTYPE, "");
-  wchar_t mapV[D][D]={{0}};
   int map[D][D]={{0}};
+
   srand(time(NULL));
-  initBase(map);
-  initBorder(map);
-  displayMap(map);
+  init_base(map);
+  init_border(map);
+  topup(map);
+  display_map(map);
   count(map);
-  //displayMapV(map, mapV);
 }
