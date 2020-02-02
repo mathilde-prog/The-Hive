@@ -3,7 +3,7 @@
 #include <time.h>
 #include <locale.h>
 
-#define D 25
+#define D 10
 #define H 1
 #define F 2
 #define V 3
