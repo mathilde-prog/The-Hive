@@ -4,6 +4,7 @@ Map :
   - taille de la map : 15² (pas de choix pour l'utilisateur)
   - génération automatique aléatoire de la map
   - génération automatique de 2 sorties sans conditions : montagne et bumker
+  - déplacement : 6 hexagones autour de celui actif (flèches + entré)
   
 Le personnage :
   - structure {energie, pts de vie, pts actions, inventaire, arme(0/1)}
