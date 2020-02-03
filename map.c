@@ -7,7 +7,7 @@
 #define D 30
 #define H 1 // prairie
 #define F 2 // foret
-#define V 3 
+#define V 3
 #define C 4 // ville
 #define M 5 // mo
 #define B 6
@@ -111,32 +111,26 @@ int spawntype(int l, int c, int map[D][D]){ // returns hex type that must be spa
   int t;
 
   for(int i=1; i<=4;i++){
-    if(map[l][c]==i){
-      tab[i-1]+=1;
-    }
-    if(map[l-1][c]==i){
-      tab[i-1]+=1;
-    }
-    if(map[l-1][c+1]==i){
-      tab[i-1]+=1;
+    if(map[l][c-1]==i){
+      tab[i-1]=i;
     }
     if(map[l][c+1]==i){
-      tab[i-1]+=1;
+      tab[i-1]=i;
     }
-    if(map[l+1][c+1]==i){
-      tab[i-1]+=1;
-    }
-    if(map[l-1][c]==i){
-      tab[i-1]+=1;
+    if(map[l][c]==i){
+      tab[i-1]=i;
     }
     if(map[l-1][c-1]==i){
-      tab[i-1]+=1;
+      tab[i-1]=i;
     }
-    if(map[l][c-1]==i){
-      tab[i-1]+=1;
+    if(map[l-1][c]==i){
+      tab[i-1]=i;
     }
-    if(map[l+1][c-1]==i){
-      tab[i-1]+=1;
+    if(map[l-1][c+1]==i){
+      tab[i-1]=i;
+    }
+    if(map[l+1][c]==i){
+      tab[i-1]=i;
     }
   }
   prob[0]=rng(20+(10*tab[0]));
