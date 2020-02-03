@@ -1,0 +1,21 @@
+VERSION 1 (deadline 13/03/2020)
+
+Map : 
+  - taille de la map : 15² (pas de choix pour l'utilisateur)
+  - génération automatique aléatoire de la map
+  - génération automatique de 2 sorties sans conditions : montagne et bumker
+  
+Le personnage :
+  - structure {energie, pts de vie, pts actions, inventaire, arme(0/1)}
+  - 3 points d'actions (pas de différences en fonction du type d'hexagones)
+  - 100 points de vie
+  - 10 objets maximum dans l'inventaire (possibilité de 2x le même objet et de se débarasser d'un objet)
+  - se déplace
+  - cherche les items sur les hexagones
+  - ne peut pas vendre ni acheter d'objets, d'items
+  - pas de quêtes
+  - a le choix d'attaquer ou non l'individu en face de lui
+  - peut porter une armure et une arme en même temps
+  
+ Contrainte de temps : 12 tours 
+ 
