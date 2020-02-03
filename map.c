@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <time.h>
 #include <locale.h>
- //ville | prairie | foret | lac | mer | montagne | abandoné(grottes...) | camp des bandits | bordures
-
-#define D 30
+//ville | prairie | foret | lac | mer | montagne | abandoné(grottes...) | camp des bandits | bordures
+//
+#define D 15
 #define H 1 // prairie
 #define F 2 // foret
 #define V 3
@@ -13,6 +13,8 @@
 #define B 6
 #define O 7
 #define W 8
+
+typedef enum{prairie,foret,lac,mer,montagne,camp_mil,camp_ban,grotte}hex_t;
 
 int range(int a,int b){ // generates random number in range
   return (rand()%(b-a+1))+a;
@@ -111,26 +113,50 @@ int spawntype(int l, int c, int map[D][D]){ // returns hex type that must be spa
   int t;
 
   for(int i=1; i<=4;i++){
-    if(map[l][c-1]==i){
-      tab[i-1]=i;
-    }
-    if(map[l][c+1]==i){
-      tab[i-1]=i;
-    }
-    if(map[l][c]==i){
-      tab[i-1]=i;
-    }
-    if(map[l-1][c-1]==i){
-      tab[i-1]=i;
-    }
-    if(map[l-1][c]==i){
-      tab[i-1]=i;
-    }
-    if(map[l-1][c+1]==i){
-      tab[i-1]=i;
-    }
-    if(map[l+1][c]==i){
-      tab[i-1]=i;
+    if(c%2==1){
+      if(map[l][c-1]==i){
+        tab[i-1]=i;
+      }
+      if(map[l][c+1]==i){
+        tab[i-1]=i;
+      }
+      if(map[l][c]==i){
+        tab[i-1]=i;
+      }
+      if(map[l-1][c-1]==i){
+        tab[i-1]=i;
+      }
+      if(map[l-1][c]==i){
+        tab[i-1]=i;
+      }
+      if(map[l-1][c+1]==i){
+        tab[i-1]=i;
+      }
+      if(map[l+1][c]==i){
+        tab[i-1]=i;
+      }
+    }else{
+      if(map[l][c]==i){
+        tab[i-1]=i;
+      }
+      if(map[l-1][c]==i){
+        tab[i-1]=i;
+      }
+      if(map[l+1][c]==i){
+        tab[i-1]=i;
+      }
+      if(map[l][c+1]==i){
+        tab[i-1]=i;
+      }
+      if(map[l][c-1]==i){
+        tab[i-1]=i;
+      }
+      if(map[l+1][c-1]==i){
+        tab[i-1]=i;
+      }
+      if(map[l+1][c+1]==i){
+        tab[i-1]=i;
+      }
     }
   }
   prob[0]=rng(20+(10*tab[0]));
@@ -198,7 +224,7 @@ void count(int map[D][D]){
 
 int main(){
   int map[D][D]={{0}};
-
+  
   srand(time(NULL));
   init_base(map);
   init_border(map);
