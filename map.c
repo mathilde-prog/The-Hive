@@ -2,13 +2,14 @@
 #include <stdlib.h>
 #include <time.h>
 #include <locale.h>
+ //ville | prairie | foret | lac | mer | montagne | abandoné(grottes...) | camp des bandits | bordures
 
 #define D 30
-#define H 1
-#define F 2
-#define V 3
-#define C 4
-#define M 5
+#define H 1 // prairie
+#define F 2 // foret
+#define V 3 
+#define C 4 // ville
+#define M 5 // mo
 #define B 6
 #define O 7
 #define W 8
