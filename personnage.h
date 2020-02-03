@@ -20,7 +20,7 @@ typedef struct perso_s {
   int pe; // Points d'énergie
   int pa; // Points d'action
   int karma; // Karma
-  int money; //argent
+  int money; // Argent
 
 
   skill_t competence; // Compétence spéciale
