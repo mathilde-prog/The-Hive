@@ -373,7 +373,7 @@ int main(){
 	printf("============== CHECKPOINT 1 ================ \n");
 	menu_inventory(inventory,&nb_items);
 
-  swap_items(inventory, nb_items, &shotgun, &rope);
+ 	swap_items(inventory, nb_items, &shotgun, &rope);
 	swap_items(inventory, nb_items, &helmet, &lance);
 
 	printf("============== CHECKPOINT 2 ================ \n");
