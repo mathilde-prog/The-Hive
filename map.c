@@ -3,8 +3,6 @@
 #include <time.h>
 #include <locale.h>
 
-
-// pepe hands
 #define D 30
 #define H 1
 #define F 2
