@@ -358,6 +358,8 @@ int main(){
 	walking_stick.defense = 0;
 	walking_stick.equipped = 0;
 
+	/* CREATE NEW ITEMS HERE ! */
+	
 	/* SIMULATIONS TO TEST FUNCTIONS */
 
 	printf("Beginning of your adventure!\n");
