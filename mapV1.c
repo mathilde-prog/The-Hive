@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <locale.h>
+#include <wchar.h>
 //ville | prairie | foret | lac | mer | montagne | abandoné(grottes...) | camp des bandits | bordures
 //
 #define D 15
@@ -197,7 +198,7 @@ void display_map(int map[D][D]){
         printf("  %d  ", map[i][j]);
       }
     }
-    printf("\n");
+    printf("\n\n");
   }
 }
 
@@ -234,6 +235,49 @@ void count(int map[D][D]){
   printf("\nCity: %d\nForest: %d\nHills: %d\nBandit camp: %d\nMilitary camp: %d\nMarket: %d\nFavella: %d\n",c,f,h,cb,cm,mr,fv);
 }
 
+
+void display_grid(int map[D][D]){
+  int i,j;
+  setlocale(LC_CTYPE, "");
+  wchar_t star = 0x2605;
+  for(i=0; i<D; i++){
+    for(j=0; j<D; j++){
+      printf("+-------");
+    }
+    printf("+\n");
+    for(j=0; j<D; j++){
+      printf("|  %2d   ",map[i][j]);
+    }
+    if(i==0){
+      printf("|     INFO:\n");
+    }else if(i==1){
+      printf("|     HP: 100\n");
+    }else if(i==2){
+      printf("|     Action Points: 5/5\n");
+    }else if(i==3){
+      printf("|     Energy level: High\n");
+    }else if(i==5){
+      printf("|     Commands:\n");
+    }else if(i==6){
+      printf("|     S - Scavenge current hex\n");
+    }else if(i==7){
+      printf("|     R - Rest and heal\n");
+    }else if(i==8){
+      printf("|     M - Move to one of the nearest hexes\n");
+    }else if(i==9){
+      printf("|     H - Help\n");
+    }else if(i==10){
+      printf("|     Q - Exit\n");
+    }else{
+      printf("|\n");
+    }
+  }
+  for(i=0; i<D; i++){
+    printf("+-------");
+  }
+  printf("+\n");
+}
+
 int main(){
   int map[D][D]={{0}};
 
@@ -242,6 +286,7 @@ int main(){
   init_border(map);
   topup(map);
   nextgen(map);
-  display_map(map);
+//  display_map(map);
+  display_grid(map);
   count(map);
 }
