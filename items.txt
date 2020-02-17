@@ -1,0 +1,38 @@
+lance 1
+0 0 1
+
+pistol 1
+0 0 1
+
+shotgun 1
+0 0 1
+
+knife 1
+0 0 1
+
+bow_arrows 1
+0 0 1
+
+baseball_bat 1
+0 0 1
+
+bulletproof_vest 0
+0 0 2
+
+helmet 0
+0 0 3
+
+fishing_rod 2
+0 0 1
+
+medical_kit 2
+0 0 0
+
+rope 2
+0 0 0
+
+walking_stick 2
+0 0 0
+
+map 2
+0 0 0
