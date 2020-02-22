@@ -153,7 +153,7 @@ void equip_player(perso_t * player){
 										}
 										break;
 				case body : if(player->body == NULL){
-											player->body = &player->body[num];
+											player->body = &player->inventory[num];
 											printf("You are now equipped with %s.\n", player->inventory[num].name);
 										}
 										else {
@@ -161,7 +161,7 @@ void equip_player(perso_t * player){
 										}
 										break;
 				case head : if(player->head == NULL){
-											player->head = &player->head[num];
+											player->head = &player->inventory[num];
 											printf("You are now equipped with %s.\n", player->inventory[num].name);
 										}
 										else {
@@ -178,22 +178,6 @@ void equip_player(perso_t * player){
 	}
 	else {
 		printf("You don't have any items in your inventory. So you can't equip yourself!\n");
-	}
-}
-
-/* 	remove_equipment_player_auto: removes an item from the player's equipment [VERSION AUTO]
-		This function is only used when the player removes an item equipped from his inventory. (cf. inventory.c --> delete_item_in_inventory)
-*/
-void remove_equipment_player_auto(perso_t * player, item_t item){
-	if(is_equipped(*player,item)){
-			switch(is_equipped(*player,item)){
-			case LEFT_HAND: player->left_hand = NULL; break;
-			case RIGHT_HAND: player->right_hand = NULL; break;
-			case BODY: player->body = NULL; break;
-			case HEAD: player->head = NULL; break;
-			default: break;
-		}
-		printf("%s has been removed from your equipment.\n",item.name);
 	}
 }
 
