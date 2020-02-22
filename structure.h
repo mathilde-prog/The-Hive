@@ -58,6 +58,5 @@ void display_equipment_player(perso_t player);
 int is_equipped(perso_t player, item_t item);
 void swap_equipment_player(perso_t * player, item_t item);
 void equip_player(perso_t * player);
-void remove_equipment_player_auto(perso_t * player, item_t item);
 void remove_equipment_player(perso_t * player);
 /**********************************************************************************/
