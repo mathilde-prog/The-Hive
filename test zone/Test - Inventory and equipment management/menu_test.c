@@ -18,11 +18,6 @@ int main(){
     perso_t player;
     player.nb_items_inventory = 0; /* The player starts the game with an empty inventory. */
 
-    /* Dynamic allocations  */
-    player.left_hand = malloc(sizeof(item_t));
-    player.right_hand = malloc(sizeof(item_t));
-    player.body = malloc(sizeof(item_t));
-    player.head = malloc(sizeof(item_t));
     player.left_hand = NULL;
     player.right_hand = NULL;
     player.body = NULL;
