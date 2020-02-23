@@ -1,9 +1,9 @@
-CC = gcc
+CC = gcc -g
 OBJ = inventory.o items.o equipment.o menu_test.o
 
-all: inventory_equipment_management
+all: all_management
 
-inventory_equipment_management: $(OBJ) structure.h
+all_management: $(OBJ) structure.h
 	$(CC) -o $@ $(OBJ)
 
 equipment.o: equipment.c
@@ -22,4 +22,4 @@ clean:
 	rm -rf *.o
 
 mrproper: clean
-	rm -rf inventory_equipment_management
+	rm -rf all_management
