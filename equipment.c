@@ -31,30 +31,30 @@ void display_equipment_player(perso_t player){
 int is_equipped(perso_t player, item_t item){
 	switch(item.equipable){
 		case none : return 0;
-		case hand : if(player.left_hand->name != NULL){
+		case hand : if(player.left_hand != NULL){
 									if(!strcmp(player.left_hand->name, item.name)){
 										return LEFT_HAND;
 									}
 								}
-								if (player.right_hand->name != NULL){
+								if (player.right_hand != NULL){
 									if(!strcmp(player.right_hand->name, item.name)){
 										return RIGHT_HAND;
 									}
 								}
 								return NOT_EQUIPPED;
 
-		case body:  if(!strcmp(player.body->name, item.name)){
-									return BODY;
+		case body:  if(player.body != NULL){
+									if(!strcmp(player.body->name, item.name)){
+										return BODY;
+									}
 								}
-								else {
-									return NOT_EQUIPPED;
+								return NOT_EQUIPPED;
+		case head:  if(player.head != NULL){
+									if (!strcmp(player.head->name, item.name)){
+										return HEAD;
+									}
 								}
-		case head:  if (!strcmp(player.head->name, item.name)){
-									return HEAD;
-								}
-								else {
-									return NOT_EQUIPPED;
-								}
+								return NOT_EQUIPPED;
 		default: return NOT_EQUIPPED;
 	}
 }
