@@ -104,17 +104,52 @@ void display_inventory (perso_t player){
 
 /* delete_item_in_inventory: deletes an item from the inventory */
 void delete_item_in_inventory(perso_t * player, item_t item){
-	int i = indice(*player, item);
+	int ind = indice(*player, item);
+	int i, eq_lh, eq_rh, eq_b, eq_h;
 
- 	if(i != -1){
-		remove_equipment_player_auto(player,item);
-		display_equipment_player(*player);
+ 	if(ind != -1){
+		if(is_equipped(*player,item)){
+				switch(is_equipped(*player,item)){
+				case LEFT_HAND: player->left_hand = NULL; break;
+				case RIGHT_HAND: player->right_hand = NULL; break;
+				case BODY: player->body = NULL; break;
+				case HEAD: player->head = NULL; break;
+				default: break;
+			}
+			printf("%s has been removed from your equipment.\n",item.name);
+		}
 		(player->nb_items_inventory)--;
+		i = ind;
 		while(i < (player->nb_items_inventory)){
-			player->inventory[i] = player->inventory[i+1];
+			player->inventory[ind] = player->inventory[i+1];
  			i++;
 		}
 		printf("%s has been removed from your inventory\n",item.name);
+
+		if(player->left_hand != NULL){
+			eq_lh = indice(*player,*player->left_hand);
+			if(eq_lh > ind){
+				player->left_hand = &player->inventory[eq_lh-1];
+			}
+		}
+		if(player->right_hand != NULL){
+			eq_rh = indice(*player,*player->right_hand);
+			if(eq_rh > ind){
+				player->right_hand = &player->inventory[eq_rh-1];
+			}
+		}
+		if(player->body != NULL){
+			eq_b = indice(*player,*player->body);
+			if(eq_b > ind){
+				player->body = &player->inventory[eq_b-1];
+			}
+		}
+		if(player->head != NULL){
+			eq_h = indice(*player,*player->head);
+			if(eq_h > ind){
+				player->head = &player->inventory[eq_h-1];
+			}
+		}
 	}
  	else {
  		printf("%s isn't in your inventory.\n",item.name);
