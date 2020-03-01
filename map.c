@@ -5,16 +5,8 @@
 //ville | prairie | foret | lac | mer | montagne | abandoné(grottes...) | camp des bandits | bordures
 //
 #define D 15
-#define H 1 // prairie
-#define F 2 // foret
-#define V 3
-#define C 4 // ville
-#define M 5 // mo
-#define B 6
-#define O 7
-#define W 8
 
-typedef enum{prairie,foret,lac,mer,montagne,camp_mil,camp_ban,grotte}hex_t;
+typedef enum{prairie=1,foret,ville,lac,camp_mil,camp_ban,grotte,montagne,frontiere,mer,wasteland}hex_t;
 
 int range(int a,int b){ // generates random number in range
   return (rand()%(b-a+1))+a;
@@ -40,31 +32,31 @@ void init_border(int map[D][D]){ //spawns border of the map
   int t = range(low,high);
   if(t==1){
     for(i=0; i<D;i++){
-      map[D-1][i]=M;
-      map[i][0]=B;
-      map[0][i]=O;
-      map[i][D-1]=W;
+      map[D-1][i]=montagne;
+      map[i][0]=frontiere;
+      map[0][i]=mer;
+      map[i][D-1]=wasteland;
     }
   }else if(t==2){
     for(i=0; i<D;i++){
-      map[i][0]=M;
-      map[0][i]=B;
-      map[i][D-1]=O;
-      map[D-1][i]=W;
+      map[i][0]=montagne;
+      map[0][i]=frontiere;
+      map[i][D-1]=mer;
+      map[D-1][i]=wasteland;
     }
   }else if(t==3){
     for(i=0; i<D;i++){
-      map[0][i]=M;
-      map[i][D-1]=B;
-      map[D-1][i]=O;
-      map[i][0]=W;
+      map[0][i]=montagne;
+      map[i][D-1]=frontiere;
+      map[D-1][i]=mer;
+      map[i][0]=wasteland;
     }
   }else if(t==4){
     for(i=0; i<D;i++){
-      map[i][D-1]=M;
-      map[D-1][i]=B;
-      map[i][0]=O;
-      map[0][i]=W;
+      map[i][D-1]=montagne;
+      map[D-1][i]=frontiere;
+      map[i][0]=mer;
+      map[0][i]=wasteland;
     }
   }
 }
@@ -77,31 +69,27 @@ void init_city(int map[D][D]){ // spawns fixed amount of cities on random coordi
     for(i=1;i<D-1;i++){
       for(j=1;j<D-1;j++){
         if(rng(30)){
-          map[i][j]=F;
-        }
-        if(rng(20)){
-          map[i][j]=V;
+          map[i][j]=foret;
         }
       }
     }
-
     if(D == 15){
       for(s=1; s!=0;s--){
         i = range(low,high);
         j = range(low,high);
-        map[i][j]=C;
+        map[i][j]=ville;
       }
     }else if(D == 30){
       for(s=3; s!=0;s--){
         i = range(low,high);
         j = range(low,high);
-        map[i][j]=C;
+        map[i][j]=ville;
       }
     }else if(D == 50){
       for(s=5; s!=0;s--){
         i = range(low,high);
         j = range(low,high);
-        map[i][j]=C;
+        map[i][j]=ville;
       }
     }
 }
@@ -189,7 +177,11 @@ void display_map(int map[D][D]){
 
   for(i=0;i<D; i++){
     for(j=0;j<D;j++){
-      printf(" %d ", map[i][j]);
+      if(map[i][j]>=10){
+        printf("  %d ", map[i][j]);
+      }else{
+        printf("  %d  ", map[i][j]);
+      }
     }
     printf("\n");
   }
@@ -199,7 +191,7 @@ void init_base(int map[D][D]){
   int i,j;
   for(i=0;i<D; i++){
     for(j=0;j<D;j++){
-      map[i][j]=1;
+      map[i][j]=prairie;
     }
   }
 }
@@ -224,7 +216,7 @@ void count(int map[D][D]){
 
 int main(){
   int map[D][D]={{0}};
-  
+
   srand(time(NULL));
   init_base(map);
   init_border(map);
