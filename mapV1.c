@@ -1,13 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <locale.h>
-#include <wchar.h>
-//ville | prairie | foret | lac | mer | montagne | abandoné(grottes...) | camp des bandits | bordures
-//
+#include <SDL2/SDL.h>
 #define D 15
 
 typedef enum{prairie=1,foret,ville,lac,camp_mil,camp_ban,market,favella,montagne,frontiere,mer,wasteland}hex_t;
+
+
+void clrscr() // fonction pour clear l'output de terminal
+{
+    system("@cls||clear");
+}
 
 int range(int a,int b){ // generates random number in range
   return (rand()%(b-a+1))+a;
@@ -67,7 +70,7 @@ int bordercross(int i, int j, int map[D][D]){ // fonction to prevent favellas sp
 }
 
 void topup(int map[D][D]){ // spawns fixed amount of essential hexes on random coordinates
-  int c,s,i,j,b;
+  int s,i,j;
   int low=1, high=13;
 
   i = range(low+1,high-1);
@@ -187,21 +190,80 @@ void nextgen(int map[D][D]){ // generates additional hexes on the map with diffe
   }
 }
 
-void display_map(int map[D][D]){
-  int i,j;
-
-  for(i=0;i<D; i++){
-    for(j=0;j<D;j++){
-      if(map[i][j]>=10){
-        printf("  %d ", map[i][j]);
-      }else{
-        printf("  %d  ", map[i][j]);
-      }
-    }
-    printf("\n\n");
+void portable_switch(int i, int j, int map[D][D]){ // FONCTION QUI PRINT LE CODE DE LA CELLULE, CREE POUR EVITER DE REFAIRE LES SWITCHS DANS DIFFERENTS FONCTIONS D'AFFICHAGE
+  switch(map[i][j]){
+    case 1: printf(" PR "); break;
+    case 2: printf(" FR "); break;
+    case 3: printf(" VL "); break;
+    case 4: printf(" LC "); break;
+    case 5: printf(" CM "); break;
+    case 6: printf(" CB "); break;
+    case 7: printf(" MK "); break;
+    case 8: printf(" FV "); break;
+    case 9: printf(" MT "); break;
+    case 10: printf(" BD "); break;
+    case 11: printf(" SE "); break;
+    case 12: printf(" WT "); break;
   }
 }
 
+void display_TEXT(int l, int c, int map[D][D]){ // AFFICHE LA MAP EN VERSION TEXT AVEC LA LEGENDE
+  int i,j;
+  clrscr();
+  for(i=0; i<D; i++){
+    for(j=0; j<D; j++){
+      printf("+----");
+    }
+    printf("+\n");
+    for(j=0; j<D; j++){
+      if(i==l && j==c){
+        printf("|");
+        printf("\033[1;32m");
+        printf(" JR ");
+        printf("\033[0m");
+      }else{
+        printf("|");
+        portable_switch(i,j,map);
+      }
+    }
+    if(i==0){
+      printf("|     LEGENDE:\n");
+    }else if(i==1){
+      printf("|     JR - Joueur\n");
+    }else if(i==2){
+      printf("|     PR - Prairie\n");
+    }else if(i==3){
+      printf("|     FR - Foret\n");
+    }else if(i==4){
+      printf("|     VL - Ville\n");
+    }else if(i==5){
+      printf("|     LC - Lac:\n");
+    }else if(i==6){
+      printf("|     CM - Camp militaire\n");
+    }else if(i==7){
+      printf("|     CB - Camp de bandits\n");
+    }else if(i==8){
+      printf("|     MK - Marchand\n");
+    }else if(i==9){
+      printf("|     FV - Favella\n");
+    }else if(i==10){
+      printf("|     MT - Montagne\n");
+    }else if(i==11){
+      printf("|     BD - Frontiere\n");
+    }else if(i==12){
+      printf("|     SE - Mer\n");
+    }else if(i==13){
+      printf("|     WT - Wasteland\n");
+    }else{
+      //prairie=1,foret,ville,lac,camp_mil,camp_ban,market,favella,montagne,frontiere,mer,wasteland
+      printf("|\n");
+    }
+  }
+  for(i=0; i<D; i++){
+    printf("+----");
+  }
+  printf("+\n");
+}
 void init_base(int map[D][D]){
   int i,j;
   for(i=0;i<D; i++){
@@ -211,8 +273,8 @@ void init_base(int map[D][D]){
   }
 }
 
-void count(int map[D][D]){
-  int c=0,v=0,f=0,h=0,cb=0,cm=0,mr=0,fv=0;
+void count(const int map[D][D]){ // COMPTE LE NOMBRE D'OCCURENCE DE CHAQUE TYPE DE CELLULE
+  int c=0,f=0,h=0,cb=0,cm=0,mr=0,fv=0;
   for(int i=0; i<D;i++){
     for(int j=0; j<D;j++){
       if(map[i][j]==ville){
@@ -236,10 +298,9 @@ void count(int map[D][D]){
 }
 
 
-void display_grid(int map[D][D]){
+void display_grid(const int map[D][D]){ // AFFICHE LA MAP COMPLETE AVEC LA LEGENDE
   int i,j;
-  setlocale(LC_CTYPE, "");
-  wchar_t star = 0x2605;
+  clrscr();
   for(i=0; i<D; i++){
     for(j=0; j<D; j++){
       printf("+-------");
@@ -249,25 +310,31 @@ void display_grid(int map[D][D]){
       printf("|  %2d   ",map[i][j]);
     }
     if(i==0){
-      printf("|     INFO:\n");
+      printf("|     LEGENDE:\n");
     }else if(i==1){
-      printf("|     HP: 100\n");
+      printf("|     X - Joueur\n");
+    }else if(i==1){
+      printf("|     PR - Prairie\n");
     }else if(i==2){
-      printf("|     Action Points: 5/5\n");
+      printf("|     VL - Ville\n");
     }else if(i==3){
-      printf("|     Energy level: High\n");
+      printf("|     FR - Foret\n");
     }else if(i==5){
-      printf("|     Commands:\n");
+      printf("|     LC - Lac:\n");
     }else if(i==6){
-      printf("|     S - Scavenge current hex\n");
+      printf("|     CM - Camp militaire\n");
     }else if(i==7){
-      printf("|     R - Rest and heal\n");
+      printf("|     CB - Camp de bandits\n");
     }else if(i==8){
-      printf("|     M - Move to one of the nearest hexes\n");
+      printf("|     GR - Grotte\n");
     }else if(i==9){
-      printf("|     H - Help\n");
+      printf("|     MT - Montagne\n");
     }else if(i==10){
-      printf("|     Q - Exit\n");
+      printf("|     BD - Frontiere\n");
+    }else if(i==11){
+      printf("|     SE - Mer\n");
+    }else if(i==12){
+      printf("|     WT - Wasteland\n");
     }else{
       printf("|\n");
     }
@@ -276,6 +343,58 @@ void display_grid(int map[D][D]){
     printf("+-------");
   }
   printf("+\n");
+}
+
+void look_around(int i, int j, int map[D][D]){
+  printf("+----+-----+-----+\n");
+  printf("|");
+  portable_switch(i-1,j-1,map);
+  printf("|");
+  portable_switch(i-1,j,map);
+  printf("|");
+  portable_switch(i-1,j+1,map);
+  printf("|     Commands available:\n");
+  printf("+----+-----+-----+\n");
+  printf("|");
+  portable_switch(i,j-1,map);
+  printf("|");
+  portable_switch(i,j,map);
+  printf("|");
+  portable_switch(i,j+1,map);
+  printf("|0 - Go back to the menu\n");
+  printf("+----+-----+-----+\n");
+  printf("|");
+  portable_switch(i+1,j-1,map);
+  printf("|");
+  portable_switch(i+1,j,map);
+  printf("|");
+  portable_switch(i+1,j+1,map);
+  printf("|13 - Help\n");
+  printf("+----+-----+-----+\n");
+
+}
+
+void game_cycle(perso_t main, int map[D][D]){
+  clrscr();
+  int turns=15;
+  int choise;
+  while(turns!=0 || exit_ok();){
+    printf("Character info:\nPV: %d/100\nPA: %d/5\nEnergie: %d/100\n\nYou currently have %d turns left befoe it is too late to escape.\n\nAvailable actions:\n1 - Look around\n2 - Scavenge\n3 - Inventory\n4 - Move to another place\n5 - Check the map (map needed)\n6 - Rest and heal\n0 - End turn\n66 - Save the game and exit\n13 - Help\n\nWhat you plan to do?",main.pv, main.pa, main.pe, turns);
+    jump:
+    scanf("%d",&choise);
+    switch(choise){
+      case 1: look_around(main.posI, main.posJ, map); break;
+      case 2: scavenge(); break;
+      case 3: inventory(); break;
+      case 4: move(); break;
+      case 5: display_TEXT(char.posI, char.posJ ,map); break;
+      case 6: heal(); break;
+      case 0: next_turn(); break;
+      case 13: help(); break;
+      case 66: save(); break;
+      default: printf("Command not found. Try again."); goto jump; break;
+    }
+  }
 }
 
 int main(){
@@ -287,6 +406,7 @@ int main(){
   topup(map);
   nextgen(map);
 //  display_map(map);
-  display_grid(map);
+  //display_grid(map);
+  display_TEXT(3,3,map);
   count(map);
 }
