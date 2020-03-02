@@ -1,5 +1,13 @@
 // structure.h
 
+/************************************* MAP *************************************/
+#define D 15
+
+typedef enum{prairie=1,foret,ville,lac,camp_mil,camp_ban,market,favella,montagne,frontiere,mer,wasteland}hex_t;
+
+/*********************************************************************************/
+
+
 /************************************* ITEMS *************************************/
 typedef enum {armor,weapon,misc,food} type_t; /* types of items available */
 typedef enum {none,hand,body,head} equip_t; /* where the player may wear equipment */
@@ -25,6 +33,8 @@ typedef struct perso_s {
   int pv; // Points de vie
   int pe; // Points d'énergie
   int pa; // Points d'action
+	int posX;
+	int posY;
 
   skill_t competence; // Compétence spéciale - dans la version 1 ?
 
