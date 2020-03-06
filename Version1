@@ -7,7 +7,7 @@ Map :
   - déplacement : 6 hexagones autour de celui actif (flèches + entré)
   
 Le personnage :
-  - structure {energie, pts de vie, pts actions, inventaire *main-G, *main_D, *corps, *tete}
+  - structure {energie(100), pts de vie(100), pts actions, inventaire *main-G, *main_D, *corps, *tete}
   - 3 points d'actions (pas de différences en fonction du type d'hexagones)
   - 100 points de vie
   - 10 objets maximum dans l'inventaire (possibilité de 2x le même objet et de se débarasser d'un objet)
