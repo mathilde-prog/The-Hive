@@ -1,0 +1,40 @@
+pistol 1
+0 0 1
+0 50 90
+
+shotgun 1
+0 0 1
+0 40 75
+
+bow_arrows 1
+0 0 1
+30 0 0
+
+bulletproof_vest 0
+0 0 2
+0 35 85
+
+helmet 0
+0 0 3
+0 40 75
+
+fishing_rod 2
+0 0 0
+0 40 0
+
+rope 2
+0 0 0
+0 60 60
+
+map 2
+0 0 0
+0 75 70
+
+fish 3
+0 0 0
+50 60 30
+
+bottle_water 3
+0 0 0
+0 90 50
+

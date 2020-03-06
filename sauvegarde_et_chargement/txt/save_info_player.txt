@@ -1,0 +1,6 @@
+pv = 102
+pe = 67
+pa = 2
+posX = 15
+posY = 7
+competence = 1
