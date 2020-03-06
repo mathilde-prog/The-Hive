@@ -2,7 +2,7 @@
 
 /************************************* MAP *************************************/
 #define NB_CATEG 3
-#define ITEMS_MAX 10
+#define ITEMS_MAX 5
 #define D 15
 
 typedef enum {prairie = 1, foret, ville, lac, camp_mil, camp_ban, market, favella, montagne, frontiere, mer, wasteland} hex_t;
