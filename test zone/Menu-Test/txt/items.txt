@@ -62,6 +62,10 @@ can_food 3
 0 0 0
 0 85 75
 
-drink 3
+energy_drink 3
+0 0 0
+0 90 50
+
+bottle_water 3
 0 0 0
 0 90 50

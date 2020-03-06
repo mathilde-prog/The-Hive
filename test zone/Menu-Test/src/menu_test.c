@@ -38,7 +38,7 @@ int main(){
     add_item_to_inventory(&player, Tab_Items[10]);
     add_item_to_inventory(&player, Tab_Items[12]);
     add_item_to_inventory(&player, Tab_Items[14]);
-    add_item_to_inventory(&player, Tab_Items[16]);
+    add_item_to_inventory(&player, Tab_Items[17]);
     printf ("\033[34;01m===========================================\n\033[00m");
 
     /* I also equip my player a little bit to test some functions. */

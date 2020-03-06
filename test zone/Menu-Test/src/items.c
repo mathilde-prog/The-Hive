@@ -143,19 +143,6 @@ int nb_items_hexagone (int x, int y, int map[D][D], item_t * Tab_Items, int nb_i
 void items_generer(item_t * Tab_Items, int nb_items, categ_hexa categ){
     int i, r, ok, cpt = 0;
 
-    /*for(i = 0; (i < nb_items) && (cpt < ITEMS_MAX); i++){
-        switch(categ){
-          case nature:    r = rng(Tab_Items[i].pc_nature);   break;
-          case urbain:    r = rng(Tab_Items[i].pc_urban);    break;
-          case militaire: r = rng(Tab_Items[i].pc_military); break;
-          default: r = 0; break;
-        }
-        if(r == 1){
-          printf("Item %d : %s\n", cpt+1, Tab_Items[i].name);
-          cpt++;
-        }
-    }
-    */
     for(i=0; i<ITEMS_MAX; i++){
         r = rand()%nb_items;
         switch(categ){
@@ -174,7 +161,7 @@ void items_generer(item_t * Tab_Items, int nb_items, categ_hexa categ){
         printf("Félicitations, vous venez de trouver %d items !\n", cpt);
     }
     else {
-        printf("Désolé, il n'y a rien à récuperer ici...");
+        printf("Désolé, il n'y a rien à récupérer ici...");
     }
 }
 
@@ -196,7 +183,7 @@ void tests_item_generation(int map[D][D], item_t * Tab_Items, int nb_items_avail
   if (nb == 0)
       printf ("ERREUR : nb_items_hexagones = 0");
   else {
-      printf("Camp mil : %d items possibles (13 attendus)\n", nb);
+      printf("Camp mil : %d items possibles (14 attendus)\n", nb);
   }
 
   if(nb == 5){  //Type Nature
