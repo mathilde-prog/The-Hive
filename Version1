@@ -12,7 +12,7 @@ Le personnage :
   - 100 points de vie
   - 10 objets maximum dans l'inventaire (possibilité de 2x le même objet et de se débarasser d'un objet)
   - se déplace
-  - cherche les items sur les hexagones
+  - cherche les items sur les hexagones et ne peut en trouver que maximum 5
   - ne peut pas vendre ni acheter d'objets, d'items
   - pas de quêtes
   - a le choix d'attaquer ou non l'individu en face de lui
