@@ -1,0 +1,27 @@
+Fonction de sauvegarde : sauvegarde les éléments suivant
+    equipement
+    localisation
+    inventaire
+    map
+    pts d'action...
+    
+Fonction nourriure : quand le joueur mange ou boit -> >pts enegies & actions
+
+Fonction de sortie:
+    si joueur se trouve sur l'hexagone de sortie 
+        Veutx tu sortir, quitter le jeu : oui ou non
+        
+Fonction next turn
+    Réinitialise un nouveau tour
+    
+Fonction tour :
+    Deplacer (! pt action : -1)
+    Chercher des items (! pt action : -1)
+    Utiliser des items
+    Reposer (>pt energie en fonction des pts d'actions restants)
+    Aide
+    Tour suivant
+    Regarder autour
+    Regarder map (si item map dans inventaire)
+    Enregistrer/Quitter
+    
