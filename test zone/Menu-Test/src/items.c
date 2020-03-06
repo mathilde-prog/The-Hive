@@ -141,9 +141,9 @@ int nb_items_hexagone (int x, int y, int map[D][D], item_t * Tab_Items, int nb_i
 
 //Genere les items de façon aleatoires
 void items_generer(item_t * Tab_Items, int nb_items, categ_hexa categ){
-    int i, r, cpt = 0;
+    int i, r, ok, cpt = 0;
 
-    for(i = 0; (i < nb_items) && (cpt < ITEMS_MAX); i++){
+    /*for(i = 0; (i < nb_items) && (cpt < ITEMS_MAX); i++){
         switch(categ){
           case nature:    r = rng(Tab_Items[i].pc_nature);   break;
           case urbain:    r = rng(Tab_Items[i].pc_urban);    break;
@@ -153,6 +153,20 @@ void items_generer(item_t * Tab_Items, int nb_items, categ_hexa categ){
         if(r == 1){
           printf("Item %d : %s\n", cpt+1, Tab_Items[i].name);
           cpt++;
+        }
+    }
+    */
+    for(i=0; i<ITEMS_MAX; i++){
+        r = rand()%nb_items;
+        switch(categ){
+          case nature:    ok = rng(Tab_Items[r].pc_nature);   break;
+          case urbain:    ok = rng(Tab_Items[r].pc_urban);    break;
+          case militaire: ok = rng(Tab_Items[r].pc_military); break;
+          default: ok = 0; break;
+        }
+        if (ok == 1){
+            cpt++;
+            printf("Item %d : %s\n", cpt, Tab_Items[r].name);
         }
     }
 
