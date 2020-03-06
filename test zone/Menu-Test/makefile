@@ -1,5 +1,5 @@
 # project name (generate executable with this name)
-TARGET   = menu_test
+TARGETS  = menu_test test_eat_or_drink
 
 CC       = gcc
 # compiling flags here
@@ -13,11 +13,12 @@ LFLAGS   = -Wall -I. -lm
 SRCDIR   = src
 OBJDIR   = obj
 BINDIR   = bin
+TRGS	 := $(TARGETS:%=$(BINDIR)/%)
 
 DIRS	 = $(OBJDIR) $(BINDIR)
 
 .PHONY: DIRS
-all: $(DIRS) $(BINDIR)/$(TARGET)
+all: $(DIRS) $(TRGS)
 
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
@@ -27,14 +28,18 @@ $(BINDIR):
 SOURCES  := $(wildcard $(SRCDIR)/*.c)
 INCLUDES := $(wildcard $(SRCDIR)/*.h)
 OBJECTS  := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+MAINS	 := $(TARGETS:%=$(OBJDIR)/%.o)
+# Liste des fichiers .o sans ceux contenant un main
+OBJS	 := $(filter-out $(MAINS),$(OBJECTS))
 rm       = rm -f
 
 
-$(BINDIR)/$(TARGET): $(OBJECTS)
-	@$(LINKER) $(OBJECTS) $(LFLAGS) -o $@
+#$(BINDIR)/$(TARGET): $(OBJECTS)
+$(TRGS): $(OBJECTS)
+	@$(LINKER) $(subst $(BINDIR),$(OBJDIR),$@).o $(OBJS) $(LFLAGS) -o $@
 	@echo "Linking complete!"
 
-$(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
+$(OBJECTS): $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "Compiled "$<" successfully!"
 
@@ -45,5 +50,5 @@ clean:
 
 .PHONY: remove
 remove: clean
-	@$(rm) $(BINDIR)/$(TARGET)
+	@$(rm) $(BINDIR)/$(TARGETS)
 	@echo "Executable removed!"

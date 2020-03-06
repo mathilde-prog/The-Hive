@@ -19,13 +19,14 @@ int main(){
 
   if(creation_tab_item(Tab_Items, &nb_items_available)) {
 
-    /* Player Declaration */
+    printf ("\033[34;01m====== INITIALISATION PLAYER ======\033[00m\n");
     perso_t player;
-    player.nb_items_inventory = 0; /* The player starts the game with an empty inventory. */
-    player.left_hand = NULL;
-    player.right_hand = NULL;
-    player.body = NULL;
-    player.head = NULL;
+    init_player(&player);
+    printf ("\033[34;01m===================================\n\n\033[00m");
+
+    printf ("\033[34;01m=== DISPLAY PLAYER ===\033[00m\n");
+    display_player_characteristics(player);
+    printf ("\033[34;01m======================\n\n\033[00m");
 
     printf ("\033[34;01m=== ITEMS ADDED TO THE INVENTORY (TESTS) ===\033[00m\n");
     /* I'm adding items to the inventory to test functions */
@@ -81,7 +82,7 @@ int main(){
 
       switch(choice){
         case 1: map_generation(map); break;
-        case 2: tests_item_generation(map, Tab_Items, nb_items_available); break;
+        case 2: items_generer(Tab_Items, nb_items_available, militaire); break;
         case 3: display_inventory(player); break;
         case 4: do {
               		display_inventory(player);

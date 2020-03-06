@@ -8,6 +8,7 @@
 typedef enum {prairie = 1, foret, ville, lac, camp_mil, camp_ban, market, favella, montagne, frontiere, mer, wasteland} hex_t;
 typedef enum {nature, urbain, militaire} categ_hexa;
 
+int coordonnees_valides (int x, int y);
 void clrscr(); // fonction pour clear l'output de terminal
 int range(int a,int b); // generates random number in range
 int rng(int prob); // returns 0 or 1 with a given chance
@@ -71,6 +72,9 @@ typedef struct perso_s {
   item_t * head;				/* Pointeur sur item tête */
 
 } perso_t;
+
+void display_player_characteristics(perso_t player);
+void init_player(perso_t * player);
 /**********************************************************************************/
 
 /*********************************** INVENTORY ***********************************/
@@ -94,3 +98,7 @@ void swap_equipment_player(perso_t * player, item_t item);
 void equip_player(perso_t * player);
 void remove_equipment_player(perso_t * player);
 /**********************************************************************************/
+
+/*********************************** EAT ***********************************/
+void eat_or_drink (perso_t * player, item_t item);
+/***************************************************************************/

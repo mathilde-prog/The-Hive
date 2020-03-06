@@ -161,7 +161,7 @@ void items_generer(item_t * Tab_Items, int nb_items, categ_hexa categ){
         printf("Félicitations, vous venez de trouver %d items !\n", cpt);
     }
     else {
-        printf("Désolé, il n'y a rien à récupérer ici...");
+        printf("Désolé, il n'y a rien à récupérer ici...\n");
     }
 }
 
