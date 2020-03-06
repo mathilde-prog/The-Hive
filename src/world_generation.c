@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <SDL2/SDL.h>
 #include "structure.h"
 
 void clrscr() // fonction pour clear l'output de terminal
@@ -201,6 +200,7 @@ void portable_switch(int i, int j, int map[D][D]){ // FONCTION QUI PRINT LE CODE
     case 10: printf(" BD "); break;
     case 11: printf(" SE "); break;
     case 12: printf(" WT "); break;
+    default: printf("    "); break;
   }
 }
 
@@ -358,7 +358,7 @@ void look_around(int i, int j, int map[D][D]){
   portable_switch(i,j,map);
   printf("|");
   portable_switch(i,j+1,map);
-  printf("|0 - Go back to the menu\n");
+  printf("|     0 - Go back to the menu\n");
   printf("+----+----+----+\n");
   printf("|");
   portable_switch(i+1,j-1,map);
@@ -366,44 +366,14 @@ void look_around(int i, int j, int map[D][D]){
   portable_switch(i+1,j,map);
   printf("|");
   portable_switch(i+1,j+1,map);
-  printf("|13 - Help\n");
+  printf("|     13 - Help\n");
   printf("+----+----+----+\n");
 
 }
-/*
-void game_cycle(perso_t main, int map[D][D]){
-  clrscr();
-  int turns=15;
-  int choise;
-  while(turns!=0 || exit_ok();){
-    printf("Character info:\nPV: %d/100\nPA: %d/5\nEnergie: %d/100\n\nYou currently have %d turns left befoe it is too late to escape.\n\nAvailable actions:\n1 - Look around\n2 - Scavenge\n3 - Inventory\n4 - Move to another place\n5 - Check the map (map needed)\n6 - Rest and heal\n0 - End turn\n66 - Save the game and exit\n13 - Help\n\nWhat you plan to do?",main.pv, main.pa, main.pe, turns);
-    jump:
-    scanf("%d",&choise);
-    switch(choise){
-      case 1: look_around(main.posI, main.posJ, map); break;
-      case 2: scavenge(); break;
-      case 3: inventory(); break;
-      case 4: move(); break;
-      case 5: display_TEXT(char.posY, char.posX ,map); break;
-      case 6: heal(); break;
-      case 0: next_turn(); break;
-      case 13: help(); break;
-      case 66: save(); break;
-      default: printf("Command not found. Try again: "); goto jump; break;
-    }
-  }
-}
-*/
-int main(){
-  int map[D][D]={{0}};
 
-  srand(time(NULL));
+void map_init(int map[D][D]){
   init_base(map);
   init_border(map);
   topup(map);
   nextgen(map);
-//  display_map(map);
-  //display_grid(map);
-  display_TEXT(3,3,map);
-  count(map);
 }

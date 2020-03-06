@@ -8,6 +8,7 @@
 typedef enum {prairie = 1, foret, ville, lac, camp_mil, camp_ban, market, favella, montagne, frontiere, mer, wasteland} hex_t;
 typedef enum {nature, urbain, militaire} categ_hexa;
 
+int coordonnees_valides (int x, int y);
 void clrscr(); // fonction pour clear l'output de terminal
 int range(int a,int b); // generates random number in range
 int rng(int prob); // returns 0 or 1 with a given chance
