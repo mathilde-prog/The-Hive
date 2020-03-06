@@ -1,0 +1,67 @@
+pistol 1
+0 0 1
+0 50 90
+
+lance 1
+0 0 1
+50 0 0
+
+shotgun 1
+0 0 1
+0 40 75
+
+knife 1
+0 0 1
+0 70 60
+
+bow_arrows 1
+0 0 1
+30 0 0
+
+baseball_bat 1
+0 0 1
+0 40 50
+
+bulletproof_vest 0
+0 0 2
+0 35 85
+
+helmet 0
+0 0 3
+0 40 75
+
+fishing_rod 2
+0 0 0
+0 40 0
+
+medical_kit 2
+0 0 0
+0 70 80
+
+rope 2
+0 0 0
+0 60 60
+
+walking_stick 2
+0 0 0
+70 30 0
+
+map 2
+0 0 0
+0 75 70
+
+fruits 3
+0 0 0
+75 90 50
+
+fish 3
+0 0 0
+50 60 30
+
+can_food 3
+0 0 0
+0 85 75
+
+drink 3
+0 0 0
+0 90 50
