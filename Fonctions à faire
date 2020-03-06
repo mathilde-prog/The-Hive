@@ -5,14 +5,16 @@ Fonction de sauvegarde : sauvegarde les éléments suivant
     map
     pts d'action...
     
-Fonction nourriure : quand le joueur mange ou boit -> >pts enegies & actions
+Fonction nourriture : quand le joueur mange ou boit -> >pts enegies & actions (Mathilde)
 
-Fonction de sortie:
+Fonction de sortie: (Anaïs)
     si joueur se trouve sur l'hexagone de sortie 
         Veutx tu sortir, quitter le jeu : oui ou non
         
 Fonction next turn
     Réinitialise un nouveau tour
+    
+Fonction de combat (Moustapha)
     
 Fonction tour :
     Deplacer (! pt action : -1)
