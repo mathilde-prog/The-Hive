@@ -30,6 +30,7 @@ void save_info_player (perso_t player){
   fprintf(fic,"pv = %d\npe = %d\npa = %d\n", player.pv, player.pe, player.pa);
   fprintf(fic,"posX = %d\nposY = %d\n", player.posX, player.posY);
   fprintf(fic,"competence = %d\n", player.competence);
+  fprintf(fic,"turns = %d\n", player.turns);
 
   printf("save_info_player.txt - Successfully backed up!\n");
   fclose(fic);
@@ -107,7 +108,7 @@ int load_inventory (perso_t * player){
 int load_info_player (perso_t * player){
   FILE * fic = fopen("txt/save_info_player.txt","r");
   if(fic){
-    fscanf(fic,"pv = %d\npe = %d\npa = %d\nposX = %d\nposY = %d\ncompetence = %d\n",&player->pv, &player->pe, &player->pa, &player->posX, &player->posY, &player->competence);
+    fscanf(fic,"pv = %d\npe = %d\npa = %d\nposX = %d\nposY = %d\ncompetence = %d\nturns = %d\n",&player->pv, &player->pe, &player->pa, &player->posX, &player->posY, &player->competence, &player->turns);
     fclose(fic);
     return 1;
   }

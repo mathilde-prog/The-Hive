@@ -32,7 +32,8 @@ int main(){
     scanf("%d", &player.pe);
     printf("pa ? ");
     scanf("%d", &player.pa);
-
+    printf("turns ? ");
+    scanf("%d", &player.turns);
 
     do {
       printf("Which skill do you want for your character? (normal = 0, sprinter = 1, metabolism = 2, luck = 3, scout = 4)\n");

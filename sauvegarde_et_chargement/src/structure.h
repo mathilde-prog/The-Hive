@@ -60,6 +60,7 @@ typedef struct perso_s {
   int pa; // Points d'action
 	int posX;
 	int posY;
+	int turns; 
 
   skill_t competence; // Compétence spéciale - dans la version 1 ?
 

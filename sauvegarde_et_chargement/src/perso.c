@@ -5,7 +5,8 @@
 
 void init_player(perso_t * player){
   int comp;
-
+  
+  player->turns = 15;
   player->nb_items_inventory = 0; /* The player starts the game with an empty inventory. */
   player->posX = 0; /* A voir */
   player->posY = 0; /* A voir */

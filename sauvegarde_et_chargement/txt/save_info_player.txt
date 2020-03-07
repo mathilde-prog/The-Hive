@@ -1,6 +1,7 @@
-pv = 102
-pe = 67
-pa = 2
-posX = 15
-posY = 7
+pv = 28
+pe = 29
+pa = 10
+posX = 12
+posY = 13
 competence = 1
+turns = 7
