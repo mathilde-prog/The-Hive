@@ -40,8 +40,8 @@ void save_equipment (perso_t player){
   FILE * fic = fopen("txt/save_equipment.txt","w");
 
   (player.head != NULL) ? fprintf(fic, "head = %d\n", indice(player,*player.head)) : fprintf(fic, "head = -1\n");
-  (player.left_hand != NULL) ? fprintf(fic, "left_hand = %d\n", indice(player,*player.left_hand)) : fprintf(fic, "left hand = -1\n");
-  (player.right_hand != NULL) ? fprintf(fic, "right_hand = %d\n", indice(player,*player.right_hand)) : fprintf(fic, "right hand = -1\n");
+  (player.left_hand != NULL) ? fprintf(fic, "left_hand = %d\n", indice(player,*player.left_hand)) : fprintf(fic, "left_hand = -1\n");
+  (player.right_hand != NULL) ? fprintf(fic, "right_hand = %d\n", indice(player,*player.right_hand)) : fprintf(fic, "right_hand = -1\n");
   (player.body != NULL) ? fprintf(fic, "body = %d\n", indice(player,*player.body)) : fprintf(fic, "body = -1\n");
 
   printf("save_equipment.txt - Successfully backed up!\n");
