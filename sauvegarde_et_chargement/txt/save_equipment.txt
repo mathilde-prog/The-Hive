@@ -1,4 +1,0 @@
-head = 4
-left_hand = 1
-right_hand = 0
-body = -1
