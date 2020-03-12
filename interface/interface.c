@@ -62,6 +62,12 @@ int interface(){
 
   /* Création de la fenêtre */
 	ecran = SDL_CreateWindow("The Hive",SDL_WINDOWPOS_UNDEFINED,  SDL_WINDOWPOS_UNDEFINED,1600,900, SDL_WINDOW_SHOWN);
+	/* icone de la fenetre */
+	SDL_Surface *icon=NULL;
+	SDL_RWops *icon_rwop=NULL;
+	icon_rwop=SDL_RWFromFile("img/ItmEncMergaLoupe.png","rb");
+	icon=IMG_LoadPNG_RW(icon_rwop);
+	SDL_SetWindowIcon(ecran,icon);
 
 	if(!ecran){
 		fprintf(stderr, "Erreur à la création de la fenetre : %s\n", SDL_GetError());
