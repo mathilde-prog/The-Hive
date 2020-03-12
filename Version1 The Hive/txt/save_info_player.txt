@@ -1,0 +1,6 @@
+pv = 87
+pe = 67
+pa = 2
+posX = 10
+posY = 10
+turns = 5
