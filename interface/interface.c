@@ -6,7 +6,32 @@
 #include"interface.h"
 
 
-int main(){
+void affichage_map(SDL_Renderer **renderer){
+	char *map[] = {"img/HexBlankDusk.png","img/HexBlankDusk.png"};
+	SDL_Surface *image[2];
+	SDL_Rect dest_image[2];
+	SDL_Texture *image_tex[2];
+	SDL_RWops *rwop[2];
+
+	for (int i=0; i<2; i++){
+		rwop[i]=SDL_RWFromFile(map[i],"rb");
+		image[i]=IMG_LoadPNG_RW(rwop[i]);
+ 		image_tex[i] = SDL_CreateTextureFromSurface(*renderer,image[i]);
+	}
+
+	dest_image[0].x=500;
+	dest_image[0].y=200;
+	dest_image[1].x=570;
+	dest_image[1].y=220;
+	for (int i=0;i<2;i++){
+		SDL_QueryTexture(image_tex[i], NULL, NULL, &(dest_image[i].w), &(dest_image[i].h));
+		SDL_RenderCopy(*renderer, image_tex[i], NULL, &dest_image[i]);
+		SDL_FreeSurface(image[i]);
+	}
+}
+
+
+int interface(){
   //Le pointeur vers la fenetre
 	SDL_Window* ecran = NULL;
 	//Le pointeur vers la surface incluse dans la fenetre
@@ -53,7 +78,7 @@ int main(){
 		exit(EXIT_FAILURE);
 	}
 
-	/* creation des textures pour afgficher le texte */
+	/* creation des textures pour afficher le texte */
 	texte_help = TTF_RenderUTF8_Blended(police, " Help", couleurVerte);
 	texte_exit = TTF_RenderUTF8_Blended(police, " Exit",couleurVerte);
 	SDL_Texture *txt_texteHelp = SDL_CreateTextureFromSurface(renderer, texte_help);
@@ -94,6 +119,8 @@ int main(){
 						SDL_RenderDrawRect(renderer,&bouton_help);
 						/* couleur du reste de la fenetre */
 						SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+						/*affichage de la carte */
+						affichage_map(&renderer);
 
 						SDL_RenderPresent(renderer);
 
@@ -117,4 +144,10 @@ int main(){
 	TTF_CloseFont(police); /* Doit être avant TTF_Quit() */
 	TTF_Quit();
   SDL_Quit();
+	return 0;
 }
+
+int main(){
+	interface();
+}
+
