@@ -3,7 +3,7 @@ VERSION 1 (deadline 13/03/2020)
 Map : 
   - taille de la map : 15² (pas de choix pour l'utilisateur)
   - génération automatique aléatoire de la map
-  - génération automatique de 2 sorties sans conditions : montagne et bumker
+  - génération automatique de 2 sorties sans conditions : montagne et bunker
   - déplacement : 6 hexagones autour de celui actif (flèches + entré)
   
 Le personnage :
