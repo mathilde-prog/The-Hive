@@ -20,7 +20,7 @@ Fonction tour :
     Deplacer (! pt action : -1) : OK
     Chercher des items (! pt action : -1) : OK
     Utiliser des items : OK
-    Reposer (>pt energie en fonction des pts d'actions restants)
+    Reposer (>pt energie en fonction des pts d'actions restants) : OK
     Aide : OK
     Tour suivant : OK
     Regarder autour : OK
