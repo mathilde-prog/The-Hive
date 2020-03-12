@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <time.h>
 #include "structure.h"
 
@@ -97,13 +98,13 @@ void generate_items(item_t * Tab_Items, int nb_items_available, perso_t * player
     int i, ind, present, cpt = 0, choise;
     // Remarque: cpt correspond au nombre d'items qui apparaissent sur l'hexagone
 
-    int ind_items_found[ITEMS_MAX]; // tableau contenant les indices des items trouvés (à quels indices ils sont dans TabItems!)
-    // On initialise tout le tableau à -1 (Pourquoi -1 ? Signifie non-présent dans Tab_Items)
+    int ind_items_found[ITEMS_MAX]; // tableau contenant les indices des items trouvï¿½s (ï¿½ quels indices ils sont dans TabItems!)
+    // On initialise tout le tableau ï¿½ -1 (Pourquoi -1 ? Signifie non-prï¿½sent dans Tab_Items)
     for(i = 0; i < ITEMS_MAX; i++){
       ind_items_found[i] = -1;
     }
 
-    // Génération aléatoire de 0 à ITEMS_MAX items
+    // Gï¿½nï¿½ration alï¿½atoire de 0 ï¿½ ITEMS_MAX items
     for(i = 0; i < ITEMS_MAX; i++){
         ind = rand()%nb_items_available;
         switch(categ){
@@ -118,7 +119,7 @@ void generate_items(item_t * Tab_Items, int nb_items_available, perso_t * player
         }
     }
 
-    // Si items générés
+    // Si items gï¿½nï¿½rï¿½s
     if (cpt != 0){
       // Cas 1 item
       if(cpt == 1){
@@ -137,15 +138,15 @@ void generate_items(item_t * Tab_Items, int nb_items_available, perso_t * player
           sleep(2);
         }
       }
-      // Plusieurs items trouvés
+      // Plusieurs items trouvï¿½s
       else {
         printf("Congratulations, you just found %d items!\n", cpt);
 
         do{
-          // Affichage des items trouvés
+          // Affichage des items trouvï¿½s
           printf("===== YOU HAVE FOUND ====\n");
           for(i = 0; i < cpt; i++){
-            printf("N°%d\t%s\n", i, Tab_Items[ind_items_found[i]].name);
+            printf("Nï¿½%d\t%s\n", i, Tab_Items[ind_items_found[i]].name);
           }
           printf("=========================\n");
 
@@ -160,7 +161,7 @@ void generate_items(item_t * Tab_Items, int nb_items_available, perso_t * player
 
           if(choise == 1){
               do {
-                printf("Which item do you want to add to your inventory? N°");
+                printf("Which item do you want to add to your inventory? Nï¿½");
                 scanf("%d",&choise);
                 if (choise < 0 || choise > cpt-1){
                   printf("Incorrect value. Please re-enter.\n");
@@ -168,8 +169,8 @@ void generate_items(item_t * Tab_Items, int nb_items_available, perso_t * player
               } while(choise < 0 || choise > cpt-1);
 
               if(add_item_to_inventory(player,Tab_Items[ind_items_found[choise]])){
-                // Cet item a été ajouté à l'inventaire donc on l'enlève des items trouvés sur cet hexagone
-                // Empêche qu'on puisse en ajouter plusieurs!
+                // Cet item a ï¿½tï¿½ ajoutï¿½ ï¿½ l'inventaire donc on l'enlï¿½ve des items trouvï¿½s sur cet hexagone
+                // Empï¿½che qu'on puisse en ajouter plusieurs!
                 i = choise;
                 while(i < cpt){
                   ind_items_found[i] = ind_items_found[i+1];
@@ -194,4 +195,3 @@ void generate_items(item_t * Tab_Items, int nb_items_available, perso_t * player
 }
 
 /***********************************************************************************************/
-

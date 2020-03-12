@@ -15,6 +15,18 @@ int map_in_inventory(perso_t player){
 	return (i < player.nb_items_inventory);
 }
 
+// retourne index du medical kit dans l'inventaire du joueur. Retourne -1 si pas dans l'inventaire.
+int medical_kit_in_inventory(perso_t player){
+	int i;
+
+	for(i = 0; (i < player.nb_items_inventory) && strcmp(player.inventory[i].name,"medical_kit"); i++);
+	if (i < player.nb_items_inventory){
+		return player.inventory[i].index;
+	}
+	else {
+		return -1;
+	}
+}
 /* too_much_of_the_same_item: returns 1 if an item is present 2 times or more in the inventory.*/
 int too_much_of_the_same_item(perso_t player, item_t item){
 	int i, occ = 0;
@@ -222,7 +234,7 @@ int add_item_to_inventory(perso_t * player, item_t item){
 
 /* manage_inventory: menu inventory */
 void manage_inventory(perso_t * player){
-	int nb, choise;
+	int nb, choise, ind_mk, mk;
 
 	if(!player->nb_items_inventory){
 		display_inventory(*player);
@@ -233,19 +245,24 @@ void manage_inventory(perso_t * player){
 		do {
 			// Menu management inventory
 			display_inventory(*player);
+			ind_mk = medical_kit_in_inventory(*player);
+			mk = (ind_mk != -1) ? 4 : 3;
 			if(player->nb_items_inventory){
 				do {
 					printf("What do you want to do ?\n");
-					printf("1. Get rid of an item\n");
-					printf("2. Eat or drink an item\n");
-					printf("3. Know more about an item\n");
+					printf("1. Know more about an item\n");
+					printf("2. Get rid of an item\n");
+					printf("3. Eat or drink an item\n");
+					if(mk == 4){
+						printf("4. Use your medical kit\n");
+					}
 					printf("Exit inventory: -1\n\n");
 					printf("N°");
 					scanf("%d", &choise);
-					if((choise != -1) && (choise < 1 && choise > 2)){
+					if((choise != -1) && (choise < 1 || choise > mk)){
 						printf("Incorrect value. Please re-enter\n");
 					}
-				} while ((choise != -1) && (choise < 1 && choise > 2));
+				} while ((choise != -1) && (choise < 1 || choise > mk));
 			}
 			else {
 				printf("Exit inventory: -1\n\n");
@@ -259,56 +276,64 @@ void manage_inventory(perso_t * player){
 			}
 
 			if(choise != -1){
-				switch(choise){
-					// Get rid of an item
-					case 1: do {
-										printf("\nWhich item do you want to delete ? (-1 to cancel) N°");
-										scanf("%d", &nb);
-										if((nb != -1) && (nb < 0 || nb > (player->nb_items_inventory - 1))){
-											printf("Wrong number... This item isn't in your inventory!\n");
-										}
-									} while((nb != -1) && (nb < 0 || nb > (player->nb_items_inventory - 1)));
-									if(nb != -1){
-											delete_item_in_inventory(player,player->inventory[nb]);
-											sleep(2);
-									}
-									break;
-					//Eat or drink an item
-					case 2: do {
-										printf("\nWhich item do you want to eat or drink ? (-1 to cancel) N°");
-										scanf("%d", &nb);
-										if((nb != -1) && (nb < 0 || nb > (player->nb_items_inventory - 1))){
-											printf("Wrong number... This item isn't in your inventory!\n");
-										}
-									} while((nb != -1) && (nb < 0 || nb > (player->nb_items_inventory - 1)));
-									if(nb != -1){
-										eat_or_drink(player,player->inventory[nb]);
-										sleep(3);
-									}
-									break;
-					//Know more about an item
-					case 3: do {
-										printf("\nOn which item would you like more information? (-1 to cancel) N°");
-										scanf("%d", &nb);
-										if((nb != -1) && (nb < 0 || nb > (player->nb_items_inventory - 1))){
-											printf("Wrong number... This item isn't in your inventory!\n");
-										}
-									} while((nb != -1) && (nb < 0 || nb > (player->nb_items_inventory - 1)));
-									if(nb != -1){
-										display_item(player->inventory[nb]);
-										do {
-											printf("Back to the menu (1) : ");
-											scanf("%d",&nb);
-											if(nb != 1){
-												printf("Type 1 to return to the inventory menu\n");
-											}
-										} while (nb != 1);
-									}
-									break;
-					default: break;
+				// Know more about an item
+				if(choise == 1){
+					do {
+						printf("\nOn which item would you like more information? (-1 to cancel) N°");
+						scanf("%d", &nb);
+						if((nb != -1) && (nb < 0 || nb > (player->nb_items_inventory - 1))){
+							printf("Wrong number... This item isn't in your inventory!\n");
+						}
+					} while((nb != -1) && (nb < 0 || nb > (player->nb_items_inventory - 1)));
+
+					if(nb != -1){
+						display_item(player->inventory[nb]);
+						do {
+							printf("Back to the menu (1) : ");
+							scanf("%d",&nb);
+							if(nb != 1){
+								printf("Type 1 to return to the inventory menu\n");
+							}
+						} while (nb != 1);
+					}
 				}
-				clrscr();
+				// Get rid of an item
+				else if (choise == 2){
+					do {
+						printf("\nWhich item do you want to delete ? (-1 to cancel) N°");
+						scanf("%d", &nb);
+						if((nb != -1) && (nb < 0 || nb > (player->nb_items_inventory - 1))){
+							printf("Wrong number... This item isn't in your inventory!\n");
+						}
+					} while((nb != -1) && (nb < 0 || nb > (player->nb_items_inventory - 1)));
+					if(nb != -1){
+						delete_item_in_inventory(player,player->inventory[nb]);
+						sleep(2);
+					}
+				}
+				//Eat or drink an item
+				else if (choise == 3) {
+					do {
+						printf("\nWhich item do you want to eat or drink ? (-1 to cancel) N°");
+						scanf("%d", &nb);
+						if((nb != -1) && (nb < 0 || nb > (player->nb_items_inventory - 1))){
+							printf("Wrong number... This item isn't in your inventory!\n");
+						}
+					} while((nb != -1) && (nb < 0 || nb > (player->nb_items_inventory - 1)));
+					if(nb != -1){
+						eat_or_drink(player,player->inventory[nb]);
+						sleep(3);
+					}
+				}
+				else if(choise == 4){
+					printf("Medical kit used ... PV+30\n");
+					player->pv+= 30;
+					delete_item_in_inventory(player,player->inventory[ind_mk]);
+					sleep(2);
+				}
+
 			}
+			clrscr();
 		} while (choise != -1);
 	}
 }
