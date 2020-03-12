@@ -14,8 +14,7 @@ Le personnage :
   - se déplace
   - cherche les items sur les hexagones et ne peut en trouver que maximum 5
   - ne peut pas vendre ni acheter d'objets, d'items
-  - pas de quêtes
-  - a le choix d'attaquer ou non l'individu en face de lui
+  - 1 quete : a le choix d'attaquer ou non l'individu en face de lui
   - peut porter une armure et une arme en même temps
   
  Contrainte de temps : 12 tours 
