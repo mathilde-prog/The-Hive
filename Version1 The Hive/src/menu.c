@@ -9,31 +9,6 @@ int map[D][D]={{0}};
 item_t Tab_Items[20];
 int nb_items_available = 0;
 
-void next_turn(perso_t * player){
-  player->pa = 5; //Récupère ses 5 points d'actions
-  player->turns--;
-}
-
-void help(perso_t * player){
-  int i = 1, nb;
-
-  if(!map_in_inventory(*player)){
-    printf("Advice N°%d - Having a map would be helpful!\n",i++);
-    printf("You can find one in these kind of places : city, military camp, market, favella.\n");
-  }
-
-  if(i == 1){
-    printf("No advice\n");
-  }
-  do {
-    printf("\nBack to the menu (1) : ");
-    scanf("%d",&nb);
-    if(nb != 1){
-      printf("Type 1 to return to the inventory menu\n");
-    }
-  } while (nb != 1);
-}
-
 int main(){
   int choise;
   srand(time(NULL));

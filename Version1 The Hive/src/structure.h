@@ -25,6 +25,7 @@ void display_grid(const int map[D][D]); 					//world_generation.c
 void map_init(int map[D][D]); 										//world_generation.c
 /*********************************************************************************/
 
+
 /************************************* ITEMS *************************************/
 typedef enum {armor,weapon,misc,food} type_t; /* types of items available */
 typedef enum {none,hand,body,head} equip_t; 	/* where the player may wear equipment */
@@ -43,7 +44,10 @@ typedef struct item_s{
 
 int creation_tab_item(item_t * Tab_Items, int * nb_items); //items.c
 void display_item (item_t item); //items.c
+categ_hexa category_hexagon (int map[D][D], int x, int y); //items.c
+void generate_items(item_t * Tab_Items, int nb_items_available, perso_t * player, categ_hexa categ); //items.c
 /*********************************************************************************/
+
 
 /************************************* PERSO *************************************/
 #define INVENTORY_CAPACITY 10 /* 10 items version 1 */
@@ -75,11 +79,13 @@ void display_player_characteristics(int map[D][D], perso_t player); //perso.c
 
 /**********************************************************************************/
 
+
 /************************************* MOVE *************************************/
 int move_lose_pa (hex_t type_hexa); 						//move.c
 void look_around(int i, int j, int map[D][D]);  //move.c
 void move (perso_t * player, int map[D][D]);		//move.c
 /*********************************************************************************/
+
 
 /*********************************** INVENTORY ***********************************/
 int map_in_inventory(perso_t player); //inventory.c
@@ -89,6 +95,7 @@ void delete_item_in_inventory(perso_t * player, item_t item); //inventory.c
 int add_item_to_inventory(perso_t * player, item_t item); //inventory.c
 void manage_inventory(perso_t * player); //inventory.c
 /*********************************************************************************/
+
 
 /*********************************** EQUIPMENT ***********************************/
 #define NOT_EQUIPPED 0
@@ -105,19 +112,18 @@ void remove_equipment_player(perso_t * player); //equipment.c
 void manage_equipment(perso_t * player); //equipment.c
 /**********************************************************************************/
 
+
 /*********************************** EAT_OR_DRINK ***********************************/
 void eat_or_drink (perso_t * player, item_t item); //eat_or_drink.c
 /************************************************************************************/
 
-/*********************************** REST AND HEAL ***********************************/
-void rest_and_heal(perso_t * player); //rest_and_heal.c
+
+/*********************************** TURN ***********************************/
+void next_turn(perso_t * player);
+void scavenge(int map[D][D], perso_t * player, item_t * Tab_Items, int nb_items_available); //turn.c
+void rest_and_heal(perso_t * player); //turn.c
 /************************************************************************************/
 
-/*********************************** SCAVENGE ***********************************/
-categ_hexa category_hexagon (int map[D][D], int x, int y); //scavenge.c
-void generate_items(item_t * Tab_Items, int nb_items_available, perso_t * player, categ_hexa categ); //scavenge.c
-void scavenge(int map[D][D], perso_t * player, item_t * Tab_Items, int nb_items_available); //scavenge.c
-/************************************************************************************/
 
 /*********************************** BACKUP AND LOAD ***********************************/
 void save (perso_t player, int map[D][D]); //backup_and_load.c
@@ -134,4 +140,10 @@ int load_map(int map[D][D]);								//backup_and_load.c
 
 int backup_exists (); //backup_and_load.c
 int init_or_load_game (perso_t * player, int map[D][D]); //backup_and_load.c
+/***************************************************************************************/
+
+
+/************************************* EXIT & HELP *************************************/
+int exit_game(); //exit_help.c
+void help(perso_t * player); //exit_help.c
 /***************************************************************************************/
