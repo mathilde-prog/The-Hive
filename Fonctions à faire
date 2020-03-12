@@ -11,7 +11,7 @@ Fonction de sortie: (Anaïs)
     si joueur se trouve sur l'hexagone de sortie 
         Veutx tu sortir, quitter le jeu : oui ou non
         
-Fonction next turn
+Fonction next turn (Anais)
     Réinitialise un nouveau tour
     
 Fonction de combat (Moustapha)
