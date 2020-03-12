@@ -17,13 +17,16 @@ Fonction next turn
 Fonction de combat (Moustapha)
     
 Fonction tour :
-    Deplacer (! pt action : -1)
-    Chercher des items (! pt action : -1)
-    Utiliser des items
+    Deplacer (! pt action : -1) : OK
+    Chercher des items (! pt action : -1) : OK
+    Utiliser des items : OK
     Reposer (>pt energie en fonction des pts d'actions restants)
     Aide
     Tour suivant
-    Regarder autour
-    Regarder map (si item map dans inventaire)
-    Enregistrer/Quitter
+    Regarder autour : OK
+    Regarder map (si item map dans inventaire) : OK
+    Enregistrer/Quitter: OK
+    
+    
+Creer les quêtes
     
