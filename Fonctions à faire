@@ -11,7 +11,7 @@ Fonction de sortie: (Anaïs)
     si joueur se trouve sur l'hexagone de sortie 
         Veutx tu sortir, quitter le jeu : oui ou non
         
-Fonction next turn (Anais)
+Fonction next turn (Mathilde)
     Réinitialise un nouveau tour
     
 Fonction de combat (Moustapha)
@@ -21,8 +21,8 @@ Fonction tour :
     Chercher des items (! pt action : -1) : OK
     Utiliser des items : OK
     Reposer (>pt energie en fonction des pts d'actions restants)
-    Aide
-    Tour suivant
+    Aide : OK
+    Tour suivant : OK
     Regarder autour : OK
     Regarder map (si item map dans inventaire) : OK
     Enregistrer/Quitter: OK
