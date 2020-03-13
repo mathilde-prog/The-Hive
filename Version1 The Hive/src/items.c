@@ -85,7 +85,7 @@ categ_hexa category_hexagon (int map[D][D], int x, int y){
       case montagne  : categ = nature;    break;     //montagne
       case frontiere : categ = other;     break;     //frontiere
       case mer       : categ = nature;    break;     //mer
-      case wasteland : categ = nature;    break;     //wasteland
+      case wasteland : categ = other;    break;     //wasteland
       default : break;
   }
 
