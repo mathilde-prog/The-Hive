@@ -1,4 +1,6 @@
 // structure.h
+typedef struct perso_s perso_t;
+typedef struct item_s item_t;
 
 /************************************* MAP *************************************/
 #define ITEMS_MAX 5 // maximum number of items retrievable on a hexagon of the map
@@ -25,7 +27,6 @@ void display_grid(const int map[D][D]); 					//world_generation.c
 void map_init(int map[D][D]); 										//world_generation.c
 /*********************************************************************************/
 
-
 /************************************* ITEMS *************************************/
 typedef enum {armor,weapon,misc,food} type_t; /* types of items available */
 typedef enum {none,hand,body,head} equip_t; 	/* where the player may wear equipment */
@@ -47,7 +48,6 @@ void display_item (item_t item); //items.c
 categ_hexa category_hexagon (int map[D][D], int x, int y); //items.c
 void generate_items(item_t * Tab_Items, int nb_items_available, perso_t * player, categ_hexa categ); //items.c
 /*********************************************************************************/
-
 
 /************************************* PERSO *************************************/
 #define INVENTORY_CAPACITY 10 /* 10 items version 1 */
