@@ -1,3 +1,2 @@
 int interface();
-void affichage_map(SDL_Renderer **renderer/*, char *map[T]*/);
-
+void affichage_map(SDL_Renderer **renderer, char *map[]);

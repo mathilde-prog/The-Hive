@@ -5,9 +5,9 @@
 #include<SDL2/SDL_image.h>
 #include"interface.h"
 
+char *map[] = {"hexa_png/hex_1.png","hexa_png/hex_63.png"};
 
-void affichage_map(SDL_Renderer **renderer){
-	char *map[] = {"img/HexBlankDusk.png","img/HexBlankDusk.png"};
+void affichage_map(SDL_Renderer **renderer, char *map[]){
 	SDL_Surface *image[2];
 	SDL_Rect dest_image[2];
 	SDL_Texture *image_tex[2];
@@ -126,7 +126,7 @@ int interface(){
 						/* couleur du reste de la fenetre */
 						SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 						/*affichage de la carte */
-						affichage_map(&renderer);
+						affichage_map(&renderer, map);
 
 						SDL_RenderPresent(renderer);
 
@@ -156,4 +156,3 @@ int interface(){
 int main(){
 	interface();
 }
-
