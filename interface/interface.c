@@ -5,7 +5,7 @@
 #include<SDL2/SDL_image.h>
 #include"interface.h"
 
-char *map[] = {"hexa_png/hex_market.png","hexa_png/hex_favella.png"};
+char *map[] = {"hexa_png/test_1.png","hexa_png/test_2.png"};
 
 void affichage_map(SDL_Renderer **renderer, char *map[]){
 	SDL_Surface *image[2];
@@ -21,7 +21,7 @@ void affichage_map(SDL_Renderer **renderer, char *map[]){
 
 	dest_image[0].x=500;
 	dest_image[0].y=200;
-	dest_image[1].x=570;
+	dest_image[1].x=580;
 	dest_image[1].y=220;
 	for (int i=0;i<2;i++){
 		SDL_QueryTexture(image_tex[i], NULL, NULL, &(dest_image[i].w), &(dest_image[i].h));
