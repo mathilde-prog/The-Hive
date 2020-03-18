@@ -5,7 +5,7 @@
 #include<SDL2/SDL_image.h>
 #include"interface.h"
 
-char *map[] = {"hexa_png/hex_1.png","hexa_png/hex_63.png"};
+char *map[] = {"hexa_png/hex_market.png","hexa_png/hex_favella.png"};
 
 void affichage_map(SDL_Renderer **renderer, char *map[]){
 	SDL_Surface *image[2];
