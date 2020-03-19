@@ -11,10 +11,10 @@ typedef enum {other, nature, urbain, militaire} categ_hexa;
 // other : camp_ban + frontiere
 
 typedef struct hex_s{ // structure d'hexagone
-  int type;
+  hex_t type;
   int encounter;
   int quest_id;
-	int categ;
+	categ_hexa categ;
 	char fname[20];
 }hex_t;
 
