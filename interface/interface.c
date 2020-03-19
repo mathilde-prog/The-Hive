@@ -6,6 +6,22 @@
 #include"interface.h"
 
 char *map[N*N];
+/*
+ * fonction de test qui permet de tester l'affichage de la map avec une version d'essais, simplifiée
+ */
+void init_map_essai(int mapint[N][N]){
+	int i,j;
+	for(i=0;i<N;i++){
+		for (j=0;j<N;j++)
+		 if (i%2 && j%2)
+			 mapint[i][j]=1;
+		 else if(!j%2)
+			 mapint[i][j]=3;
+		 else
+			 mapint[i][j]=2;
+ 	}
+}
+
 
 /*
  * fonction qui remplit map des chaines de caracteres correspondants à l'image a affiché
@@ -17,7 +33,7 @@ void relation_hexa_char(char*mapchar[], int mapint[N][N]){
 			switch(mapint[i][j]){
 				case 1 : mapchar[k]="hexa_png/hex_city1.png";k++;break;
 				case 2 : mapchar[k]="hexa_png/hex_forest2.png";k++;break;
-				case 4 : mapchar[k]="hexa_png/hex_sea.png";k++;break;
+				case 3 : mapchar[k]="hexa_png/hex_city2.png";k++;break;
 				default : mapchar[k]="hexa_png/HexBlankDay.png";k++;
 			}
 		}
@@ -34,22 +50,14 @@ void affichage_map(SDL_Renderer **renderer, char *map[]){
 	SDL_Texture *image_tex[N*N];
 	SDL_RWops *rwop[N*N];
 	int mapint[N][N];
-	// ici i et j sont uilisé pour la creation d'une map test on le supprimera une fois le code OK
-	int k,l,x,y,i,j;
+	int i,j,k,l;
+	// x et y sont les coordonées auxquelles on affichera un hexagone
+	int x,y;
 
-	// boucle qui initialise des valeurs de test dans mapint dans les faits cette partie
-	// sera supprimée et on aura passer la map en parametre en la redimensionnant au préalable
-	for(i=0;i<N;i++){
-		for (j=0;j<N;j++)
-			if (i%2 && j%2)
-				mapint[i][j]=1;
-			else
-				mapint[i][j]=2;
-	}
-
+	init_map_essai(mapint);
 	relation_hexa_char(map,mapint);
 
-	for (int i=0; i<N*N; i++){
+	for (i=0; i<N*N; i++){
 		rwop[i]=SDL_RWFromFile(map[i],"rb");
 		image[i]=IMG_LoadPNG_RW(rwop[i]);
  		image_tex[i] = SDL_CreateTextureFromSurface(*renderer,image[i]);
@@ -80,7 +88,7 @@ void affichage_map(SDL_Renderer **renderer, char *map[]){
 		y+=40;
 	}
 
-	for (int i=0;i<N;i++){
+	for (i=0;i<N;i++){
 		for (j=0;j<N;j++){
 			if (j%2==0){
 				SDL_QueryTexture(image_tex[i*N+j], NULL, NULL, &(dest_image[i*N+j].w), &(dest_image[i*N+j].h));
