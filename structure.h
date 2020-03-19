@@ -8,6 +8,14 @@ typedef enum {prairie = 1, foret, ville, lac, camp_mil, camp_ban, market, favell
 typedef enum {other, nature, urbain, militaire} categ_hexa;
 // + other : camp_ban + frontiere
 
+typedef struct hex_s{ // structure d'hexagone
+  int type;
+  int encounter;
+  int quest_id;
+	int categ;
+	char fname[20];
+}hex_t;
+
 void clrscr();
 int range(int a,int b);
 int rng(int prob);
@@ -83,7 +91,7 @@ int too_much_of_the_same_item(perso_t player, item_t item);
 void display_inventory (perso_t player);
 void delete_item_in_inventory(perso_t * player, item_t item);
 int add_item_to_inventory(perso_t * player, item_t item);
-void manage_inventory(perso_t * player); 
+void manage_inventory(perso_t * player);
 /*********************************************************************************/
 
 /*********************************** EQUIPMENT ***********************************/
