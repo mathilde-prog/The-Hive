@@ -15,7 +15,6 @@ typedef struct cell_s{ // structure d'hexagone
   int encounter;
   int quest_id;
 	categ_hexa categ;
-	char fname[20];
 }cell_t;
 
 
