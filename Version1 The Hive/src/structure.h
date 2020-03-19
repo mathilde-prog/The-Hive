@@ -10,13 +10,13 @@ typedef enum {prairie = 1, foret, ville, lac, camp_mil, camp_ban, market, favell
 typedef enum {other, nature, urbain, militaire} categ_hexa;
 // other : camp_ban + frontiere
 
-typedef struct hex_s{ // structure d'hexagone
+typedef struct cell_s{ // structure d'hexagone
   hex_t type;
   int encounter;
   int quest_id;
 	categ_hexa categ;
 	char fname[20];
-}hex_t;
+}cell_t;
 
 
 int coordonnees_valides(int l, int c); 						//world_generation.c
