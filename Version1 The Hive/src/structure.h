@@ -15,7 +15,6 @@ typedef struct cell_s{ // structure d'hexagone
   int encounter;
   int quest_id;
 	categ_hexa categ;
-	char fname[20];
 }cell_t;
 
 
@@ -23,17 +22,17 @@ int coordonnees_valides(int l, int c); 						//world_generation.c
 void clrscr(); 																		//world_generation.c
 int range(int a,int b); 													//world_generation.c
 int rng(int prob); 																//world_generation.c
-void init_border(int map[D][D]);									//world_generation.c
-int bordercross(int i, int j, int map[D][D]); 		//world_generation.c
-void topup(int map[D][D]); 												//world_generation.c
-int spawntype(int l, int c, int map[D][D]); 			//world_generation.c
-void nextgen(int map[D][D]); 											//world_generation.c
-void portable_switch(int i, int j, int map[D][D]); //world_generation.c
-void display_TEXT(int l, int c, int map[D][D]); 	//world_generation.c
-void init_base(int map[D][D]); 										//world_generation.c
-void count(const int map[D][D]); 									//world_generation.c
-void display_grid(const int map[D][D]); 					//world_generation.c
-void map_init(int map[D][D]); 										//world_generation.c
+void init_border(cell_t map[D][D]);									//world_generation.c
+int bordercross(int i, int j, cell_t map[D][D]); 		//world_generation.c
+void topup(cell_t map[D][D]); 												//world_generation.c
+int spawntype(int l, int c, cell_t map[D][D]); 			//world_generation.c
+void nextgen(cell_t map[D][D]); 											//world_generation.c
+void portable_switch(int i, int j, cell_t map[D][D]); //world_generation.c
+void display_TEXT(int l, int c, cell_t map[D][D]); 	//world_generation.c
+void init_base(cell_t map[D][D]); 										//world_generation.c
+void count(const cell_t map[D][D]); 									//world_generation.c
+void display_grid(const cell_t map[D][D]); 					//world_generation.c
+void map_init(cell_t map[D][D]); 										//world_generation.c
 /*********************************************************************************/
 
 /************************************* ITEMS *************************************/
