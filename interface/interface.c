@@ -96,6 +96,7 @@ void affichage_map(SDL_Renderer **renderer, char *map[]){
 		y+=40;
 	}
 
+	// on affiche d'abord les cellules paires car sinon on a le bas de la cellule qui passe au premier plan
 	for (i=0;i<N;i++){
 		for (j=0;j<N;j++){
 			if (j%2==0){
@@ -218,6 +219,20 @@ int interface(){
 
 							break;
 						}
+					break;
+					case SDL_MOUSEBUTTONDOWN:
+					if(event.button.button == SDL_BUTTON_LEFT){
+							//si clique sur lea colonne avec tous les boutons
+							if (event.button.x > bouton_exit.x && event.button.x < bouton_exit.x+bouton_exit.w){
+								//on regarde maintenant la hauteur du click afin de savoir sur quel bouton l'utilisateur a appuyé
+								if (event.button.y > bouton_exit.y && event.button.y < bouton_exit.y+bouton_exit.h){
+									running = 0;
+								}
+								if (event.button.y > bouton_help.y && event.button.y < bouton_help.y+bouton_help.h){
+									printf("help button pressed \n");
+								}
+							}
+					}
 					break;
 				}
 			}
