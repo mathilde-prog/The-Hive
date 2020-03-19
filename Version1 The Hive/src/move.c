@@ -22,7 +22,7 @@ int move_lose_pa (hex_t type_hexa){
   }
 }
 
-void look_around(int i, int j, int map[D][D]){
+void look_around(int i, int j, cell_t map[D][D]){
   int esp;
 
   printf("+----+----+----+");
@@ -82,7 +82,7 @@ void look_around(int i, int j, int map[D][D]){
   printf("+----+----+----+\n");
 }
 
-void move (perso_t * player, int map[D][D]){
+void move (perso_t * player, cell_t map[D][D]){
   int nb, change,  l = player->posX, c = player->posY, code;
 
   jump:
@@ -110,7 +110,7 @@ void move (perso_t * player, int map[D][D]){
 
     if(code == 1){
       if(coordonnees_valides(l-1,c-1)){
-        change = move_lose_pa(map[l-1][c-1]);
+        change = move_lose_pa(map[l-1][c-1].type);
         if(change <= player->pa){
           player->posX = l-1;
           player->posY = c-1;
@@ -128,7 +128,7 @@ void move (perso_t * player, int map[D][D]){
     }
     else if(code == 2){
       if(coordonnees_valides(l-1,c)){
-        change = move_lose_pa(map[l-1][c]);
+        change = move_lose_pa(map[l-1][c].type);
         if(change <= player->pa){
           player->posX = l-1;
           player->posY = c;
@@ -146,7 +146,7 @@ void move (perso_t * player, int map[D][D]){
     }
     else if(code == 3){
       if(coordonnees_valides(l-1,c+1)){
-        change = move_lose_pa(map[l-1][c+1]);
+        change = move_lose_pa(map[l-1][c+1].type);
         if(change <= player->pa){
           player->posX = l-1;
           player->posY = c+1;
@@ -164,7 +164,7 @@ void move (perso_t * player, int map[D][D]){
     }
     else if(code == 4){
       if(coordonnees_valides(l,c-1)){
-        change = move_lose_pa(map[l][c-1]);
+        change = move_lose_pa(map[l][c-1].type);
         if(change <= player->pa){
           player->posX = l;
           player->posY = c-1;
@@ -182,7 +182,7 @@ void move (perso_t * player, int map[D][D]){
     }
     else if(code == 5){
       if(coordonnees_valides(l,c+1)){
-        change = move_lose_pa(map[l][c+1]);
+        change = move_lose_pa(map[l][c+1].type);
         if(change <= player->pa){
           player->posX = l;
           player->posY = c+1;
@@ -200,7 +200,7 @@ void move (perso_t * player, int map[D][D]){
     }
     else if(code == 6){
       if(coordonnees_valides(l+1,c-1)){
-        change = move_lose_pa(map[l+1][c-1]);
+        change = move_lose_pa(map[l+1][c-1].type);
         if(change <= player->pa){
           player->posX = l+1;
           player->posY = c-1;
@@ -218,7 +218,7 @@ void move (perso_t * player, int map[D][D]){
     }
     else if(code == 7){
       if(coordonnees_valides(l+1,c)){
-        change = move_lose_pa(map[l+1][c]);
+        change = move_lose_pa(map[l+1][c].type);
         if(change <= player->pa){
           player->posX = l+1;
           player->posY = c;
@@ -236,7 +236,7 @@ void move (perso_t * player, int map[D][D]){
     }
     else if(code == 8){
       if(coordonnees_valides(l+1,c+1)){
-        change = move_lose_pa(map[l+1][c+1]);
+        change = move_lose_pa(map[l+1][c+1].type);
         if(change <= player->pa){
           player->posX = l+1;
           player->posY = c+1;

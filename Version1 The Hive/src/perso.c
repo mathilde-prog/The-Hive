@@ -32,23 +32,29 @@ void init_player(perso_t * player){
 }
 
 /* display_player_characteristics: displays the player parameters (pv,pe,pa,location,turns) */
-void display_player_characteristics(int map[D][D], perso_t player){
+void display_player_characteristics(cell_t map[D][D], perso_t player){
   printf("========================= INFO PLAYER ============================\n");
   printf("PV = %3d  PE = %3d  PA = %3d\n",player.pv,player.pe,player.pa);
   printf("Position player:  x = %d  y = %d  ",player.posX,player.posY);
-  switch(map[player.posX][player.posY]){
-    case prairie   : printf("prairie [NATURE]\n"); break;     //prairie
-    case foret     : printf("foret [NATURE]\n");    break;     //foret
-    case ville     : printf("ville [URBAIN]\n");    break;     //ville
-    case lac       : printf("lac [NATURE]\n");     break;     //lac
-    case camp_mil  : printf("camp_mil [MILITAIRE]\n");  break;     //camp mil
-    case camp_ban  : printf("camp_ban [OTHER]\n");     break;     //camp_ban
-    case market    : printf("market [URBAIN]\n");   break;     //market
-    case favella   : printf("favella [URBAIN]\n");   break;     //favella
-    case montagne  : printf("montagne [NATURE]\n");     break;     //montagne
-    case frontiere : printf("frontiere [OTHER]\n");      break;     //frontiere
-    case mer       : printf("mer [NATURE]\n");   break;     //mer
-    case wasteland : printf("wasteland [NATURE]\n");    break;     //wasteland
+  switch(map[player.posX][player.posY].type){
+    case prairie   : printf("prairie "); break;
+    case foret     : printf("foret ");    break;
+    case ville     : printf("ville ");    break;
+    case lac       : printf("lac ");     break;
+    case camp_mil  : printf("camp_mil ");  break;
+    case camp_ban  : printf("camp_ban ");     break;
+    case market    : printf("market ");   break;
+    case favella   : printf("favella ");   break;
+    case montagne  : printf("montagne ");     break;
+    case frontiere : printf("frontiere ");      break;
+    case mer       : printf("mer ");   break;
+    case wasteland : printf("wasteland ");    break;     
+  }
+  switch(map[player.posX][player.posY].categ){
+    case other   : printf("[OTHER]\n"); break;
+    case nature  : printf("[NATURE]\n"); break;
+    case urbain  : printf("[URBAIN]\n"); break;
+    case militaire : printf("[MILITAIRE]\n");  break;
   }
 
   /* No special competence for version 1 */

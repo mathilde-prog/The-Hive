@@ -8,7 +8,7 @@
 /******************** BACK_UP *************************/
 
 /* save: save information about the character, his inventory, his equipment and the map. */
-void save (perso_t player, int map[D][D]){
+void save (perso_t player, cell_t map[D][D]){
   save_info_player(player);
   save_inventory(player);
   save_equipment(player);
@@ -55,15 +55,40 @@ void save_equipment (perso_t player){
 }
 
 /* save_map: save the map of the game */
-void save_map (int map[D][D]){
+void save_map (cell_t map[D][D]){
   int l, c;
   FILE * fic = fopen("txt/save_map.txt","w");
 
+  // type
   for(l = 0; l < D; l++){
     for(c = 0; c < D; c++){
-      fprintf(fic, "%2d ", map[l][c]);
+      fprintf(fic,"%2d ", map[l][c].type);
     }
-      fprintf(fic, "\n");
+      fprintf(fic,"\n");
+  }
+  fprintf(fic,"\n\n");
+  //categ
+  for(l = 0; l < D; l++){
+    for(c = 0; c < D; c++){
+      fprintf(fic,"%2d ", map[l][c].categ);
+    }
+      fprintf(fic,"\n");
+  }
+  fprintf(fic,"\n\n");
+  //encounter
+  for(l = 0; l < D; l++){
+    for(c = 0; c < D; c++){
+      fprintf(fic,"%2d ", map[l][c].encounter);
+    }
+      fprintf(fic,"\n");
+  }
+  fprintf(fic,"\n\n");
+  //quest_id
+  for(l = 0; l < D; l++){
+    for(c = 0; c < D; c++){
+      fprintf(fic,"%2d ", map[l][c].quest_id);
+    }
+      fprintf(fic,"\n");
   }
 
   printf("save_map.txt - Successfully backed up!\n");
@@ -75,7 +100,7 @@ void save_map (int map[D][D]){
 /******************** LOAD ****************************/
 
 /* load: load information about the character, his inventory, his equipment and the map. */
-int load (perso_t * player, int map[D][D]){
+int load (perso_t * player, cell_t map[D][D]){
   if(!load_inventory (player)){
     printf("Failed to load the inventory\n");
     return 0;
@@ -154,14 +179,29 @@ int load_equipment (perso_t * player){
 }
 
 /* load_map: loads the map of the game */
-int load_map (int map[D][D]){
+int load_map (cell_t map[D][D]){
   int l, c;
   FILE * fic = fopen("txt/save_map.txt","r");
 
   if(fic){
     for(l = 0; l < D; l++){
       for(c = 0; c < D; c++){
-        fscanf(fic,"%d",&map[l][c]);
+        fscanf(fic,"%d",&map[l][c].type);
+      }
+    }
+    for(l = 0; l < D; l++){
+      for(c = 0; c < D; c++){
+        fscanf(fic,"%d",&map[l][c].categ);
+      }
+    }
+    for(l = 0; l < D; l++){
+      for(c = 0; c < D; c++){
+        fscanf(fic,"%d",&map[l][c].encounter);
+      }
+    }
+    for(l = 0; l < D; l++){
+      for(c = 0; c < D; c++){
+        fscanf(fic,"%d",&map[l][c].quest_id);
       }
     }
     fclose(fic);
@@ -202,7 +242,7 @@ int backup_exists (){
    If a backup of the game exists, offers the player to continue the game or start a new one.
    Loads the game if saved, otherwise uses functions to initialize the player and the map.
 */
-int init_or_load_game(perso_t * player, int map[D][D]){
+int init_or_load_game(perso_t * player, cell_t map[D][D]){
   int choise;
 
   if(backup_exists()){

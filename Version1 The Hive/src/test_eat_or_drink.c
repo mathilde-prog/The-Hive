@@ -13,6 +13,7 @@ int main(){
   printf("Initialisation Joueur\n");
   init_player(&player);
   printf("\n");
+  player.pa = 3;
 
   if(creation_tab_item(Tab_Items, &nb_items_available)) {
     printf ("\033[34;01m=== ITEMS ADDED TO THE INVENTORY (TESTS) ===\033[00m\n");
@@ -20,8 +21,9 @@ int main(){
     add_item_to_inventory(&player, Tab_Items[13]); //fruits
     add_item_to_inventory(&player, Tab_Items[14]); //fish
     add_item_to_inventory(&player, Tab_Items[15]); //can_food
-    add_item_to_inventory(&player, Tab_Items[16]); //energy_drink
-    add_item_to_inventory(&player, Tab_Items[17]); //bottle_water
+    add_item_to_inventory(&player, Tab_Items[16]); //soda
+    add_item_to_inventory(&player, Tab_Items[17]); //energy_drink
+    add_item_to_inventory(&player, Tab_Items[18]); //bottle_water
 
     add_item_to_inventory(&player,Tab_Items[0]);  // pistol
     add_item_to_inventory(&player,Tab_Items[7]);  // helmet
@@ -30,25 +32,29 @@ int main(){
     printf ("\033[34;01m===========================================\n\n\033[00m");
 
     eat_or_drink(&player,player.inventory[0]); // fruits
-    (player.nb_items_inventory == 7) ? printf("fruits - Test OK\n") : printf("fruits - Test KO\n");
+    (player.nb_items_inventory == 8) ? printf("fruits - Test OK\n") : printf("fruits - Test KO\n");
     (player.pe == 110) ? printf("fruits - Test OK\n\n") : printf("fruits - Test KO\n\n");
 
     eat_or_drink(&player,player.inventory[0]); // fish
-    (player.nb_items_inventory == 6) ? printf("fish - Test OK\n") : printf("fish - Test KO\n");
+    (player.nb_items_inventory == 7) ? printf("fish - Test OK\n") : printf("fish - Test KO\n");
     (player.pe == 125) ? printf("fish - Test OK\n\n") : printf("fish - Test KO\n\n");
 
     eat_or_drink(&player,player.inventory[0]); // can_food
-    (player.nb_items_inventory == 5) ? printf("can_food - Test OK\n") : printf("can_food - Test KO\n");
+    (player.nb_items_inventory == 6) ? printf("can_food - Test OK\n") : printf("can_food - Test KO\n");
     (player.pe == 175) ? printf("can_food - Test OK\n\n") : printf("can_food - Test KO\n\n");
+
+    eat_or_drink(&player,player.inventory[0]); // soda
+    (player.nb_items_inventory == 5) ? printf("soda - Test OK\n") : printf("soda - Test KO\n");
+    (player.pe == 187) ? printf("soda - Test OK\n\n") : printf("soda - Test KO\n\n");
 
     eat_or_drink(&player,player.inventory[0]); // energy_drink
     (player.nb_items_inventory == 4) ? printf("energy_drink - Test OK\n") : printf("energy_drink - Test KO\n");
-    (player.pe == 195) ? printf("energy_drink - Test OK\n") : printf("energy_drink - Test KO\n");
+    (player.pe == 207) ? printf("energy_drink - Test OK\n") : printf("energy_drink - Test KO\n");
     (player.pa == 4) ? printf("energy_drink - Test OK\n\n") : printf("energy_drink - Test KO\n\n");
 
     eat_or_drink(&player,player.inventory[0]); // bottle_water
     (player.nb_items_inventory == 3) ? printf("bottle_water - Test OK\n") : printf("bottle_water - Test KO\n");
-    (player.pe == 205) ? printf("bottle_water - Test OK\n\n") : printf("bottle_water - Test KO\n\n");
+    (player.pe == 217) ? printf("bottle_water - Test OK\n\n") : printf("bottle_water - Test KO\n\n");
 
     eat_or_drink(&player,player.inventory[0]); // pistol
     (player.nb_items_inventory == 3) ? printf("pistol - Test OK\n\n") : printf("pistol - Test KO\n\n");

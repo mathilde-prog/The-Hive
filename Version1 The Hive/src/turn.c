@@ -7,7 +7,7 @@
 
 /* Passer au prochain tour */
 void next_turn(perso_t * player){
-  player->pa = 5; //Récupère 5 points d'actions
+  player->pa = 5; //Rï¿½cupï¿½re 5 points d'actions
   player->turns--;
 }
 
@@ -23,13 +23,13 @@ void rest_and_heal(perso_t * player){
 }
 
 /* Recherche des items */
-void scavenge(int map[D][D], perso_t * player, item_t * Tab_Items, int nb_items_available){
-    categ_hexa categ = category_hexagon(map, player->posX, player->posY);
+void scavenge(cell_t map[D][D], perso_t * player, item_t * Tab_Items, int nb_items_available){
+    categ_hexa categ = map[player->posX][player->posY].categ;
 
     if(categ != other){
       generate_items(Tab_Items, nb_items_available, player, categ);
     }
-    else { // Aucun item généré si frontière ou
+    else { // Aucun item gï¿½nï¿½rï¿½ si frontiï¿½re ou
       printf("Nothing appears!\n");
       sleep(2);
     }

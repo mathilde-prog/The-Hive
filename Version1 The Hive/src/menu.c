@@ -5,12 +5,12 @@
 #include "structure.h"
 
 perso_t player;
-int map[D][D]={{0}};
 int nb_items_available = 0;
 
 int main(){
   int choise;
   item_t * Tab_Items = malloc(20 * sizeof(item_t));
+  cell_t map[D][D];
 
   srand(time(NULL));
   clrscr();

@@ -17,7 +17,6 @@ typedef struct cell_s{ // structure d'hexagone
 	categ_hexa categ;
 }cell_t;
 
-
 int coordonnees_valides(int l, int c); 						//world_generation.c
 void clrscr(); 																		//world_generation.c
 int range(int a,int b); 													//world_generation.c
@@ -53,7 +52,6 @@ typedef struct item_s{
 
 int creation_tab_item(item_t * Tab_Items, int * nb_items); //items.c
 void display_item (item_t item); //items.c
-categ_hexa category_hexagon (int map[D][D], int x, int y); //items.c
 void generate_items(item_t * Tab_Items, int nb_items_available, perso_t * player, categ_hexa categ); //items.c
 /*********************************************************************************/
 
@@ -83,15 +81,15 @@ typedef struct perso_s {
 } perso_t;
 
 void init_player(perso_t * player); //perso.c
-void display_player_characteristics(int map[D][D], perso_t player); //perso.c
+void display_player_characteristics(cell_t map[D][D], perso_t player); //perso.c
 
 /**********************************************************************************/
 
 
 /************************************* MOVE *************************************/
 int move_lose_pa (hex_t type_hexa); 						//move.c
-void look_around(int i, int j, int map[D][D]);  //move.c
-void move (perso_t * player, int map[D][D]);		//move.c
+void look_around(int i, int j, cell_t map[D][D]);  //move.c
+void move (perso_t * player, cell_t map[D][D]);		//move.c
 /*********************************************************************************/
 
 
@@ -128,28 +126,27 @@ void eat_or_drink (perso_t * player, item_t item); //eat_or_drink.c
 
 /*********************************** TURN ***********************************/
 void next_turn(perso_t * player);
-void scavenge(int map[D][D], perso_t * player, item_t * Tab_Items, int nb_items_available); //turn.c
+void scavenge(cell_t map[D][D], perso_t * player, item_t * Tab_Items, int nb_items_available); //turn.c
 void rest_and_heal(perso_t * player); //turn.c
 /************************************************************************************/
 
 
 /*********************************** BACKUP AND LOAD ***********************************/
-void save (perso_t player, int map[D][D]); //backup_and_load.c
+void save (perso_t player, cell_t map[D][D]); //backup_and_load.c
 void save_inventory (perso_t player);			 //backup_and_load.c
 void save_info_player (perso_t player);		 //backup_and_load.c
 void save_equipment (perso_t player);			 //backup_and_load.c
-void save_map (int map[D][D]);						 //backup_and_load.c
+void save_map (cell_t map[D][D]);						 //backup_and_load.c
 
-int load (perso_t * player, int map[D][D]); //backup_and_load.c
+int load (perso_t * player, cell_t map[D][D]); //backup_and_load.c
 int load_inventory (perso_t * player);			//backup_and_load.c
 int load_info_player (perso_t * player);		//backup_and_load.c
 int load_equipment (perso_t * player);			//backup_and_load.c
-int load_map(int map[D][D]);								//backup_and_load.c
+int load_map(cell_t map[D][D]);								//backup_and_load.c
 
 int backup_exists (); //backup_and_load.c
-int init_or_load_game (perso_t * player, int map[D][D]); //backup_and_load.c
+int init_or_load_game (perso_t * player, cell_t map[D][D]); //backup_and_load.c
 /***************************************************************************************/
-
 
 /************************************* EXIT & HELP *************************************/
 int exit_game(); //exit_help.c

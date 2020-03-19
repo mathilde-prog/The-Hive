@@ -12,7 +12,7 @@ int main(){
   int nb_items_available = 0;
 
   /* Map Declaration */
-  int map[D][D]={{0}};
+  cell_t map[D][D];
 
   if(creation_tab_item(Tab_Items, &nb_items_available)) {
 

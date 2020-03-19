@@ -1,22 +1,22 @@
 pistol 1
-0 0 1
-0 50 90
+30 0 1
+0 20 60
 
 shotgun 1
-0 0 1
-0 40 75
+50 0 1
+0 15 50
 
 bow_arrows 1
-0 0 1
+15 0 1
 30 0 0
 
 bulletproof_vest 0
-0 0 2
-0 35 85
+0 40 2
+0 10 70
 
 helmet 0
-0 0 3
-0 40 75
+0 60 3
+0 0 0
 
 fishing_rod 2
 0 0 0
@@ -24,17 +24,17 @@ fishing_rod 2
 
 rope 2
 0 0 0
-0 60 60
+0 40 50
 
 map 2
 0 0 0
-0 75 70
+0 20 70
 
 fish 3
 0 0 0
-50 60 30
+10 10 10
 
-bottle_water 3
+energy_drink 3
 0 0 0
-0 90 50
+0 60 20
 

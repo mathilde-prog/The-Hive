@@ -261,7 +261,7 @@ void display_TEXT(int l, int c, cell_t map[D][D]){ // AFFICHE LA MAP EN VERSION 
     printf("\nBack to the menu (1) : ");
     scanf("%d",&nb);
     if(nb != 1){
-      printf("Type 1 to return to the inventory menu\n");
+      printf("Type 1 to return to the menu\n");
     }
   } while (nb != 1);
 }

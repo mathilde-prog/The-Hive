@@ -21,6 +21,10 @@ void eat_or_drink (perso_t * player, item_t item){
       player->pe += 50;
       printf("You've gained 50 energy points!\n");
     }
+    else if (!strcmp(item.name,"soda")){
+      player->pe += 12;
+      printf("You've gained 12 energy points!\n");
+    }
     else if(!strcmp(item.name,"energy_drink")){
       if(player->pa < 5){
         player->pa++;

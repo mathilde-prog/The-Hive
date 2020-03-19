@@ -68,30 +68,6 @@ void display_item (item_t item){
 
 /**************************************** GENERATION ITEMS (ANAIS) *********************************************/
 
-/* category_hexagon: returns the category of a hexagon. The map and hexagon coordinates are passed in parameters.*/
-categ_hexa category_hexagon (int map[D][D], int x, int y){
-  hex_t hexagone = map[x][y];
-  categ_hexa categ;
-
-  switch(hexagone){
-      case prairie   : categ = nature;    break;     //prairie
-      case foret     : categ = nature;    break;     //foret
-      case ville     : categ = urbain;    break;     //ville
-      case lac       : categ = nature;    break;     //lac
-      case camp_mil  : categ = militaire; break;     //camp mil
-      case camp_ban  : categ = other;     break;     //camp_ban
-      case market    : categ = urbain;    break;     //market
-      case favella   : categ = urbain;    break;     //favella
-      case montagne  : categ = nature;    break;     //montagne
-      case frontiere : categ = other;     break;     //frontiere
-      case mer       : categ = nature;    break;     //mer
-      case wasteland : categ = other;    break;     //wasteland
-      default : break;
-  }
-
-  return categ;
-}
-
 /* generate_items: generates 0 to 5 items randomly according to the type of hexagon
 and the percentage of chance of items appearing on this type of hexagon */
 void generate_items(item_t * Tab_Items, int nb_items_available, perso_t * player, categ_hexa categ){
@@ -138,7 +114,7 @@ void generate_items(item_t * Tab_Items, int nb_items_available, perso_t * player
           sleep(2);
         }
       }
-      // Plusieurs items trouv�s
+      // Plusieurs items trouves
       else {
         printf("Congratulations, you just found %d items!\n", cpt);
 
