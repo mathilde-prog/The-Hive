@@ -15,137 +15,135 @@ int rng(int prob){ // returns 0 or 1 with a given chance
   return (rand()%100)<prob;
 }
 
-void init_border(int map[D][D]){ //spawns border of the map
+void init_border(cell_t map[D][D]){ // initiates border of the map
   int i;
-  int low=1;
-  int high=4;
-  int t = range(low,high);
-  if(t==1){
-    for(i=0; i<D;i++){
-      map[D-1][i]=montagne;
-      map[i][0]=frontiere;
-      map[0][i]=mer;
-      map[i][D-1]=wasteland;
-    }
-  }else if(t==2){
-    for(i=0; i<D;i++){
-      map[i][0]=montagne;
-      map[0][i]=frontiere;
-      map[i][D-1]=mer;
-      map[D-1][i]=wasteland;
-    }
-  }else if(t==3){
-    for(i=0; i<D;i++){
-      map[0][i]=montagne;
-      map[i][D-1]=frontiere;
-      map[D-1][i]=mer;
-      map[i][0]=wasteland;
-    }
-  }else if(t==4){
-    for(i=0; i<D;i++){
-      map[i][D-1]=montagne;
-      map[D-1][i]=frontiere;
-      map[i][0]=mer;
-      map[0][i]=wasteland;
-    }
+  for(i=0; i<D;i++){
+    map[D-1][i].type=mer;
+    map[D-1][i].categ=nature;
+  }
+  for(i=0; i<D;i++){
+    map[i][0].type=wasteland;
+    map[i][0].categ=other;
+  }
+  for(i=0; i<D;i++){
+    map[0][i].type=montagne;
+    map[0][i].categ=nature;
+  }
+  for(i=0; i<D;i++){
+    map[i][D-1].type=frontiere;
+    map[i][D-1].categ=other;
   }
 }
 
-int bordercross(int i, int j, int map[D][D]){ // fonction to prevent favellas spawning on border
-  return (map[i-1][j]>=9 || map[i-1][j-1]>=9 || map[i-1][j+1]>=9 || map[i][j-1]>=9 || map[i][j+1]>=9 || map[i+1][j-1]>=9 || map[i+1][j]>=9 || map[i+1][j+1]>=9);
+int bordercross(int i, int j, cell_t map[D][D]){ // fonction to prevent favellas spawning on border
+  return (map[i-1][j].type>=9 || map[i-1][j-1].type>=9 || map[i-1][j+1].type>=9 || map[i][j-1].type>=9 || map[i][j+1].type>=9 || map[i+1][j-1].type>=9 || map[i+1][j].type>=9 || map[i+1][j+1].type>=9);
 }
 
-void topup(int map[D][D]){ // spawns fixed amount of essential hexes on random coordinates
+void topup(cell_t map[D][D]){ // spawns fixed amount of essential hexes on random coordinates
   int s,i,j;
   int low=1, high=13;
 
   i = range(low+1,high-1);
   j = range(low+1,high-1);
-  map[i][j]=market;
-  map[i-1][j]=favella;
-  map[i-1][j-1]=favella;
-  map[i-1][j+1]=favella;
-  map[i][j-1]=favella;
-  map[i][j+1]=favella;
-  map[i+1][j-1]=favella;
-  map[i+1][j]=favella;
-  map[i+1][j+1]=favella;
+  map[i][j].type=market;
+  map[i][j].categ=urbain;
+  map[i-1][j].type=favella;
+  map[i-1][j].categ=urbain;
+  map[i-1][j-1].type=favella;
+  map[i-1][j-1].categ=urbain;
+  map[i-1][j+1].type=favella;
+  map[i-1][j+1].categ=urbain;
+  map[i][j-1].type=favella;
+  map[i][j-1].categ=urbain;
+  map[i][j+1].type=favella;
+  map[i][j+1].categ=urbain;
+  map[i+1][j-1].type=favella;
+  map[i+1][j-1].categ=urbain;
+  map[i+1][j].type=favella;
+  map[i+1][j].categ=urbain;
+  map[i+1][j+1].type=favella;
+  map[i+1][j+1].categ=urbain;
 
   for(s=3; s!=0;s--){
     i = range(low,high);
     j = range(low,high);
-    map[i][j]=ville;
+    map[i][j].type=ville;
+    map[i][j].categ=urbain;
   }
 
-  while(map[i][j]!=prairie){
+  while(map[i][j].type != prairie){
     i = range(low,high);
     j = range(low,high);
   }
-  map[i][j]=camp_mil;
+  map[i][j].type=camp_mil;
+  map[i][j].categ=militaire;
 
-  while(map[i][j]!=prairie){
+
+  while(map[i][j].type!=prairie){
     i = range(low,high);
     j = range(low,high);
   }
-  map[i][j]=camp_ban;
+  map[i][j].type=camp_ban;
+  map[i][j].categ=other;
 
   for(s=5;s!=0;s--){
-    while(map[i][j]!=prairie){
+    while(map[i][j].type!=prairie){
       i = range(low,high);
       j = range(low,high);
     }
-    map[i][j]=lac;
+    map[i][j].type=lac;
+    map[i][j].categ=nature;
   }
 }
 
-int spawntype(int l, int c, int map[D][D]){ // returns hex type that must be spawned on current matrix position
+int spawntype(int l, int c, cell_t map[D][D]){ // returns hex type that must be spawned on current matrix position
   int tab[3]={0}; // number of each type of hex around the current one
   int prob[3]={0}; // probability of each type of hex spawning (1 or 0)
   int t=1;
 
   for(int i=1; i<=3;i++){
     if(c%2==1){
-      if(map[l][c-1]==i){
+      if(map[l][c-1].type==i){
         tab[i-1]=i;
       }
-      if(map[l][c+1]==i){
+      if(map[l][c+1].type==i){
         tab[i-1]=i;
       }
-      if(map[l][c]==i){
+      if(map[l][c].type==i){
         tab[i-1]=i;
       }
-      if(map[l-1][c-1]==i){
+      if(map[l-1][c-1].type==i){
         tab[i-1]=i;
       }
-      if(map[l-1][c]==i){
+      if(map[l-1][c].type==i){
         tab[i-1]=i;
       }
-      if(map[l-1][c+1]==i){
+      if(map[l-1][c+1].type==i){
         tab[i-1]=i;
       }
-      if(map[l+1][c]==i){
+      if(map[l+1][c].type==i){
         tab[i-1]=i;
       }
     }else{
-      if(map[l][c]==i){
+      if(map[l][c].type==i){
         tab[i-1]=i;
       }
-      if(map[l-1][c]==i){
+      if(map[l-1][c].type==i){
         tab[i-1]=i;
       }
-      if(map[l+1][c]==i){
+      if(map[l+1][c].type==i){
         tab[i-1]=i;
       }
-      if(map[l][c+1]==i){
+      if(map[l][c+1].type==i){
         tab[i-1]=i;
       }
-      if(map[l][c-1]==i){
+      if(map[l][c-1].type==i){
         tab[i-1]=i;
       }
-      if(map[l+1][c-1]==i){
+      if(map[l+1][c-1].type==i){
         tab[i-1]=i;
       }
-      if(map[l+1][c+1]==i){
+      if(map[l+1][c+1].type==i){
         tab[i-1]=i;
       }
     }
@@ -162,13 +160,13 @@ int spawntype(int l, int c, int map[D][D]){ // returns hex type that must be spa
   return t;
 }
 
-void nextgen(int map[D][D]){ // generates additional hexes on the map with different chance
+void nextgen(cell_t map[D][D]){ // generates additional hexes on the map with different chance
   int i,j,c;
   for(c=0;c<3;c++){
     for(i=1;i<D-1;i++){
       for(j=1;j<D-1;j++){
-        if(map[i][j]==prairie){
-          map[i][j]=spawntype(i,j,map);
+        if(map[i][j].type==prairie){
+          map[i][j].type=spawntype(i,j,map);
         }
       }
     }
@@ -179,9 +177,9 @@ int coordonnees_valides(int l, int c){
   return ((l >= 0 && l < D) && (c >= 0 && c < D));
 }
 
-void portable_switch(int i, int j, int map[D][D]){ // FONCTION QUI PRINT LE CODE DE LA CELLULE, CREE POUR EVITER DE REFAIRE LES SWITCHS DANS DIFFERENTS FONCTIONS D'AFFICHAGE
+void portable_switch(int i, int j, cell_t map[D][D]){ // FONCTION QUI PRINT LE CODE DE LA CELLULE, CREE POUR EVITER DE REFAIRE LES SWITCHS DANS DIFFERENTS FONCTIONS D'AFFICHAGE
   if(coordonnees_valides(i,j)){
-    switch(map[i][j]){
+    switch(map[i][j].type){
       case 1: printf(" PR "); break;
       case 2: printf(" FR "); break;
       case 3: printf(" VL "); break;
@@ -202,7 +200,7 @@ void portable_switch(int i, int j, int map[D][D]){ // FONCTION QUI PRINT LE CODE
   }
 }
 
-void display_TEXT(int l, int c, int map[D][D]){ // AFFICHE LA MAP EN VERSION TEXT AVEC LA LEGENDE
+void display_TEXT(int l, int c, cell_t map[D][D]){ // AFFICHE LA MAP EN VERSION TEXT AVEC LA LEGENDE
   int i,j,nb;
 
   for(i=0; i<D; i++){
@@ -268,32 +266,36 @@ void display_TEXT(int l, int c, int map[D][D]){ // AFFICHE LA MAP EN VERSION TEX
   } while (nb != 1);
 }
 
-void init_base(int map[D][D]){
+void init_base(cell_t map[D][D]){
   int i,j;
   for(i=0;i<D; i++){
     for(j=0;j<D;j++){
-      map[i][j]=prairie;
+      map[i][j].type=prairie;
+      map[i][j].categ=nature;
+      map[i][j].encounter=0;
+      map[i][j].quest_id=0;
+      strcpy(map[i][j].fname,"hex_prairie.png");
     }
   }
 }
 
-void count(const int map[D][D]){ // COMPTE LE NOMBRE D'OCCURENCE DE CHAQUE TYPE DE CELLULE
+void count(const cell_t map[D][D]){ // COMPTE LE NOMBRE D'OCCURENCE DE CHAQUE TYPE DE CELLULE
   int c=0,f=0,h=0,cb=0,cm=0,mr=0,fv=0;
   for(int i=0; i<D;i++){
     for(int j=0; j<D;j++){
-      if(map[i][j]==ville){
+      if(map[i][j].type==ville){
         c++;
-      }if(map[i][j]==foret){
+      }if(map[i][j].type==foret){
         f++;
-      }if(map[i][j]==prairie){
+      }if(map[i][j].type==prairie){
         h++;
-      }if(map[i][j]==camp_ban){
+      }if(map[i][j].type==camp_ban){
         cb++;
-      }if(map[i][j]==camp_mil){
+      }if(map[i][j].type==camp_mil){
         cm++;
-      }if(map[i][j]==market){
+      }if(map[i][j].type==market){
         mr++;
-      }if(map[i][j]==favella){
+      }if(map[i][j].type==favella){
         fv++;
       }
     }
@@ -301,7 +303,7 @@ void count(const int map[D][D]){ // COMPTE LE NOMBRE D'OCCURENCE DE CHAQUE TYPE 
   printf("\nCity: %d\nForest: %d\nHills: %d\nBandit camp: %d\nMilitary camp: %d\nMarket: %d\nFavella: %d\n",c,f,h,cb,cm,mr,fv);
 }
 
-void display_grid(const int map[D][D]){ // AFFICHE LA MAP COMPLETE AVEC LA LEGENDE
+void display_grid(const cell_t map[D][D]){ // AFFICHE LA MAP COMPLETE AVEC LA LEGENDE
   int i,j;
   clrscr();
   for(i=0; i<D; i++){
@@ -310,7 +312,7 @@ void display_grid(const int map[D][D]){ // AFFICHE LA MAP COMPLETE AVEC LA LEGEN
     }
     printf("+\n");
     for(j=0; j<D; j++){
-      printf("|  %2d   ",map[i][j]);
+      printf("|  %2d   ",map[i][j].type);
     }
     if(i==0){
       printf("|     LEGENDE:\n");
@@ -348,7 +350,7 @@ void display_grid(const int map[D][D]){ // AFFICHE LA MAP COMPLETE AVEC LA LEGEN
   printf("+\n");
 }
 
-void map_init(int map[D][D]){
+void map_init(cell_t map[D][D]){
   init_base(map);
   init_border(map);
   topup(map);
