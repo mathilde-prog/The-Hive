@@ -12,16 +12,7 @@ int range(int a,int b){ // generates random number in range
 }
 
 int rng(int prob){ // returns 0 or 1 with a given chance
-  int tab[100]={0};
-  int i,r;
-  if(prob>100){
-    prob=100;
-  }
-  for(i=0;i<prob;i++){
-    tab[i]=1;
-  }
-  r=rand()%100;
-  return tab[r];
+  return (rand()%100)<prob;
 }
 
 void init_border(int map[D][D]){ //spawns border of the map

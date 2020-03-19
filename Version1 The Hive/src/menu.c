@@ -6,11 +6,12 @@
 
 perso_t player;
 int map[D][D]={{0}};
-item_t Tab_Items[20];
 int nb_items_available = 0;
 
 int main(){
   int choise;
+  item_t * Tab_Items = malloc(20 * sizeof(item_t));
+
   srand(time(NULL));
   clrscr();
 
@@ -68,6 +69,8 @@ int main(){
       if(!player.pv){
         printf("You're dead.\n");
       }
+
+      free(Tab_Items);
       sleep(2);
       clrscr();
     }
