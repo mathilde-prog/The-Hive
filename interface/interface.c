@@ -5,42 +5,120 @@
 #include<SDL2/SDL_image.h>
 #include"interface.h"
 
-char *map[] = {"hexa_png/test_1.png","hexa_png/test_2.png"};
+char *map[N*N];
+/*
+ * fonction de test qui permet de tester l'affichage de la map avec une version d'essais, simplifiée
+ */
+void init_map_essai(int mapint[N][N]){
+	int i,j;
+	for(i=0;i<N;i++){
+		for (j=0;j<N;j++)
+		 if (i%2 && j%2)
+			 mapint[i][j]=1;
+		 else if(!j%2)
+			 mapint[i][j]=3;
+		 else
+			 mapint[i][j]=2;
+ 	}
+}
 
+
+/*
+ * fonction qui remplit map des chaines de caracteres correspondants à l'image a affiché
+ */
+void relation_hexa_char(char*mapchar[], int mapint[N][N]){
+	int i,j,k=0;
+	for (i=0; i<N;i++){
+		for (j=0; j<N;j++){
+			switch(mapint[i][j]){
+				case 1 : mapchar[k]="hexa_png/hex_city1.png";k++;break;
+				case 2 : mapchar[k]="hexa_png/hex_forest2.png";k++;break;
+				case 3 : mapchar[k]="hexa_png/hex_city2.png";k++;break;
+				default : mapchar[k]="hexa_png/HexBlankDay.png";k++;
+			}
+		}
+	}
+}
+
+/*
+ * fonction qui affiche uniquement la map c'est a dire la partie composée d'hexagones
+ * collés les uns aux autres
+ */
 void affichage_map(SDL_Renderer **renderer, char *map[]){
-	SDL_Surface *image[2];
-	SDL_Rect dest_image[2];
-	SDL_Texture *image_tex[2];
-	SDL_RWops *rwop[2];
+	SDL_Surface *image[N*N];
+	SDL_Rect dest_image[N*N];
+	SDL_Texture *image_tex[N*N];
+	SDL_RWops *rwop[N*N];
+	int mapint[N][N];
+	int i,j,k,l;
+	// x et y sont les coordonées auxquelles on affichera un hexagone
+	int x,y;
 
-	for (int i=0; i<2; i++){
+	init_map_essai(mapint);
+	relation_hexa_char(map,mapint);
+
+	for (i=0; i<N*N; i++){
 		rwop[i]=SDL_RWFromFile(map[i],"rb");
 		image[i]=IMG_LoadPNG_RW(rwop[i]);
  		image_tex[i] = SDL_CreateTextureFromSurface(*renderer,image[i]);
 	}
+	x=400;
+	y=-25;
+	dest_image[0].x=x;
+	dest_image[0].y=y;
+	for (k=0;k<N;k++){
+		x=400;
+		for (l=0;l<N;l++){
+			//la premiere case etant deja initialisé on n'y touche pas
+			if (k==0 && l==0)
+				x=480;
+			else {
+				if (l%2==0){
+					dest_image[k*N+l].x = x;
+					dest_image[k*N+l].y = y;
+					x+=80;
+				}
+				else {
+					dest_image[k*N+l].x = x;
+					dest_image[k*N+l].y = y+20;
+					x+=80;
+				}
+			}
+		}
+		y+=40;
+	}
 
-	dest_image[0].x=500;
-	dest_image[0].y=200;
-	dest_image[1].x=580;
-	dest_image[1].y=220;
-	for (int i=0;i<2;i++){
-		SDL_QueryTexture(image_tex[i], NULL, NULL, &(dest_image[i].w), &(dest_image[i].h));
-		SDL_RenderCopy(*renderer, image_tex[i], NULL, &dest_image[i]);
-		SDL_FreeSurface(image[i]);
+	for (i=0;i<N;i++){
+		for (j=0;j<N;j++){
+			if (j%2==0){
+				SDL_QueryTexture(image_tex[i*N+j], NULL, NULL, &(dest_image[i*N+j].w), &(dest_image[i*N+j].h));
+				SDL_RenderCopy(*renderer, image_tex[i*N+j], NULL, &dest_image[i*N+j]);
+				SDL_FreeSurface(image[i*N+j]);
+			}
+		}
+		for (j=0;j<N;j++){
+			if (j%2){
+				SDL_QueryTexture(image_tex[i*N+j], NULL, NULL, &(dest_image[i*N+j].w), &(dest_image[i*N+j].h));
+				SDL_RenderCopy(*renderer, image_tex[i*N+j], NULL, &dest_image[i*N+j]);
+				SDL_FreeSurface(image[i*N+j]);
+			}
+		}
 	}
 }
 
-
+/*
+ * fonction qui affiche l'interface
+ */
 int interface(){
   //Le pointeur vers la fenetre
 	SDL_Window* ecran = NULL;
 	//Le pointeur vers la surface incluse dans la fenetre
   SDL_Surface *texte_help=NULL, *texte_exit=NULL;
 	SDL_Renderer *renderer=NULL;
-	SDL_Rect rect1 = {0,0,400,900};
-	SDL_Rect rect2 = {400,700,1200,200};
-	SDL_Rect bouton_help = {5,705,390,90};
-	SDL_Rect bouton_exit = {5,805,390,90};
+	SDL_Rect rect1 = {0,0,400,800};
+	SDL_Rect rect2 = {400,600,1100,200};
+	SDL_Rect bouton_help = {5,605,390,90};
+	SDL_Rect bouton_exit = {5,705,390,90};
 	SDL_Rect dest_textHelp = bouton_help, dest_textExit = bouton_exit;
 
 	// Le pointeur vers notre police
@@ -61,7 +139,7 @@ int interface(){
 	}
 
   /* Création de la fenêtre */
-	ecran = SDL_CreateWindow("The Hive",SDL_WINDOWPOS_UNDEFINED,  SDL_WINDOWPOS_UNDEFINED,1600,900, SDL_WINDOW_SHOWN);
+	ecran = SDL_CreateWindow("The Hive",SDL_WINDOWPOS_UNDEFINED,  SDL_WINDOWPOS_UNDEFINED,1500,800, SDL_WINDOW_SHOWN);
 	/* icone de la fenetre */
 	SDL_Surface *icon=NULL;
 	SDL_RWops *icon_rwop=NULL;
