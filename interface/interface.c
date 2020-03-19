@@ -5,15 +5,46 @@
 #include<SDL2/SDL_image.h>
 #include"interface.h"
 
-char *map[] = {"hexa_png/test_1.png","hexa_png/test_2.png"};
+#define N 2
 
+char *map[N*N];
+
+/*
+ * fonction qui remplit map des chaines de caracteres correspondants à l'image a affiché
+ */
+void relation_hexa_char(char*mapchar[], int mapint[N][N]){
+	int i,j,k=0;
+	for (i=0; i<N;i++){
+		for (j=0; j<N;j++){
+			switch(mapint[i][j]){
+				case 1 : mapchar[k]="hexa_png/test_1.png";k++;break;
+				case 2 : mapchar[k]="hexa_png/test_2.png";k++;break;
+				case 4 : mapchar[k]="hexa_png/hex_sea.png";k++;break;
+				default : mapchar[k]="hexa_png/HexBlankDay.png";k++;
+			}
+		}
+	}
+}
+
+/*
+ * fonction qui affiche uniquement la map c'est a dire la partie composée d'hexagones
+ * collés les un aux autres
+ */
 void affichage_map(SDL_Renderer **renderer, char *map[]){
-	SDL_Surface *image[2];
-	SDL_Rect dest_image[2];
-	SDL_Texture *image_tex[2];
-	SDL_RWops *rwop[2];
+	SDL_Surface *image[N*N];
+	SDL_Rect dest_image[N*N];
+	SDL_Texture *image_tex[N*N];
+	SDL_RWops *rwop[N*N];
+	int mapint[N][N];
 
-	for (int i=0; i<2; i++){
+	mapint[0][0]= 1;
+	mapint[0][1]= 2;
+	mapint[1][0]= 2;
+	mapint[1][1]= 4;
+
+	relation_hexa_char(map,mapint);
+
+	for (int i=0; i<N*N; i++){
 		rwop[i]=SDL_RWFromFile(map[i],"rb");
 		image[i]=IMG_LoadPNG_RW(rwop[i]);
  		image_tex[i] = SDL_CreateTextureFromSurface(*renderer,image[i]);
@@ -23,7 +54,11 @@ void affichage_map(SDL_Renderer **renderer, char *map[]){
 	dest_image[0].y=200;
 	dest_image[1].x=580;
 	dest_image[1].y=220;
-	for (int i=0;i<2;i++){
+	dest_image[2].x=500;
+	dest_image[2].y=240;
+	dest_image[3].x=580;
+	dest_image[3].y=260;
+	for (int i=0;i<N*N;i++){
 		SDL_QueryTexture(image_tex[i], NULL, NULL, &(dest_image[i].w), &(dest_image[i].h));
 		SDL_RenderCopy(*renderer, image_tex[i], NULL, &dest_image[i]);
 		SDL_FreeSurface(image[i]);
@@ -37,10 +72,10 @@ int interface(){
 	//Le pointeur vers la surface incluse dans la fenetre
   SDL_Surface *texte_help=NULL, *texte_exit=NULL;
 	SDL_Renderer *renderer=NULL;
-	SDL_Rect rect1 = {0,0,400,900};
-	SDL_Rect rect2 = {400,700,1200,200};
-	SDL_Rect bouton_help = {5,705,390,90};
-	SDL_Rect bouton_exit = {5,805,390,90};
+	SDL_Rect rect1 = {0,0,400,800};
+	SDL_Rect rect2 = {400,600,1200,200};
+	SDL_Rect bouton_help = {5,605,390,90};
+	SDL_Rect bouton_exit = {5,705,390,90};
 	SDL_Rect dest_textHelp = bouton_help, dest_textExit = bouton_exit;
 
 	// Le pointeur vers notre police
@@ -61,7 +96,7 @@ int interface(){
 	}
 
   /* Création de la fenêtre */
-	ecran = SDL_CreateWindow("The Hive",SDL_WINDOWPOS_UNDEFINED,  SDL_WINDOWPOS_UNDEFINED,1600,900, SDL_WINDOW_SHOWN);
+	ecran = SDL_CreateWindow("The Hive",SDL_WINDOWPOS_UNDEFINED,  SDL_WINDOWPOS_UNDEFINED,1600,800, SDL_WINDOW_SHOWN);
 	/* icone de la fenetre */
 	SDL_Surface *icon=NULL;
 	SDL_RWops *icon_rwop=NULL;
