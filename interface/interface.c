@@ -53,10 +53,10 @@ void relation_hexa_char(char*mapchar[], int mapint[N][N]){
  * collés les uns aux autres
  */
 void affichage_map(SDL_Renderer **renderer, char *map[]){
-	SDL_Surface *image[N*N];
-	SDL_Rect dest_image[N*N];
-	SDL_Texture *image_tex[N*N];
-	SDL_RWops *rwop[N*N];
+	SDL_Surface *image[N*N],*hilight_surface;
+	SDL_Rect dest_image[N*N],dest_hilight;
+	SDL_Texture *image_tex[N*N], *hilight_txt;
+	SDL_RWops *rwop[N*N], *rwop_hilight;
 	int mapint[N][N];
 	int i,j,k,l;
 	// x et y sont les coordonées auxquelles on affichera un hexagone
@@ -64,6 +64,13 @@ void affichage_map(SDL_Renderer **renderer, char *map[]){
 
 	init_map_essai(mapint);
 	relation_hexa_char(map,mapint);
+
+	//cellule surligné qui indique ou et le personage
+	rwop_hilight = SDL_RWFromFile("img/HexHilight.png","rb");
+	hilight_surface = IMG_LoadPNG_RW(rwop_hilight);
+	hilight_txt = SDL_CreateTextureFromSurface(*renderer,hilight_surface);
+	dest_hilight.x = 880;
+	dest_hilight.y = 255;
 
 	for (i=0; i<N*N; i++){
 		rwop[i]=SDL_RWFromFile(map[i],"rb");
@@ -113,6 +120,9 @@ void affichage_map(SDL_Renderer **renderer, char *map[]){
 			}
 		}
 	}
+	SDL_QueryTexture(hilight_txt, NULL, NULL, &(dest_hilight.w), &(dest_hilight.h));
+	SDL_RenderCopy(*renderer, hilight_txt, NULL, &dest_hilight);
+	SDL_FreeSurface(hilight_surface);
 }
 
 /*
@@ -242,7 +252,7 @@ int interface(){
 						SDL_RenderDrawRect(renderer,&bouton_fouille);
 						SDL_RenderDrawRect(renderer,&bouton_inv);
 						/* couleur du reste de la fenetre */
-						SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+						SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 						/*affichage de la carte */
 						affichage_map(&renderer, map);
 
