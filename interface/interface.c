@@ -14,11 +14,11 @@ void init_map_essai(int mapint[N][N]){
 	for(i=0;i<N;i++){
 		for (j=0;j<N;j++)
 		 if (i%2 && j%2)
-			 mapint[i][j]=1;
+			 mapint[i][j]=2;
 		 else if(!j%2)
 			 mapint[i][j]=3;
 		 else
-			 mapint[i][j]=2;
+			 mapint[i][j]=1;
  	}
 }
 
@@ -51,20 +51,26 @@ void relation_hexa_char(char*mapchar[], int mapint[N][N]){
  *	fonction qui affiche dans la case "centrale" un hilight sur la case et affiche le personnage
  */
 void affichage_case_centrale(SDL_Renderer **renderer){
-	SDL_Surface *hilight_surface;
-	SDL_Rect dest_hilight;
-	SDL_Texture *hilight_txt;
-	SDL_RWops *rwop_hilight;
-	//cellule surligné qui indique ou es le personage
+	SDL_Surface *hilight_surface, *personnage;
+	SDL_Rect dest_centre;
+	SDL_Texture *hilight_txt, *personnage_txt;
+	SDL_RWops *rwop_hilight, *rwop_personnage;
+	//cellule surligné qui indique ou es le personnage
 	rwop_hilight = SDL_RWFromFile("img/HexHilight.png","rb");
+	rwop_personnage = SDL_RWFromFile("img/CreBandit03.png","rb");
 	hilight_surface = IMG_LoadPNG_RW(rwop_hilight);
+	personnage = IMG_LoadPNG_RW(rwop_personnage);
 	hilight_txt = SDL_CreateTextureFromSurface(*renderer,hilight_surface);
-	dest_hilight.x = 880;
-	dest_hilight.y = 255;
+	personnage_txt = SDL_CreateTextureFromSurface(*renderer, personnage);
+	dest_centre.x = 880;
+	dest_centre.y = 255;
 
-	SDL_QueryTexture(hilight_txt, NULL, NULL, &(dest_hilight.w), &(dest_hilight.h));
-	SDL_RenderCopy(*renderer, hilight_txt, NULL, &dest_hilight);
+	SDL_QueryTexture(hilight_txt, NULL, NULL, &(dest_centre.w), &(dest_centre.h));
+	SDL_QueryTexture(personnage_txt, NULL, NULL, &(dest_centre.w), &(dest_centre.h));
+	SDL_RenderCopy(*renderer, hilight_txt, NULL, &dest_centre);
+	SDL_RenderCopy(*renderer, personnage_txt, NULL, &dest_centre);
 	SDL_FreeSurface(hilight_surface);
+	SDL_FreeSurface(personnage);
 }
 
 
