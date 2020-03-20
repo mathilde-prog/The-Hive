@@ -122,16 +122,19 @@ int interface(){
   //Le pointeur vers la fenetre
 	SDL_Window* ecran = NULL;
 	//Le pointeur vers la surface incluse dans la fenetre
-  SDL_Surface *texte_help=NULL, *texte_exit=NULL;
+  SDL_Surface *texte_help=NULL, *texte_exit=NULL, *texte_rest = NULL, *texte_turn = NULL, *texte_fouille = NULL, *texte_inv = NULL;
 	SDL_Renderer *renderer=NULL;
 	SDL_Rect rect1 = {0,0,400,800};
 	SDL_Rect rect2 = {400,600,1100,200};
-	SDL_Rect bouton_help = {5,605,390,90};
-	SDL_Rect bouton_exit = {5,705,390,90};
-	SDL_Rect dest_textHelp = bouton_help, dest_textExit = bouton_exit;
+	SDL_Rect bouton_help = {5,605,390,90}, dest_textHelp = {85,615,390,90};
+	SDL_Rect bouton_exit = {5,705,390,90}, dest_textExit = {85,715,390,90};
+	SDL_Rect bouton_rest = {5,515,185,80}, dest_textRest = {15,540,185,80};
+	SDL_Rect bouton_turn = {205,515,185,80}, dest_textTurn = {240,540,185,80};
+	SDL_Rect bouton_fouille = {5,430,185,80}, dest_textFouille = {50,455,185,80};
+	SDL_Rect bouton_inv = {205,430,185,80}, dest_textInv = {230,455,185,80};
 
-	// Le pointeur vers notre police
-	TTF_Font *police = NULL;
+	// Le pointeur vers notre police1
+	TTF_Font *police1 = NULL, *police2 = NULL;
 	// Une variable de couleur verte
 	SDL_Color couleurVerte = {63, 206, 10};
 
@@ -166,20 +169,40 @@ int interface(){
 		fprintf(stderr, "Erreur à la création du renderer\n");
 		exit(EXIT_FAILURE);
 	}
-	if( (police = TTF_OpenFont("Menlo-Regular.ttf", 55)) == NULL){
+	if( (police1 = TTF_OpenFont("Menlo-Regular.ttf", 55)) == NULL){
+		fprintf(stderr, "erreur chargement font\n");
+		exit(EXIT_FAILURE);
+	}
+	if( (police2 = TTF_OpenFont("Menlo-Regular.ttf", 25)) == NULL){
 		fprintf(stderr, "erreur chargement font\n");
 		exit(EXIT_FAILURE);
 	}
 
-	/* creation des textures pour afficher le texte */
-	texte_help = TTF_RenderUTF8_Blended(police, " Help", couleurVerte);
-	texte_exit = TTF_RenderUTF8_Blended(police, " Exit",couleurVerte);
+	/* creation des textures pour afficher le texte des boutons*/
+	texte_help = TTF_RenderUTF8_Blended(police1, " Help", couleurVerte);
+	texte_exit = TTF_RenderUTF8_Blended(police1, " Exit",couleurVerte);
+	texte_rest = TTF_RenderUTF8_Blended(police2, "Rest & Heal",couleurVerte);
+	texte_turn = TTF_RenderUTF8_Blended(police2, "End turn",couleurVerte);
+	texte_fouille = TTF_RenderUTF8_Blended(police2, "Search",couleurVerte);
+	texte_inv = TTF_RenderUTF8_Blended(police2, "Inventory",couleurVerte);
 	SDL_Texture *txt_texteHelp = SDL_CreateTextureFromSurface(renderer, texte_help);
 	SDL_Texture *txt_texteExit = SDL_CreateTextureFromSurface(renderer, texte_exit);
+	SDL_Texture *txt_texteRest = SDL_CreateTextureFromSurface(renderer, texte_rest);
+	SDL_Texture *txt_texteTurn = SDL_CreateTextureFromSurface(renderer, texte_turn);
+	SDL_Texture *txt_texteFouille = SDL_CreateTextureFromSurface(renderer, texte_fouille);
+	SDL_Texture *txt_texteInv = SDL_CreateTextureFromSurface(renderer, texte_inv);
 	SDL_FreeSurface(texte_exit);
 	SDL_FreeSurface(texte_help);
+	SDL_FreeSurface(texte_rest);
+	SDL_FreeSurface(texte_turn);
+	SDL_FreeSurface(texte_fouille);
+	SDL_FreeSurface(texte_inv);
 	SDL_QueryTexture(txt_texteHelp, NULL, NULL, &(dest_textHelp.w), &(dest_textHelp.h));
 	SDL_QueryTexture(txt_texteExit, NULL, NULL, &(dest_textExit.w), &(dest_textExit.h));
+	SDL_QueryTexture(txt_texteRest, NULL, NULL, &(dest_textRest.w), &(dest_textRest.h));
+	SDL_QueryTexture(txt_texteTurn, NULL, NULL, &(dest_textTurn.w), &(dest_textTurn.h));
+	SDL_QueryTexture(txt_texteFouille, NULL, NULL, &(dest_textFouille.w), &(dest_textFouille.h));
+	SDL_QueryTexture(txt_texteInv, NULL, NULL, &(dest_textInv.w), &(dest_textInv.h));
 
   if( ecran ){
     int running = 1;
@@ -206,10 +229,18 @@ int interface(){
 						/* texte dans les boutons */
 						SDL_RenderCopy(renderer, txt_texteHelp, NULL, &dest_textHelp);
 						SDL_RenderCopy(renderer, txt_texteExit, NULL, &dest_textExit);
+						SDL_RenderCopy(renderer, txt_texteRest, NULL, &dest_textRest);
+						SDL_RenderCopy(renderer, txt_texteTurn, NULL, &dest_textTurn);
+						SDL_RenderCopy(renderer, txt_texteFouille, NULL, &dest_textFouille);
+						SDL_RenderCopy(renderer, txt_texteInv, NULL, &dest_textInv);
 						/* les boutons */
 						SDL_SetRenderDrawColor(renderer,200,200,200,255);
 						SDL_RenderDrawRect(renderer,&bouton_exit);
 						SDL_RenderDrawRect(renderer,&bouton_help);
+						SDL_RenderDrawRect(renderer,&bouton_rest);
+						SDL_RenderDrawRect(renderer,&bouton_turn);
+						SDL_RenderDrawRect(renderer,&bouton_fouille);
+						SDL_RenderDrawRect(renderer,&bouton_inv);
 						/* couleur du reste de la fenetre */
 						SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 						/*affichage de la carte */
@@ -222,7 +253,7 @@ int interface(){
 					break;
 					case SDL_MOUSEBUTTONDOWN:
 					if(event.button.button == SDL_BUTTON_LEFT){
-							//si clique sur lea colonne avec tous les boutons
+							//si clique sur 1 des 2 grands boutons
 							if (event.button.x > bouton_exit.x && event.button.x < bouton_exit.x+bouton_exit.w){
 								//on regarde maintenant la hauteur du click afin de savoir sur quel bouton l'utilisateur a appuyé
 								if (event.button.y > bouton_exit.y && event.button.y < bouton_exit.y+bouton_exit.h){
@@ -231,6 +262,19 @@ int interface(){
 								if (event.button.y > bouton_help.y && event.button.y < bouton_help.y+bouton_help.h){
 									printf("help button pressed \n");
 								}
+							}
+							//si on clique sur un des 4 autres boutons
+							if(event.button.x > bouton_rest.x && event.button.x < bouton_rest.x+bouton_rest.w && event.button.y > bouton_rest.y && event.button.y < bouton_rest.y+bouton_rest.h){
+								printf("rest & heal button pressed\n");
+							}
+							if(event.button.x > bouton_turn.x && event.button.x < bouton_turn.x+bouton_turn.w && event.button.y > bouton_turn.y && event.button.y < bouton_turn.y+bouton_turn.h){
+								printf("end turn button pressed\n");
+							}
+							if(event.button.x > bouton_fouille.x && event.button.x < bouton_fouille.x+bouton_fouille.w && event.button.y > bouton_fouille.y && event.button.y < bouton_fouille.y+bouton_fouille.h){
+								printf("search button pressed\n");
+							}
+							if(event.button.x > bouton_inv.x && event.button.x < bouton_inv.x+bouton_inv.w && event.button.y > bouton_inv.y && event.button.y < bouton_inv.y+bouton_inv.h){
+								printf("inventory button pressed\n");
 							}
 					}
 					break;
@@ -248,7 +292,7 @@ int interface(){
   ****************************************************************************/
   SDL_DestroyWindow(ecran);
 
-	TTF_CloseFont(police); /* Doit être avant TTF_Quit() */
+	TTF_CloseFont(police1); /* Doit être avant TTF_Quit() */
 	TTF_Quit();
   SDL_Quit();
 	return 0;
