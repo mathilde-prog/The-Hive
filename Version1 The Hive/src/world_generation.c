@@ -349,9 +349,26 @@ void display_grid(const cell_t map[D][D]){ // AFFICHE LA MAP COMPLETE AVEC LA LE
   printf("+\n");
 }
 
+void display_nb(cell_t map[D][D]){
+  int i,j;
+
+  for(i=0;i<D;i++){
+    for(j=0;j<D;j++){
+      printf(" %d ", map[i][j].quest_id);
+    }
+    printf("\n");
+  }
+}
+
 void map_init(cell_t map[D][D]){
   init_base(map);
   init_border(map);
   topup(map);
   nextgen(map);
+}
+
+int main(){
+  cell_t map[D][D];
+  map_init(map);
+  display_nb(map);
 }
