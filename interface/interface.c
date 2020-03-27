@@ -15,7 +15,7 @@ void init_map_essai(int mapint[N][N]){
 
 	for(i=0;i<N;i++){
 		for (j=0;j<N;j++){
-			k = (rand()%10)+1;
+			k = (rand()%11)+1;
 			mapint[i][j] = k;
 		}
 	}
