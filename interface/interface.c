@@ -3,6 +3,7 @@
 #include<SDL2/SDL.h>
 #include<SDL2/SDL_ttf.h>
 #include<SDL2/SDL_image.h>
+#include<time.h>
 #include"interface.h"
 
 char *map[N*N];
@@ -10,16 +11,14 @@ char *map[N*N];
  * fonction de test qui permet de tester l'affichage de la map avec une version d'essais, simplifiée
  */
 void init_map_essai(int mapint[N][N]){
-	int i,j;
+	int i,j,k;
+
 	for(i=0;i<N;i++){
-		for (j=0;j<N;j++)
-		 if (i%2 && j%2)
-			 mapint[i][j]=2;
-		 else if(!j%2)
-			 mapint[i][j]=3;
-		 else
-			 mapint[i][j]=1;
- 	}
+		for (j=0;j<N;j++){
+			k = (rand()%10)+1;
+			mapint[i][j] = k;
+		}
+	}
 }
 
 
@@ -326,5 +325,6 @@ int interface(){
 }
 
 int main(){
+	srand(time(NULL));
 	interface();
 }
