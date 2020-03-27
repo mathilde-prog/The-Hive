@@ -13,7 +13,7 @@
 */
 int creation_tab_item(item_t * Tab_Items, int * nb_items){
   * nb_items = 0;
-  FILE * fichier = fopen("txt/items.txt","r");
+  FILE * fichier = fopen("../txt/items.txt","r");
 
   if(fichier){
     fscanf(fichier,"%s%d%d%d%d%d%d%d",Tab_Items[*nb_items].name, &Tab_Items[*nb_items].type, &Tab_Items[*nb_items].attack, &Tab_Items[*nb_items].defense, &Tab_Items[*nb_items].equipable, &Tab_Items[*nb_items].pc_nature, &Tab_Items[*nb_items].pc_urban, &Tab_Items[*nb_items].pc_military);
