@@ -19,7 +19,7 @@ void save (perso_t player, cell_t map[D][D]){
 void save_inventory (perso_t player){
   int i;
 
-  FILE * fic = fopen("txt/save_inventory.txt","w");
+  FILE * fic = fopen("../txt/save_inventory.txt","w");
   for(i = 0; i < player.nb_items_inventory; i++){
     fprintf(fic,"%s %d\n%d %d %d\n%d %d %d\n\n",player.inventory[i].name, player.inventory[i].type, player.inventory[i].attack, player.inventory[i].defense, player.inventory[i].equipable, player.inventory[i].pc_nature, player.inventory[i].pc_urban, player.inventory[i].pc_military);
   }
@@ -29,7 +29,7 @@ void save_inventory (perso_t player){
 
 /* save_info_player: saves player information */
 void save_info_player (perso_t player){
-  FILE * fic = fopen("txt/save_info_player.txt","w");
+  FILE * fic = fopen("../txt/save_info_player.txt","w");
   fprintf(fic,"pv = %d\npe = %d\npa = %d\n", player.pv, player.pe, player.pa);
   fprintf(fic,"posX = %d\nposY = %d\n", player.posX, player.posY);
   fprintf(fic,"turns = %d\n", player.turns);
@@ -43,7 +43,7 @@ void save_info_player (perso_t player){
 
 /* save_equipment: saves the player's equipment */
 void save_equipment (perso_t player){
-  FILE * fic = fopen("txt/save_equipment.txt","w");
+  FILE * fic = fopen("../txt/save_equipment.txt","w");
 
   (player.head != NULL) ? fprintf(fic, "head = %d\n", player.head->index) : fprintf(fic, "head = -1\n");
   (player.left_hand != NULL) ? fprintf(fic, "left_hand = %d\n", player.left_hand->index) : fprintf(fic, "left_hand = -1\n");
@@ -57,7 +57,7 @@ void save_equipment (perso_t player){
 /* save_map: save the map of the game */
 void save_map (cell_t map[D][D]){
   int l, c;
-  FILE * fic = fopen("txt/save_map.txt","w");
+  FILE * fic = fopen("../txt/save_map.txt","w");
 
   // type
   for(l = 0; l < D; l++){
@@ -123,7 +123,7 @@ int load (perso_t * player, cell_t map[D][D]){
 
 /* load_inventory: loads the player's inventory */
 int load_inventory (perso_t * player){
-  FILE * fic = fopen("txt/save_inventory.txt","r");
+  FILE * fic = fopen("../txt/save_inventory.txt","r");
   player->nb_items_inventory = 0;
   if(fic){
     fscanf(fic,"%s%d%d%d%d%d%d%d",player->inventory[player->nb_items_inventory].name, &player->inventory[player->nb_items_inventory].type, &player->inventory[player->nb_items_inventory].attack, &player->inventory[player->nb_items_inventory].defense, &player->inventory[player->nb_items_inventory].equipable, &player->inventory[player->nb_items_inventory].pc_nature, &player->inventory[player->nb_items_inventory].pc_urban, &player->inventory[player->nb_items_inventory].pc_military);
@@ -143,7 +143,7 @@ int load_inventory (perso_t * player){
 
 /* load_info_player: loads player information */
 int load_info_player (perso_t * player){
-  FILE * fic = fopen("txt/save_info_player.txt","r");
+  FILE * fic = fopen("../txt/save_info_player.txt","r");
   if(fic){
     // Version avec compétence spéciale (pas en version1)
     // fscanf(fic,"pv = %d\npe = %d\npa = %d\nposX = %d\nposY = %d\ncompetence = %d\nturns = %d\n",&player->pv, &player->pe, &player->pa, &player->posX, &player->posY, &player->competence, &player->turns);
@@ -159,7 +159,7 @@ int load_info_player (perso_t * player){
 
 /* load_equipment: loads the player's equipment */
 int load_equipment (perso_t * player){
-  FILE * fic = fopen("txt/save_equipment.txt","r");
+  FILE * fic = fopen("../txt/save_equipment.txt","r");
   int ind_head = 0, ind_lh = 0, ind_rh = 0, ind_body = 0;
 
   if(fic){
@@ -181,7 +181,7 @@ int load_equipment (perso_t * player){
 /* load_map: loads the map of the game */
 int load_map (cell_t map[D][D]){
   int l, c;
-  FILE * fic = fopen("txt/save_map.txt","r");
+  FILE * fic = fopen("../txt/save_map.txt","r");
 
   if(fic){
     for(l = 0; l < D; l++){
@@ -217,10 +217,10 @@ int load_map (cell_t map[D][D]){
 /* backup_exists: returns 1 if a backup exists and 0 if there is none */
 int backup_exists (){
   FILE * fic1, * fic2, * fic3, * fic4;
-  fic1 = fopen("txt/save_inventory.txt","r");
-  fic2 = fopen("txt/save_equipment.txt","r");
-  fic3 = fopen("txt/save_info_player.txt","r");
-  fic4 = fopen("txt/save_map.txt","r");
+  fic1 = fopen("../txt/save_inventory.txt","r");
+  fic2 = fopen("../txt/save_equipment.txt","r");
+  fic3 = fopen("../txt/save_info_player.txt","r");
+  fic4 = fopen("../txt/save_map.txt","r");
 
   if(fic1){
     fclose(fic1);
