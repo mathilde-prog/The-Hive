@@ -150,14 +150,14 @@ int interface(){
 	//Le pointeur vers la surface incluse dans la fenetre
   SDL_Surface *texte_help=NULL, *texte_exit=NULL, *texte_rest = NULL, *texte_turn = NULL, *texte_fouille = NULL, *texte_inv = NULL;
 	SDL_Renderer *renderer=NULL;
-	SDL_Rect rect1 = {0,0,400,800};
-	SDL_Rect rect2 = {400,600,1100,200};
-	SDL_Rect bouton_help = {5,605,390,90}, dest_textHelp = {85,615,390,90};
-	SDL_Rect bouton_exit = {5,705,390,90}, dest_textExit = {85,715,390,90};
-	SDL_Rect bouton_rest = {5,515,185,80}, dest_textRest = {15,540,185,80};
-	SDL_Rect bouton_turn = {205,515,185,80}, dest_textTurn = {240,540,185,80};
-	SDL_Rect bouton_fouille = {5,430,185,80}, dest_textFouille = {50,455,185,80};
-	SDL_Rect bouton_inv = {205,430,185,80}, dest_textInv = {230,455,185,80};
+	SDL_Rect rect1 = {0,0,400,700};
+	SDL_Rect rect2 = {400,550,1000,150};
+	SDL_Rect bouton_help = {5,505,390,90}, dest_textHelp = {85,515,390,90};
+	SDL_Rect bouton_exit = {5,605,390,90}, dest_textExit = {85,615,390,90};
+	SDL_Rect bouton_rest = {5,415,185,80}, dest_textRest = {15,440,185,80};
+	SDL_Rect bouton_turn = {205,415,185,80}, dest_textTurn = {240,440,185,80};
+	SDL_Rect bouton_fouille = {5,330,185,80}, dest_textFouille = {50,355,185,80};
+	SDL_Rect bouton_inv = {205,330,185,80}, dest_textInv = {230,355,185,80};
 
 	// Le pointeur vers notre police1
 	TTF_Font *police1 = NULL, *police2 = NULL;
@@ -177,7 +177,7 @@ int interface(){
 	}
 
   /* Création de la fenêtre */
-	ecran = SDL_CreateWindow("The Hive",SDL_WINDOWPOS_UNDEFINED,  SDL_WINDOWPOS_UNDEFINED,1500,800, SDL_WINDOW_SHOWN);
+	ecran = SDL_CreateWindow("The Hive",SDL_WINDOWPOS_UNDEFINED,  SDL_WINDOWPOS_UNDEFINED,1400,700, SDL_WINDOW_SHOWN);
 	/* icone de la fenetre */
 	SDL_Surface *icon=NULL;
 	SDL_RWops *icon_rwop=NULL;
