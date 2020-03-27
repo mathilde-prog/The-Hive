@@ -151,7 +151,7 @@ int interface(){
   SDL_Surface *texte_help=NULL, *texte_exit=NULL, *texte_rest = NULL, *texte_turn = NULL, *texte_fouille = NULL, *texte_inv = NULL;
 	SDL_Renderer *renderer=NULL;
 	SDL_Rect rect1 = {0,0,400,700};
-	SDL_Rect rect2 = {400,550,1000,150};
+	SDL_Rect rect2 = {400,550,980,150};
 	SDL_Rect bouton_help = {5,505,390,90}, dest_textHelp = {85,515,390,90};
 	SDL_Rect bouton_exit = {5,605,390,90}, dest_textExit = {85,615,390,90};
 	SDL_Rect bouton_rest = {5,415,185,80}, dest_textRest = {15,440,185,80};
@@ -177,7 +177,7 @@ int interface(){
 	}
 
   /* Création de la fenêtre */
-	ecran = SDL_CreateWindow("The Hive",SDL_WINDOWPOS_UNDEFINED,  SDL_WINDOWPOS_UNDEFINED,1400,700, SDL_WINDOW_SHOWN);
+	ecran = SDL_CreateWindow("The Hive",SDL_WINDOWPOS_UNDEFINED,  SDL_WINDOWPOS_UNDEFINED,1380,700, SDL_WINDOW_SHOWN);
 	/* icone de la fenetre */
 	SDL_Surface *icon=NULL;
 	SDL_RWops *icon_rwop=NULL;
