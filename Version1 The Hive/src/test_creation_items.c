@@ -25,6 +25,7 @@ int main(){
     }
     for(i = 0; i < nb_items_available; i++){
       display_item(Tab_Items[i]);
+      printf("Index : %d\n", Tab_Items[i].index);
     }
     printf("SUCCES récupération des informations sur les items\n");
   }

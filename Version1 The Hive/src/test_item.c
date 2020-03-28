@@ -1,4 +1,4 @@
-// test_item.c 
+// test_item.c
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -6,69 +6,76 @@
 
 #define NB_SIMULATIONS 10
 
-void display_position (int map[D][D],perso_t player){
-  printf("\n=== Where am I ? ===\n");
+void display_position (cell_t map[D][D],perso_t player){
+  printf("\n=== Où suis-je ? ===\n");
   printf("posX = %d\nposY = %d\n", player.posX, player.posY);
-  printf("Type hexagone: ");
-  switch(map[player.posX][player.posY]){
-    case prairie   : printf("prairie [NATURE]\n"); break;     //prairie
-    case foret     : printf("foret [NATURE]\n");    break;     //foret
-    case ville     : printf("ville [URBAIN]\n");    break;     //ville
-    case lac       : printf("lac [NATURE]\n");     break;     //lac
-    case camp_mil  : printf("camp_mil [MILITAIRE]\n");  break;     //camp mil
-    case camp_ban  : printf("camp_ban [OTHER]\n");     break;     //camp_ban
-    case market    : printf("market [URBAIN]\n");   break;     //market
-    case favella   : printf("favella [URBAIN]\n");   break;     //favella
-    case montagne  : printf("montagne [NATURE]\n");     break;     //montagne
-    case frontiere : printf("frontiere [OTHER]\n");      break;     //frontiere
-    case mer       : printf("mer [NATURE]\n");   break;     //mer
-    case wasteland : printf("wasteland [NATURE]\n");    break;     //wasteland
+  printf("hex_t : ");
+  switch(map[player.posX][player.posY].type){
+    case prairie:     printf("prairie ");  break;
+    case foret:       printf("foret ");    break;
+    case ville:       printf("ville ");    break;
+    case lac:         printf("lac ");      break;
+    case camp_mil:    printf("camp_mil "); break;
+    case camp_ban:    printf("camp_ban "); break;
+    case market:      printf("market ");   break;
+    case favella:     printf("favella ");  break;
+    case montagne:    printf("montagne "); break;
+    case frontiere:   printf("frontiere ");break;
+    case mer:         printf("mer ");      break;
+    case wasteland:   printf("wasteland ");break;
+    default: break;
+  }
+  printf("\ncateg_hexa : ");
+  switch(map[player.posX][player.posY].categ){
+    case other:     printf("other\n");     break;
+    case nature:    printf("nature\n");    break;
+    case urbain:    printf("urbain\n");    break;
+    case militaire: printf("militaire\n"); break;
+    default: break;
   }
   printf("====================\n\n");
+}
+
+void simulation_suivante(){
+  int rep;
+
+  do {
+    printf("Passer à la simulation suivante (1) : ");
+    scanf("%d", &rep);
+  } while (rep != 1);
 }
 
 int main(){
   srand(time(NULL));
 
   /* DECLARATIONS */
-  perso_t player;
-  /* INITIALISATION JOUEUR (DANS MAIN POUR SIMULATION) */
-  player.turns = 15;
-  player.nb_items_inventory = 0; /* The player starts the game with an empty inventory. */
-  player.posX = 0;
-  player.posY = 0;
-  player.pv = 100;
-  player.pe = 100;
-  player.pa = 3;
-  player.left_hand = NULL;
-  player.right_hand = NULL;
-  player.body = NULL;
-  player.head = NULL;
-  player.competence  = 0;
-
-  int map[D][D]={{0}};
-  item_t Tab_Items[20];
   int i, nb_items_available = 0;
+  perso_t player;
+  item_t * Tab_Items = malloc(20 * sizeof(item_t));
+  cell_t map[D][D];
 
   clrscr();
-  printf("=== WELCOME - THE HIVE! ===\n");
 
   // Creation des items
   if(creation_tab_item(Tab_Items, &nb_items_available)){
+    init_player(&player);
     map_init(map);
-    display_TEXT(player.posX,player.posY, map);
+
+    //display_TEXT(player.posX,player.posY, map);
 
     // SIMULATIONS
     for(i = 0; i < NB_SIMULATIONS; i++){
       player.posX = rand()%D;
       player.posY = rand()%D;
-      display_position(map,player);
 
-      printf("=== SIMULATION N°%d === \n", i+1);
+      printf("=== Simulation n°%d === \n", i+1);
+      display_position(map,player);
       scavenge(map, &player, Tab_Items, nb_items_available);
       printf("\n");
       display_inventory(player);
       printf("\n");
+      simulation_suivante();
+      clrscr();
     }
   }
 
@@ -83,6 +90,8 @@ int main(){
   free(player.body);
   free(player.head);
 
-  printf("See you next time!\n");
+  free(Tab_Items);
+
+  printf(">>> Fin du test\n");
   return EXIT_SUCCESS;
 }

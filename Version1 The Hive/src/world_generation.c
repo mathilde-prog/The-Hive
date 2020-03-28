@@ -258,10 +258,10 @@ void display_TEXT(int l, int c, cell_t map[D][D]){ // AFFICHE LA MAP EN VERSION 
   printf("+\n");
 
   do {
-    printf("\nBack to the menu (1) : ");
+    printf("\nRetour au menu principal (1) : ");
     scanf("%d",&nb);
     if(nb != 1){
-      printf("Type 1 to return to the menu\n");
+      printf("Saisissez 1 pour retourner au menu\n");
     }
   } while (nb != 1);
 }
@@ -366,9 +366,10 @@ void map_init(cell_t map[D][D]){
   topup(map);
   nextgen(map);
 }
-
+/*
 int main(){
   cell_t map[D][D];
   map_init(map);
   display_nb(map);
 }
+*/

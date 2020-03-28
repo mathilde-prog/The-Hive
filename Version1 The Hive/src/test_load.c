@@ -40,21 +40,21 @@ int main(){
     printf ("\033[34;01m===========================================\n\033[00m");
     */
 
-    printf ("\033[34;01m[LOAD]\033[00m\n");
+    printf ("\033[34;01m[CHARGER]\033[00m\n");
     if(load(&player, map)){
-      printf("Successful loading\n\n");
+      printf("Chargement réussi\n\n");
       do {
         printf("Menu test_load :\n");
-        printf("1. Display player characteristics\n");
-        printf("2. Display inventory\n");
-        printf("3. Display equipment\n");
-        printf("4. Display map\n");
-        printf("Exit -1\n");
+        printf("1. Afficher les caractéristiques du joueur\n");
+        printf("2. Afficher l'inventaire\n");
+        printf("3. Afficher l'équipement\n");
+        printf("4. Afficher la carte\n");
+        printf("Quitter -1\n");
         do {
           printf("N°");
           scanf("%d",&nb);
           if((nb != -1) && (nb < 1 || nb > 4)){
-            printf("Incorrect value. Please re-enter\n");
+            printf("Valeur incorrecte. Veuillez ressaisir\n");
           }
         } while ((nb != -1) && (nb < 1 || nb > 4));
 

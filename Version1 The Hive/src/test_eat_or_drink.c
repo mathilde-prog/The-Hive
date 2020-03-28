@@ -16,7 +16,7 @@ int main(){
   player.pa = 3;
 
   if(creation_tab_item(Tab_Items, &nb_items_available)) {
-    printf ("\033[34;01m=== ITEMS ADDED TO THE INVENTORY (TESTS) ===\033[00m\n");
+    printf ("\033[34;01m=== ITEMS AJOUTES A L'INVENTAIRES (TESTS) ===\033[00m\n");
     /* I'm adding items to the inventory to test functions */
     add_item_to_inventory(&player, Tab_Items[13]); //fruits
     add_item_to_inventory(&player, Tab_Items[14]); //fish

@@ -22,7 +22,7 @@ int main(){
     player.body = NULL;
     player.head = NULL;
 
-    printf ("\033[34;01m[CREATION PLAYER]\033[00m\n");
+    printf ("\033[34;01m[CREATION JOUEUR]\033[00m\n");
     player.nb_items_inventory = 0; /* The player starts the game with an empty inventory. */
     printf("posX ? ");
     scanf("%d", &player.posX);
@@ -50,7 +50,7 @@ int main(){
 */
     printf("\n");
 
-    printf ("\033[34;01m[ITEMS ADDED TO THE INVENTORY]\033[00m\n");
+    printf ("\033[34;01m[ITEMS AJOUTES A L'INVENTAIRE]\033[00m\n");
     add_item_to_inventory(&player, Tab_Items[0]);  //pistol
     add_item_to_inventory(&player, Tab_Items[2]);  //shotgun
     add_item_to_inventory(&player, Tab_Items[4]);  //bow_arrows
@@ -72,31 +72,31 @@ int main(){
     map_init(map);
 
     printf("\n");
-    printf ("\033[34;01m[BACKUP]\033[00m\n");
+    printf ("\033[34;01m[SAUVEGARDE]\033[00m\n");
     save(player,map);
 
-        /* TESTS UNITAIRES */
-        /*
-        save_inventory(player);
-        save_info_player(player);
-        save_equipment(player);
-        save_map (map);
-        */
+    /* TESTS UNITAIRES */
+    /*
+    save_inventory(player);
+    save_info_player(player);
+    save_equipment(player);
+    save_map (map);
+    */
 
     printf("\n");
 
     do {
       printf("Menu test_back_up :\n");
-      printf("1. Display player characteristics\n");
-      printf("2. Display inventory\n");
-      printf("3. Display equipment\n");
-      printf("4. Display map\n");
-      printf("Exit -1\n");
+      printf("1. Afficher les caractéristiques du joueur\n");
+      printf("2. Affiche l'inventaire\n");
+      printf("3. Afficher l'équipement\n");
+      printf("4. Afficher la carte\n");
+      printf("Quitter -1\n");
       do {
         printf("N°");
         scanf("%d",&nb);
         if((nb != -1) && (nb < 1 || nb > 4)){
-          printf("Incorrect value. Please re-enter\n");
+          printf("Valeur incorrecte. Veuillez resaissir\n");
         }
       } while ((nb != -1) && (nb < 1 || nb > 4));
 

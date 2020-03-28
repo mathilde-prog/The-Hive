@@ -7,6 +7,17 @@
 #include <unistd.h>
 #include "structure.h"
 
+void check_the_map(perso_t player, cell_t map[D][D]){
+	if(map_in_inventory(player)){
+		display_TEXT(player.posX, player.posY ,map);
+	}
+	else {
+		printf("Pour voir la carte, vous avez besoin d'en avoir une dans votre inventaire. \n");
+		printf("Pour plus d'informations, allez jeter un oeil à l'aide au menu principal! \n");
+		sleep(3);
+	}
+}
+
 /* map_in_inventory: returns 1 if the player has a map in his inventory (0 otherwise). */
 int map_in_inventory(perso_t player){
 	int i;
@@ -27,6 +38,7 @@ int medical_kit_in_inventory(perso_t player){
 		return -1;
 	}
 }
+
 /* too_much_of_the_same_item: returns 1 if an item is present 2 times or more in the inventory.*/
 int too_much_of_the_same_item(perso_t player, item_t item){
 	int i, occ = 0;
@@ -45,69 +57,68 @@ void display_inventory (perso_t player){
 	int i, cpt;
 
 	if(player.nb_items_inventory == 0){
-		printf("Empty inventory (no item)\n");
+		printf("Inventaire vide (aucun item)\n");
 	}
-
 	else {
 		/* display items from the inventory */
 		if(player.nb_items_inventory > 1){
-			printf("========== INVENTORY (%d items) ==========\n\n", player.nb_items_inventory);
+			printf("========== INVENTAIRE (%d items) ==========\n\n", player.nb_items_inventory);
 		}
 		else {
-			printf("========== INVENTORY (%d item) ==========\n\n", player.nb_items_inventory);
+			printf("========== INVENTAIRE (%d item) ==========\n\n", player.nb_items_inventory);
 		}
 
-		printf("\t\t[ WEAPONS ]\n");
+		printf("\t\t[ ARMES ]\n");
 		for(i = 0, cpt = 0; i < player.nb_items_inventory ; i++){
 			if(player.inventory[i].type == weapon){
-				printf("N°%2d\t%20s\t", i, player.inventory[i].name);
-				is_equipped(player,player.inventory[i]) ? printf("equipped\n") : printf("\n");
+				printf("N°%2d\t%20s\t", player.inventory[i].index, player.inventory[i].name);
+				is_equipped(player,player.inventory[i]) ? printf("équipé\n") : printf("\n");
 				cpt++;
 			}
 		}
 
 		if(cpt == 0){
-			printf("\t  No weapon in stock\n");
+			printf("\t  Aucune arme en stock\n");
 		}
 
-		printf("\n\t\t[ ARMORS ]\n");
+		printf("\n\t\t[ ARMURES ]\n");
 
 		for(i = 0, cpt = 0; i < player.nb_items_inventory ; i++){
 			if(player.inventory[i].type == armor){
-				printf("N°%2d\t%20s\t", i, player.inventory[i].name);
-				is_equipped(player,player.inventory[i]) ? printf("equipped\n") : printf("\n");
+				printf("N°%2d\t%20s\t", player.inventory[i].index, player.inventory[i].name);
+				is_equipped(player,player.inventory[i]) ? printf("équipé\n") : printf("\n");
 				cpt++;
 			}
 		}
 
 		if(!cpt){
-			printf("\t   No armor in stock\n");
+			printf("\t   Aucune armure en stock\n");
 		}
 
-		printf("\n\t\t[ MISCS ]\n");
+		printf("\n\t\t[ DIVERS ]\n");
 		for(i = 0, cpt = 0; i < player.nb_items_inventory; i++){
 			if(player.inventory[i].type == misc){
-				printf("N°%2d\t%20s\t", i, player.inventory[i].name);
+				printf("N°%2d\t%20s\t", player.inventory[i].index, player.inventory[i].name);
 				printf("\n");
 				cpt++;
 			}
 		}
 
 		if(!cpt){
-			printf("\t    No misc in stock\n");
+			printf("\t    Aucun item divers en stock\n");
 		}
 
-		printf("\n\t\t[ FOOD ]\n");
+		printf("\n\t\t[ NOURRITURE ]\n");
 		for(i = 0, cpt = 0; i < player.nb_items_inventory; i++){
 			if(player.inventory[i].type == food){
-				printf("N°%2d\t%20s\t", i, player.inventory[i].name);
+				printf("N°%2d\t%20s\t", player.inventory[i].index, player.inventory[i].name);
 				printf("\n");
 				cpt++;
 			}
 		}
 
 		if(!cpt){
-			printf("\t    No food in stock\n");
+			printf("\t    Aucune nourriture en stock\n");
 		}
 
 		printf("\n==========================================\n\n");
@@ -122,16 +133,23 @@ void delete_item_in_inventory(perso_t * player, item_t item){
  	if(ind != -1){ // Si item est présent dans l'inventaire du joueur
 		if(is_equipped(*player,item)){
 			switch(is_equipped(*player,item)){
-				case LEFT_HAND: player->left_hand = NULL; break;
-				case RIGHT_HAND: player->right_hand = NULL; break;
-				case BODY: player->body = NULL; break;
-				case HEAD: player->head = NULL; break;
+				case LEFT_HAND: 	player->left_hand = NULL; 	break;
+				case RIGHT_HAND: 	player->right_hand = NULL;	break;
+				case BODY: 				player->body = NULL; 				break;
+				case HEAD: 				player->head = NULL; 				break;
 				default: break;
 			}
-			printf("%s has been removed from your inventory and equipment.\n",item.name);
+			printf("%s a été retiré de votre inventaire et équipement.\n",item.name);
 		}
 		else {
-			printf("%s has been removed from your inventory\n",item.name);
+			printf("%s a été retiré de votre inventaire.\n",item.name);
+		}
+
+		// On supprime l'item de l'inventaire
+		(player->nb_items_inventory)--;
+		for(i = ind; i < player->nb_items_inventory; i++){
+			player->inventory[i] = player->inventory[i+1];
+			player->inventory[i].index--;
 		}
 
 		// Update des pointeurs équipement
@@ -162,64 +180,55 @@ void delete_item_in_inventory(perso_t * player, item_t item){
 				player->head = &player->inventory[eq_h-1];
 			}
 		}
-
-		// On supprime l'item de l'inventaire
-		(player->nb_items_inventory)--;
-		i = ind;
-		while(i < (player->nb_items_inventory)){
-			player->inventory[i] = player->inventory[i+1];
-			player->inventory[i].index--;
- 			i++;
-		}
 	}
  	else {
- 		printf("%s isn't in your inventory.\n",item.name);
+ 		printf("%s n'est pas dans votre inventaire.\n",item.name);
  	}
 }
 
 /* add_item_to_inventory: adds an item to the inventory. If full inventory, proposes an exchange  */
 int add_item_to_inventory(perso_t * player, item_t item){
-	int answer, nb;
+	int rep, num;
 
-	if(!too_much_of_the_same_item(* player, item)){
+	if(!too_much_of_the_same_item(*player, item)){
 
+		// si on peut ajouter l'item directement dans l'inventaire
 		if(player->nb_items_inventory < INVENTORY_CAPACITY){
-
-			// Changement car il rentre dans l'inventaire
 			item.index = player->nb_items_inventory;
-
-			player->inventory[player->nb_items_inventory] = item;
+			player->inventory[item.index] = item;
 			(player->nb_items_inventory)++;
-			printf("\n%s added to your inventory.\n", item.name);
-			return 1;
+			printf("\n%s ajouté à votre inventaire.\n", item.name);
+			return 1; // ajout effectué
 		}
-
+		// si inventaire déjà plein, on doit faire un échange pour ajouter l'item
 	 	else {
 			do {
-				printf("Would you like to keep this item and give up one of your inventory? (YES: 1, NO: 0)\n");
-		 		scanf("%d",&answer);
-				if(answer < 0 || answer > 1){
-					printf("Input error. Please re-enter\n");
+				printf("Souhaitez-vous garder cet item en échange d'un de votre inventaire ? (Oui: 1, Non: 0)\n");
+		 		scanf("%d",&rep);
+				if(rep < 0 || rep > 1){
+					printf("Valeur incorrecte. Veuillez ressaisir\n");
 				}
-			} while (answer < 0 || answer > 1);
+			} while (rep < 0 || rep > 1);
 
-	 		if(answer){
+	 		if(rep){
 				do {
 					display_inventory(*player);
-					printf("Which item do you want to exchange ? (-1 to cancel) N°");
-		 			scanf("%d", &nb);
-					if((nb != -1) && (nb < 0 || nb > player->nb_items_inventory - 1)){
-						printf("Wrong number... This item isn't in your inventory!\n");
+					printf("Quel item souhaitez-vous échanger ? (-1 pour annuler) N°");
+		 			scanf("%d", &num);
+					if((num != -1) && ((num < 0) || (num > (player->nb_items_inventory-1)))){
+						printf("Valeur incorrecte... Cet item ne figure pas dans votre inventaire!\n");
 					}
-				}while((nb != -1) && (nb < 0 || nb > player->nb_items_inventory - 1));
+				}while((num != -1) && ((num < 0) || (num > (player->nb_items_inventory-1))));
 
-				if(nb != -1){
-					printf("%s has been replaced by %s.\n", player->inventory[nb].name, item.name);
-					delete_item_in_inventory(player,player->inventory[nb]);
-					nb = player->nb_items_inventory-1;
+				// si échange accepté
+				if(num != -1){
+					printf("%s a été remplacé par %s.\n", player->inventory[num].name, item.name);
+					delete_item_in_inventory(player,player->inventory[num]);
+
 					// Changement car il rentre dans l'inventaire
-					item.index = nb;
-					player->inventory[nb] = item;
+					item.index = player->nb_items_inventory;
+					player->inventory[item.index] = item;
+					(player->nb_items_inventory)++;
 					return 1;
 				}
 	 		}
@@ -227,7 +236,7 @@ int add_item_to_inventory(perso_t * player, item_t item){
 		}
 	}
 	else {
-			printf("You can't take another %s with you, you already have two!\n", item.name);
+			printf("Vous ne pouvez pas prendre %s avec vous, vous en avez déjà deux!\n", item.name);
 			return 0;
 	}
 }
@@ -238,7 +247,7 @@ void manage_inventory(perso_t * player){
 
 	if(!player->nb_items_inventory){
 		display_inventory(*player);
-		printf("There's nothing you can do...\n");
+		printf("Vous ne pouvez rien faire sans item dans votre inventaire.\n");
 		sleep(3);
 	}
 	else {
@@ -249,50 +258,40 @@ void manage_inventory(perso_t * player){
 			mk = (ind_mk != -1) ? 4 : 3;
 			if(player->nb_items_inventory){
 				do {
-					printf("What do you want to do ?\n");
-					printf("1. Know more about an item\n");
-					printf("2. Get rid of an item\n");
-					printf("3. Eat or drink an item\n");
+					printf("Que souhaitez-vous faire ?\n");
+					printf("1. En savoir plus sur un item\n");
+					printf("2. Se débarasser d'un item\n");
+					printf("3. Manger ou boire un item\n");
 					if(mk == 4){
-						printf("4. Use your medical kit\n");
+						printf("4. Utiliser votre kit médical\n");
 					}
-					printf("Exit inventory: -1\n\n");
+					printf("Quitter gestion inventaire: -1\n\n");
 					printf("N°");
 					scanf("%d", &choise);
 					if((choise != -1) && (choise < 1 || choise > mk)){
-						printf("Incorrect value. Please re-enter\n");
+						printf("Valeur incorrecte. Veuillez ressaisir\n");
 					}
 				} while ((choise != -1) && (choise < 1 || choise > mk));
-			}
-			else {
-				printf("Exit inventory: -1\n\n");
-				do {
-					printf("N°");
-					scanf("%d", &choise);
-					if(choise != -1){
-						printf("Type -1 to return to the inventory menu\n");
-					}
-				} while (choise != -1);
 			}
 
 			if(choise != -1){
 				// Know more about an item
 				if(choise == 1){
 					do {
-						printf("\nOn which item would you like more information? (-1 to cancel) N°");
+						printf("\nA propos de quel item souhaitez-vous en savoir plus ? (-1 pour annuler) N°");
 						scanf("%d", &nb);
 						if((nb != -1) && (nb < 0 || nb > (player->nb_items_inventory - 1))){
-							printf("Wrong number... This item isn't in your inventory!\n");
+							printf("Valeur incorrecte... Cet item ne figure pas dans votre inventaire!\n");
 						}
 					} while((nb != -1) && (nb < 0 || nb > (player->nb_items_inventory - 1)));
 
 					if(nb != -1){
 						display_item(player->inventory[nb]);
 						do {
-							printf("Back to the menu (1) : ");
+							printf("Retour menu gestion inventaire (1) : ");
 							scanf("%d",&nb);
 							if(nb != 1){
-								printf("Type 1 to return to the inventory menu\n");
+								printf("Saisissez 1 pour retourner au menu gestion inventaire\n");
 							}
 						} while (nb != 1);
 					}
@@ -300,10 +299,10 @@ void manage_inventory(perso_t * player){
 				// Get rid of an item
 				else if (choise == 2){
 					do {
-						printf("\nWhich item do you want to delete ? (-1 to cancel) N°");
+						printf("\nDe quel item souhaitez-vous vous débarasser ? (-1 pour annuler) N°");
 						scanf("%d", &nb);
 						if((nb != -1) && (nb < 0 || nb > (player->nb_items_inventory - 1))){
-							printf("Wrong number... This item isn't in your inventory!\n");
+							printf("Valeur incorrecte... Cet item ne figure pas dans votre inventaire!\n");
 						}
 					} while((nb != -1) && (nb < 0 || nb > (player->nb_items_inventory - 1)));
 					if(nb != -1){
@@ -314,10 +313,10 @@ void manage_inventory(perso_t * player){
 				//Eat or drink an item
 				else if (choise == 3) {
 					do {
-						printf("\nWhich item do you want to eat or drink ? (-1 to cancel) N°");
+						printf("\nQuel item souhaitez-vous manger ou boire ? (-1 pour annuler) N°");
 						scanf("%d", &nb);
 						if((nb != -1) && (nb < 0 || nb > (player->nb_items_inventory - 1))){
-							printf("Wrong number... This item isn't in your inventory!\n");
+							printf("Valeur incorrecte... Cet item ne figure pas dans votre inventaire!\n");
 						}
 					} while((nb != -1) && (nb < 0 || nb > (player->nb_items_inventory - 1)));
 					if(nb != -1){
@@ -326,7 +325,7 @@ void manage_inventory(perso_t * player){
 					}
 				}
 				else if(choise == 4){
-					printf("Medical kit used ... PV+30\n");
+					printf("Kit médical utilisé... PV+30\n");
 					player->pv+= 30;
 					delete_item_in_inventory(player,player->inventory[ind_mk]);
 					sleep(2);

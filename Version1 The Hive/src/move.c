@@ -36,7 +36,7 @@ void look_around(int i, int j, cell_t map[D][D]){
   portable_switch(i-1,j,map);
   printf("|");
   portable_switch(i-1,j+1,map);
-  printf("| <-- Let's look around and see where you might go. | 01 | 02 | 03 |\n");
+  printf("| <-- Regardez autour de vous pour choisir où aller | 01 | 02 | 03 |\n");
   printf("+----");
   printf("\033[1;32m+----+\033[0m");
   printf("----+");
@@ -74,7 +74,7 @@ void look_around(int i, int j, cell_t map[D][D]){
   portable_switch(i+1,j,map);
   printf("|");
   portable_switch(i+1,j+1,map);
-  printf("|              Type in the code you want to go -->  | 06 | 07 | 08 |\n");
+  printf("|     Saisissez le code où vous souhaitez aller -->  | 06 | 07 | 08 |\n");
   printf("+----+----+----+");
   for(esp = 0; esp < 51; esp++){
     printf(" ");
@@ -87,24 +87,24 @@ void move (perso_t * player, cell_t map[D][D]){
 
   jump:
   look_around(l, c, map);
-  printf("\n--> If you want to stay where you are, type -1.\n\n");
+  printf("\n--> Si vous souhaitez rester où vous êtes, saisissez -1.\n\n");
 
-  printf("========================= Legende =========================\n");
-  printf("PR - Prairie        (-1 pa)   FR - Foret           (-2 pa)\n");
+  printf("========================= Légende =========================\n");
+  printf("PR - Prairie        (-1 pa)   FR - Forêt           (-2 pa)\n");
   printf("VL - Ville          (-1 pa)   LC - Lac             (-2 pa)\n");
   printf("CM - Camp militaire (-2 pa)   CB - Camp de bandits (-2 pa)\n");
   printf("MK - Marché         (-1 pa)   FV - Favella         (-2 pa)\n");
-  printf("MT - Montagne       (-3 pa)   BD - Frontiere       (-1 pa)\n");
+  printf("MT - Montagne       (-3 pa)   BD - Frontière       (-1 pa)\n");
   printf("SE - Mer            (-1 pa)   WT - Wasteland       (-1 pa)\n");
   printf("===========================================================\n\n");
 
   if(player->pa){
     do {
-      printf("You have %d PA.\n",player->pa);
-      printf("Where do you want to go ? Code: ");
+      printf("Vous avez %d points d'action.\n",player->pa);
+      printf("Où souhaitez-vous vous rendre ? Code: ");
       scanf("%d",&code);
       if((code != -1) && ((code < 1) || (code > 8))){
-        printf("Incorrect code value (must be between 1 and 8)\n");
+        printf("Code incorrect. La valeur doit être entre 1 et 8)\n");
       }
     } while ((code != -1) && ((code < 1) || (code > 8)));
 
@@ -117,12 +117,12 @@ void move (perso_t * player, cell_t map[D][D]){
           player->pa -= change;
         }
         else {
-          printf("You don't have enough pa to go there.\n");
+          printf("Vous n'avez pas assez de points d'action pour vous y rendre.\n");
           sleep(1); clrscr();
         }
       }
       else {
-        printf("You can't go there\n"); sleep(1); clrscr();
+        printf("Vous ne pouvez pas aller là-bas!\n"); sleep(1); clrscr();
         goto jump;
       }
     }
@@ -135,12 +135,12 @@ void move (perso_t * player, cell_t map[D][D]){
           player->pa -= change;
         }
         else {
-          printf("You don't have enough pa to go there.\n");
+          printf("Vous n'avez pas assez de points d'action pour vous y rendre.\n");
           sleep(1); clrscr();
         }
       }
       else {
-        printf("You can't go there\n"); sleep(1); clrscr();
+        printf("Vous ne pouvez pas aller là-bas!\n"); sleep(1); clrscr();
         goto jump;
       }
     }
@@ -153,12 +153,12 @@ void move (perso_t * player, cell_t map[D][D]){
           player->pa -= change;
         }
         else {
-          printf("You don't have enough pa to go there.\n");
+          printf("Vous n'avez pas assez de points d'action pour vous y rendre.\n");
           sleep(1); clrscr();
         }
       }
       else {
-        printf("You can't go there\n"); sleep(1); clrscr();
+        printf("Vous ne pouvez pas aller là-bas\n"); sleep(1); clrscr();
         goto jump;
       }
     }
@@ -171,12 +171,12 @@ void move (perso_t * player, cell_t map[D][D]){
           player->pa -= change;
         }
         else {
-          printf("You don't have enough pa to go there.\n");
+          printf("Vous n'avez pas assez de points d'action pour vous y rendre.\n");
           sleep(1); clrscr();
         }
       }
       else {
-        printf("You can't go there\n"); sleep(1); clrscr();
+        printf("Vous ne pouvez pas aller là-bas\n"); sleep(1); clrscr();
         goto jump;
       }
     }
@@ -189,12 +189,12 @@ void move (perso_t * player, cell_t map[D][D]){
           player->pa -= change;
         }
         else {
-          printf("You don't have enough pa to go there.\n");
+          printf("Vous n'avez pas assez de points d'action pour vous y rendre.\n");
           sleep(1); clrscr();
         }
       }
       else {
-        printf("You can't go there\n"); sleep(1); clrscr();
+        printf("Vous ne pouvez pas aller là-bas\n"); sleep(1); clrscr();
         goto jump;
       }
     }
@@ -207,12 +207,12 @@ void move (perso_t * player, cell_t map[D][D]){
           player->pa -= change;
         }
         else {
-          printf("You don't have enough pa to go there.\n");
+          printf("Vous n'avez pas assez de points d'action pour vous y rendre.\n");
           sleep(1); clrscr();
         }
       }
       else {
-        printf("You can't go there\n"); sleep(1); clrscr();
+        printf("Vous ne pouvez pas aller là-bas\n"); sleep(1); clrscr();
         goto jump;
       }
     }
@@ -225,12 +225,12 @@ void move (perso_t * player, cell_t map[D][D]){
           player->pa -= change;
         }
         else {
-          printf("You don't have enough pa to go there.\n");
+          printf("Vous n'avez pas assez de points d'action pour vous y rendre.\n");
           sleep(1); clrscr();
         }
       }
       else {
-        printf("You can't go there\n"); sleep(1); clrscr();
+        printf("Vous ne pouvez pas aller là-bas\n"); sleep(1); clrscr();
         goto jump;
       }
     }
@@ -243,23 +243,23 @@ void move (perso_t * player, cell_t map[D][D]){
           player->pa -= change;
         }
         else {
-          printf("You don't have enough pa to go there.\n");
+          printf("Vous n'avez pas assez de points d'action pour vous y rendre.\n");
           sleep(1); clrscr();
         }
       }
       else {
-        printf("You can't go there\n"); sleep(1); clrscr();
+        printf("Vous ne pouvez pas aller là-bas\n"); sleep(1); clrscr();
         goto jump;
       }
     }
   }
   else {
-    printf("You can't go anywhere without action points.\n");
+    printf("Vous ne pouvez aller nul part sans point d'action.\n");
     do {
-      printf("\nBack to the menu (1) : ");
+      printf("\nRetour au menu (1) : ");
       scanf("%d",&nb);
       if(nb != 1){
-        printf("Type 1 to return to the inventory menu\n");
+        printf("Saisissez 1 pour retourner au menu principal\n");
       }
     } while (nb != 1);
   }

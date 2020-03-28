@@ -2,10 +2,6 @@ pistol 1
 30 0 1
 0 20 60
 
-shotgun 1
-50 0 1
-0 15 50
-
 bow_arrows 1
 15 0 1
 30 0 0
@@ -13,10 +9,6 @@ bow_arrows 1
 bulletproof_vest 0
 0 40 2
 0 10 70
-
-helmet 0
-0 60 3
-0 0 0
 
 fishing_rod 2
 0 0 0
@@ -30,11 +22,11 @@ map 2
 0 0 0
 0 20 70
 
-fish 3
+walking_stick 2
 0 0 0
-10 10 10
+70 30 0
 
-energy_drink 3
-0 0 0
-0 60 20
+lance 1
+10 0 1
+50 0 0
 

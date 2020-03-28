@@ -34,7 +34,6 @@ categ_hexa category_hexagon (int map[D][D], int x, int y){
 }
 
 int main(){
-    hex_t hexagone; //Type hexagone : prairie, ville , lac...
     categ_hexa categ; //Categorie hexagone : nature, urbain...
     int map[D][D];
     int x, y;

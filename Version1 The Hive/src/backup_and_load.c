@@ -13,6 +13,7 @@ void save (perso_t player, cell_t map[D][D]){
   save_inventory(player);
   save_equipment(player);
   save_map(map);
+  printf("Sauvegarde réussie\n");
 }
 
 /* save_inventory: saves the player's inventory */
@@ -23,7 +24,7 @@ void save_inventory (perso_t player){
   for(i = 0; i < player.nb_items_inventory; i++){
     fprintf(fic,"%s %d\n%d %d %d\n%d %d %d\n\n",player.inventory[i].name, player.inventory[i].type, player.inventory[i].attack, player.inventory[i].defense, player.inventory[i].equipable, player.inventory[i].pc_nature, player.inventory[i].pc_urban, player.inventory[i].pc_military);
   }
-  printf("save_inventory.txt - Successfully backed up!\n");
+  //printf("Sauvegarde inventaire réussie\n");
   fclose(fic);
 }
 
@@ -37,7 +38,7 @@ void save_info_player (perso_t player){
   /* No special competence for version 1 */
   //fprintf(fic,"competence = %d\n", player.competence);
 
-  printf("save_info_player.txt - Successfully backed up!\n");
+  //printf("Sauvegarde des informations du joueur réussie\n");
   fclose(fic);
 }
 
@@ -50,7 +51,7 @@ void save_equipment (perso_t player){
   (player.right_hand != NULL) ? fprintf(fic, "right_hand = %d\n", player.right_hand->index) : fprintf(fic, "right_hand = -1\n");
   (player.body != NULL) ? fprintf(fic, "body = %d\n", player.body->index) : fprintf(fic, "body = -1\n");
 
-  printf("save_equipment.txt - Successfully backed up!\n");
+  // printf("Sauvegarde équipement réussie\n");
   fclose(fic);
 }
 
@@ -91,7 +92,7 @@ void save_map (cell_t map[D][D]){
       fprintf(fic,"\n");
   }
 
-  printf("save_map.txt - Successfully backed up!\n");
+  //printf("Sauvegarde carte réussie\n");
   fclose(fic);
 }
 
@@ -102,19 +103,19 @@ void save_map (cell_t map[D][D]){
 /* load: load information about the character, his inventory, his equipment and the map. */
 int load (perso_t * player, cell_t map[D][D]){
   if(!load_inventory (player)){
-    printf("Failed to load the inventory\n");
+    printf("Echec chargement inventaire\n");
     return 0;
   }
   if(!load_info_player (player)){
-    printf("Failed to load the character information\n");
+    printf("Echec chargement des données du joueur\n");
     return 0;
   }
   if(!load_map(map)){
-    printf("Failed to load the map\n");
+    printf("Echec chargement de la carte\n");
     return 0;
   }
   if(!load_equipment (player)){
-    printf("Failed to load the equipement\n");
+    printf("Echec chargement équipement\n");
     return 0;
   }
 
@@ -136,7 +137,7 @@ int load_inventory (perso_t * player){
     return 1;
   }
   else {
-    printf("Error, 'save_inventory.txt' not found...\n");
+    printf("Erreur : 'save_inventory.txt' introuvable\n");
     return 0;
   }
 }
@@ -152,7 +153,7 @@ int load_info_player (perso_t * player){
     return 1;
   }
   else {
-    printf("Error, 'save_info_player.txt' not found...\n");
+    printf("Erreur : 'save_info_player.txt' introuvable\n");
     return 0;
   }
 }
@@ -173,7 +174,7 @@ int load_equipment (perso_t * player){
     return 1;
   }
   else {
-    printf("Error, 'save_equipment.txt' not found...\n");
+    printf("Erreyr : 'save_equipment.txt' introuvable\n");
     return 0;
   }
 }
@@ -208,7 +209,7 @@ int load_map (cell_t map[D][D]){
     return 1;
   }
   else {
-    printf("Error, 'save_map.txt' not found...\n");
+    printf("Erreur : 'save_map.txt' introuvable\n");
     return 0;
   }
 }
@@ -243,23 +244,23 @@ int backup_exists (){
    Loads the game if saved, otherwise uses functions to initialize the player and the map.
 */
 int init_or_load_game(perso_t * player, cell_t map[D][D]){
-  int choise;
+  int num;
 
   if(backup_exists()){
-    printf("1. Continue the game saved last time\n");
-    printf("2. New game\n");
-    printf("Exit: -1\n\n");
+    printf("1. Continuer la partie (sauvegarde)\n");
+    printf("2. Nouvelle partie\n");
+    printf("Quitter: -1\n\n");
 
     do {
       printf("N°");
-      scanf("%d",&choise);
-      if((choise != -1) && (choise < 1 || choise > 2)){
-        printf("Incorrect value, please re-enter\n");
+      scanf("%d",&num);
+      if((num != -1) && (num < 1 || num > 2)){
+        printf("Valeur incorrecte. Veuillez ressaisir\n");
       }
-    } while ((choise != -1) && (choise < 1 || choise >2));
+    } while ((num != -1) && (num < 1 || num >2));
 
-    if(choise != -1){
-      switch (choise){
+    if(num != -1){
+      switch (num){
         case 1: return load(player, map); break;
         case 2: init_player(player);
                 map_init(map);

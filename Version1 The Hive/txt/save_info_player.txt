@@ -1,6 +1,6 @@
-pv = 67
-pe = 76
-pa = 1
-posX = 13
-posY = 1
-turns = 12
+pv = 168
+pe = 182
+pa = 5
+posX = 6
+posY = 7
+turns = 7

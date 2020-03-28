@@ -8,19 +8,19 @@
 
 /*	display_equipment_player : displays the equipment of the player */
 void display_equipment_player(perso_t player){
-	printf("=============== EQUIPMENT ================\n");
+	printf("=============== EQUIPEMENT ================\n");
 
-	printf("Head : ");
-	(player.head != NULL) ? (printf("%s\t\t(N°%2d)\n", player.head->name, player.head->index)) : (printf("no equipment\n"));
+	printf("Tête : ");
+	(player.head != NULL) ? (printf("%s\t\t(N°%2d)\n", player.head->name, player.head->index)) : (printf("pas d'équipement\n"));
 
-	printf("Left hand : ");
-	(player.left_hand != NULL) ? (printf("%s\t(N°%2d)\n", player.left_hand->name, player.left_hand->index)) : (printf("no equipment\n"));
+	printf("Main gauche : ");
+	(player.left_hand != NULL) ? (printf("%s\t(N°%2d)\n", player.left_hand->name, player.left_hand->index)) : (printf("pas d'équipement\n"));
 
-	printf("Right hand : ");
-	(player.right_hand != NULL) ? (printf("%s\t(N°%2d)\n", player.right_hand->name, player.right_hand->index)) : (printf("no equipment\n"));
+	printf("Main droite : ");
+	(player.right_hand != NULL) ? (printf("%s\t(N°%2d)\n", player.right_hand->name, player.right_hand->index)) : (printf("pas d'équipement\n"));
 
-	printf("Body : ");
-	(player.body != NULL) ? (printf("%s\t(N°%2d)\n", player.body->name, player.body->index)) : (printf("no equipment\n"));
+	printf("Corps : ");
+	(player.body != NULL) ? (printf("%s\t(N°%2d)\n", player.body->name, player.body->index)) : (printf("pas d'équipement\n"));
 
 	printf("==========================================\n\n");
 }
@@ -64,17 +64,17 @@ int is_equipped(perso_t player, item_t item){
 void swap_equipment_player(perso_t * player, item_t item){
 	int num = 0;
 
-	printf("You'll have to exchange %s with another item you're already wearing if you want to equip it!\n",item.name);
+	printf("Si vous souhaitez porter cet équipement, vous devez échanger %s avec un autre item\n",item.name);
 
 	switch(item.equipable){
-		case hand: 	printf("1. %s (left_hand)\n",player->left_hand->name);
-								printf("2. %s (right_hand)\n",player->right_hand->name);
-								printf("Cancel : -1\n");
+		case hand: 	printf("1. %s (main gauche)\n",player->left_hand->name);
+								printf("2. %s (main droite)\n",player->right_hand->name);
+								printf("Annuler : -1\n");
 								do{
-									printf("With which one do you want to swap %s ? N°", item.name);
+									printf("Avec quel item souhaitez-vous échanger %s ? N°", item.name);
 									scanf("%d",&num);
 									if((num != -1) && (num < 1 || num > 2)){
-										printf("Input error. Please re-enter\n");
+										printf("Valeur incorrecte. Veuillez ressaisir.\n");
 									}
 								} while((num != -1) && (num < 1 || num > 2));
 
@@ -85,34 +85,33 @@ void swap_equipment_player(perso_t * player, item_t item){
 									else if (num == 2){
 										player->right_hand = &player->inventory[item.index];
 									}
-									printf("You are now equipped with %s.\n", item.name);
+									printf("Vous êtes maintenant équipé de %s.\n", item.name);
 								}
-
 								break;
 		case body:	do {
-									printf("Are you sure you want to swap %s with %s ? (YES = 1, NO = 0)",player->body->name,item.name);
+									printf("Êtes-vous sûr de vouloir échanger %s avec %s ? (Oui = 1, Non = 0)",player->body->name,item.name);
 		 							scanf("%d", &num);
 									if(num < 0 || num > 1){
-										printf("Input error. Please re-enter\n");
+										printf("Valeur incorrecte. Veuillez ressaisir.\n");
 									}
 								} while (num < 0 || num > 1);
 
 								if(num){
 									player->body = &player->inventory[item.index];
-									printf("You are now equipped with %s.\n", item.name);
+									printf("Vous êtes maintenant équipé de %s.\n", item.name);
 								}
 								break;
 		case head: do {
-									printf("Are you sure you want to swap %s with %s ? (YES = 1, NO = 0)",player->head->name,item.name);
+									printf("Êtes-vous sûr de vouloir échanger %s avec %s ? (Oui = 1, Non = 0)",player->head->name,item.name);
 		 							scanf("%d", &num);
 									if(num < 0 || num > 1){
-										printf("Input error. Please re-enter\n");
+										printf("Valeur incorrecte. Veuillez ressaisir.\n");
 									}
 								} while (num < 0 || num > 1);
 
 								if(num){
 									player->head = &player->inventory[item.index];
-									printf("You are now equipped with %s.\n", item.name);
+									printf("Vous êtes maintenant équipé de %s.\n", item.name);
 								}
 								break;
 		default: break;
@@ -126,25 +125,24 @@ void equip_player(perso_t * player){
 	if(player->nb_items_inventory != 0){
 		display_inventory(*player);
 		do {
-			printf("Which item of your inventory do you want to equip ? N°");
+			printf("De quel item souhaitez-vous vous équiper ? N°");
 			scanf("%d",&num);
 			if(num > player->nb_items_inventory){
-				printf("Wrong number... This item isn't in your inventory!\n");
+				printf("Valeur incorrecte... Cet item ne figure pas dans votre inventaire!\n");
 			}
 		} while(num > player->nb_items_inventory);
 
 		if(!is_equipped(*player,player->inventory[num])){
-
 			switch(player->inventory[num].equipable){
-				case none : printf("You can't equip this item!\n"); break;
+				case none : printf("Vous ne pouvez pas vous équiper de cet item!\n"); break;
 				case hand :	if(player->left_hand == NULL){
 											player->left_hand = &player->inventory[num];
-											printf("You are now equipped with %s.\n", player->inventory[num].name);
+											printf("Vous êtes maintenant équipé de %s.\n", player->inventory[num].name);
 
 										}
 										else if (player->right_hand == NULL){
 											player->right_hand = &player->inventory[num];
-											printf("You are now equipped with %s.\n", player->inventory[num].name);
+											printf("Vous êtes maintenant équipé de %s.\n", player->inventory[num].name);
 										}
 										else {
 											swap_equipment_player(player,player->inventory[num]);
@@ -152,7 +150,7 @@ void equip_player(perso_t * player){
 										break;
 				case body : if(player->body == NULL){
 											player->body = &player->inventory[num];
-											printf("You are now equipped with %s.\n", player->inventory[num].name);
+											printf("Vous êtes maintenant équipé de %s.\n", player->inventory[num].name);
 										}
 										else {
 											swap_equipment_player(player,player->inventory[num]);
@@ -160,7 +158,7 @@ void equip_player(perso_t * player){
 										break;
 				case head : if(player->head == NULL){
 											player->head = &player->inventory[num];
-											printf("You are now equipped with %s.\n", player->inventory[num].name);
+											printf("Vous êtes maintenant équipé de %s.\n", player->inventory[num].name);
 										}
 										else {
 											swap_equipment_player(player,player->inventory[num]);
@@ -171,11 +169,11 @@ void equip_player(perso_t * player){
 
 		}
 		else {
-			printf("You're already equipped of %s!\n\n",player->inventory[num].name);
+			printf("Vous êtes déjà équipé de %s!\n\n",player->inventory[num].name);
 		}
 	}
 	else {
-		printf("You don't have any items in your inventory. So you can't equip yourself!\n");
+		printf("Vous n'avez aucun item dans votre inventaire. Donc, rien pour vous équiper!\n");
 	}
 }
 
@@ -184,23 +182,23 @@ void remove_equipment_player(perso_t * player){
 	int num;
 
 	do{
-		printf("\nWhich equipment do you want to remove ? (-1 to cancel) N°");
+		printf("\nQuel équipement souhaitez-vous retirer ? (-1 pour annuler) N°");
 		scanf("%d",&num);
 		if(!is_equipped(*player,player->inventory[num]) && num != -1){
-			printf("Wrong number... This item isn't equipped!\n");
+			printf("Valeur incorrecte... Vous n'êtes pas équipé de cet item!\n");
 		}
 	} while(!is_equipped(*player,player->inventory[num]) && num != -1);
 
-	switch(is_equipped(*player,player->inventory[num])){
-		case LEFT_HAND: player->left_hand = NULL; break;
-		case RIGHT_HAND: player->right_hand = NULL; break;
-		case BODY: player->body = NULL; break;
-		case HEAD: player->head = NULL; break;
-		default: break;
-	}
-
 	if(num != -1){
-		printf("%s has been removed from your equipment.\n",player->inventory[num].name);
+		switch(is_equipped(*player,player->inventory[num])){
+			case LEFT_HAND: player->left_hand = NULL; break;
+			case RIGHT_HAND: player->right_hand = NULL; break;
+			case BODY: player->body = NULL; break;
+			case HEAD: player->head = NULL; break;
+			default: break;
+		}
+
+		printf("%s a été retiré de votre équipement.\n",player->inventory[num].name);
 		sleep(2);
 	}
 }
@@ -211,15 +209,15 @@ void manage_equipment(perso_t * player){
 
 	jump:
 	display_equipment_player(* player);
-	printf("What do you want to do ?\n");
+	printf("Que souhaitez-vous faire ?\n");
 	do {
-		printf("1. Equip an item from your inventory\n");
-		printf("2. Remove an item from your equipment\n");
-		printf("Exit equipment: -1\n\n");
+		printf("1. S'équiper d'un item de votre inventaire\n");
+		printf("2. Retirer un item de votre équipement\n");
+		printf("Quitter gestion équipement: -1\n\n");
 		printf("N°");
 		scanf("%d",&choise);
 		if((choise != -1) && (choise < 1 || choise > 2)){
-			printf("Incorrect value. Please re-enter\n");
+			printf("Valeur incorrecte. Veuillez ressaisir.\n");
 		}
 	} while ((choise != -1) && (choise < 1 || choise > 2));
 

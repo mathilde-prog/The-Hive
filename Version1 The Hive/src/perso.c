@@ -33,25 +33,26 @@ void init_player(perso_t * player){
 
 /* display_player_characteristics: displays the player parameters (pv,pe,pa,location,turns) */
 void display_player_characteristics(cell_t map[D][D], perso_t player){
-  printf("========================= INFO PLAYER ============================\n");
+  printf("================================== INFO JOUEUR =====================================\n");
+
   printf("PV = %3d  PE = %3d  PA = %3d\n",player.pv,player.pe,player.pa);
-  printf("Position player:  x = %d  y = %d  ",player.posX,player.posY);
+  printf("Position joueur:  x = %d  y = %d  ",player.posX,player.posY);
   switch(map[player.posX][player.posY].type){
     case prairie   : printf("prairie "); break;
-    case foret     : printf("foret ");    break;
+    case foret     : printf("forêt ");    break;
     case ville     : printf("ville ");    break;
     case lac       : printf("lac ");     break;
-    case camp_mil  : printf("camp_mil ");  break;
-    case camp_ban  : printf("camp_ban ");     break;
-    case market    : printf("market ");   break;
+    case camp_mil  : printf("camp militaire ");  break;
+    case camp_ban  : printf("camp des bandits ");     break;
+    case market    : printf("marché ");   break;
     case favella   : printf("favella ");   break;
     case montagne  : printf("montagne ");     break;
-    case frontiere : printf("frontiere ");      break;
+    case frontiere : printf("frontière ");      break;
     case mer       : printf("mer ");   break;
-    case wasteland : printf("wasteland ");    break;     
+    case wasteland : printf("wasteland ");    break;
   }
   switch(map[player.posX][player.posY].categ){
-    case other   : printf("[OTHER]\n"); break;
+    case other   : printf("[AUTRE]\n"); break;
     case nature  : printf("[NATURE]\n"); break;
     case urbain  : printf("[URBAIN]\n"); break;
     case militaire : printf("[MILITAIRE]\n");  break;
@@ -69,6 +70,6 @@ void display_player_characteristics(cell_t map[D][D], perso_t player){
     default: printf("unrecognized\n"); break;
   }
   */
-  printf("You currently have %d turns left before it is too late to escape.\n", player.turns);
-  printf("==================================================================\n\n");
+  printf("Il vous reste actuellement %d tours avant qu'il ne soit trop tard pour vous enfuir.\n", player.turns);
+  printf("====================================================================================\n\n");
 }

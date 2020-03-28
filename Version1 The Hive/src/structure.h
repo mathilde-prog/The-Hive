@@ -92,8 +92,8 @@ void look_around(int i, int j, cell_t map[D][D]);  //move.c
 void move (perso_t * player, cell_t map[D][D]);		//move.c
 /*********************************************************************************/
 
-
 /*********************************** INVENTORY ***********************************/
+void check_the_map(perso_t player, cell_t map[D][D]);
 int map_in_inventory(perso_t player); //inventory.c
 int too_much_of_the_same_item(perso_t player, item_t item); //inventory.c
 void display_inventory (perso_t player); //inventory.c
@@ -101,7 +101,6 @@ void delete_item_in_inventory(perso_t * player, item_t item); //inventory.c
 int add_item_to_inventory(perso_t * player, item_t item); //inventory.c
 void manage_inventory(perso_t * player); //inventory.c
 /*********************************************************************************/
-
 
 /*********************************** EQUIPMENT ***********************************/
 #define NOT_EQUIPPED 0
@@ -118,18 +117,15 @@ void remove_equipment_player(perso_t * player); //equipment.c
 void manage_equipment(perso_t * player); //equipment.c
 /**********************************************************************************/
 
-
 /*********************************** EAT_OR_DRINK ***********************************/
 void eat_or_drink (perso_t * player, item_t item); //eat_or_drink.c
 /************************************************************************************/
 
-
 /*********************************** TURN ***********************************/
-void next_turn(perso_t * player);
+void next_turn(perso_t * player, int * nb_rh); //turn.c
 void scavenge(cell_t map[D][D], perso_t * player, item_t * Tab_Items, int nb_items_available); //turn.c
-void rest_and_heal(perso_t * player); //turn.c
+void rest_and_heal(perso_t * player, int * nb_rh); //turn.c
 /************************************************************************************/
-
 
 /*********************************** BACKUP AND LOAD ***********************************/
 void save (perso_t player, cell_t map[D][D]); //backup_and_load.c

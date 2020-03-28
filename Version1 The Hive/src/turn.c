@@ -6,19 +6,30 @@
 #include "structure.h"
 
 /* Passer au prochain tour */
-void next_turn(perso_t * player){
-  player->pa = 5; //R�cup�re 5 points d'actions
+void next_turn(perso_t * player, int * nb_rh){
+  *nb_rh = 0;
+  printf("On passe au tour suivant!\n");
+  printf("Vous récupérez %d points d'action!\n", 5-player->pa);
+  player->pa = 5; //Récupère 5 points d'actions
   player->turns--;
+  sleep(2);
 }
 
 /* rest_and_heal: allows the player to rest and gain pv and pe (proportionate to his number of pa) */
-void rest_and_heal(perso_t * player){
+void rest_and_heal(perso_t * player, int * nb_rh){
   int value = player->pa * 5;
 
-  printf("Let's take some rest zzZZ\n"); sleep(1);
-  player->pv += value;
-  player->pe += value;
-  printf("PV +%d\tPE +%d\n",value,value);
+  if((*nb_rh) == 0){
+    printf("Reposez vous un instant zzZZ\n"); sleep(1);
+    player->pv += value;
+    player->pe += value;
+    printf("PV +%d\tPE +%d\n",value,value);
+    *nb_rh = 1;
+  }
+  else {
+    printf("Vous vous êtes déjà reposé pendant ce tour!\n");
+  }
+
   sleep(2);
 }
 
