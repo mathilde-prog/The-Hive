@@ -1,6 +1,3 @@
-pistol 1
-30 0 1
-0 20 60
 
 bow_arrows 1
 15 0 1
