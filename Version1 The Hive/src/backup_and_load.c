@@ -91,6 +91,14 @@ void save_map (cell_t map[D][D]){
     }
       fprintf(fic,"\n");
   }
+  fprintf(fic,"\n\n");
+  //scavenged
+  for(l = 0; l < D; l++){
+    for(c = 0; c < D; c++){
+      fprintf(fic, "%2d ", map[l][c].scavenged);
+    }
+    fprintf(fic,"\n");
+  }
 
   //printf("Sauvegarde carte réussie\n");
   fclose(fic);
@@ -203,6 +211,11 @@ int load_map (cell_t map[D][D]){
     for(l = 0; l < D; l++){
       for(c = 0; c < D; c++){
         fscanf(fic,"%d",&map[l][c].quest_id);
+      }
+    }
+    for(l = 0; l < D; l++){
+      for(c = 0; c < D; c++){
+        fscanf(fic,"%d",&map[l][c].scavenged);
       }
     }
     fclose(fic);

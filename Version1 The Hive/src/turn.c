@@ -38,7 +38,11 @@ void scavenge(cell_t map[D][D], perso_t * player, item_t * Tab_Items, int nb_ite
     categ_hexa categ = map[player->posX][player->posY].categ;
 
     // Si le joueur n'a pas déjà scavengé l'hexagone où il est
-    if(!map[player->posX][player->posY].scavenged){
+    if(map[player->posX][player->posY].scavenged == 1){
+      printf("Tu es déjà passé par là!\n");
+      sleep(2); 
+    }
+    else {
       if(categ != other){
         generate_items(Tab_Items, nb_items_available, player, categ);
       }
@@ -46,5 +50,6 @@ void scavenge(cell_t map[D][D], perso_t * player, item_t * Tab_Items, int nb_ite
         printf("Nothing appears!\n");
         sleep(2);
       }
+      map[player->posX][player->posY].scavenged = 1;
     }
 }

@@ -274,6 +274,7 @@ void init_base(cell_t map[D][D]){
       map[i][j].categ=nature;
       map[i][j].encounter=0;
       map[i][j].quest_id=0;
+      map[i][j].scavenged=0; 
     }
   }
 }
