@@ -15,6 +15,7 @@ typedef struct cell_s{ // structure d'hexagone
   int encounter;
   int quest_id;
 	categ_hexa categ;
+  int scavenged;
 }cell_t;
 
 int coordonnees_valides(int l, int c); 						//world_generation.c
