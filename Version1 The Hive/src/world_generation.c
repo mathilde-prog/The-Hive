@@ -361,11 +361,34 @@ void display_nb(cell_t map[D][D]){
   }
 }
 
+void encounter_init(cell_t map[D][D]){
+  int i,j;
+
+  for(i=1;i<D-1;i++){
+    for(j=1;j<D-1;j++){
+      if(rng(10)){
+        map[i][j].encounter=1;
+      }
+    }
+  }
+}
+
+void quest_init(cell_t map[D][D]){
+  map[0][range(0,D)].quest_id=1; // Montagnes
+  map[range(0,D)][1].quest_id=2; // Frontiere
+  map[range(1,D-1)][range(1,D-1)].quest_id=3; // Boom<3
+  map[range(1,D-1)][range(1,D-1)].quest_id=4; // 
+  map[range(1,D-1)][range(1,D-1)].quest_id=5; //
+  map[range(1,D-1)][range(1,D-1)].quest_id=6; //
+}
+
 void map_init(cell_t map[D][D]){
   init_base(map);
   init_border(map);
   topup(map);
   nextgen(map);
+  encounter_init(map);
+  exit_init(map);
 }
 /*
 int main(){

@@ -131,7 +131,7 @@ void turn_npc(npc_t * enemy, stat_t * field){
     }else{
       if(field->distance > 1){ // BEHAVIOUR OF NPC WHEN DISTANCE > 1
 				field->posB--;
-        printf("PEPEGAEnemy is moving towards you!\n");
+        printf("Enemy is moving towards you!\n");
 			}else{
         if(enemy->pv > 50){
           damage_calculator();
