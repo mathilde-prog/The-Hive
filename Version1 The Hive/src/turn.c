@@ -37,11 +37,14 @@ void rest_and_heal(perso_t * player, int * nb_rh){
 void scavenge(cell_t map[D][D], perso_t * player, item_t * Tab_Items, int nb_items_available){
     categ_hexa categ = map[player->posX][player->posY].categ;
 
-    if(categ != other){
-      generate_items(Tab_Items, nb_items_available, player, categ);
-    }
-    else { // Aucun item g�n�r� si fronti�re ou
-      printf("Nothing appears!\n");
-      sleep(2);
+    // Si le joueur n'a pas déjà scavengé l'hexagone où il est
+    if(!map[player->posX][player->posY].scavenged){
+      if(categ != other){
+        generate_items(Tab_Items, nb_items_available, player, categ);
+      }
+      else { // Aucun item généré
+        printf("Nothing appears!\n");
+        sleep(2);
+      }
     }
 }
