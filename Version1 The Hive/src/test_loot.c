@@ -3,13 +3,6 @@
 #include <time.h>
 #include "structure.h"
 
-typedef struct npc_s {
-  char name[10];
-  int pv;             /* Points de vie */
-  item_t * weapon;    /* Pointeur sur item dans les mains */
-  item_t * armor;     /* Pointeur sur item armure */
-} npc_t;
-
 void loot_enemy (npc_t * enemy, perso_t * player){
   int answer;
 

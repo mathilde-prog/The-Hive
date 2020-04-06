@@ -55,6 +55,26 @@ void display_item (item_t item); //items.c
 void generate_items(item_t * Tab_Items, int nb_items_available, perso_t * player, categ_hexa categ); //items.c
 /*********************************************************************************/
 
+/************************************* COMBAT *************************************/
+
+typedef struct stat_s{ // structure to manage battlefield
+	int posA; // position of player
+	int posB; // position of bot
+	int coverA;
+	int coverB;
+	int distance; // distance between A and B;
+}stat_t;
+
+typedef struct npc_s {
+  char name[10]; //
+  int pv; // Points de vie
+  item_t * weapon; 	/* Pointeur sur item dans les mains */
+  item_t * armor; 	/* Pointeur sur item armure */
+} npc_t;
+
+/*********************************************************************************/
+
+
 /************************************* PERSO *************************************/
 #define INVENTORY_CAPACITY 10 /* 10 items version 1 */
 
