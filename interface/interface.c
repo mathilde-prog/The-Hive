@@ -177,7 +177,7 @@ int interface(){
 	}
 
   /* Création de la fenêtre */
-	ecran = SDL_CreateWindow("The Hive",SDL_WINDOWPOS_UNDEFINED,  SDL_WINDOWPOS_UNDEFINED,1300,700, SDL_WINDOW_SHOWN);
+	ecran = SDL_CreateWindow("The Hive - A Post Apocalypse Project",SDL_WINDOWPOS_UNDEFINED,  SDL_WINDOWPOS_UNDEFINED,1300,700, SDL_WINDOW_SHOWN);
 	/* icone de la fenetre */
 	SDL_Surface *icon=NULL;
 	SDL_RWops *icon_rwop=NULL;
