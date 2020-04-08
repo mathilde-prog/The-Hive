@@ -388,7 +388,7 @@ void map_init(cell_t map[D][D]){
   topup(map);
   nextgen(map);
   encounter_init(map);
-  exit_init(map);
+  quest_init(map);
 }
 /*
 int main(){

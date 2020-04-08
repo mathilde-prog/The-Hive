@@ -1,5 +1,5 @@
 # project name (generate executable with this name)
-TARGETS  = menu test_backup test_load test_eat_or_drink test_item test_creation_items test_combat test_category_hexagon test_loot test_inventory
+TARGETS  = menu test_map test_backup test_load test_eat_or_drink test_item test_creation_items test_combat test_category_hexagon test_loot test_inventory
 
 CC       = gcc
 # compiling flags here
