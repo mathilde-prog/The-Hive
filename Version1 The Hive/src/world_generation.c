@@ -160,13 +160,33 @@ int spawntype(int l, int c, cell_t map[D][D]){ // returns hex type that must be 
   return t;
 }
 
+int categ_switch(int input){ // returns hexagone category (urbain,nature, military, other)
+    switch(input){
+        case 1: return 1; break;
+        case 2: return 1; break;
+        case 3: return 2; break;
+        case 4: return 1; break;
+        case 5: return 3; break;
+        case 6: return 0; break;
+        case 7: return 2; break;
+        case 8: return 2; break;
+        case 9: return 1; break;
+        case 10: return 0; break;
+        case 11: return 1; break;
+        case 12: return 0; break;
+        default: return -1; break;
+    }
+}
+
 void nextgen(cell_t map[D][D]){ // generates additional hexes on the map with different chance
-  int i,j,c;
+  int i,j,c,tmp;
   for(c=0;c<3;c++){
     for(i=1;i<D-1;i++){
       for(j=1;j<D-1;j++){
         if(map[i][j].type==prairie){
-          map[i][j].type=spawntype(i,j,map);
+          tmp=spawntype(i,j,map);
+          map[i][j].type=tmp;
+          map[i][j].categ=categ_switch(tmp);
         }
       }
     }
@@ -274,7 +294,7 @@ void init_base(cell_t map[D][D]){
       map[i][j].categ=nature;
       map[i][j].encounter=0;
       map[i][j].quest_id=0;
-      map[i][j].scavenged=0; 
+      map[i][j].scavenged=0;
     }
   }
 }
@@ -377,7 +397,7 @@ void quest_init(cell_t map[D][D]){
   map[0][range(0,D)].quest_id=1; // Montagnes
   map[range(0,D)][1].quest_id=2; // Frontiere
   map[range(1,D-1)][range(1,D-1)].quest_id=3; // Boom<3
-  map[range(1,D-1)][range(1,D-1)].quest_id=4; // 
+  map[range(1,D-1)][range(1,D-1)].quest_id=4; //
   map[range(1,D-1)][range(1,D-1)].quest_id=5; //
   map[range(1,D-1)][range(1,D-1)].quest_id=6; //
 }

@@ -1,4 +1,3 @@
-
 bow_arrows 1
 15 0 1
 30 0 0
@@ -26,4 +25,8 @@ walking_stick 2
 lance 1
 10 0 1
 50 0 0
+
+walking_stick 2
+0 0 0
+70 30 0
 
