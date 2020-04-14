@@ -24,7 +24,6 @@ void save_inventory (perso_t player){
   for(i = 0; i < player.nb_items_inventory; i++){
     fprintf(fic,"%s %d\n%d %d %d\n%d %d %d\n\n",player.inventory[i].name, player.inventory[i].type, player.inventory[i].attack, player.inventory[i].defense, player.inventory[i].equipable, player.inventory[i].pc_nature, player.inventory[i].pc_urban, player.inventory[i].pc_military);
   }
-  //printf("Sauvegarde inventaire réussie\n");
   fclose(fic);
 }
 
@@ -38,7 +37,6 @@ void save_info_player (perso_t player){
   /* No special competence for version 1 */
   //fprintf(fic,"competence = %d\n", player.competence);
 
-  //printf("Sauvegarde des informations du joueur réussie\n");
   fclose(fic);
 }
 
@@ -51,7 +49,6 @@ void save_equipment (perso_t player){
   (player.right_hand != NULL) ? fprintf(fic, "right_hand = %d\n", player.right_hand->index) : fprintf(fic, "right_hand = -1\n");
   (player.body != NULL) ? fprintf(fic, "body = %d\n", player.body->index) : fprintf(fic, "body = -1\n");
 
-  // printf("Sauvegarde équipement réussie\n");
   fclose(fic);
 }
 
@@ -100,7 +97,6 @@ void save_map (cell_t map[D][D]){
     fprintf(fic,"\n");
   }
 
-  //printf("Sauvegarde carte réussie\n");
   fclose(fic);
 }
 

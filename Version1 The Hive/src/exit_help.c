@@ -23,7 +23,7 @@ int exit_game(){
 void help(perso_t * player){
   int i = 1, nb;
 
-  if(!map_in_inventory(*player)){
+  if(!item_in_inventory(*player,"map")){
     printf("Conseil N°%d - Posséder une carte serait utile!\n",i++);
     printf("Essayez de vous rendre dans une ville, un camp militaire, un marché ou une favella. Vous aurez plus de chances d'en trouver une!\n");
   }

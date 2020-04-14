@@ -3,10 +3,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 #include <time.h>
 #include "structure.h"
 
 /************************************** CREATION + DISPLAY ITEMS (MATHILDE) **************************************/
+
+item_t * creer_item (char * chaine, type_t type, int attack, int defense, int equipable, int pc_nature, int pc_urban, int pc_military){
+  item_t * item = malloc(sizeof(item_t));
+
+  strcpy(item->name,chaine);
+  item->type = type;
+  item->attack = attack;
+  item->defense = defense;
+  item->equipable = equipable;
+  item->pc_nature = pc_nature;
+  item->pc_urban = pc_urban;
+  item->pc_military = pc_military;
+  item->index = -1;
+
+  return(item);
+}
+
 /* creation_tab_item: retrieves items from the file 'items.txt' and stores them in a table passed in parameters
                       displays error message if file 'items.txt' not found
                       returns whether the creation of the items has been successfully completed (0 or 1)

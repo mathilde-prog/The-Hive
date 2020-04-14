@@ -1,6 +1,0 @@
-pv = 193
-pe = 207
-pa = 5
-posX = 6
-posY = 7
-turns = 7

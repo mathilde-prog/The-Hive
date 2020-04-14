@@ -8,7 +8,7 @@ typedef struct item_s item_t;
 
 typedef enum {prairie = 1, foret, ville, lac, camp_mil, camp_ban, market, favella, montagne, frontiere, mer, wasteland} hex_t;
 typedef enum {other, nature, urbain, militaire} categ_hexa;
-// other : camp_ban + frontiere
+// other : camp_ban + frontiere + wasteland
 
 typedef struct cell_s{ // structure d'hexagone
   hex_t type;
@@ -51,6 +51,7 @@ typedef struct item_s{
 	int index; 					// Index of an item in the inventory (-1 if absent)
 } item_t;
 
+item_t * creer_item (char * chaine, type_t type, int attack, int defense, int equipable, int pc_nature, int pc_urban, int pc_military);
 int creation_tab_item(item_t * Tab_Items, int * nb_items); //items.c
 void display_item (item_t item); //items.c
 void generate_items(item_t * Tab_Items, int nb_items_available, perso_t * player, categ_hexa categ); //items.c
@@ -75,7 +76,6 @@ typedef struct npc_s {
 
 /*********************************************************************************/
 
-
 /************************************* PERSO *************************************/
 #define INVENTORY_CAPACITY 10 /* 10 items version 1 */
 
@@ -99,13 +99,13 @@ typedef struct perso_s {
   item_t * body; 				/* Pointeur sur item corps */
   item_t * head;				/* Pointeur sur item tête */
 
+  int money;
 } perso_t;
 
 void init_player(perso_t * player); //perso.c
 void display_player_characteristics(cell_t map[D][D], perso_t player); //perso.c
 
 /**********************************************************************************/
-
 
 /************************************* MOVE *************************************/
 int move_lose_pa (hex_t type_hexa); 						//move.c
@@ -114,8 +114,8 @@ void move (perso_t * player, cell_t map[D][D]);		//move.c
 /*********************************************************************************/
 
 /*********************************** INVENTORY ***********************************/
-void check_the_map(perso_t player, cell_t map[D][D]);
-int map_in_inventory(perso_t player); //inventory.c
+void check_the_map(perso_t player, cell_t map[D][D]); //inventory.c
+int item_in_inventory(perso_t player, char * nom_item); //inventory.c
 int too_much_of_the_same_item(perso_t player, item_t item); //inventory.c
 void display_inventory (perso_t player); //inventory.c
 void delete_item_in_inventory(perso_t * player, item_t item); //inventory.c
@@ -138,14 +138,18 @@ void remove_equipment_player(perso_t * player); //equipment.c
 void manage_equipment(perso_t * player); //equipment.c
 /**********************************************************************************/
 
+/************************************* FISH  *******************************************/
+void fish (perso_t * player, cell_t map[D][D]); // fish.c
+/***************************************************************************************/
+
 /*********************************** EAT_OR_DRINK ***********************************/
 void eat_or_drink (perso_t * player, item_t item); //eat_or_drink.c
 /************************************************************************************/
 
 /*********************************** TURN ***********************************/
-void next_turn(perso_t * player, int * nb_rh); //turn.c
+void next_turn(perso_t * player); //turn.c
 void scavenge(cell_t map[D][D], perso_t * player, item_t * Tab_Items, int nb_items_available); //turn.c
-void rest_and_heal(perso_t * player, int * nb_rh); //turn.c
+void rest_and_heal(perso_t * player); //turn.c
 /************************************************************************************/
 
 /*********************************** BACKUP AND LOAD ***********************************/

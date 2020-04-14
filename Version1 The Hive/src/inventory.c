@@ -8,7 +8,7 @@
 #include "structure.h"
 
 void check_the_map(perso_t player, cell_t map[D][D]){
-	if(map_in_inventory(player)){
+	if(item_in_inventory(player,"map") != -1){
 		display_TEXT(player.posX, player.posY ,map);
 	}
 	else {
@@ -18,20 +18,10 @@ void check_the_map(perso_t player, cell_t map[D][D]){
 	}
 }
 
-/* map_in_inventory: returns 1 if the player has a map in his inventory (0 otherwise). */
-int map_in_inventory(perso_t player){
+int item_in_inventory(perso_t player, char * nom_item){
 	int i;
-
-	for(i = 0; (i < player.nb_items_inventory) && strcmp(player.inventory[i].name,"map"); i++);
-	return (i < player.nb_items_inventory);
-}
-
-// retourne index du medical kit dans l'inventaire du joueur. Retourne -1 si pas dans l'inventaire.
-int medical_kit_in_inventory(perso_t player){
-	int i;
-
-	for(i = 0; (i < player.nb_items_inventory) && strcmp(player.inventory[i].name,"medical_kit"); i++);
-	if (i < player.nb_items_inventory){
+	for(i = 0; (i < player.nb_items_inventory) && strcmp(player.inventory[i].name, nom_item); i++);
+	if(i < player.nb_items_inventory){
 		return player.inventory[i].index;
 	}
 	else {
@@ -254,8 +244,9 @@ void manage_inventory(perso_t * player){
 		do {
 			// Menu management inventory
 			display_inventory(*player);
-			ind_mk = medical_kit_in_inventory(*player);
+			ind_mk = item_in_inventory(*player,"medical_kit");
 			mk = (ind_mk != -1) ? 4 : 3;
+
 			if(player->nb_items_inventory){
 				do {
 					printf("Que souhaitez-vous faire ?\n");

@@ -74,7 +74,7 @@ void look_around(int i, int j, cell_t map[D][D]){
   portable_switch(i+1,j,map);
   printf("|");
   portable_switch(i+1,j+1,map);
-  printf("|     Saisissez le code où vous souhaitez aller -->  | 06 | 07 | 08 |\n");
+  printf("|     Saisissez le code où vous souhaitez aller --> | 06 | 07 | 08 |\n");
   printf("+----+----+----+");
   for(esp = 0; esp < 51; esp++){
     printf(" ");
