@@ -1,12 +1,24 @@
-//equipment.c
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 #include "structure.h"
 
-/*	display_equipment_player : displays the equipment of the player */
+/**
+ * \file equipment.c
+ * \brief Gestion de l'équipement du joueur
+ * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
+ * \version 1.0
+ * \date 2020
+*/
+
+/**
+ * \fn void display_equipment_player(perso_t player)
+ * \brief Affiche l'équipement du joueur
+ * \details Si la tête, la main gauche, la main droite ou le corps du joueur sont équipés, indique avec quels items en précisant leurs positions dans l'inventaire.
+ * \param perso_t player
+ * \return Rien
+*/
 void display_equipment_player(perso_t player){
 	printf("=============== EQUIPEMENT ================\n");
 
@@ -25,13 +37,27 @@ void display_equipment_player(perso_t player){
 	printf("==========================================\n\n");
 }
 
+/**
+ * \fn int is_equipped(perso_t player, item_t item)
+ * \brief Indique si le joueur est équipé de l'item passé en paramètre
+ * \param perso_t player
+ * \param item_t item
+ * \return Un \a int : si le joueur n'est pas équipé de l'item retourne 0 (NOT_EQUIPPED), sinon retourne où l'item est équipé sur le joueur (LEFT_HAND = 1, RIGHT_HAND = 2, BODY = 3, HEAD = 4)
+*/
+
 /*	is_equipped : - indicates if the player is equipped with the item passed in parameter.
 	 							 	- if the player is equipped with the item, return where it is equipped (LEFT_HAND = 1, RIGHT_HAND = 2, BODY = 3, HEAD = 4)(cf. structure.h)
 								 	- if the player isn't equipped with the item, return NOT_EQUIPPED = 0 (cf. structure.h)
 */
 int is_equipped(perso_t player, item_t item){
+	/* On commence par vérifier si l'item passé en paramètre est équipable.
+		 Si oui (hand, body ou head) :
+		 		Si la zone où l'item est équipable est équipée de cet item (on vérifie par l'index), on retourne LEFT_HAND (1), RIGHT_HAND(2), BODY(3), HEAD(4) selon le cas correspondant.
+		 		Si la zone où l'item est équipable N'EST PAS équipée de cet item, on retourne NOT_EQUIPPED (0)
+		 Si non (none) : retourne NOT_EQUIPPED (0)
+	*/
 	switch(item.equipable){
-		case none : return 0;
+		case none : return NOT_EQUIPPED;
 		case hand : if(player.left_hand != NULL){
 									if(player.left_hand->index == item.index){
 										return LEFT_HAND;
@@ -60,9 +86,18 @@ int is_equipped(perso_t player, item_t item){
 	}
 }
 
+/**
+ * \fn void swap_equipment_player(perso_t * player, item_t item)
+ * \brief Echange l'item passé en paramètre avec un item choisi par le joueur figurant dans son équipement
+ * \details Cette fonction est appelée lorsque le joueur souhaite s'équiper d'un item sur une zone de son corps déjà équipée.
+ * \param perso_t * player
+ * \param item_t item
+ * \return Rien
+*/
+
 /*	swap_equipment_player: exchange of items on the player's equipment */
 void swap_equipment_player(perso_t * player, item_t item){
-	int num = 0;
+	int num = 0; // variable pour le choix du joueur
 
 	printf("Si vous souhaitez porter cet équipement, vous devez échanger %s avec un autre item\n",item.name);
 
@@ -118,12 +153,19 @@ void swap_equipment_player(perso_t * player, item_t item){
 	}
 }
 
+/**
+ * \fn void equip_player(perso_t * player)
+ * \brief Equipe le joueur, au bon endroit, avec un item de son inventaire qu'il choisit. L'item doit être équipable.
+ * \param perso_t * player
+ * \return Rien
+*/
 /*	equip_player: equip the player with an item (which must be equippable) that he has in his inventory. Equip it in the right place. */
 void equip_player(perso_t * player){
-	int num;
+	int num; // variable pour le choix du joueur
 
+	// vérifie si item(s) dans l'inventaire pour équiper le joueur
 	if(player->nb_items_inventory != 0){
-		display_inventory(*player);
+		display_inventory(*player); // affichage de l'inventaire pour permettre au joueur de faire son choix
 		do {
 			printf("De quel item souhaitez-vous vous équiper ? N°");
 			scanf("%d",&num);
@@ -132,20 +174,20 @@ void equip_player(perso_t * player){
 			}
 		} while(num > player->nb_items_inventory);
 
+		// si l'item n'est pas déjà équipé
 		if(!is_equipped(*player,player->inventory[num])){
 			switch(player->inventory[num].equipable){
 				case none : printf("Vous ne pouvez pas vous équiper de cet item!\n"); break;
 				case hand :	if(player->left_hand == NULL){
 											player->left_hand = &player->inventory[num];
 											printf("Vous êtes maintenant équipé de %s.\n", player->inventory[num].name);
-
 										}
 										else if (player->right_hand == NULL){
 											player->right_hand = &player->inventory[num];
 											printf("Vous êtes maintenant équipé de %s.\n", player->inventory[num].name);
 										}
 										else {
-											swap_equipment_player(player,player->inventory[num]);
+											swap_equipment_player(player,player->inventory[num]); // Joueur déjà équipé dans cette zone, on lui propose d'échanger l'item porté avec celui choisi
 										}
 										break;
 				case body : if(player->body == NULL){
@@ -177,9 +219,15 @@ void equip_player(perso_t * player){
 	}
 }
 
+/**
+ * \fn void remove_equipment_player(perso_t * player)
+ * \brief Retire un item choisi par le joueur de son équipement
+ * \param perso_t * player
+ * \return Rien
+*/
 /*	remove_equipment_player: removes an item from the player's equipment */
 void remove_equipment_player(perso_t * player){
-	int num;
+	int num; // variable pour le choix du joueur
 
 	do{
 		printf("\nQuel équipement souhaitez-vous retirer ? (-1 pour annuler) N°");
@@ -197,15 +245,21 @@ void remove_equipment_player(perso_t * player){
 			case HEAD: player->head = NULL; break;
 			default: break;
 		}
-
 		printf("%s a été retiré de votre équipement.\n",player->inventory[num].name);
 		sleep(2);
 	}
 }
 
+/**
+ * \fn void manage_equipment(perso_t * player)
+ * \brief Fonction centrale du fichier equipment.c permettant au joueur de gérer son équipement
+ * \details Menu équipement : Possibilité pour le joueur de s'équiper d'un item de son inventaire, de retirer un item de son équipement.
+ * \param perso_t * player
+ * \return Rien
+*/
 /* manage_equipment: equipment menu */
 void manage_equipment(perso_t * player){
-	int choise;
+	int choise; // variable pour le choix du joueur
 
 	jump:
 	display_equipment_player(* player);

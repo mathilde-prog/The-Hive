@@ -1,5 +1,3 @@
-//inventory.c
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -7,7 +5,23 @@
 #include <unistd.h>
 #include "structure.h"
 
+/**
+ * \file inventory.c
+ * \brief Gestion de l'inventaire du joueur
+ * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
+ * \version 1.0
+ * \date 2020
+*/
+
+/**
+ * \fn void check_the_map(perso_t player, cell_t map[D][D])
+ * \brief Affiche la carte, si le joueur en possède une dans son inventaire
+ * \param perso_t player
+ * \param cell_t map[D][D]
+ * \return Rien
+*/
 void check_the_map(perso_t player, cell_t map[D][D]){
+	// vérifie si le joueur possède une carte dans son inventaire
 	if(item_in_inventory(player,"map") != -1){
 		display_TEXT(player.posX, player.posY ,map);
 	}
@@ -18,6 +32,13 @@ void check_the_map(perso_t player, cell_t map[D][D]){
 	}
 }
 
+/**
+ * \fn int item_in_inventory(perso_t player, char * nom_item)
+ * \brief Recherche si l'item dont le nom est passé en paramètre est présent ou non dans l'inventaire
+ * \param perso_t player
+ * \param char * nom_item
+ * \return Un \a int : position de l'item dans l'inventaire si présent, -1 si absent
+*/
 int item_in_inventory(perso_t player, char * nom_item){
 	int i;
 	for(i = 0; (i < player.nb_items_inventory) && strcmp(player.inventory[i].name, nom_item); i++);
@@ -29,6 +50,14 @@ int item_in_inventory(perso_t player, char * nom_item){
 	}
 }
 
+/**
+ * \fn int too_much_of_the_same_item(perso_t player, item_t item)
+ * \brief Indique si l'item passé en paramètre apparaît 2 fois ou plus dans l'inventaire du joueur
+ * \details Remarque : Un item peut figurer au maximum 2 fois dans l'inventaire du joueur
+ * \param perso_t player
+ * \param item_t item
+ * \return Un \a int : retourne 1 si l'item est présent 2 fois ou plus dans l'inventaire. 0 sinon.
+*/
 /* too_much_of_the_same_item: returns 1 if an item is present 2 times or more in the inventory.*/
 int too_much_of_the_same_item(perso_t player, item_t item){
 	int i, occ = 0;
@@ -42,6 +71,13 @@ int too_much_of_the_same_item(perso_t player, item_t item){
 	return (occ >= 2);
 }
 
+/**
+ * \fn void display_inventory (perso_t player)
+ * \brief Affiche l'inventaire du joueur
+ * \details Affichage des items de l'inventaire avec leurs positions, par catégorie (armes, armures, divers, nourriture). Indique si item équipé pour les armes et armures.
+ * \param perso_t player
+ * \return Rien
+*/
 /* display_inventory: displays the content of the inventory of the player */
 void display_inventory (perso_t player){
 	int i, cpt;
@@ -115,10 +151,16 @@ void display_inventory (perso_t player){
 	}
 }
 
+/**
+ * \fn void delete_item_in_inventory(perso_t * player, item_t item)
+ * \brief Retire l'item passé en paramètre de l'inventaire (et de l'équipement si besoin) du joueur
+ * \param perso_t * player
+ * \param item_t item
+ * \return Rien
+*/
 /* delete_item_in_inventory: deletes an item from the inventory */
 void delete_item_in_inventory(perso_t * player, item_t item){
-	int ind = item.index;
-	int i, eq_lh, eq_rh, eq_b, eq_h;
+	int i, eq_lh, eq_rh, eq_b, eq_h, ind = item.index;
 
  	if(ind != -1){ // Si item est présent dans l'inventaire du joueur
 		if(is_equipped(*player,item)){
@@ -142,7 +184,7 @@ void delete_item_in_inventory(perso_t * player, item_t item){
 			player->inventory[i].index--;
 		}
 
-		// Update des pointeurs équipement
+		// Mise à jour des pointeurs pour l'équipement
 		if(player->left_hand != NULL){
 			eq_lh = player->left_hand->index;
 			if(eq_lh > ind){
@@ -176,10 +218,18 @@ void delete_item_in_inventory(perso_t * player, item_t item){
  	}
 }
 
+/**
+ * \fn int add_item_to_inventory(perso_t * player, item_t item)
+ * \brief Ajoute un item à l'inventaire du joueur. Si son inventaire est plein, propose un échange.
+ * \param perso_t * player
+ * \param item_t item
+ * \return Un \a int : 1 si ajout effectué. 0 sinon.
+*/
 /* add_item_to_inventory: adds an item to the inventory. If full inventory, proposes an exchange  */
 int add_item_to_inventory(perso_t * player, item_t item){
-	int rep, num;
+	int rep, num; // variables pour choix du joueur
 
+	// vérifie si l'item n'est pas déjà trop présent
 	if(!too_much_of_the_same_item(*player, item)){
 
 		// si on peut ajouter l'item directement dans l'inventaire
@@ -190,7 +240,7 @@ int add_item_to_inventory(perso_t * player, item_t item){
 			printf("\n%s ajouté à votre inventaire.\n", item.name);
 			return 1; // ajout effectué
 		}
-		// si inventaire déjà plein, on doit faire un échange pour ajouter l'item
+		// si inventaire déjà plein, on propose de faire un échange pour ajouter l'item
 	 	else {
 			do {
 				printf("Souhaitez-vous garder cet item en échange d'un de votre inventaire ? (Oui: 1, Non: 0)\n");
@@ -231,6 +281,13 @@ int add_item_to_inventory(perso_t * player, item_t item){
 	}
 }
 
+/**
+ * \fn void manage_inventory(perso_t * player)
+ * \brief Fonction centrale du fichier inventory.c permettant au joueur de gérer son inventaire
+ * \details Menu inventaire : Possibilité pour le joueur d'en savoir plus sur un de ses items, de se débarasser d'un item, de manger/boire un item, d'utiliser son kit médical (s'il en possède un)
+ * \param perso_t * player
+ * \return Rien
+*/
 /* manage_inventory: menu inventory */
 void manage_inventory(perso_t * player){
 	int nb, choise, ind_mk, mk;
@@ -242,13 +299,13 @@ void manage_inventory(perso_t * player){
 	}
 	else {
 		do {
-			// Menu management inventory
 			display_inventory(*player);
 			ind_mk = item_in_inventory(*player,"medical_kit");
 			mk = (ind_mk != -1) ? 4 : 3;
 
 			if(player->nb_items_inventory){
 				do {
+					// Menu management inventory
 					printf("Que souhaitez-vous faire ?\n");
 					printf("1. En savoir plus sur un item\n");
 					printf("2. Se débarasser d'un item\n");

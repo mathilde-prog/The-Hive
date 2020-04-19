@@ -1,5 +1,5 @@
 # project name (generate executable with this name)
-TARGETS  = menu test_map test_item_in_inventory test_backup test_load test_eat_or_drink test_item test_creation_items test_combat test_category_hexagon test_loot test_inventory
+TARGETS  = menu test_backup test_category_hexagon test_combat test_creation_items test_eat_or_drink test_inventory test_item test_item_in_inventory test_load test_loot test_map
 
 CC       = gcc
 # compiling flags here
@@ -33,7 +33,6 @@ MAINS	 := $(TARGETS:%=$(OBJDIR)/%.o)
 OBJS	 := $(filter-out $(MAINS),$(OBJECTS))
 rm       = rm -f
 
-
 #$(BINDIR)/$(TARGET): $(OBJECTS)
 $(TRGS): $(OBJECTS)
 	@$(LINKER) $(subst $(BINDIR),$(OBJDIR),$@).o $(OBJS) $(LFLAGS) -o $@
@@ -46,9 +45,18 @@ $(OBJECTS): $(OBJDIR)/%.o: $(SRCDIR)/%.c
 .PHONY: clean
 clean:
 	@$(rm) $(OBJECTS)
+	@rm -rf $(OBJDIR)
+	@rm -rf doc/html
+	@rm -rf doc/latex
 	@echo "Cleanup complete!"
 
 .PHONY: remove
 remove: clean
 	@$(rm) $(BINDIR)/$(TARGETS)
 	@echo "Executable removed!"
+
+.PHONY: docs
+docs:
+	@doxygen doc/Doxyfile
+	@xdg-open doc/html/index.html
+	@echo "Documentation generated!"

@@ -1,12 +1,25 @@
-//eat_or_drink.c
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "structure.h"
 
-void gain_energie(perso_t * player, int n){
-  int val = n;
+/**
+ * \file eat_or_drink.c
+ * \brief Fonctionnalité : manger ou boire un item de son inventaire
+ * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
+ * \version 1.0
+ * \date 2020
+*/
+
+/**
+ * \fn void gain_energie(perso_t * player, int val_e)
+ * \brief Calcule et met à jour les points d'énergie du joueur selon la valeur énergétique de l'item mangé / bu
+ * \param perso_t * player
+ * \param int val_e
+ * \return Rien
+*/
+void gain_energie(perso_t * player, int val_e){
+  int val = val_e;
 
   if((player->pe + val) > 100){
     val = (100 - player->pe);
@@ -20,6 +33,14 @@ void gain_energie(perso_t * player, int n){
   }
 }
 
+/**
+ * \fn void eat_or_drink (perso_t * player, item_t item)
+ * \brief Permet au joueur de boire ou manger un item de type \a food et récupérer des points d'énergie ou action (si cela est possible).
+ * \details Retire l'item de l'inventaire
+ * \param perso_t * player
+ * \param item_t item
+ * \return Rien
+*/
 /* eat_or_drink: allows the player to drink or eat an item (if type food) and to recover pe and pv when it's possible */
 void eat_or_drink (perso_t * player, item_t item){
   if(item.type == food){

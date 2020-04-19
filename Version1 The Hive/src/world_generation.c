@@ -3,6 +3,14 @@
 #include <time.h>
 #include "structure.h"
 
+/**
+ * \file world_generation.c
+ * \brief Génération de la carte (Moustapha --> COMPLETER DOCUMENTATION DES FONCTIONS)
+ * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
+ * \version 1.0
+ * \date 2020
+*/
+
 void clrscr(){ // fonction pour clear l'output de terminal
     system("clear");
 }

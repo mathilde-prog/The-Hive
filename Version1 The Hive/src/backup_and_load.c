@@ -1,12 +1,25 @@
-//backup_and_load.c
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "structure.h"
 
+/**
+ * \file backup_and_load.c
+ * \brief Sauvegarde et chargement d'une partie
+ * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
+ * \version 1.0
+ * \date 2020
+*/
+
 /******************** BACK_UP *************************/
 
+/**
+ * \fn void save (perso_t player, cell_t map[D][D])
+ * \brief Sauvegarde les informations sur le joueur, son inventaire, son équipement et la carte
+ * \param perso_t player
+ * \param cell_t map[D][D]
+ * \return Rien
+*/
 /* save: save information about the character, his inventory, his equipment and the map. */
 void save (perso_t player, cell_t map[D][D]){
   save_info_player(player);
@@ -16,6 +29,12 @@ void save (perso_t player, cell_t map[D][D]){
   printf("Sauvegarde réussie\n");
 }
 
+/**
+ * \fn void save_inventory (perso_t player)
+ * \brief Sauvegarde l'inventaire du joueur dans un fichier 'save_inventory.txt'
+ * \param perso_t player
+ * \return Rien
+*/
 /* save_inventory: saves the player's inventory */
 void save_inventory (perso_t player){
   int i;
@@ -27,6 +46,12 @@ void save_inventory (perso_t player){
   fclose(fic);
 }
 
+/**
+ * \fn void save_info_player (perso_t player)
+ * \brief Sauvegarde les informations du joueur dans un fichier 'save_info_player.txt'
+ * \param perso_t player
+ * \return Rien
+*/
 /* save_info_player: saves player information */
 void save_info_player (perso_t player){
   FILE * fic = fopen("../txt/save_info_player.txt","w");
@@ -40,6 +65,12 @@ void save_info_player (perso_t player){
   fclose(fic);
 }
 
+/**
+ * \fn void save_equipment (perso_t player)
+ * \brief Sauvegarde l'équipement du joueur dans un fichier 'save_equipment.txt'
+ * \param perso_t player
+ * \return Rien
+*/
 /* save_equipment: saves the player's equipment */
 void save_equipment (perso_t player){
   FILE * fic = fopen("../txt/save_equipment.txt","w");
@@ -52,6 +83,12 @@ void save_equipment (perso_t player){
   fclose(fic);
 }
 
+/**
+ * \fn void save_map (cell_t map[D][D])
+ * \brief Sauvegarde la carte dans un fichier 'save_map.txt'
+ * \param cell_t map[D][D]
+ * \return Rien
+*/
 /* save_map: save the map of the game */
 void save_map (cell_t map[D][D]){
   int l, c;
@@ -103,7 +140,13 @@ void save_map (cell_t map[D][D]){
 /******************************************************/
 
 /******************** LOAD ****************************/
-
+/**
+ * \fn int load (perso_t * player, cell_t map[D][D])
+ * \brief Charge les informations sur le joueur, son inventaire, son équipement et la carte
+ * \param perso_t * player
+ * \param cell_t map[D][D]
+ * \return Un \a int : 1 si succès complet du chargement. 0 si problème lors du chargement.
+*/
 /* load: load information about the character, his inventory, his equipment and the map. */
 int load (perso_t * player, cell_t map[D][D]){
   if(!load_inventory (player)){
@@ -126,6 +169,12 @@ int load (perso_t * player, cell_t map[D][D]){
   return 1;
 }
 
+/**
+ * \fn int load_inventory (perso_t * player)
+ * \brief Charge l'inventaire du joueur à partir du fichier 'save_inventory.txt'
+ * \param perso_t * player
+ * \return Un \a int : 1 si chargement réussi. 0 si échec du chargement.
+*/
 /* load_inventory: loads the player's inventory */
 int load_inventory (perso_t * player){
   FILE * fic = fopen("../txt/save_inventory.txt","r");
@@ -146,6 +195,12 @@ int load_inventory (perso_t * player){
   }
 }
 
+/**
+ * \fn int load_info_player (perso_t * player)
+ * \brief Charge les informations du joueur à partir du fichier 'save_info_player.txt'
+ * \param perso_t * player
+ * \return Un \a int : 1 si chargement réussi. 0 si échec du chargement.
+*/
 /* load_info_player: loads player information */
 int load_info_player (perso_t * player){
   FILE * fic = fopen("../txt/save_info_player.txt","r");
@@ -162,6 +217,12 @@ int load_info_player (perso_t * player){
   }
 }
 
+/**
+ * \fn int load_equipment (perso_t * player)
+ * \brief Charge l'équipement du joueur à partir du fichier 'save_equipment.txt'
+ * \param perso_t * player
+ * \return Un \a int : 1 si chargement réussi. 0 si échec du chargement.
+*/
 /* load_equipment: loads the player's equipment */
 int load_equipment (perso_t * player){
   FILE * fic = fopen("../txt/save_equipment.txt","r");
@@ -178,11 +239,17 @@ int load_equipment (perso_t * player){
     return 1;
   }
   else {
-    printf("Erreyr : 'save_equipment.txt' introuvable\n");
+    printf("Erreur : 'save_equipment.txt' introuvable\n");
     return 0;
   }
 }
 
+/**
+ * \fn int load_map (cell_t map[D][D])
+ * \brief Charge la carte à partir du fichier 'save_map.txt'
+ * \param cell_t map[D][D]
+ * \return Un \a int : 1 si chargement réussi. 0 si échec du chargement.
+*/
 /* load_map: loads the map of the game */
 int load_map (cell_t map[D][D]){
   int l, c;
@@ -224,6 +291,11 @@ int load_map (cell_t map[D][D]){
 }
 
 /*****************************************************/
+/**
+ * \fn int backup_exists ()
+ * \brief Vérifie si une sauvegarde complète du jeu existe
+ * \return Un \a int : 1 si sauvegarde existante. 0 sinon.
+*/
 /* backup_exists: returns 1 if a backup exists and 0 if there is none */
 int backup_exists (){
   FILE * fic1, * fic2, * fic3, * fic4;
@@ -251,6 +323,14 @@ int backup_exists (){
 /* init_or_load_game:
    If a backup of the game exists, offers the player to continue the game or start a new one.
    Loads the game if saved, otherwise uses functions to initialize the player and the map.
+*/
+/**
+ * \fn int init_or_load_game(perso_t * player, cell_t map[D][D])
+ * \brief Si une sauvegarde du jeu existe, propose au joueur de continuer la partie ou d'en commencer une nouvelle.
+    Si aucune sauvegarde, initialise une nouvelle partie.
+ * \param perso_t * player
+ * \param cell_t map[D][D]
+ * \return Un \a int : 1 si initialisation / chargement réussi. 0 si échec.
 */
 int init_or_load_game(perso_t * player, cell_t map[D][D]){
   int num;

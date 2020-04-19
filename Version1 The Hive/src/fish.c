@@ -5,12 +5,27 @@
 #include <unistd.h>
 #include "structure.h"
 
+/**
+ * \file fish.c
+ * \brief Fonctionnalité : pêcher
+ * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
+ * \version 1.0
+ * \date 2020
+*/
+
+/**
+ * \fn void fish (perso_t * player, cell_t map[D][D])
+ * \brief Permet au joueur de pêcher s'il se situe sur un hexagone de type \a lac ou \a mer et s'il a une canne à pêche dans son inventaire.
+ * \param perso_t * player
+ * \param cell_t map[D][D]
+ * \return Rien
+*/
 void fish (perso_t * player, cell_t map[D][D]){
   int rep;
 
   if((map[player->posX][player->posY].type == lac) || (map[player->posX][player->posY].type == mer)){
     if(item_in_inventory(*player, "fishing_rod") != -1){
-      int chance = rng(30);
+      int chance = rng(30); // 30% de chance d'attraper un poisson
       if(chance){
         item_t * fish = creer_item("fish",food,0,0,0,0,0,0);
 

@@ -5,6 +5,20 @@
 #include <unistd.h>
 #include "structure.h"
 
+/**
+ * \file turn.c
+ * \brief Fonctions relatives à un tour du jeu
+ * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
+ * \version 1.0
+ * \date 2020
+*/
+
+/**
+ * \fn void next_turn(perso_t * player)
+ * \brief Passer au tour suivant
+ * \param perso_t * player
+ * \return Rien
+*/
 /* Passer au prochain tour */
 void next_turn(perso_t * player){
   printf("On passe au tour suivant!\n");
@@ -14,6 +28,12 @@ void next_turn(perso_t * player){
   sleep(2);
 }
 
+/**
+ * \fn void rest_and_heal(perso_t * player)
+ * \brief Permet au joueur de se reposer et récupérer des points de vie et points d'énergie (proportionnellement au nombre de points d'action)
+ * \param perso_t * player
+ * \return Rien
+*/
 /* rest_and_heal: allows the player to rest and gain pv and pe (proportionate to his number of pa) */
 void rest_and_heal(perso_t * player){
   int value_pv = player->pa*5;
@@ -37,25 +57,4 @@ void rest_and_heal(perso_t * player){
   printf("PV +%d\tPE +%d\n",value_pv,value_pe);
   sleep(2);
   next_turn(player);
-}
-
-/* Recherche des items */
-void scavenge(cell_t map[D][D], perso_t * player, item_t * Tab_Items, int nb_items_available){
-    categ_hexa categ = map[player->posX][player->posY].categ;
-
-    // Si le joueur n'a pas déjà scavengé l'hexagone où il est
-    if(map[player->posX][player->posY].scavenged == 1){
-      printf("Tu es déjà passé par là!\n");
-      sleep(2);
-    }
-    else {
-      if(categ != other){
-        generate_items(Tab_Items, nb_items_available, player, categ);
-      }
-      else { // Aucun item généré
-        printf("Rien n'apparaît!\n");
-        sleep(2);
-      }
-      map[player->posX][player->posY].scavenged = 1;
-    }
 }

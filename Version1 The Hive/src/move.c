@@ -4,6 +4,20 @@
 #include <unistd.h>
 #include "structure.h"
 
+/**
+ * \file move.c
+ * \brief Gestion du déplacement du joueur
+ * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
+ * \version 1.0
+ * \date 2020
+*/
+
+/**
+ * \fn int move_lose_pa (hex_t type_hexa)
+ * \brief Calcule le nombre de points d'actions nécessaires pour se déplacer dans le type d'hexagone passé en paramètre
+ * \param hex_t type_hexa
+ * \return Un \a int représentant le nombre de points d'action nécessaires (prairie : 1, foret : 2, ville : 1, lac : 2, camp_mil : 2, camp_ban : 2, market : 1, favella : 2, montagne : 3, frontiere : 1, mer : 1, wasteland : 1)
+*/
 int move_lose_pa (hex_t type_hexa){
   switch(type_hexa){
     case prairie: return 1; break;
@@ -22,6 +36,14 @@ int move_lose_pa (hex_t type_hexa){
   }
 }
 
+/**
+ * \fn void look_around(int i, int j, cell_t map[D][D])
+ * \brief Affiche une vue des 8 hexagones qui entourent le joueur et les codes pour choisir où se déplacer
+ * \param int i
+ * \param int j
+ * \param cell_t map[D][D]
+ * \return Rien
+*/
 void look_around(int i, int j, cell_t map[D][D]){
   int esp;
 
@@ -82,6 +104,13 @@ void look_around(int i, int j, cell_t map[D][D]){
   printf("+----+----+----+\n");
 }
 
+/**
+ * \fn void move (perso_t * player, cell_t map[D][D])
+ * \brief Déplace le joueur où il le souhaite, si cela est possible (conditions : coordonnées valides et assez de points d'action)
+ * \param perso_t * player
+ * \param cell_t map[D][D]
+ * \return Rien
+*/
 void move (perso_t * player, cell_t map[D][D]){
   int nb, change,  l = player->posX, c = player->posY, code;
 

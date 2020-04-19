@@ -4,12 +4,35 @@
 #include <unistd.h>
 #include "structure.h"
 
-perso_t player;
-int nb_items_available = 0;
+/**
+ * \file menu.c
+ * \brief MENU PRINCIPAL
+ * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
+ * \version 1.0
+ * \date 2020
+*/
 
+/**
+ * \fn int main()
+ * \brief Programme / Menu principal
+ * \details
+    1. Fouillez la zone
+    2. Gérer l'inventaire
+    3. Gérer l'équipement
+    4. Se déplacer ailleurs
+    5. Pêcher
+    6. Regarder la carte (carte nécessaire)
+    7. Se reposer et guérir
+    8. Fin du tour
+    9. Sauvegarder le jeu et quitter
+    10. Aide
+ * \return Rien
+*/
 int main(){
   int choise;
+  perso_t player;
   item_t * Tab_Items = malloc(20 * sizeof(item_t));
+  int nb_items_available = 0;
   cell_t map[D][D];
 
   srand(time(NULL));

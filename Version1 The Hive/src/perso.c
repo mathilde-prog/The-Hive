@@ -4,6 +4,20 @@
 #include <time.h>
 #include "structure.h"
 
+/**
+ * \file perso.c
+ * \brief Fonctions relatives au joueur
+ * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
+ * \version 1.0
+ * \date 2020
+*/
+
+/**
+ * \fn void init_player(perso_t * player)
+ * \brief Initialise les paramètres du joueur quand il commence le jeu
+ * \param perso_t * player
+ * \return Rien
+*/
 /* init_player: initializes the player's settings when he starts the game */
 void init_player(perso_t * player){
   player->turns = 15;
@@ -31,6 +45,13 @@ void init_player(perso_t * player){
   */
 }
 
+/**
+ * \fn void display_player_characteristics(cell_t map[D][D], perso_t player)
+ * \brief Affiche les paramètres du joueur (points de vie, points d'énergie, points d'action, position sur la carte, nombre de tours restants)
+ * \param cell_t map[D][D]
+ * \param perso_t player
+ * \return Rien
+*/
 /* display_player_characteristics: displays the player parameters (pv,pe,pa,location,turns) */
 void display_player_characteristics(cell_t map[D][D], perso_t player){
   printf("================================== INFO JOUEUR =====================================\n");
