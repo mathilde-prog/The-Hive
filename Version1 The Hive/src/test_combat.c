@@ -4,8 +4,17 @@
 #include <time.h>
 #include "structure.h"
 
-void damage_calculator(){
-  printf("X damage dealt!\n");
+int damage_calculator(item_t * weapon, item_t * armor, int * hp, int distance){ // pass weapon and hp that must be affected to calculate damage
+  int damage;
+  if(rng(weapon->hitchance[distance-1])){
+    damage=weapon->attack[distance-1];
+    if(armor==NULL){
+      hp-=damage;
+      printf("Enemy attacked you with %s and dealt %d damage!\n", weapon->name, damage);
+    }else{
+      hp-=damage*(armor->defense);
+    }
+  }
 }
 
 
@@ -56,7 +65,7 @@ npc_t * init_npc(item_t * Tab_Items){
 void turn_npc(npc_t * enemy, stat_t * field){
 	field->coverB=0;
   field->distance=field->posB-field->posA;
-	if(enemy->weapon->name=="shotgun"){ // ===================== CHECK =====================
+	if(strcmp(enemy->weapon->name,"shotgun")){ // ===================== CHECK =====================
 			if(field->distance > 3){ // BEHAVIOUR OF NPC WHEN DISTANCE > 3
 				field->posB--;
         printf("Enemy is moving towards you!\n");
@@ -92,7 +101,7 @@ void turn_npc(npc_t * enemy, stat_t * field){
           damage_calculator();
         }
       }
-		}else if(enemy->weapon->name=="pistol"){ //
+		}else if(strcmp(enemy->weapon->name,"pistol")){ //
       if(field->distance > 3){ // BEHAVIOUR OF NPC WHEN DISTANCE > 3
 				field->posB--;
         printf("Enemy is moving towards you!\n");
@@ -152,8 +161,11 @@ void main(){
   stat_t * p_field;
   item_t * Tab_Items = malloc(20 * sizeof(item_t));
   int nb_items_available;
-  creation_tab_item(Tab_Items, &nb_items_available);
-  enemy=init_npc(Tab_Items);
-  turn_npc(&enemy, &p_field);
-  free(enemy);
+
+  for(int i=0; i<50; i++){
+    creation_tab_item(Tab_Items, &nb_items_available);
+    enemy=init_npc(Tab_Items);
+    turn_npc(enemy, p_field);
+    free(enemy);
+  }
 }
