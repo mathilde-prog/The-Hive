@@ -72,7 +72,10 @@ typedef enum {none,hand,body,head} equip_t; 	/* where the player may wear equipm
 typedef struct {
 	char name[20];       /**< Nom item */
 	type_t type;         /**< Type item */
- 	int attack; 				 /**< Valeur d'attaque */
+
+ 	int attack[3]; 				 /**< Valeur d'attaque */
+  int hitchance[3];      /**< A COMPLETER */
+
 	int defense; 				 /**< Valeur de défense */
 	equip_t equipable; 	 /**< Indicateur si le joueur peut s'équiper avec cet item et où */                        // indicates whether the player can equip himself with this item and where
 	int pc_nature; 			 /**< Pourcentage de chance de trouver cet item dans un hexagone de catégorie nature */    // percentage chance of finding this item in a nature hexagon
@@ -81,7 +84,7 @@ typedef struct {
 	int index; 					 /**< Position de l'item dans l'inventaire du joueur (-1 si absent) */
 } item_t;
 
-item_t * creer_item (char * chaine, type_t type, int attack, int defense, int equipable, int pc_nature, int pc_urban, int pc_military); //item.c
+item_t * creer_item (char * chaine, type_t type, int attack0, int attack1, int attack2, int hitchance0, int hitchance1, int hitchance2, int defense, int equipable, int pc_nature, int pc_urban, int pc_military); 
 int creation_tab_item(item_t * Tab_Items, int * nb_items); //items.c
 void display_item (item_t item); //items.c
 

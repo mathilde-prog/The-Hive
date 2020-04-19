@@ -27,7 +27,8 @@ void fish (perso_t * player, cell_t map[D][D]){
     if(item_in_inventory(*player, "fishing_rod") != -1){
       int chance = rng(30); // 30% de chance d'attraper un poisson
       if(chance){
-        item_t * fish = creer_item("fish",food,0,0,0,0,0,0);
+        item_t * fish = creer_item("fish",food,0,0,0,0,0,0,0,0,0,0,0);
+
 
         printf("Wow vous avez attrapé un poisson!\n");
 

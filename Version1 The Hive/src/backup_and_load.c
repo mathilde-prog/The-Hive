@@ -41,7 +41,7 @@ void save_inventory (perso_t player){
 
   FILE * fic = fopen("../txt/save_inventory.txt","w");
   for(i = 0; i < player.nb_items_inventory; i++){
-    fprintf(fic,"%s %d\n%d %d %d\n%d %d %d\n\n",player.inventory[i].name, player.inventory[i].type, player.inventory[i].attack, player.inventory[i].defense, player.inventory[i].equipable, player.inventory[i].pc_nature, player.inventory[i].pc_urban, player.inventory[i].pc_military);
+    fprintf(fic,"%s %d\n%d %d %d\n%d %d %d\n%d %d\n%d %d %d\n\n",player.inventory[i].name, player.inventory[i].type, player.inventory[i].attack[0], player.inventory[i].attack[1],player.inventory[i].attack[2], player.inventory[i].hitchance[0], player.inventory[i].hitchance[1],player.inventory[i].hitchance[2],player.inventory[i].defense, player.inventory[i].equipable, player.inventory[i].pc_nature, player.inventory[i].pc_urban, player.inventory[i].pc_military);
   }
   fclose(fic);
 }
@@ -180,11 +180,11 @@ int load_inventory (perso_t * player){
   FILE * fic = fopen("../txt/save_inventory.txt","r");
   player->nb_items_inventory = 0;
   if(fic){
-    fscanf(fic,"%s%d%d%d%d%d%d%d",player->inventory[player->nb_items_inventory].name, &player->inventory[player->nb_items_inventory].type, &player->inventory[player->nb_items_inventory].attack, &player->inventory[player->nb_items_inventory].defense, &player->inventory[player->nb_items_inventory].equipable, &player->inventory[player->nb_items_inventory].pc_nature, &player->inventory[player->nb_items_inventory].pc_urban, &player->inventory[player->nb_items_inventory].pc_military);
+    fscanf(fic,"%s%d%d%d%d%d%d%d%d%d%d%d%d",player->inventory[player->nb_items_inventory].name, &player->inventory[player->nb_items_inventory].type, &player->inventory[player->nb_items_inventory].attack[0], &player->inventory[player->nb_items_inventory].attack[1],&player->inventory[player->nb_items_inventory].attack[2], &player->inventory[player->nb_items_inventory].hitchance[0], &player->inventory[player->nb_items_inventory].hitchance[1],&player->inventory[player->nb_items_inventory].hitchance[2],&player->inventory[player->nb_items_inventory].defense, &player->inventory[player->nb_items_inventory].equipable, &player->inventory[player->nb_items_inventory].pc_nature, &player->inventory[player->nb_items_inventory].pc_urban, &player->inventory[player->nb_items_inventory].pc_military);
     while(!feof(fic)){
       player->inventory[player->nb_items_inventory].index = player->nb_items_inventory;
       (player->nb_items_inventory)++;
-      fscanf(fic,"%s%d%d%d%d%d%d%d",player->inventory[player->nb_items_inventory].name, &player->inventory[player->nb_items_inventory].type, &player->inventory[player->nb_items_inventory].attack, &player->inventory[player->nb_items_inventory].defense, &player->inventory[player->nb_items_inventory].equipable, &player->inventory[player->nb_items_inventory].pc_nature, &player->inventory[player->nb_items_inventory].pc_urban, &player->inventory[player->nb_items_inventory].pc_military);
+      fscanf(fic,"%s%d%d%d%d%d%d%d%d%d%d%d%d",player->inventory[player->nb_items_inventory].name, &player->inventory[player->nb_items_inventory].type, &player->inventory[player->nb_items_inventory].attack[0], &player->inventory[player->nb_items_inventory].attack[1],&player->inventory[player->nb_items_inventory].attack[2], &player->inventory[player->nb_items_inventory].hitchance[0], &player->inventory[player->nb_items_inventory].hitchance[1],&player->inventory[player->nb_items_inventory].hitchance[2],&player->inventory[player->nb_items_inventory].defense, &player->inventory[player->nb_items_inventory].equipable, &player->inventory[player->nb_items_inventory].pc_nature, &player->inventory[player->nb_items_inventory].pc_urban, &player->inventory[player->nb_items_inventory].pc_military);
     }
     fclose(fic);
     return 1;

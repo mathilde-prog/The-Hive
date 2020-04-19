@@ -17,11 +17,11 @@ int main(){
   printf("SUCCES allocation dynamique\n");
 
   if(creation_tab_item(Tab_Items, &nb_items_available)){
-    if(nb_items_available == 19){
+    if(nb_items_available == 18){
       printf("==> Tous les items ont bien été récupérés.\n");
     }
     else {
-      printf("==> 19 items étaient attendus. Or, on en a récupéré %d\n", nb_items_available);
+      printf("==> 18 items étaient attendus. Or, on en a récupéré %d\n", nb_items_available);
     }
     for(i = 0; i < nb_items_available; i++){
       display_item(Tab_Items[i]);

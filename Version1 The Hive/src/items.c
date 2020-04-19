@@ -15,11 +15,17 @@
 
 /************************************** CREATION + DISPLAY ITEMS (MATHILDE) **************************************/
 /**
- * \fn item_t * creer_item (char * chaine, type_t type, int attack, int defense, int equipable, int pc_nature, int pc_urban, int pc_military)
+ * \fn item_t * creer_item (char * chaine, type_t type, int attack0, int attack1, int attack2, int hitchance0, int hitchance1, int hitchance2, int defense, int equipable, int pc_nature, int pc_urban, int pc_military)
  * \brief Crée un item à partir des informations passées en paramètres
  * \param char * chaine
  * \param type_t type
- * \param int attack
+ * \param int attack0
+ * \param int attack1
+ * \param int attack2
+ * \param int attack3
+ * \param int hitchance0
+ * \param int hitchance1
+ * \param int hitchance2
  * \param int defense
  * \param int equipable
  * \param int pc_nature
@@ -27,12 +33,21 @@
  * \param int pc_military
  * \return Un pointeur sur l'item créé
 */
-item_t * creer_item (char * chaine, type_t type, int attack, int defense, int equipable, int pc_nature, int pc_urban, int pc_military){
+item_t * creer_item (char * chaine, type_t type, int attack0, int attack1, int attack2, int hitchance0, int hitchance1, int hitchance2, int defense, int equipable, int pc_nature, int pc_urban, int pc_military){
   item_t * item = malloc(sizeof(item_t));
+
 
   strcpy(item->name,chaine);
   item->type = type;
-  item->attack = attack;
+
+  item->attack[0] = attack0;
+  item->attack[1] = attack1;
+  item->attack[2] = attack2;
+
+  item->hitchance[0] = hitchance0;
+  item->hitchance[1] = hitchance1;
+  item->hitchance[2] = hitchance2;
+
   item->defense = defense;
   item->equipable = equipable;
   item->pc_nature = pc_nature;
@@ -60,10 +75,10 @@ int creation_tab_item(item_t * Tab_Items, int * nb_items){
   FILE * fichier = fopen("../txt/items.txt","r");
 
   if(fichier){
-    fscanf(fichier,"%s%d%d%d%d%d%d%d",Tab_Items[*nb_items].name, &Tab_Items[*nb_items].type, &Tab_Items[*nb_items].attack, &Tab_Items[*nb_items].defense, &Tab_Items[*nb_items].equipable, &Tab_Items[*nb_items].pc_nature, &Tab_Items[*nb_items].pc_urban, &Tab_Items[*nb_items].pc_military);
+    fscanf(fichier,"%s%d%d%d%d%d%d%d%d%d%d%d%d",Tab_Items[*nb_items].name, &Tab_Items[*nb_items].type, &Tab_Items[*nb_items].attack[0], &Tab_Items[*nb_items].attack[1],&Tab_Items[*nb_items].attack[2], &Tab_Items[*nb_items].hitchance[0], &Tab_Items[*nb_items].hitchance[1],&Tab_Items[*nb_items].hitchance[2],&Tab_Items[*nb_items].defense, &Tab_Items[*nb_items].equipable, &Tab_Items[*nb_items].pc_nature, &Tab_Items[*nb_items].pc_urban, &Tab_Items[*nb_items].pc_military);
     while(!feof(fichier)){
       Tab_Items[(*nb_items)++].index = -1;
-      fscanf(fichier,"%s%d%d%d%d%d%d%d",Tab_Items[*nb_items].name, &Tab_Items[*nb_items].type, &Tab_Items[*nb_items].attack, &Tab_Items[*nb_items].defense, &Tab_Items[*nb_items].equipable,  &Tab_Items[*nb_items].pc_nature, &Tab_Items[*nb_items].pc_urban, &Tab_Items[*nb_items].pc_military);
+      fscanf(fichier,"%s%d%d%d%d%d%d%d%d%d%d%d%d",Tab_Items[*nb_items].name, &Tab_Items[*nb_items].type, &Tab_Items[*nb_items].attack[0], &Tab_Items[*nb_items].attack[1],&Tab_Items[*nb_items].attack[2], &Tab_Items[*nb_items].hitchance[0], &Tab_Items[*nb_items].hitchance[1],&Tab_Items[*nb_items].hitchance[2],&Tab_Items[*nb_items].defense, &Tab_Items[*nb_items].equipable, &Tab_Items[*nb_items].pc_nature, &Tab_Items[*nb_items].pc_urban, &Tab_Items[*nb_items].pc_military);
     }
     fclose(fichier);
     return 1;
@@ -94,7 +109,8 @@ void display_item (item_t item){
 
   /* Displays attack value if the item is a weapon and defense value if the item is armor */
 	if(item.type == weapon){
-		printf("Attaque : %d\n",item.attack);
+		printf("Attaque : %d %d %d\n",item.attack[0], item.attack[1], item.attack[2]);
+    printf("Hitchance : %d %d %d\n", item.hitchance[0], item.hitchance[1], item.hitchance[2]);
 	}
 	else if(item.type == armor){
 		printf("Défense : %d\n",item.defense);
