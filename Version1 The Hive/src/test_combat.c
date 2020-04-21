@@ -43,7 +43,7 @@ void damage_calculator(item_t * weapon, item_t * armor, int * hp, int distance ,
 }
 
 
-npc_t * init_npc(item_t * Tab_Items){
+npc_t * init_npc(item_t * Tab_Items){ // everything ok
   npc_t * enemy;
   enemy = malloc(sizeof(npc_t));
   strcpy(enemy->name,"unknown enemy");;
@@ -89,32 +89,40 @@ npc_t * init_npc(item_t * Tab_Items){
 
 stat_t * init_field(){
 
-  stat_t * field=malloc(sizeof(stat_t));
-  field->posA=4;
+  stat_t * field;
+  field=malloc(sizeof(stat_t));
+  field->posA=2;
   field->posB=6;
   field->coverA=0;
   field->coverB=0;
-  field->distance=field->posB - field->posA;
+  field->distance=field->posB - field->posA -1;
   return field;
+}
+
+
+void show_field(stat_t * field){
+  printf("======FIELD======\nPosA: %d\nPosB: %d\nDistance: %d\n==============\n",field->posA, field->posB, field->distance);
 }
 
 void turn_npc(npc_t * enemy, stat_t * field, perso_t * player){
 	field->coverB=0;
   field->distance=field->posB-field->posA;
-  printf("Distance at the start of the turn: %d\n", field->distance);
 	if(strcmp(enemy->weapon->name,"shotgun")){ // ===================== CHECK =====================
 			if(field->distance > 3){ // BEHAVIOUR OF NPC WHEN DISTANCE > 3
 				field->posB-=1;
-        field->distance=field->posB - field->posA;
+        field->distance=field->posB - field->posA -1;
         printf("Enemy is moving towards you!\n");
+        show_field(field);
 			}else if(field->distance == 1){ // BEHAVIOUR OF NPC WHEN DISTANCE == 1
 				if(rng(60) || field->posB > 7){
 					field->posB+=1;
-          field->distance=field->posB - field->posA;
+          field->distance=field->posB - field->posA -1;
           printf("Enemy is moving away from you!\n");
+          show_field(field);
 				}else if(rng(30)){
 					field->coverB=1;
           printf("Enemy decided to take cover.\n");
+          show_field(field);
 				}else{
 					damage_calculator(enemy->weapon, player->body, &player->pv, field->distance, 1); // TO CODE
 				}
@@ -125,6 +133,7 @@ void turn_npc(npc_t * enemy, stat_t * field, perso_t * player){
           if(rng(50)){
             field->coverB=1;
             printf("Enemy decided to take cover.\n");
+            show_field(field);
           }else{
   					damage_calculator(enemy->weapon, player->body, &player->pv, field->distance, 1);
           }
@@ -132,11 +141,13 @@ void turn_npc(npc_t * enemy, stat_t * field, perso_t * player){
 			}else if(field->distance == 3){ // BEHAVIOUR OF NPC WHEN DISTANCE == 3
         if(rng(40)){
           field->posB-=1;
-          field->distance=field->posB - field->posA;
+          field->distance=field->posB - field->posA -1;
           printf("Enemy is moving towards you!\n");
+          show_field(field);
         }else if(rng(30)){
           field->coverB=1;
           printf("Enemy decided to take cover.\n");
+          show_field(field);
         }else{
 					damage_calculator(enemy->weapon, player->body, &player->pv, field->distance, 1);
         }
@@ -144,27 +155,32 @@ void turn_npc(npc_t * enemy, stat_t * field, perso_t * player){
 		}else if(strcmp(enemy->weapon->name,"pistol")){ //
       if(field->distance > 3){ // BEHAVIOUR OF NPC WHEN DISTANCE > 3
 				field->posB-=1;
-        field->distance=field->posB - field->posA;
+        field->distance=field->posB - field->posA -1;
         printf("Enemy is moving towards you!\n");
+        show_field(field);
 			}else if(field->distance == 1){ // BEHAVIOUR OF NPC WHEN DISTANCE == 1
 				if(rng(80) || field->posB > 7){
 					field->posB+=1;
-          field->distance=field->posB - field->posA;
+          field->distance=field->posB - field->posA -1;
           printf("Enemy is moving away from you!\n");
+          show_field(field);
 				}else if(rng(30)){
 					field->coverB=1;
           printf("Enemy decided to take cover.\n");
+          show_field(field);
 				}else{
 					damage_calculator(enemy->weapon, player->body, &player->pv, field->distance, 1);
 				}
 			}else if(field->distance == 2){ // BEHAVIOUR OF NPC WHEN DISTANCE == 3
         if(rng(40)){
           field->posB+=1;
-          field->distance=field->posB - field->posA;
+          field->distance=field->posB - field->posA -1;
           printf("Enemy is moving away from you!\n");
+          show_field(field);
         }else if(rng(30)){
           field->coverB=1;
           printf("Enemy decided to take cover.\n");
+          show_field(field);
         }else{
 					damage_calculator(enemy->weapon, player->body, &player->pv, field->distance, 1);
         }
@@ -175,6 +191,7 @@ void turn_npc(npc_t * enemy, stat_t * field, perso_t * player){
           if(rng(50)){
             field->coverB=1;
             printf("Enemy decided to take cover.\n");
+            show_field(field);
           }else{
   					damage_calculator(enemy->weapon, player->body, &player->pv, field->distance, 1);
           }
@@ -183,40 +200,41 @@ void turn_npc(npc_t * enemy, stat_t * field, perso_t * player){
     }else{
       if(field->distance > 1){ // BEHAVIOUR OF NPC WHEN DISTANCE > 1
 				field->posB-=1;
-        field->distance=field->posB - field->posA;
+        field->distance=field->posB - field->posA -1;
         printf("Enemy is moving towards you!\n");
+        show_field(field);
 			}else{
         if(enemy->pv > 50){
 					damage_calculator(enemy->weapon, player->body, &player->pv, field->distance, 1);
         }else{
           if(rng(50)){
-            printf("Enemy decided to take cover.\n");
             field->coverB=1;
+            printf("Enemy decided to take cover.\n");
+            show_field(field);
           }else{
   					damage_calculator(enemy->weapon, player->body, &player->pv, field->distance, 1);
           }
         }
       }
     }
-    printf("Distance at the end of the turn: %d\n", field->distance);
 	}
 
+
 void main(){
-  perso_t player;
-  player.body=NULL;
+  perso_t * player = malloc(sizeof(perso_t));
+  player->body=NULL;
   npc_t * enemy;
   stat_t * field;
   item_t * Tab_Items = malloc(20 * sizeof(item_t));
   int nb_items_available;
-  for(int i=0; i<50; i++){
     creation_tab_item(Tab_Items, &nb_items_available);
     field=init_field();
-    printf("======FIELD======\nPosA: %d\nPosB: %d\nDistance: %d\n==============\n",field->posA, field->posB, field->distance);
     enemy=init_npc(Tab_Items);
-    player.pv=100;
+    player->pv=100;
     printf("Enemy is armed with %s.\n", enemy->weapon->name);
-    turn_npc(&enemy, &field, &player);
+    for(int j=0; j<50;j++){
+      turn_npc(enemy, field, player);
+    }
     free(enemy);
     free(field);
-  }
 }
