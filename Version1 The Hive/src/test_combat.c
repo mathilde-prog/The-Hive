@@ -4,12 +4,12 @@
 #include <time.h>
 #include "structure.h"
 
-void damage_calculator(item_t * weapon, item_t * armor, int * hp, int distance , int scenario){ // welp, that's a damagae calculator
+void damage_calculator(item_t * weapon, item_t * armor, int * hp, int distance , int cover, int scenario){ // welp, that's a damagae calculator
   float damage;
   float armor_mod;
   printf("Distance for calculations (not supposed to be affected) is: %d\n", distance);
   if(scenario==1){
-    if(rng(weapon->hitchance[distance-1])){
+    if(rng(weapon->hitchance[distance-1]-(15*cover))){
       if(armor==NULL){
         printf("Damage of the weapon is: %d\n", weapon->attack[distance-1]);
         damage=weapon->attack[distance-1];
@@ -118,18 +118,18 @@ void turn_npc(npc_t * enemy, stat_t * field, perso_t * player){
           printf("Enemy decided to take cover.\n");
           show_field(field);
 				}else{
-					damage_calculator(enemy->weapon, player->body, &player->pv, field->distance, 1); // TO CODE
+					damage_calculator(enemy->weapon, player->body, &player->pv, field->distance, field->coverA, 1); // TO CODE
 				}
 			}else if(field->distance == 2){ // BEHAVIOUR OF NPC WHEN DISTANCE == 2
 				if(enemy->pv > 50){
-					damage_calculator(enemy->weapon, player->body, &player->pv, field->distance, 1);
+					damage_calculator(enemy->weapon, player->body, &player->pv, field->distance, field->coverA, 1);
         }else{
           if(rng(50)){
             field->coverB=1;
             printf("Enemy decided to take cover.\n");
             show_field(field);
           }else{
-  					damage_calculator(enemy->weapon, player->body, &player->pv, field->distance, 1);
+  					damage_calculator(enemy->weapon, player->body, &player->pv, field->distance, field->coverA, 1);
           }
         }
 			}else if(field->distance == 3){ // BEHAVIOUR OF NPC WHEN DISTANCE == 3
@@ -143,7 +143,7 @@ void turn_npc(npc_t * enemy, stat_t * field, perso_t * player){
           printf("Enemy decided to take cover.\n");
           show_field(field);
         }else{
-					damage_calculator(enemy->weapon, player->body, &player->pv, field->distance, 1);
+					damage_calculator(enemy->weapon, player->body, &player->pv, field->distance, field->coverA, 1);
         }
       }
 		}else if(strcmp(enemy->weapon->name,"pistol") == 0){ //
@@ -163,7 +163,7 @@ void turn_npc(npc_t * enemy, stat_t * field, perso_t * player){
           printf("Enemy decided to take cover.\n");
           show_field(field);
 				}else{
-					damage_calculator(enemy->weapon, player->body, &player->pv, field->distance, 1);
+					damage_calculator(enemy->weapon, player->body, &player->pv, field->distance, field->coverA, 1);
 				}
 			}else if(field->distance == 2){ // BEHAVIOUR OF NPC WHEN DISTANCE == 3
         if(rng(40)){
@@ -176,18 +176,18 @@ void turn_npc(npc_t * enemy, stat_t * field, perso_t * player){
           printf("Enemy decided to take cover.\n");
           show_field(field);
         }else{
-					damage_calculator(enemy->weapon, player->body, &player->pv, field->distance, 1);
+					damage_calculator(enemy->weapon, player->body, &player->pv, field->distance, field->coverA, 1);
         }
       }else if(field->distance == 3){ // BEHAVIOUR OF NPC WHEN DISTANCE == 2
 				if(enemy->pv > 50){
-					damage_calculator(enemy->weapon, player->body, &player->pv, field->distance, 1);
+					damage_calculator(enemy->weapon, player->body, &player->pv, field->distance, field->coverA, 1);
         }else{
           if(rng(50)){
             field->coverB=1;
             printf("Enemy decided to take cover.\n");
             show_field(field);
           }else{
-  					damage_calculator(enemy->weapon, player->body, &player->pv, field->distance, 1);
+  					damage_calculator(enemy->weapon, player->body, &player->pv, field->distance, field->coverA, 1);
           }
         }
 			}
@@ -204,7 +204,7 @@ void turn_npc(npc_t * enemy, stat_t * field, perso_t * player){
           show_field(field);
         }
       }
-      damage_calculator(enemy->weapon, player->body, &player->pv, field->distance, 1);
+      damage_calculator(enemy->weapon, player->body, &player->pv, field->distance, field->coverA, 1);
   }
 }
 
@@ -239,14 +239,14 @@ void combat(perso_t * player, npc_t * enemy, stat_t * field){
       scanf("%d", &choise);
       switch(choise){
         case 1: field->posA+=1; field->distance=(field->posB - field->posA) -1; printf("You successfully moved 1 unit closer to your enemy.\n"); break;
-        case 2: field->posB-=1; field->distance=(field->posB - field->posA) -1; printf("You successfully moved 1 unit away from your enemy.\n"); break;
+        case 2: field->posA-=1; field->distance=(field->posB - field->posA) -1; printf("You successfully moved 1 unit away from your enemy.\n"); break;
         case 3: field->coverA=1; printf("You managed to get to cover.\n"); break;
-        case 4: damage_calculator(player->left_hand, enemy->armor, &enemy->pv, field->distance, 2);
-        case 5: damage_calculator(player->right_hand, enemy->armor, &enemy->pv, field->distance, 2);
+        case 4: damage_calculator(player->left_hand, enemy->armor, &enemy->pv, field->distance, field->coverB, 2);
+        case 5: damage_calculator(player->right_hand, enemy->armor, &enemy->pv, field->distance, field->coverB, 2);
         case 6: run_away(field->posA, field->distance); break;
         default: printf("You sure you didn't missclick? Try again: \n"); goto checkpoint; break;
       }
-      turn_npc(enemy,field, &player);
+      turn_npc(enemy,field, player);
     }
   }else if(player->left_hand!=NULL && player->right_hand==NULL){
       printf("Your HP: %d                               Enemy HP: %d\nYour weapon: %s                      Enemy weapon: %s\n\n                              Distance: %d                  \n", player->pv, enemy->pv, player->left_hand->name, enemy->weapon->name, field->distance);
@@ -258,15 +258,15 @@ void combat(perso_t * player, npc_t * enemy, stat_t * field){
         scanf("%d", &choise);
         switch(choise){
           case 1: field->posA+=1; field->distance=(field->posB - field->posA) -1; printf("You successfully moved 1 unit closer to your enemy.\n"); break;
-          case 2: field->posB-=1; field->distance=(field->posB - field->posA) -1; printf("You successfully moved 1 unit away from your enemy.\n"); break;
+          case 2: field->posA-=1; field->distance=(field->posB - field->posA) -1; printf("You successfully moved 1 unit away from your enemy.\n"); break;
           case 3: field->coverA=1; printf("You managed to get to cover.\n"); break;
-          case 4: damage_calculator(player->left_hand, enemy->armor, &enemy->pv, field->distance, 2);
+          case 4: damage_calculator(player->left_hand, enemy->armor, &enemy->pv, field->distance, field->coverB, 2);
           case 5: run_away(field->posA, field->distance); break;
           default: printf("You sure you didn't missclick? Try again: \n"); goto checkpoint_1; break;
         }
-        turn_npc(enemy,field, &player);
+        turn_npc(enemy,field, player);
       }
-    }else{
+    }else if(player->left_hand==NULL && player->right_hand!=NULL){
       printf("Your HP: %d                               Enemy HP: %d\nYour weapon: %s                      Enemy weapon: %s\n\n                              Distance: %d                  \n", player->pv, enemy->pv, player->right_hand->name, enemy->weapon->name, field->distance);
       while(player->pv>1 && enemy->pv>1){
         field->coverA=0;
@@ -276,17 +276,19 @@ void combat(perso_t * player, npc_t * enemy, stat_t * field){
         scanf("%d", &choise);
         switch(choise){
           case 1: field->posA+=1; field->distance=(field->posB - field->posA) -1; printf("You successfully moved 1 unit closer to your enemy.\n"); break;
-          case 2: field->posB-=1; field->distance=(field->posB - field->posA) -1; printf("You successfully moved 1 unit away from your enemy.\n"); break;
+          case 2: field->posA-=1; field->distance=(field->posB - field->posA) -1; printf("You successfully moved 1 unit away from your enemy.\n"); break;
           case 3: field->coverA=1; printf("You managed to get to cover.\n"); break;
-          case 4: damage_calculator(player->right_hand, enemy->armor, &enemy->pv, field->distance, 2);
+          case 4: damage_calculator(player->right_hand, enemy->armor, &enemy->pv, field->distance, field->coverB, 2);
           case 6: run_away(field->posA, field->distance); break;
           default: printf("You sure you didn't missclick? Try again: \n"); goto checkpoint_2; break;
         }
-        turn_npc(enemy,field, &player);
+        turn_npc(enemy,field, player);
       }
+    }else{
+      printf("You dont seem to have a weapon, you better just run away pal.\n");
+      exit(0);
     }
   }
-}
 
 void main(){
   srand(time(NULL));
