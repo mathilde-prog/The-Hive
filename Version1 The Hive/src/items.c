@@ -26,14 +26,14 @@
  * \param int hitchance0
  * \param int hitchance1
  * \param int hitchance2
- * \param int defense
+ * \param float defense
  * \param int equipable
  * \param int pc_nature
  * \param int pc_urban
  * \param int pc_military
  * \return Un pointeur sur l'item créé
 */
-item_t * creer_item (char * chaine, type_t type, int attack0, int attack1, int attack2, int hitchance0, int hitchance1, int hitchance2, int defense, int equipable, int pc_nature, int pc_urban, int pc_military){
+item_t * creer_item (char * chaine, type_t type, int attack0, int attack1, int attack2, int hitchance0, int hitchance1, int hitchance2, float defense, int equipable, int pc_nature, int pc_urban, int pc_military){
   item_t * item = malloc(sizeof(item_t));
 
 
@@ -113,7 +113,7 @@ void display_item (item_t item){
     printf("Hitchance : %d %d %d\n", item.hitchance[0], item.hitchance[1], item.hitchance[2]);
 	}
 	else if(item.type == armor){
-		printf("Défense : %d\n",item.defense);
+		printf("Défense : %f\n",item.defense);
 	}
 
   switch(item.equipable){

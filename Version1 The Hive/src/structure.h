@@ -84,7 +84,7 @@ typedef struct {
 	int index; 					 /**< Position de l'item dans l'inventaire du joueur (-1 si absent) */
 } item_t;
 
-item_t * creer_item (char * chaine, type_t type, int attack0, int attack1, int attack2, int hitchance0, int hitchance1, int hitchance2, int defense, int equipable, int pc_nature, int pc_urban, int pc_military);
+item_t * creer_item (char * chaine, type_t type, int attack0, int attack1, int attack2, int hitchance0, int hitchance1, int hitchance2, float defense, int equipable, int pc_nature, int pc_urban, int pc_military);
 int creation_tab_item(item_t * Tab_Items, int * nb_items); //items.c
 void display_item (item_t item); //items.c
 
