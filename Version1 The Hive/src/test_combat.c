@@ -50,34 +50,32 @@ npc_t * init_npc(item_t * Tab_Items){ // everything ok
   enemy->weapon=NULL;
   enemy->armor=NULL;
   enemy->pv=0;
-  if(rng(80)){ // 70% de chance que le joueur tombe sur un maraudeur
-    strcpy(enemy->name,"maraudeur");
-    if(rng(65)){ // 65% de chance que ce marodeur soit de classe "leger"
-      enemy->pv=40;
-      enemy->armor=NULL;
-      if(rng(70)){
-        enemy->weapon=&Tab_Items[5]; // BASEBALL BAT
-      }else{
-        enemy->weapon=&Tab_Items[3]; // KNIFE
-      }
-    }else if(rng(30)){ // 30% de chance que ce marodeur soit de classe "moyen"
-      enemy->pv=80;
-      if(rng(30)){
-        enemy->weapon=&Tab_Items[0]; // PISTOL
-      }else{
-        enemy->weapon=&Tab_Items[5]; // BASEBALL BAT
-        enemy->armor=&Tab_Items[6]; // BULLETPROOF WEST
-      }
-    }else{ // 5% de chance que cec marodeur soit de classe "lourd"
-      enemy->pv=120;
-      enemy->armor=&Tab_Items[6]; // VEST
-      if(rng(5)){
-        enemy->weapon=&Tab_Items[2]; // SHOTweapon;
-      }else if(rng(40)){
-        enemy->weapon=&Tab_Items[0]; // PISTOL
-      }else{
-        enemy->weapon=&Tab_Items[5]; // BASEBALL BAT
-      }
+  strcpy(enemy->name,"maraudeur");
+  if(rng(65)){ // 65% de chance que ce marodeur soit de classe "leger"
+    enemy->pv=40;
+    enemy->armor=NULL;
+    if(rng(70)){
+      enemy->weapon=&Tab_Items[5]; // BASEBALL BAT
+    }else{
+      enemy->weapon=&Tab_Items[3]; // KNIFE
+    }
+  }else if(rng(30)){ // 30% de chance que ce marodeur soit de classe "moyen"
+    enemy->pv=80;
+    if(rng(30)){
+      enemy->weapon=&Tab_Items[0]; // PISTOL
+    }else{
+      enemy->weapon=&Tab_Items[5]; // BASEBALL BAT
+      enemy->armor=&Tab_Items[6]; // BULLETPROOF WEST
+    }
+  }else{ // 5% de chance que cec marodeur soit de classe "lourd"
+    enemy->pv=120;
+    enemy->armor=&Tab_Items[6]; // VEST
+    if(rng(5)){
+      enemy->weapon=&Tab_Items[2]; // SHOTGUN;
+    }else if(rng(40)){
+      enemy->weapon=&Tab_Items[0]; // PISTOL
+    }else{
+      enemy->weapon=&Tab_Items[5]; // BASEBALL BAT
     }
   }
   return enemy;
@@ -232,7 +230,7 @@ void combat(perso_t * player, npc_t * enemy, stat_t * field){
   int choise=9;
   printf("Your turn.\n");
   if(player->left_hand!=NULL && player->left_hand!=NULL){
-    printf("Your HP: %d                               Enemy HP: %d\nWeapon in your left hand: %s                      Enemy weapon: %s\nWeapon in your right hand: %s\n\n                                Distance: %d                  \n",player->pv, enemy->pv, player->left_hand->name, player->right_hand->name, enemy->weapon->name, field->distance);
+    printf("Your HP: %d                               Enemy HP: %d\nWeapon in your left hand: %s                      Weapon in your right hand: %s\nEnemy weapon: %s\n\n                                Distance: %d                  \n",player->pv, enemy->pv, player->left_hand->name, player->right_hand->name, enemy->weapon->name, field->distance);
     while(player->pv>1 && enemy->pv>1){
       field->coverA=0;
       printf("1. Get closer.\n2. Move away.\n3. Get in cover.\n4. Attack with a weapon in your left hand.\n5. Attack with a weapon in your right hand.\n5. Try to run away.\n");
@@ -250,8 +248,7 @@ void combat(perso_t * player, npc_t * enemy, stat_t * field){
       }
       turn_npc(enemy,field, &player);
     }
-  }else{
-    if(player->left_hand!=NULL && player->right_hand==NULL){
+  }else if(player->left_hand!=NULL && player->right_hand==NULL){
       printf("Your HP: %d                               Enemy HP: %d\nYour weapon: %s                      Enemy weapon: %s\n\n                              Distance: %d                  \n", player->pv, enemy->pv, player->left_hand->name, enemy->weapon->name, field->distance);
       while(player->pv>1 && enemy->pv>1){
         field->coverA=0;
@@ -306,6 +303,7 @@ void main(){
   player.left_hand=&Tab_Items[0];
   player.right_hand=&Tab_Items[0];
   player.head=NULL;
+  printf("======== SOME INFO ============\nEnemy hp: %d\nEnemy weapon: %s\nEnemy armor: %s\n=============================\n",enemy->pv, enemy->weapon->name, enemy->armor->name);
   combat(&player, enemy, field);
   free(enemy);
   free(field);
