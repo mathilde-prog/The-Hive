@@ -9,6 +9,7 @@
 /************************************* MAP *************************************/
 #define ITEMS_MAX 5 /**< ITEMS_MAX représente le nombre maximum d'items générés sur un hexagone de la carte */
 #define D 15 				/**< D représente la dimension de la carte */
+#define PT 3 /**< PT (pause time) represente le temps (en secondes) que le texte d'action soit affiche */
 
 /**
   * \enum hex_t
