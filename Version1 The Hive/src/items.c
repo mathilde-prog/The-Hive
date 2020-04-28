@@ -60,31 +60,31 @@ item_t * creer_item (char * chaine, type_t type, int attack0, int attack1, int a
 
 /**
  * \fn int creation_tab_item(item_t * Tab_Items, int * nb_items)
- * \brief Récupère les items du fichier 'items.txt' et les stocke dans le tableau passé en paramètres.
- * \details Affiche un message d'erreur si fichier 'items.txt' non trouvé
+ * \brief Récupère les items du fichier 'items.csv' et les stocke dans le tableau passé en paramètres.
+ * \details Affiche un message d'erreur si fichier 'items.csv' non trouvé
  * \param char * Tab_Items
  * \param int * nb_items
  * \return Un \a int : 1 si création des items réalisée avec succès. 0 sinon.
 */
-/* creation_tab_item: retrieves items from the file 'items.txt' and stores them in a table passed in parameters
-                      displays error message if file 'items.txt' not found
+/* creation_tab_item: retrieves items from the file 'items.csv' and stores them in a table passed in parameters
+                      displays error message if file 'items.csv' not found
                       returns whether the creation of the items has been successfully completed (0 or 1)
 */
 int creation_tab_item(item_t * Tab_Items, int * nb_items){
   * nb_items = 0;
-  FILE * fichier = fopen("../txt/items.txt","r");
+  FILE * fichier = fopen("../data/items.csv","r");
 
   if(fichier){
-    fscanf(fichier,"%s%d%d%d%d%d%d%d%f%d%d%d%d",Tab_Items[*nb_items].name, &Tab_Items[*nb_items].type, &Tab_Items[*nb_items].attack[0], &Tab_Items[*nb_items].attack[1],&Tab_Items[*nb_items].attack[2], &Tab_Items[*nb_items].hitchance[0], &Tab_Items[*nb_items].hitchance[1],&Tab_Items[*nb_items].hitchance[2],&Tab_Items[*nb_items].defense, &Tab_Items[*nb_items].equipable, &Tab_Items[*nb_items].pc_nature, &Tab_Items[*nb_items].pc_urban, &Tab_Items[*nb_items].pc_military);
+    fscanf(fichier,"%d;%d;%d;%d;%d;%d;%d;%f;%d;%d;%d;%d;%[^\n]", &Tab_Items[*nb_items].type, &Tab_Items[*nb_items].attack[0], &Tab_Items[*nb_items].attack[1],&Tab_Items[*nb_items].attack[2], &Tab_Items[*nb_items].hitchance[0], &Tab_Items[*nb_items].hitchance[1],&Tab_Items[*nb_items].hitchance[2],&Tab_Items[*nb_items].defense, &Tab_Items[*nb_items].equipable, &Tab_Items[*nb_items].pc_nature, &Tab_Items[*nb_items].pc_urban, &Tab_Items[*nb_items].pc_military, Tab_Items[*nb_items].name);
     while(!feof(fichier)){
       Tab_Items[(*nb_items)++].index = -1;
-      fscanf(fichier,"%s%d%d%d%d%d%d%d%f%d%d%d%d",Tab_Items[*nb_items].name, &Tab_Items[*nb_items].type, &Tab_Items[*nb_items].attack[0], &Tab_Items[*nb_items].attack[1],&Tab_Items[*nb_items].attack[2], &Tab_Items[*nb_items].hitchance[0], &Tab_Items[*nb_items].hitchance[1],&Tab_Items[*nb_items].hitchance[2],&Tab_Items[*nb_items].defense, &Tab_Items[*nb_items].equipable, &Tab_Items[*nb_items].pc_nature, &Tab_Items[*nb_items].pc_urban, &Tab_Items[*nb_items].pc_military);
+      fscanf(fichier,"%d;%d;%d;%d;%d;%d;%d;%f;%d;%d;%d;%d;%[^\n]", &Tab_Items[*nb_items].type, &Tab_Items[*nb_items].attack[0], &Tab_Items[*nb_items].attack[1],&Tab_Items[*nb_items].attack[2], &Tab_Items[*nb_items].hitchance[0], &Tab_Items[*nb_items].hitchance[1],&Tab_Items[*nb_items].hitchance[2],&Tab_Items[*nb_items].defense, &Tab_Items[*nb_items].equipable, &Tab_Items[*nb_items].pc_nature, &Tab_Items[*nb_items].pc_urban, &Tab_Items[*nb_items].pc_military, Tab_Items[*nb_items].name);
     }
     fclose(fichier);
     return 1;
   }
   else {
-    printf("Le fichier 'items.txt' est introuvable. Impossible de récupérer les items pour jouer.\n");
+    printf("Le fichier 'items.csv' est introuvable. Impossible de récupérer les items pour jouer.\n");
     return 0;
   }
 }

@@ -3,6 +3,55 @@
 #include <time.h>
 #include "structure.h"
 
+void details(cell_t map[D][D]){
+  int l, c;
+
+  printf("TYPE : \n");
+  for(l = 0; l < D; l++){
+    for(c = 0; c < D; c++){
+      printf("%2d ", map[l][c].type);
+    }
+    printf("\n");
+  }
+  printf("\n\n");
+
+  printf("CATEG : \n");
+  for(l = 0; l < D; l++){
+    for(c = 0; c < D; c++){
+      printf("%2d ", map[l][c].categ);
+    }
+    printf("\n");
+  }
+  printf("\n\n");
+
+  printf("ENCOUNTER : \n");
+  for(l = 0; l < D; l++){
+    for(c = 0; c < D; c++){
+      printf("%2d ", map[l][c].encounter);
+    }
+    printf("\n");
+  }
+  printf("\n\n");
+
+  printf("QUEST ID : \n");
+  for(l = 0; l < D; l++){
+    for(c = 0; c < D; c++){
+      printf("%2d ", map[l][c].quest_id);
+    }
+    printf("\n");
+  }
+  printf("\n\n");
+
+  printf("SCAVENGED : \n");
+  for(l = 0; l < D; l++){
+    for(c = 0; c < D; c++){
+      printf("%2d ", map[l][c].scavenged);
+    }
+    printf("\n");
+  }
+  printf("\n\n");
+}
+
 int main(){
   srand(time(NULL));
   int nb;
@@ -49,14 +98,15 @@ int main(){
         printf("2. Afficher l'inventaire\n");
         printf("3. Afficher l'équipement\n");
         printf("4. Afficher la carte\n");
+        printf("5. Détails carte\n");
         printf("Quitter -1\n");
         do {
           printf("N°");
           scanf("%d",&nb);
-          if((nb != -1) && (nb < 1 || nb > 4)){
+          if((nb != -1) && (nb < 1 || nb > 5)){
             printf("Valeur incorrecte. Veuillez ressaisir\n");
           }
-        } while ((nb != -1) && (nb < 1 || nb > 4));
+        } while ((nb != -1) && (nb < 1 || nb > 5));
 
         if(nb != -1){
           switch(nb){
@@ -67,6 +117,7 @@ int main(){
                     count(map);
                     printf("\n");
                     break;
+            case 5: details(map); break;
             default: break;
           }
         }

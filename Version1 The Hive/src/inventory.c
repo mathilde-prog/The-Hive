@@ -300,7 +300,7 @@ void manage_inventory(perso_t * player){
 	else {
 		do {
 			display_inventory(*player);
-			ind_mk = item_in_inventory(*player,"medical_kit");
+			ind_mk = item_in_inventory(*player,"medical kit");
 			mk = (ind_mk != -1) ? 4 : 3;
 
 			if(player->nb_items_inventory){

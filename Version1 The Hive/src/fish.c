@@ -24,7 +24,7 @@ void fish (perso_t * player, cell_t map[D][D]){
   int rep;
 
   if((map[player->posX][player->posY].type == lac) || (map[player->posX][player->posY].type == mer)){
-    if(item_in_inventory(*player, "fishing_rod") != -1){
+    if(item_in_inventory(*player, "fishing rod") != -1){
       int chance = rng(30); // 30% de chance d'attraper un poisson
       if(chance){
         item_t * fish = creer_item("fish",food,0,0,0,0,0,0,0,0,0,0,0);
@@ -56,7 +56,7 @@ void fish (perso_t * player, cell_t map[D][D]){
     }
   }
   else {
-		if(item_in_inventory(*player, "fishing_rod") != -1){
+		if(item_in_inventory(*player, "fishing rod") != -1){
 			printf("Vous ne pouvez pas utiliser votre canne à pêche ici...\n");
 		}
 		else {

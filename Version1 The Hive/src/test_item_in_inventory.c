@@ -18,22 +18,22 @@ int main(){
 
   check_the_map(player,map);
 
-  item_t * fishing_rod = creer_item("fishing_rod",misc,0,0,0,0,0,0,0,0,0,0,0);
+  item_t * fishing_rod = creer_item("fishing rod",misc,0,0,0,0,0,0,0,0,0,0,0);
   item_t * map_item = creer_item("map",misc,0,0,0,0,0,0,0,0,0,0,0);
-  item_t * medical_kit = creer_item("medical_kit",misc,0,0,0,0,0,0,0,0,0,0,0);
+  item_t * medical_kit = creer_item("medical kit",misc,0,0,0,0,0,0,0,0,0,0,0);
 
   printf("TEST map : \n");
   (item_in_inventory(player,"map") == -1) ? printf("Test OK\n") : printf("Test KO\n");
   add_item_to_inventory(&player,*map_item);
   (item_in_inventory(player,"map") != -1) ? printf("Test OK\n\n") : printf("Test KO\n\n");
 
-  printf("TEST fishing_rod : \n");
-  (item_in_inventory(player,"fishing_rod") == -1) ? printf("Test OK\n") : printf("Test KO\n");
+  printf("TEST fishing rod : \n");
+  (item_in_inventory(player,"fishing rod") == -1) ? printf("Test OK\n") : printf("Test KO\n");
   add_item_to_inventory(&player,*fishing_rod);
-  item_in_inventory(player,"fishing_rod") != -1 ? printf("Test OK\n\n") : printf("Test KO\n\n");
+  item_in_inventory(player,"fishing rod") != -1 ? printf("Test OK\n\n") : printf("Test KO\n\n");
 
-  printf("TEST medical_kit : \n");
-  (item_in_inventory(player,"medical_kit") == -1) ? printf("Test OK\n") : printf("Test KO\n");
+  printf("TEST medical kit : \n");
+  (item_in_inventory(player,"medical kit") == -1) ? printf("Test OK\n") : printf("Test KO\n");
   add_item_to_inventory(&player,*medical_kit);
   (item_in_inventory(player,"map") != -1) ? printf("Test OK\n") : printf("Test KO\n");
 

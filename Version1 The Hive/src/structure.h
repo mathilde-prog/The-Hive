@@ -223,17 +223,17 @@ void help(perso_t * player); //exit_help.c
 	* \brief Structure de suivi des quetes
 */
 typedef struct{
-  int soin;     /**< Indicateur pour savoir si le joueur a aider l'homme blessé : quete "soin" */
+  int soin;          /**< Indicateur pour savoir si le joueur a aider l'homme blessé : quete "soin" */
   int recherche;     /**< Indicateur pour savoir si le joueur actuellement dans la quete "recheche" */
 }quete_t;
 
 
-int quetes(perso_t * player, cell_t map[D][D]);              //quetes.c
+int quetes(perso_t * player, cell_t map[D][D]);             //quetes.c
 int quete_montagne(perso_t * player);                       //quetes.c
 int quete_frontiere(perso_t * player, quete_t * quete);     //quetes.c
 int quete_bunker(perso_t * player);                         //quetes.c
 
-npc_t * init_npc(item_t * Tab_Items, int pers);                                                 //quete_soin.c
+npc_t * init_npc_quete(item_t * Tab_Items, int pers);                                                 //quete_soin.c
 int ajout_item_blesse(perso_t * player, npc_t * homme, int item);                               //quete_soin.c
 int ajout_pass_card(perso_t * player, item_t * pass_card);                                      //quete_soin.c
 int menu_choix_ajout_item(perso_t * player, item_t * pass_card, npc_t * homme);                 //quete_soin.c

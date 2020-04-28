@@ -50,20 +50,20 @@ void eat_or_drink (perso_t * player, item_t item){
     else if(!strcmp(item.name,"fish")){
       gain_energie(player,15);
     }
-    else if (!strcmp(item.name,"can_food")){
+    else if (!strcmp(item.name,"can food")){
       gain_energie(player,50);
     }
     else if (!strcmp(item.name,"soda")){
       gain_energie(player,12);
     }
-    else if(!strcmp(item.name,"energy_drink")){
+    else if(!strcmp(item.name,"energy drink")){
       if(player->pa < 5){
         player->pa++;
         printf("Vous gagnez 1 point d'action.\n");
       }
       gain_energie(player,20);
     }
-    else if(!strcmp(item.name,"bottle_water")){
+    else if(!strcmp(item.name,"bottle water")){
       gain_energie(player,10);
     }
     delete_item_in_inventory(player, item);

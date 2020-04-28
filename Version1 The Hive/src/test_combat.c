@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <unistd.h>
 #include "structure.h"
 
 void damage_calculator(item_t * weapon, item_t * armor, int * hp, int distance , int cover, int scenario){ // welp, that's a damagae calculator
@@ -228,19 +229,15 @@ void run_away(int position, int distance){
 }
 
 void combat_info(int print_type, perso_t * player, npc_t * enemy, stat_t * field){
+  printf("Your HP : %d                                                      %d : Enemy HP\nLeft hand: %s\nRight hand: %s\nEnemy weapon: %s\n\n                                Distance: %d                  \n",player->pv, enemy->pv, player->left_hand->name, player->right_hand->name, enemy->weapon->name, field->distance);
+
   if(print_type==1){
-    printf("Your HP : %d                                                      %d : Enemy HP\nLeft hand: %s\nRight hand: %s\nEnemy weapon: %s\n\n                                Distance: %d                  \n",player->pv, enemy->pv, player->left_hand->name, player->right_hand->name, enemy->weapon->name, field->distance);
     printf("1. Get closer.\n2. Move away.\n3. Get in cover.\n4. Attack with a weapon in your left hand.\n5. Attack with a weapon in your right hand.\n5. Try to run away.\n");
-    printf("Your choise: ");
-  }else if(print_type==2){
-    printf("Your HP : %d                                                      %d : Enemy HP\nLeft hand: %s\nRight hand: %s\nEnemy weapon: %s\n\n                                Distance: %d                  \n",player->pv, enemy->pv, player->left_hand->name, player->right_hand->name, enemy->weapon->name, field->distance);
+  }else if((print_type==2) || (print_type==3)){
     printf("1. Get closer.\n2. Move away.\n3. Get in cover.\n4. Attack with your weapon.\n5. Try to run away.\n");
-    printf("Your choise: ");
-  }else if(print_type==3){
-    printf("Your HP : %d                                                      %d : Enemy HP\nLeft hand: %s\nRight hand: %s\nEnemy weapon: %s\n\n                                Distance: %d                  \n",player->pv, enemy->pv, player->left_hand->name, player->right_hand->name, enemy->weapon->name, field->distance);
-    printf("1. Get closer.\n2. Move away.\n3. Get in cover.\n4. Attack with your weapon.\n5. Try to run away.\n");
-    printf("Your choise: ");
   }
+
+  printf("Your choise: ");
 }
 
 void combat(perso_t * player, npc_t * enemy, stat_t * field){
@@ -329,7 +326,7 @@ void combat(perso_t * player, npc_t * enemy, stat_t * field){
   }
 }
 
-void main(){
+int main(){
   srand(time(NULL));
   perso_t player;
   npc_t * enemy;
