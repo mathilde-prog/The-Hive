@@ -215,3 +215,35 @@ int init_or_load_game (perso_t * player, cell_t map[D][D]); //backup_and_load.c
 int exit_game();             //exit_help.c
 void help(perso_t * player); //exit_help.c
 /***************************************************************************************/
+
+
+/************************************* QUETES *************************************/
+/**
+	* \struct quete_t
+	* \brief Structure de suivi des quetes
+*/
+typedef struct{
+  int soin;     /**< Indicateur pour savoir si le joueur a aider l'homme blessé : quete "soin" */
+  int recherche;     /**< Indicateur pour savoir si le joueur actuellement dans la quete "recheche" */
+}quete_t;
+
+
+int quetes(perso_t * player, cell_t map[D][D]);              //quetes.c
+int quete_montagne(perso_t * player);                       //quetes.c
+int quete_frontiere(perso_t * player, quete_t * quete);     //quetes.c
+int quete_bunker(perso_t * player);                         //quetes.c
+
+npc_t * init_npc(item_t * Tab_Items, int pers);                                                 //quete_soin.c
+int ajout_item_blesse(perso_t * player, npc_t * homme, int item);                               //quete_soin.c
+int ajout_pass_card(perso_t * player, item_t * pass_card);                                      //quete_soin.c
+int menu_choix_ajout_item(perso_t * player, item_t * pass_card, npc_t * homme);                 //quete_soin.c
+int recup_1item_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t * pass_card);    //quete_soin.c
+int recup_2items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t * pass_card);   //quete_soin.c
+int recup_3items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t * pass_card);   //quete_soin.c
+int quete_soin(perso_t * player, quete_t * quete);                                              //quete_soin.c
+/***************************************************************************************/
+
+/************************************* EXIT & HELP *************************************/
+int exit_game();             //exit_help.c
+void help(perso_t * player); //exit_help.c
+/***************************************************************************************/
