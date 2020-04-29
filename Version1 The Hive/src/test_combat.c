@@ -106,13 +106,13 @@ void turn_npc(npc_t * enemy, stat_t * field, perso_t * player){
 			if(field->distance > 3){ // BEHAVIOUR OF NPC WHEN DISTANCE > 3
 				field->posB-=1;
         field->distance=(field->posB - field->posA) -1;
-        printf("Enemy is moving towards you!\n");
+        printf("Enemy is moving towards you!\nThe distance between you is now %d units.\n", field->distance);
         show_field(field);
 			}else if(field->distance == 1){ // BEHAVIOUR OF NPC WHEN DISTANCE == 1
 				if(rng(60) && field->posB > 7){
 					field->posB+=1;
           field->distance=(field->posB - field->posA) -1;
-          printf("Enemy is moving away from you!\n");
+          printf("Enemy is moving away from you!\nThe distance between you is now %d units.\n", field->distance);
           show_field(field);
 				}else if(rng(30)){
 					field->coverB=1;
@@ -127,7 +127,7 @@ void turn_npc(npc_t * enemy, stat_t * field, perso_t * player){
         }else{
           if(rng(50)){
             field->coverB=1;
-            printf("Enemy decided to take cover.\n");
+            printf("Enemy decided to take cover.\nThe distance between you is now %d units.\n", field->distance);
             show_field(field);
           }else{
   					damage_calculator(enemy->weapon, player->body, &player->pv, field->distance, field->coverA, 1);
@@ -137,7 +137,7 @@ void turn_npc(npc_t * enemy, stat_t * field, perso_t * player){
         if(rng(40)){
           field->posB-=1;
           field->distance=(field->posB - field->posA) -1;
-          printf("Enemy is moving towards you!\n");
+          printf("Enemy is moving towards you!\nThe distance between you is now %d units.\n", field->distance);
           show_field(field);
         }else if(rng(30)){
           field->coverB=1;
@@ -151,15 +151,14 @@ void turn_npc(npc_t * enemy, stat_t * field, perso_t * player){
       if(field->distance > 3){ // BEHAVIOUR OF NPC WHEN DISTANCE > 3
 				field->posB-=1;
         field->distance=(field->posB - field->posA) -1;
-        printf("Enemy is moving towards you!\n");
+        printf("Enemy is moving towards you!\nThe distance between you is now %d units.\n", field->distance);
         show_field(field);
 			}else if(field->distance == 1){ // BEHAVIOUR OF NPC WHEN DISTANCE == 1
 				if(rng(80) || field->posB < 7){
 					field->posB+=1;
           field->distance=(field->posB - field->posA) -1;
-          printf("Enemy is moving away from you!\n");
-          show_field(field);
-				}else if(rng(30)){
+          printf("Enemy is moving away from you!\nThe distance between you is now %d units.\n", field->distance);
+        }else if(rng(30)){
 					field->coverB=1;
           printf("Enemy decided to take cover.\n");
           show_field(field);
@@ -170,7 +169,7 @@ void turn_npc(npc_t * enemy, stat_t * field, perso_t * player){
         if(rng(40)){
           field->posB+=1;
           field->distance=(field->posB - field->posA) -1;
-          printf("Enemy is moving away from you!\n");
+          printf("Enemy is moving away from you!\nThe distance between you is now %d units.\n", field->distance);
           show_field(field);
         }else if(rng(30)){
           field->coverB=1;
@@ -197,7 +196,7 @@ void turn_npc(npc_t * enemy, stat_t * field, perso_t * player){
         if(rng(80)){
           field->posB-=1;
           field->distance=(field->posB - field->posA) -1;
-          printf("Enemy is moving towards you!\n");
+          printf("Enemy is moving towards you!\nThe distance between you is now %d units.\n", field->distance);
           show_field(field);
         }else{
           field->coverB=1;
@@ -210,22 +209,27 @@ void turn_npc(npc_t * enemy, stat_t * field, perso_t * player){
   }
 }
 
-void run_away(int position, int distance){
+int run_away(int position, int distance){
   if(position!=1){
     if(rng(20*distance)){
+      sleep(PT);
       printf("You  managed to run away.\n");
-      exit(0); // TO REPLACE
+      return 3; // TO REPLACE
     }else{
       printf("You tried to run away but failed.\n");
+      sleep(PT);
     }
   }else{
     if(rng(40*distance)){
       printf("You  managed to run away.\n");
-      exit(0); // TO REPLACE
+      sleep(PT);
+      return 3; // TO REPLACE
     }else{
       printf("You tried to run away but failed.\n");
+      sleep(PT);
     }
   }
+  return 0;
 }
 
 void combat_info(int print_type, perso_t * player, npc_t * enemy, stat_t * field){
@@ -311,8 +315,12 @@ void combat(perso_t * player, npc_t * enemy, stat_t * field){
         damage_calculator(player->right_hand, enemy->armor, &enemy->pv, field->distance, field->coverB, 2);
         sleep(PT);
       }else{
+        clrscr();
         run_away(field->posA, field->distance);
+        sleep(PT);
       }
+    }else if(choise==6 && player->left_hand!=NULL && player->left_hand!=NULL){
+      run_away(field->posA, field->distance);
     }else{
       clrscr();
       printf("Unknown command. Try again.\n");
@@ -345,4 +353,8 @@ int main(){
   combat(&player, enemy, field);
   free(enemy);
   free(field);
+  free(Tab_Items);
+  enemy=NULL;
+  field=NULL;
+  Tab_Items=NULL;
 }

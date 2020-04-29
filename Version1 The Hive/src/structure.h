@@ -30,6 +30,7 @@ typedef enum {other,nature,urbain,militaire} categ_hexa; // other : camp_ban + f
 typedef struct {
   hex_t type;         /**< Type hexagone*/
   int encounter;      /**< Indicateur de rencontre sur cet hexagone */
+  int quest_id;
   categ_hexa categ;   /**< Catégorie hexagone */
   int scavenged;      /**< Indicateur si le joueur a déjà fouillé cet hexagone */
 }cell_t;
@@ -39,6 +40,7 @@ void clrscr(); 																		      //world_generation.c
 int range(int a,int b); 													      //world_generation.c
 int rng(int prob); 																      //world_generation.c
 void init_border(cell_t map[D][D]);									    //world_generation.c
+void quest_init(cell_t map[D][D], int quest_map[6][2]); //world_generation.c
 int bordercross(int i, int j, cell_t map[D][D]); 		    //world_generation.c
 void topup(cell_t map[D][D]); 												  //world_generation.c
 int spawntype(int l, int c, cell_t map[D][D]); 			    //world_generation.c

@@ -301,6 +301,7 @@ void init_base(cell_t map[D][D]){
       map[i][j].type=prairie;
       map[i][j].categ=nature;
       map[i][j].encounter=0;
+      map[i][j].quest_id=0;
       map[i][j].scavenged=0;
     }
   }
@@ -400,19 +401,31 @@ void encounter_init(cell_t map[D][D]){
   }
 }
 
-void quest_init(int quest_map[6][2]){
+void quest_init(cell_t map[D][D], int quest_map[6][2]){
   quest_map[0][0]=0; // montagne
   quest_map[0][1]=range(0,D);
+  map[quest_map[0][0]][quest_map[0][1]].quest_id=1;
+
   quest_map[1][0]=range(0,D); // frontiere
   quest_map[1][1]=1;
+  map[quest_map[1][0]][quest_map[1][1]].quest_id=2;
+
   quest_map[2][0]=range(1,D-1); // bunker
   quest_map[2][1]=range(1,D-1);
+  map[quest_map[2][0]][quest_map[2][1]].quest_id=3;
+
   quest_map[3][0]=range(1,D-1);
   quest_map[3][1]=range(1,D-1);
+  map[quest_map[3][0]][quest_map[3][1]].quest_id=4;
+
   quest_map[4][0]=range(1,D-1);
   quest_map[4][1]=range(1,D-1);
+  map[quest_map[4][0]][quest_map[4][1]].quest_id=5;
+
   quest_map[5][0]=range(1,D-1);
   quest_map[5][1]=range(1,D-1);
+  map[quest_map[5][0]][quest_map[5][1]].quest_id=6;
+
 }
 
 void map_init(cell_t map[D][D], int quest_map[6][2]){
@@ -421,7 +434,7 @@ void map_init(cell_t map[D][D], int quest_map[6][2]){
   topup(map);
   nextgen(map);
   encounter_init(map);
-  quest_init(quest_map);
+  quest_init(map, quest_map);
 }
 /*
 int main(){
