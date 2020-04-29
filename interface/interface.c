@@ -5,6 +5,7 @@
 #include<SDL2/SDL_image.h>
 #include<time.h>
 #include"interface.h"
+#include"combat.h"
 
 char *map[N*N];
 /*
@@ -140,6 +141,7 @@ void affichage_map(SDL_Renderer **renderer, char *map[]){
 	}
 	affichage_case_centrale(renderer);
 }
+
 
 /*
  * fonction qui affiche l'interface
@@ -298,6 +300,8 @@ int interface(){
 							}
 							if(event.button.x > bouton_fouille.x && event.button.x < bouton_fouille.x+bouton_fouille.w && event.button.y > bouton_fouille.y && event.button.y < bouton_fouille.y+bouton_fouille.h){
 								printf("search button pressed\n");
+								combat(renderer,police2);
+								affichage_map(&renderer,map);
 							}
 							if(event.button.x > bouton_inv.x && event.button.x < bouton_inv.x+bouton_inv.w && event.button.y > bouton_inv.y && event.button.y < bouton_inv.y+bouton_inv.h){
 								printf("inventory button pressed\n");
