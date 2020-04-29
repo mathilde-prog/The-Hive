@@ -34,6 +34,7 @@ int main(){
   item_t * Tab_Items = malloc(20 * sizeof(item_t));
   int nb_items_available = 0;
   cell_t map[D][D];
+  int quest_map[6][2];
 
   srand(time(NULL));
   clrscr();
@@ -42,7 +43,7 @@ int main(){
   if(creation_tab_item(Tab_Items, &nb_items_available)){
 
     // Start a new game or continue if saved game
-    if(init_or_load_game(&player,map)){
+    if(init_or_load_game(&player,map, quest_map)){
       clrscr();
 
       while(player.turns != 0 && player.pv != 0){
@@ -76,6 +77,7 @@ int main(){
           case 8: clrscr(); next_turn(&player); clrscr(); break;
           case 9: clrscr(); save(player,map); exit(1); break;
           case 10: clrscr(); help(&player); clrscr(); break;
+          case 11: display_quest(quest_map); sleep(4); break;
           case -1: exit(1); break;
           default: printf("Commande inconnue. Veuillez resaissir: "); goto jump; break;
         }

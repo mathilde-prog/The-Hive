@@ -331,7 +331,7 @@ int backup_exists (){
  * \param cell_t map[D][D]
  * \return Un \a int : 1 si initialisation / chargement réussi. 0 si échec.
 */
-int init_or_load_game(perso_t * player, cell_t map[D][D]){
+int init_or_load_game(perso_t * player, cell_t map[D][D], int quest_map[6][2]){
   int num;
 
   if(backup_exists()){
@@ -351,7 +351,7 @@ int init_or_load_game(perso_t * player, cell_t map[D][D]){
       switch (num){
         case 1: return load(player, map); break;
         case 2: init_player(player);
-                map_init(map);
+                map_init(map, quest_map);
                 return 1;
                 break;
         default: break;
@@ -360,7 +360,7 @@ int init_or_load_game(perso_t * player, cell_t map[D][D]){
   }
   else {
       init_player(player);
-      map_init(map);
+      map_init(map, quest_map);
       return 1;
   }
   return 0;

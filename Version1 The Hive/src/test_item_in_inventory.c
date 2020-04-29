@@ -7,13 +7,14 @@ int main(){
   srand(time(NULL));
 
   cell_t map[D][D];
+  int quest_map[6][2];
   perso_t player;
   item_t * Tab_Items = malloc(20 * sizeof(item_t));
   int nb_items_available = 0;
 
   creation_tab_item(Tab_Items, &nb_items_available);
 
-  map_init(map);
+  map_init(map,quest_map);
   init_player(&player);
 
   check_the_map(player,map);

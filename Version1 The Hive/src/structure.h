@@ -30,8 +30,7 @@ typedef enum {other,nature,urbain,militaire} categ_hexa; // other : camp_ban + f
 typedef struct {
   hex_t type;         /**< Type hexagone*/
   int encounter;      /**< Indicateur de rencontre sur cet hexagone */
-  int quest_id;       /**< Identifiant quête */
-	categ_hexa categ;   /**< Catégorie hexagone */
+  categ_hexa categ;   /**< Catégorie hexagone */
   int scavenged;      /**< Indicateur si le joueur a déjà fouillé cet hexagone */
 }cell_t;
 
@@ -49,7 +48,7 @@ void display_TEXT(int l, int c, cell_t map[D][D]); 	    //world_generation.c
 void init_base(cell_t map[D][D]); 										  //world_generation.c
 void count(const cell_t map[D][D]); 									  //world_generation.c
 void display_grid(const cell_t map[D][D]); 					    //world_generation.c
-void map_init(cell_t map[D][D]); 										    //world_generation.c
+void map_init(cell_t map[D][D], int quest_map[6][2]); 	//world_generation.c
 
 /*********************************************************************************/
 
@@ -208,7 +207,7 @@ int load_equipment (perso_t * player);			                //backup_and_load.c
 int load_map(cell_t map[D][D]);								              //backup_and_load.c
 
 int backup_exists ();                                       //backup_and_load.c
-int init_or_load_game (perso_t * player, cell_t map[D][D]); //backup_and_load.c
+int init_or_load_game (perso_t * player, cell_t map[D][D], int quest_map[6][2]); //backup_and_load.c
 /***************************************************************************************/
 
 /************************************* EXIT & HELP *************************************/
