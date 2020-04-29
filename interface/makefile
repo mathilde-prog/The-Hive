@@ -1,5 +1,5 @@
 CC=gcc
-
+FLAGS=-Wall -g
 SDL_DIR=${HOME}/SDL2
 SDLLIB_DIR=${SDL_DIR}/lib
 SDLINC_DIR=${SDL_DIR}/include
@@ -12,8 +12,7 @@ PROG=The_Hive
 all: The_Hive
 
 The_Hive: interface.c
-	${CC} -o ${PROG} interface.c ${LIBS} ${INCLUDES}
-	
+	${CC} -o ${PROG} interface.c ${LIBS} ${INCLUDES} ${FLAGS}
 
 clean:
 	rm -f ${PROG}
