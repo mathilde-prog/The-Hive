@@ -219,29 +219,54 @@ void help(perso_t * player); //exit_help.c
 
 
 /************************************* QUETES *************************************/
+
+/**
+	* \struct search_t
+	* \brief Structure de suivi de la quete "recherche"
+	* \details
+        recherche = -1 : quete encore non joué
+        recherche = 0 : quete en cours
+        recherche = 1 : quete déja joué
+*/
+typedef struct{
+    int situation;  /**< Indicateur pour savoir l'avancer du joueur dans la quete "recherche" */
+    int butX;       /**< Position X du lieu où le joueur doit aller */
+    int butY;       /**< Position Y du lieu où le joueur doit aller */
+}search_t;
+
 /**
 	* \struct quete_t
 	* \brief Structure de suivi des quetes
+	* \details
+        int = -1 : quete encore non joué
+        int = 0 : quete en cours
+        int = 1 : quete déja joué
+        soin = 2 : quete joue le joueur a aide l'homme blesse
+        soin = 3 : quete joue le joueur a voulu aider l'homme blesse mais sans succes
 */
 typedef struct{
-  int soin;          /**< Indicateur pour savoir si le joueur a aider l'homme blessé : quete "soin" */
-  int recherche;     /**< Indicateur pour savoir si le joueur actuellement dans la quete "recheche" */
+  int soin;             /**< Indicateur pour savoir l'avancer du joueur dans la quete "soin" : si le joueur a aider l'homme blessé : quete "soin" */
+  search_t recherche;   /**< Indicateur de type search_t pour savoir l'avancer du joueur dans la quete "recheche" */
+  int bunker;           /**< Indicateur pour savoir l'avancer du joueur dans la quete "bunker" */
+  int montagne;         /**< Indicateur pour savoir l'avancer du joueur dans la quete "montagne" */
+  int frontiere;        /**< Indicateur pour savoir l'avancer du joueur dans la quete "frontiere" */
+  int bandits;          /**< Indicateur pour savoir l'avancer du joueur dans la quete "bandits" */
 }quete_t;
 
-
+void init_quete(quete_t * quete).                           //quetes.c
 int quetes(perso_t * player, cell_t map[D][D]);             //quetes.c
 int quete_montagne(perso_t * player);                       //quetes.c
 int quete_frontiere(perso_t * player, quete_t * quete);     //quetes.c
 int quete_bunker(perso_t * player);                         //quetes.c
 
-npc_t * init_npc_quete(item_t * Tab_Items, int pers);                                                 //quete_soin.c
+int quete_soin(perso_t * player, quete_t * quete);                                              //quete_soin.c
+npc_t * init_npc_quete(item_t * Tab_Items, int pers);                                           //quete_soin.c
 int ajout_item_blesse(perso_t * player, npc_t * homme, int item);                               //quete_soin.c
 int ajout_pass_card(perso_t * player, item_t * pass_card);                                      //quete_soin.c
 int menu_choix_ajout_item(perso_t * player, item_t * pass_card, npc_t * homme);                 //quete_soin.c
 int recup_1item_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t * pass_card);    //quete_soin.c
 int recup_2items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t * pass_card);   //quete_soin.c
 int recup_3items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t * pass_card);   //quete_soin.c
-int quete_soin(perso_t * player, quete_t * quete);                                              //quete_soin.c
 /***************************************************************************************/
 
 /************************************* EXIT & HELP *************************************/

@@ -35,6 +35,7 @@ int main(){
   int nb_items_available = 0;
   cell_t map[D][D];
   int quest_map[6][2];
+  quete_t quete;
 
   srand(time(NULL));
   clrscr();
@@ -43,7 +44,7 @@ int main(){
   if(creation_tab_item(Tab_Items, &nb_items_available)){
 
     // Start a new game or continue if saved game
-    if(init_or_load_game(&player,map, quest_map)){
+    if(init_or_load_game(&player,map, quest_map, &quete)){
       clrscr();
 
       while(player.turns != 0 && player.pv != 0){

@@ -331,7 +331,7 @@ int backup_exists (){
  * \param cell_t map[D][D]
  * \return Un \a int : 1 si initialisation / chargement réussi. 0 si échec.
 */
-int init_or_load_game(perso_t * player, cell_t map[D][D], int quest_map[6][2]){
+int init_or_load_game(perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete){
   int num;
 
   if(backup_exists()){
