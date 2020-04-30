@@ -195,29 +195,6 @@ void next_turn(perso_t * player); //turn.c
 void rest_and_heal(perso_t * player); //turn.c
 /************************************************************************************/
 
-/*********************************** BACKUP AND LOAD ***********************************/
-void save (perso_t player, cell_t map[D][D]);               //backup_and_load.c
-void save_inventory (perso_t player);			                  //backup_and_load.c
-void save_info_player (perso_t player);		                  //backup_and_load.c
-void save_equipment (perso_t player);			                  //backup_and_load.c
-void save_map (cell_t map[D][D]);						                //backup_and_load.c
-
-int load (perso_t * player, cell_t map[D][D]);              //backup_and_load.c
-int load_inventory (perso_t * player);			                //backup_and_load.c
-int load_info_player (perso_t * player);		                //backup_and_load.c
-int load_equipment (perso_t * player);			                //backup_and_load.c
-int load_map(cell_t map[D][D]);								              //backup_and_load.c
-
-int backup_exists ();                                       //backup_and_load.c
-int init_or_load_game (perso_t * player, cell_t map[D][D], int quest_map[6][2]); //backup_and_load.c
-/***************************************************************************************/
-
-/************************************* EXIT & HELP *************************************/
-int exit_game();             //exit_help.c
-void help(perso_t * player); //exit_help.c
-/***************************************************************************************/
-
-
 /************************************* QUETES *************************************/
 
 /**
@@ -253,11 +230,12 @@ typedef struct{
   int bandits;          /**< Indicateur pour savoir l'avancer du joueur dans la quete "bandits" */
 }quete_t;
 
-void init_quete(quete_t * quete).                           //quetes.c
-int quetes(perso_t * player, cell_t map[D][D]);             //quetes.c
-int quete_montagne(perso_t * player);                       //quetes.c
+void init_quete(quete_t * quete);                           //quetes.c
+int quetes(perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete);  //quetes.c
+int quete_montagne(perso_t * player, quete_t * quete);      //quetes.c
 int quete_frontiere(perso_t * player, quete_t * quete);     //quetes.c
-int quete_bunker(perso_t * player);                         //quetes.c
+int quete_bunker(perso_t * player, quete_t * quete);      // quetes.c
+int quete_recherche(perso_t * player, quete_t * quete);   // quetes.c
 
 int quete_soin(perso_t * player, quete_t * quete);                                              //quete_soin.c
 npc_t * init_npc_quete(item_t * Tab_Items, int pers);                                           //quete_soin.c
@@ -267,6 +245,25 @@ int menu_choix_ajout_item(perso_t * player, item_t * pass_card, npc_t * homme); 
 int recup_1item_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t * pass_card);    //quete_soin.c
 int recup_2items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t * pass_card);   //quete_soin.c
 int recup_3items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t * pass_card);   //quete_soin.c
+/***************************************************************************************/
+
+/*********************************** BACKUP AND LOAD ***********************************/
+void save (perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete);   //backup_and_load.c
+void save_inventory (perso_t player);			                  //backup_and_load.c
+void save_info_player (perso_t player);		                  //backup_and_load.c
+void save_equipment (perso_t player);			                  //backup_and_load.c
+void save_map (cell_t map[D][D]);						                //backup_and_load.c
+void save_quete(int quest_map[6][2], quete_t quete);                       //backup_and_load.c
+
+int load (perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete);   //backup_and_load.c
+int load_inventory (perso_t * player);			                //backup_and_load.c
+int load_info_player (perso_t * player);		                //backup_and_load.c
+int load_equipment (perso_t * player);			                //backup_and_load.c
+int load_map(cell_t map[D][D]);								              //backup_and_load.c
+int load_quete(int quest_map[6][2], quete_t * quete); //backup_and_load.c
+
+int backup_exists ();                                       //backup_and_load.c
+int init_or_load_game(perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete); //backup_and_load.c
 /***************************************************************************************/
 
 /************************************* EXIT & HELP *************************************/

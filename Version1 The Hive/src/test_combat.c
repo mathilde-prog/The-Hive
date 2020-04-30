@@ -3,7 +3,7 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
-#include "structure.h"
+#include "lib/structure.h"
 
 void damage_calculator(item_t * weapon, item_t * armor, int * hp, int distance , int cover, int scenario){ // welp, that's a damagae calculator
   float damage;

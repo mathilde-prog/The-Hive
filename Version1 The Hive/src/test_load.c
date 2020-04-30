@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "structure.h"
+#include "lib/structure.h"
 
 void details(cell_t map[D][D]){
   int l, c;
@@ -52,6 +52,27 @@ void details(cell_t map[D][D]){
   printf("\n\n");
 }
 
+void info_quetes(int quest_map[6][2], quete_t quete){
+  clrscr();
+  int l,c;
+
+  printf("\nAFFICHAGE MATRICE QUEST_MAP : \n");
+  for(l = 0; l < 6; l++){
+    for(c = 0; c < 2; c++){
+      printf("%2d ",quest_map[l][c]);
+    }
+      printf("\n");
+  }
+
+  printf("\nAFFICHAGE STRUCTURE QUETE : \n");
+  printf("soin : %d\n", quete.soin);
+  printf("recherche : %d %d %d\n", quete.recherche.situation, quete.recherche.butX, quete.recherche.butY);
+  printf("bunker : %d\n", quete.bunker);
+  printf("montagne : %d\n", quete.montagne);
+  printf("frontiere : %d\n", quete.frontiere);
+  printf("bandits : %d\n\n", quete.bandits);
+}
+
 int main(){
   srand(time(NULL));
   int nb;
@@ -62,6 +83,8 @@ int main(){
 
   /* Map Declaration */
   cell_t map[D][D];
+  int quest_map[6][2];
+  quete_t quete;
 
   if(creation_tab_item(Tab_Items, &nb_items_available)) {
 
@@ -90,7 +113,7 @@ int main(){
     */
 
     printf ("\033[34;01m[CHARGER]\033[00m\n");
-    if(load(&player, map)){
+    if(load(&player,map,quest_map,&quete)){
       printf("Chargement réussi\n\n");
       do {
         printf("Menu test_load :\n");
@@ -99,14 +122,15 @@ int main(){
         printf("3. Afficher l'équipement\n");
         printf("4. Afficher la carte\n");
         printf("5. Détails carte\n");
+        printf("6. Détails quêtes\n");
         printf("Quitter -1\n");
         do {
           printf("N°");
           scanf("%d",&nb);
-          if((nb != -1) && (nb < 1 || nb > 5)){
+          if((nb != -1) && (nb < 1 || nb > 6)){
             printf("Valeur incorrecte. Veuillez ressaisir\n");
           }
-        } while ((nb != -1) && (nb < 1 || nb > 5));
+        } while ((nb != -1) && (nb < 1 || nb > 6));
 
         if(nb != -1){
           switch(nb){
@@ -118,6 +142,7 @@ int main(){
                     printf("\n");
                     break;
             case 5: details(map); break;
+            case 6: info_quetes(quest_map,quete);
             default: break;
           }
         }

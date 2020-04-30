@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "structure.h"
+#include "lib/structure.h"
 
 /**
  * \file eat_or_drink.c

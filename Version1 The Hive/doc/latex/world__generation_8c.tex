@@ -1,0 +1,92 @@
+\hypertarget{world__generation_8c}{}\section{Référence du fichier src/world\+\_\+generation.c}
+\label{world__generation_8c}\index{src/world\+\_\+generation.\+c@{src/world\+\_\+generation.\+c}}
+
+
+Génération de la carte (Moustapha --$>$ C\+O\+M\+P\+L\+E\+T\+ER D\+O\+C\+U\+M\+E\+N\+T\+A\+T\+I\+ON D\+ES F\+O\+N\+C\+T\+I\+O\+NS)  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}lib/structure.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de world\+\_\+generation.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{world__generation_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{world__generation_8c_af3eac3ad203ab091baad010ef3f7ab0a}\label{world__generation_8c_af3eac3ad203ab091baad010ef3f7ab0a}} 
+void {\bfseries clrscr} ()
+\item 
+\mbox{\Hypertarget{world__generation_8c_acff6b648c6726c70104531f080bfa710}\label{world__generation_8c_acff6b648c6726c70104531f080bfa710}} 
+int {\bfseries range} (int a, int b)
+\item 
+\mbox{\Hypertarget{world__generation_8c_a40356000b1ed5cc4b2798194e57acefc}\label{world__generation_8c_a40356000b1ed5cc4b2798194e57acefc}} 
+int {\bfseries rng} (int prob)
+\item 
+\mbox{\Hypertarget{world__generation_8c_a8ab726a1d0a373a9b5e762ae74e6af55}\label{world__generation_8c_a8ab726a1d0a373a9b5e762ae74e6af55}} 
+void {\bfseries init\+\_\+border} (cell\+\_\+t map\mbox{[}D\mbox{]}\mbox{[}D\mbox{]})
+\item 
+\mbox{\Hypertarget{world__generation_8c_a4399a1179534da31d436a0578311e39f}\label{world__generation_8c_a4399a1179534da31d436a0578311e39f}} 
+int {\bfseries bordercross} (int i, int j, cell\+\_\+t map\mbox{[}D\mbox{]}\mbox{[}D\mbox{]})
+\item 
+\mbox{\Hypertarget{world__generation_8c_a7bb2639eee25dd6e3133d4a8ecb68535}\label{world__generation_8c_a7bb2639eee25dd6e3133d4a8ecb68535}} 
+void {\bfseries topup} (cell\+\_\+t map\mbox{[}D\mbox{]}\mbox{[}D\mbox{]})
+\item 
+\mbox{\Hypertarget{world__generation_8c_a610b48bca978adae918ba8c023c49571}\label{world__generation_8c_a610b48bca978adae918ba8c023c49571}} 
+int {\bfseries spawntype} (int l, int c, cell\+\_\+t map\mbox{[}D\mbox{]}\mbox{[}D\mbox{]})
+\item 
+\mbox{\Hypertarget{world__generation_8c_a7a53fec4d8948be421914833d195af0b}\label{world__generation_8c_a7a53fec4d8948be421914833d195af0b}} 
+int {\bfseries categ\+\_\+switch} (int input)
+\item 
+\mbox{\Hypertarget{world__generation_8c_a7a0d3066e88d63d7fb191f7a810e1d3d}\label{world__generation_8c_a7a0d3066e88d63d7fb191f7a810e1d3d}} 
+void {\bfseries nextgen} (cell\+\_\+t map\mbox{[}D\mbox{]}\mbox{[}D\mbox{]})
+\item 
+\mbox{\Hypertarget{world__generation_8c_a0f6eb129fcf00e592e708ad17e0a65ac}\label{world__generation_8c_a0f6eb129fcf00e592e708ad17e0a65ac}} 
+int {\bfseries coordonnees\+\_\+valides} (int l, int c)
+\item 
+\mbox{\Hypertarget{world__generation_8c_ac44e2e3723ce06a3660665d0adc23079}\label{world__generation_8c_ac44e2e3723ce06a3660665d0adc23079}} 
+void {\bfseries portable\+\_\+switch} (int i, int j, cell\+\_\+t map\mbox{[}D\mbox{]}\mbox{[}D\mbox{]})
+\item 
+\mbox{\Hypertarget{world__generation_8c_a3bc1a448a2edbe81a579122cd06467ac}\label{world__generation_8c_a3bc1a448a2edbe81a579122cd06467ac}} 
+void {\bfseries display\+\_\+\+T\+E\+XT} (int l, int c, cell\+\_\+t map\mbox{[}D\mbox{]}\mbox{[}D\mbox{]})
+\item 
+\mbox{\Hypertarget{world__generation_8c_ab4a79a51d27f37c50336cf450fc770cf}\label{world__generation_8c_ab4a79a51d27f37c50336cf450fc770cf}} 
+void {\bfseries init\+\_\+base} (cell\+\_\+t map\mbox{[}D\mbox{]}\mbox{[}D\mbox{]})
+\item 
+\mbox{\Hypertarget{world__generation_8c_a6f2790bca8e59fe3b65ca808f1500821}\label{world__generation_8c_a6f2790bca8e59fe3b65ca808f1500821}} 
+void {\bfseries count} (const cell\+\_\+t map\mbox{[}D\mbox{]}\mbox{[}D\mbox{]})
+\item 
+\mbox{\Hypertarget{world__generation_8c_a1a11f59dc186eddc13ce4a87ac5df4aa}\label{world__generation_8c_a1a11f59dc186eddc13ce4a87ac5df4aa}} 
+void {\bfseries display\+\_\+grid} (const cell\+\_\+t map\mbox{[}D\mbox{]}\mbox{[}D\mbox{]})
+\item 
+\mbox{\Hypertarget{world__generation_8c_a49e9f2db9387887661a483edc76f6b5d}\label{world__generation_8c_a49e9f2db9387887661a483edc76f6b5d}} 
+void {\bfseries display\+\_\+quest} (int quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]})
+\item 
+\mbox{\Hypertarget{world__generation_8c_ae2a948ed1b1ff33428390c62f9371aef}\label{world__generation_8c_ae2a948ed1b1ff33428390c62f9371aef}} 
+void {\bfseries encounter\+\_\+init} (cell\+\_\+t map\mbox{[}D\mbox{]}\mbox{[}D\mbox{]})
+\item 
+\mbox{\Hypertarget{world__generation_8c_a61aa43ceaa893c5807b45cd54fd140e8}\label{world__generation_8c_a61aa43ceaa893c5807b45cd54fd140e8}} 
+void {\bfseries quest\+\_\+init} (cell\+\_\+t map\mbox{[}D\mbox{]}\mbox{[}D\mbox{]}, int quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]})
+\item 
+\mbox{\Hypertarget{world__generation_8c_a309363eb6ec82b7f53f004bbd01c21c4}\label{world__generation_8c_a309363eb6ec82b7f53f004bbd01c21c4}} 
+void {\bfseries map\+\_\+init} (cell\+\_\+t map\mbox{[}D\mbox{]}\mbox{[}D\mbox{]}, int quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Génération de la carte (Moustapha --$>$ C\+O\+M\+P\+L\+E\+T\+ER D\+O\+C\+U\+M\+E\+N\+T\+A\+T\+I\+ON D\+ES F\+O\+N\+C\+T\+I\+O\+NS) 
+
+\begin{DoxyAuthor}{Auteur}
+Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020 
+\end{DoxyDate}

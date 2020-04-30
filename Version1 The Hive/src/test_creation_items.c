@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "structure.h"
+#include "lib/structure.h"
 
 int main(){
   item_t * Tab_Items = malloc(20 * sizeof(item_t));

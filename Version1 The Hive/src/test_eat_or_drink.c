@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "structure.h"
+#include "lib/structure.h"
 
 int main(){
   /* Tab_Items Declaration (= table containing ALL the items available in the game) */

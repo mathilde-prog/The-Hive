@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "structure.h"
+#include "lib/structure.h"
 
 #define NB_SIMULATIONS 10
 
@@ -53,13 +53,13 @@ int main(){
   perso_t player;
   item_t * Tab_Items = malloc(20 * sizeof(item_t));
   cell_t map[D][D];
-
+  int quest_map[6][2];
   clrscr();
 
   // Creation des items
   if(creation_tab_item(Tab_Items, &nb_items_available)){
     init_player(&player);
-    map_init(map);
+    map_init(map,quest_map);
 
     //display_TEXT(player.posX,player.posY, map);
 

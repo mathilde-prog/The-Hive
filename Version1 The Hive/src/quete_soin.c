@@ -3,7 +3,7 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
-#include "structure.h"
+#include "lib/structure.h"
 
 /**
  * \file quete_soin.c

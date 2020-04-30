@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
-#include "structure.h"
+#include "lib/structure.h"
 
 /**
  * \file move.c

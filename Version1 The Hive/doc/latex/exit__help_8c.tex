@@ -1,0 +1,75 @@
+\hypertarget{exit__help_8c}{}\section{Référence du fichier src/exit\+\_\+help.c}
+\label{exit__help_8c}\index{src/exit\+\_\+help.\+c@{src/exit\+\_\+help.\+c}}
+
+
+Sortie + Aide.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}lib/structure.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de exit\+\_\+help.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{exit__help_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{exit__help_8c_afd7728c9e6ae89e5932e641b54556aba}{exit\+\_\+game} ()
+\begin{DoxyCompactList}\small\item\em Propose au joueur de quitter ou non la carte lorsqu\textquotesingle{}il vient de trouver la sortie. \end{DoxyCompactList}\item 
+void \hyperlink{exit__help_8c_aa837a09de6dddbefdb7b6f86b8f1f833}{help} (perso\+\_\+t $\ast$player)
+\begin{DoxyCompactList}\small\item\em Donne des conseils au joueur suivant ses difficultés. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Sortie + Aide. 
+
+\begin{DoxyAuthor}{Auteur}
+Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{exit__help_8c_afd7728c9e6ae89e5932e641b54556aba}\label{exit__help_8c_afd7728c9e6ae89e5932e641b54556aba}} 
+\index{exit\+\_\+help.\+c@{exit\+\_\+help.\+c}!exit\+\_\+game@{exit\+\_\+game}}
+\index{exit\+\_\+game@{exit\+\_\+game}!exit\+\_\+help.\+c@{exit\+\_\+help.\+c}}
+\subsubsection{\texorpdfstring{exit\+\_\+game()}{exit\_game()}}
+{\footnotesize\ttfamily int exit\+\_\+game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Propose au joueur de quitter ou non la carte lorsqu\textquotesingle{}il vient de trouver la sortie. 
+
+\begin{DoxyReturn}{Renvoie}
+Un {\itshape int} \+: 1 si le joueur décide de quitter la carte. 0 s\textquotesingle{}il décide de continuer l\textquotesingle{}aventure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{exit__help_8c_aa837a09de6dddbefdb7b6f86b8f1f833}\label{exit__help_8c_aa837a09de6dddbefdb7b6f86b8f1f833}} 
+\index{exit\+\_\+help.\+c@{exit\+\_\+help.\+c}!help@{help}}
+\index{help@{help}!exit\+\_\+help.\+c@{exit\+\_\+help.\+c}}
+\subsubsection{\texorpdfstring{help()}{help()}}
+{\footnotesize\ttfamily void help (\begin{DoxyParamCaption}\item[{perso\+\_\+t $\ast$}]{player }\end{DoxyParamCaption})}
+
+
+
+Donne des conseils au joueur suivant ses difficultés. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em perso\+\_\+t} & $\ast$ player \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}

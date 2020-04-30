@@ -1,0 +1,81 @@
+\hypertarget{perso_8c}{}\section{Référence du fichier src/perso.c}
+\label{perso_8c}\index{src/perso.\+c@{src/perso.\+c}}
+
+
+Fonctions relatives au joueur.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}lib/structure.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de perso.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{perso_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{perso_8c_a0396d4741659c7486fe24a115e791d3b}{init\+\_\+player} (perso\+\_\+t $\ast$player)
+\begin{DoxyCompactList}\small\item\em Initialise les paramètres du joueur quand il commence le jeu. \end{DoxyCompactList}\item 
+void \hyperlink{perso_8c_abb56898d20ef15d05edb82a7dfbe8df9}{display\+\_\+player\+\_\+characteristics} (cell\+\_\+t map\mbox{[}D\mbox{]}\mbox{[}D\mbox{]}, perso\+\_\+t player)
+\begin{DoxyCompactList}\small\item\em Affiche les paramètres du joueur (points de vie, points d\textquotesingle{}énergie, points d\textquotesingle{}action, position sur la carte, nombre de tours restants) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Fonctions relatives au joueur. 
+
+\begin{DoxyAuthor}{Auteur}
+Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{perso_8c_abb56898d20ef15d05edb82a7dfbe8df9}\label{perso_8c_abb56898d20ef15d05edb82a7dfbe8df9}} 
+\index{perso.\+c@{perso.\+c}!display\+\_\+player\+\_\+characteristics@{display\+\_\+player\+\_\+characteristics}}
+\index{display\+\_\+player\+\_\+characteristics@{display\+\_\+player\+\_\+characteristics}!perso.\+c@{perso.\+c}}
+\subsubsection{\texorpdfstring{display\+\_\+player\+\_\+characteristics()}{display\_player\_characteristics()}}
+{\footnotesize\ttfamily void display\+\_\+player\+\_\+characteristics (\begin{DoxyParamCaption}\item[{cell\+\_\+t}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{perso\+\_\+t}]{player }\end{DoxyParamCaption})}
+
+
+
+Affiche les paramètres du joueur (points de vie, points d\textquotesingle{}énergie, points d\textquotesingle{}action, position sur la carte, nombre de tours restants) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em cell\+\_\+t} & map\mbox{[}D\mbox{]}\mbox{[}D\mbox{]} \\
+\hline
+{\em perso\+\_\+t} & player \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{perso_8c_a0396d4741659c7486fe24a115e791d3b}\label{perso_8c_a0396d4741659c7486fe24a115e791d3b}} 
+\index{perso.\+c@{perso.\+c}!init\+\_\+player@{init\+\_\+player}}
+\index{init\+\_\+player@{init\+\_\+player}!perso.\+c@{perso.\+c}}
+\subsubsection{\texorpdfstring{init\+\_\+player()}{init\_player()}}
+{\footnotesize\ttfamily void init\+\_\+player (\begin{DoxyParamCaption}\item[{perso\+\_\+t $\ast$}]{player }\end{DoxyParamCaption})}
+
+
+
+Initialise les paramètres du joueur quand il commence le jeu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em perso\+\_\+t} & $\ast$ player \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}

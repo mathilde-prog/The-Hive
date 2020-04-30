@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projet L2 Informatique - The Hive: Référence du fichier src/items.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Projet L2 Informatique - The Hive
+   </div>
+   <div id="projectbrief">Documentation jeu The Hive (Projet L2 Informatique)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier items.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Fonctions relatives aux items.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;time.h&gt;</code><br />
+<code>#include &quot;lib/structure.h&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de items.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="items_8c__incl.png" border="0" usemap="#src_2items_8c" alt=""/></div>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ad37eb49f35a18814ef964030603d0ab8"><td class="memItemLeft" align="right" valign="top"><a id="ad37eb49f35a18814ef964030603d0ab8"></a>
+item_t *&#160;</td><td class="memItemRight" valign="bottom"><b>creer_item</b> (char *chaine, type_t type, int attack0, int attack1, int attack2, int hitchance0, int hitchance1, int hitchance2, float defense, int equipable, int pc_nature, int pc_urban, int pc_military)</td></tr>
+<tr class="separator:ad37eb49f35a18814ef964030603d0ab8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bfcbccc63814dc4ba0642b7872e8681"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="items_8c.html#a6bfcbccc63814dc4ba0642b7872e8681">creation_tab_item</a> (item_t *Tab_Items, int *nb_items)</td></tr>
+<tr class="memdesc:a6bfcbccc63814dc4ba0642b7872e8681"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère les items du fichier 'items.csv' et les stocke dans le tableau passé en paramètres.  <a href="#a6bfcbccc63814dc4ba0642b7872e8681">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a6bfcbccc63814dc4ba0642b7872e8681"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af20ce6de62a477209830e29feb783aa1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="items_8c.html#af20ce6de62a477209830e29feb783aa1">display_item</a> (item_t item)</td></tr>
+<tr class="memdesc:af20ce6de62a477209830e29feb783aa1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche toutes les caractéristiques d'un item (nom, type, valeur d'attaque si arme, valeur de défense si armure, équipable ou non, pc_nature, pc_urban, pc_military)  <a href="#af20ce6de62a477209830e29feb783aa1">Plus de détails...</a><br /></td></tr>
+<tr class="separator:af20ce6de62a477209830e29feb783aa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Fonctions relatives aux items. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2020 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a6bfcbccc63814dc4ba0642b7872e8681"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bfcbccc63814dc4ba0642b7872e8681">&#9670;&nbsp;</a></span>creation_tab_item()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int creation_tab_item </td>
+          <td>(</td>
+          <td class="paramtype">item_t *&#160;</td>
+          <td class="paramname"><em>Tab_Items</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>nb_items</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Récupère les items du fichier 'items.csv' et les stocke dans le tableau passé en paramètres. </p>
+<p>Affiche un message d'erreur si fichier 'items.csv' non trouvé </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">char</td><td>* Tab_Items </td></tr>
+    <tr><td class="paramname">int</td><td>* nb_items </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un <em>int</em> : 1 si création des items réalisée avec succès. 0 sinon. </dd></dl>
+
+</div>
+</div>
+<a id="af20ce6de62a477209830e29feb783aa1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af20ce6de62a477209830e29feb783aa1">&#9670;&nbsp;</a></span>display_item()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void display_item </td>
+          <td>(</td>
+          <td class="paramtype">item_t&#160;</td>
+          <td class="paramname"><em>item</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche toutes les caractéristiques d'un item (nom, type, valeur d'attaque si arme, valeur de défense si armure, équipable ou non, pc_nature, pc_urban, pc_military) </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">item_t</td><td>item </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <time.h>
-#include "structure.h"
+#include "lib/structure.h"
 
 /**
  * \file items.c

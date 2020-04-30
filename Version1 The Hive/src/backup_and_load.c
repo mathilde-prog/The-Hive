@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "structure.h"
+#include "lib/structure.h"
 
 /**
  * \file backup_and_load.c
@@ -14,19 +14,48 @@
 /******************** BACK_UP *************************/
 
 /**
- * \fn void save (perso_t player, cell_t map[D][D])
+ * \fn void save (perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete)
  * \brief Sauvegarde les informations sur le joueur, son inventaire, son équipement et la carte
  * \param perso_t player
  * \param cell_t map[D][D]
+ * \param int quest_map[6][2]
+ * \param quete_t quete
  * \return Rien
 */
 /* save: save information about the character, his inventory, his equipment and the map. */
-void save (perso_t player, cell_t map[D][D]){
+void save (perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete){
   save_info_player(player);
   save_inventory(player);
   save_equipment(player);
   save_map(map);
+  save_quete(quest_map, quete);
   printf("Sauvegarde réussie\n");
+}
+
+
+/**
+ * \fn void save_quete(int quest_map[6][2], quete_t quete)
+ * \brief Sauvegarde les informations sur les quêtes
+ * \param int quest_map[6][2]
+ * \param quete_t quete
+ * \return Rien
+*/
+void save_quete(int quest_map[6][2], quete_t quete){
+  int l, c;
+  FILE * fic = fopen("../sauv/save_quete.csv","w");
+
+  // Sauvegarde quest_map[6][2]
+  for(l = 0; l < 6; l++){
+    for(c = 0; c < 2; c++){
+      fprintf(fic,"%d;",quest_map[l][c]);
+    }
+    fprintf(fic,"\n");
+  }
+
+  // Sauvegarde structure quete
+  fprintf(fic,"\n%d;%d;%d;%d;%d;%d;%d;%d\n",quete.soin, quete.recherche.situation, quete.recherche.butX, quete.recherche.butY, quete.bunker, quete.montagne, quete.frontiere, quete.bandits);
+
+  fclose(fic);
 }
 
 /**
@@ -140,14 +169,16 @@ void save_map (cell_t map[D][D]){
 
 /******************** LOAD ****************************/
 /**
- * \fn int load (perso_t * player, cell_t map[D][D])
+ * \fn int load (perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete)
  * \brief Charge les informations sur le joueur, son inventaire, son équipement et la carte
  * \param perso_t * player
  * \param cell_t map[D][D]
+ * \param int quest_map[6][2]
+ * \param quete_t * quete
  * \return Un \a int : 1 si succès complet du chargement. 0 si problème lors du chargement.
 */
 /* load: load information about the character, his inventory, his equipment and the map. */
-int load (perso_t * player, cell_t map[D][D]){
+int load (perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete){
   if(!load_inventory (player)){
     printf("Echec chargement inventaire\n");
     return 0;
@@ -162,6 +193,10 @@ int load (perso_t * player, cell_t map[D][D]){
   }
   if(!load_equipment (player)){
     printf("Echec chargement équipement\n");
+    return 0;
+  }
+  if(!load_quete(quest_map,quete)){
+    printf("Echec chargement quêtes\n");
     return 0;
   }
 
@@ -289,6 +324,34 @@ int load_map (cell_t map[D][D]){
   }
 }
 
+/**
+ * \fn int load_quete(int quest_map[6][2], quete_t * quete)
+ * \brief Charge les informations des quêtes à partir du fichier 'save_quete.csv'
+ * \param int quest_map[6][2]
+ * \param quete_t * quete
+ * \return Un \a int : 1 si chargement réussi. 0 si échec du chargement.
+*/
+/* load_map: loads the map of the game */
+int load_quete(int quest_map[6][2], quete_t * quete){
+  int l, c;
+  FILE * fic = fopen("../sauv/save_quete.csv","r");
+
+  if(fic){
+    for(l = 0; l < 6; l++){
+      for(c = 0; c < 2; c++){
+        fscanf(fic,"%d;",&quest_map[l][c]);
+      }
+    }
+    fscanf(fic,"%d;%d;%d;%d;%d;%d;%d;%d",&quete->soin,&quete->recherche.situation,&quete->recherche.butX,&quete->recherche.butY,&quete->bunker,&quete->montagne,&quete->frontiere,&quete->bandits);
+    fclose(fic);
+    return 1;
+  }
+  else {
+    printf("Erreur : 'save_quete.csv' introuvable\n");
+    return 0;
+  }
+}
+
 /*****************************************************/
 /**
  * \fn int backup_exists ()
@@ -297,11 +360,12 @@ int load_map (cell_t map[D][D]){
 */
 /* backup_exists: returns 1 if a backup exists and 0 if there is none */
 int backup_exists (){
-  FILE * fic1, * fic2, * fic3, * fic4;
+  FILE * fic1, * fic2, * fic3, * fic4, * fic5;
   fic1 = fopen("../sauv/save_inventory.csv","r");
   fic2 = fopen("../sauv/save_equipment.csv","r");
   fic3 = fopen("../sauv/save_info_player.csv","r");
   fic4 = fopen("../sauv/save_map.csv","r");
+  fic5 = fopen("../sauv/save_quete.csv","r");
 
   if(fic1){
     fclose(fic1);
@@ -311,7 +375,10 @@ int backup_exists (){
         fclose(fic3);
         if(fic4){
           fclose(fic4);
-          return 1;
+          if(fic5){
+            fclose(fic5);
+            return 1;
+          }
         }
       }
     }
@@ -324,11 +391,13 @@ int backup_exists (){
    Loads the game if saved, otherwise uses functions to initialize the player and the map.
 */
 /**
- * \fn int init_or_load_game(perso_t * player, cell_t map[D][D])
+ * \fn int init_or_load_game(perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete)
  * \brief Si une sauvegarde du jeu existe, propose au joueur de continuer la partie ou d'en commencer une nouvelle.
     Si aucune sauvegarde, initialise une nouvelle partie.
  * \param perso_t * player
  * \param cell_t map[D][D]
+ * \param int quest_map[6][2]
+ * \param quete_t * quete
  * \return Un \a int : 1 si initialisation / chargement réussi. 0 si échec.
 */
 int init_or_load_game(perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete){
@@ -349,9 +418,9 @@ int init_or_load_game(perso_t * player, cell_t map[D][D], int quest_map[6][2], q
 
     if(num != -1){
       switch (num){
-        case 1: return load(player, map); break;
+        case 1: return load(player,map,quest_map,quete); break;
         case 2: init_player(player);
-                map_init(map, quest_map);
+                map_init(map,quest_map);
                 return 1;
                 break;
         default: break;
@@ -360,7 +429,7 @@ int init_or_load_game(perso_t * player, cell_t map[D][D], int quest_map[6][2], q
   }
   else {
       init_player(player);
-      map_init(map, quest_map);
+      map_init(map,quest_map);
       return 1;
   }
   return 0;

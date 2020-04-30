@@ -1,0 +1,612 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projet L2 Informatique - The Hive: Référence du fichier src/backup_and_load.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Projet L2 Informatique - The Hive
+   </div>
+   <div id="projectbrief">Documentation jeu The Hive (Projet L2 Informatique)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier backup_and_load.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Sauvegarde et chargement d'une partie.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &quot;lib/structure.h&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de backup_and_load.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="backup__and__load_8c__incl.png" border="0" usemap="#src_2backup__and__load_8c" alt=""/></div>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a6d4382fa7768898a8b2bce5da601bf5a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="backup__and__load_8c.html#a6d4382fa7768898a8b2bce5da601bf5a">save</a> (perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete)</td></tr>
+<tr class="memdesc:a6d4382fa7768898a8b2bce5da601bf5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sauvegarde les informations sur le joueur, son inventaire, son équipement et la carte.  <a href="#a6d4382fa7768898a8b2bce5da601bf5a">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a6d4382fa7768898a8b2bce5da601bf5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac314a90f64bb57b83647985dcba056bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="backup__and__load_8c.html#ac314a90f64bb57b83647985dcba056bb">save_quete</a> (int quest_map[6][2], quete_t quete)</td></tr>
+<tr class="memdesc:ac314a90f64bb57b83647985dcba056bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sauvegarde les informations sur les quêtes.  <a href="#ac314a90f64bb57b83647985dcba056bb">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ac314a90f64bb57b83647985dcba056bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9411cc773bca4d1a8a475b63fdbb82b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="backup__and__load_8c.html#a9411cc773bca4d1a8a475b63fdbb82b1">save_inventory</a> (perso_t player)</td></tr>
+<tr class="memdesc:a9411cc773bca4d1a8a475b63fdbb82b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sauvegarde l'inventaire du joueur dans un fichier 'save_inventory.csv'.  <a href="#a9411cc773bca4d1a8a475b63fdbb82b1">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a9411cc773bca4d1a8a475b63fdbb82b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7e17aee692ea956b96122bd0f8cbe2c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="backup__and__load_8c.html#ac7e17aee692ea956b96122bd0f8cbe2c">save_info_player</a> (perso_t player)</td></tr>
+<tr class="memdesc:ac7e17aee692ea956b96122bd0f8cbe2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sauvegarde les informations du joueur dans un fichier 'save_info_player.  <a href="#ac7e17aee692ea956b96122bd0f8cbe2c">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ac7e17aee692ea956b96122bd0f8cbe2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af29212eb7ae8429e0c6ed7b486077e28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="backup__and__load_8c.html#af29212eb7ae8429e0c6ed7b486077e28">save_equipment</a> (perso_t player)</td></tr>
+<tr class="memdesc:af29212eb7ae8429e0c6ed7b486077e28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sauvegarde l'équipement du joueur dans un fichier 'save_equipment.csv'.  <a href="#af29212eb7ae8429e0c6ed7b486077e28">Plus de détails...</a><br /></td></tr>
+<tr class="separator:af29212eb7ae8429e0c6ed7b486077e28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20bf83b117d4618a1cdd44f63b99ce49"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="backup__and__load_8c.html#a20bf83b117d4618a1cdd44f63b99ce49">save_map</a> (cell_t map[D][D])</td></tr>
+<tr class="memdesc:a20bf83b117d4618a1cdd44f63b99ce49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sauvegarde la carte dans un fichier 'save_map.csv'.  <a href="#a20bf83b117d4618a1cdd44f63b99ce49">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a20bf83b117d4618a1cdd44f63b99ce49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0006d1b730137142326f7172e9ec9275"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="backup__and__load_8c.html#a0006d1b730137142326f7172e9ec9275">load</a> (perso_t *player, cell_t map[D][D], int quest_map[6][2], quete_t *quete)</td></tr>
+<tr class="memdesc:a0006d1b730137142326f7172e9ec9275"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge les informations sur le joueur, son inventaire, son équipement et la carte.  <a href="#a0006d1b730137142326f7172e9ec9275">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a0006d1b730137142326f7172e9ec9275"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ca7baefc14b21bed6f7f23cb2b81061"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="backup__and__load_8c.html#a1ca7baefc14b21bed6f7f23cb2b81061">load_inventory</a> (perso_t *player)</td></tr>
+<tr class="memdesc:a1ca7baefc14b21bed6f7f23cb2b81061"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge l'inventaire du joueur à partir du fichier 'save_inventory.csv'.  <a href="#a1ca7baefc14b21bed6f7f23cb2b81061">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a1ca7baefc14b21bed6f7f23cb2b81061"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a347aef6e50f726155f0ca327f3584bc1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="backup__and__load_8c.html#a347aef6e50f726155f0ca327f3584bc1">load_info_player</a> (perso_t *player)</td></tr>
+<tr class="memdesc:a347aef6e50f726155f0ca327f3584bc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge les informations du joueur à partir du fichier 'save_info_player.csv'.  <a href="#a347aef6e50f726155f0ca327f3584bc1">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a347aef6e50f726155f0ca327f3584bc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af55f140477f851e77110b44043b15f32"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="backup__and__load_8c.html#af55f140477f851e77110b44043b15f32">load_equipment</a> (perso_t *player)</td></tr>
+<tr class="memdesc:af55f140477f851e77110b44043b15f32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge l'équipement du joueur à partir du fichier 'save_equipment.csv'.  <a href="#af55f140477f851e77110b44043b15f32">Plus de détails...</a><br /></td></tr>
+<tr class="separator:af55f140477f851e77110b44043b15f32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb1455e8d9868dbe3fa2dc0df61f3ce4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="backup__and__load_8c.html#aeb1455e8d9868dbe3fa2dc0df61f3ce4">load_map</a> (cell_t map[D][D])</td></tr>
+<tr class="memdesc:aeb1455e8d9868dbe3fa2dc0df61f3ce4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge la carte à partir du fichier 'save_map.csv'.  <a href="#aeb1455e8d9868dbe3fa2dc0df61f3ce4">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aeb1455e8d9868dbe3fa2dc0df61f3ce4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae070760c3aa26e4d1476f2b7d07a2b1c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="backup__and__load_8c.html#ae070760c3aa26e4d1476f2b7d07a2b1c">load_quete</a> (int quest_map[6][2], quete_t *quete)</td></tr>
+<tr class="memdesc:ae070760c3aa26e4d1476f2b7d07a2b1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge les informations des quêtes à partir du fichier 'save_quete.csv'.  <a href="#ae070760c3aa26e4d1476f2b7d07a2b1c">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae070760c3aa26e4d1476f2b7d07a2b1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab0014eee5b94780b856a7682ae49b30"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="backup__and__load_8c.html#aab0014eee5b94780b856a7682ae49b30">backup_exists</a> ()</td></tr>
+<tr class="memdesc:aab0014eee5b94780b856a7682ae49b30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie si une sauvegarde complète du jeu existe.  <a href="#aab0014eee5b94780b856a7682ae49b30">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aab0014eee5b94780b856a7682ae49b30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5bc95791f73c2f23fbd99cdb8c7e1f2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="backup__and__load_8c.html#ad5bc95791f73c2f23fbd99cdb8c7e1f2">init_or_load_game</a> (perso_t *player, cell_t map[D][D], int quest_map[6][2], quete_t *quete)</td></tr>
+<tr class="memdesc:ad5bc95791f73c2f23fbd99cdb8c7e1f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Si une sauvegarde du jeu existe, propose au joueur de continuer la partie ou d'en commencer une nouvelle.  <a href="#ad5bc95791f73c2f23fbd99cdb8c7e1f2">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ad5bc95791f73c2f23fbd99cdb8c7e1f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Sauvegarde et chargement d'une partie. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2020 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="aab0014eee5b94780b856a7682ae49b30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab0014eee5b94780b856a7682ae49b30">&#9670;&nbsp;</a></span>backup_exists()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int backup_exists </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie si une sauvegarde complète du jeu existe. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Un <em>int</em> : 1 si sauvegarde existante. 0 sinon. </dd></dl>
+
+</div>
+</div>
+<a id="ad5bc95791f73c2f23fbd99cdb8c7e1f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5bc95791f73c2f23fbd99cdb8c7e1f2">&#9670;&nbsp;</a></span>init_or_load_game()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int init_or_load_game </td>
+          <td>(</td>
+          <td class="paramtype">perso_t *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">cell_t&#160;</td>
+          <td class="paramname"><em>map</em>[D][D], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>quest_map</em>[6][2], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">quete_t *&#160;</td>
+          <td class="paramname"><em>quete</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Si une sauvegarde du jeu existe, propose au joueur de continuer la partie ou d'en commencer une nouvelle. </p>
+<p>Si aucune sauvegarde, initialise une nouvelle partie. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">perso_t</td><td>* player </td></tr>
+    <tr><td class="paramname">cell_t</td><td>map[D][D] </td></tr>
+    <tr><td class="paramname">int</td><td>quest_map[6][2] </td></tr>
+    <tr><td class="paramname">quete_t</td><td>* quete </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un <em>int</em> : 1 si initialisation / chargement réussi. 0 si échec. </dd></dl>
+
+</div>
+</div>
+<a id="a0006d1b730137142326f7172e9ec9275"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0006d1b730137142326f7172e9ec9275">&#9670;&nbsp;</a></span>load()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int load </td>
+          <td>(</td>
+          <td class="paramtype">perso_t *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">cell_t&#160;</td>
+          <td class="paramname"><em>map</em>[D][D], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>quest_map</em>[6][2], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">quete_t *&#160;</td>
+          <td class="paramname"><em>quete</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Charge les informations sur le joueur, son inventaire, son équipement et la carte. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">perso_t</td><td>* player </td></tr>
+    <tr><td class="paramname">cell_t</td><td>map[D][D] </td></tr>
+    <tr><td class="paramname">int</td><td>quest_map[6][2] </td></tr>
+    <tr><td class="paramname">quete_t</td><td>* quete </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un <em>int</em> : 1 si succès complet du chargement. 0 si problème lors du chargement. </dd></dl>
+
+</div>
+</div>
+<a id="af55f140477f851e77110b44043b15f32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af55f140477f851e77110b44043b15f32">&#9670;&nbsp;</a></span>load_equipment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int load_equipment </td>
+          <td>(</td>
+          <td class="paramtype">perso_t *&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Charge l'équipement du joueur à partir du fichier 'save_equipment.csv'. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">perso_t</td><td>* player </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un <em>int</em> : 1 si chargement réussi. 0 si échec du chargement. </dd></dl>
+
+</div>
+</div>
+<a id="a347aef6e50f726155f0ca327f3584bc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a347aef6e50f726155f0ca327f3584bc1">&#9670;&nbsp;</a></span>load_info_player()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int load_info_player </td>
+          <td>(</td>
+          <td class="paramtype">perso_t *&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Charge les informations du joueur à partir du fichier 'save_info_player.csv'. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">perso_t</td><td>* player </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un <em>int</em> : 1 si chargement réussi. 0 si échec du chargement. </dd></dl>
+
+</div>
+</div>
+<a id="a1ca7baefc14b21bed6f7f23cb2b81061"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ca7baefc14b21bed6f7f23cb2b81061">&#9670;&nbsp;</a></span>load_inventory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int load_inventory </td>
+          <td>(</td>
+          <td class="paramtype">perso_t *&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Charge l'inventaire du joueur à partir du fichier 'save_inventory.csv'. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">perso_t</td><td>* player </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un <em>int</em> : 1 si chargement réussi. 0 si échec du chargement. </dd></dl>
+
+</div>
+</div>
+<a id="aeb1455e8d9868dbe3fa2dc0df61f3ce4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb1455e8d9868dbe3fa2dc0df61f3ce4">&#9670;&nbsp;</a></span>load_map()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int load_map </td>
+          <td>(</td>
+          <td class="paramtype">cell_t&#160;</td>
+          <td class="paramname"><em>map</em>[D][D]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Charge la carte à partir du fichier 'save_map.csv'. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cell_t</td><td>map[D][D] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un <em>int</em> : 1 si chargement réussi. 0 si échec du chargement. </dd></dl>
+
+</div>
+</div>
+<a id="ae070760c3aa26e4d1476f2b7d07a2b1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae070760c3aa26e4d1476f2b7d07a2b1c">&#9670;&nbsp;</a></span>load_quete()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int load_quete </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>quest_map</em>[6][2], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">quete_t *&#160;</td>
+          <td class="paramname"><em>quete</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Charge les informations des quêtes à partir du fichier 'save_quete.csv'. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">int</td><td>quest_map[6][2] </td></tr>
+    <tr><td class="paramname">quete_t</td><td>* quete </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un <em>int</em> : 1 si chargement réussi. 0 si échec du chargement. </dd></dl>
+
+</div>
+</div>
+<a id="a6d4382fa7768898a8b2bce5da601bf5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d4382fa7768898a8b2bce5da601bf5a">&#9670;&nbsp;</a></span>save()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void save </td>
+          <td>(</td>
+          <td class="paramtype">perso_t&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">cell_t&#160;</td>
+          <td class="paramname"><em>map</em>[D][D], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>quest_map</em>[6][2], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">quete_t&#160;</td>
+          <td class="paramname"><em>quete</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sauvegarde les informations sur le joueur, son inventaire, son équipement et la carte. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">perso_t</td><td>player </td></tr>
+    <tr><td class="paramname">cell_t</td><td>map[D][D] </td></tr>
+    <tr><td class="paramname">int</td><td>quest_map[6][2] </td></tr>
+    <tr><td class="paramname">quete_t</td><td>quete </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="af29212eb7ae8429e0c6ed7b486077e28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af29212eb7ae8429e0c6ed7b486077e28">&#9670;&nbsp;</a></span>save_equipment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void save_equipment </td>
+          <td>(</td>
+          <td class="paramtype">perso_t&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sauvegarde l'équipement du joueur dans un fichier 'save_equipment.csv'. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">perso_t</td><td>player </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="ac7e17aee692ea956b96122bd0f8cbe2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7e17aee692ea956b96122bd0f8cbe2c">&#9670;&nbsp;</a></span>save_info_player()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void save_info_player </td>
+          <td>(</td>
+          <td class="paramtype">perso_t&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sauvegarde les informations du joueur dans un fichier 'save_info_player. </p>
+<p>' </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">perso_t</td><td>player </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a9411cc773bca4d1a8a475b63fdbb82b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9411cc773bca4d1a8a475b63fdbb82b1">&#9670;&nbsp;</a></span>save_inventory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void save_inventory </td>
+          <td>(</td>
+          <td class="paramtype">perso_t&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sauvegarde l'inventaire du joueur dans un fichier 'save_inventory.csv'. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">perso_t</td><td>player </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a20bf83b117d4618a1cdd44f63b99ce49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20bf83b117d4618a1cdd44f63b99ce49">&#9670;&nbsp;</a></span>save_map()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void save_map </td>
+          <td>(</td>
+          <td class="paramtype">cell_t&#160;</td>
+          <td class="paramname"><em>map</em>[D][D]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sauvegarde la carte dans un fichier 'save_map.csv'. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cell_t</td><td>map[D][D] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="ac314a90f64bb57b83647985dcba056bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac314a90f64bb57b83647985dcba056bb">&#9670;&nbsp;</a></span>save_quete()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void save_quete </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>quest_map</em>[6][2], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">quete_t&#160;</td>
+          <td class="paramname"><em>quete</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sauvegarde les informations sur les quêtes. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">int</td><td>quest_map[6][2] </td></tr>
+    <tr><td class="paramname">quete_t</td><td>quete </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

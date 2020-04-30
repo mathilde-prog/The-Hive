@@ -3,11 +3,11 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
-#include "structure.h"
+#include "lib/structure.h"
 
 /**
  * \file exit_help.c
- * \brief Sortie + Aide 
+ * \brief Sortie + Aide
  * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
  * \version
  * \date 2020
@@ -36,7 +36,7 @@ int exit_game(){
 /**
  * \fn void help(perso_t * player)
  * \brief Donne des conseils au joueur suivant ses difficultés
- * \param perso_t * player 
+ * \param perso_t * player
  * \return Rien
 */
 void help(perso_t * player){

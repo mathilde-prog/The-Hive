@@ -1,0 +1,315 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projet L2 Informatique - The Hive: Référence du fichier src/quetes.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Projet L2 Informatique - The Hive
+   </div>
+   <div id="projectbrief">Documentation jeu The Hive (Projet L2 Informatique)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier quetes.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Fonctionalite : Actionner quetes du jeu.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;time.h&gt;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &quot;lib/structure.h&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de quetes.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="quetes_8c__incl.png" border="0" usemap="#src_2quetes_8c" alt=""/></div>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a0a94224fa176b2005aafe114f8d56c83"><td class="memItemLeft" align="right" valign="top"><a id="a0a94224fa176b2005aafe114f8d56c83"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_quete</b> (quete_t *quete)</td></tr>
+<tr class="separator:a0a94224fa176b2005aafe114f8d56c83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06b5050ffeff02ae95c038ca2a394ba7"><td class="memItemLeft" align="right" valign="top"><a id="a06b5050ffeff02ae95c038ca2a394ba7"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>quetes</b> (perso_t *player, cell_t map[D][D], int quest_map[6][2], quete_t *quete)</td></tr>
+<tr class="separator:a06b5050ffeff02ae95c038ca2a394ba7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab993120c9273aa16f7789c84428d4ab9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="quetes_8c.html#ab993120c9273aa16f7789c84428d4ab9">quete_montagne</a> (perso_t *player, quete_t *quete)</td></tr>
+<tr class="memdesc:ab993120c9273aa16f7789c84428d4ab9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Acces a la quete de la montagne.  <a href="#ab993120c9273aa16f7789c84428d4ab9">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ab993120c9273aa16f7789c84428d4ab9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7da8ac2437b193c7740204da24c04ae8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="quetes_8c.html#a7da8ac2437b193c7740204da24c04ae8">quete_frontiere</a> (perso_t *player, quete_t *quete)</td></tr>
+<tr class="memdesc:a7da8ac2437b193c7740204da24c04ae8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Acces a la quete "fronti�re".  <a href="#a7da8ac2437b193c7740204da24c04ae8">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a7da8ac2437b193c7740204da24c04ae8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a266486f088d93c87682a8c3f1d130d64"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="quetes_8c.html#a266486f088d93c87682a8c3f1d130d64">quete_bunker</a> (perso_t *player, quete_t *quete)</td></tr>
+<tr class="memdesc:a266486f088d93c87682a8c3f1d130d64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accès à la quete du bunker.  <a href="#a266486f088d93c87682a8c3f1d130d64">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a266486f088d93c87682a8c3f1d130d64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95971b386095708b02eec5042b2eb8fa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="quetes_8c.html#a95971b386095708b02eec5042b2eb8fa">quete_bandits</a> (perso_t *player, quete_t *quete)</td></tr>
+<tr class="memdesc:a95971b386095708b02eec5042b2eb8fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accès à la quete "bandits".  <a href="#a95971b386095708b02eec5042b2eb8fa">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a95971b386095708b02eec5042b2eb8fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0db997da4196ed6fda8cc138fdc1c7b7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="quetes_8c.html#a0db997da4196ed6fda8cc138fdc1c7b7">quete_recherche</a> (perso_t *player, quete_t *quete)</td></tr>
+<tr class="memdesc:a0db997da4196ed6fda8cc138fdc1c7b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accès à la quete "recherche".  <a href="#a0db997da4196ed6fda8cc138fdc1c7b7">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a0db997da4196ed6fda8cc138fdc1c7b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Fonctionalite : Actionner quetes du jeu. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Mathilde Mottay, Anais Mottier, Clement Mainguy, Moustapha Tsamarayev </dd></dl>
+<dl class="section version"><dt>Version</dt><dd></dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2020 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a95971b386095708b02eec5042b2eb8fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95971b386095708b02eec5042b2eb8fa">&#9670;&nbsp;</a></span>quete_bandits()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void quete_bandits </td>
+          <td>(</td>
+          <td class="paramtype">perso_t *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">quete_t *&#160;</td>
+          <td class="paramname"><em>quete</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Accès à la quete "bandits". </p>
+<p>Le joueur combat contre un npc aléatoire. Il en sort vivant, blesse ou mort. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">perso_t</td><td>* player </td></tr>
+    <tr><td class="paramname">quete_t</td><td>* quete </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne un <em>int</em> : 0 si le jeu continue, 1 si le jeu est fini et -1 si problème dans la quete. </dd></dl>
+
+</div>
+</div>
+<a id="a266486f088d93c87682a8c3f1d130d64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a266486f088d93c87682a8c3f1d130d64">&#9670;&nbsp;</a></span>quete_bunker()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void quete_bunker </td>
+          <td>(</td>
+          <td class="paramtype">perso_t *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">quete_t *&#160;</td>
+          <td class="paramname"><em>quete</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Accès à la quete du bunker. </p>
+<p>Si le joueur possede le pass_card il aura le choix de rentrer dans le bunker ou non. Sinon il fait demi-tour. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">perso_t</td><td>* player </td></tr>
+    <tr><td class="paramname">quete_t</td><td>* quete </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne un <em>int</em> : 0 si le jeu continue, 1 si le jeu est fini et -1 si problème dans la quete. </dd></dl>
+
+</div>
+</div>
+<a id="a7da8ac2437b193c7740204da24c04ae8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7da8ac2437b193c7740204da24c04ae8">&#9670;&nbsp;</a></span>quete_frontiere()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void quete_frontiere </td>
+          <td>(</td>
+          <td class="paramtype">perso_t *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">quete_t *&#160;</td>
+          <td class="paramname"><em>quete</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Acces a la quete "fronti�re". </p>
+<p>Le joueur trouve la sortie de la frontiere, il a le choix de la franchir (finir le jeu) ou non. Si il a jouer la quete "soin" et qu'il a aide l'homme bless� alors ses chances de la franchir sont imporantes. Mais si il ne l'a pas fait,ses chances sont moins importantes. La chance est donne en un nombre entier entre 0 et 100. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">perso_t</td><td>* player </td></tr>
+    <tr><td class="paramname">quete_t</td><td>* quete </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne un <em>int</em> : 0 si le jeu continue, 1 si le jeu est fini et -1 si probleme dans la quete. </dd></dl>
+
+</div>
+</div>
+<a id="ab993120c9273aa16f7789c84428d4ab9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab993120c9273aa16f7789c84428d4ab9">&#9670;&nbsp;</a></span>quete_montagne()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void quete_montagne </td>
+          <td>(</td>
+          <td class="paramtype">perso_t *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">quete_t *&#160;</td>
+          <td class="paramname"><em>quete</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Acces a la quete de la montagne. </p>
+<p>Le joueur a le choix de franchir la montagne (finir le jeu) ou non. Si il a en sa possession l'equipement de montagne alors ses chances de s'echapper sont imporantes. Mais si il ne l'a pas il est tres risque pour lui de vouloir s'echapper. La chance est donne en un nombre entier entre 0 et 100. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">perso_t</td><td>* player </td></tr>
+    <tr><td class="paramname">quete_t</td><td>* quete </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne un <em>int</em> : 0 si le jeu continue, 1 si le jeu est fini et -1 si probleme dans la quete. </dd></dl>
+
+</div>
+</div>
+<a id="a0db997da4196ed6fda8cc138fdc1c7b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0db997da4196ed6fda8cc138fdc1c7b7">&#9670;&nbsp;</a></span>quete_recherche()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void quete_recherche </td>
+          <td>(</td>
+          <td class="paramtype">perso_t *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">quete_t *&#160;</td>
+          <td class="paramname"><em>quete</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Accès à la quete "recherche". </p>
+<p>Le joueur doit aller à un endroit donné pour trouver un item et le ramener. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">perso_t</td><td>* player </td></tr>
+    <tr><td class="paramname">quete_t</td><td>* quete </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne un <em>int</em> : 0 si le jeu continue, 1 si le jeu est fini et -1 si problème dans la quete. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

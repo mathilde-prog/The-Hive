@@ -3,7 +3,7 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
-#include "structure.h"
+#include "lib/structure.h"
 
 /**
  * \file inventory.c
@@ -292,35 +292,34 @@ int add_item_to_inventory(perso_t * player, item_t item){
 void manage_inventory(perso_t * player){
 	int nb, choise, ind_mk, mk;
 
-	if(!player->nb_items_inventory){
-		display_inventory(*player);
-		printf("Vous ne pouvez rien faire sans item dans votre inventaire.\n");
-		sleep(3);
-	}
-	else {
-		do {
+	do {
 			display_inventory(*player);
+
+			if(!player->nb_items_inventory){
+				printf("Vous ne pouvez rien faire sans item dans votre inventaire.\n");
+				sleep(3);
+				return;
+			}
+
 			ind_mk = item_in_inventory(*player,"medical kit");
 			mk = (ind_mk != -1) ? 4 : 3;
 
-			if(player->nb_items_inventory){
-				do {
-					// Menu management inventory
-					printf("Que souhaitez-vous faire ?\n");
-					printf("1. En savoir plus sur un item\n");
-					printf("2. Se débarasser d'un item\n");
-					printf("3. Manger ou boire un item\n");
-					if(mk == 4){
-						printf("4. Utiliser votre kit médical\n");
-					}
-					printf("Quitter gestion inventaire: -1\n\n");
-					printf("N°");
-					scanf("%d", &choise);
-					if((choise != -1) && (choise < 1 || choise > mk)){
-						printf("Valeur incorrecte. Veuillez ressaisir\n");
-					}
-				} while ((choise != -1) && (choise < 1 || choise > mk));
-			}
+			do {
+				// Menu management inventory
+				printf("Que souhaitez-vous faire ?\n");
+				printf("1. En savoir plus sur un item\n");
+				printf("2. Se débarasser d'un item\n");
+				printf("3. Manger ou boire un item\n");
+				if(mk == 4){
+					printf("4. Utiliser votre kit médical\n");
+				}
+				printf("Quitter gestion inventaire: -1\n\n");
+				printf("N°");
+				scanf("%d", &choise);
+				if((choise != -1) && (choise < 1 || choise > mk)){
+					printf("Valeur incorrecte. Veuillez ressaisir\n");
+				}
+			} while ((choise != -1) && (choise < 1 || choise > mk));
 
 			if(choise != -1){
 				// Know more about an item
@@ -378,9 +377,7 @@ void manage_inventory(perso_t * player){
 					delete_item_in_inventory(player,player->inventory[ind_mk]);
 					sleep(2);
 				}
-
 			}
 			clrscr();
-		} while (choise != -1);
-	}
+	} while (choise != -1);
 }

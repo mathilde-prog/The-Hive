@@ -3,7 +3,7 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
-#include "structure.h"
+#include "lib/structure.h"
 
 /**
  * \file quetes.c
@@ -36,15 +36,14 @@ void init_quete(quete_t * quete){
  * \return Retourne un \a int : 0 si le jeu continue, 1 si le jeu est fini et -1 si probleme dans la quete.
 */
 
-int quetes(perso_t * player, cell_t map[D][D], quest_map[6][2], quete_t * quete){
+int quetes(perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete){
     int ok;
 
     switch (map[quest_map[0][0]][quest_map[0][1]].quest_id){
-        map[quest_map[0][0]][quest_map[0][1]].quest_id
         case 1 : clrscr(); ok = quete_montagne(player, quete); clrscr(); break;
         case 2 : clrscr(); ok = quete_frontiere(player, quete); clrscr(); break;
         case 3 : clrscr(); ok = quete_bunker(player, quete); clrscr(); break;
-   //     case 4 : clrscr(); ok = quete_bandits(player, quete); clrscr(); break;
+   //   case 4 : clrscr(); ok = quete_bandits(player, quete); clrscr(); break;
         case 5 : clrscr(); ok = quete_soin(player, quete); clrscr(); break;
         case 6 : clrscr(); ok = quete_recherche(player, quete); clrscr(); break;
         default : printf("ERREUR : aucune quete ne correspond au quest_id donne : %d", map[player->posX][player->posY].quest_id); break;
@@ -147,7 +146,7 @@ int quete_montagne(perso_t * player, quete_t * quete){
     }
     else {
         printf("Vous etes prudent, continuez d'explorer la map et peut-etre trouverez-vous l'equipement parfait pour la gravir plus tard !\n");
-        quete->montagne=1 //OU -1 ??
+        quete->montagne=1 ;//OU -1 ??
         return 0;
     }
     return (-1);
@@ -317,7 +316,7 @@ int quete_bunker(perso_t * player, quete_t * quete){
 */
 
 int quete_bandits(perso_t * player, quete_t * quete){
-    int choix, ajout, combat;
+    int choix, combat;
 
     quete->bandits=0;
 
@@ -355,13 +354,9 @@ int quete_bandits(perso_t * player, quete_t * quete){
                 if (combat < 1 || combat > 2)
                     printf("Valeur incorrecte. Veuillez resaissir.\n");
             }while(combat < 1 || combat > 2);
-
-
         }
     }
 }
-
-
 
 
 /**

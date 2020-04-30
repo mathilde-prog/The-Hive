@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
-#include "structure.h"
+#include "lib/structure.h"
 
 /**
  * \file menu.c
@@ -76,9 +76,9 @@ int main(){
           case 6: clrscr(); check_the_map(player, map); clrscr(); break;
           case 7: clrscr(); rest_and_heal(&player); clrscr(); break;
           case 8: clrscr(); next_turn(&player); clrscr(); break;
-          case 9: clrscr(); save(player,map); exit(1); break;
+          case 9: clrscr(); save(player,map,quest_map,quete); exit(1); break;
           case 10: clrscr(); help(&player); clrscr(); break;
-          case 11: display_quest(quest_map); sleep(4); break;
+      //    case 11: display_quest(quest_map); sleep(4); break;
           case -1: exit(1); break;
           default: printf("Commande inconnue. Veuillez resaissir: "); goto jump; break;
         }

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "structure.h"
+#include "lib/structure.h"
 
 /* Fichier test pour la gestion de l'inventaire */
 

@@ -1,0 +1,82 @@
+\hypertarget{eat__or__drink_8c}{}\section{Référence du fichier src/eat\+\_\+or\+\_\+drink.c}
+\label{eat__or__drink_8c}\index{src/eat\+\_\+or\+\_\+drink.\+c@{src/eat\+\_\+or\+\_\+drink.\+c}}
+
+
+Fonctionnalité \+: manger ou boire un item de son inventaire.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}lib/structure.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de eat\+\_\+or\+\_\+drink.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{eat__or__drink_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{eat__or__drink_8c_a400e5d6c52a35b165053c2475905d656}{gain\+\_\+energie} (perso\+\_\+t $\ast$player, int val\+\_\+e)
+\begin{DoxyCompactList}\small\item\em Calcule et met à jour les points d\textquotesingle{}énergie du joueur selon la valeur énergétique de l\textquotesingle{}item mangé / bu. \end{DoxyCompactList}\item 
+void \hyperlink{eat__or__drink_8c_ab3d3633d751f914bb3b4609a9950c513}{eat\+\_\+or\+\_\+drink} (perso\+\_\+t $\ast$player, item\+\_\+t item)
+\begin{DoxyCompactList}\small\item\em Permet au joueur de boire ou manger un item de type {\itshape food} et récupérer des points d\textquotesingle{}énergie ou action (si cela est possible). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Fonctionnalité \+: manger ou boire un item de son inventaire. 
+
+\begin{DoxyAuthor}{Auteur}
+Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{eat__or__drink_8c_ab3d3633d751f914bb3b4609a9950c513}\label{eat__or__drink_8c_ab3d3633d751f914bb3b4609a9950c513}} 
+\index{eat\+\_\+or\+\_\+drink.\+c@{eat\+\_\+or\+\_\+drink.\+c}!eat\+\_\+or\+\_\+drink@{eat\+\_\+or\+\_\+drink}}
+\index{eat\+\_\+or\+\_\+drink@{eat\+\_\+or\+\_\+drink}!eat\+\_\+or\+\_\+drink.\+c@{eat\+\_\+or\+\_\+drink.\+c}}
+\subsubsection{\texorpdfstring{eat\+\_\+or\+\_\+drink()}{eat\_or\_drink()}}
+{\footnotesize\ttfamily void eat\+\_\+or\+\_\+drink (\begin{DoxyParamCaption}\item[{perso\+\_\+t $\ast$}]{player,  }\item[{item\+\_\+t}]{item }\end{DoxyParamCaption})}
+
+
+
+Permet au joueur de boire ou manger un item de type {\itshape food} et récupérer des points d\textquotesingle{}énergie ou action (si cela est possible). 
+
+Retire l\textquotesingle{}item de l\textquotesingle{}inventaire 
+\begin{DoxyParams}{Paramètres}
+{\em perso\+\_\+t} & $\ast$ player \\
+\hline
+{\em item\+\_\+t} & item \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{eat__or__drink_8c_a400e5d6c52a35b165053c2475905d656}\label{eat__or__drink_8c_a400e5d6c52a35b165053c2475905d656}} 
+\index{eat\+\_\+or\+\_\+drink.\+c@{eat\+\_\+or\+\_\+drink.\+c}!gain\+\_\+energie@{gain\+\_\+energie}}
+\index{gain\+\_\+energie@{gain\+\_\+energie}!eat\+\_\+or\+\_\+drink.\+c@{eat\+\_\+or\+\_\+drink.\+c}}
+\subsubsection{\texorpdfstring{gain\+\_\+energie()}{gain\_energie()}}
+{\footnotesize\ttfamily void gain\+\_\+energie (\begin{DoxyParamCaption}\item[{perso\+\_\+t $\ast$}]{player,  }\item[{int}]{val\+\_\+e }\end{DoxyParamCaption})}
+
+
+
+Calcule et met à jour les points d\textquotesingle{}énergie du joueur selon la valeur énergétique de l\textquotesingle{}item mangé / bu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em perso\+\_\+t} & $\ast$ player \\
+\hline
+{\em int} & val\+\_\+e \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}

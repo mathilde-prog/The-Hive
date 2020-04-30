@@ -1,0 +1,213 @@
+\hypertarget{quete__soin_8c}{}\section{Référence du fichier src/quete\+\_\+soin.c}
+\label{quete__soin_8c}\index{src/quete\+\_\+soin.\+c@{src/quete\+\_\+soin.\+c}}
+
+
+Fonctions utilisees dans la quete \char`\"{}soin\char`\"{}.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}lib/structure.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de quete\+\_\+soin.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{quete__soin_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+npc\+\_\+t $\ast$ \hyperlink{quete__soin_8c_a7d129df227c67d85999f25b33eba672a}{init\+\_\+npc\+\_\+quete} (item\+\_\+t $\ast$Tab\+\_\+\+Items, int pers)
+\begin{DoxyCompactList}\small\item\em Initialisation du personnage de l\textquotesingle{}homme bless�. \end{DoxyCompactList}\item 
+int \hyperlink{quete__soin_8c_a1a1d9de9f3c8856b27220cc68879f6a6}{ajout\+\_\+item\+\_\+blesse} (perso\+\_\+t $\ast$player, npc\+\_\+t $\ast$homme, int item)
+\begin{DoxyCompactList}\small\item\em Ajouter un item appartenant a un npc a l\textquotesingle{}inventaire du joueur. \end{DoxyCompactList}\item 
+int \hyperlink{quete__soin_8c_a24a3e3e264884fa86338b8f5b38b01f6}{ajout\+\_\+pass\+\_\+card} (perso\+\_\+t $\ast$player, item\+\_\+t $\ast$pass\+\_\+card)
+\begin{DoxyCompactList}\small\item\em Ajouter l\textquotesingle{}item pass\+\_\+card a l\textquotesingle{}inventaire du joueur. \end{DoxyCompactList}\item 
+int \hyperlink{quete__soin_8c_a287944284de4bdcd2d3c3178ebd79adf}{menu\+\_\+choix\+\_\+ajout\+\_\+item} (perso\+\_\+t $\ast$player, item\+\_\+t $\ast$pass\+\_\+card, npc\+\_\+t $\ast$homme)
+\begin{DoxyCompactList}\small\item\em Menu permettant au joueur de choisir quel item il souhaite ajoute a son inventaire;. \end{DoxyCompactList}\item 
+int \hyperlink{quete__soin_8c_a724b2929f9e38cfa79e5caa45e982a42}{recup\+\_\+1item\+\_\+vole} (perso\+\_\+t $\ast$player, int nb\+\_\+items\+\_\+vole, npc\+\_\+t $\ast$homme, item\+\_\+t $\ast$pass\+\_\+card)
+\begin{DoxyCompactList}\small\item\em Deroulement de la quete \char`\"{}soin\char`\"{} quand le joueur souhaite voler des items du npc et qu\textquotesingle{}il n\textquotesingle{}en trouve qu\textquotesingle{}un seul sur l\textquotesingle{}homme \+: le pass card. \end{DoxyCompactList}\item 
+int \hyperlink{quete__soin_8c_ae3700bdf87b41634c1e8c4b3ad8a9cf7}{recup\+\_\+2items\+\_\+vole} (perso\+\_\+t $\ast$player, int nb\+\_\+items\+\_\+vole, npc\+\_\+t $\ast$homme, item\+\_\+t $\ast$pass\+\_\+card)
+\begin{DoxyCompactList}\small\item\em Deroulement de la quete \char`\"{}soin\char`\"{} quand le joueur souhaite voler des items du npc et qu\textquotesingle{}il en trouve 2 sur l\textquotesingle{}homme. \end{DoxyCompactList}\item 
+int \hyperlink{quete__soin_8c_ae8268170d69e016c56e99b048fce5ebf}{recup\+\_\+3items\+\_\+vole} (perso\+\_\+t $\ast$player, int nb\+\_\+items\+\_\+vole, npc\+\_\+t $\ast$homme, item\+\_\+t $\ast$pass\+\_\+card)
+\begin{DoxyCompactList}\small\item\em Deroulement de la quete \char`\"{}soin\char`\"{} quand le joueur souhaite voler des items du npc et qu\textquotesingle{}il en trouve 3 sur l\textquotesingle{}homme. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{quete__soin_8c_aef0b337811ec7b63569593e537d374c4}\label{quete__soin_8c_aef0b337811ec7b63569593e537d374c4}} 
+int {\bfseries quete\+\_\+soin} (perso\+\_\+t $\ast$player, quete\+\_\+t $\ast$quete)
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Fonctions utilisees dans la quete \char`\"{}soin\char`\"{}. 
+
+\begin{DoxyAuthor}{Auteur}
+Mathilde Mottay, Anais Mottier, Clement Mainguy, Moustapha Tsamarayev 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{quete__soin_8c_a1a1d9de9f3c8856b27220cc68879f6a6}\label{quete__soin_8c_a1a1d9de9f3c8856b27220cc68879f6a6}} 
+\index{quete\+\_\+soin.\+c@{quete\+\_\+soin.\+c}!ajout\+\_\+item\+\_\+blesse@{ajout\+\_\+item\+\_\+blesse}}
+\index{ajout\+\_\+item\+\_\+blesse@{ajout\+\_\+item\+\_\+blesse}!quete\+\_\+soin.\+c@{quete\+\_\+soin.\+c}}
+\subsubsection{\texorpdfstring{ajout\+\_\+item\+\_\+blesse()}{ajout\_item\_blesse()}}
+{\footnotesize\ttfamily int ajout\+\_\+item\+\_\+blesse (\begin{DoxyParamCaption}\item[{perso\+\_\+t $\ast$}]{player,  }\item[{npc\+\_\+t $\ast$}]{homme,  }\item[{int}]{item }\end{DoxyParamCaption})}
+
+
+
+Ajouter un item appartenant a un npc a l\textquotesingle{}inventaire du joueur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em perso\+\_\+t} & $\ast$ player \\
+\hline
+{\em npc\+\_\+t} & $\ast$ homme \\
+\hline
+{\em int} & item \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\itshape int} \+: 0 si le jeu continue, -\/1 si probleme lors de la quete. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{quete__soin_8c_a24a3e3e264884fa86338b8f5b38b01f6}\label{quete__soin_8c_a24a3e3e264884fa86338b8f5b38b01f6}} 
+\index{quete\+\_\+soin.\+c@{quete\+\_\+soin.\+c}!ajout\+\_\+pass\+\_\+card@{ajout\+\_\+pass\+\_\+card}}
+\index{ajout\+\_\+pass\+\_\+card@{ajout\+\_\+pass\+\_\+card}!quete\+\_\+soin.\+c@{quete\+\_\+soin.\+c}}
+\subsubsection{\texorpdfstring{ajout\+\_\+pass\+\_\+card()}{ajout\_pass\_card()}}
+{\footnotesize\ttfamily int ajout\+\_\+pass\+\_\+card (\begin{DoxyParamCaption}\item[{perso\+\_\+t $\ast$}]{player,  }\item[{item\+\_\+t $\ast$}]{pass\+\_\+card }\end{DoxyParamCaption})}
+
+
+
+Ajouter l\textquotesingle{}item pass\+\_\+card a l\textquotesingle{}inventaire du joueur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em perso\+\_\+t} & $\ast$ player \\
+\hline
+{\em item\+\_\+t} & $\ast$ pass\+\_\+card \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\itshape int} \+: 0 si le jeu continue, -\/1 si probleme lors de la quete. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{quete__soin_8c_a7d129df227c67d85999f25b33eba672a}\label{quete__soin_8c_a7d129df227c67d85999f25b33eba672a}} 
+\index{quete\+\_\+soin.\+c@{quete\+\_\+soin.\+c}!init\+\_\+npc\+\_\+quete@{init\+\_\+npc\+\_\+quete}}
+\index{init\+\_\+npc\+\_\+quete@{init\+\_\+npc\+\_\+quete}!quete\+\_\+soin.\+c@{quete\+\_\+soin.\+c}}
+\subsubsection{\texorpdfstring{init\+\_\+npc\+\_\+quete()}{init\_npc\_quete()}}
+{\footnotesize\ttfamily npc\+\_\+t $\ast$ init\+\_\+npc\+\_\+quete (\begin{DoxyParamCaption}\item[{item\+\_\+t $\ast$}]{Tab\+\_\+\+Items,  }\item[{int}]{pers }\end{DoxyParamCaption})}
+
+
+
+Initialisation du personnage de l\textquotesingle{}homme bless�. 
+
+L\textquotesingle{}initialisation est differente en fonction du \char`\"{}metier\char`\"{} de l\textquotesingle{}homme \+: soldat, policier. Il n\textquotesingle{}aura pas la meme arme mais aura la meme armure. 
+\begin{DoxyParams}{Paramètres}
+{\em item\+\_\+t} & $\ast$ Tab\+\_\+\+Items \\
+\hline
+{\em int} & pers \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur (npc\+\_\+t) sur le npc cree 
+\end{DoxyReturn}
+\mbox{\Hypertarget{quete__soin_8c_a287944284de4bdcd2d3c3178ebd79adf}\label{quete__soin_8c_a287944284de4bdcd2d3c3178ebd79adf}} 
+\index{quete\+\_\+soin.\+c@{quete\+\_\+soin.\+c}!menu\+\_\+choix\+\_\+ajout\+\_\+item@{menu\+\_\+choix\+\_\+ajout\+\_\+item}}
+\index{menu\+\_\+choix\+\_\+ajout\+\_\+item@{menu\+\_\+choix\+\_\+ajout\+\_\+item}!quete\+\_\+soin.\+c@{quete\+\_\+soin.\+c}}
+\subsubsection{\texorpdfstring{menu\+\_\+choix\+\_\+ajout\+\_\+item()}{menu\_choix\_ajout\_item()}}
+{\footnotesize\ttfamily int menu\+\_\+choix\+\_\+ajout\+\_\+item (\begin{DoxyParamCaption}\item[{perso\+\_\+t $\ast$}]{player,  }\item[{item\+\_\+t $\ast$}]{pass\+\_\+card,  }\item[{npc\+\_\+t $\ast$}]{homme }\end{DoxyParamCaption})}
+
+
+
+Menu permettant au joueur de choisir quel item il souhaite ajoute a son inventaire;. 
+
+Le joueur fait son choix et par la suite la fonction fait appel a une autre fonction (ajout\+\_\+item\+\_\+blesse, ajout\+\_\+pass\+\_\+card) qui ajoute l\textquotesingle{}item choisi 
+\begin{DoxyParams}{Paramètres}
+{\em perso\+\_\+t} & $\ast$ player \\
+\hline
+{\em item\+\_\+t} & $\ast$ pass\+\_\+card \\
+\hline
+{\em npc\+\_\+t} & $\ast$ homme \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\itshape int} \+: 0 si le jeu continue, -\/1 si probleme lors de la quete. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{quete__soin_8c_a724b2929f9e38cfa79e5caa45e982a42}\label{quete__soin_8c_a724b2929f9e38cfa79e5caa45e982a42}} 
+\index{quete\+\_\+soin.\+c@{quete\+\_\+soin.\+c}!recup\+\_\+1item\+\_\+vole@{recup\+\_\+1item\+\_\+vole}}
+\index{recup\+\_\+1item\+\_\+vole@{recup\+\_\+1item\+\_\+vole}!quete\+\_\+soin.\+c@{quete\+\_\+soin.\+c}}
+\subsubsection{\texorpdfstring{recup\+\_\+1item\+\_\+vole()}{recup\_1item\_vole()}}
+{\footnotesize\ttfamily int recup\+\_\+1item\+\_\+vole (\begin{DoxyParamCaption}\item[{perso\+\_\+t $\ast$}]{player,  }\item[{int}]{nb\+\_\+items\+\_\+vole,  }\item[{npc\+\_\+t $\ast$}]{homme,  }\item[{item\+\_\+t $\ast$}]{pass\+\_\+card }\end{DoxyParamCaption})}
+
+
+
+Deroulement de la quete \char`\"{}soin\char`\"{} quand le joueur souhaite voler des items du npc et qu\textquotesingle{}il n\textquotesingle{}en trouve qu\textquotesingle{}un seul sur l\textquotesingle{}homme \+: le pass card. 
+
+Le joueur fait son choix entre voler le pass\+\_\+card l\textquotesingle{}ajouter a son inventaire ou non. 
+\begin{DoxyParams}{Paramètres}
+{\em perso\+\_\+t} & $\ast$ player \\
+\hline
+{\em int} & nb\+\_\+items\+\_\+vole \\
+\hline
+{\em npc\+\_\+t} & $\ast$ homme \\
+\hline
+{\em item\+\_\+t} & $\ast$ pass\+\_\+card \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\itshape int} \+: 0 si le jeu continue, -\/1 si probleme lors de la quete. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{quete__soin_8c_ae3700bdf87b41634c1e8c4b3ad8a9cf7}\label{quete__soin_8c_ae3700bdf87b41634c1e8c4b3ad8a9cf7}} 
+\index{quete\+\_\+soin.\+c@{quete\+\_\+soin.\+c}!recup\+\_\+2items\+\_\+vole@{recup\+\_\+2items\+\_\+vole}}
+\index{recup\+\_\+2items\+\_\+vole@{recup\+\_\+2items\+\_\+vole}!quete\+\_\+soin.\+c@{quete\+\_\+soin.\+c}}
+\subsubsection{\texorpdfstring{recup\+\_\+2items\+\_\+vole()}{recup\_2items\_vole()}}
+{\footnotesize\ttfamily int recup\+\_\+2items\+\_\+vole (\begin{DoxyParamCaption}\item[{perso\+\_\+t $\ast$}]{player,  }\item[{int}]{nb\+\_\+items\+\_\+vole,  }\item[{npc\+\_\+t $\ast$}]{homme,  }\item[{item\+\_\+t $\ast$}]{pass\+\_\+card }\end{DoxyParamCaption})}
+
+
+
+Deroulement de la quete \char`\"{}soin\char`\"{} quand le joueur souhaite voler des items du npc et qu\textquotesingle{}il en trouve 2 sur l\textquotesingle{}homme. 
+
+Le pass\+\_\+card est obligatoirement trouve, le deuxieme item est soit l\textquotesingle{}arme ou l\textquotesingle{}armure du npc. Le joueur fait son choix entre voler 1 ou 2 item(s) et le/les ajouter a son inventaire ou ne rien voler. 
+\begin{DoxyParams}{Paramètres}
+{\em perso\+\_\+t} & $\ast$ player \\
+\hline
+{\em int} & nb\+\_\+items\+\_\+vole \\
+\hline
+{\em npc\+\_\+t} & $\ast$ homme \\
+\hline
+{\em item\+\_\+t} & $\ast$ pass\+\_\+card \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\itshape int} \+: 0 si le jeu continue, -\/1 si probleme lors de la quete. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{quete__soin_8c_ae8268170d69e016c56e99b048fce5ebf}\label{quete__soin_8c_ae8268170d69e016c56e99b048fce5ebf}} 
+\index{quete\+\_\+soin.\+c@{quete\+\_\+soin.\+c}!recup\+\_\+3items\+\_\+vole@{recup\+\_\+3items\+\_\+vole}}
+\index{recup\+\_\+3items\+\_\+vole@{recup\+\_\+3items\+\_\+vole}!quete\+\_\+soin.\+c@{quete\+\_\+soin.\+c}}
+\subsubsection{\texorpdfstring{recup\+\_\+3items\+\_\+vole()}{recup\_3items\_vole()}}
+{\footnotesize\ttfamily int recup\+\_\+3items\+\_\+vole (\begin{DoxyParamCaption}\item[{perso\+\_\+t $\ast$}]{player,  }\item[{int}]{nb\+\_\+items\+\_\+vole,  }\item[{npc\+\_\+t $\ast$}]{homme,  }\item[{item\+\_\+t $\ast$}]{pass\+\_\+card }\end{DoxyParamCaption})}
+
+
+
+Deroulement de la quete \char`\"{}soin\char`\"{} quand le joueur souhaite voler des items du npc et qu\textquotesingle{}il en trouve 3 sur l\textquotesingle{}homme. 
+
+Le joueur trouve le pass\+\_\+card, l\textquotesingle{}arme et l\textquotesingle{}armure du npc blesse. Il a le choix entre voler 1, 2 ou 3 item(s) et le/les ajouter a son inventaire ou ne rien voler. 
+\begin{DoxyParams}{Paramètres}
+{\em perso\+\_\+t} & $\ast$ player \\
+\hline
+{\em int} & nb\+\_\+items\+\_\+vole \\
+\hline
+{\em npc\+\_\+t} & $\ast$ homme \\
+\hline
+{\em item\+\_\+t} & $\ast$ pass\+\_\+card \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\itshape int} \+: 0 si le jeu continue, -\/1 si probleme lors de la quete. 
+\end{DoxyReturn}

@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <time.h>
-#include "structure.h"
+#include "lib/structure.h"
 
 /**
  * \file scavenge.c
@@ -26,7 +26,7 @@
 /* generate_items: generates 0 to 5 items randomly according to the type of hexagon
 and the percentage of chance of items appearing on this type of hexagon */
 void generate_items(item_t * Tab_Items, int nb_items_available, perso_t * player, categ_hexa categ){
-    int i, ind, present, cpt = 0, choise;
+    int i, ind, present, cpt = 0, choise, nb;
     // Remarque: cpt correspond au nombre d'items qui apparaissent sur l'hexagone
 
     int ind_items_found[ITEMS_MAX]; // tableau contenant les indices des items trouvés (à quels indices ils sont dans TabItems!)
@@ -93,16 +93,16 @@ void generate_items(item_t * Tab_Items, int nb_items_available, perso_t * player
           if(choise == 1){
               do {
                 printf("Quel item souhaitez-vous ajouter votre inventaire? N°");
-                scanf("%d",&choise);
-                if (choise < 0 || choise > cpt-1){
+                scanf("%d",&nb);
+                if (nb < 0 || nb > cpt-1){
                   printf("Valeur incorrecte. Veuillez resaissir.\n");
                 }
-              } while(choise < 0 || choise > cpt-1);
+              } while(nb < 0 || nb > cpt-1);
 
-              if(add_item_to_inventory(player,Tab_Items[ind_items_found[choise]])){
+              if(add_item_to_inventory(player,Tab_Items[ind_items_found[nb]])){
                 // Cet item a été ajouté à l'inventaire donc on l'enlève des items trouvés sur cet hexagone
                 // Empèche qu'on puisse en ajouter plusieurs!
-                i = choise;
+                i = nb;
                 while(i < cpt){
                   ind_items_found[i] = ind_items_found[i+1];
                   i++;
