@@ -25,7 +25,10 @@ int main(){
     }
     for(i = 0; i < nb_items_available; i++){
       display_item(Tab_Items[i]);
-      printf("Index : %d\n", Tab_Items[i].index);
+      printf("Index : %d", Tab_Items[i].index);
+      if(Tab_Items[i].index == -1){
+        printf(" OK\n");
+      }
     }
     printf("SUCCES récupération des informations sur les items\n");
   }

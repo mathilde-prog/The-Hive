@@ -26,9 +26,9 @@ void check_the_map(perso_t player, cell_t map[D][D]){
 		display_TEXT(player.posX, player.posY ,map);
 	}
 	else {
-		printf("Pour voir la carte, vous avez besoin d'en avoir une dans votre inventaire. \n");
-		printf("Pour plus d'informations, allez jeter un oeil à l'aide au menu principal! \n");
-		sleep(3);
+		printf("\n   Pour voir la carte, vous avez besoin d'en avoir une dans votre inventaire. \n");
+		printf("   Pour plus d'informations, allez jeter un oeil à l'aide au menu principal! \n\n");
+		entree_pour_continuer();
 	}
 }
 
@@ -83,71 +83,72 @@ void display_inventory (perso_t player){
 	int i, cpt;
 
 	if(player.nb_items_inventory == 0){
-		printf("Inventaire vide (aucun item)\n");
+		printf("\n   Votre inventaire est vide. Vous ne pouvez rien faire ici sans item.\n\n");
+		entree_pour_continuer();
 	}
 	else {
 		/* display items from the inventory */
 		if(player.nb_items_inventory > 1){
-			printf("========== INVENTAIRE (%d items) ==========\n\n", player.nb_items_inventory);
+			printf("\n   ========== INVENTAIRE (%d items) ==========\n\n", player.nb_items_inventory);
 		}
 		else {
-			printf("========== INVENTAIRE (%d item) ==========\n\n", player.nb_items_inventory);
+			printf("\n   ========== INVENTAIRE (%d item) ==========\n\n", player.nb_items_inventory);
 		}
 
-		printf("\t\t[ ARMES ]\n");
+		printf("\t\t   [ ARMES ]\n");
 		for(i = 0, cpt = 0; i < player.nb_items_inventory ; i++){
 			if(player.inventory[i].type == weapon){
-				printf("N°%2d\t%20s\t", player.inventory[i].index, player.inventory[i].name);
+				printf("   N°%2d\t%20s\t", player.inventory[i].index, player.inventory[i].name);
 				is_equipped(player,player.inventory[i]) ? printf("équipé\n") : printf("\n");
 				cpt++;
 			}
 		}
 
 		if(cpt == 0){
-			printf("\t  Aucune arme en stock\n");
+			printf("\t     Aucune arme en stock\n");
 		}
 
-		printf("\n\t\t[ ARMURES ]\n");
+		printf("\n\t\t   [ ARMURES ]\n");
 
 		for(i = 0, cpt = 0; i < player.nb_items_inventory ; i++){
 			if(player.inventory[i].type == armor){
-				printf("N°%2d\t%20s\t", player.inventory[i].index, player.inventory[i].name);
+				printf("   N°%2d\t%20s\t", player.inventory[i].index, player.inventory[i].name);
 				is_equipped(player,player.inventory[i]) ? printf("équipé\n") : printf("\n");
 				cpt++;
 			}
 		}
 
 		if(!cpt){
-			printf("\t   Aucune armure en stock\n");
+			printf("\t      Aucune armure en stock\n");
 		}
 
-		printf("\n\t\t[ DIVERS ]\n");
+		printf("\n\t\t   [ DIVERS ]\n");
 		for(i = 0, cpt = 0; i < player.nb_items_inventory; i++){
 			if(player.inventory[i].type == misc){
-				printf("N°%2d\t%20s\t", player.inventory[i].index, player.inventory[i].name);
+				printf("   N°%2d\t%20s\t", player.inventory[i].index, player.inventory[i].name);
 				printf("\n");
 				cpt++;
 			}
 		}
 
 		if(!cpt){
-			printf("\t    Aucun item divers en stock\n");
+			printf("\t     Aucun item divers en stock\n");
 		}
 
-		printf("\n\t\t[ NOURRITURE ]\n");
+		printf("\n\t\t   [ NOURRITURE ]\n");
 		for(i = 0, cpt = 0; i < player.nb_items_inventory; i++){
 			if(player.inventory[i].type == food){
-				printf("N°%2d\t%20s\t", player.inventory[i].index, player.inventory[i].name);
+				printf("   N°%2d\t%20s\t", player.inventory[i].index, player.inventory[i].name);
 				printf("\n");
 				cpt++;
 			}
 		}
 
 		if(!cpt){
-			printf("\t    Aucune nourriture en stock\n");
+			printf("\t     Aucune nourriture en stock\n");
 		}
 
-		printf("\n==========================================\n\n");
+		printf("\n   ==========================================\n\n");
 	}
 }
 
@@ -171,10 +172,10 @@ void delete_item_in_inventory(perso_t * player, item_t item){
 				case HEAD: 				player->head = NULL; 				break;
 				default: break;
 			}
-			printf("%s a été retiré de votre inventaire et équipement.\n",item.name);
+			printf("   %s a été retiré de votre inventaire et équipement.\n",item.name);
 		}
 		else {
-			printf("%s a été retiré de votre inventaire.\n",item.name);
+			printf("   %s a été retiré de votre inventaire.\n",item.name);
 		}
 
 		// On supprime l'item de l'inventaire
@@ -214,7 +215,7 @@ void delete_item_in_inventory(perso_t * player, item_t item){
 		}
 	}
  	else {
- 		printf("%s n'est pas dans votre inventaire.\n",item.name);
+ 		printf("   %s n'est pas dans votre inventaire.\n",item.name);
  	}
 }
 
@@ -237,32 +238,32 @@ int add_item_to_inventory(perso_t * player, item_t item){
 			item.index = player->nb_items_inventory;
 			player->inventory[item.index] = item;
 			(player->nb_items_inventory)++;
-			printf("\n%s ajouté à votre inventaire.\n", item.name);
+			printf("\n   %s ajouté à votre inventaire.\n", item.name);
 			return 1; // ajout effectué
 		}
 		// si inventaire déjà plein, on propose de faire un échange pour ajouter l'item
 	 	else {
+			printf("   Souhaitez-vous garder cet item en échange d'un de votre inventaire ? (Oui: 1, Non: 0)\n");
 			do {
-				printf("Souhaitez-vous garder cet item en échange d'un de votre inventaire ? (Oui: 1, Non: 0)\n");
 		 		scanf("%d",&rep);
 				if(rep < 0 || rep > 1){
-					printf("Valeur incorrecte. Veuillez ressaisir\n");
+					printf("   Valeur incorrecte. Veuillez ressaisir : ");
 				}
 			} while (rep < 0 || rep > 1);
 
 	 		if(rep){
+				display_inventory(*player);
+				printf("   Quel item souhaitez-vous échanger ? (-1 pour annuler) N°");
 				do {
-					display_inventory(*player);
-					printf("Quel item souhaitez-vous échanger ? (-1 pour annuler) N°");
-		 			scanf("%d", &num);
+					scanf("%d", &num);
 					if((num != -1) && ((num < 0) || (num > (player->nb_items_inventory-1)))){
-						printf("Valeur incorrecte... Cet item ne figure pas dans votre inventaire!\n");
+						printf("   Valeur incorrecte... Cet item ne figure pas dans votre inventaire! Veuillez ressaisir : ");
 					}
 				}while((num != -1) && ((num < 0) || (num > (player->nb_items_inventory-1))));
 
 				// si échange accepté
 				if(num != -1){
-					printf("%s a été remplacé par %s.\n", player->inventory[num].name, item.name);
+					printf("   %s a été remplacé par %s.\n", player->inventory[num].name, item.name);
 					delete_item_in_inventory(player,player->inventory[num]);
 
 					// Changement car il rentre dans l'inventaire
@@ -276,7 +277,7 @@ int add_item_to_inventory(perso_t * player, item_t item){
 		}
 	}
 	else {
-			printf("Vous ne pouvez pas prendre %s avec vous, vous en avez déjà deux!\n", item.name);
+			printf("   Vous ne pouvez pas prendre %s avec vous, vous en avez déjà deux!\n", item.name);
 			return 0;
 	}
 }
@@ -290,66 +291,58 @@ int add_item_to_inventory(perso_t * player, item_t item){
 */
 /* manage_inventory: menu inventory */
 void manage_inventory(perso_t * player){
-	int nb, choise, ind_mk, mk;
+	int nb, choise, ind_mk, mk, val;
 
 	do {
 			display_inventory(*player);
 
 			if(!player->nb_items_inventory){
-				printf("Vous ne pouvez rien faire sans item dans votre inventaire.\n");
-				sleep(3);
 				return;
 			}
 
 			ind_mk = item_in_inventory(*player,"medical kit");
 			mk = (ind_mk != -1) ? 4 : 3;
 
+			// Menu management inventory
+			printf("   Que souhaitez-vous faire ?\n");
+			printf("   1. En savoir plus sur un item\n");
+			printf("   2. Se débarasser d'un item\n");
+			printf("   3. Manger ou boire un item\n");
+			if(mk == 4){
+				printf("   4. Utiliser votre kit médical\n");
+			}
+			printf("\n   Retour menu principal : -1\n\n");
+			printf("   N°");
 			do {
-				// Menu management inventory
-				printf("Que souhaitez-vous faire ?\n");
-				printf("1. En savoir plus sur un item\n");
-				printf("2. Se débarasser d'un item\n");
-				printf("3. Manger ou boire un item\n");
-				if(mk == 4){
-					printf("4. Utiliser votre kit médical\n");
-				}
-				printf("Quitter gestion inventaire: -1\n\n");
-				printf("N°");
 				scanf("%d", &choise);
 				if((choise != -1) && (choise < 1 || choise > mk)){
-					printf("Valeur incorrecte. Veuillez ressaisir\n");
+					printf("   Valeur incorrecte. Veuillez ressaisir : ");
 				}
 			} while ((choise != -1) && (choise < 1 || choise > mk));
 
 			if(choise != -1){
 				// Know more about an item
 				if(choise == 1){
+					printf("\n   A propos de quel item souhaitez-vous en savoir plus ? (-1 pour annuler) N°");
 					do {
-						printf("\nA propos de quel item souhaitez-vous en savoir plus ? (-1 pour annuler) N°");
 						scanf("%d", &nb);
 						if((nb != -1) && (nb < 0 || nb > (player->nb_items_inventory - 1))){
-							printf("Valeur incorrecte... Cet item ne figure pas dans votre inventaire!\n");
+							printf("   Valeur incorrecte... Cet item ne figure pas dans votre inventaire! Veuillez ressaisir : ");
 						}
 					} while((nb != -1) && (nb < 0 || nb > (player->nb_items_inventory - 1)));
 
 					if(nb != -1){
 						display_item(player->inventory[nb]);
-						do {
-							printf("Retour menu gestion inventaire (1) : ");
-							scanf("%d",&nb);
-							if(nb != 1){
-								printf("Saisissez 1 pour retourner au menu gestion inventaire\n");
-							}
-						} while (nb != 1);
+						entree_pour_continuer();
 					}
 				}
 				// Get rid of an item
 				else if (choise == 2){
+					printf("\n   De quel item souhaitez-vous vous débarrasser ? (-1 pour annuler) N°");
 					do {
-						printf("\nDe quel item souhaitez-vous vous débarasser ? (-1 pour annuler) N°");
 						scanf("%d", &nb);
 						if((nb != -1) && (nb < 0 || nb > (player->nb_items_inventory - 1))){
-							printf("Valeur incorrecte... Cet item ne figure pas dans votre inventaire!\n");
+							printf("   Valeur incorrecte... Cet item ne figure pas dans votre inventaire! Veuillez ressaisir : ");
 						}
 					} while((nb != -1) && (nb < 0 || nb > (player->nb_items_inventory - 1)));
 					if(nb != -1){
@@ -359,22 +352,33 @@ void manage_inventory(perso_t * player){
 				}
 				//Eat or drink an item
 				else if (choise == 3) {
+					printf("\n   Quel item souhaitez-vous manger ou boire ? (-1 pour annuler) N°");
 					do {
-						printf("\nQuel item souhaitez-vous manger ou boire ? (-1 pour annuler) N°");
 						scanf("%d", &nb);
 						if((nb != -1) && (nb < 0 || nb > (player->nb_items_inventory - 1))){
-							printf("Valeur incorrecte... Cet item ne figure pas dans votre inventaire!\n");
+							printf("   Valeur incorrecte... Cet item ne figure pas dans votre inventaire! Veuillez ressaisir : ");
 						}
 					} while((nb != -1) && (nb < 0 || nb > (player->nb_items_inventory - 1)));
 					if(nb != -1){
 						eat_or_drink(player,player->inventory[nb]);
-						sleep(3);
+						entree_pour_continuer();
 					}
 				}
 				else if(choise == 4){
-					printf("Kit médical utilisé... PV+30\n");
-					player->pv+= 30;
-					delete_item_in_inventory(player,player->inventory[ind_mk]);
+					val = 30;
+					if((player->pv + val) > 100){
+				    val = (100 - player->pv);
+				  }
+
+				  if(val != 0){
+				    player->pv += val;
+						printf("   Kit médical utilisé... PV+%d\n",val);
+						delete_item_in_inventory(player,player->inventory[ind_mk]);
+				  }
+
+					else {
+						printf("\n   Vous n'avez pas besoin de soins.\n");
+					}
 					sleep(2);
 				}
 			}

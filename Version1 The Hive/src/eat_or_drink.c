@@ -26,10 +26,10 @@ void gain_energie(perso_t * player, int val_e){
   }
   if(val != 0){
     player->pe += val;
-    printf("Vous gagnez %d points d'énergie.\n", val);
+    printf("   Vous gagnez %d points d'énergie.\n", val);
   }
   else {
-    printf("C'était bon mais vous êtiez déjà au max de votre forme!\n");
+    printf("\n   Vous êtes déjà au max de votre forme. Vous ne gagnez aucun point d'énergie.\n");
   }
 }
 
@@ -41,34 +41,48 @@ void gain_energie(perso_t * player, int val_e){
  * \param item_t item
  * \return Rien
 */
-/* eat_or_drink: allows the player to drink or eat an item (if type food) and to recover pe and pv when it's possible */
+/* eat_or_drink: allows the player to drink or eat an item (if type food) and to recover pe and pa when it's possible */
 void eat_or_drink (perso_t * player, item_t item){
+  printf("\n");
   if(item.type == food){
     if(!strcmp(item.name,"fruits")){
+      printf("   Ces fruits sont délicieux! ");
       gain_energie(player,10);
     }
     else if(!strcmp(item.name,"fish")){
+      printf("   Attention aux arrêtes... ");
       gain_energie(player,15);
     }
-    else if (!strcmp(item.name,"can food")){
+    else if (!strcmp(item.name,"canned food")){
+      printf("   Qui aurait pensé qu'une boîte de conserve ferait un si bon repas! ");
       gain_energie(player,50);
     }
     else if (!strcmp(item.name,"soda")){
+      printf("   Ce soda est très sucré. ");
       gain_energie(player,12);
     }
     else if(!strcmp(item.name,"energy drink")){
+      printf("   Une boisson - énergisante - ! ");
       if(player->pa < 5){
         player->pa++;
-        printf("Vous gagnez 1 point d'action.\n");
+        printf("   Vous gagnez 1 point d'action. ");
       }
       gain_energie(player,20);
     }
     else if(!strcmp(item.name,"bottle water")){
+      printf("   C'est rafraichissant! ");
       gain_energie(player,10);
     }
     delete_item_in_inventory(player, item);
   }
   else {
-    printf("Vous ne pouvez pas manger ou boire ça!\n\n");
+    printf("   Vous ne pouvez pas manger ou boire cet item, ");
+    switch(item.type){
+      case weapon: printf("c'est une arme.\n"); break;
+      case armor: printf("c'est une armure.\n"); break;
+      case misc: printf("c'est un objet.\n"); break;
+      default: break;
+    }
   }
+  printf("\n");
 }

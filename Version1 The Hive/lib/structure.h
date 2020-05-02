@@ -1,6 +1,6 @@
 /**
  * \file structure.h
- * \brief Toutes les fonctions, énumérations, structures, macros
+ * \brief Toutes les fonctions, énumérations, structures, macros du projet
  * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
  * \version 1.0
  * \date 2020
@@ -36,9 +36,6 @@ typedef struct {
 }cell_t;
 
 int coordonnees_valides(int l, int c); 		           		//world_generation.c
-void clrscr(); 																		      //world_generation.c
-int range(int a,int b); 													      //world_generation.c
-int rng(int prob); 																      //world_generation.c
 void init_border(cell_t map[D][D]);									    //world_generation.c
 void quest_init(cell_t map[D][D], int quest_map[6][2]); //world_generation.c
 int bordercross(int i, int j, cell_t map[D][D]); 		    //world_generation.c
@@ -187,6 +184,7 @@ void fish (perso_t * player, cell_t map[D][D]);   //fish.c
 /***************************************************************************************/
 
 /*********************************** EAT_OR_DRINK ***********************************/
+void gain_energie(perso_t * player, int val_e);  //eat_or_drink.c
 void eat_or_drink (perso_t * player, item_t item);  //eat_or_drink.c
 /************************************************************************************/
 
@@ -247,26 +245,39 @@ int recup_2items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t 
 int recup_3items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t * pass_card);   //quete_soin.c
 /***************************************************************************************/
 
-/*********************************** BACKUP AND LOAD ***********************************/
-void save (perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete);   //backup_and_load.c
-void save_inventory (perso_t player);			                  //backup_and_load.c
-void save_info_player (perso_t player);		                  //backup_and_load.c
-void save_equipment (perso_t player);			                  //backup_and_load.c
-void save_map (cell_t map[D][D]);						                //backup_and_load.c
-void save_quete(int quest_map[6][2], quete_t quete);                       //backup_and_load.c
+/************************************* BACKUP_AND_LOAD *************************************/
+/**
+	* \struct sauv_t
+	* \brief Structure pour sauvegarder les parties
+*/
+typedef struct{
+  int numPartie;  /**< Numéro de la partie jouée */
 
-int load (perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete);   //backup_and_load.c
-int load_inventory (perso_t * player);			                //backup_and_load.c
-int load_info_player (perso_t * player);		                //backup_and_load.c
-int load_equipment (perso_t * player);			                //backup_and_load.c
-int load_map(cell_t map[D][D]);								              //backup_and_load.c
-int load_quete(int quest_map[6][2], quete_t * quete); //backup_and_load.c
+  int sauv1_existe; /**< Indicateur si sauvegarde 1 existe */
+  int sauv2_existe; /**< Indicateur si sauvegarde 2 existe */
+  int sauv3_existe; /**< Indicateur si sauvegarde 3 existe */
 
-int backup_exists ();                                       //backup_and_load.c
-int init_or_load_game(perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete); //backup_and_load.c
-/***************************************************************************************/
+  char nomPartie1[21]; /**< Nom de la partie 1 */
+  char nomPartie2[21]; /**< Nom de la partie 2 */
+  char nomPartie3[21]; /**< Nom de la partie 3 */
+} sauv_t;
+
+int sauvegarde_existante(sauv_t sauv);      //backup_and_load.c
+void affichage_parties(sauv_t sauv);        //backup_and_load.c
+void update_etat_sauvegarde(sauv_t * sauv); //backup_and_load.c
+void effacer_partie(sauv_t sauv);           //backup_and_load.c
+void save (perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete, sauv_t sauv);      //backup_and_load.c
+void load (perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete, sauv_t sauv);  //backup_and_load.c
+/*******************************************************************************************/
 
 /************************************* EXIT & HELP *************************************/
 int exit_game();             //exit_help.c
 void help(perso_t * player); //exit_help.c
 /***************************************************************************************/
+
+/********************************* FONCTIONS PRATIQUES ***********************************/
+void entree_pour_continuer(); // fonctions_pratiques.c
+void clrscr(); //fonctions_pratiques.c
+int range(int a,int b); //fonctions_pratiques.c
+int rng(int prob); //fonctions_pratiques.c
+/*****************************************************************************************/

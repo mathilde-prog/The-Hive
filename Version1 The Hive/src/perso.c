@@ -54,10 +54,10 @@ void init_player(perso_t * player){
 */
 /* display_player_characteristics: displays the player parameters (pv,pe,pa,location,turns) */
 void display_player_characteristics(cell_t map[D][D], perso_t player){
-  printf("================================== INFO JOUEUR =====================================\n");
+  printf("\n   ================================== INFO JOUEUR =====================================\n");
 
-  printf("PV = %3d  PE = %3d  PA = %3d\n",player.pv,player.pe,player.pa);
-  printf("Position joueur:  x = %d  y = %d  ",player.posX,player.posY);
+  printf("   PV = %3d  PE = %3d  PA = %3d\n",player.pv,player.pe,player.pa);
+  printf("   Position joueur:  x = %d  y = %d  ",player.posX,player.posY);
   switch(map[player.posX][player.posY].type){
     case prairie   : printf("prairie "); break;
     case foret     : printf("forêt ");    break;
@@ -91,6 +91,6 @@ void display_player_characteristics(cell_t map[D][D], perso_t player){
     default: printf("unrecognized\n"); break;
   }
   */
-  printf("Il vous reste actuellement %d tours avant qu'il ne soit trop tard pour vous enfuir.\n", player.turns);
-  printf("====================================================================================\n\n");
+  printf("   Il vous reste actuellement %d tours avant qu'il ne soit trop tard pour vous enfuir.\n", player.turns);
+  printf("   ====================================================================================\n\n");
 }

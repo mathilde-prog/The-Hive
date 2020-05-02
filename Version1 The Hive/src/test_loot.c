@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include "lib/structure.h"
 
-// Parler du pb claws avec Moustapha 
+// Parler du pb claws avec Moustapha
 void retrieve_enemy_items(item_t * Tab_Items, int nb_items_available, perso_t * player){
   int i, choise, nb, taille = rand()%4;  // Maximum 3 items trouvés
   int ind_items_found[taille];
@@ -163,7 +163,9 @@ int main(){
   int chance_weapon = rand()%2, chance_armor = rand()%2;
 
   if(creation_tab_item(Tab_Items, &nb_items_available)){
-    if(init_or_load_game(&player,map,quest_map,&quete)){
+      init_player(&player);
+      map_init(map,quest_map);
+      init_quete(&quete);
       clrscr();
       chance_weapon ? (enemy1.weapon = &Tab_Items[0]) : (enemy1.weapon = NULL); //pistol ou NULL
       chance_armor ? (enemy1.armor = &Tab_Items[7]) : (enemy1.armor = NULL);    // helmet ou NULL
@@ -171,7 +173,7 @@ int main(){
       display_inventory(player);
       free(Tab_Items);
     }
-  }
+
 
   return EXIT_SUCCESS;
 }

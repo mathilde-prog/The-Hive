@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 #include "lib/structure.h"
 
 /**
@@ -11,116 +12,209 @@
  * \date 2020
 */
 
-/******************** BACK_UP *************************/
+/**
+ * \fn int sauvegarde_existante(sauv_t sauv)
+ * \brief Indique s'il existe une sauvegarde pour la partie choisie par l'utilisateur
+ * \param sauv_t sauv
+ * \return Un \a int : 1 si une sauvegarde existe. 0 sinon.
+*/
+int sauvegarde_existante(sauv_t sauv){
+  switch(sauv.numPartie){
+    case 1: return sauv.sauv1_existe;
+    case 2: return sauv.sauv2_existe;
+    case 3: return sauv.sauv3_existe;
+    default: return 0;
+  }
+}
 
 /**
- * \fn void save (perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete)
- * \brief Sauvegarde les informations sur le joueur, son inventaire, son équipement et la carte
+ * \fn void affichage_parties(sauv_t sauv)
+ * \brief Affiche les parties sauvegardées
+ * \param sauv_t sauv
+ * \return Rien
+*/
+void affichage_parties(sauv_t sauv){
+  printf("\n   +-----+-----+-----+-----+-----+\n");
+  printf("   |  1  |%20s   |\n",sauv.nomPartie1);
+  printf("   +-----+-----+-----+-----+-----+\n\n");
+  printf("   +-----+-----+-----+-----+-----+\n");
+  printf("   |  2  |%20s   |\n",sauv.nomPartie2);
+  printf("   +-----+-----+-----+-----+-----+\n\n");
+  printf("   +-----+-----+-----+-----+-----+\n");
+  printf("   |  3  |%20s   |\n",sauv.nomPartie3);
+  printf("   +-----+-----+-----+-----+-----+\n\n");
+}
+
+/**
+ * \fn void update_etat_sauvegarde(sauv_t * sauv)
+ * \brief Met à jour l'état des sauvegardes (si elles existent et leurs noms)
+ * \param sauv_t * sauv
+ * \return Rien
+*/
+void update_etat_sauvegarde(sauv_t * sauv){
+  FILE * sauv1, * sauv2, * sauv3;
+  sauv1 = fopen("../sauv/sauv1.csv","r");
+  sauv2 = fopen("../sauv/sauv2.csv","r");
+  sauv3 = fopen("../sauv/sauv3.csv","r");
+
+  if(sauv1){
+    sauv->sauv1_existe = 1;
+    fscanf(sauv1," %[^\n]",sauv->nomPartie1);
+    fclose(sauv1);
+  }
+  else {
+    sauv->sauv1_existe = 0;
+    strcpy(sauv->nomPartie1,"Nouvelle partie");
+  }
+
+  if(sauv2){
+    sauv->sauv2_existe = 1;
+    fscanf(sauv2," %[^\n]",sauv->nomPartie2);
+    fclose(sauv2);
+  }
+  else {
+    sauv->sauv2_existe = 0;
+    strcpy(sauv->nomPartie2,"Nouvelle partie");
+  }
+
+  if(sauv3){
+    sauv->sauv3_existe = 1;
+    fscanf(sauv3," %[^\n]",sauv->nomPartie3);
+    fclose(sauv3);
+  }
+  else {
+    sauv->sauv3_existe = 0;
+    strcpy(sauv->nomPartie3,"Nouvelle partie");
+  }
+}
+
+/**
+ * \fn void effacer_partie(sauv_t sauv)
+ * \brief Efface une partie
+ * \param sauv_t sauv
+ * \return Rien
+*/
+void effacer_partie(sauv_t sauv){
+  int choix;
+
+  if((!sauv.sauv1_existe) && (!sauv.sauv2_existe) && (!sauv.sauv3_existe)){
+      printf("\n   Aucune partie à supprimer\n");
+      sleep(1);
+  }
+  else {
+    choix:
+    clrscr();
+    affichage_parties(sauv);
+    printf("   Quelle partie souhaitez-vous effacer ?\n");
+    printf("   Retour au menu: -1\n\n");
+    printf("   Votre choix : ");
+    do {
+      scanf("%d",&choix);
+      if((choix != -1) && (choix < 1 || choix > 3)){
+        printf("   Valeur incorrecte. Veuillez ressaisir : ");
+        sleep(1);
+      }
+    } while((choix != -1) && (choix < 1 || choix > 3));
+
+    if(choix == 1){
+      if(sauv.sauv1_existe){
+        printf("   Partie %s effacée\n", sauv.nomPartie1);
+        remove("../sauv/sauv1.csv");
+        update_etat_sauvegarde(&sauv);
+      }
+      else {
+        printf("   Pas de sauvegarde pour cette partie. Rien à effacer.\n");
+        sleep(1);
+        goto choix;
+      }
+    }
+    else if(choix == 2){
+      if(sauv.sauv2_existe){
+        printf("   Partie %s effacée\n", sauv.nomPartie2);
+        remove("../sauv/sauv2.csv");
+        update_etat_sauvegarde(&sauv);
+      }
+      else {
+        printf("   Pas de sauvegarde pour cette partie. Rien à effacer.\n");
+        sleep(2);
+        goto choix;
+      }
+    }
+    else if(choix == 3){
+      if(sauv.sauv3_existe){
+        printf("   Partie %s effacée\n", sauv.nomPartie3);
+        remove("../sauv/sauv3.csv");
+        update_etat_sauvegarde(&sauv);
+      }
+      else {
+        printf("   Pas de sauvegarde pour cette partie. Rien à effacer.\n");
+        sleep(1);
+        goto choix;
+      }
+    }
+
+    if(choix != -1){
+      sleep(1);
+    }
+  }
+}
+
+/**
+ * \fn void save (perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete, sauv_t sauv)
+ * \brief Sauvegarde les informations sur le joueur, son inventaire, son équipement ainsi que les informations sur la carte et les quêtes d'une partie
  * \param perso_t player
  * \param cell_t map[D][D]
  * \param int quest_map[6][2]
  * \param quete_t quete
+ * \param sauv_t sauv
  * \return Rien
 */
-/* save: save information about the character, his inventory, his equipment and the map. */
-void save (perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete){
-  save_info_player(player);
-  save_inventory(player);
-  save_equipment(player);
-  save_map(map);
-  save_quete(quest_map, quete);
-  printf("Sauvegarde réussie\n");
-}
+void save (perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete, sauv_t sauv){
+  int l, c, i;
+  FILE * fic;
 
-
-/**
- * \fn void save_quete(int quest_map[6][2], quete_t quete)
- * \brief Sauvegarde les informations sur les quêtes
- * \param int quest_map[6][2]
- * \param quete_t quete
- * \return Rien
-*/
-void save_quete(int quest_map[6][2], quete_t quete){
-  int l, c;
-  FILE * fic = fopen("../sauv/save_quete.csv","w");
-
-  // Sauvegarde quest_map[6][2]
-  for(l = 0; l < 6; l++){
-    for(c = 0; c < 2; c++){
-      fprintf(fic,"%d;",quest_map[l][c]);
-    }
-    fprintf(fic,"\n");
+  // Ouverture en écriture du fichier de sauvegarde correspondant au numéro de partie jouée
+  switch(sauv.numPartie){
+    case 1: fic = fopen("../sauv/sauv1.csv","w"); break;
+    case 2: fic = fopen("../sauv/sauv2.csv","w"); break;
+    case 3: fic = fopen("../sauv/sauv3.csv","w"); break;
+    default: break;
   }
 
-  // Sauvegarde structure quete
-  fprintf(fic,"\n%d;%d;%d;%d;%d;%d;%d;%d\n",quete.soin, quete.recherche.situation, quete.recherche.butX, quete.recherche.butY, quete.bunker, quete.montagne, quete.frontiere, quete.bandits);
+  // Ecriture nom de partie
+  switch(sauv.numPartie){
+    case 1: fprintf(fic,"%s\n\n\n",sauv.nomPartie1); break;
+    case 2: fprintf(fic,"%s\n\n\n",sauv.nomPartie2); break;
+    case 3: fprintf(fic,"%s\n\n\n",sauv.nomPartie3); break;
+  }
 
-  fclose(fic);
-}
+  /*
+   * Sauvegarde informations joueur
+   */
 
-/**
- * \fn void save_inventory (perso_t player)
- * \brief Sauvegarde l'inventaire du joueur dans un fichier 'save_inventory.csv'
- * \param perso_t player
- * \return Rien
-*/
-/* save_inventory: saves the player's inventory */
-void save_inventory (perso_t player){
-  int i;
+   fprintf(fic,"\n\npv;%d\npe;%d\npa;%d\nposX;%d\nposY;%d\nturns;%d\n\n", player.pv, player.pe, player.pa, player.posX, player.posY, player.turns);
 
-  FILE * fic = fopen("../sauv/save_inventory.csv","w");
+  /*
+   * Sauvegarde inventaire
+   */
+
+  fprintf(fic,"%d\n",player.nb_items_inventory);
   for(i = 0; i < player.nb_items_inventory; i++){
-    fprintf(fic,"%d;%d;%d;%d;%d;%d;%d;%f;%d;%d;%d;%d;%s",player.inventory[i].type, player.inventory[i].attack[0], player.inventory[i].attack[1],player.inventory[i].attack[2], player.inventory[i].hitchance[0], player.inventory[i].hitchance[1],player.inventory[i].hitchance[2],player.inventory[i].defense, player.inventory[i].equipable, player.inventory[i].pc_nature, player.inventory[i].pc_urban, player.inventory[i].pc_military, player.inventory[i].name);
-    fprintf(fic,"\n");
+    fprintf(fic,"%d;%d;%d;%d;%d;%d;%d;%f;%d;%d;%d;%d;%s\n",player.inventory[i].type, player.inventory[i].attack[0], player.inventory[i].attack[1],player.inventory[i].attack[2], player.inventory[i].hitchance[0], player.inventory[i].hitchance[1],player.inventory[i].hitchance[2],player.inventory[i].defense, player.inventory[i].equipable, player.inventory[i].pc_nature, player.inventory[i].pc_urban, player.inventory[i].pc_military, player.inventory[i].name);
   }
-  fclose(fic);
-}
 
-/**
- * \fn void save_info_player (perso_t player)
- * \brief Sauvegarde les informations du joueur dans un fichier 'save_info_player.'
- * \param perso_t player
- * \return Rien
-*/
-/* save_info_player: saves player information */
-void save_info_player (perso_t player){
-  FILE * fic = fopen("../sauv/save_info_player.csv","w");
-  fprintf(fic,"pv;%d\npe;%d\npa;%d\nposX;%d\nposY;%d\nturns;%d\n", player.pv, player.pe, player.pa, player.posX, player.posY, player.turns);
+  /*
+   * Sauvegarde équipement
+   */
 
-  /* No special competence for version 1 */
-  //fprintf(fic,"competence = %d\n", player.competence);
-
-  fclose(fic);
-}
-
-/**
- * \fn void save_equipment (perso_t player)
- * \brief Sauvegarde l'équipement du joueur dans un fichier 'save_equipment.csv'
- * \param perso_t player
- * \return Rien
-*/
-/* save_equipment: saves the player's equipment */
-void save_equipment (perso_t player){
-  FILE * fic = fopen("../sauv/save_equipment.csv","w");
-
-  (player.head != NULL) ? fprintf(fic, "head;%d\n", player.head->index) : fprintf(fic, "head;-1\n");
+  (player.head != NULL) ? fprintf(fic, "\nhead;%d\n", player.head->index) : fprintf(fic, "\nhead;-1\n");
   (player.left_hand != NULL) ? fprintf(fic, "left hand;%d\n", player.left_hand->index) : fprintf(fic, "left hand;-1\n");
   (player.right_hand != NULL) ? fprintf(fic, "right hand;%d\n", player.right_hand->index) : fprintf(fic, "right hand;-1\n");
-  (player.body != NULL) ? fprintf(fic, "body;%d\n", player.body->index) : fprintf(fic, "body;-1\n");
+  (player.body != NULL) ? fprintf(fic, "body;%d\n\n", player.body->index) : fprintf(fic, "body;-1\n\n");
 
-  fclose(fic);
-}
-
-/**
- * \fn void save_map (cell_t map[D][D])
- * \brief Sauvegarde la carte dans un fichier 'save_map.csv'
- * \param cell_t map[D][D]
- * \return Rien
-*/
-/* save_map: save the map of the game */
-void save_map (cell_t map[D][D]){
-  int l, c;
-  FILE * fic = fopen("../sauv/save_map.csv","w");
+  /*
+   * Sauvegarde carte
+   */
 
   // type
   for(l = 0; l < D; l++){
@@ -130,7 +224,8 @@ void save_map (cell_t map[D][D]){
       fprintf(fic,"\n");
   }
   fprintf(fic,"\n\n");
-  //categ
+
+  // categ
   for(l = 0; l < D; l++){
     for(c = 0; c < D; c++){
       fprintf(fic,"%2d;", map[l][c].categ);
@@ -138,7 +233,8 @@ void save_map (cell_t map[D][D]){
       fprintf(fic,"\n");
   }
   fprintf(fic,"\n\n");
-  //encounter
+
+  // encounter
   for(l = 0; l < D; l++){
     for(c = 0; c < D; c++){
       fprintf(fic,"%2d;", map[l][c].encounter);
@@ -146,7 +242,8 @@ void save_map (cell_t map[D][D]){
       fprintf(fic,"\n");
   }
   fprintf(fic,"\n\n");
-  //quest_id
+
+  // quest_id
   for(l = 0; l < D; l++){
     for(c = 0; c < D; c++){
       fprintf(fic,"%2d;", map[l][c].quest_id);
@@ -154,7 +251,8 @@ void save_map (cell_t map[D][D]){
       fprintf(fic,"\n");
   }
   fprintf(fic,"\n\n");
-  //scavenged
+
+  // scavenged
   for(l = 0; l < D; l++){
     for(c = 0; c < D; c++){
       fprintf(fic, "%2d;", map[l][c].scavenged);
@@ -162,275 +260,138 @@ void save_map (cell_t map[D][D]){
     fprintf(fic,"\n");
   }
 
+  fprintf(fic,"\n");
+
+  /*
+   * Sauvegarde quêtes
+   */
+
+   // Sauvegarde int quest_map[6][2]
+   for(l = 0; l < 6; l++){
+    for(c = 0; c < 2; c++){
+      fprintf(fic,"%d;",quest_map[l][c]);
+    }
+    fprintf(fic,"\n");
+  }
+
+  // Sauvegarde quete_t quete
+  fprintf(fic,"\n%d;%d;%d;%d;%d;%d;%d;%d\n",quete.soin, quete.recherche.situation, quete.recherche.butX, quete.recherche.butY, quete.bunker, quete.montagne, quete.frontiere, quete.bandits);
+
   fclose(fic);
 }
 
-/******************************************************/
-
-/******************** LOAD ****************************/
 /**
- * \fn int load (perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete)
- * \brief Charge les informations sur le joueur, son inventaire, son équipement et la carte
+ * \fn void load (perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete, sauv_t sauv)
+ * \brief Charge les informations sur le joueur, son inventaire, son équipement ainsi que les informations sur la carte et les quêtes d'une partie
  * \param perso_t * player
  * \param cell_t map[D][D]
  * \param int quest_map[6][2]
  * \param quete_t * quete
- * \return Un \a int : 1 si succès complet du chargement. 0 si problème lors du chargement.
+ * \param sauv_t sauv
+ * \return Rien
 */
-/* load: load information about the character, his inventory, his equipment and the map. */
-int load (perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete){
-  if(!load_inventory (player)){
-    printf("Echec chargement inventaire\n");
-    return 0;
-  }
-  if(!load_info_player (player)){
-    printf("Echec chargement des données du joueur\n");
-    return 0;
-  }
-  if(!load_map(map)){
-    printf("Echec chargement de la carte\n");
-    return 0;
-  }
-  if(!load_equipment (player)){
-    printf("Echec chargement équipement\n");
-    return 0;
-  }
-  if(!load_quete(quest_map,quete)){
-    printf("Echec chargement quêtes\n");
-    return 0;
+void load (perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete, sauv_t sauv){
+  int l, c, ind_rh, ind_lh, ind_head, ind_body, i = 0;
+  FILE * fic;
+  char nomPartie[21];
+
+  // Ouverture en lecture du fichier de sauvegarde correspondant au numéro de partie jouée
+  switch(sauv.numPartie){
+    case 1: fic = fopen("../sauv/sauv1.csv","r"); break;
+    case 2: fic = fopen("../sauv/sauv2.csv","r"); break;
+    case 3: fic = fopen("../sauv/sauv3.csv","r"); break;
+    default: break;
   }
 
-  return 1;
-}
-
-/**
- * \fn int load_inventory (perso_t * player)
- * \brief Charge l'inventaire du joueur à partir du fichier 'save_inventory.csv'
- * \param perso_t * player
- * \return Un \a int : 1 si chargement réussi. 0 si échec du chargement.
-*/
-/* load_inventory: loads the player's inventory */
-int load_inventory (perso_t * player){
-  FILE * fic = fopen("../sauv/save_inventory.csv","r");
-  player->nb_items_inventory = 0;
   if(fic){
-    fscanf(fic,"%d;%d;%d;%d;%d;%d;%d;%f;%d;%d;%d;%d;%[^\n]", &player->inventory[player->nb_items_inventory].type, &player->inventory[player->nb_items_inventory].attack[0], &player->inventory[player->nb_items_inventory].attack[1],&player->inventory[player->nb_items_inventory].attack[2], &player->inventory[player->nb_items_inventory].hitchance[0], &player->inventory[player->nb_items_inventory].hitchance[1],&player->inventory[player->nb_items_inventory].hitchance[2],&player->inventory[player->nb_items_inventory].defense, &player->inventory[player->nb_items_inventory].equipable, &player->inventory[player->nb_items_inventory].pc_nature, &player->inventory[player->nb_items_inventory].pc_urban, &player->inventory[player->nb_items_inventory].pc_military, player->inventory[player->nb_items_inventory].name);
-    while(!feof(fic)){
-      player->inventory[player->nb_items_inventory].index = player->nb_items_inventory;
-      (player->nb_items_inventory)++;
-      fscanf(fic,"%d;%d;%d;%d;%d;%d;%d;%f;%d;%d;%d;%d;%[^\n]", &player->inventory[player->nb_items_inventory].type, &player->inventory[player->nb_items_inventory].attack[0], &player->inventory[player->nb_items_inventory].attack[1],&player->inventory[player->nb_items_inventory].attack[2], &player->inventory[player->nb_items_inventory].hitchance[0], &player->inventory[player->nb_items_inventory].hitchance[1],&player->inventory[player->nb_items_inventory].hitchance[2],&player->inventory[player->nb_items_inventory].defense, &player->inventory[player->nb_items_inventory].equipable, &player->inventory[player->nb_items_inventory].pc_nature, &player->inventory[player->nb_items_inventory].pc_urban, &player->inventory[player->nb_items_inventory].pc_military, player->inventory[player->nb_items_inventory].name);
-    }
-    fclose(fic);
-    return 1;
-  }
-  else {
-    printf("Erreur : 'save_inventory.csv' introuvable\n");
-    return 0;
-  }
-}
 
-/**
- * \fn int load_info_player (perso_t * player)
- * \brief Charge les informations du joueur à partir du fichier 'save_info_player.csv'
- * \param perso_t * player
- * \return Un \a int : 1 si chargement réussi. 0 si échec du chargement.
-*/
-/* load_info_player: loads player information */
-int load_info_player (perso_t * player){
-  FILE * fic = fopen("../sauv/save_info_player.csv","r");
-  if(fic){
-    // Version avec compétence spéciale (pas en version1)
-    // fscanf(fic,"pv = %d\npe = %d\npa = %d\nposX = %d\nposY = %d\ncompetence = %d\nturns = %d\n",&player->pv, &player->pe, &player->pa, &player->posX, &player->posY, &player->competence, &player->turns);
+    fscanf(fic," %[^\n]\n\n\n",nomPartie);
+    printf("\n   >>> Chargement Partie %s\n",nomPartie); sleep(1);
+
+    /*
+     * Chargement informations joueur
+     */
+
     fscanf(fic,"pv;%d\npe;%d\npa;%d\nposX;%d\nposY;%d\nturns;%d\n",&player->pv, &player->pe, &player->pa, &player->posX, &player->posY, &player->turns);
-    fclose(fic);
-    return 1;
-  }
-  else {
-    printf("Erreur : 'save_info_player.csv' introuvable\n");
-    return 0;
-  }
-}
 
-/**
- * \fn int load_equipment (perso_t * player)
- * \brief Charge l'équipement du joueur à partir du fichier 'save_equipment.csv'
- * \param perso_t * player
- * \return Un \a int : 1 si chargement réussi. 0 si échec du chargement.
-*/
-/* load_equipment: loads the player's equipment */
-int load_equipment (perso_t * player){
-  FILE * fic = fopen("../sauv/save_equipment.csv","r");
-  int ind_head = 0, ind_lh = 0, ind_rh = 0, ind_body = 0;
+    /*
+     * Chargement inventaire
+     */
 
-  if(fic){
+    fscanf(fic,"%d\n",&player->nb_items_inventory);
+    fscanf(fic,"%d;%d;%d;%d;%d;%d;%d;%f;%d;%d;%d;%d;%[^\n]", &player->inventory[i].type, &player->inventory[i].attack[0], &player->inventory[i].attack[1],&player->inventory[i].attack[2], &player->inventory[i].hitchance[0], &player->inventory[i].hitchance[1],&player->inventory[i].hitchance[2],&player->inventory[i].defense, &player->inventory[i].equipable, &player->inventory[i].pc_nature, &player->inventory[i].pc_urban, &player->inventory[i].pc_military, player->inventory[i].name);
+    while(i < player->nb_items_inventory){
+      player->inventory[i].index = i;
+      i++;
+      fscanf(fic,"%d;%d;%d;%d;%d;%d;%d;%f;%d;%d;%d;%d;%[^\n]", &player->inventory[i].type, &player->inventory[i].attack[0], &player->inventory[i].attack[1],&player->inventory[i].attack[2], &player->inventory[i].hitchance[0], &player->inventory[i].hitchance[1],&player->inventory[i].hitchance[2],&player->inventory[i].defense, &player->inventory[i].equipable, &player->inventory[i].pc_nature, &player->inventory[i].pc_urban, &player->inventory[i].pc_military, player->inventory[i].name);
+    }
+
+    /*
+     * Chargement équipement
+     */
+
     fscanf(fic,"head;%d\nleft hand;%d\nright hand;%d\nbody;%d\n", &ind_head, &ind_lh, &ind_rh, &ind_body);
     (ind_head != -1) ? (player->head = &player->inventory[ind_head]) : (player->head = NULL);
     (ind_lh != -1) ? (player->left_hand = &player->inventory[ind_lh]) : (player->left_hand = NULL);
     (ind_rh != -1) ? (player->right_hand = &player->inventory[ind_rh]) : (player->right_hand = NULL);
     (ind_body != -1) ? (player->body = &player->inventory[ind_body]) : (player->body = NULL);
 
-    fclose(fic);
-    return 1;
-  }
-  else {
-    printf("Erreur : 'save_equipment.csv' introuvable\n");
-    return 0;
-  }
-}
+    /*
+     * Chargement map
+     */
 
-/**
- * \fn int load_map (cell_t map[D][D])
- * \brief Charge la carte à partir du fichier 'save_map.csv'
- * \param cell_t map[D][D]
- * \return Un \a int : 1 si chargement réussi. 0 si échec du chargement.
-*/
-/* load_map: loads the map of the game */
-int load_map (cell_t map[D][D]){
-  int l, c;
-  FILE * fic = fopen("../sauv/save_map.csv","r");
-
-  if(fic){
+    // type
     for(l = 0; l < D; l++){
       for(c = 0; c < D; c++){
         fscanf(fic,"%d;",&map[l][c].type);
       }
     }
+
+    // categ
     for(l = 0; l < D; l++){
       for(c = 0; c < D; c++){
         fscanf(fic,"%d;",&map[l][c].categ);
       }
     }
+
+    // encounter
     for(l = 0; l < D; l++){
       for(c = 0; c < D; c++){
         fscanf(fic,"%d;",&map[l][c].encounter);
       }
     }
+
+    // quest_id
     for(l = 0; l < D; l++){
       for(c = 0; c < D; c++){
         fscanf(fic,"%d;",&map[l][c].quest_id);
       }
     }
+
+    // scavenged
     for(l = 0; l < D; l++){
       for(c = 0; c < D; c++){
         fscanf(fic,"%d;",&map[l][c].scavenged);
       }
     }
-    fclose(fic);
-    return 1;
-  }
-  else {
-    printf("Erreur : 'save_map.csv' introuvable\n");
-    return 0;
-  }
-}
 
-/**
- * \fn int load_quete(int quest_map[6][2], quete_t * quete)
- * \brief Charge les informations des quêtes à partir du fichier 'save_quete.csv'
- * \param int quest_map[6][2]
- * \param quete_t * quete
- * \return Un \a int : 1 si chargement réussi. 0 si échec du chargement.
-*/
-/* load_map: loads the map of the game */
-int load_quete(int quest_map[6][2], quete_t * quete){
-  int l, c;
-  FILE * fic = fopen("../sauv/save_quete.csv","r");
+    /*
+     * Chargement quêtes
+     */
 
-  if(fic){
+    // Chargement int quest_map[6][2]
     for(l = 0; l < 6; l++){
       for(c = 0; c < 2; c++){
         fscanf(fic,"%d;",&quest_map[l][c]);
       }
     }
+
+    // Chargement quete_t quete
     fscanf(fic,"%d;%d;%d;%d;%d;%d;%d;%d",&quete->soin,&quete->recherche.situation,&quete->recherche.butX,&quete->recherche.butY,&quete->bunker,&quete->montagne,&quete->frontiere,&quete->bandits);
+
     fclose(fic);
-    return 1;
   }
   else {
-    printf("Erreur : 'save_quete.csv' introuvable\n");
-    return 0;
+    printf("   Erreur lors du chargement des données sauvegardées.\n");
   }
-}
-
-/*****************************************************/
-/**
- * \fn int backup_exists ()
- * \brief Vérifie si une sauvegarde complète du jeu existe
- * \return Un \a int : 1 si sauvegarde existante. 0 sinon.
-*/
-/* backup_exists: returns 1 if a backup exists and 0 if there is none */
-int backup_exists (){
-  FILE * fic1, * fic2, * fic3, * fic4, * fic5;
-  fic1 = fopen("../sauv/save_inventory.csv","r");
-  fic2 = fopen("../sauv/save_equipment.csv","r");
-  fic3 = fopen("../sauv/save_info_player.csv","r");
-  fic4 = fopen("../sauv/save_map.csv","r");
-  fic5 = fopen("../sauv/save_quete.csv","r");
-
-  if(fic1){
-    fclose(fic1);
-    if(fic2){
-      fclose(fic2);
-      if(fic3){
-        fclose(fic3);
-        if(fic4){
-          fclose(fic4);
-          if(fic5){
-            fclose(fic5);
-            return 1;
-          }
-        }
-      }
-    }
-  }
-  return 0;
-}
-
-/* init_or_load_game:
-   If a backup of the game exists, offers the player to continue the game or start a new one.
-   Loads the game if saved, otherwise uses functions to initialize the player and the map.
-*/
-/**
- * \fn int init_or_load_game(perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete)
- * \brief Si une sauvegarde du jeu existe, propose au joueur de continuer la partie ou d'en commencer une nouvelle.
-    Si aucune sauvegarde, initialise une nouvelle partie.
- * \param perso_t * player
- * \param cell_t map[D][D]
- * \param int quest_map[6][2]
- * \param quete_t * quete
- * \return Un \a int : 1 si initialisation / chargement réussi. 0 si échec.
-*/
-int init_or_load_game(perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete){
-  int num;
-
-  if(backup_exists()){
-    printf("1. Continuer la partie (sauvegarde)\n");
-    printf("2. Nouvelle partie\n");
-    printf("Quitter: -1\n\n");
-
-    do {
-      printf("N°");
-      scanf("%d",&num);
-      if((num != -1) && (num < 1 || num > 2)){
-        printf("Valeur incorrecte. Veuillez ressaisir\n");
-      }
-    } while ((num != -1) && (num < 1 || num >2));
-
-    if(num != -1){
-      switch (num){
-        case 1: return load(player,map,quest_map,quete); break;
-        case 2: init_player(player);
-                map_init(map,quest_map);
-                return 1;
-                break;
-        default: break;
-      }
-    }
-  }
-  else {
-      init_player(player);
-      map_init(map,quest_map);
-      return 1;
-  }
-  return 0;
 }
