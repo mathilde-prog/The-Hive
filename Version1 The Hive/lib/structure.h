@@ -30,7 +30,7 @@ typedef enum {other,nature,urbain,militaire} categ_hexa; // other : camp_ban + f
 typedef struct {
   hex_t type;         /**< Type hexagone*/
   int encounter;      /**< Indicateur de rencontre sur cet hexagone */
-  int quest_id;
+  int quest_id;       /**< Numéro de la quete associé à l'hexagone*/
   categ_hexa categ;   /**< Catégorie hexagone */
   int scavenged;      /**< Indicateur si le joueur a déjà fouillé cet hexagone */
 }cell_t;
@@ -174,7 +174,8 @@ void manage_inventory(perso_t * player);                      //inventory.c
 void display_equipment_player(perso_t player);              //equipment.c
 int is_equipped(perso_t player, item_t item);               //equipment.c
 void swap_equipment_player(perso_t * player, item_t item);  //equipment.c
-void equip_player(perso_t * player);                        //equipment.c
+void equip_player(perso_t * player);                        //equipement.c
+int nb_equipement(perso_t * player);                         //equipment.c
 void remove_equipment_player(perso_t * player);             //equipment.c
 void manage_equipment(perso_t * player);                    //equipment.c
 /**********************************************************************************/
@@ -194,19 +195,23 @@ void rest_and_heal(perso_t * player); //turn.c
 /************************************************************************************/
 
 /************************************* QUETES *************************************/
-
 /**
 	* \struct search_t
 	* \brief Structure de suivi de la quete "recherche"
 	* \details
-        recherche = -1 : quete encore non joué
-        recherche = 0 : quete en cours
-        recherche = 1 : quete déja joué
+        situation = -1 : quete encore non joué
+        situation = 0 : quete en cours
+        situation = 1 : quete déja joué/fini
+        trouve = -1 : la recherche de l'item n'est pas encore active
+        trouve = 0 : recherche de l'item est en cours
+        trouve = 1 : l'item recherché est trouvé
 */
 typedef struct{
-    int situation;  /**< Indicateur pour savoir l'avancer du joueur dans la quete "recherche" */
-    int butX;       /**< Position X du lieu où le joueur doit aller */
-    int butY;       /**< Position Y du lieu où le joueur doit aller */
+    int situation;  /**< Indicateur pour savoir l'avancer du joueur dans la quete "recherche"*/
+    item_t wanted;  /**< Item que le joueur doit trouver*/
+    int trouve;     /**< Indicateur afin de savoir si l'item a été trouvé*/
+    int bunkerX;
+    int bunkerY;
 }search_t;
 
 /**
@@ -215,7 +220,7 @@ typedef struct{
 	* \details
         int = -1 : quete encore non joué
         int = 0 : quete en cours
-        int = 1 : quete déja joué
+        int = 1 : quete déja joué/fini
         soin = 2 : quete joue le joueur a aide l'homme blesse
         soin = 3 : quete joue le joueur a voulu aider l'homme blesse mais sans succes
 */
@@ -228,12 +233,12 @@ typedef struct{
   int bandits;          /**< Indicateur pour savoir l'avancer du joueur dans la quete "bandits" */
 }quete_t;
 
-void init_quete(quete_t * quete);                           //quetes.c
-int quetes(perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete);  //quetes.c
-int quete_montagne(perso_t * player, quete_t * quete);      //quetes.c
-int quete_frontiere(perso_t * player, quete_t * quete);     //quetes.c
-int quete_bunker(perso_t * player, quete_t * quete);      // quetes.c
-int quete_recherche(perso_t * player, quete_t * quete);   // quetes.c
+void init_quete(quete_t * quete);                                                                                                   //quetes.c
+int quetes(perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete, item_t * Tab_Items, int nb_items_available);   //quetes.c
+int quete_montagne(perso_t * player, quete_t * quete);                                                                              //quetes.c
+int quete_frontiere(perso_t * player, quete_t * quete);                                                                             //quetes.c
+int quete_bunker(perso_t * player, quete_t * quete);                                                                                //quetes.c
+int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_items_available);                                   //quetes.c
 
 int quete_soin(perso_t * player, quete_t * quete);                                              //quete_soin.c
 npc_t * init_npc_quete(item_t * Tab_Items, int pers);                                           //quete_soin.c
@@ -243,6 +248,10 @@ int menu_choix_ajout_item(perso_t * player, item_t * pass_card, npc_t * homme); 
 int recup_1item_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t * pass_card);    //quete_soin.c
 int recup_2items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t * pass_card);   //quete_soin.c
 int recup_3items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t * pass_card);   //quete_soin.c
+
+int quete_recherche(perso_t * player, cell_t map[D][D], quete_t * quete, quest_map[6][2], item_t * Tab_Items, int nb_items_available);
+int compte_items_urbain(item_t * Tab_Items, int nb_items_available);
+void init_items_recherche(item_t * Tab_items_search, item_t * Tab_Items, int nb_items_urbain);
 /***************************************************************************************/
 
 /************************************* BACKUP_AND_LOAD *************************************/

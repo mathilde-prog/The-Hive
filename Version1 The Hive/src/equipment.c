@@ -213,6 +213,28 @@ void equip_player(perso_t * player){
 }
 
 /**
+ * \fn int nb_equipement(perso_t * player)
+ * \brief Compte le nombre d'item(s) équipé(s) sur le joueur
+ * \param perso_t * player
+ * \return Retourne le nombre d'équipement (items) actuellement sur le joueur
+*/
+int nb_equipement(perso_t * player){
+    int cpt=0;
+
+    if(player->left_hand != NULL)
+        cpt++;
+    if(player->right_hand != NULL)
+        cpt++;
+    if(player->body != NULL)
+        cpt++;
+    if(player->head != NULL)
+        cpt+=;
+
+    return cpt;
+}
+
+
+/**
  * \fn void remove_equipment_player(perso_t * player)
  * \brief Retire un item choisi par le joueur de son équipement
  * \param perso_t * player

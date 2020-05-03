@@ -396,15 +396,15 @@ void quest_init(cell_t map[D][D], int quest_map[6][2]){
   quest_map[2][1]=range(1,D-1);
   map[quest_map[2][0]][quest_map[2][1]].quest_id=3;
 
-  quest_map[3][0]=range(1,D-1);
+  quest_map[3][0]=range(1,D-1); // bandits
   quest_map[3][1]=range(1,D-1);
   map[quest_map[3][0]][quest_map[3][1]].quest_id=4;
 
-  quest_map[4][0]=range(1,D-1);
+  quest_map[4][0]=range(1,D-1); // soin
   quest_map[4][1]=range(1,D-1);
   map[quest_map[4][0]][quest_map[4][1]].quest_id=5;
 
-  quest_map[5][0]=range(1,D-1);
+  quest_map[5][0]=range(1,D-1); // recherche
   quest_map[5][1]=range(1,D-1);
   map[quest_map[5][0]][quest_map[5][1]].quest_id=6;
 }

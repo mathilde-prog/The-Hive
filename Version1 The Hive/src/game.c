@@ -31,7 +31,16 @@ void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], q
     printf("    7 - Se reposer et guérir\n");
     printf("    8 - Fin du tour\n");
     printf("    9 - Sauvegarder le jeu et quitter\n");
-    printf("   10 - Aide\n");
+    printf("    10 - Aide\n");
+    //Si la quete "recherche" est en cours + joueur cherche l'item demande par l'homme
+    if(quete->recherche.trouve == 0)
+        printf("    11 - Rechercher l'item %s demandé par l'homme\n", quete->recherche.wanted.name);
+    //Si la quete "recherche" est en cours + joueur a trouvé l'item demandé par l'homme
+    if((quete->recherche.trouve == 1) && (quete->recherche.situation == 0))
+        printf("    11 - Retrouver l'homme pour lui donner l'item %s\n", quete->recherche.wanted.name);
+    //Si la quete "recherche" est fini
+    if(quete->recherche.situation == 1)
+        printf("    11 - Voir les coordonnées du lieu sécurisé donné par l'homme\n");
     printf("\n   Quitter sans sauvegarder : -1\n\n");
     printf("   Que souhaitez-vous faire ? ");
 
@@ -48,7 +57,13 @@ void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], q
       case 8: clrscr(); next_turn(&player); clrscr(); break;
       case 9: clrscr(); save(player,map,quest_map,quete,sauv); exit(1); break;
       case 10: clrscr(); help(&player); clrscr(); break;
-//    case 11: display_quest(quest_map); sleep(4); break;
+      case 11: clrscr();
+               if(quete->recherche.situation == 0)
+                    quete_recherche(player, map, quete, quest_map, Tab_Items, nb_items_available);
+               else
+                    printf("Coordonnées du lieu sécurisé : X = %d, Y = %d\n", quete->recherche.bunkerX, quete->recherche.bunkerY);
+               clrscr(); break;
+//    case 12: display_quest(quest_map); sleep(4); break;
       case -1: exit(1); break;
       default: printf("   Commande inconnue. Veuillez ressaisir: "); goto jump; break;
     }

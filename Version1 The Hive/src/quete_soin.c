@@ -23,7 +23,6 @@
  * \param int pers
  * \return Un pointeur (npc_t) sur le npc cree
 */
-
 npc_t * init_npc_quete(item_t * Tab_Items, int pers){
   npc_t * blesse;
   blesse = malloc(sizeof(npc_t));
@@ -54,7 +53,6 @@ npc_t * init_npc_quete(item_t * Tab_Items, int pers){
  * \param int item
  * \return Retourne un \a int : 0 si le jeu continue, -1 si probleme lors de la quete.
 */
-
 int ajout_item_blesse(perso_t * player, npc_t * homme, int item){
     if(item == 0){ //Arme
         if(add_item_to_inventory(player,*homme->weapon))
@@ -83,9 +81,8 @@ int ajout_item_blesse(perso_t * player, npc_t * homme, int item){
  * \param item_t * pass_card
  * \return Retourne un \a int : 0 si le jeu continue, -1 si probleme lors de la quete.
 */
-
 int ajout_pass_card(perso_t * player, item_t * pass_card){
-    if(add_item_to_inventory(player,*pass_card)){
+    if(add_item_to_inventory(player, *pass_card)){
         return 0;
     }
     else{
@@ -101,12 +98,12 @@ int ajout_pass_card(perso_t * player, item_t * pass_card){
  * \brief Menu permettant au joueur de choisir quel item il souhaite ajoute a son inventaire;
  * \details
     Le joueur fait son choix et par la suite la fonction fait appel a une autre fonction (ajout_item_blesse, ajout_pass_card) qui ajoute l'item choisi
+    Le pass card est proposé automatiquement
  * \param perso_t * player
  * \param item_t * pass_card
  * \param npc_t * homme
  * \return Retourne un \a int : 0 si le jeu continue, -1 si probleme lors de la quete.
 */
-
 int menu_choix_ajout_item(perso_t * player, item_t * pass_card, npc_t * homme){
     int ajout;
     do{
@@ -129,7 +126,6 @@ int menu_choix_ajout_item(perso_t * player, item_t * pass_card, npc_t * homme){
 }
 
 
-
 /**
  * \fn int recup_1item_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t * pass_card)
  * \brief Deroulement de la quete "soin" quand le joueur souhaite voler des items du npc et qu'il n'en trouve qu'un seul sur l'homme : le pass card.
@@ -141,7 +137,6 @@ int menu_choix_ajout_item(perso_t * player, item_t * pass_card, npc_t * homme){
  * \param item_t * pass_card
  * \return Retourne un \a int : 0 si le jeu continue, -1 si probleme lors de la quete.
 */
-
 /*Le joueur trouve 1 item sur l'homme : le pass card*/
 int recup_1item_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t * pass_card){
     int ajout;
@@ -171,7 +166,6 @@ int recup_1item_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t *
 }
 
 
-
 /**
  * \fn int recup_2items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t * pass_card)
  * \brief Deroulement de la quete "soin" quand le joueur souhaite voler des items du npc et qu'il en trouve 2 sur l'homme.
@@ -184,7 +178,6 @@ int recup_1item_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t *
  * \param item_t * pass_card
  * \return Retourne un \a int : 0 si le jeu continue, -1 si probleme lors de la quete.
 */
-
 /*Le joueur trouve 2 items sur l'homme : le pass_card et soit son armure ou son arme*/
 int recup_2items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t * pass_card){
     int item2, ajout, choix;
@@ -266,7 +259,6 @@ int recup_2items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t 
 }
 
 
-
 /**
  * \fn int recup_3items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t * pass_card)
  * \brief Deroulement de la quete "soin" quand le joueur souhaite voler des items du npc et qu'il en trouve 3 sur l'homme.
@@ -279,7 +271,6 @@ int recup_2items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t 
  * \param item_t * pass_card
  * \return Retourne un \a int : 0 si le jeu continue, -1 si probleme lors de la quete.
 */
-
 /*Le joueur trouve 3 items sur l'homme : le pass_card, son armure et son arme*/
 int recup_3items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t * pass_card){
     int choix;
@@ -370,8 +361,7 @@ int recup_3items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t 
  * \param quete_t * quete
  * \return Retourne un \a int : 0 si le jeu continue et -1 si probleme dans la quete.
 */
-
-int quete_soin(perso_t * player, quete_t * quete){
+int quete_soin(perso_t * player, quete_t * quete, item_t * Tab_Items){
     int pers, choix;
 
     quete->soin=0;
@@ -390,7 +380,7 @@ int quete_soin(perso_t * player, quete_t * quete){
     do{
         printf("Que choisissez-vous de faire a son sujet ?\n");
         printf("1 - Vous l'ignorez, vous etes presse et ne souhaitez pas l'aider.\n");
-        printf("2 - Vous lui voler les items qu'il poss�de, apres tout il n'en n'aura bientot plus besoin vu son etat.\n");
+        printf("2 - Vous lui voler les items qu'il possede, apres tout il n'en n'aura bientot plus besoin vu son etat.\n");
         printf("3 - Vous lui venez en aide. Vous aimeriez bien que quelqu'un fasse pareil pour vous dans sa situation.\n");
 
         scanf("%d", &choix);
@@ -402,7 +392,6 @@ int quete_soin(perso_t * player, quete_t * quete){
     /*Si le joueur ignore l'homme blesse*/
     if (choix == 1){
          printf("Continuons a explorer la map !\n");
-         quete->soin=1;
          return 0;
     }
     else {
@@ -414,12 +403,10 @@ int quete_soin(perso_t * player, quete_t * quete){
         if (choix == 2){
             printf("A l'attaque ! Recuperez ce que vous pouvez sur lui.\n");
 
-            int nb, nb_items_vole, ok;
+            int nb_items_vole, ok;
 
             /*Creation du npc blesse*/
             npc_t * blesse;
-            item_t * Tab_Items = malloc(20 * sizeof(item_t));
-            creation_tab_item(Tab_Items, &nb);
             blesse = init_npc_quete(Tab_Items, pers);
 
             /*Recuperation des items de l'homme blesse*/
@@ -433,7 +420,7 @@ int quete_soin(perso_t * player, quete_t * quete){
             if(ok==0){
                 printf("Vous en avez fini avec ce pauvre homme, repartez explorer la map !\n");
                 quete->soin=1;
-                return(0);
+                return 0;
             }
             else
                return(-1);
@@ -468,6 +455,7 @@ int quete_soin(perso_t * player, quete_t * quete){
 
             /*Le joueur possede au moins 1 item utile a l'homme blesse*/
             if(cpt!=0){
+                /*Plus de 1 item utile dans l'inventaire*/
                 if(cpt>1){
                     printf("Vous avez des items en votre possession qui peuvent aider cet homme blesse ! Les voici : \n");
                     /*Affichage de la liste des items utiles*/
@@ -504,8 +492,7 @@ int quete_soin(perso_t * player, quete_t * quete){
 
                     /*Le joueur change d'avis, fin de la quete*/
                     if(choix==0){
-                        printf("Votre choix de ne pas aider cet homme a ete bien enregiste. Vous pouvez repartir explorer la map!\n");
-                        quete->soin=1;
+                        printf("Votre choix de ne pas aider cet homme a bien ete enregiste. Vous pouvez repartir explorer la map!\n");
                         return 0;
                     }
                     else{
@@ -564,7 +551,7 @@ int quete_soin(perso_t * player, quete_t * quete){
                                     printf("Pour cela entrer le numero du premier aliment : ");
                                     scanf("%d", &ali1);
                                     printf("\n");
-                                    printf("Puis celui du deuxi�me : ");
+                                    printf("Puis celui du deuxieme : ");
                                     scanf("%d", &ali2);
 
                                     if(ali1 < 0 || ali1 > i-1)
@@ -597,14 +584,23 @@ int quete_soin(perso_t * player, quete_t * quete){
                     }
 
                 }
-                /*Le joueur ne possede qu'un seul item pouvant �tre utile a l'homme*/
+                /*Le joueur ne possede qu'un seul item pouvant etre utile a l'homme*/
                 else{
                     printf("Vous etes en possession d'un seul item pouvant aider l'homme affaiblis.\n");
-                    printf("Il s'agit de l'item %s.\n", player->inventory[ind_items_soin[0]].name);
+                    printf("Il s'agit de l'item %s. ", player->inventory[ind_items_soin[0]].name);
+                    /*Explications des bien fait de l'item*/
+                    if(mk!=1)
+                        printf("Grace a cela l'homme pourrait soigner ses blessures et repartir au combat.\n");
+                    else
+                        printf("Grace a cela l'homme pourrait reprendre un peu de force pour allez trouver un lieu ou se soigner.\n");
+
+                    /*Le joueur choisi d'utiliser l'item ou non*/
                     do{
                         printf("Vous avez deux possibilites : \n");
                         printf("0 - Changement d'avis, ne rien utiliser, ne pas l'aider\n");
                         printf("1 - Utiliser l'item du dessus\n");
+                        printf("Laquelle choisissez-vous ? ");
+                        scanf("%d", &choix);
 
                         if(choix < 0 || choix > 1)
                             printf("Valeur incorrecte. Veuillez resaissir.\n");
@@ -612,12 +608,12 @@ int quete_soin(perso_t * player, quete_t * quete){
 
                     /*Le joueur change d'avis, fin de la quete*/
                     if(choix==0){
-                        printf("Votre choix de ne pas aider cet homme a ete bien enregistre. Vous pouvez repartir explorer la map!\n");
+                        printf("Votre choix de ne pas aider cet homme a ete bien enregistre. Repartez explorer la map!\n");
                         return 0;
                     }
                     /*Le joueur donne le seul item utile en sa possession*/
                     else{
-                        /*Suppresion des aliments choisis dans l'inventaire du joueur*/
+                        /*Suppresion l'item dans l'inventaire du joueur*/
                         delete_item_in_inventory(player,player->inventory[ind_items_soin[0]]);
                         printf("L'item %s a bien ete utilise pour aider l'homme, il va mieux grace a vous !\n", player->inventory[ind_items_soin[0]].name);
 
