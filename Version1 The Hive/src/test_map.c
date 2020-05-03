@@ -29,8 +29,9 @@ void display_hex(cell_t map[D][D], int l, int c){
 int main(){
   srand(time(NULL));
   cell_t map[D][D];
+  int quest_map[6][2];
   int l, c;
-  map_init(map);
+  map_init(map, quest_map);
 
   for(l = 0; l < D; l++){
     for(c = 0; c < D; c++){

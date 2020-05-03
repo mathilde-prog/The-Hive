@@ -212,31 +212,33 @@ void turn_npc(npc_t * enemy, stat_t * field, perso_t * player){
 int run_away(int position, int distance){
   if(position!=1){
     if(rng(20*distance)){
-      sleep(PT);
       printf("You  managed to run away.\n");
-      return 3; // TO REPLACE
+      sleep(PT);
+      return 1; // TO REPLACE
     }else{
       printf("You tried to run away but failed.\n");
       sleep(PT);
+      return 0;
     }
   }else{
     if(rng(40*distance)){
       printf("You  managed to run away.\n");
       sleep(PT);
-      return 3; // TO REPLACE
+      return 1; // TO REPLACE
     }else{
       printf("You tried to run away but failed.\n");
       sleep(PT);
+      return 0;
     }
   }
-  return 0;
+  return 3;
 }
 
 void combat_info(int print_type, perso_t * player, npc_t * enemy, stat_t * field){
   printf("Your HP : %d                                                      %d : Enemy HP\nLeft hand: %s\nRight hand: %s\nEnemy weapon: %s\n\n                                Distance: %d                  \n",player->pv, enemy->pv, player->left_hand->name, player->right_hand->name, enemy->weapon->name, field->distance);
 
   if(print_type==1){
-    printf("1. Get closer.\n2. Move away.\n3. Get in cover.\n4. Attack with a weapon in your left hand.\n5. Attack with a weapon in your right hand.\n5. Try to run away.\n");
+    printf("1. Get closer.\n2. Move away.\n3. Get in cover.\n4. Attack with a weapon in your left hand.\n5. Attack with a weapon in your right hand.\n6. Try to run away.\n");
   }else if((print_type==2) || (print_type==3)){
     printf("1. Get closer.\n2. Move away.\n3. Get in cover.\n4. Attack with your weapon.\n5. Try to run away.\n");
   }
@@ -244,7 +246,7 @@ void combat_info(int print_type, perso_t * player, npc_t * enemy, stat_t * field
   printf("Your choise: ");
 }
 
-void combat(perso_t * player, npc_t * enemy, stat_t * field){
+int combat(perso_t * player, npc_t * enemy, stat_t * field){
   int choise=9;
   int print_type;
   clrscr();
@@ -270,7 +272,7 @@ void combat(perso_t * player, npc_t * enemy, stat_t * field){
     combat_info(print_type, player, enemy, field);
     scanf("%d", &choise);
     if(choise==1){
-      if((field->posA+1)<field->posB){
+      if(field->distance > 2){
         field->posA+=1;
         field->distance=(field->posB - field->posA) -1;
         clrscr();
@@ -316,11 +318,14 @@ void combat(perso_t * player, npc_t * enemy, stat_t * field){
         sleep(PT);
       }else{
         clrscr();
-        run_away(field->posA, field->distance);
-        sleep(PT);
+        if(run_away(field->posA, field->distance)==1){
+          return 3;
+        }
       }
     }else if(choise==6 && player->left_hand!=NULL && player->left_hand!=NULL){
-      run_away(field->posA, field->distance);
+      if(run_away(field->posA, field->distance)==1){
+        return 3;
+      }
     }else{
       clrscr();
       printf("Unknown command. Try again.\n");
@@ -332,6 +337,7 @@ void combat(perso_t * player, npc_t * enemy, stat_t * field){
     turn_npc(enemy,field, player);
     sleep(PT);
   }
+  return 0;
 }
 
 int main(){

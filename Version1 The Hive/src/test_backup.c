@@ -13,6 +13,7 @@ int main(){
 
   /* Map Declaration */
   cell_t map[D][D];
+  int quest_map[6][2];
 
   if(creation_tab_item(Tab_Items, &nb_items_available)) {
 
@@ -69,7 +70,7 @@ int main(){
     player.left_hand = &player.inventory[1];  // shotgun
 
     /* Map generation */
-    map_init(map);
+    map_init(map, quest_map);
 
     printf("\n");
     printf ("\033[34;01m[SAUVEGARDE]\033[00m\n");
