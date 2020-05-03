@@ -275,7 +275,8 @@ void save (perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete,
   }
 
   // Sauvegarde quete_t quete
-  fprintf(fic,"\n%d;%d;%d;%d;%d;%d;%d;%d\n",quete.soin, quete.recherche.situation, quete.recherche.butX, quete.recherche.butY, quete.bunker, quete.montagne, quete.frontiere, quete.bandits);
+  fprintf(fic,"\n%d;%d;%d;%d;%d;%d;%d;%d;%d\n",quete.soin,quete.recherche.situation,quete.recherche.trouve,quete.recherche.bunkerX,quete.recherche.bunkerY,quete.bunker,quete.montagne,quete.frontiere,quete.bandits);
+  fprintf(fic,"%d;%d;%d;%d;%d;%d;%d;%f;%d;%d;%d;%d;%s\n",quete.recherche.wanted.type, quete.recherche.wanted.attack[0], quete.recherche.wanted.attack[1],quete.recherche.wanted.attack[2], quete.recherche.wanted.hitchance[0], quete.recherche.wanted.hitchance[1],quete.recherche.wanted.hitchance[2],quete.recherche.wanted.defense, quete.recherche.wanted.equipable, quete.recherche.wanted.pc_nature, quete.recherche.wanted.pc_urban, quete.recherche.wanted.pc_military, quete.recherche.wanted.name);
 
   fclose(fic);
 }
@@ -387,7 +388,9 @@ void load (perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * qu
     }
 
     // Chargement quete_t quete
-    fscanf(fic,"%d;%d;%d;%d;%d;%d;%d;%d",&quete->soin,&quete->recherche.situation,&quete->recherche.butX,&quete->recherche.butY,&quete->bunker,&quete->montagne,&quete->frontiere,&quete->bandits);
+    fscanf(fic,"%d;%d;%d;%d;%d;%d;%d;%d;%d",&quete->soin,&quete->recherche.situation,&quete->recherche.trouve,&quete->recherche.bunkerX,&quete->recherche.bunkerY,&quete->bunker,&quete->montagne,&quete->frontiere,&quete->bandits);
+    fscanf(fic,"%d;%d;%d;%d;%d;%d;%d;%f;%d;%d;%d;%d;%[^\n]",&quete->recherche.wanted.type,&quete->recherche.wanted.attack[0],&quete->recherche.wanted.attack[1],&quete->recherche.wanted.attack[2],&quete->recherche.wanted.hitchance[0],&quete->recherche.wanted.hitchance[1],&quete->recherche.wanted.hitchance[2],&quete->recherche.wanted.defense,&quete->recherche.wanted.equipable,&quete->recherche.wanted.pc_nature,&quete->recherche.wanted.pc_urban,&quete->recherche.wanted.pc_military,quete->recherche.wanted.name);
+
 
     fclose(fic);
   }

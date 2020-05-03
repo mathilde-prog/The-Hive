@@ -30,9 +30,10 @@ int main(){
   srand(time(NULL));
   cell_t map[D][D];
   int quest_map[6][2];
-
+  perso_t player;
+  init_player(&player);
   int l, c;
-  map_init(map,quest_map);
+  map_init(map,quest_map,player);
 
   for(l = 0; l < D; l++){
     for(c = 0; c < D; c++){

@@ -371,13 +371,15 @@ void display_quest(int quest_map[6][2]){
   }
 }
 
-void encounter_init(cell_t map[D][D]){
+void encounter_init(cell_t map[D][D], perso_t player){
   int i,j;
 
   for(i=1;i<D-1;i++){
     for(j=1;j<D-1;j++){
       if(rng(10)){
-        map[i][j].encounter=1;
+        if((i != player.posX) || (j != player.posY)){ //Pour ne pas que le joueur commence la partie directement par un combat
+          map[i][j].encounter=1;
+        }
       }
     }
   }
@@ -409,11 +411,11 @@ void quest_init(cell_t map[D][D], int quest_map[6][2]){
   map[quest_map[5][0]][quest_map[5][1]].quest_id=6;
 }
 
-void map_init(cell_t map[D][D], int quest_map[6][2]){
+void map_init(cell_t map[D][D], int quest_map[6][2], perso_t player){
   init_base(map);
   init_border(map);
   topup(map);
   nextgen(map);
-  encounter_init(map);
+  encounter_init(map,player);
   quest_init(map,quest_map);
 }

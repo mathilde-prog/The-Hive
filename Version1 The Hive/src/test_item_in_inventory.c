@@ -14,8 +14,8 @@ int main(){
 
   creation_tab_item(Tab_Items, &nb_items_available);
 
-  map_init(map,quest_map);
   init_player(&player);
+  map_init(map,quest_map,player);
 
   check_the_map(player,map);
 

@@ -218,17 +218,17 @@ void equip_player(perso_t * player){
  * \param perso_t * player
  * \return Retourne le nombre d'équipement (items) actuellement sur le joueur
 */
-int nb_equipement(perso_t * player){
-    int cpt=0;
+int nb_equipement(perso_t player){
+    int cpt = 0;
 
-    if(player->left_hand != NULL)
+    if(player.left_hand != NULL)
         cpt++;
-    if(player->right_hand != NULL)
+    if(player.right_hand != NULL)
         cpt++;
-    if(player->body != NULL)
+    if(player.body != NULL)
         cpt++;
-    if(player->head != NULL)
-        cpt+=;
+    if(player.head != NULL)
+        cpt++;
 
     return cpt;
 }

@@ -59,7 +59,7 @@ int main(){
   // Creation des items
   if(creation_tab_item(Tab_Items, &nb_items_available)){
     init_player(&player);
-    map_init(map,quest_map);
+    map_init(map,quest_map,player);
 
     //display_TEXT(player.posX,player.posY, map);
 

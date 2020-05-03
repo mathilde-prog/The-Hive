@@ -96,7 +96,8 @@ void save_test (perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t q
   }
 
   // Sauvegarde quete_t quete
-  fprintf(fic,"\n%d;%d;%d;%d;%d;%d;%d;%d\n",quete.soin, quete.recherche.situation, quete.recherche.butX, quete.recherche.butY, quete.bunker, quete.montagne, quete.frontiere, quete.bandits);
+  fprintf(fic,"\n%d;%d;%d;%d;%d;%d;%d;%d;%d\n",quete.soin,quete.recherche.situation,quete.recherche.trouve,quete.recherche.bunkerX,quete.recherche.bunkerY,quete.bunker,quete.montagne,quete.frontiere,quete.bandits);
+  fprintf(fic,"%d;%d;%d;%d;%d;%d;%d;%f;%d;%d;%d;%d;%s\n",quete.recherche.wanted.type, quete.recherche.wanted.attack[0], quete.recherche.wanted.attack[1],quete.recherche.wanted.attack[2], quete.recherche.wanted.hitchance[0], quete.recherche.wanted.hitchance[1],quete.recherche.wanted.hitchance[2],quete.recherche.wanted.defense, quete.recherche.wanted.equipable, quete.recherche.wanted.pc_nature, quete.recherche.wanted.pc_urban, quete.recherche.wanted.pc_military, quete.recherche.wanted.name);
 
   fclose(fic);
 }
@@ -183,8 +184,9 @@ void info_quetes(int quest_map[6][2], quete_t quete){
 
   printf ("\033[34;01m\n   [Affichage quete_t quete]\033[00m\n\n");
   printf("   soin : %d\n", quete.soin);
-  printf("   recherche : %d %d %d\n", quete.recherche.situation, quete.recherche.butX, quete.recherche.butY);
-  printf("   bunker : %d\n", quete.bunker);
+  printf("   recherche :\n      situation : %d\n      trouve : %d\n      bunkerX : %d\n      bunkerY : %d\n", quete.recherche.situation, quete.recherche.trouve, quete.recherche.bunkerX, quete.recherche.bunkerY);
+  display_item(quete.recherche.wanted);
+  printf("\n   bunker : %d\n", quete.bunker);
   printf("   montagne : %d\n", quete.montagne);
   printf("   frontiere : %d\n", quete.frontiere);
   printf("   bandits : %d\n\n", quete.bandits);
@@ -200,8 +202,8 @@ int main(){
   quete_t quete;
 
   init_player(&player);
-  map_init(map,quest_map);
-  init_quete(&quete);
+  map_init(map,quest_map,player);
+  init_quete(&quete,quest_map);
 
   player.nb_items_inventory = 0; /* Le joueur commence le jeu avec un inventaire vide. */
   player.pv = rand()%101;

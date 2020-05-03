@@ -15,7 +15,7 @@
 
 
 /*Initialisation d'une structure quete_t*/
-void init_quete(quete_t * quete){
+void init_quete(quete_t * quete, int quest_map[6][2]){
     quete->soin = -1;
     quete->bunker = -1;
     quete->montagne = -1;
@@ -25,7 +25,7 @@ void init_quete(quete_t * quete){
     /*Initialisation de la structure recherche*/
     quete->recherche.situation = -1;
     quete->recherche.trouve = -1;
-    quete->recherche.wanted = NULL:
+  //quete->recherche.wanted = NULL:
     quete->recherche.bunkerX = quest_map[2][0];
     quete->recherche.bunkerY = quest_map[2][1];
 }
@@ -374,7 +374,7 @@ int quete_bunker(perso_t * player, quete_t * quete){
  * \return Retourne un \a int : 0 si le jeu continue, 1 si le jeu est fini et -1 si problème dans la quete.
 */
 int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_items_available){
-    int choix, ajout, combat, chance, voler=0;
+    int choix, combat, chance, voler=0, ind_lh, ind_rh;
 
     quete->bandits=0;
 
@@ -438,7 +438,7 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
                 int fuir;
 
                 /*Détermination de la chance : plus il a d'équipement, plus il est lourd donc plus il court lentement, donc plus la chance est faible*/
-                switch(nb_equipement(player)){
+                switch(nb_equipement(*player)){
                     case 0 : chance = 75; break;
                     case 1 : chance = 65; break;
                     case 2 : chance = 55; break;
@@ -470,7 +470,7 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
                 printf("Le combat est rude, vous vous prenez des coups sur l'ensemble du corps, mais vous arrivez a blesser et mettre à terre certains de vos adversaires.\n");
 
                 /*Détermination de la chance : plus il a d'équipement et plus il a de la chance de combattre les bandits*/
-                switch(nb_equipement(player)){
+                switch(nb_equipement(*player)){
                     case 0 : chance = 1; break;
                     case 1 : chance = 10; break;
                     case 2 : chance = 20; break;
@@ -495,11 +495,33 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
 
                     printf("Apres de longues minutes, il ne reste plus qu'un bandit en etat de vous défier !");
                     /*Si il est equipe d'une arme a feu*/
-                    if(is_equipped(*player, "shotgun") || is_equipped(*player, "pistol"))
+
+
+                    /*
+                     * MODIFICATIONS ICI A MONTRER A ANAIS!
+                     */
+
+                    ind_lh = (player->left_hand != NULL) ? player->left_hand->index : -1;
+                    ind_rh = (player->right_hand != NULL) ? player->right_hand->index : -1;
+
+                    if((ind_lh != -1) && (ind_rh != -1)){
+                      if((!strcmp(player->inventory[ind_lh].name,"shotgun")) || (!strcmp(player->inventory[ind_lh].name,"pistol")) || (!strcmp(player->inventory[ind_rh].name,"shotgun")) || (!strcmp(player->inventory[ind_rh].name,"pistol"))){
                         printf("Vos forces sont tres faibles, il ne vous reste plus qu'une solution pour en finir avec lui... Vous lui tirer dessus, c'est gagne !\n");
-                    /*Si il n'a pas d'arme a feu*/
-                    else
-                        printf("Vous utilisez les dernières forces qui vous reste pour le vaincre. C'est gagne !\n");
+                      }
+                    }
+                    else if (ind_lh != -1){
+                      if((!strcmp(player->inventory[ind_lh].name,"shotgun")) || (!strcmp(player->inventory[ind_lh].name,"pistol"))){
+                        printf("Vos forces sont tres faibles, il ne vous reste plus qu'une solution pour en finir avec lui... Vous lui tirer dessus, c'est gagne !\n");
+                      }
+                    }
+                    else if (ind_rh != -1){
+                      if((!strcmp(player->inventory[ind_rh].name,"shotgun")) || (!strcmp(player->inventory[ind_rh].name,"pistol"))){
+                        printf("Vos forces sont tres faibles, il ne vous reste plus qu'une solution pour en finir avec lui... Vous lui tirer dessus, c'est gagne !\n");
+                      }
+                    }
+                    else {
+                      printf("Vous utilisez les dernières forces qui vous reste pour le vaincre. C'est gagne !\n");
+                    }
 
                     printf("Vous avez réussi a combattre les bandits sur leur propre camp, mais vous avez echappe de justesse à la mort !\n");
                     printf("Il faut maintenant repartir explorer la map.\n");
@@ -513,7 +535,7 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
                     if(chance==1)
                         printf("Vous n'avez aucun equipement sur vous, malheureusement la bataille est perdu d'avance.\n");
                     else
-                        (chance>=2) ? (printf("Malgre les %d equipements sur vous, ", nb_equipement(player))) : (printf("Le seul equipement sur vous n'est pas suffisant, "));
+                        (chance>=2) ? (printf("Malgre les %d equipements sur vous, ", nb_equipement(*player))) : (printf("Le seul equipement sur vous n'est pas suffisant, "));
                     printf("les bandits sont trop forts. Vous comprenez que c'est la fin pour vous, ils ne vous laisseront pas vivre ni repartir !\n");
                     quete->bandits=1;
                     return 1;
@@ -528,14 +550,19 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
             voler=1;
             item_t items_camp_bandits[ITEMS_MAX]; //Tableau ou se trouveras les items trouvé dans le camp de bandits
             /*Initialisation du tableau items_camp_bandits*/
+
+            /*
+             * PROBLEME INITIALISATION AVEC NULL !
+             */
+             /*
             for(i=0; i < ITEMS_MAX; i++)
                 items_camp_bandits[i] = NULL;
-
+            */
             /*Génération des items trouvés*/
             for(i=0, nb_items=0; i<ITEMS_MAX; i++){
                 num = rand()%nb_items_available;
                 /*Le joueur peut trouver les items suivant : pistol, shotgun, knife, baseball bat ou helmet*/
-                if((Tab_Items[num]->name == "pistol") || (Tab_Items[num]->name == "shotgun") || (Tab_Items[num]->name == "knife") || (Tab_Items[num]->name == "baseball bat") || (Tab_Items[num]->name == "helmet")){
+                if((!strcmp(Tab_Items[num].name,"pistol")) || (!strcmp(Tab_Items[num].name,"shotgun")) || (!strcmp(Tab_Items[num].name,"knife")) || (!strcmp(Tab_Items[num].name,"baseball bat")) || (!strcmp(Tab_Items[num].name,"helmet"))){
                     items_camp_bandits[nb_items] = Tab_Items[num];
                     nb_items++;
                 }
@@ -556,10 +583,10 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
                     /*Choix du joueur pour chaque item : ajouter à l'inventaire ou non*/
                     do{
                         printf("Vous avez le choix entre :\n");
-                        printf("1 - Ajouter l'item %s a l'inventaire\n", items_camp_bandits[i]->name);
+                        printf("1 - Ajouter l'item %s a l'inventaire\n", items_camp_bandits[i].name);
                         printf("2 - Ne pas l'ajouter\n");
                         printf("Votre choix : ");
-                        scanf("%d", ajout);
+                        scanf("%d", &ajout);
 
                         if(ajout<1 || ajout>2)
                             printf("Valeur incorrecte. Veuillez resaissir.\n");
@@ -568,11 +595,11 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
                     /*Ajouter l'item à l'inventaire*/
                     if(ajout){
                         if(add_item_to_inventory(player,items_camp_bandits[i])==0)
-                            printf("L'item %s n'a pas ete ajoute a votre inventaire.\n", items_camp_bandits[i]->name);
+                            printf("L'item %s n'a pas ete ajoute a votre inventaire.\n", items_camp_bandits[i].name);
                     }
                     /*Pas d'ajout à l'inventaire*/
                     else
-                        printf("Votre choix de ne pas ajouter l'item %s a bien ete pris en compte.\n", items_camp_bandits[i]->name);
+                        printf("Votre choix de ne pas ajouter l'item %s a bien ete pris en compte.\n", items_camp_bandits[i].name);
                 }
                 printf("Vous avez recupere tous les items possible sur le camp de bandits.\n");
             }

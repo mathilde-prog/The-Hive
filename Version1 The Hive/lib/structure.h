@@ -6,6 +6,81 @@
  * \date 2020
 */
 
+
+/************************************* ITEMS *************************************/
+/**
+  * \enum type_t
+  * \brief Type item
+*/
+typedef enum {armor,weapon,misc,food} type_t; /* types of items available */
+
+/**
+  * \enum equip_t
+  * \brief Zone où un item est équipable
+*/
+typedef enum {none,hand,body,head} equip_t; 	/* where the player may wear equipment */
+
+/**
+	* \struct item_t
+	* \brief Structure pour un item
+*/
+typedef struct {
+	char name[20];       /**< Nom item */
+	type_t type;         /**< Type item */
+
+ 	int attack[3]; 				 /**< Valeur d'attaque */
+  int hitchance[3];      /**< A COMPLETER */
+
+	float defense; 				 /**< Valeur de défense */
+	equip_t equipable; 	 /**< Indicateur si le joueur peut s'équiper avec cet item et où */                        // indicates whether the player can equip himself with this item and where
+	int pc_nature; 			 /**< Pourcentage de chance de trouver cet item dans un hexagone de catégorie nature */    // percentage chance of finding this item in a nature hexagon
+	int pc_urban;  			 /**< Pourcentage de chance de trouver cet item dans un hexagone de catégorie urbain */    // percentage chance of finding this item in an urban hexagon
+	int pc_military;		 /**< Pourcentage de chance de trouver cet item dans un hexagone de catégorie militaire */ // percentage chance of finding this item in a military hexagon
+	int index; 					 /**< Position de l'item dans l'inventaire du joueur (-1 si absent) */
+} item_t;
+
+item_t * creer_item (char * chaine, type_t type, int attack0, int attack1, int attack2, int hitchance0, int hitchance1, int hitchance2, float defense, int equipable, int pc_nature, int pc_urban, int pc_military);
+int creation_tab_item(item_t * Tab_Items, int * nb_items); //items.c
+void display_item (item_t item); //items.c
+
+/*********************************************************************************/
+
+
+/************************************* PERSO *************************************/
+
+#define INVENTORY_CAPACITY 10 /**< INVENTORY_CAPACITY représente le nombre maximum d'items que peut contenir l'inventaire du joueur (10 items dans la version 1.0) */
+
+//typedef enum {normal,sprinter,metabolism,luck,scout} skill_t;
+
+/**
+	* \struct perso_t
+	* \brief Structure pour un personnage
+*/
+typedef struct  {
+  int pv;     /**< Points de vie */
+  int pe;     /**< Points d'énergie */
+  int pa;     /**< Points d'action */
+	int posX;   /**< Position X sur la carte */
+	int posY;   /**< Position Y sur la carte */
+	int turns;  /**< Nombre de tours restants */
+
+//  skill_t competence; /**< Compétence spéciale */
+
+  item_t inventory[INVENTORY_CAPACITY];  /**< Inventaire */
+  int nb_items_inventory;  /**< Nombre d'items dans l'inventaire */
+
+  item_t * left_hand; 	/**< Pointeur sur item main gauche */
+  item_t * right_hand; 	/**< Pointeur sur item main droite */
+  item_t * body; 				/**< Pointeur sur item corps */
+  item_t * head;				/**< Pointeur sur item tête */
+
+} perso_t;
+
+void init_player(perso_t * player); //perso.c
+
+/**********************************************************************************/
+
+
 /************************************* MAP *************************************/
 #define ITEMS_MAX 5 /**< ITEMS_MAX représente le nombre maximum d'items générés sur un hexagone de la carte */
 #define D 15 				/**< D représente la dimension de la carte */
@@ -47,47 +122,16 @@ void display_TEXT(int l, int c, cell_t map[D][D]); 	    //world_generation.c
 void init_base(cell_t map[D][D]); 										  //world_generation.c
 void count(const cell_t map[D][D]); 									  //world_generation.c
 void display_grid(const cell_t map[D][D]); 					    //world_generation.c
-void map_init(cell_t map[D][D], int quest_map[6][2]); 	//world_generation.c
+void map_init(cell_t map[D][D], int quest_map[6][2], perso_t player); 	//world_generation.c
 
 /*********************************************************************************/
 
-/************************************* ITEMS *************************************/
-/**
-  * \enum type_t
-  * \brief Type item
-*/
-typedef enum {armor,weapon,misc,food} type_t; /* types of items available */
 
-/**
-  * \enum equip_t
-  * \brief Zone où un item est équipable
-*/
-typedef enum {none,hand,body,head} equip_t; 	/* where the player may wear equipment */
 
-/**
-	* \struct item_t
-	* \brief Structure pour un item
-*/
-typedef struct {
-	char name[20];       /**< Nom item */
-	type_t type;         /**< Type item */
 
- 	int attack[3]; 				 /**< Valeur d'attaque */
-  int hitchance[3];      /**< A COMPLETER */
 
-	float defense; 				 /**< Valeur de défense */
-	equip_t equipable; 	 /**< Indicateur si le joueur peut s'équiper avec cet item et où */                        // indicates whether the player can equip himself with this item and where
-	int pc_nature; 			 /**< Pourcentage de chance de trouver cet item dans un hexagone de catégorie nature */    // percentage chance of finding this item in a nature hexagon
-	int pc_urban;  			 /**< Pourcentage de chance de trouver cet item dans un hexagone de catégorie urbain */    // percentage chance of finding this item in an urban hexagon
-	int pc_military;		 /**< Pourcentage de chance de trouver cet item dans un hexagone de catégorie militaire */ // percentage chance of finding this item in a military hexagon
-	int index; 					 /**< Position de l'item dans l'inventaire du joueur (-1 si absent) */
-} item_t;
-
-item_t * creer_item (char * chaine, type_t type, int attack0, int attack1, int attack2, int hitchance0, int hitchance1, int hitchance2, float defense, int equipable, int pc_nature, int pc_urban, int pc_military);
-int creation_tab_item(item_t * Tab_Items, int * nb_items); //items.c
-void display_item (item_t item); //items.c
-
-/*********************************************************************************/
+// suite perso
+void display_player_characteristics(cell_t map[D][D], perso_t player); //perso.c
 
 /************************************* COMBAT *************************************/
 
@@ -106,42 +150,17 @@ typedef struct {
   item_t * armor; 	/* Pointeur sur item armure */
 } npc_t;
 
+
+void damage_calculator(item_t * weapon, item_t * armor, int * hp, int distance , int cover, int scenario);
+npc_t * init_npc(item_t * Tab_Items);
+stat_t * init_field();
+void show_field(stat_t field);
+void turn_npc(npc_t * enemy, stat_t * field, perso_t * player);
+int run_away(int position, int distance);
+void combat_info(int print_type, perso_t player, npc_t enemy, stat_t field);
+void combat(perso_t * player, npc_t * enemy, stat_t * field);
+
 /*********************************************************************************/
-
-/************************************* PERSO *************************************/
-
-#define INVENTORY_CAPACITY 10 /**< INVENTORY_CAPACITY représente le nombre maximum d'items que peut contenir l'inventaire du joueur (10 items dans la version 1.0) */
-
-//typedef enum {normal,sprinter,metabolism,luck,scout} skill_t;
-
-/**
-	* \struct perso_t
-	* \brief Structure pour un personnage
-*/
-typedef struct  {
-  int pv;     /**< Points de vie */
-  int pe;     /**< Points d'énergie */
-  int pa;     /**< Points d'action */
-	int posX;   /**< Position X sur la carte */
-	int posY;   /**< Position Y sur la carte */
-	int turns;  /**< Nombre de tours restants */
-
-//  skill_t competence; /**< Compétence spéciale */
-
-  item_t inventory[INVENTORY_CAPACITY];  /**< Inventaire */
-  int nb_items_inventory;  /**< Nombre d'items dans l'inventaire */
-
-  item_t * left_hand; 	/**< Pointeur sur item main gauche */
-  item_t * right_hand; 	/**< Pointeur sur item main droite */
-  item_t * body; 				/**< Pointeur sur item corps */
-  item_t * head;				/**< Pointeur sur item tête */
-
-} perso_t;
-
-void init_player(perso_t * player); //perso.c
-void display_player_characteristics(cell_t map[D][D], perso_t player); //perso.c
-
-/**********************************************************************************/
 
 /************************************* SCAVENGE **************************************/
 void generate_items(item_t * Tab_Items, int nb_items_available, perso_t * player, categ_hexa categ); //scavenge.c
@@ -175,7 +194,7 @@ void display_equipment_player(perso_t player);              //equipment.c
 int is_equipped(perso_t player, item_t item);               //equipment.c
 void swap_equipment_player(perso_t * player, item_t item);  //equipment.c
 void equip_player(perso_t * player);                        //equipement.c
-int nb_equipement(perso_t * player);                         //equipment.c
+int nb_equipement(perso_t player);                         //equipment.c
 void remove_equipment_player(perso_t * player);             //equipment.c
 void manage_equipment(perso_t * player);                    //equipment.c
 /**********************************************************************************/
@@ -233,14 +252,14 @@ typedef struct{
   int bandits;          /**< Indicateur pour savoir l'avancer du joueur dans la quete "bandits" */
 }quete_t;
 
-void init_quete(quete_t * quete);                                                                                                   //quetes.c
+void init_quete(quete_t * quete, int quest_map[6][2]);                                                                              //quetes.c
 int quetes(perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete, item_t * Tab_Items, int nb_items_available);   //quetes.c
 int quete_montagne(perso_t * player, quete_t * quete);                                                                              //quetes.c
 int quete_frontiere(perso_t * player, quete_t * quete);                                                                             //quetes.c
 int quete_bunker(perso_t * player, quete_t * quete);                                                                                //quetes.c
 int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_items_available);                                   //quetes.c
 
-int quete_soin(perso_t * player, quete_t * quete);                                              //quete_soin.c
+int quete_soin(perso_t * player, quete_t * quete, item_t * Tab_Items);                          //quete_soin.c
 npc_t * init_npc_quete(item_t * Tab_Items, int pers);                                           //quete_soin.c
 int ajout_item_blesse(perso_t * player, npc_t * homme, int item);                               //quete_soin.c
 int ajout_pass_card(perso_t * player, item_t * pass_card);                                      //quete_soin.c
@@ -249,7 +268,7 @@ int recup_1item_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t *
 int recup_2items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t * pass_card);   //quete_soin.c
 int recup_3items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t * pass_card);   //quete_soin.c
 
-int quete_recherche(perso_t * player, cell_t map[D][D], quete_t * quete, quest_map[6][2], item_t * Tab_Items, int nb_items_available);
+int quete_recherche(perso_t * player, cell_t map[D][D], quete_t * quete, int quest_map[6][2], item_t * Tab_Items, int nb_items_available);
 int compte_items_urbain(item_t * Tab_Items, int nb_items_available);
 void init_items_recherche(item_t * Tab_items_search, item_t * Tab_Items, int nb_items_urbain);
 /***************************************************************************************/

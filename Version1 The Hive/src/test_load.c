@@ -93,12 +93,14 @@ void load_test (perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t
     }
 
     // Chargement quete_t quete
-    fscanf(fic,"%d;%d;%d;%d;%d;%d;%d;%d",&quete->soin,&quete->recherche.situation,&quete->recherche.butX,&quete->recherche.butY,&quete->bunker,&quete->montagne,&quete->frontiere,&quete->bandits);
+    fscanf(fic,"%d;%d;%d;%d;%d;%d;%d;%d;%d",&quete->soin,&quete->recherche.situation,&quete->recherche.trouve,&quete->recherche.bunkerX,&quete->recherche.bunkerY,&quete->bunker,&quete->montagne,&quete->frontiere,&quete->bandits);
+    fscanf(fic,"%d;%d;%d;%d;%d;%d;%d;%f;%d;%d;%d;%d;%[^\n]",&quete->recherche.wanted.type,&quete->recherche.wanted.attack[0],&quete->recherche.wanted.attack[1],&quete->recherche.wanted.attack[2],&quete->recherche.wanted.hitchance[0],&quete->recherche.wanted.hitchance[1],&quete->recherche.wanted.hitchance[2],&quete->recherche.wanted.defense,&quete->recherche.wanted.equipable,&quete->recherche.wanted.pc_nature,&quete->recherche.wanted.pc_urban,&quete->recherche.wanted.pc_military,quete->recherche.wanted.name);
+
 
     fclose(fic);
   }
   else {
-    printf("Erreur lors du chargement des données sauvegardées.\n");
+    printf("   Erreur lors du chargement des données sauvegardées.\n");
   }
 }
 
@@ -165,6 +167,7 @@ void details_map(cell_t map[D][D]){
   }
   printf("\n\n");
 }
+
 void info_quetes(int quest_map[6][2], quete_t quete){
   int l, c;
 
@@ -182,12 +185,14 @@ void info_quetes(int quest_map[6][2], quete_t quete){
 
   printf ("\033[34;01m\n   [Affichage quete_t quete]\033[00m\n\n");
   printf("   soin : %d\n", quete.soin);
-  printf("   recherche : %d %d %d\n", quete.recherche.situation, quete.recherche.butX, quete.recherche.butY);
-  printf("   bunker : %d\n", quete.bunker);
+  printf("   recherche :\n      situation : %d\n      trouve : %d\n      bunkerX : %d\n      bunkerY : %d\n", quete.recherche.situation, quete.recherche.trouve, quete.recherche.bunkerX, quete.recherche.bunkerY);
+  display_item(quete.recherche.wanted);
+  printf("\n   bunker : %d\n", quete.bunker);
   printf("   montagne : %d\n", quete.montagne);
   printf("   frontiere : %d\n", quete.frontiere);
   printf("   bandits : %d\n\n", quete.bandits);
 }
+
 
 int main(){
   int nb;
