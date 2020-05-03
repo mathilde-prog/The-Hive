@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "structure.h"
+#include "lib/structure.h"
 
 /**
  * \file world_generation.c
@@ -10,18 +10,6 @@
  * \version 1.0
  * \date 2020
 */
-
-void clrscr(){ // fonction pour clear l'output de terminal
-    system("clear");
-}
-
-int range(int a,int b){ // generates random number in range
-  return (rand()%(b-a+1))+a;
-}
-
-int rng(int prob){ // returns 0 or 1 with a given chance
-  return (rand()%100)<prob;
-}
 
 void init_border(cell_t map[D][D]){ // initiates border of the map
   int i;
@@ -229,7 +217,7 @@ void portable_switch(int i, int j, cell_t map[D][D]){ // FONCTION QUI PRINT LE C
 }
 
 void display_TEXT(int l, int c, cell_t map[D][D]){ // AFFICHE LA MAP EN VERSION TEXT AVEC LA LEGENDE
-  int i,j,nb;
+  int i,j;
 
   for(i=0; i<D; i++){
     for(j=0; j<D; j++){
@@ -283,15 +271,9 @@ void display_TEXT(int l, int c, cell_t map[D][D]){ // AFFICHE LA MAP EN VERSION 
   for(i=0; i<D; i++){
     printf("+----");
   }
-  printf("+\n");
+  printf("+\n\n");
 
-  do {
-    printf("\nRetour au menu principal (1) : ");
-    scanf("%d",&nb);
-    if(nb != 1){
-      printf("Saisissez 1 pour retourner au menu\n");
-    }
-  } while (nb != 1);
+  entree_pour_continuer();
 }
 
 void init_base(cell_t map[D][D]){
@@ -414,18 +396,17 @@ void quest_init(cell_t map[D][D], int quest_map[6][2]){
   quest_map[2][1]=range(1,D-1);
   map[quest_map[2][0]][quest_map[2][1]].quest_id=3;
 
-  quest_map[3][0]=range(1,D-1);
+  quest_map[3][0]=range(1,D-1); // bandits
   quest_map[3][1]=range(1,D-1);
   map[quest_map[3][0]][quest_map[3][1]].quest_id=4;
 
-  quest_map[4][0]=range(1,D-1);
+  quest_map[4][0]=range(1,D-1); // soin
   quest_map[4][1]=range(1,D-1);
   map[quest_map[4][0]][quest_map[4][1]].quest_id=5;
 
-  quest_map[5][0]=range(1,D-1);
+  quest_map[5][0]=range(1,D-1); // recherche
   quest_map[5][1]=range(1,D-1);
   map[quest_map[5][0]][quest_map[5][1]].quest_id=6;
-
 }
 
 void map_init(cell_t map[D][D], int quest_map[6][2]){
@@ -434,12 +415,5 @@ void map_init(cell_t map[D][D], int quest_map[6][2]){
   topup(map);
   nextgen(map);
   encounter_init(map);
-  quest_init(map, quest_map);
+  quest_init(map,quest_map);
 }
-/*
-int main(){
-  cell_t map[D][D];
-  map_init(map);
-  display_nb(map);
-}
-*/

@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <time.h>
-#include "structure.h"
+#include "lib/structure.h"
 
 /**
  * \file items.c
@@ -84,7 +84,7 @@ int creation_tab_item(item_t * Tab_Items, int * nb_items){
     return 1;
   }
   else {
-    printf("Le fichier 'items.csv' est introuvable. Impossible de récupérer les items pour jouer.\n");
+    printf("\n   Le fichier 'items.csv' est introuvable. Impossible de récupérer les items pour jouer.\n");
     return 0;
   }
 }
@@ -97,8 +97,8 @@ int creation_tab_item(item_t * Tab_Items, int * nb_items){
 */
 /* display_item: displays all the characteristics of an item (name, type, value of attack, value of defense, equipable or not) */
 void display_item (item_t item){
-	printf("\nITEM: %s\n",item.name);
-	printf("Type : ");
+	printf("\n   ITEM: %s\n",item.name);
+	printf("   Type : ");
 	switch(item.type){
 		case armor:  printf("armure\n");         break;
 		case weapon: printf("arme\n");        break;
@@ -109,24 +109,24 @@ void display_item (item_t item){
 
   /* Displays attack value if the item is a weapon and defense value if the item is armor */
 	if(item.type == weapon){
-		printf("Attaque : %d %d %d\n",item.attack[0], item.attack[1], item.attack[2]);
-    printf("Hitchance : %d %d %d\n", item.hitchance[0], item.hitchance[1], item.hitchance[2]);
+		printf("   Attaque : %d %d %d\n",item.attack[0], item.attack[1], item.attack[2]);
+    printf("   Hitchance : %d %d %d\n", item.hitchance[0], item.hitchance[1], item.hitchance[2]);
 	}
 	else if(item.type == armor){
-		printf("Défense : %f\n",item.defense);
+		printf("   Défense : %f\n",item.defense);
 	}
 
   switch(item.equipable){
-    case none: printf("Pas équipable\n");   break;
-    case hand: printf("Equipable (main)\n");  break;
-    case body: printf("Equipable (corps)\n");  break;
-    case head: printf("Equipable (tête)\n");  break;
-    default:   printf("non reconnu\n");    break;
+    case none: printf("   Pas équipable\n");   break;
+    case hand: printf("   Equipable (main)\n");  break;
+    case body: printf("   Equipable (corps)\n");  break;
+    case head: printf("   Equipable (tête)\n");  break;
+    default:   printf("   non reconnu\n");    break;
   }
 
-  printf("pc_nature = %d\n", item.pc_nature);
-  printf("pc_urban = %d\n", item.pc_urban);
-  printf("pc_military = %d\n\n", item.pc_military);
+  printf("   pc_nature = %d\n", item.pc_nature);
+  printf("   pc_urban = %d\n", item.pc_urban);
+  printf("   pc_military = %d\n\n", item.pc_military);
 }
 
 /***************************************************************************************************************/
