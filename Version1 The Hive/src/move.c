@@ -287,3 +287,41 @@ void move (perso_t * player, cell_t map[D][D]){
     entree_pour_continuer();
   }
 }
+
+void random_move(perso_t * player, cell_t map[D][D]){
+  int code, l, c;
+  code=range(1,8);
+  while(1){
+    if(code==1 && coordonnees_valides(l-1,c-1)){
+
+    }else if(code==2 && coordonnees_valides(l-1,c)){
+      player->posX = l-1;
+      player->posY = c;
+      return;
+    }else if(code==3 && coordonnees_valides(l-1,c+1)){
+      player->posX = l-1;
+      player->posY = c+1;
+      return;
+    }else if(code==4 && coordonnees_valides(l,c-1)){
+      player->posX = l;
+      player->posY = c-1;
+      return;
+    }else if(code==5 && coordonnees_valides(l,c+1)){
+      player->posX = l;
+      player->posY = c+1;
+      return;
+    }else if(code==6 && coordonnees_valides(l+1,c-1)){
+      player->posX = l+1;
+      player->posY = c-1;
+      return;
+    }else if(code==7 && coordonnees_valides(l+1,c)){
+      player->posX = l+1;
+      player->posY = c;
+      return;
+    }else if(code==8 && coordonnees_valides(l+1,c+1)){
+      player->posX = l+1;
+      player->posY = c+1;
+      return;
+    }
+  }
+}

@@ -39,7 +39,9 @@ void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], q
       } while(choix_combat < 0 || choix_combat > 1);
 
       if(choix_combat){
-        combat(&player, enemy, field);
+        if(combat(&player, enemy, field, Tab_Items, nb_items_available)==1){ // TO BE TESTED
+            random_move(&player,map);
+        }
       }
       else{
         printf("\n   Courage fuyons, vous prenez la poudre d'escampette!\n");

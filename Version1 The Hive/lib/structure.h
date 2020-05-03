@@ -158,7 +158,8 @@ void show_field(stat_t field);
 void turn_npc(npc_t * enemy, stat_t * field, perso_t * player);
 int run_away(int position, int distance);
 void combat_info(int print_type, perso_t player, npc_t enemy, stat_t field);
-void combat(perso_t * player, npc_t * enemy, stat_t * field);
+int combat(perso_t * player, npc_t * enemy, stat_t * field, item_t * Tab_Items, int nb_items_available);
+void loot_enemy (item_t * Tab_Items, int nb_items_available, npc_t * enemy, perso_t * player);
 
 /*********************************************************************************/
 
@@ -171,6 +172,7 @@ void scavenge(cell_t map[D][D], perso_t * player, item_t * Tab_Items, int nb_ite
 int move_lose_pa (hex_t type_hexa); 						   //move.c
 void look_around(int i, int j, cell_t map[D][D]);  //move.c
 void move (perso_t * player, cell_t map[D][D]);		 //move.c
+void random_move(perso_t * player, cell_t map[D][D]); //move.c
 /*********************************************************************************/
 
 /*********************************** INVENTORY ***********************************/

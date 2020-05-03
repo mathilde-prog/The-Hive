@@ -213,17 +213,25 @@ void turn_npc(npc_t * enemy, stat_t * field, perso_t * player){
 int run_away(int position, int distance){
   if(position!=1){
     if(rng(20*distance)){
+      clrscr();
       printf("   You  managed to run away.\n\n");
+      sleep(PT);
       return 1; // TO REPLACE
     }else{
+      clrscr();
       printf("   You tried to run away but failed.\n");
+      sleep(PT);
     }
   }else{
     if(rng(40*distance)){
+      clrscr();
       printf("   You  managed to run away.\n\n");
+      sleep(PT);
       return 1; // TO REPLACE
     }else{
+      clrscr();
       printf("   You tried to run away but failed.\n");
+      sleep(PT);
     }
   }
   return 0;
@@ -249,7 +257,7 @@ void combat_info(int print_type, perso_t player, npc_t enemy, stat_t field){
   printf("\n   Your choise: ");
 }
 
-void combat(perso_t * player, npc_t * enemy, stat_t * field){
+int combat(perso_t * player, npc_t * enemy, stat_t * field, item_t * Tab_Items, int nb_items_available){
   int choise, choise_max;
   int print_type;
 
@@ -265,7 +273,7 @@ void combat(perso_t * player, npc_t * enemy, stat_t * field){
       scanf("%d", &choise);
       printf("   Come on, you can do it. Try again (press 1): ");
     }while(choise!=1);
-    return;
+    return 0;
   }
 
   choise_max = (print_type == 1) ? 6 : 5; // Nombre de choix proposés dans le menu suivant print_type
@@ -352,7 +360,7 @@ void combat(perso_t * player, npc_t * enemy, stat_t * field){
       else {
         if(run_away(field->posA, field->distance)){
           entree_pour_continuer();
-          return;
+          return 1;
         }
       }
     }
@@ -363,7 +371,7 @@ void combat(perso_t * player, npc_t * enemy, stat_t * field){
     else if(choise==6){
       if(run_away(field->posA, field->distance)){
         entree_pour_continuer();
-        return;
+        return 1;
       }
     }
 
@@ -372,7 +380,31 @@ void combat(perso_t * player, npc_t * enemy, stat_t * field){
     printf("\n");
     entree_pour_continuer();
   }
-
-
-
+  if(enemy->pv <= 0){
+    printf("   Congrats, you managed to kill your enemy. Want to loot him?\n1 - Yes.\n2 - No.\nYour call:");
+    scanf(" %d", &choise);
+    do{
+      if(choise==1){
+        clrscr();
+        loot_enemy(Tab_Items, nb_items_available, enemy, player);
+        free(enemy);
+        free(field);
+        return 0;
+      }else if(choise==2){
+        clrscr();
+        printf("   Alright, let's move on then.\n");
+        sleep(PT);
+        return 0;
+      }else{
+        printf("   Come on, stop messing around. Try again: ");
+        scanf("%d", &choise);
+      }
+    }while(choise>2 && choise<1);
+  }else if(player->pv <= 0){
+    clrscr();
+    printf("   You got yourself killed. Better luck next time.\n");
+    sleep(PT);
+    exit(1);
+  }
+  return 0;
 }
