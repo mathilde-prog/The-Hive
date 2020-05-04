@@ -12,6 +12,8 @@ int main(){
   stat_t * field;
   item_t * Tab_Items = malloc(20 * sizeof(item_t));
   int nb_items_available;
+
+  init_player(&player); 
   creation_tab_item(Tab_Items, &nb_items_available);
   field=init_field();
   enemy=init_npc(Tab_Items);
@@ -21,7 +23,7 @@ int main(){
   player.right_hand=&Tab_Items[0];
   player.head=NULL;
   printf("======== SOME INFO ============\nEnemy hp: %d\nEnemy weapon: %s\nEnemy armor: %s\n=============================\n",enemy->pv, enemy->weapon->name, enemy->armor->name);
-  combat(&player, enemy, field);
+  combat(&player, enemy, field,Tab_Items,nb_items_available);
   free(enemy);
   free(field);
   free(Tab_Items);
