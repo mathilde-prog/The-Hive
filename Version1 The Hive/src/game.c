@@ -13,6 +13,26 @@ void presentation_regle_jeu(){
   while(getchar() != '\n');
 }
 
+/**
+ * \fn int exit_game()
+ * \brief Propose au joueur de quitter ou non la carte lorsqu'il vient de trouver la sortie.
+ * \return Un \a int : 1 si le joueur décide de quitter la carte. 0 s'il décide de continuer l'aventure.
+*/
+int exit_game(){
+    int rep;
+
+    printf("   Vous venez de trouver la sortie ! Souhaitez-vous quitter la map ? (Oui = 1, Non = 0)\n");
+    scanf("%d", &rep);
+    if (rep == 0){
+        printf ("   Vous êtes courageux ! L'aventure continue !\n");
+        return 0;
+    }
+    else {
+        printf("   Félicitation pour votre parcours, vous pouvez maintenant vivre sans craindre pour votre vie ! \n A bientôt peut-être, pour de nouvelles aventures !\n");
+        return 1;
+    }
+}
+
 void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete, sauv_t sauv, item_t * Tab_Items, int nb_items_available){
   int choise;
   int choix_combat;

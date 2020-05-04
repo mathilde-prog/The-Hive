@@ -296,11 +296,6 @@ void save (perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete,
 void load (perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete, sauv_t sauv);  //backup_and_load.c
 /*******************************************************************************************/
 
-/************************************* EXIT & HELP *************************************/
-int exit_game();             //exit_help.c
-void help(perso_t * player); //exit_help.c
-/***************************************************************************************/
-
 /********************************* FONCTIONS PRATIQUES ***********************************/
 void entree_pour_continuer(); // fonctions_pratiques.c
 void clrscr(); //fonctions_pratiques.c
