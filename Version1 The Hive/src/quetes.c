@@ -107,7 +107,7 @@ int quetes(perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * qu
  * \return Retourne un \a int : 0 si le jeu continue, 1 si le jeu est fini et -1 si probleme dans la quete.
 */
 int quete_montagne(perso_t * player, quete_t * quete){
-    int choix, num_r, num_w, chance;
+    int choix, num_r, num_w, chance, conf;
 
     quete->montagne=0;
 
@@ -159,13 +159,13 @@ int quete_montagne(perso_t * player, quete_t * quete){
             printf("Voulez-vous vraiment tenter l'ascension ?\n");
             printf("1 - Oui\n");
             printf("2 - Non\n");
-            scanf("%d", &choix);
-            if (choix < 1 || choix > 2)
+            scanf("%d", &conf);
+            if (conf < 1 || conf > 2)
                 printf("Valeur incorrecte. Veuillez resaissir.\n");
-        }while(choix < 1 || choix > 2);
+        }while(conf < 1 || conf > 2);
 
         /*Choix d'escalader la montagne*/
-        if (choix == 1){
+        if(conf == 1){
             printf("Allons franchir cette montagne !\n");
             /*Si sa chance de gravir la montagne est de 10*/
             if (chance == 100){
@@ -178,7 +178,7 @@ int quete_montagne(perso_t * player, quete_t * quete){
             }
             /*Si sa chance de franchir la montagne est <100*/
             else{
-                int sortie, conf;
+                int sortie, monte;
 
                 printf("Les choses se compliquent, la monté est très compliqué. Vous êtes à bout de forces, d'énergie, vous perdez l'équilibre à plusieurs reprises.\n");
                 /*Le joueur confirme si il franchit ou pas la montagne*/
@@ -186,13 +186,13 @@ int quete_montagne(perso_t * player, quete_t * quete){
                     printf("Voulez-vous réellement continuer l'ascension ?\n");
                     printf("1 - Oui\n");
                     printf("2 - Non\n");
-                    scanf("%d", &conf);
-                    if (conf < 1 || conf > 2)
+                    scanf("%d", &monte);
+                    if (monte < 1 || monte > 2)
                         printf("Valeur incorrecte. Veuillez resaissir.\n");
-                }while(conf < 1 || conf > 2);
+                }while(monte < 1 || monte > 2);
 
                 /*Le joueur renonce a faire l'ascension de la montagne*/
-                if(conf==2){
+                if(monte==2){
                     printf("La descente se passe bien. Vous voilà revenus sur terre. Il faut repartir explorer la map maintenant.\n");
                     return 0;
                 }
@@ -219,6 +219,10 @@ int quete_montagne(perso_t * player, quete_t * quete){
                     }
                 }
             }
+        }
+        else if(conf == 2){
+            printf("Vous êtes prudent, continuez d'explorer la map et peut-être trouverez-vous l'équipement parfait pour la gravir plus tard !\n");
+            return 0;
         }
     }
     /*Le joueur ne tente pas l'ascension de la montagne*/
