@@ -5,20 +5,6 @@
 #include <time.h>
 #include "lib/structure.h"
 
-/**
- * \file game.c
- * \brief Fonctions essentielles au déroulement du jeu
- * \author Mathilde Mottay, Anais Mottier, Clement Mainguy, Moustapha Tsamarayev
- * \version 1.0
- * \date 2020
-*/
-
-
-/**
- * \fn void presentation_regle_jeu()
- * \brief Présentation du jeu.
- * \return Rien
-*/
 void presentation_regle_jeu(){
   while(getchar() != '\n');
   clrscr();
@@ -27,43 +13,8 @@ void presentation_regle_jeu(){
   while(getchar() != '\n');
 }
 
-
-/**
- * \fn int exit_game()
- * \brief Propose au joueur de quitter ou non la carte lorsqu'il vient de trouver la sortie.
- * \return Un \a int : 1 si le joueur décide de quitter la carte. 0 s'il décide de continuer l'aventure.
-*/
-int exit_game(){
-    int rep;
-
-    printf("   Vous venez de trouver la sortie ! Souhaitez-vous quitter la map ? (Oui = 1, Non = 0)\n");
-    scanf("%d", &rep);
-    if (rep == 0){
-        printf ("   Vous êtes courageux ! L'aventure continue !\n");
-        return 0;
-    }
-    else {
-        printf("   Félicitation pour votre parcours, vous pouvez maintenant vivre sans craindre pour votre vie ! \n A bientôt peut-être, pour de nouvelles aventures !\n");
-        return 1;
-    }
-}
-
-
-/**
- * \fn void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete, sauv_t sauv, item_t * Tab_Items, int nb_items_available)
- * \brief Affichage du menu principal du jeu et déroulement de toute la partie
- * \param perso_t player
- * \param cell_t map[D][D]
- * \param int quest_map[6][2]
- * \param quete_t quete
- * \param sauv_t sauv
- * \param item_t * Tab_Items
- * \param int nb_items_available
- * \return Rien
-*/
 void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete, sauv_t sauv, item_t * Tab_Items, int nb_items_available){
-  int choise;
-  int choix_combat;
+  int choise, choix_combat;
 
   /* Pour combat */
   npc_t * enemy;
@@ -71,14 +22,14 @@ void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], q
 
   clrscr();
 
+
   while((player.turns != 0) && (player.pv != 0)){
 
-    /*Si il y  une quête sur l'hexagone*/
+    /*Si il y  une quête sur l'hexagone --> quête - pas de combat */
     if(map[player.posX][player.posY].quest_id != 0){
         quetes(&player, map, quest_map, &quete, Tab_Items, nb_items_available);
     }
-    /* GESTION COMBAT - VOIR AVEC MOUSTAPHA */
-    if(map[player.posX][player.posY].encounter){
+    else if(map[player.posX][player.posY].encounter){
       field=init_field();
       enemy=init_npc(Tab_Items);
       printf("\n   Vous tombez nez à nez avec un %s!\n\n   Souhaitez vous le combattre ? (Oui : 1, Non : 0)\n", enemy->name);
@@ -86,14 +37,12 @@ void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], q
       do {
         scanf("%d",&choix_combat);
         if(choix_combat < 0 || choix_combat > 1){
-          printf("Le choix est pourtant simple. Veuillez ressaisir : ");
+          printf("   Le choix est pourtant simple. Veuillez ressaisir : ");
         }
       } while(choix_combat < 0 || choix_combat > 1);
 
       if(choix_combat){
-        if(combat(&player, enemy, field, Tab_Items, nb_items_available)==1){ // TO BE TESTED
-            random_move(&player,map);
-        }
+        combat(&player, enemy, field, Tab_Items, nb_items_available);
       }
       else{
         printf("\n   Courage fuyons, vous prenez la poudre d'escampette!\n");
@@ -117,6 +66,7 @@ void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], q
     printf("    8 - Fin du tour\n");
     printf("    9 - Sauvegarder le jeu et quitter\n");
     printf("    10 - Aide\n");
+
     //Si la quete "recherche" est en cours + joueur cherche l'item demande par l'homme
     if(quete.recherche.trouve == 0)
         printf("    11 - Rechercher l'item %s demandé par l'homme\n", quete.recherche.wanted.name);
@@ -126,6 +76,7 @@ void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], q
     //Si la quete "recherche" est fini
     if(quete.recherche.situation == 1)
         printf("    11 - Voir les coordonnées du lieu sécurisé donné par l'homme\n");
+
     printf("\n   Quitter sans sauvegarder : -1\n\n");
     printf("   Que souhaitez-vous faire ? ");
 
@@ -141,14 +92,14 @@ void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], q
       case 7: clrscr(); rest_and_heal(&player); clrscr(); break;
       case 8: clrscr(); next_turn(&player); clrscr(); break;
       case 9: clrscr(); save(player,map,quest_map,quete,sauv); exit(1); break;
-      case 10: clrscr(); help(&player); clrscr(); break;
+      case 10: clrscr(); printf("FICHIER PDF"); clrscr(); break;
       case 11: clrscr();
                if(quete.recherche.situation == 0)
                     quete_recherche(&player, map, &quete, quest_map, Tab_Items, nb_items_available);
                else
                     printf("Coordonnées du lieu sécurisé : X = %d, Y = %d\n", quete.recherche.bunkerX, quete.recherche.bunkerY);
                clrscr(); break;
-//    case 12: display_quest(quest_map); sleep(4); break;
+      //case 12: display_quest(quest_map); sleep(4); break;
       case -1: exit(1); break;
       default: printf("   Commande inconnue. Veuillez ressaisir: "); goto jump; break;
     }
@@ -161,7 +112,6 @@ void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], q
     printf("   Vous êtes mort.\n");
   }
 
-
   free(enemy);
   free(field);
   free(Tab_Items);
@@ -173,13 +123,6 @@ void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], q
   clrscr();
 }
 
-
-/**
- * \fn void choix_partie(sauv_t * sauv)
- * \brief Choix de la partie sauvegardé à jouer
- * \param sauv_t sauv
- * \return Rien
-*/
 void choix_partie(sauv_t * sauv){
   int choix;
   char nom_partie[21];
@@ -230,12 +173,6 @@ void choix_partie(sauv_t * sauv){
   }
 }
 
-
-/**
- * \fn int main()
- * \brief Fonction principale du jeu
- * \return Rien
-*/
 int main(){
   sauv_t sauv;
   int choix;

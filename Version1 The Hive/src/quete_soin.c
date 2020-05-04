@@ -64,21 +64,21 @@ int recup_items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t *
     /*Initialisation du tableau items_vole_blesse*/
     for(i=0; i<nb_items_vole; i++){
         if(i==0) //Le premier item volé est obligatoirement le pass card
-            items_vole_blesse[i] = pass_card;
+            items_vole_blesse[i] = *pass_card;
         /*Génération aléatoire du 2 item volé, si le joueur vole 2 items*/
         else if(nb_items_vole == 2){
             item2 = rand()%2;
             switch(item2){
-                case 0 : items_vole_blesse[i] = homme->weapon; break; //Arme
-                case 1 : items_vole_blesse[i] = homme->armor; break;  //Armure
+                case 0 : items_vole_blesse[i] = *homme->weapon; break; //Arme
+                case 1 : items_vole_blesse[i] = *homme->armor; break;  //Armure
                 default : printf("ERREUR : fonction rand() ne renvoit pas 0 ou 1.\n"); break;
             }
         }
         /*Si le joueur vole 3 items, il recupère l'arme puis l'armure*/
         else if(i==1)
-            items_vole_blesse[i] = homme->weapon;
+            items_vole_blesse[i] = *homme->weapon;
         else
-            items_vole_blesse[i] = homme->armor;
+            items_vole_blesse[i] = *homme->armor;
     }
 
     /*Si le joueur a trouvé plus d'un item*/
@@ -88,7 +88,7 @@ int recup_items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t *
         /*Affichage des items trouvés*/
         for(i=0; i<nb_items_vole; i++){
             if(i==0)
-                printf("Item n°%d : une carte en plastique de la taille d'une carte bancaire. Elle possède un liseret noir sur toute la longueur.\n", i+1, items_vole_blesse[i].name);
+                printf("Item n°%d : une carte en plastique de la taille d'une carte bancaire. Elle possède un liseret noir sur toute la longueur.\n", i+1);
             else{
                 printf("Item n°%d : %s\n", i+1, items_vole_blesse[i].name);
             }
@@ -115,12 +115,12 @@ int recup_items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t *
                     if(i==0)
                         printf("Item n°%d : carte plastique. ", i+1);
                     else
-                        printf("Item n°%d : %s. ", i+1, items_vole_blesse[i].name");
+                        printf("Item n°%d : %s. ", i+1, items_vole_blesse[i].name);
                     printf("Vous avez le choix entre :\n");
                     printf("1 - Ajouter l'item a l'inventaire\n");
                     printf("2 - Ne pas l'ajouter\n");
                     printf("Votre choix : ");
-                    scanf("%d", ajout);
+                    scanf("%d", &ajout);
 
                     if(ajout<1 || ajout>2)
                         printf("Valeur incorrecte. Veuillez resaissir.\n");
@@ -157,7 +157,7 @@ int recup_items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t *
             printf("1 - Ajouter l'item a l'inventaire\n");
             printf("2 - Ne pas l'ajouter\n");
             printf("Votre choix : ");
-            scanf("%d", ajout);
+            scanf("%d", &ajout);
 
             if(ajout<1 || ajout>2)
                 printf("Valeur incorrecte. Veuillez resaissir.\n");
@@ -170,7 +170,7 @@ int recup_items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t *
         }
         /*Pas d'ajout à l'inventaire*/
         else{
-            printf("Votre choix de ne pas ajouter la carte en plastique a bien été pris en compte.\n);
+            printf("Votre choix de ne pas ajouter la carte en plastique a bien été pris en compte.\n");
         }
         printf("Vous en avez fini avec ce pauvre homme, repartez explorer la map !\n");
         quete->soin=1;
@@ -449,7 +449,7 @@ int quete_soin(perso_t * player, quete_t * quete, item_t * Tab_Items){
 
                 /*Nombre d'items volé à l'homme blesse*/
                 nb_items_vole = (rand()%3)+1; //Donne le nombre d'items que le joueur a reussi a voler (+1 pour le pass card : obligatoirement trouve)
-                ok = recup_items_voler(player, nb_items_vole, blesse, pass_card, &quete);
+                ok = recup_items_vole(player, nb_items_vole, blesse, pass_card,quete);
                 if(ok!=0){
                     printf("ERREUR : fonction recup_items_vole()\n");
                     return(-1);
@@ -483,7 +483,7 @@ int quete_soin(perso_t * player, quete_t * quete, item_t * Tab_Items){
 
             /*Le joueur a confirmé vouloir aider l'homme*/
             if(conf){
-                ok = aider_homme_blesse(player, pass_card, &quete, pers);
+                ok = aider_homme_blesse(player, pass_card, quete, pers);
                 if(ok!=0){
                     printf("ERREUR : fonction aider_homme_blesse()\n");
                     return(-1);
