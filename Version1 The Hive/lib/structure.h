@@ -266,9 +266,9 @@ npc_t * init_npc_quete(item_t * Tab_Items, int pers);                           
 int recup_items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t * pass_card, quete_t * quete);   //quete_soin.c
 int aider_homme_blesse(perso_t * player, item_t * pass_card, quete_t * quete, int pers);                        //quete_soin.c
 
-int quete_recherche(perso_t * player, cell_t map[D][D], quete_t * quete, quest_map[6][2], item_t * Tab_Items, int nb_items_available);  //quete_recherche.c
-int compter_items_urbain(item_t * Tab_Items, int nb_items_available);                                                                        //quete_recherche.c
-void init_Tab_Items_urbain(item_t * Tab_Items_urbain, item_t * Tab_Items, int nb_items_urbain);                                         //quete_recherche.c
+int quete_recherche(perso_t * player, cell_t map[D][D], quete_t * quete, quest_map[6][2], item_t * Tab_Items, int nb_items_available);  //quete_search.c
+int compter_items_urbain(item_t * Tab_Items, int nb_items_available);                                                                   //quete_search.c
+void init_Tab_Items_urbain(item_t * Tab_Items_urbain, item_t * Tab_Items, int nb_items_urbain);                                         //quete_search.c
 /***************************************************************************************/
 
 /************************************* BACKUP_AND_LOAD *************************************/

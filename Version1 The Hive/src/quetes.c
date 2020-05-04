@@ -51,33 +51,39 @@ int quetes(perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * qu
     int ok=10; //initialisé par un chiffre pour être sur du résultat par la suite
 
     switch(map[player->posX][player->posY].quest_id){
-        case 1 :    if(quete->montagne != 1)
+        case 1 :    if(quete->montagne != 1){
                         clrscr(); ok = quete_montagne(player, quete); clrscr(); break;
+                    }
                     else
                         printf("Vous avez déjà joué cette quête.\n"); break;
 
-        case 2 :    if(quete->frontiere != 1)
+        case 2 :    if(quete->frontiere != 1){
                         clrscr(); ok = quete_frontiere(player, quete); clrscr(); break;
+                    }
                     else
                         printf("Vous avez déjà joué cette quête.\n"); break;
 
-        case 3 :    if(quete->bunker != 1)
+        case 3 :    if(quete->bunker != 1){
                         clrscr(); ok = quete_bunker(player, quete); clrscr(); break;
+                    }
                     else
                         printf("Vous avez déjà joué cette quête.\n"); break;
 
-        case 4 :    if(quete->bandits != 1)
+        case 4 :    if(quete->bandits != 1){
                         clrscr(); ok = quete_bandits(player, quete, Tab_Items, nb_items_available); clrscr(); break;
+                    }
                     else
                         printf("Vous avez déjà joué cette quête.\n"); break;
 
-        case 5 :    if(quete->soin < 1)
+        case 5 :    if(quete->soin < 1){
                         clrscr(); ok = quete_soin(player, quete, Tab_Items); clrscr(); break;
+                    }
                     else
                         printf("Vous avez déjà joué cette quête.\n"); break;
 
-        case 6 :    if(quete->recherche.situation != 1)
+        case 6 :    if(quete->recherche.situation != 1){
                         clrscr(); ok = quete_recherche(player, map, quete, quest_map, Tab_Items, nb_items_available); clrscr(); break;
+                    }
                     else
                         printf("Vous avez déjà joué cette quête.\n"); break;
 

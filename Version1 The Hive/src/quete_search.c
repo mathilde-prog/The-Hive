@@ -6,12 +6,11 @@
 #include "lib/structure.h"
 
 /**
- * \file quete_recherche.c
- * \brief Fonctions utilisees dans la quete "recherche".
+ * \file quete_search.c
+ * \brief Fonctions utilisées dans la quete "recherche".
  * \author Mathilde Mottay, Anais Mottier, Clement Mainguy, Moustapha Tsamarayev
- * \version
+ * \version 1.0
  * \date 2020
-<<<<<<< Updated upstream
 */
 
 void init_items_recherche(item_t * Tab_items_search, item_t * Tab_Items, int nb_items_urbain){

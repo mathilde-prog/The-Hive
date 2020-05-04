@@ -5,6 +5,20 @@
 #include <time.h>
 #include "lib/structure.h"
 
+/**
+ * \file game.c
+ * \brief Fonctions essentielles au déroulement du jeu
+ * \author Mathilde Mottay, Anais Mottier, Clement Mainguy, Moustapha Tsamarayev
+ * \version 1.0
+ * \date 2020
+*/
+
+
+/**
+ * \fn void presentation_regle_jeu()
+ * \brief Présentation du jeu.
+ * \return Rien
+*/
 void presentation_regle_jeu(){
   while(getchar() != '\n');
   clrscr();
@@ -12,6 +26,7 @@ void presentation_regle_jeu(){
   printf("\n   Appuyez sur la touche entrée pour commencer l'aventure ! ");
   while(getchar() != '\n');
 }
+
 
 /**
  * \fn int exit_game()
@@ -33,6 +48,19 @@ int exit_game(){
     }
 }
 
+
+/**
+ * \fn void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete, sauv_t sauv, item_t * Tab_Items, int nb_items_available)
+ * \brief Affichage du menu principal du jeu et déroulement de toute la partie
+ * \param perso_t player
+ * \param cell_t map[D][D]
+ * \param int quest_map[6][2]
+ * \param quete_t quete
+ * \param sauv_t sauv
+ * \param item_t * Tab_Items
+ * \param int nb_items_available
+ * \return Rien
+*/
 void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete, sauv_t sauv, item_t * Tab_Items, int nb_items_available){
   int choise;
   int choix_combat;
@@ -45,6 +73,10 @@ void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], q
 
   while((player.turns != 0) && (player.pv != 0)){
 
+    /*Si il y  une quête sur l'hexagone*/
+    if(map[player.posX][player.posY].quest_id != 0){
+        quetes(&player, map, quest_map, &quete, Tab_Items, nb_items_available);
+    }
     /* GESTION COMBAT - VOIR AVEC MOUSTAPHA */
     if(map[player.posX][player.posY].encounter){
       field=init_field();
@@ -141,6 +173,13 @@ void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], q
   clrscr();
 }
 
+
+/**
+ * \fn void choix_partie(sauv_t * sauv)
+ * \brief Choix de la partie sauvegardé à jouer
+ * \param sauv_t sauv
+ * \return Rien
+*/
 void choix_partie(sauv_t * sauv){
   int choix;
   char nom_partie[21];
@@ -191,6 +230,12 @@ void choix_partie(sauv_t * sauv){
   }
 }
 
+
+/**
+ * \fn int main()
+ * \brief Fonction principale du jeu
+ * \return Rien
+*/
 int main(){
   sauv_t sauv;
   int choix;
