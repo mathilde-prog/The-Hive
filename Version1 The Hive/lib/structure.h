@@ -241,9 +241,9 @@ typedef struct{
 	* \details
         int = -1 : quete encore non joué
         int = 0 : quete en cours
-        int = 1 : quete déja joué/fini
-        soin = 2 : quete joue le joueur a aide l'homme blesse
-        soin = 3 : quete joue le joueur a voulu aider l'homme blesse mais sans succes
+        int = 1 : quete déjà joué/fini
+        soin = 2 : quete joué le joueur a aide l'homme blessé
+        soin = 3 : quete joué le joueur a voulu aider l'homme blessé mais sans succès
 */
 typedef struct{
   int soin;             /**< Indicateur pour savoir l'avancer du joueur dans la quete "soin" : si le joueur a aider l'homme blessé : quete "soin" */
@@ -261,18 +261,14 @@ int quete_frontiere(perso_t * player, quete_t * quete);                         
 int quete_bunker(perso_t * player, quete_t * quete);                                                                                //quetes.c
 int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_items_available);                                   //quetes.c
 
-int quete_soin(perso_t * player, quete_t * quete, item_t * Tab_Items);                          //quete_soin.c
-npc_t * init_npc_quete(item_t * Tab_Items, int pers);                                           //quete_soin.c
-int ajout_item_blesse(perso_t * player, npc_t * homme, int item);                               //quete_soin.c
-int ajout_pass_card(perso_t * player, item_t * pass_card);                                      //quete_soin.c
-int menu_choix_ajout_item(perso_t * player, item_t * pass_card, npc_t * homme);                 //quete_soin.c
-int recup_1item_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t * pass_card);    //quete_soin.c
-int recup_2items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t * pass_card);   //quete_soin.c
-int recup_3items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t * pass_card);   //quete_soin.c
+int quete_soin(perso_t * player, quete_t * quete, item_t * Tab_Items);                                          //quete_soin.c
+npc_t * init_npc_quete(item_t * Tab_Items, int pers);                                                           //quete_soin.c
+int recup_items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t * pass_card, quete_t * quete);   //quete_soin.c
+int aider_homme_blesse(perso_t * player, item_t * pass_card, quete_t * quete, int pers);                        //quete_soin.c
 
-int quete_recherche(perso_t * player, cell_t map[D][D], quete_t * quete, int quest_map[6][2], item_t * Tab_Items, int nb_items_available);
-int compte_items_urbain(item_t * Tab_Items, int nb_items_available);
-void init_items_recherche(item_t * Tab_items_search, item_t * Tab_Items, int nb_items_urbain);
+int quete_recherche(perso_t * player, cell_t map[D][D], quete_t * quete, quest_map[6][2], item_t * Tab_Items, int nb_items_available);  //quete_recherche.c
+int compter_items_urbain(item_t * Tab_Items, int nb_items_available);                                                                        //quete_recherche.c
+void init_Tab_Items_urbain(item_t * Tab_Items_urbain, item_t * Tab_Items, int nb_items_urbain);                                         //quete_recherche.c
 /***************************************************************************************/
 
 /************************************* BACKUP_AND_LOAD *************************************/

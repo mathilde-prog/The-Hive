@@ -7,13 +7,18 @@
 
 /**
  * \file quetes.c
- * \brief Fonctionalite : Actionner quetes du jeu.
+ * \brief Fonctionalité : Actionner les quetes du jeu.
  * \author Mathilde Mottay, Anais Mottier, Clement Mainguy, Moustapha Tsamarayev
  * \version
  * \date 2020
 */
 
-
+/**
+ * \fn void init_quete(quete_t * quete)
+ * \brief Initialisation d'une variable de type quete_t
+ * \param quete_t * quete
+ * \return Rien
+*/
 /*Initialisation d'une structure quete_t*/
 void init_quete(quete_t * quete, int quest_map[6][2]){
     quete->soin = -1;
@@ -43,28 +48,54 @@ void init_quete(quete_t * quete, int quest_map[6][2]){
  * \return Retourne un \a int : 0 si le jeu continue, 1 si le jeu est fini et -1 si probleme dans la quete.
 */
 int quetes(perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete, item_t * Tab_Items, int nb_items_available){
-    int ok;
+    int ok=10; //initialisé par un chiffre pour être sur du résultat par la suite
 
     switch(map[player->posX][player->posY].quest_id){
-        case 1 : clrscr(); ok = quete_montagne(player, quete); clrscr(); break;
-        case 2 : clrscr(); ok = quete_frontiere(player, quete); clrscr(); break;
-        case 3 : clrscr(); ok = quete_bunker(player, quete); clrscr(); break;
-        case 4 : clrscr(); ok = quete_bandits(player, quete, Tab_Items, nb_items_available); clrscr(); break;
-        case 5 : clrscr(); ok = quete_soin(player, quete, Tab_Items); clrscr(); break;
-        case 6 : clrscr(); ok = quete_recherche(player, map, quete, quest_map, Tab_Items, nb_items_available); clrscr(); break;
-        default : printf("Aucune quete sur l'hexagone.\n"); return 0;
+        case 1 :    if(quete->montagne != 1)
+                        clrscr(); ok = quete_montagne(player, quete); clrscr(); break;
+                    else
+                        printf("Vous avez déjà joué cette quête.\n"); break;
+
+        case 2 :    if(quete->frontiere != 1)
+                        clrscr(); ok = quete_frontiere(player, quete); clrscr(); break;
+                    else
+                        printf("Vous avez déjà joué cette quête.\n"); break;
+
+        case 3 :    if(quete->bunker != 1)
+                        clrscr(); ok = quete_bunker(player, quete); clrscr(); break;
+                    else
+                        printf("Vous avez déjà joué cette quête.\n"); break;
+
+        case 4 :    if(quete->bandits != 1)
+                        clrscr(); ok = quete_bandits(player, quete, Tab_Items, nb_items_available); clrscr(); break;
+                    else
+                        printf("Vous avez déjà joué cette quête.\n"); break;
+
+        case 5 :    if(quete->soin < 1)
+                        clrscr(); ok = quete_soin(player, quete, Tab_Items); clrscr(); break;
+                    else
+                        printf("Vous avez déjà joué cette quête.\n"); break;
+
+        case 6 :    if(quete->recherche.situation != 1)
+                        clrscr(); ok = quete_recherche(player, map, quete, quest_map, Tab_Items, nb_items_available); clrscr(); break;
+                    else
+                        printf("Vous avez déjà joué cette quête.\n"); break;
+
+        default : printf("Aucune quête sur l'hexagone.\n"); return 0;
     }
+    if(ok == -1)
+        printf("ERREUR : avec la fonction quete ayant l'id_quest n°%d\n", map[player->posX][player->posY].quest_id);
     return ok;
 }
 
 
 /**
  * \fn void quete_montagne(perso_t * player, quete_t * quete)
- * \brief Acces a la quete de la montagne.
+ * \brief Accès à la quete "montagne".
  * \details
     Le joueur a le choix de franchir la montagne (finir le jeu) ou non.
-    Si il a en sa possession l'equipement de montagne alors ses chances de s'echapper sont imporantes. Mais si il ne l'a pas il est tres risque pour lui de vouloir s'echapper.
-    La chance est donne en un nombre entier entre 0 et 100.
+    Si il a en sa possession l'équipement de montagne alors ses chances de s'échapper sont importantes. Mais si il ne l'a pas il est très risqué pour lui de vouloir s'échapper.
+    La chance est donné par un nombre entier compris entre 0 et 100.
  * \param perso_t * player
  * \param quete_t * quete
  * \return Retourne un \a int : 0 si le jeu continue, 1 si le jeu est fini et -1 si probleme dans la quete.
@@ -75,9 +106,9 @@ int quete_montagne(perso_t * player, quete_t * quete){
     quete->montagne=0;
 
     /*Description du lieu et de la situation*/
-    printf("Vous vous trouvez face a la montagne ! De l'autre cote de celle-ci vous retrouverez votre liberte et la paix.\n");
-    printf("La montagne est un endroit perilleux ! Il faut de l'energie, du courage, et materiel adapter a la montagne si on veut reussir a la franchir.\n");
-    printf("Beaucoup de personnes y ont laisse leur vie, en voulant defier ce monstre de roche.\n");
+    printf("Vous vous trouvez face a la montagne ! De l'autre coté de celle-ci vous retrouverez votre liberté et la paix.\n");
+    printf("La montagne est un endroit périlleux ! Il faut de l'énergie, du courage, et matériel adapter a la montagne si on veut reussir a la franchir.\n");
+    printf("Beaucoup de personnes y ont laissé la vie, en voulant défier ce monstre de roche.\n");
 
     /*Le joueur choisi si il franchit ou pas la montagne*/
     do{
@@ -97,23 +128,23 @@ int quete_montagne(perso_t * player, quete_t * quete){
 
         /*Si le joueur possede l'equipement complet*/
         if((num_r != -1) && (num_w != -1)){
-            printf("Bonne nouvelle, vous etes en possession des bons equipements (corde et baton de marche) pour gravir la montagne !\n");
+            printf("Bonne nouvelle, vous êtes en possession des bons équipements (corde et baton de marche) pour gravir la montagne !\n");
             chance = 100;
         }
         /*Si le joueur possede uniquement la corde*/
         else if(num_r != -1){
-            printf("Vous ne possedez qu'une corde pour vous aider a escalader la montagne, le baton de marche n'est pas dans votre inventaire.\n");
+            printf("Vous ne possédez qu'une corde pour vous aider à escalader la montagne, le baton de marche n'est pas dans votre inventaire.\n");
             printf("Son franchissement sera dangereux pour votre vie.\n");
             chance = 45;
         }
         /*Si le joueur possede uniquement le baton de marche*/
         else if(num_w !=-1){
-            printf("Vous ne possedez que le baton de marche pour vous aider a escalader la montagne, vous n'avez pas de corde. Son franchissement sera dangereux pour votre vie.\n");
+            printf("Vous ne possédez que le baton de marche pour vous aider à escalader la montagne, vous n'avez pas de corde. Son franchissement sera dangereux pour votre vie.\n");
             chance = 45;
         }
         /*Si le joueur ne possede aucun equipement de montagne*/
         else{
-            printf("Malheureusement vous n'avez aucun equipement pour la montagne, ni corde, ni baton de marche... L'escalade sera presque mission impossible. Le risque de mourrir est important.\n");
+            printf("Malheureusement vous n'avez aucun équipement pour la montagne, ni corde, ni baton de marche... L'escaladé sera presque mission impossible. Le risque de mourrir est important.\n");
             chance = 5;
         }
 
@@ -135,7 +166,7 @@ int quete_montagne(perso_t * player, quete_t * quete){
                 /*Suppression des items  de son inventaire qu'il va utiliser*/
                 delete_item_in_inventory(player, player->inventory[num_r]);
                 delete_item_in_inventory(player, player->inventory[num_w]);
-                printf("Vous avez les equipements adapter pour escalader ce gros rocher, vous arrivez a gravir la montagne sans soucis. Vous voila de l'autre cote !\n");
+                printf("Vous avez les équipements adapter pour escalader ce gros rocher, vous arrivez à gravir la montagne sans soucis. Vous voilà de l'autre coté !\n");
                 quete->montagne=1;
                 return exit_game();
             }
@@ -143,10 +174,10 @@ int quete_montagne(perso_t * player, quete_t * quete){
             else{
                 int sortie, conf;
 
-                printf("Les choses se compliquent, la monte est tres complique. Vous etes a bout de force, d'energie, vous perdez l'equilibre par moment.\n");
+                printf("Les choses se compliquent, la monté est très compliqué. Vous êtes à bout de forces, d'énergie, vous perdez l'équilibre à plusieurs reprises.\n");
                 /*Le joueur confirme si il franchit ou pas la montagne*/
                 do{
-                    printf("Voulez-vous reellement continuer l'ascension ?\n");
+                    printf("Voulez-vous réellement continuer l'ascension ?\n");
                     printf("1 - Oui\n");
                     printf("2 - Non\n");
                     scanf("%d", &conf);
@@ -154,13 +185,14 @@ int quete_montagne(perso_t * player, quete_t * quete){
                         printf("Valeur incorrecte. Veuillez resaissir.\n");
                 }while(conf < 1 || conf > 2);
 
-
+                /*Le joueur renonce a faire l'ascension de la montagne*/
                 if(conf==2){
-                    printf("La descente se passe bien. Vous voila revenus sur terre. Il faut repartir explorer la map maintenant.\n");
+                    printf("La descente se passe bien. Vous voilà revenus sur terre. Il faut repartir explorer la map maintenant.\n");
                     return 0;
                 }
-                else{
-                    printf("Vous prenez de tres gros risques mais c'est parti !\n");
+                /*Le joueur souhaite continuer l'ascension*/
+                else {
+                    printf("Vous prenez de très gros risques mais c'est parti !\n");
 
                     /*Suppression des items  de son inventaire qu'il va utiliser*/
                     if (num_r != -1)
@@ -169,13 +201,13 @@ int quete_montagne(perso_t * player, quete_t * quete){
                         delete_item_in_inventory(player, player->inventory[num_w]);
                     sortie = rng(chance); //Fonction d�terminant si le joueur reussi a s'echapper ou non
                     if(sortie == 1){
-                        printf("Felicitations, malgre la grande difficulte de l'ascension vous y etes arrives ! Vous voila de l'autre cote !\n");
+                        printf("Félicitations, malgré la grande difficulté de l'ascension vous y êtes arrivés ! Vous voilà de l'autre coté !\n");
                         quete->montagne=1;
                         return exit_game();
                     }
-                    else{
-                        printf("C'est fini ! Malheureusement la difficulte de l'ascension ete trop importante !\n");
-                        printf("Vous n'avez pas reussi a sortir de la map. Vous venez de perdre de la vie !\n");
+                    else {
+                        printf("C'est fini ! Malheureusement la difficulté de l'ascension était trop importante !\n");
+                        printf("Vous n'avez pas réussi à sortir de la map. Vous venez de perdre de la vie !\n");
                         quete->montagne=1;
                         return 1;
                     }
@@ -183,8 +215,9 @@ int quete_montagne(perso_t * player, quete_t * quete){
             }
         }
     }
-    else {
-        printf("Vous etes prudent, continuez d'explorer la map et peut-etre trouverez-vous l'equipement parfait pour la gravir plus tard !\n");
+    /*Le joueur ne tente pas l'ascension de la montagne*/
+    else if(choix==2){
+        printf("Vous êtes prudent, continuez d'explorer la map et peut-être trouverez-vous l'équipement parfait pour la gravir plus tard !\n");
         return 0;
     }
     return (-1);
@@ -193,11 +226,11 @@ int quete_montagne(perso_t * player, quete_t * quete){
 
 /**
  * \fn void quete_frontiere(perso_t * player, quete_t * quete)
- * \brief Acces a la quete "frontiere".
+ * \brief Accès à la quete "frontière".
  * \details
-    Le joueur trouve la sortie de la frontiere, il a le choix de la franchir (finir le jeu) ou non.
-    Si il a jouer la quete "soin" et qu'il a aide l'homme bless� alors ses chances de la franchir sont imporantes. Mais si il ne l'a pas fait,ses chances sont moins importantes.
-    La chance est donne en un nombre entier entre 0 et 100.
+    Le joueur trouve la sortie de la frontière, il a le choix de la franchir (finir le jeu) ou non.
+    Si il a joué la quete "soin" et qu'il a aide l'homme blessé alors ses chances de la franchir sont importantes. Mais si il ne l'a pas fait, ses chances le sont moins.
+    La chance est donné par un nombre entier compris entre 0 et 100.
  * \param perso_t * player
  * \param quete_t * quete
  * \return Retourne un \a int : 0 si le jeu continue, 1 si le jeu est fini et -1 si probleme dans la quete.
@@ -208,14 +241,14 @@ int quete_frontiere(perso_t * player, quete_t * quete){
     quete->frontiere=0;
 
     /*Description du lieu et de la situation*/
-    printf("Vous vous a la frontiere ! De l'autre cote de celle-ci vous retrouverez votre liberte et la paix.\n");
-    printf("La frontiere est pleine de soldats ! Il faut reussir a passer a travers les controles.\n");
+    printf("Vous voilà à la frontière ! De l'autre coté de celle-ci vous retrouverez votre liberté et la paix.\n");
+    printf("La frontière est pleine de soldats ! Il faut réussir à passer à travers les contrôles.\n");
 
     /*Choix du joueur : franchir ou non la frontiere*/
     do{
-        printf("Deux choix s'offrent a vous :\n");
-        printf("0 - Vous ne tentez pas le franchissement de la frontiere\n");
-        printf("1 - Vous essayer de passer le frontiere\n");
+        printf("Deux choix s'offrent à vous :\n");
+        printf("0 - Vous ne tentez pas le franchissement de la frontière\n");
+        printf("1 - Vous essayer de passer le frontière\n");
         printf("Que choisissez-vous ? ");
         scanf("%d", &choix);
 
@@ -228,38 +261,38 @@ int quete_frontiere(perso_t * player, quete_t * quete){
         /*Si le joueur a aide l'homme blesse (quete "soin")*/
         if(quete->soin == 2){
             printf("Surprise ! Vous voyez l'homme que vous avez rencontrer et aider lors de votre exploration et qui vous avez donner la carte !\n");
-            printf("Il vous apercoit egalement et viens a votre rencontre. Il vous remercie une nouvelle fois.\n");
-            printf("Au fil de la discussion ce dernier comprend pourquoi vous etes ici. Il decide de vous aider a passer la frontiere.\n");
-            printf("Il part voir ses collegues, apres quelques minutes a attendre il vous fait signe de le rejoindre.\n");
-            printf("Vous passez la frontiere grace a cet homme plein de bonte. Ca y est vous etes libre !\n");
+            printf("Il vous apercoit également et viens à votre rencontre. Il vous remercie une nouvelle fois.\n");
+            printf("Au fil de la discussion ce dernier comprend pourquoi vous êtes ici. Il décide de vous aider à passer la frontière.\n");
+            printf("Il part voir ses collègues, après quelques minutes à attendre il vous fait signe de le rejoindre.\n");
+            printf("Vous passez la frontière grâce à cet homme plein de bonté. Ca y est vous êtes libre !\n");
             quete->frontiere=1;
             return exit_game();
         }
         /*Si le joueur a voulu aider l'homme blesse (quete "soin") mais sans succes*/
         else if(quete->soin == 3){
-            printf("Surprise ! Vous voyez l'homme que vous avez rencontrer et tente d'aider lors de votre exploration mais vous n'aviez pas les bons items en votre possession.\n");
-            printf("Il vous apercoit egalement et viens a votre rencontre. Il vous remercie d'avoir voulu essayer de l'aider.\n");
-            printf("Au fil de la discussion ce dernier comprend pourquoi vous etes ici. Il vous informe qu'il va voir ce qu'il peut faire pour vous aider a passer la frontiere.\n");
-            printf("Rien n'est gagner malheureusement, vous attendez son retour...\n");
+            printf("Surprise ! Vous voyez l'homme que vous avez rencontrer et tenté d'aider lors de votre exploration mais vous n'aviez pas les bons items en votre possession.\n");
+            printf("Il vous apercoit également et viens à votre rencontre. Il vous remercie d'avoir voulu essayer de l'aider.\n");
+            printf("Au fil de la discussion ce dernier comprend pourquoi vous êtes ici. Il vous informe qu'il va voir ce qu'il peut faire pour vous aider à passer la frontière.\n");
+            printf("Rien n'est gagné malheureusement, vous attendez son retour...\n");
             chance = 70;
         }
         /*Si le joueur ne connait pas un soldat*/
         else{
             int pass;
 
-            /*Recuperation de l'indice du pass_card dans l'inventaire*/
+            /*Récupération de l'indice du pass_card dans l'inventaire*/
             pass = item_in_inventory(*player,"pass card");
 
             /*Si le joueur possede le pass_card*/
             if(pass != -1){
-                printf("Vous vous rappelez soudainement que vous etes en possession du pass (carte plastique).\n");
-                printf("Il pourrait peut-etre vous permettre de franchir la frontiere, mais sans certitude.\n");
+                printf("Vous vous rappelez soudainement que vous êtes en possession du pass (carte plastique).\n");
+                printf("Il pourrait peut-être vous permettre de franchir la frontière, mais sans certitude.\n");
                 chance = 50;
             }
             /*Si le joueur n'apsa le pass_card*/
             else{
-                printf("Les chances de reussir a franchir la frontiere sont vraiment faibles. Vous ne pouvez beneficier d'aucune aide de la part d'un soldat.\n");
-                printf("Vous n'en connaissez aucun et donc vous ne pouvez pas être aidé parun piston.\n");
+                printf("Les chances de réussir à franchir la frontière sont vraiment faibles. Vous ne pouvez bénéficier d'aucune aide de la part d'un soldat.\n");
+                printf("Vous n'en connaissez aucun et donc vous ne pouvez pas être aidé avec un piston.\n");
                 chance = 15;
             }
         }
@@ -279,20 +312,20 @@ int quete_frontiere(perso_t * player, quete_t * quete){
             sortie = rng(chance);
             quete->frontiere=1;
             switch(sortie){
-                case 0 :    printf("Vous n'avez pas reussi a franchir la frontiere malheureusement...\n");
-                            printf("Retourner explorer la map pour trouver une autre maniere d'en sortir.\n");
+                case 0 :    printf("Vous n'avez pas réussi à franchir la frontière malheureusement...\n");
+                            printf("Retourner explorer la map pour trouver une autre manière d'en sortir.\n");
                             return 0;
-                case 1 :    printf("Felicitations, vous avez reussi a franchir la frontiere ! Vous voila de l'autre cote !\n");
-                            quete->frontiere=1;
+                case 1 :    printf("Félicitations, vous avez réussi à franchir la frontière ! Vous voilà de l'autre coté !\n");
+                            quete->frontière=1;
                             return exit_game();
-                default :   printf("ERREUR : sortie est different de 0 et 1\n");
+                default :   printf("ERREUR : sortie est différent de 0 et 1\n");
                             return (-1);
             }
         }
         /*Le joueur change d'avis, il ne souhaite plus passer la frontière*/
         else{
-            printf("La prudence est une bonne qualite dans cette aventure. La situation sera peut-etre plus avantageuse une prochiane fois.\n");
-            printf("Continuez a explorer la map !\n");
+            printf("La prudence est une bonne qualité dans cette aventure. La situation sera peut-être plus avantageuse une prochiane fois.\n");
+            printf("Continuez à explorer la map !\n");
             return 0;
         }
     }
@@ -307,7 +340,7 @@ int quete_frontiere(perso_t * player, quete_t * quete){
 
 /**
  * \fn void quete_bunker(perso_t * player, quete_t * quete)
- * \brief Accès à la quete du bunker.
+ * \brief Accès à la quete "bunker".
  * \details
     Si le joueur possede le pass_card il aura le choix de rentrer dans le bunker ou non.
     Sinon il fait demi-tour.
@@ -321,9 +354,9 @@ int quete_bunker(perso_t * player, quete_t * quete){
     quete->bunker=0;
 
     /*Description de l'univers, du lieu*/
-    printf("Vous venez d'arriver sur un lieu tres etrange... Une enorme porte se dresse devant vous ! \n");
-    printf("Elle est en metal, sans ouverture, camouflee par une verdure sauvages. Sur la droite vous voyez un petit boitier electronique avec une fente.\n");
-    printf("La porte est tellement lourde qu'il est impossible pour vous de l'ouvrir ne serait ce que d'un millimetre.\n");
+    printf("Vous venez d'arriver sur un lieu très étrange... Une énorme porte se dresse devant vous ! \n");
+    printf("Elle est en métal, sans ouverture, camouflée par une verdure sauvages. Sur la droite vous voyez un petit boitier électronique avec une fente.\n");
+    printf("La porte est tellement lourde qu'il est impossible pour vous de l'ouvrir ne serait ce que d'un millimètre.\n");
 
     /*Recuperation du numero de l'item pass_card dans l'inventaire*/
     num = item_in_inventory(*player,"pass card");
@@ -331,7 +364,7 @@ int quete_bunker(perso_t * player, quete_t * quete){
     /*Si le joueur a le pass_card dans son inventaire*/
     if (num != -1){
         do{
-            printf("Ce boitier est peut-etre un moyen d'entrer dans ce lieu ressemblant a un bunker... Souhaitez-vous y entrer ?");
+            printf("Ce boitier est peut-être un moyen d'entrer dans ce lieu ressemblant à un bunker... Souhaitez-vous y entrer ?");
             printf(" 1 - Oui\n");
             printf("2 - Non\n");
             scanf("%d", &choix);
@@ -342,8 +375,8 @@ int quete_bunker(perso_t * player, quete_t * quete){
         if (choix == 1){
             /*Suppression de l'item pass_card de son inventaire*/
             delete_item_in_inventory(player, player->inventory[num]);
-            printf("Vous avez besoin d'un pass, heureusement vous en possede un ! Vous entrez a l'interieur du bunker !\n");
-            printf("Ca y est vous etes sauves ! Vous etes en securite et venez de trouver l'une des sorties ! ");
+            printf("Vous avez besoin d'un pass, heureusement vous en possédez un ! Vous entrez à l'intérieur du bunker !\n");
+            printf("Ca y est vous êtes sauvé ! Vous êtes en sécurité et venez de trouver l'une des sorties ! ");
             quete->bunker=1;
             return exit_game(); //1 si quitte la map, 0 si continue.
         }
@@ -363,7 +396,7 @@ int quete_bunker(perso_t * player, quete_t * quete){
 
 
 /**
- * \fn void quete_bandits(perso_t * player, quete_t * quete)
+ * \fn void quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_items_available)
  * \brief Accès à la quete "bandits".
  * \details
     Le joueur combat contre un npc aléatoire. Il en sort vivant, blesse ou mort.
@@ -379,8 +412,8 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
     quete->bandits=0;
 
     /*Description de l'univers, du lieu*/
-    printf("Vous venez d'arriver sur un lieu assez effrayant... Les lieux ont l'air occupes de maniere sauvage. Vous entendez beaucoup de voix au loin. \n");
-    printf("Vous n'etes pas tres rassure. Le lieu n'est pas du tout accueillant ! Au fur et a mesure que vous vous en approche vous voyez des armes, des objets volés...\n");
+    printf("Vous venez d'arriver sur un lieu assez effrayant... Les lieux ont l'air occupés de manière sauvage. Vous entendez beaucoup de voix au loin. \n");
+    printf("Vous n'êtes pas très rassuré. Le lieu n'est pas du tout accueillant ! Au fur et a mesure que vous vous en approche vous voyez des armes, des objets volés...\n");
     printf("Le lieu n'est pas occupé que par un individu mais par une vingtaine de bandits, les voix se rapprochent de plus en plus.\n");
 
     do{
@@ -396,7 +429,7 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
 
     /*Le joueur décide de quitter le camp de bandits*/
     if(choix == 1){
-        printf("Vous quittez les lieux au pas de course. Vous etes maintenant loin d'eux, continuez a explorer la map !\n");
+        printf("Vous quittez les lieux aux pas de course. Vous êtes maintenant loin d'eux, continuez à explorer la map !\n");
         quete->bandits=1;
         return 0;
     }
@@ -408,11 +441,11 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
             int equip;
 
             printf("Les bandits se rapprochent, vous les appercevez. Ils sont plus nombreux que vous ne le pensiez.\n");
-            printf("Ca y est ils vous ont vu, ils viennent directement vers vous ! Ils n'apprecient pas votre presence et vous le font comprendre.\n");
+            printf("Ca y est ils vous ont vu, ils viennent directement vers vous ! Ils n'apprécient pas votre présence et vous le font comprendre.\n");
 
             /*Choix de voir l'équipement ou non*/
             do{
-                printf("Souhaitez-vous voir votre equipement afin de savoir avec quoi vous pouvez vous défendre ? (1 - Oui | 2 - Non)\n");
+                printf("Souhaitez-vous voir votre équipement afin de savoir avec quoi vous pouvez vous défendre ? (1 - Oui | 2 - Non)\n");
                 scanf("%d", &equip);
 
                 if(equip<1 || equip>2)
@@ -425,7 +458,7 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
 
             /*Choix du joueur de partir ou combattre*/
             do{
-                printf("La rencontre est sur le point de degenerer, que faites-vous ?\n");
+                printf("La rencontre est sur le point de dégénérer, que faites-vous ?\n");
                 printf("0 - Partir\n");
                 printf("1 - Rester et combattre\n");
                 scanf("%d", &combat);
@@ -450,13 +483,13 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
                 /*Le joueur reussi a s'enfuir*/
                 if(fuir){
                     printf("Vous fuyez le camps et ses occupants plus vite qu'un éclair, ils n'ont pas eu le temps de vous rattraper !\n");
-                    printf("Vous avez echappe de justesse à la mort. Continuez a explorer la map.\n");
+                    printf("Vous avez échappe de justesse à la mort. Continuez à explorer la map.\n");
                     quete->bandits=1;
                     return 0;
                 }
                 /*Le joueur ne reussi pas a s'enfuir*/
                 else{
-                    printf("Vous fuyez le camps et ses occupants plus vite qu'un éclair, mais malheureusement ils ont reussi a vous rattraper !\n");
+                    printf("Vous fuyez le camps et ses occupants plus vite qu'un éclair, mais malheureusement ils ont réussi à vous rattraper !\n");
                     printf("Ils s'acharnent sur vous et vous tuent\n");
                     quete->bandits=1;
                     return 1;
@@ -467,7 +500,7 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
                 int vaincre;
 
                 printf("Le courage est en vous, mais il risque d'être une arme faible face à ces individus très dangereux qui n'ont peur de rien, ni de personnes !\n");
-                printf("Le combat est rude, vous vous prenez des coups sur l'ensemble du corps, mais vous arrivez a blesser et mettre à terre certains de vos adversaires.\n");
+                printf("Le combat est rude, vous vous prenez des coups sur l'ensemble du corps, mais vous arrivez à blesser et mettre à terre certains de vos adversaires.\n");
 
                 /*Détermination de la chance : plus il a d'équipement et plus il a de la chance de combattre les bandits*/
                 switch(nb_equipement(*player)){
@@ -481,19 +514,19 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
                 vaincre = rng(chance);
                 /*Si le joueur arrive a vaincre les bandits*/
                 if(vaincre){
-                    printf("Au fur et a mesure le nombre de bandits diminue. Mais les coups continues meme si vous en esquivez la plus part.\n");
+                    printf("Au fur et à mesure le nombre de bandits diminue. Mais les coups continues même si vous en esquivez la plus part.\n");
 
                     /*Si 2 ou 3 equipements*/
                     if(chance==20 || chance==30)
-                        printf("Vous arrivez a resister grace aux quelques équipements que vous portez sur vous. ");
+                        printf("Vous arrivez à resister grâce aux quelques équipements que vous portez sur vous. ");
                     /*Si 4 équipements*/
                     else if(chance==40)
-                        printf("Vous multipliez vos forces grace a vos 4 équipements, resister à la troupe de bandits est plus simple. ");
+                        printf("Vous multipliez vos forces grâce à vos 4 équipements, résister à la troupe de bandits est plus simple. ");
                     /*Si aucun equipement*/
                     else
-                        printf("Votre mental est inatteignable et vous donne une force presque irreelle permet de résister aux bandits. ");
+                        printf("Votre mental est inatteignable et vous donne une force presque irréelle permet de résister aux bandits. ");
 
-                    printf("Apres de longues minutes, il ne reste plus qu'un bandit en etat de vous défier !");
+                    printf("Apràs de longues minutes, il ne reste plus qu'un bandit en état de vous défier !");
                     /*Si il est equipe d'une arme a feu*/
 
 
@@ -523,20 +556,20 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
                       printf("Vous utilisez les dernières forces qui vous reste pour le vaincre. C'est gagne !\n");
                     }
 
-                    printf("Vous avez réussi a combattre les bandits sur leur propre camp, mais vous avez echappe de justesse à la mort !\n");
+                    printf("Vous avez réussi à combattre les bandits sur leur propre camp, mais vous avez échappe de justesse à la mort !\n");
                     printf("Il faut maintenant repartir explorer la map.\n");
                     quete->bandits=1;
                     return 0;
                 }
                 /*Si le joueur n'arrive pas a vaincre les bandits*/
                 else{
-                    printf("Au fur et a mesure le nombre de bandits diminue mais vos forces aussi... ");
+                    printf("Au fur et à mesure le nombre de bandits diminue mais vos forces aussi... ");
 
                     if(chance==1)
-                        printf("Vous n'avez aucun equipement sur vous, malheureusement la bataille est perdu d'avance.\n");
+                        printf("Vous n'avez aucun équipement sur vous, malheureusement la bataille est perdu d'avance.\n");
                     else
-                        (chance>=2) ? (printf("Malgre les %d equipements sur vous, ", nb_equipement(*player))) : (printf("Le seul equipement sur vous n'est pas suffisant, "));
-                    printf("les bandits sont trop forts. Vous comprenez que c'est la fin pour vous, ils ne vous laisseront pas vivre ni repartir !\n");
+                        (chance>=2) ? (printf("Malgré les %d équipements sur vous, ", nb_equipement(player))) : (printf("Le seul équipement sur vous n'est pas suffisant, "));
+                    printf("les bandits sont trop forts. Vous comprenez que c'est la fin pour vous, ils ne vous laisseront pas vivre ni repartir ! C'est fini !\n");
                     quete->bandits=1;
                     return 1;
                 }
@@ -546,7 +579,7 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
         else{
             int nb_items, num, i;
 
-            printf("Vous partez a la recherche d'items à voler dans le camp de bandits !\n");
+            printf("Vous partez à la recherche d'items à voler dans le camp de bandits !\n");
             voler=1;
             item_t items_camp_bandits[ITEMS_MAX]; //Tableau ou se trouveras les items trouvé dans le camp de bandits
             /*Initialisation du tableau items_camp_bandits*/
@@ -576,14 +609,18 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
                 int ajout;
 
                 printf("Vous avez trouvé %d item(s) chez les bandits !\n", nb_items);
+                (nb_items>1) ? (printf("Pour chaque item trouvé, vous devez faire prendre une décision.\n")) : (printf("Vous devez prendre une décision pour cet item.\n"));
 
                 /*Pour chaque item trouve sur le camp*/
                 for(i=0; i<nb_items; i++){
-                    (nb_items>1) ? (printf("Pour chaque item trouvé, vous devez faire prendre une decision.\n")) : (printf("Vous devez prendre une decision pour cet item.\n"));
                     /*Choix du joueur pour chaque item : ajouter à l'inventaire ou non*/
                     do{
+                        if(nb_items==1)
+                            printf("Item trouvé : %s. ", items_camp_bandits[i]->name)
+                        else
+                            printf("Item n°%d : %s. ", i+1, items_camp_bandits[i]->name);
                         printf("Vous avez le choix entre :\n");
-                        printf("1 - Ajouter l'item %s a l'inventaire\n", items_camp_bandits[i].name);
+                        printf("1 - Ajouter l'item a l'inventaire\n");
                         printf("2 - Ne pas l'ajouter\n");
                         printf("Votre choix : ");
                         scanf("%d", &ajout);
@@ -595,13 +632,13 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
                     /*Ajouter l'item à l'inventaire*/
                     if(ajout){
                         if(add_item_to_inventory(player,items_camp_bandits[i])==0)
-                            printf("L'item %s n'a pas ete ajoute a votre inventaire.\n", items_camp_bandits[i].name);
+                            printf("L'item %s n'a pas été ajoute à votre inventaire.\n", items_camp_bandits[i]->name);
                     }
                     /*Pas d'ajout à l'inventaire*/
                     else
-                        printf("Votre choix de ne pas ajouter l'item %s a bien ete pris en compte.\n", items_camp_bandits[i].name);
+                        printf("Votre choix de ne pas ajouter l'item %s à bien été pris en compte.\n", items_camp_bandits[i]->name);
                 }
-                printf("Vous avez recupere tous les items possible sur le camp de bandits.\n");
+                printf("Vous avez récupère tous les items possibles sur le camp de bandits.\n");
             }
             goto jump; //Arrivé des bandits sur le camps
         }
