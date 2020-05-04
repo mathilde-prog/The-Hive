@@ -5,12 +5,9 @@
 #include <unistd.h>
 #include "lib/structure.h"
 
-
-// Parler du pb claws avec Moustapha
 void retrieve_enemy_items(item_t * Tab_Items, int nb_items_available, perso_t * player){
   int i, choise, nb, taille = rand()%4;  // Maximum 3 items trouvés
   int ind_items_found[taille];
-
 
   for(i = 0; i < taille; i++){
     ind_items_found[i] = -1;
@@ -24,46 +21,48 @@ void retrieve_enemy_items(item_t * Tab_Items, int nb_items_available, perso_t * 
   if (taille != 0){
     // Cas 1 item
     if(taille == 1){
+      printf("Il a %s sur lui.\n\n   Souhaitez-vous le récupérer ? (Oui: 1  Non: 0) \n", Tab_Items[ind_items_found[0]].name);
+      printf("   Votre réponse : ");
       do {
-        printf("\nIl a %s sur lui. Souhaitez-vous le récupérer ? (Oui: 1  Non: 0) \n", Tab_Items[ind_items_found[0]].name);
         scanf("%d",&choise);
         if (choise < 0 || choise > 1){
-          printf("Valeur incorrecte. Veuillez resaissir.\n");
+          printf("   Valeur incorrecte. Veuillez ressaisir : ");
         }
       } while(choise < 0 || choise > 1);
 
       if(choise){
         add_item_to_inventory(player,Tab_Items[ind_items_found[0]]);
-        sleep(2);
+        entree_pour_continuer();
       }
     }
     // Plusieurs items trouvés
     else {
-      printf("%d items!\n", taille);
+      printf(" %d items!\n", taille);
 
       do{
         // Affichage des items trouvés
-        printf("====== SAC A DOS ENNEMI ======\n");
+        printf("\n   ====== SAC A DOS ENNEMI ======\n");
         for(i = 0; i < taille; i++){
-          printf("N°%d\t%s\n", i, Tab_Items[ind_items_found[i]].name);
+          printf("   N°%d\t%s\n", i, Tab_Items[ind_items_found[i]].name);
         }
-        printf("==============================\n");
+        printf("   ==============================\n");
 
+        (taille == 1) ? printf("\n   1. Ajouter cet item dans votre inventaire\n") : printf("\n   1. Ajouter un de ces items dans votre inventaire\n");
+        printf("   2. Rien récupérer\n");
+        printf("\n   Votre réponse : ");
         do {
-          (taille == 1) ? printf("1. Ajouter cet item dans votre inventaire\n") : printf("1. Ajouter un de ces items dans votre inventaire\n");
-          printf("2. Rien récupérer\n");
           scanf("%d",&choise);
           if (choise < 1 || choise > 2){
-            printf("Valeur incorrecte. Veuillez resaissir.\n");
+            printf("   Valeur incorrecte. Veuillez ressaisir : ");
           }
         } while(choise < 1 || choise > 2);
 
         if(choise == 1){
+            printf("\n   Quel item souhaitez-vous récupérer? N°");
             do {
-              printf("Quel item souhaitez-vous récupérer? N°");
               scanf("%d",&nb);
               if (nb < 0 || nb > taille-1){
-                printf("Valeur incorrecte. Veuillez resaissir.\n");
+                printf("   Valeur incorrecte. Veuillez ressaisir : ");
               }
             } while(nb < 0 || nb > taille-1);
 
@@ -81,75 +80,68 @@ void retrieve_enemy_items(item_t * Tab_Items, int nb_items_available, perso_t * 
             }
         }
         else {
-          (taille == 1) ? printf("Vous ne prenez pas cet item.\n") : printf("Vous ne prenez pas ces items.\n");
-          sleep(1);
+          (taille == 1) ? printf("\n   Vous ne prenez pas cet item.\n\n") : printf("\n   Vous ne prenez pas ces items.\n\n");
+          entree_pour_continuer();
         }
       } while((choise != 2) && (taille > 0));
     }
   }
   else{
-      printf("Son sac est vide.\n");
-      sleep(1);
+      printf("\n   Son sac est vide.\n\n");
+      entree_pour_continuer();
   }
 }
 
 void loot_enemy (item_t * Tab_Items, int nb_items_available, npc_t * enemy, perso_t * player){
   int answer;
 
-  printf("Voyons voir ce que l'ennemi a dans son sac à dos... ");
-  retrieve_enemy_items(Tab_Items,nb_items_available,player);
-  clrscr();
-
   if(enemy->weapon == NULL && enemy->armor == NULL){
-    printf("L'ennemi ne porte aucune arme ou armure.\n");
-    sleep(2);
+    printf("\n   L'ennemi ne porte aucune arme ou armure.\n\n");
+    entree_pour_continuer();
   }
   else {
-    if(enemy->weapon != NULL){
+    if(enemy->weapon != NULL) {
+      printf("\n   L'ennemi portait une arme : %s. Souhaitez-vous la prendre ? (Oui: 1  Non: 0)\n",enemy->weapon->name);
+      printf("   Votre réponse : ");
       do {
-        printf("Souhaitez-vous prendre son arme (%s) ? (Oui: 1  Non: 0)\n",enemy->weapon->name);
         scanf("%d", &answer);
         if(answer < 0 || answer > 1){
-          printf("Valeur incorrecte. Veuillez ressaisir.\n");
+          printf("   Valeur incorrecte. Veuillez ressaisir : ");
         }
       } while (answer < 0 || answer > 1);
 
       if(answer){
         if(add_item_to_inventory(player, *enemy->weapon)){
           enemy->weapon = NULL;
-          sleep(2);
+          entree_pour_continuer();
         }
       }
     }
-    else {
-      printf("L'ennemi ne porte pas d'arme.\n");
-      sleep(2);
-    }
-
     clrscr();
 
-    if(enemy->armor != NULL){
+    if (enemy->armor != NULL) {
+      printf("\n   L'ennemi portait une armure : %s. Souhaitez-vous la prendre ? (Oui: 1  Non: 0)\n",enemy->armor->name);
+      printf("   Votre réponse : ");
       do {
-        printf("Souhaitez-vous prendre son armure (%s) ? (Oui: 1  Non: 0)\n",enemy->armor->name);
         scanf("%d", &answer);
         if(answer < 0 || answer > 1){
-          printf("Valeur incorrecte. Veuillez ressaisir\n");
+          printf("   Valeur incorrecte. Veuillez ressaisir : ");
         }
       } while (answer < 0 || answer > 1);
 
       if(answer){
         if(add_item_to_inventory(player, *enemy->armor)){
           enemy->armor = NULL;
-          sleep(2);
+          entree_pour_continuer();
         }
       }
     }
-    else {
-      printf("L'ennemi ne porte pas d'armure.\n");
-      sleep(2);
-    }
+
   }
+
   clrscr();
+  printf("\n   Voyons voir ce que l'ennemi a dans son sac à dos... ");
+  retrieve_enemy_items(Tab_Items,nb_items_available,player);
 }
 
 
@@ -241,7 +233,6 @@ stat_t * init_field(){
   field->distance=(field->posB - field->posA) -1;
   return field;
 }
-
 
 void show_field(stat_t field){
   printf("\n   ======FIELD======\n   PosA: %d   PosB: %d   Distance: %d\n   ==============\n",field.posA, field.posB, field.distance);
@@ -469,7 +460,7 @@ int combat(perso_t * player, npc_t * enemy, stat_t * field, item_t * Tab_Items, 
         field->distance=(field->posB - field->posA) -1;
         printf("   You successfully moved 1 unit away from your enemy.\n");
       }else{
-        printf("   You reached the battlefield border. You can't go any further. If you want to run away hit corresponding key in the menu.\n");
+        printf("   You reached the battlefield border. You can't go any further. If you want to run away hit corresponding key in the menu.\n\n");
         entree_pour_continuer();
         goto checkpoint;
       }
@@ -528,30 +519,34 @@ int combat(perso_t * player, npc_t * enemy, stat_t * field, item_t * Tab_Items, 
     printf("\n");
     entree_pour_continuer();
   }
+
+  clrscr();
+
   if(enemy->pv <= 0){
-    printf("   Congrats, you managed to kill your enemy. Want to loot him?\n1 - Yes.\n2 - No.\nYour call:");
-    scanf(" %d", &choise);
+    printf("\n   Congrats, you managed to kill your enemy. Want to loot him?\n   1 - Yes.\n   2 - No.\n\n   Your call : ");
     do{
-      if(choise==1){
-        clrscr();
-        loot_enemy(Tab_Items, nb_items_available, enemy, player);
-        free(enemy);
-        free(field);
-        return 0;
-      }else if(choise==2){
-        clrscr();
-        printf("   Alright, let's move on then.\n");
-        sleep(PT);
-        return 0;
-      }else{
+      scanf("%d", &choise);
+      if(choise<1 || choise>2){
         printf("   Come on, stop messing around. Try again: ");
-        scanf("%d", &choise);
       }
-    }while(choise>2 && choise<1);
+    } while (choise<1 || choise>2);
+
+    if(choise==1){
+      clrscr();
+      loot_enemy(Tab_Items,nb_items_available,enemy,player);
+      free(enemy);
+      free(field);
+      return 0;
+
+    } else if(choise==2){
+      clrscr();
+      printf("\n   Alright, let's move on then.\n\n");
+      entree_pour_continuer();
+      return 0;
+    }
   }else if(player->pv <= 0){
     clrscr();
-    printf("   You got yourself killed. Better luck next time.\n");
-    sleep(PT);
+    printf("\n   You got yourself killed. Better luck next time.\n\n");
     exit(1);
   }
   return 0;
