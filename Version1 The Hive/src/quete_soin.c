@@ -202,7 +202,7 @@ int aider_homme_blesse(perso_t * player, item_t * pass_card, quete_t * quete, in
     /*Recherche des items de type food dans l'inventaire du joueur*/
     for(i=0, cpt=0; i < player->nb_items_inventory; i++){
         if(player->inventory[i].type == food){
-            ind_items_soin[cpt] = i;
+            ind_items_soin[cpt] = player->inventory[i];
             cpt++;
         }
     }
@@ -496,7 +496,7 @@ int quete_soin(perso_t * player, quete_t * quete, item_t * Tab_Items){
                 printf("Votre choix de renoncer à aider cet homme a bien été enregistré. Repartez explorer la map!\n");
                 return 0;
             }
-            return (-1);
         }
     }
+    return (-1);
 }
