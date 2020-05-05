@@ -105,7 +105,7 @@ int recup_items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t *
         }while(recup < 1 || recup > 2);
 
         /*Choix : ajouter au moins 1 item*/
-        if(recup){
+        if(recup==1){
             printf("Pour chaque item trouvé, vous devez faire prendre une décision.\n");
 
             /*Pour chaque item trouve sur l'homme blessé*/
@@ -127,12 +127,12 @@ int recup_items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t *
                 }while(ajout<1 || ajout>2);
 
                 /*Ajouter l'item à l'inventaire*/
-                if(ajout){
+                if(ajout==1){
                     if(add_item_to_inventory(player, items_vole_blesse[i]) == 0)
                         printf("L'item %s n'a pas été ajouté à votre inventaire.\n", items_vole_blesse[i].name);
                 }
                 /*Pas d'ajout à l'inventaire*/
-                else
+                else if(ajout==2)
                     printf("Votre choix de ne pas ajouter l'item %s a bien été pris en compte.\n", items_vole_blesse[i].name);
             }
             printf("Vous en avez fini avec ce pauvre homme, repartez explorer la map !\n");
@@ -164,8 +164,8 @@ int recup_items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t *
         }while(ajout<1 || ajout>2);
 
         /*Ajouter l'item à l'inventaire*/
-        if(ajout){
-            if(add_item_to_inventory(player, items_vole_blesse[i]) == 0)
+        if(ajout==1){
+            if(add_item_to_inventory(player, items_vole_blesse[0]) == 0)
                 printf("La carte en plastique n'a pas été ajouté à votre inventaire.\n");
         }
         /*Pas d'ajout à l'inventaire*/
@@ -196,7 +196,7 @@ int aider_homme_blesse(perso_t * player, item_t * pass_card, quete_t * quete, in
 
     int ind_items_soin[player->nb_items_inventory]; //Tableau ou se trouveras les indices des items de type food et du medical_kit dans l'inventaire
     /*Initialisation du tableau ind_items_soin*/
-    for(i=0; i < ITEMS_MAX; i++)
+    for(i=0; i < player->nb_items_inventory; i++)
         ind_items_soin[i] = -1;
 
     /*Recherche des items de type food dans l'inventaire du joueur*/
@@ -227,13 +227,14 @@ int aider_homme_blesse(perso_t * player, item_t * pass_card, quete_t * quete, in
                 printf("Plusieurs choix sont disponibles :\n");
                 printf("0 - Changement d'avis, ne rien lui donner, ne pas l'aider\n");
                 printf("1 - Donner de la nourriture pour qu'il reprenne des forces\n");
-                if(mk!=-1){
+                if(mk!=-1){   //Si le joueur n'a pas le medical kit
                     printf("2 - Utiliser le medical kit pour lui soigner ses blessures\n");
                     printf("3 - Donner de la nourriture et utiliser le medical kit\n");
                 }
                 printf("Comment souhaitez-vous l'aider ?\n");
                 scanf("%d", &choix);
 
+                /*Si le joueur n'a pas le medical kit*/
                 if(mk==-1){
                     if (choix < 0 || choix > 1){
                         while(choix < 0 || choix > 1){
@@ -285,7 +286,7 @@ int aider_homme_blesse(perso_t * player, item_t * pass_card, quete_t * quete, in
                             for(j=0; j<cpt; j++){   //j<cpt car ind_items_soin[cpt] = -1 ou indice medical_kit
                                 printf("N°%d - %s\n", j, player->inventory[ind_items_soin[j]].name);
                             }
-                            printf("Entrer le numero de l'aliment ");
+                            printf("Entrer le numéro de l'aliment ");
                             if(food == 2)
                                 printf("%d", i+1);
                             printf(" à donner : ");
@@ -296,8 +297,8 @@ int aider_homme_blesse(perso_t * player, item_t * pass_card, quete_t * quete, in
                         }while(ali < 0 || ali > cpt-1);
 
                         /*Suppresion de l'aliment choisi dans l'inventaire du joueur*/
-                        delete_item_in_inventory(player, player->inventory[ind_items_soin[ali]]);
                         printf("L'item %s a bien été utilisé pour aider l'homme.\n", player->inventory[ind_items_soin[ali]].name);
+                        delete_item_in_inventory(player, player->inventory[ind_items_soin[ali]]);
                     }
                 }
                 /*Utilisation du medical kit*/
@@ -318,14 +319,14 @@ int aider_homme_blesse(perso_t * player, item_t * pass_card, quete_t * quete, in
 
         }
         /*Le joueur ne possede qu'un seul item pouvant etre utile a l'homme*/
-        else{
-            printf("Vous etes en possession d'un seul item pouvant aider l'homme affaiblis.\n");
+        else if(cpt==1){
+            printf("Vous êtes en possession d'un seul item pouvant aider l'homme affaiblis.\n");
             printf("Il s'agit de l'item %s. ", player->inventory[ind_items_soin[0]].name);
             /*Explications des bien fait de l'item*/
             if(mk!=-1) //Si l'item est le medical kit
-                printf("Grâce a cela l'homme pourrait soigner ses blessures et repartir au combat.\n");
+                printf("Grâce à cela l'homme pourrait soigner ses blessures et repartir au combat.\n");
             else
-                printf("Grâce a cela l'homme pourrait reprendre un peu de force pour allez trouver un lieu ou se soigner.\n");
+                printf("Grâce à cela l'homme pourrait reprendre un peu de force pour allez trouver un lieu ou se soigner.\n");
 
             /*Le joueur choisi d'utiliser l'item ou non*/
             do{
@@ -363,7 +364,7 @@ int aider_homme_blesse(perso_t * player, item_t * pass_card, quete_t * quete, in
     }
     /*Le joueur ne possède aucun item utile, il ne peut pas aider l'homme*/
     else if(cpt == 0){
-        printf("Desole mais vous ne possedez aucun item pouvant venir en aide a cet homme...\n");
+        printf("Désolé mais vous ne possedez aucun item pouvant venir en aide a cet homme...\n");
         quete->soin=3;
         return 0;
     }
@@ -442,7 +443,7 @@ int quete_soin(perso_t * player, quete_t * quete, item_t * Tab_Items){
             }while(conf<1 || conf>2);
 
             /*Le joueur confirme vouloir voler les items de l'homme affaiblis*/
-            if(conf){
+            if(conf==1){
                 /*Creation du npc blesse*/
                 npc_t * blesse;
                 blesse = init_npc_quete(Tab_Items, pers);
@@ -482,7 +483,7 @@ int quete_soin(perso_t * player, quete_t * quete, item_t * Tab_Items){
             }while(conf<1 || conf>2);
 
             /*Le joueur a confirmé vouloir aider l'homme*/
-            if(conf){
+            if(conf==1){
                 ok = aider_homme_blesse(player, pass_card, quete, pers);
                 if(ok!=0){
                     printf("ERREUR : fonction aider_homme_blesse()\n");
@@ -492,7 +493,7 @@ int quete_soin(perso_t * player, quete_t * quete, item_t * Tab_Items){
                     return ok;
             }
             /*Le joueur ne confirme pas son choix initiale, il n'aide pas l'homme*/
-            else{
+            else if(conf==2){
                 printf("Votre choix de renoncer à aider cet homme a bien été enregistré. Repartez explorer la map!\n");
                 return 0;
             }

@@ -142,7 +142,7 @@ int quetes(perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * qu
  * \return Retourne un \a int : 0 si le jeu continue, 1 si le jeu est fini et -1 si probleme dans la quete.
 */
 int quete_montagne(perso_t * player, quete_t * quete){
-    int choix, num_r, num_w, chance;
+    int choix, num_r, num_w, chance, conf1;
 
     quete->montagne=0;
 
@@ -200,14 +200,14 @@ int quete_montagne(perso_t * player, quete_t * quete){
         printf("\n   Votre réponse : ");
 
         do{
-            scanf("%d", &choix);
-            if (choix < 1 || choix > 2)
+            scanf("%d", &conf1);
+            if (conf1 < 1 || conf1 > 2)
                 printf("   Valeur incorrecte. Veuillez ressaissir : \n");
-        }while(choix < 1 || choix > 2);
+        }while(conf1 < 1 || conf1 > 2);
 
 
         /*Choix d'escalader la montagne*/
-        if (choix == 1){
+        if (conf1 == 1){
             /*Si sa chance de gravir la montagne est de 100*/
             clrscr();
             printf("\n   >>> Allons franchir cette montagne !\n");
@@ -224,7 +224,7 @@ int quete_montagne(perso_t * player, quete_t * quete){
             }
             /*Si sa chance de franchir la montagne est < 100*/
             else{
-                int sortie, conf;
+                int sortie, conf2;
 
                 printf("\n   Les choses se compliquent, la montée est très compliquée. Vous êtes à bout de force, d'énergie, vous perdez l'équilibre à plusieurs reprises.\n");
                 /*Le joueur confirme si il franchit ou pas la montagne*/
@@ -233,18 +233,18 @@ int quete_montagne(perso_t * player, quete_t * quete){
                 printf("   2 - Non\n");
                 printf("\n   Votre réponse : ");
                 do{
-                    scanf("%d", &conf);
-                    if (conf < 1 || conf > 2)
+                    scanf("%d", &conf2);
+                    if (conf2 < 1 || conf2 > 2)
                         printf("   Valeur incorrecte. Veuillez ressaissir : ");
-                }while(conf < 1 || conf > 2);
+                }while(conf2 < 1 || conf2 > 2);
 
                 clrscr();
-                if(conf==2){
+                if(conf2==2){
                     printf("\n   La descente se passe bien. Vous voilà revenu sur terre. Il faut repartir explorer la map maintenant.\n\n");
                     entree_pour_continuer();
                     return 0;
                 }
-                else{
+                else if(conf2==1){
                     printf("\n   Vous prenez de très gros risques mais c'est parti !\n\n");
 
                     /*Suppression des items  de son inventaire qu'il va utiliser*/
@@ -259,7 +259,7 @@ int quete_montagne(perso_t * player, quete_t * quete){
                         entree_pour_continuer();
                         return exit_game();
                     }
-                    else{
+                    else if(!sortie){
                         printf("\n   C'est fini ! Malheureusement la difficulté de l'ascension était trop importante...\n");
                         printf("   Vous n'avez pas réussi à sortir de la map. Vous venez de perdre la vie !\n\n");
                         entree_pour_continuer();
@@ -269,14 +269,14 @@ int quete_montagne(perso_t * player, quete_t * quete){
                 }
             }
         }
-        else {
+        else if(conf1==2){
           clrscr();
           printf("\n   Vous êtes prudent, continuez d'explorer la map et peut-être trouverez-vous l'équipement parfait pour la gravir plus tard !\n\n");
           entree_pour_continuer();
           return 0;
         }
     }
-    else {
+    else if(choix==2){
         clrscr();
         printf("\n   Vous êtes prudent, continuez d'explorer la map et peut-être trouverez-vous l'équipement parfait pour la gravir plus tard !\n\n");
         entree_pour_continuer();
@@ -354,7 +354,7 @@ int quete_frontiere(perso_t * player, quete_t * quete){
                 printf("   Il pourrait peut-être vous permettre de franchir la frontière, mais sans certitude.\n");
                 chance = 50;
             }
-            /*Si le joueur n'apsa le pass_card*/
+            /*Si le joueur n'a pas le pass_card*/
             else{
                 printf("\n   Les chances de réussir à franchir la frontière sont vraiment faibles. Vous ne pouvez bénéficier d'aucune aide de la part d'un soldat.\n");
                 printf("   Vous n'en connaissez aucun et donc vous ne pouvez pas être aidé par un piston.\n");
@@ -474,6 +474,7 @@ int quete_bunker(perso_t * player, quete_t * quete){
     return (-1);
 }
 
+
 /**
  * \fn void quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_items_available)
  * \brief Accès à la quete "bandits".
@@ -514,7 +515,7 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
         entree_pour_continuer();
         return 0;
     }
-    else{
+    else if(choix==2){
         jump: //jump afin que quand le joueur choisi l'option "voler items" il rencontre les bandits de la meme facon que si il les avait attendu
         clrscr();
 
@@ -584,7 +585,7 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
                 }
             }
             /*Le joueur reste et combat les bandits*/
-            else{
+            else if(combat==2){
                 int vaincre, mort=0;
 
                 printf("\n   Le courage est en vous, mais il risque d'être une arme faible face à ces individus très dangereux qui n'ont peur de rien, ni de personnes !\n");
