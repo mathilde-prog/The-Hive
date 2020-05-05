@@ -288,48 +288,55 @@ void move (perso_t * player, cell_t map[D][D]){
   }
 }
 
+/* ATTENTION : X et Y déjà inversés ! */
 void random_move(perso_t * player, cell_t map[D][D]){
-  int code, l = player->posX, c = player->posY;
-  srand(time(NULL));
-  code=1;
+  int code, l = player->posY, c = player->posX;
   while(1){
+    code=range(1,8);
     if(code==1){
       printf("We're in\n");
-      if(!coordonnees_valides(l-1,c-1)){
+      if(coordonnees_valides(l-1,c-1)){
         printf("holy shit\n");
-        player->posX = l-1;
-        player->posY = c-1;
+        player->posY = l-1;
+        player->posX = c-1;
+        printf("\nCode is: %d\n", code);
         return;
       }
-    }else if(code==2 && !coordonnees_valides(l-1,c)){
-      player->posX = l-1;
-      player->posY = c;
+    }else if(code==2 && coordonnees_valides(l-1,c)){
+      player->posY = l-1;
+      player->posX = c;
+      printf("\nCode is: %d\n", code);
       return;
-    }else if(code==3 && !coordonnees_valides(l-1,c+1)){
-      player->posX = l-1;
-      player->posY = c+1;
+    }else if(code==3 && coordonnees_valides(l-1,c+1)){
+      player->posY = l-1;
+      player->posX = c+1;
+      printf("\nCode is: %d\n", code);
       return;
-    }else if(code==4 && !coordonnees_valides(l,c-1)){
-      player->posX = l;
-      player->posY = c-1;
+    }else if(code==4 && coordonnees_valides(l,c-1)){
+      player->posY = l;
+      player->posX = c-1;
+      printf("\nCode is: %d\n", code);
       return;
-    }else if(code==5 && !coordonnees_valides(l,c+1)){
-      player->posX = l;
-      player->posY = c+1;
+    }else if(code==5 && coordonnees_valides(l,c+1)){
+      player->posY = l;
+      player->posX = c+1;
+      printf("\nCode is: %d\n", code);
       return;
-    }else if(code==6 && !coordonnees_valides(l+1,c-1)){
-      player->posX = l+1;
-      player->posY = c-1;
+    }else if(code==6 && coordonnees_valides(l+1,c-1)){
+      player->posY = l+1;
+      player->posX = c-1;
+      printf("\nCode is: %d\n", code);
       return;
-    }else if(code==7 && !coordonnees_valides(l+1,c)){
-      player->posX = l+1;
-      player->posY = c;
+    }else if(code==7 && coordonnees_valides(l+1,c)){
+      player->posY = l+1;
+      player->posX = c;
+      printf("\nCode is: %d\n", code);
       return;
-    }else if(code==8 && !coordonnees_valides(l+1,c+1)){
-      player->posX = l+1;
-      player->posY = c+1;
+    }else if(code==8 && coordonnees_valides(l+1,c+1)){
+      player->posY = l+1;
+      player->posX = c+1;
+      printf("\nCode is: %d\n", code);
       return;
     }
-    printf("Code is: %d\n", code);
   }
 }
