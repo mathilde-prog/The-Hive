@@ -202,7 +202,7 @@ int aider_homme_blesse(perso_t * player, item_t * pass_card, quete_t * quete, in
     /*Recherche des items de type food dans l'inventaire du joueur*/
     for(i=0, cpt=0; i < player->nb_items_inventory; i++){
         if(player->inventory[i].type == food){
-            ind_items_soin[cpt] = player->inventory[i];
+            ind_items_soin[cpt] = i;
             cpt++;
         }
     }
@@ -347,8 +347,8 @@ int aider_homme_blesse(perso_t * player, item_t * pass_card, quete_t * quete, in
             /*Le joueur donne le seul item utile en sa possession*/
             else if(choix==2){
                 /*Suppresion l'item dans l'inventaire du joueur*/
-                delete_item_in_inventory(player,player->inventory[ind_items_soin[0]]);
                 printf("L'item %s a bien été utilisé pour aider l'homme, il va mieux grâce à vous !\n", player->inventory[ind_items_soin[0]].name);
+                delete_item_in_inventory(player,player->inventory[ind_items_soin[0]]);
 
                 printf("Pour vous remercier de votre bienveillance l'homme vous donne une carte. Elle est en plastique avec un liseret noir sur la longueur et fait la taille d'un carte bancaire.\n");
                 /*Si le seul item utile est le medical_kit des informations sur le nouvel item sont données au joueur*/
