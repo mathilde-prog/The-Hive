@@ -633,7 +633,7 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
                 vaincre = rng(chance);
 
                 /*Si le joueur arrive a vaincre les bandits*/
-                if(vaincre){
+                if(vaincre && !mort){
                     printf("\n   Au fur et à mesure le nombre de bandits diminue. Mais les coups continuent même si vous en esquivez la plupart.\n");
 
                     /*Si 2 ou 3 equipements*/
@@ -683,7 +683,7 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
                     return 0;
                 }
                 /*Si le joueur n'arrive pas a vaincre les bandits*/
-                else{
+                else if(!vaincre || mort){
                     printf("\n   Au fur et a mesure le nombre de bandits diminue mais vos forces aussi...\n");
 
                     if(chance==1)

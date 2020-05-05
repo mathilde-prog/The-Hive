@@ -27,7 +27,7 @@ void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], q
 
     /*Si il y  une quête sur l'hexagone --> quête - pas de combat */
     if(map[player.posX][player.posY].quest_id != 0){
-        q = quetes(&player, map, quest_map, &quete, Tab_Items, nb_items_available
+        q = quetes(&player, map, quest_map, &quete, Tab_Items, nb_items_available);
         /*Le joueur est mort lors de la quete*/
         if(q == 1)
             exit(1);
