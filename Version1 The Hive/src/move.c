@@ -289,7 +289,7 @@ void move (perso_t * player, cell_t map[D][D]){
 }
 
 void random_move(perso_t * player, cell_t map[D][D]){
-  int code, l, c;
+  int code, l = player->posX, c = player->posY;
   srand(time(NULL));
   code=1;
   while(1){

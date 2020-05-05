@@ -59,6 +59,7 @@ void display_item (item_t item); //items.c
 typedef struct  {
   int pv;     /**< Points de vie */
   int pa;     /**< Points d'action */
+	int pe; /**< Points d'énergie */
 	int posX;   /**< Position X sur la carte */
 	int posY;   /**< Position Y sur la carte */
 	int turns;  /**< Nombre de tours restants */
