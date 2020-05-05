@@ -495,7 +495,7 @@ void encounter_init(cell_t map[D][D], perso_t player){
   for(i=1;i<D-1;i++){
     for(j=1;j<D-1;j++){
       if(rng(10)){
-        if((i != player.posX) || (j != player.posY)){ //Pour ne pas que le joueur commence la partie directement par un combat
+        if((i != player.posY) || (j != player.posX)){ //Pour ne pas que le joueur commence la partie directement par un combat
           map[i][j].encounter=1;
         }
       }

@@ -112,7 +112,7 @@ void look_around(int i, int j, cell_t map[D][D]){
  * \return Rien
 */
 void move (perso_t * player, cell_t map[D][D]){
-  int change,  l = player->posX, c = player->posY, code;
+  int change,  l = player->posY, c = player->posX, code;
 
   jump:
   look_around(l, c, map);
@@ -141,8 +141,8 @@ void move (perso_t * player, cell_t map[D][D]){
       if(coordonnees_valides(l-1,c-1)){
         change = move_lose_pa(map[l-1][c-1].type);
         if(change <= player->pa){
-          player->posX = l-1;
-          player->posY = c-1;
+          player->posY = l-1;
+          player->posX = c-1;
           player->pa -= change;
         }
         else {
@@ -159,8 +159,8 @@ void move (perso_t * player, cell_t map[D][D]){
       if(coordonnees_valides(l-1,c)){
         change = move_lose_pa(map[l-1][c].type);
         if(change <= player->pa){
-          player->posX = l-1;
-          player->posY = c;
+          player->posY = l-1;
+          player->posX = c;
           player->pa -= change;
         }
         else {
@@ -177,8 +177,8 @@ void move (perso_t * player, cell_t map[D][D]){
       if(coordonnees_valides(l-1,c+1)){
         change = move_lose_pa(map[l-1][c+1].type);
         if(change <= player->pa){
-          player->posX = l-1;
-          player->posY = c+1;
+          player->posY = l-1;
+          player->posX = c+1;
           player->pa -= change;
         }
         else {
@@ -195,8 +195,8 @@ void move (perso_t * player, cell_t map[D][D]){
       if(coordonnees_valides(l,c-1)){
         change = move_lose_pa(map[l][c-1].type);
         if(change <= player->pa){
-          player->posX = l;
-          player->posY = c-1;
+          player->posY = l;
+          player->posX = c-1;
           player->pa -= change;
         }
         else {
@@ -213,8 +213,8 @@ void move (perso_t * player, cell_t map[D][D]){
       if(coordonnees_valides(l,c+1)){
         change = move_lose_pa(map[l][c+1].type);
         if(change <= player->pa){
-          player->posX = l;
-          player->posY = c+1;
+          player->posY = l;
+          player->posX = c+1;
           player->pa -= change;
         }
         else {
@@ -231,8 +231,8 @@ void move (perso_t * player, cell_t map[D][D]){
       if(coordonnees_valides(l+1,c-1)){
         change = move_lose_pa(map[l+1][c-1].type);
         if(change <= player->pa){
-          player->posX = l+1;
-          player->posY = c-1;
+          player->posY = l+1;
+          player->posX = c-1;
           player->pa -= change;
         }
         else {
@@ -249,8 +249,8 @@ void move (perso_t * player, cell_t map[D][D]){
       if(coordonnees_valides(l+1,c)){
         change = move_lose_pa(map[l+1][c].type);
         if(change <= player->pa){
-          player->posX = l+1;
-          player->posY = c;
+          player->posY = l+1;
+          player->posX = c;
           player->pa -= change;
         }
         else {
@@ -267,8 +267,8 @@ void move (perso_t * player, cell_t map[D][D]){
       if(coordonnees_valides(l+1,c+1)){
         change = move_lose_pa(map[l+1][c+1].type);
         if(change <= player->pa){
-          player->posX = l+1;
-          player->posY = c+1;
+          player->posY = l+1;
+          player->posX = c+1;
           player->pa -= change;
         }
         else {
@@ -293,49 +293,37 @@ void random_move(perso_t * player, cell_t map[D][D]){
   int code, l = player->posY, c = player->posX;
   while(1){
     code=range(1,8);
-    if(code==1){
-      printf("We're in\n");
-      if(coordonnees_valides(l-1,c-1)){
-        printf("holy shit\n");
+    if(code==1 && coordonnees_valides(l-1,c-1)){
         player->posY = l-1;
         player->posX = c-1;
-        printf("\nCode is: %d\n", code);
         return;
-      }
     }else if(code==2 && coordonnees_valides(l-1,c)){
       player->posY = l-1;
       player->posX = c;
-      printf("\nCode is: %d\n", code);
       return;
     }else if(code==3 && coordonnees_valides(l-1,c+1)){
       player->posY = l-1;
       player->posX = c+1;
-      printf("\nCode is: %d\n", code);
       return;
     }else if(code==4 && coordonnees_valides(l,c-1)){
       player->posY = l;
       player->posX = c-1;
-      printf("\nCode is: %d\n", code);
       return;
     }else if(code==5 && coordonnees_valides(l,c+1)){
       player->posY = l;
       player->posX = c+1;
-      printf("\nCode is: %d\n", code);
       return;
     }else if(code==6 && coordonnees_valides(l+1,c-1)){
       player->posY = l+1;
       player->posX = c-1;
-      printf("\nCode is: %d\n", code);
       return;
     }else if(code==7 && coordonnees_valides(l+1,c)){
       player->posY = l+1;
       player->posX = c;
-      printf("\nCode is: %d\n", code);
       return;
     }else if(code==8 && coordonnees_valides(l+1,c+1)){
       player->posY = l+1;
       player->posX = c+1;
-      printf("\nCode is: %d\n", code);
       return;
     }
   }

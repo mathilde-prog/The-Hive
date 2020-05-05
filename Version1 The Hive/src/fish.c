@@ -23,7 +23,7 @@
 void fish (perso_t * player, cell_t map[D][D]){
   int rep;
 
-  if((map[player->posX][player->posY].type == lac) || (map[player->posX][player->posY].type == mer)){
+  if((map[player->posY][player->posX].type == lac) || (map[player->posY][player->posX].type == mer)){
     if(item_in_inventory(*player, "fishing rod") != -1){
       int chance = rng(30); // 30% de chance d'attraper un poisson
       if(chance){

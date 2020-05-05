@@ -13,7 +13,7 @@ int main(){
   map_init(map,quest_map,player);
 
   printf("Avant random_move : \n");
-  printf("player.posY = %d\nplayer.posY = %d", player.posX, player.posY);
+  printf("player.posX = %d\nplayer.posY = %d", player.posX, player.posY);
 
   random_move(&player,map);
 

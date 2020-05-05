@@ -200,10 +200,13 @@ int main(){
   cell_t map[D][D];
   int quest_map[6][2];
   quete_t quete;
+  item_t * Tab_Items = malloc(20 * sizeof(item_t));
+  int nb_items_available = 0;
+  creation_tab_item(Tab_Items, &nb_items_available);
 
   init_player(&player);
   map_init(map,quest_map,player);
-  init_quete(&quete,quest_map);
+  init_quete(&quete,quest_map,Tab_Items,nb_items_available);
 
   player.nb_items_inventory = 0; /* Le joueur commence le jeu avec un inventaire vide. */
   player.pv = rand()%101;
@@ -269,7 +272,7 @@ int main(){
         case 2: clrscr(); display_inventory(player); entree_pour_continuer(); break;
         case 3: clrscr(); display_equipment_player(player); entree_pour_continuer(); break;
         case 4: clrscr();
-                display_TEXT(player.posX,player.posY,map);
+                display_TEXT(player.posY,player.posX,map);
                 count(map);
                 printf("\n");
                 break;
@@ -290,7 +293,7 @@ int main(){
   free(map_item);
   free(fish);
   free(bottle_water);
-
+  free(Tab_Items);
   clrscr();
 
   return EXIT_SUCCESS;

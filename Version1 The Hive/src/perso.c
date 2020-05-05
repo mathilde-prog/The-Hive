@@ -58,7 +58,7 @@ void display_player_characteristics(cell_t map[D][D], perso_t player){
 
   printf("   PV = %3d  PE = %3d  PA = %3d\n",player.pv,player.pe,player.pa);
   printf("   Position joueur:  x = %d  y = %d  ",player.posX,player.posY);
-  switch(map[player.posX][player.posY].type){
+  switch(map[player.posY][player.posX].type){
     case prairie   : printf("prairie "); break;
     case foret     : printf("forêt ");    break;
     case ville     : printf("ville ");    break;
@@ -72,7 +72,7 @@ void display_player_characteristics(cell_t map[D][D], perso_t player){
     case mer       : printf("mer ");   break;
     case wasteland : printf("wasteland ");    break;
   }
-  switch(map[player.posX][player.posY].categ){
+  switch(map[player.posY][player.posX].categ){
     case other   : printf("[AUTRE]\n"); break;
     case nature  : printf("[NATURE]\n"); break;
     case urbain  : printf("[URBAIN]\n"); break;

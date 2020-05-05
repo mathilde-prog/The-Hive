@@ -10,10 +10,13 @@ int main(){
   perso_t player;
   npc_t * enemy;
   stat_t * field;
+  cell_t map[D][D];
+  int quest_map[6][2];
   item_t * Tab_Items = malloc(20 * sizeof(item_t));
   int nb_items_available;
 
-  init_player(&player); 
+  init_player(&player);
+  map_init(map,quest_map,player);
   creation_tab_item(Tab_Items, &nb_items_available);
   field=init_field();
   enemy=init_npc(Tab_Items);
@@ -23,7 +26,7 @@ int main(){
   player.right_hand=&Tab_Items[0];
   player.head=NULL;
   printf("======== SOME INFO ============\nEnemy hp: %d\nEnemy weapon: %s\nEnemy armor: %s\n=============================\n",enemy->pv, enemy->weapon->name, enemy->armor->name);
-  combat(&player, enemy, field,Tab_Items,nb_items_available);
+  combat(&player, enemy, field,map,Tab_Items,nb_items_available);
   free(enemy);
   free(field);
   free(Tab_Items);

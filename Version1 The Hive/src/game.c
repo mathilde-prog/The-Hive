@@ -22,17 +22,16 @@ void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], q
 
   clrscr();
 
-
   while((player.turns != 0) && (player.pv != 0)){
 
     /*Si il y  une quête sur l'hexagone --> quête - pas de combat */
-    if(map[player.posX][player.posY].quest_id != 0){
+    if(map[player.posY][player.posX].quest_id != 0){
         q = quetes(&player, map, quest_map, &quete, Tab_Items, nb_items_available);
         /*Le joueur est mort lors de la quete*/
         if(q == 1)
             exit(1);
     }
-    else if(map[player.posX][player.posY].encounter){
+    else if(map[player.posY][player.posX].encounter){
       field=init_field();
       enemy=init_npc(Tab_Items);
       printf("\n   Vous tombez nez à nez avec un %s!\n\n   Souhaitez vous le combattre ? (Oui : 1, Non : 0)\n", enemy->name);
@@ -45,18 +44,19 @@ void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], q
       } while(choix_combat < 0 || choix_combat > 1);
 
       if(choix_combat){
-        combat(&player, enemy, field, Tab_Items, nb_items_available);
+        combat(&player, enemy, field, map, Tab_Items, nb_items_available);
       }
       else{
         printf("\n   Courage fuyons, vous prenez la poudre d'escampette!\n");
         sleep(2);
 
       }
-      map[player.posX][player.posY].encounter = 0;
+      map[player.posY][player.posX].encounter = 0;
       clrscr();
     }
 
-    display_player_characteristics(map, player);
+    display_player_characteristics(map,player);
+    affichage_quete_search_en_cours(quete,map,player);
 
     printf ("\033[34;01m   [Menu principal]\033[00m\n");
     printf("    1 - Fouiller la zone\n");
@@ -67,26 +67,15 @@ void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], q
     printf("    6 - Regarder la carte (carte nécessaire)\n");
     printf("    7 - Se reposer et guérir\n");
     printf("    8 - Fin du tour\n");
-    printf("    9 - Sauvegarder le jeu et quitter\n");
-    printf("    10 - Aide\n");
-
-    //Si la quete "recherche" est en cours + joueur cherche l'item demande par l'homme
-    if(quete.recherche.trouve == 0)
-        printf("    11 - Rechercher l'item %s demandé par l'homme\n", quete.recherche.wanted.name);
-    //Si la quete "recherche" est en cours + joueur a trouvé l'item demandé par l'homme
-    if((quete.recherche.trouve == 1) && (quete.recherche.situation == 0))
-        printf("    11 - Retrouver l'homme pour lui donner l'item %s\n", quete.recherche.wanted.name);
-    //Si la quete "recherche" est fini
-    if(quete.recherche.situation == 1)
-        printf("    11 - Voir les coordonnées du lieu sécurisé donné par l'homme\n");
-
+    printf("    9 - Sauvegarder la progression\n");
+    printf("   10 - Aide\n");
     printf("\n   Quitter sans sauvegarder : -1\n\n");
     printf("   Que souhaitez-vous faire ? ");
 
     jump:
     scanf("%d",&choise);
     switch(choise){
-      case 1: clrscr(); scavenge(map,&player,Tab_Items,nb_items_available); clrscr(); break;
+      case 1: clrscr(); scavenge(map,&player,Tab_Items,nb_items_available,quete); clrscr(); break;
       case 2: clrscr(); manage_inventory(&player); clrscr(); break;
       case 3: clrscr(); manage_equipment(&player); clrscr(); break;
       case 4: clrscr(); move(&player, map); clrscr(); break;
@@ -94,15 +83,8 @@ void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], q
       case 6: clrscr(); check_the_map(player, map); clrscr(); break;
       case 7: clrscr(); rest_and_heal(&player); clrscr(); break;
       case 8: clrscr(); next_turn(&player); clrscr(); break;
-      case 9: clrscr(); save(player,map,quest_map,quete,sauv); exit(1); break;
+      case 9: clrscr(); sauvegarder_progression(player,map,quest_map,quete,sauv); break;
       case 10: clrscr(); printf("FICHIER PDF"); clrscr(); break;
-      case 11: clrscr();
-               if(quete.recherche.situation == 0)
-                    quete_recherche(&player, map, &quete, quest_map, Tab_Items, nb_items_available);
-               else
-                    printf("Coordonnées du lieu sécurisé : X = %d, Y = %d\n", quete.recherche.bunkerX, quete.recherche.bunkerY);
-               clrscr(); break;
-      //case 12: display_quest(quest_map); sleep(4); break;
       case -1: exit(1); break;
       default: printf("   Commande inconnue. Veuillez ressaisir: "); goto jump; break;
     }
@@ -136,6 +118,7 @@ void choix_partie(sauv_t * sauv){
   quete_t quete;
   item_t * Tab_Items = malloc(20 * sizeof(item_t));
   int nb_items_available = 0;
+  creation_tab_item(Tab_Items, &nb_items_available);
 
   clrscr();
   affichage_parties(*sauv);
@@ -165,15 +148,13 @@ void choix_partie(sauv_t * sauv){
 
     init_player(&player);
     map_init(map,quest_map,player);
-    init_quete(&quete,quest_map);
+    init_quete(&quete,quest_map,Tab_Items,nb_items_available);
     save(player,map,quest_map,quete,*sauv);
     printf("\n   >>> Initialisation. Sauvegarde automatique.\n"); sleep(1);
     presentation_regle_jeu();
   }
 
-  if(creation_tab_item(Tab_Items, &nb_items_available)){
-    menu_principal_jeu(player,map,quest_map,quete,*sauv,Tab_Items,nb_items_available);
-  }
+  menu_principal_jeu(player,map,quest_map,quete,*sauv,Tab_Items,nb_items_available);
 }
 
 int main(){

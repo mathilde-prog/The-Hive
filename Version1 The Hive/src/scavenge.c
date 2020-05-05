@@ -136,22 +136,28 @@ void generate_items(item_t * Tab_Items, int nb_items_available, perso_t * player
  * \return Rien
 */
 /* Recherche des items */
-void scavenge(cell_t map[D][D], perso_t * player, item_t * Tab_Items, int nb_items_available){
-    categ_hexa categ = map[player->posX][player->posY].categ;
+void scavenge(cell_t map[D][D], perso_t * player, item_t * Tab_Items, int nb_items_available, quete_t quete){
+    categ_hexa categ = map[player->posY][player->posX].categ;
 
     // Si le joueur n'a pas déjà scavengé l'hexagone où il est
-    if(map[player->posX][player->posY].scavenged == 1){
+    if(map[player->posY][player->posX].scavenged == 1){
       printf("\n   Vous êtes déjà passé par là!\n");
       sleep(2);
     }
     else {
       if(categ != other){
         generate_items(Tab_Items, nb_items_available, player, categ);
+        if(quete.recherche.situation != 1 && item_in_inventory(*player,quete.recherche.wanted.name) != -1){
+          printf("\n   Félicitations, vous avez trouvé l'item %s que l'homme vous a demandé ! Il faut maintenant aller le retrouver pour lui donner.\n\n", quete.recherche.wanted.name);
+          quete.recherche.trouve = 1;
+          entree_pour_continuer();
+        }
       }
       else { // Aucun item généré
         printf("\n   Rien n'apparaît!\n");
         sleep(2);
       }
-      map[player->posX][player->posY].scavenged = 1;
+
+      map[player->posY][player->posX].scavenged = 1;
     }
 }

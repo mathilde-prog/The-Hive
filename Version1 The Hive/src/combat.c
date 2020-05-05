@@ -352,25 +352,17 @@ void turn_npc(npc_t * enemy, stat_t * field, perso_t * player){
 int run_away(int position, int distance){
   if(position!=1){
     if(rng(20*distance)){
-      clrscr();
       printf("   You  managed to run away.\n\n");
-      sleep(PT);
       return 1; // TO REPLACE
     }else{
-      clrscr();
       printf("   You tried to run away but failed.\n");
-      sleep(PT);
     }
   }else{
     if(rng(40*distance)){
-      clrscr();
       printf("   You  managed to run away.\n\n");
-      sleep(PT);
       return 1; // TO REPLACE
     }else{
-      clrscr();
       printf("   You tried to run away but failed.\n");
-      sleep(PT);
     }
   }
   return 0;
@@ -396,7 +388,7 @@ void combat_info(int print_type, perso_t player, npc_t enemy, stat_t field){
   printf("\n   Your choise: ");
 }
 
-int combat(perso_t * player, npc_t * enemy, stat_t * field, item_t * Tab_Items, int nb_items_available){
+void combat(perso_t * player, npc_t * enemy, stat_t * field, cell_t map[D][D], item_t * Tab_Items, int nb_items_available){
   int choise, choise_max;
   int print_type;
 
@@ -409,7 +401,7 @@ int combat(perso_t * player, npc_t * enemy, stat_t * field, item_t * Tab_Items, 
   }else{
     printf("   You dont seem to have a weapon, you better just run away pal.\n1. Try to run away.\nYour choise (do you really have one?):");
     entree_pour_continuer();
-    return 0;
+    return;
   }
 
   choise_max = (print_type == 1) ? 6 : 5; // Nombre de choix proposés dans le menu suivant print_type
@@ -496,7 +488,8 @@ int combat(perso_t * player, npc_t * enemy, stat_t * field, item_t * Tab_Items, 
       else {
         if(run_away(field->posA, field->distance)){
           entree_pour_continuer();
-          return 1;
+          random_move(player,map);
+          return ;
         }
       }
     }
@@ -507,7 +500,8 @@ int combat(perso_t * player, npc_t * enemy, stat_t * field, item_t * Tab_Items, 
     else if(choise==6){
       if(run_away(field->posA, field->distance)){
         entree_pour_continuer();
-        return 1;
+        random_move(player,map);
+        return;
       }
     }
 
@@ -533,18 +527,14 @@ int combat(perso_t * player, npc_t * enemy, stat_t * field, item_t * Tab_Items, 
       loot_enemy(Tab_Items,nb_items_available,enemy,player);
       free(enemy);
       free(field);
-      return 0;
-
     } else if(choise==2){
       clrscr();
       printf("\n   Alright, let's move on then.\n\n");
       entree_pour_continuer();
-      return 0;
     }
   }else if(player->pv <= 0){
     clrscr();
     printf("\n   You got yourself killed. Better luck next time.\n\n");
     exit(1);
   }
-  return 0;
 }

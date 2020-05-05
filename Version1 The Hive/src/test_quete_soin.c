@@ -16,6 +16,7 @@ int main(){
   int sortie = 0;
   item_t * Tab_Items = malloc(20 * sizeof(item_t));
   int nb_items_available = 0;
+  creation_tab_item(Tab_Items,&nb_items_available);
 
   item_t * fruits = creer_item("fruits",food,0,0,0,0,0,0,0,0,60,10,50);
   item_t * fish = creer_item("fish",food,0,0,0,0,0,0,0,0,0,0,0);
@@ -30,7 +31,7 @@ int main(){
 
   init_player(&player);
   map_init(map,quest_map,player);
-  init_quete(&quete,quest_map);
+  init_quete(&quete,quest_map,Tab_Items,nb_items_available);
 
   printf ("\033[34;01m\n   Menu test quête soin\033[00m\n");
   printf("   1. Inventaire vide \n");
@@ -112,4 +113,5 @@ int main(){
   free(shotgun);
   free(bulletproof_vest);
   free(helmet);
+  free(Tab_Items); 
 }

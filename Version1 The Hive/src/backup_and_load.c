@@ -11,6 +11,28 @@
  * \version 1.0
  * \date 2020
 */
+void sauvegarder_progression(perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete, sauv_t sauv){
+  int rep;
+
+  clrscr();
+  save(player,map,quest_map,quete,sauv);
+  printf("   \n   Votre progression a été sauvegardée !\n");
+  printf("\n   Un choix s'offre à vous : \n");
+  printf("   1. Continuer le jeu\n");
+  printf("   2. Quitter le jeu\n");
+  printf("\n   Votre réponse : ");
+  do {
+    scanf("%d",&rep);
+    if(rep < 1 || rep > 2){
+      printf("   Valeur incorrecte. Veuillez ressaisir : ");
+    }
+  } while (rep < 1 || rep > 2);
+
+  clrscr();
+  if(rep == 2){
+    exit(1);
+  }
+}
 
 /**
  * \fn int sauvegarde_existante(sauv_t sauv)
