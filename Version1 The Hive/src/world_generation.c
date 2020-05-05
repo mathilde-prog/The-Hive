@@ -58,7 +58,7 @@ int bordercross(int i, int j, cell_t map[D][D]){ // fonction to prevent favellas
  * \param cell_t map[D][D]
  * \return Rien
 */
-void topup(cell_t map[D][D]){ // spawns fixed amount of essential hexes on random coordinates
+void topup(cell_t map[D][D], int quest_map[6][2]){ // spawns fixed amount of essential hexes on random coordinates
   int s,i,j;
   int low=1, high=13;
 
@@ -104,6 +104,10 @@ void topup(cell_t map[D][D]){ // spawns fixed amount of essential hexes on rando
   }
   map[i][j].type=camp_ban;
   map[i][j].categ=other;
+  quest_map[3][0]=i; // bandits
+  quest_map[3][1]=j;
+  map[i][j].quest_id=4;
+
 
   for(s=5;s!=0;s--){
     while(map[i][j].type!=prairie){
@@ -522,10 +526,6 @@ void quest_init(cell_t map[D][D], int quest_map[6][2]){
   quest_map[2][1]=range(1,D-1);
   map[quest_map[2][0]][quest_map[2][1]].quest_id=3;
 
-  quest_map[3][0]=range(1,D-1); // bandits
-  quest_map[3][1]=range(1,D-1);
-  map[quest_map[3][0]][quest_map[3][1]].quest_id=4;
-
   quest_map[4][0]=range(1,D-1); // soin
   quest_map[4][1]=range(1,D-1);
   map[quest_map[4][0]][quest_map[4][1]].quest_id=5;
@@ -547,7 +547,7 @@ void quest_init(cell_t map[D][D], int quest_map[6][2]){
 void map_init(cell_t map[D][D], int quest_map[6][2], perso_t player){
   init_base(map);
   init_border(map);
-  topup(map);
+  topup(map, quest_map);
   nextgen(map);
   encounter_init(map,player);
   quest_init(map,quest_map);

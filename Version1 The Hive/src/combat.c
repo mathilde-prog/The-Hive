@@ -408,10 +408,7 @@ int combat(perso_t * player, npc_t * enemy, stat_t * field, item_t * Tab_Items, 
     print_type=3;
   }else{
     printf("   You dont seem to have a weapon, you better just run away pal.\n1. Try to run away.\nYour choise (do you really have one?):");
-    do{
-      scanf("%d", &choise);
-      printf("   Come on, you can do it. Try again (press 1): ");
-    }while(choise!=1);
+    entree_pour_continuer();
     return 0;
   }
 

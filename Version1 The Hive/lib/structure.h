@@ -58,7 +58,6 @@ void display_item (item_t item); //items.c
 */
 typedef struct  {
   int pv;     /**< Points de vie */
-  int pe;     /**< Points d'énergie */
   int pa;     /**< Points d'action */
 	int posX;   /**< Position X sur la carte */
 	int posY;   /**< Position Y sur la carte */
@@ -114,7 +113,7 @@ int coordonnees_valides(int l, int c); 		           		//world_generation.c
 void init_border(cell_t map[D][D]);									    //world_generation.c
 void quest_init(cell_t map[D][D], int quest_map[6][2]); //world_generation.c
 int bordercross(int i, int j, cell_t map[D][D]); 		    //world_generation.c
-void topup(cell_t map[D][D]); 												  //world_generation.c
+void topup(cell_t map[D][D], int quest_map[6][2]); 			//world_generation.c
 int spawntype(int l, int c, cell_t map[D][D]); 			    //world_generation.c
 void nextgen(cell_t map[D][D]); 											  //world_generation.c
 void portable_switch(int i, int j, cell_t map[D][D]);   //world_generation.c
