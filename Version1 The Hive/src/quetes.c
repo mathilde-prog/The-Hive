@@ -13,10 +13,44 @@
  * \date 2020
 */
 
+
 /**
- * \fn void init_quete(quete_t * quete)
+ * \fn int exit_game()
+ * \brief Propose au joueur de quitter ou non la carte lorsqu'il vient de trouver la sortie.
+ * \return Un \a int : 1 si le joueur décide de quitter la carte. 0 s'il décide de continuer l'aventure.
+*/
+int exit_game(){
+    int rep;
+
+    clrscr();
+    printf("\n   Vous venez de trouver la sortie ! Souhaitez-vous quitter la map ? (Oui = 1, Non = 0)\n");
+    printf("   Votre réponse : ");
+    do {
+      scanf("%d", &rep);
+      if(rep < 0 || rep > 1){
+        printf("   Valeur incorrecte. Veuillez ressaisir : ");
+      }
+    } while(rep < 0 || rep > 1);
+
+    clrscr();
+    if (rep == 0){
+        printf ("\n   Vous êtes courageux ! L'aventure continue !\n\n");
+        entree_pour_continuer();
+        return 0;
+    }
+    else {
+        printf("\n   Félicitation pour votre parcours, vous pouvez maintenant vivre sans craindre pour votre vie ! \n   A bientôt peut-être, pour de nouvelles aventures !\n\n");
+        entree_pour_continuer();
+        return 1;
+    }
+}
+
+
+/**
+ * \fn void init_quete(quete_t * quete, int quest_map[6][2])
  * \brief Initialisation d'une variable de type quete_t
  * \param quete_t * quete
+ * \param int quest_map[6][2]
  * \return Rien
 */
 /*Initialisation d'une structure quete_t*/
@@ -94,6 +128,7 @@ int quetes(perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * qu
     clrscr();
     return ok;
 }
+
 
 /**
  * \fn void quete_montagne(perso_t * player, quete_t * quete)
@@ -550,18 +585,48 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
             }
             /*Le joueur reste et combat les bandits*/
             else{
-                int vaincre;
+                int vaincre, mort=0;
 
                 printf("\n   Le courage est en vous, mais il risque d'être une arme faible face à ces individus très dangereux qui n'ont peur de rien, ni de personnes !\n");
                 printf("   Le combat est rude, vous vous prenez des coups sur l'ensemble du corps, mais vous arrivez à blesser et mettre à terre certains de vos adversaires.\n");
 
-                /*Détermination de la chance : plus il a d'équipement et plus il a de la chance de combattre les bandits*/
+                /*Détermination de la chance : plus il a d'équipement et plus il a de la chance de combattre les bandits
+                et suppression des point de vie*/
                 switch(nb_equipement(*player)){
-                    case 0 : chance = 1; break;
-                    case 1 : chance = 10; break;
-                    case 2 : chance = 20; break;
-                    case 3 : chance = 30; break;
-                    case 4 : chance = 40; break;
+                    case 0 :    chance = 1;
+                                if(player->pv > 50)
+                                    player->pv -= 50;
+                                else
+                                    mort=1;
+                                break;
+
+                    case 1 :    chance = 5;
+                                if(player->pv > 45)
+                                    player->pv -= 45;
+                                else
+                                    mort=1;
+                                break;
+
+                    case 2 :    chance = 10;
+                                if(player->pv > 40)
+                                    player->pv -= 40;
+                                else
+                                    mort=1;
+                                break;
+
+                    case 3 :    chance = 15;
+                                if(player->pv > 35)
+                                    player->pv -= 35;
+                                else
+                                    mort=1;
+                                break;
+
+                    case 4 :    chance = 20;
+                                if(player->pv > 30)
+                                    player->pv -= 30;
+                                else
+                                    mort=1;
+                                break;
                     default : printf("   ERREUR : nb_equipement ne renvoit pas un nombre entre 0 et 4\n"); return (-1);
                 }
 
@@ -572,36 +637,37 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
                     printf("\n   Au fur et à mesure le nombre de bandits diminue. Mais les coups continuent même si vous en esquivez la plupart.\n");
 
                     /*Si 2 ou 3 equipements*/
-                    if(chance==20 || chance==30)
+                    if(chance==10 || chance==15)
                         printf("   Vous arrivez à résister grâce aux quelques équipements que vous portez sur vous. ");
                     /*Si 4 équipements*/
-                    else if(chance==40)
-                        printf("   Vous multipliez vos forces grâce a vos 4 équipements, résister à la troupe de bandits est plus simple. ");
+                    else if(chance==20)
+                        printf("   Vous multipliez vos forces grâce à vos 4 équipements, résister à la troupe de bandits est plus simple. ");
                     /*Si aucun equipement*/
                     else
                         printf("   Votre mental est inatteignable et vous donne une force presque irréelle permet de résister aux bandits. ");
 
                     printf("\n   Après de longues minutes, il ne reste plus qu'un bandit en état de vous défier !\n");
-                    /*Si il est equipe d'une arme a feu*/
 
-                    /*
-                     * MODIFICATIONS ICI A MONTRER A ANAIS!
-                     */
-
-                    ind_lh = (player->left_hand != NULL) ? player->left_hand->index : -1;
-                    ind_rh = (player->right_hand != NULL) ? player->right_hand->index : -1;
-
+                    /*Le joueur a-t-il des items dans les mains*/
+                    ind_lh = (player->left_hand != NULL) ? player->left_hand->index : -1;       //Equipement main gauche
+                    ind_rh = (player->right_hand != NULL) ? player->right_hand->index : -1;     //Equipement main droite
+                    /*Si il est équipé des 2 mains*/
                     if((ind_lh != -1) && (ind_rh != -1)){
+                      /*Si il est équipé au moins d'une arme à feu*/
                       if((!strcmp(player->inventory[ind_lh].name,"shotgun")) || (!strcmp(player->inventory[ind_lh].name,"pistol")) || (!strcmp(player->inventory[ind_rh].name,"shotgun")) || (!strcmp(player->inventory[ind_rh].name,"pistol"))){
                         printf("   Vos forces sont très faibles, il ne vous reste plus qu'une solution pour en finir avec lui... Vous lui tirez dessus, c'est gagné !\n");
                       }
                     }
+                    /*Si il est équipé uniquement de la main gauche*/
                     else if (ind_lh != -1){
+                      /*Si il est équipé d'une arme à feu*/
                       if((!strcmp(player->inventory[ind_lh].name,"shotgun")) || (!strcmp(player->inventory[ind_lh].name,"pistol"))){
                         printf("   Vos forces sont très faibles, il ne vous reste plus qu'une solution pour en finir avec lui... Vous lui tirez dessus, c'est gagné !\n");
                       }
                     }
+                    /*Si il est équipé uniquement de la main droite*/
                     else if (ind_rh != -1){
+                      /*Si il est équipé d'une arme à feu*/
                       if((!strcmp(player->inventory[ind_rh].name,"shotgun")) || (!strcmp(player->inventory[ind_rh].name,"pistol"))){
                         printf("   Vos forces sont très faibles, il ne vous reste plus qu'une solution pour en finir avec lui... Vous lui tirez dessus, c'est gagné !\n");
                       }
@@ -623,7 +689,7 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
                     if(chance==1)
                         printf("   Vous n'avez aucun équipement sur vous, malheureusement la bataille est perdue d'avance.\n\n");
                     else {
-                        (chance>=2) ? (printf("   Malgré les %d équipements sur vous, ", nb_equipement(*player))) : (printf("   Le seul equipement sur vous n'est pas suffisant, "));
+                        (chance>=5) ? (printf("   Malgré les %d équipements sur vous, ", nb_equipement(*player))) : (printf("   Le seul equipement sur vous n'est pas suffisant, "));
                         printf("les bandits sont trop forts. Vous comprenez que c'est la fin pour vous, ils ne vous laisseront pas vivre ni repartir !\n\n");
                     }
                     quete->bandits=1;
@@ -700,35 +766,4 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
         }
     }
     return(-1);
-}
-
-/**
- * \fn int exit_game()
- * \brief Propose au joueur de quitter ou non la carte lorsqu'il vient de trouver la sortie.
- * \return Un \a int : 1 si le joueur décide de quitter la carte. 0 s'il décide de continuer l'aventure.
-*/
-int exit_game(){
-    int rep;
-
-    clrscr();
-    printf("\n   Vous venez de trouver la sortie ! Souhaitez-vous quitter la map ? (Oui = 1, Non = 0)\n");
-    printf("   Votre réponse : ");
-    do {
-      scanf("%d", &rep);
-      if(rep < 0 || rep > 1){
-        printf("   Valeur incorrecte. Veuillez ressaisir : ");
-      }
-    } while(rep < 0 || rep > 1);
-
-    clrscr();
-    if (rep == 0){
-        printf ("\n   Vous êtes courageux ! L'aventure continue !\n\n");
-        entree_pour_continuer();
-        return 0;
-    }
-    else {
-        printf("\n   Félicitation pour votre parcours, vous pouvez maintenant vivre sans craindre pour votre vie ! \n   A bientôt peut-être, pour de nouvelles aventures !\n\n");
-        entree_pour_continuer();
-        return 1;
-    }
 }

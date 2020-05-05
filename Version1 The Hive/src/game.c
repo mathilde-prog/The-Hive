@@ -14,7 +14,7 @@ void presentation_regle_jeu(){
 }
 
 void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete, sauv_t sauv, item_t * Tab_Items, int nb_items_available){
-  int choise, choix_combat;
+  int choise, choix_combat, q;
 
   /* Pour combat */
   npc_t * enemy;
@@ -27,7 +27,10 @@ void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], q
 
     /*Si il y  une quête sur l'hexagone --> quête - pas de combat */
     if(map[player.posX][player.posY].quest_id != 0){
-        quetes(&player, map, quest_map, &quete, Tab_Items, nb_items_available);
+        q = quetes(&player, map, quest_map, &quete, Tab_Items, nb_items_available
+        /*Le joueur est mort lors de la quete*/
+        if(q == 1)
+            exit(1);
     }
     else if(map[player.posX][player.posY].encounter){
       field=init_field();
