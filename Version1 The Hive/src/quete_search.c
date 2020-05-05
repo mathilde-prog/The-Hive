@@ -146,7 +146,7 @@ int quete_recherche(perso_t * player, cell_t map[D][D], quete_t * quete, int que
                 return 0;
             }
             /*Le joueur continue la requete*/
-            else{
+            else if(conf==1){
                 printf("C'est parti, a vous de trouver l'item %s que l'homme vous demande !\n", quete->recherche.wanted.name);
                 quete->recherche.trouve=0;
                 return 0;

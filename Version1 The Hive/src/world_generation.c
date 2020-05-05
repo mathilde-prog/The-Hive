@@ -514,24 +514,31 @@ void encounter_init(cell_t map[D][D], perso_t player){
  * \return Rien
 */
 void quest_init(cell_t map[D][D], int quest_map[6][2]){
-  quest_map[0][0]=0; // montagne
+  /*Quête montagne*/
+  quest_map[0][0]=0;
   quest_map[0][1]=range(0,D);
   map[quest_map[0][0]][quest_map[0][1]].quest_id=1;
 
-  quest_map[1][0]=range(0,D); // frontiere
+  /*Quête frontière*/
+  quest_map[1][0]=range(0,D);
   quest_map[1][1]=1;
   map[quest_map[1][0]][quest_map[1][1]].quest_id=2;
-// A PARTIR D'ICI REVOIR LES CONDITIONS DE DISTRIBUTIONS DES QUETES EN FOCNTION DE L'HEXAGONE
-  quest_map[2][0]=range(1,D-1); // bunker
+
+  /*Quête bunker*/
+  quest_map[2][0]=range(1,D-1);
   quest_map[2][1]=range(1,D-1);
   map[quest_map[2][0]][quest_map[2][1]].quest_id=3;
 
-  quest_map[4][0]=range(1,D-1); // soin
+  /*Quête soin*/
+  quest_map[4][0]=range(1,D-1);
   quest_map[4][1]=range(1,D-1);
   map[quest_map[4][0]][quest_map[4][1]].quest_id=5;
 
-  quest_map[5][0]=range(1,D-1); // recherche
-  quest_map[5][1]=range(1,D-1);
+  /*Quête search*/
+  do{ //L'hexagone où se trouve la quete search doit être sur un hexagone de categorie non urbain
+      quest_map[5][0]=range(1,D-1);
+      quest_map[5][1]=range(1,D-1);
+  }while(map[quest_map[5][0]][quest_map[5][1]].categ == 2);
   map[quest_map[5][0]][quest_map[5][1]].quest_id=6;
 }
 
