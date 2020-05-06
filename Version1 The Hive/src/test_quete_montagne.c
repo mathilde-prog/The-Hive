@@ -14,12 +14,16 @@ int main(){
   cell_t map[D][D];
   int quest_map[6][2];
   int sortie = 0;
+  item_t * Tab_Items = malloc(20 * sizeof(item_t));
+  int nb_items_available = 0;
+  creation_tab_item(Tab_Items, &nb_items_available);
+
   item_t * rope = creer_item("rope",misc,0,0,0,0,0,0,0,0,0,40,50);
   item_t * walking_stick = creer_item("walking stick",misc,0,0,0,0,0,0,0,0,70,30,0);
 
   init_player(&player);
   map_init(map,quest_map,player);
-  init_quete(&quete,quest_map);
+  init_quete(&quete,quest_map,Tab_Items,nb_items_available);
 
   printf ("\033[34;01m\n   Menu test quête montagne\033[00m\n");
   printf("   1. Rope + Walking stick\n");
@@ -52,4 +56,5 @@ int main(){
 
   free(rope);
   free(walking_stick);
+  free(Tab_Items);
 }

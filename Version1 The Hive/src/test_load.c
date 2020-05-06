@@ -224,7 +224,7 @@ int main(){
             case 1: clrscr(); display_player_characteristics(map, player); entree_pour_continuer(); break;
             case 2: clrscr(); display_inventory(player); entree_pour_continuer(); break;
             case 3: clrscr(); display_equipment_player(player); entree_pour_continuer(); break;
-            case 4: clrscr(); display_TEXT(player.posX,player.posY,map);
+            case 4: clrscr(); display_TEXT(player.posY,player.posX,map);
                     count(map);
                     printf("\n");
                     break;

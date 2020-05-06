@@ -16,6 +16,7 @@ int main(){
   int sortie = 0;
   item_t * Tab_Items = malloc(20 * sizeof(item_t));
   int nb_items_available = 0;
+  creation_tab_item(Tab_Items, &nb_items_available);
 
   item_t * pistol = creer_item("pistol",weapon,5,25,15,30,85,60,0,1,0,20,60);
   item_t * shotgun = creer_item("shotgun",weapon,10,40,30,40,85,60,0,1,0,15,50);
@@ -25,7 +26,7 @@ int main(){
 
   init_player(&player);
   map_init(map,quest_map,player);
-  init_quete(&quete,quest_map);
+  init_quete(&quete,quest_map,Tab_Items,nb_items_available);
 
   add_item_to_inventory(&player,*pistol);
   add_item_to_inventory(&player,*shotgun);
@@ -73,17 +74,12 @@ int main(){
 
 
   clrscr();
-  if(creation_tab_item(Tab_Items, &nb_items_available)){
-    sortie = quete_bandits(&player,&quete,Tab_Items,nb_items_available);
-    switch(sortie){
-      case 0: printf("\n   Le jeu continue!\n"); break;
-      case 1: printf("\n   Fin du jeu\n"); break;
-      case -1: printf("\n   Pb dans la quête\n"); break;
-      default: break;
-    }
-  }
-  else {
-    printf("   Problème lors de la récupération des items.\n");
+  sortie = quete_bandits(&player,&quete,Tab_Items,nb_items_available);
+  switch(sortie){
+    case 0: printf("\n   Le jeu continue!\n"); break;
+    case 1: printf("\n   Fin du jeu\n"); break;
+    case -1: printf("\n   Pb dans la quête\n"); break;
+    default: break;
   }
 
   free(pistol);

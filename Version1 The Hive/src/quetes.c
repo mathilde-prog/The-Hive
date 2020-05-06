@@ -53,8 +53,11 @@ int exit_game(){
  * \param int quest_map[6][2]
  * \return Rien
 */
-/*Initialisation d'une structure quete_t*/
-void init_quete(quete_t * quete, int quest_map[6][2]){
+void init_quete(quete_t * quete, int quest_map[6][2], item_t * Tab_Items, int nb_items_available){
+    int nb_items_urbain, num;
+    nb_items_urbain = compte_items_urbain(Tab_Items, nb_items_available); //Nombre d'item que l'on peut trouver dans les hexagones de categorie urbain
+    item_t * Tab_items_search = malloc(nb_items_urbain * sizeof(item_t));
+
     quete->soin = -1;
     quete->bunker = -1;
     quete->montagne = -1;
@@ -64,9 +67,15 @@ void init_quete(quete_t * quete, int quest_map[6][2]){
     /*Initialisation de la structure recherche*/
     quete->recherche.situation = -1;
     quete->recherche.trouve = -1;
-  //quete->recherche.wanted = NULL:
     quete->recherche.bunkerX = quest_map[2][0];
     quete->recherche.bunkerY = quest_map[2][1];
+
+    init_items_recherche(Tab_items_search,Tab_Items,nb_items_available);
+    /*Generation aleatoire de l'item à trouver*/
+    num = rand()%nb_items_urbain;
+    quete->recherche.wanted = Tab_items_search[num];
+
+    free(Tab_items_search);
 }
 
 /**
@@ -83,7 +92,7 @@ void init_quete(quete_t * quete, int quest_map[6][2]){
 int quetes(perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete, item_t * Tab_Items, int nb_items_available){
     int ok=10; //initialisé par un chiffre pour être sur du résultat par la suite
     clrscr();
-    switch(map[player->posX][player->posY].quest_id){
+    switch(map[player->posY][player->posX].quest_id){
         case 1 :    if(quete->montagne != 1)
                         ok = quete_montagne(player, quete);
                     else
@@ -115,7 +124,7 @@ int quetes(perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * qu
                     break;
 
         case 6 :    if(quete->recherche.situation != 1)
-                        ok = quete_recherche(player, map, quete, quest_map, Tab_Items, nb_items_available);
+                        ok = quete_recherche(player, map, quete);
                     else
                         printf("\n   Vous avez déjà joué cette quête.\n");
                     break;
@@ -123,7 +132,7 @@ int quetes(perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * qu
         default : printf("\n   Aucune quête sur l'hexagone.\n"); return 0;
     }
     if(ok == -1)
-        printf("\n   ERREUR : avec la fonction quete ayant l'id_quest n°%d\n", map[player->posX][player->posY].quest_id);
+        printf("\n   ERREUR : avec la fonction quete ayant l'id_quest n°%d\n", map[player->posY][player->posX].quest_id);
 
     clrscr();
     return ok;

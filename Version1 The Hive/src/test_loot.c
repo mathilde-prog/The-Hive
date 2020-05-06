@@ -19,7 +19,7 @@ int main(){
   if(creation_tab_item(Tab_Items, &nb_items_available)){
       init_player(&player);
       map_init(map,quest_map,player);
-      init_quete(&quete,quest_map);
+      init_quete(&quete,quest_map,Tab_Items,nb_items_available);
       clrscr();
       chance_weapon ? (enemy1.weapon = &Tab_Items[0]) : (enemy1.weapon = NULL); //pistol ou NULL
       chance_armor ? (enemy1.armor = &Tab_Items[7]) : (enemy1.armor = NULL);    // helmet ou NULL

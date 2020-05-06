@@ -23,7 +23,7 @@
 void check_the_map(perso_t player, cell_t map[D][D]){
 	// vérifie si le joueur possède une carte dans son inventaire
 	if(item_in_inventory(player,"map") != -1){
-		display_TEXT(player.posX, player.posY ,map);
+		display_TEXT(player.posY, player.posX ,map);
 	}
 	else {
 		printf("\n   Pour voir la carte, vous avez besoin d'en avoir une dans votre inventaire. \n");

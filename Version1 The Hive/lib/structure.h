@@ -158,15 +158,10 @@ void show_field(stat_t field);
 void turn_npc(npc_t * enemy, stat_t * field, perso_t * player);
 int run_away(int position, int distance);
 void combat_info(int print_type, perso_t player, npc_t enemy, stat_t field);
-int combat(perso_t * player, npc_t * enemy, stat_t * field, item_t * Tab_Items, int nb_items_available);
+void combat(perso_t * player, npc_t * enemy, stat_t * field, cell_t map[D][D], item_t * Tab_Items, int nb_items_available); 
 void loot_enemy (item_t * Tab_Items, int nb_items_available, npc_t * enemy, perso_t * player);
 
 /*********************************************************************************/
-
-/************************************* SCAVENGE **************************************/
-void generate_items(item_t * Tab_Items, int nb_items_available, perso_t * player, categ_hexa categ); //scavenge.c
-void scavenge(cell_t map[D][D], perso_t * player, item_t * Tab_Items, int nb_items_available);       //scavenge.c
-/************************************************************************************/
 
 /************************************* MOVE **************************************/
 int move_lose_pa (hex_t type_hexa); 						   //move.c
@@ -255,12 +250,13 @@ typedef struct{
 }quete_t;
 
 int exit_game();
-void init_quete(quete_t * quete, int quest_map[6][2]);                                                                              //quetes.c
+void init_quete(quete_t * quete, int quest_map[6][2], item_t * Tab_Items, int nb_items_available); 
 int quetes(perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete, item_t * Tab_Items, int nb_items_available);   //quetes.c
 int quete_montagne(perso_t * player, quete_t * quete);                                                                              //quetes.c
 int quete_frontiere(perso_t * player, quete_t * quete);                                                                             //quetes.c
 int quete_bunker(perso_t * player, quete_t * quete);                                                                                //quetes.c
 int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_items_available);                                   //quetes.c
+void affichage_quete_search_en_cours(quete_t quete, cell_t map[D][D], perso_t player);
 
 int quete_soin(perso_t * player, quete_t * quete, item_t * Tab_Items);                          //quete_soin.c
 npc_t * init_npc_quete(item_t * Tab_Items, int pers);                                           //quete_soin.c
@@ -271,10 +267,16 @@ int recup_1item_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t *
 int recup_2items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t * pass_card);   //quete_soin.c
 int recup_3items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t * pass_card);   //quete_soin.c
 
-int quete_recherche(perso_t * player, cell_t map[D][D], quete_t * quete, int quest_map[6][2], item_t * Tab_Items, int nb_items_available);
+int quete_recherche(perso_t * player, cell_t map[D][D], quete_t * quete);
 int compte_items_urbain(item_t * Tab_Items, int nb_items_available);
 void init_items_recherche(item_t * Tab_items_search, item_t * Tab_Items, int nb_items_urbain);
 /***************************************************************************************/
+
+/************************************* SCAVENGE **************************************/
+void generate_items(item_t * Tab_Items, int nb_items_available, perso_t * player, categ_hexa categ); //scavenge.c
+void scavenge(cell_t map[D][D], perso_t * player, item_t * Tab_Items, int nb_items_available, quete_t quete); //scavenge.c
+/************************************************************************************/
+
 
 /************************************* BACKUP_AND_LOAD *************************************/
 /**
@@ -293,6 +295,7 @@ typedef struct{
   char nomPartie3[21]; /**< Nom de la partie 3 */
 } sauv_t;
 
+void sauvegarder_progression(perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete, sauv_t sauv); //backup_and_load.c
 int sauvegarde_existante(sauv_t sauv);      //backup_and_load.c
 void affichage_parties(sauv_t sauv);        //backup_and_load.c
 void update_etat_sauvegarde(sauv_t * sauv); //backup_and_load.c
