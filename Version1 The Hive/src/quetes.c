@@ -55,7 +55,7 @@ int exit_game(){
 */
 void init_quete(quete_t * quete, int quest_map[6][2], item_t * Tab_Items, int nb_items_available){
     int nb_items_urbain, num;
-    nb_items_urbain = compte_items_urbain(Tab_Items, nb_items_available); //Nombre d'item que l'on peut trouver dans les hexagones de categorie urbain
+    nb_items_urbain = compter_items_urbain(Tab_Items, nb_items_available); //Nombre d'item que l'on peut trouver dans les hexagones de categorie urbain
     item_t * Tab_items_search = malloc(nb_items_urbain * sizeof(item_t));
 
     quete->soin = -1;

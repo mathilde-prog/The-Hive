@@ -15,7 +15,6 @@
 
 void affichage_quete_search_en_cours(quete_t quete, cell_t map[D][D], perso_t player){
   //Si la quete "recherche" est en cours + joueur cherche l'item demande par l'homme
-
   if(quete.recherche.trouve == 0){
     printf("          +-----------------------------------------------------------------+\n");
     printf("          |                         INFORMATIONS                            |\n");
@@ -47,51 +46,10 @@ void affichage_quete_search_en_cours(quete_t quete, cell_t map[D][D], perso_t pl
   }
 }
 
-void init_items_recherche(item_t * Tab_items_search, item_t * Tab_Items, int nb_items_available){
-    int i, cpt;
-
-    for(i = 0, cpt = 0; i < nb_items_available; i++){
-        /*Si l'item peut etre trover d'un hexagone de categorie urbain*/
-        if(Tab_Items[i].pc_urban != 0){
-            Tab_items_search[cpt++] = Tab_Items[i];
-        }
-    }
-}
-
-int compte_items_urbain(item_t * Tab_Items, int nb_items_available){
-    int i, cpt;
-
-    for(i=0, cpt=0; i<nb_items_available; i++){
-        if(Tab_Items[i].pc_urban != 0)
-            cpt++;
-    }
-
-    return cpt;
-}
-
-
-
-/**
- * \fn int compter_items_urbain(item_t * Tab_Items, int nb_items_available)
- * \brief Compte le nombre d'items trouvables dans un hexagone de cat�gorie "urbain" (pc_urban > 0).
- * \param item_t * Tab_Items
- * \param int nb_items_available
- * \return Retourne un \a int : nombre de items ayant un pc_urban > 0
-*/
-int compter_items_urbain(item_t * Tab_Items, int nb_items_available){
-    int i, cpt;
-
-    for(i=0, cpt=0; i<nb_items_available; i++){
-        if(Tab_Items[i].pc_urban != 0)
-            cpt++;
-    }
-    return cpt;
-}
-
 
 /**
  * \fn void init_Tab_Items_urbain(item_t * Tab_Items_urbain, item_t * Tab_Items, int nb_items_urbain)
- * \brief Initialise un tableau contenant tous les items trouvable dans un hexagone de cat�gorie "urbain".
+ * \brief Initialise un tableau contenant tous les items trouvable dans un hexagone de catégorie "urbain".
  * \param item_t * Tab_Items_urbain
  * \param item_t * Tab_Items
  * \param int nb_items_urbain
@@ -110,10 +68,28 @@ void init_Tab_Items_urbain(item_t * Tab_Items_urbain, item_t * Tab_Items, int nb
 
 
 /**
+ * \fn int compter_items_urbain(item_t * Tab_Items, int nb_items_available)
+ * \brief Compte le nombre d'items trouvables dans un hexagone de catégorie "urbain" (pc_urban > 0).
+ * \param item_t * Tab_Items
+ * \param int nb_items_available
+ * \return Retourne un \a int : nombre de items ayant un pc_urban > 0
+*/
+int compter_items_urbain(item_t * Tab_Items, int nb_items_available){
+    int i, cpt;
+
+    for(i=0, cpt=0; i<nb_items_available; i++){
+        if(Tab_Items[i].pc_urban != 0)
+            cpt++;
+    }
+    return cpt;
+}
+
+
+/**
  * \fn void quete_recherche(perso_t * player, cell_t map[D][D], quete_t * quete, quest_map[6][2], item_t * Tab_Items, int nb_items_available)
- * \brief Acc�s � la quete "recherche".
+ * \brief Accès à la quete "recherche".
  * \details
-    Le joueur doit aller � un endroit donn� pour trouver un item et le ramener.
+    Le joueur doit aller � un endroit donné pour trouver un item et le ramener.
  * \param perso_t * player
  * \param cell_t map[D][D]
  * \param quete_t * quete
@@ -125,7 +101,7 @@ void init_Tab_Items_urbain(item_t * Tab_Items_urbain, item_t * Tab_Items, int nb
 int quete_recherche(perso_t * player, cell_t map[D][D], quete_t * quete){
     int choix, conf, ind;
 
-    /*Si la quete n'est pas encore commenc�, ou que le joueur y a deja renonc�*/
+    /*Si la quete n'est pas encore commencé, ou que le joueur y a deja renoncé*/
     if(quete->recherche.trouve==-1){
         quete->recherche.situation=0;
 
