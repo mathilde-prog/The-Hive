@@ -349,10 +349,12 @@ void turn_npc(npc_t * enemy, stat_t * field, perso_t * player){
   }
 }
 
-int run_away(int position, int distance){
+int run_away(int position, int distance, perso_t * player){
   if(position!=1){
     if(rng(20*distance)){
       printf("   You  managed to run away.\n\n");
+      random_move(player);
+      sleep(PT);
       return 1; // TO REPLACE
     }else{
       printf("   You tried to run away but failed.\n");
@@ -360,6 +362,8 @@ int run_away(int position, int distance){
   }else{
     if(rng(40*distance)){
       printf("   You  managed to run away.\n\n");
+      random_move(player);
+      sleep(PT);
       return 1; // TO REPLACE
     }else{
       printf("   You tried to run away but failed.\n");
@@ -486,7 +490,7 @@ void combat(perso_t * player, npc_t * enemy, stat_t * field, cell_t map[D][D], i
         damage_calculator(player->right_hand, enemy->armor, &enemy->pv, field->distance, field->coverB, 2);
       }
       else {
-        if(run_away(field->posA, field->distance)){
+        if(run_away(field->posA, field->distance, player)){
           entree_pour_continuer();
           random_move(player,map);
           return ;
@@ -498,7 +502,7 @@ void combat(perso_t * player, npc_t * enemy, stat_t * field, cell_t map[D][D], i
      * TRY TO RUN AWAY (seulement pour print_type == 1)
      */
     else if(choise==6){
-      if(run_away(field->posA, field->distance)){
+      if(run_away(field->posA, field->distance, player)){
         entree_pour_continuer();
         random_move(player,map);
         return;

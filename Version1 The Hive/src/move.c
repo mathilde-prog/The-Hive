@@ -289,7 +289,7 @@ void move (perso_t * player, cell_t map[D][D]){
 }
 
 /* ATTENTION : X et Y déjà inversés ! */
-void random_move(perso_t * player, cell_t map[D][D]){
+void random_move(perso_t * player){
   int code, l = player->posY, c = player->posX;
   while(1){
     code=range(1,8);
