@@ -45,12 +45,54 @@ int exit_game(){
     }
 }
 
+/**
+ * \fn void informations_quetes(cell_t map[D][D], int quest_map[6][2], quete_t quete)
+ * \brief Affiche les informations des quêtes (coordonnées et états)
+ * \param cell_t map[D][D]
+ * \return Rien
+*/
+void informations_quetes(cell_t map[D][D], int quest_map[6][2], quete_t quete){
+  printf("\n   Quête montagne : \n");
+  printf("   Etat : %d\n", quete.montagne);
+  printf("   Localisation : L = %d, C = %d  ",quest_map[0][0],quest_map[0][1]);
+  afficher_type_categ_hexa(map,quest_map[0][0],quest_map[0][1]);
+
+  printf("\n   Quête frontière : \n");
+  printf("   Etat : %d\n", quete.frontiere);
+  printf("   Localisation : L = %d, C = %d  ",quest_map[1][0],quest_map[1][1]);
+  afficher_type_categ_hexa(map,quest_map[1][0],quest_map[1][1]);
+
+  printf("\n   Quête bunker : \n");
+  printf("   Etat : %d\n", quete.bunker);
+  printf("   Localisation : L = %d, C = %d  ",quest_map[2][0],quest_map[2][1]);
+  afficher_type_categ_hexa(map,quest_map[2][0],quest_map[2][1]);
+
+  printf("\n   Quête bandits : \n");
+  printf("   Etat : %d\n", quete.bunker);
+  printf("   Localisation : L = %d, C = %d  ",quest_map[3][0],quest_map[3][1]);
+  afficher_type_categ_hexa(map,quest_map[3][0],quest_map[3][1]);
+
+  printf("\n   Quête soin : \n");
+  printf("   Etat : %d\n", quete.bunker);
+  printf("   Localisation : L = %d, C = %d  ",quest_map[4][0],quest_map[4][1]);
+  afficher_type_categ_hexa(map,quest_map[4][0],quest_map[4][1]);
+
+  printf("\n   Quête recherche : \n");
+  printf("   Situation : %d\n     Item trouvé : %d\n      BunkerY : %d\n      BunkerX : %d\n", quete.recherche.situation, quete.recherche.trouve, quete.recherche.bunkerY, quete.recherche.bunkerX);
+  printf("   Localisation : L = %d, C = %d  ",quest_map[5][0],quest_map[5][1]);
+  afficher_type_categ_hexa(map,quest_map[5][0],quest_map[5][1]);
+  printf("   Item recherché : \n");
+  display_item(quete.recherche.wanted);
+
+}
 
 /**
- * \fn void init_quete(quete_t * quete, int quest_map[6][2])
+ * \fn void init_quete(quete_t * quete, int quest_map[6][2], item_t * Tab_Items, int nb_items_available)
  * \brief Initialisation d'une variable de type quete_t
  * \param quete_t * quete
  * \param int quest_map[6][2]
+ * \param item_t * Tab_Items
+ * \param int nb_items_available
  * \return Rien
 */
 void init_quete(quete_t * quete, int quest_map[6][2], item_t * Tab_Items, int nb_items_available){
@@ -67,10 +109,10 @@ void init_quete(quete_t * quete, int quest_map[6][2], item_t * Tab_Items, int nb
     /*Initialisation de la structure recherche*/
     quete->recherche.situation = -1;
     quete->recherche.trouve = -1;
-    quete->recherche.bunkerX = quest_map[2][0];
-    quete->recherche.bunkerY = quest_map[2][1];
+    quete->recherche.bunkerY = quest_map[2][0];
+    quete->recherche.bunkerX = quest_map[2][1];
 
-    init_items_recherche(Tab_items_search,Tab_Items,nb_items_available);
+    init_Tab_Items_urbain(Tab_items_search,Tab_Items,nb_items_available);
     /*Generation aleatoire de l'item à trouver*/
     num = rand()%nb_items_urbain;
     quete->recherche.wanted = Tab_items_search[num];
@@ -79,11 +121,11 @@ void init_quete(quete_t * quete, int quest_map[6][2], item_t * Tab_Items, int nb
 }
 
 /**
- * \fn int quete(perso_t * player, cell_t map[D][D], quest_map[6][2], quete_t * quete, item_t * Tab_Items, int nb_items_available)
+ * \fn int quetes(perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete, item_t * Tab_Items, int nb_items_available)
  * \brief Recupere le numero de la quete pour par la suite acceder a la quete correspondante.
  * \param perso_t * player
  * \param cell_t map[D][D]
- * \param quest_map[6][2]
+ * \param int quest_map[6][2]
  * \param quete_t * quete
  * \param item_t * Tab_Items
  * \param int nb_items_available
@@ -112,7 +154,7 @@ int quetes(perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * qu
                     break;
 
         case 4 :    if(quete->bandits != 1)
-                        ok = quete_bandits(player, quete, Tab_Items, nb_items_available);
+                        ok = quete_bandits(player, quete, Tab_Items, nb_items_available, map);
                     else
                         printf("\n   Vous avez déjà joué cette quête.\n");
                     break;
@@ -177,8 +219,8 @@ int quete_montagne(perso_t * player, quete_t * quete){
         clrscr();
 
         /*Recuperation des indices des items rope et walking_stick*/
-        num_r = item_in_inventory(*player,"rope");
-        num_w = item_in_inventory(*player,"walking stick");
+        num_r = item_in_inventory(*player,"corde");
+        num_w = item_in_inventory(*player,"baton de marche");
 
 
         /*Si le joueur possede l'equipement complet*/
@@ -213,7 +255,6 @@ int quete_montagne(perso_t * player, quete_t * quete){
             if (conf1 < 1 || conf1 > 2)
                 printf("   Valeur incorrecte. Veuillez ressaissir : \n");
         }while(conf1 < 1 || conf1 > 2);
-
 
         /*Choix d'escalader la montagne*/
         if (conf1 == 1){
@@ -273,7 +314,7 @@ int quete_montagne(perso_t * player, quete_t * quete){
                         printf("   Vous n'avez pas réussi à sortir de la map. Vous venez de perdre la vie !\n\n");
                         entree_pour_continuer();
                         quete->montagne=1;
-                        return 1;
+                        exit(0);
                     }
                 }
             }
@@ -355,7 +396,7 @@ int quete_frontiere(perso_t * player, quete_t * quete){
             int pass;
 
             /*Recuperation de l'indice du pass_card dans l'inventaire*/
-            pass = item_in_inventory(*player,"pass card");
+            pass = item_in_inventory(*player,"pass");
 
             /*Si le joueur possede le pass_card*/
             if(pass != -1){
@@ -440,7 +481,7 @@ int quete_bunker(perso_t * player, quete_t * quete){
     printf("   La porte est tellement lourde qu'il est impossible pour vous de l'ouvrir ne serait ce que d'un millimètre.\n");
 
     /*Recuperation du numero de l'item pass_card dans l'inventaire*/
-    num = item_in_inventory(*player,"pass card");
+    num = item_in_inventory(*player,"pass");
 
     /*Si le joueur a le pass_card dans son inventaire*/
     if (num != -1){
@@ -483,9 +524,8 @@ int quete_bunker(perso_t * player, quete_t * quete){
     return (-1);
 }
 
-
 /**
- * \fn void quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_items_available)
+ * \fn int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_items_available, cell_t map[D][D])
  * \brief Accès à la quete "bandits".
  * \details
     Le joueur combat contre un npc aléatoire. Il en sort vivant, blesse ou mort.
@@ -495,7 +535,7 @@ int quete_bunker(perso_t * player, quete_t * quete){
  * \param int nb_items_available
  * \return Retourne un \a int : 0 si le jeu continue, 1 si le jeu est fini et -1 si problème dans la quete.
 */
-int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_items_available){
+int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_items_available, cell_t map[D][D]){
     int choix, combat, chance, voler=0, ind_lh, ind_rh;
 
     quete->bandits=0;
@@ -581,6 +621,7 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
                     printf("\n   Vous fuyez le camp  et ses occupants plus vite qu'un éclair, ils n'ont pas eu le temps de vous rattraper !\n");
                     printf("   Vous avez échappé de justesse à la mort. Continuez a explorer la map.\n\n");
                     quete->bandits=1;
+                    random_move(player,map);
                     entree_pour_continuer();
                     return 0;
                 }
@@ -664,21 +705,21 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
                     /*Si il est équipé des 2 mains*/
                     if((ind_lh != -1) && (ind_rh != -1)){
                       /*Si il est équipé au moins d'une arme à feu*/
-                      if((!strcmp(player->inventory[ind_lh].name,"shotgun")) || (!strcmp(player->inventory[ind_lh].name,"pistol")) || (!strcmp(player->inventory[ind_rh].name,"shotgun")) || (!strcmp(player->inventory[ind_rh].name,"pistol"))){
+                      if((!strcmp(player->inventory[ind_lh].name,"fusil")) || (!strcmp(player->inventory[ind_lh].name,"pistolet")) || (!strcmp(player->inventory[ind_rh].name,"fusil")) || (!strcmp(player->inventory[ind_rh].name,"pistolet"))){
                         printf("   Vos forces sont très faibles, il ne vous reste plus qu'une solution pour en finir avec lui... Vous lui tirez dessus, c'est gagné !\n");
                       }
                     }
                     /*Si il est équipé uniquement de la main gauche*/
                     else if (ind_lh != -1){
                       /*Si il est équipé d'une arme à feu*/
-                      if((!strcmp(player->inventory[ind_lh].name,"shotgun")) || (!strcmp(player->inventory[ind_lh].name,"pistol"))){
+                      if((!strcmp(player->inventory[ind_lh].name,"fusil")) || (!strcmp(player->inventory[ind_lh].name,"pistolet"))){
                         printf("   Vos forces sont très faibles, il ne vous reste plus qu'une solution pour en finir avec lui... Vous lui tirez dessus, c'est gagné !\n");
                       }
                     }
                     /*Si il est équipé uniquement de la main droite*/
                     else if (ind_rh != -1){
                       /*Si il est équipé d'une arme à feu*/
-                      if((!strcmp(player->inventory[ind_rh].name,"shotgun")) || (!strcmp(player->inventory[ind_rh].name,"pistol"))){
+                      if((!strcmp(player->inventory[ind_rh].name,"fusil")) || (!strcmp(player->inventory[ind_rh].name,"pistolet"))){
                         printf("   Vos forces sont très faibles, il ne vous reste plus qu'une solution pour en finir avec lui... Vous lui tirez dessus, c'est gagné !\n");
                       }
                     }
@@ -704,7 +745,7 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
                     }
                     quete->bandits=1;
                     entree_pour_continuer();
-                    return 1;
+                    exit(0);
                 }
             }
         }
@@ -721,7 +762,7 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
             for(i=0, nb_items=0; i<ITEMS_MAX; i++){
                 num = rand()%nb_items_available;
                 /*Le joueur peut trouver les items suivant : pistol, shotgun, knife, baseball bat ou helmet*/
-                if((!strcmp(Tab_Items[num].name,"pistol")) || (!strcmp(Tab_Items[num].name,"shotgun")) || (!strcmp(Tab_Items[num].name,"knife")) || (!strcmp(Tab_Items[num].name,"baseball bat")) || (!strcmp(Tab_Items[num].name,"helmet"))){
+                if((!strcmp(Tab_Items[num].name,"pistolet")) || (!strcmp(Tab_Items[num].name,"fusil")) || (!strcmp(Tab_Items[num].name,"couteau")) || (!strcmp(Tab_Items[num].name,"batte de baseball")) || (!strcmp(Tab_Items[num].name,"casque"))){
                     items_camp_bandits[nb_items] = Tab_Items[num];
                     nb_items++;
                 }

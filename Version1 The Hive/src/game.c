@@ -3,20 +3,31 @@
 #include <string.h>
 #include <unistd.h>
 #include <time.h>
+#include <getopt.h>
 #include "lib/structure.h"
+
+static struct option longopts[] = {
+  {"demo", no_argument, NULL, (int)'d'},
+  {0, 0, 0, 0}
+};
 
 void presentation_regle_jeu(){
   while(getchar() != '\n');
   clrscr();
-  printf("\n   EXPLICATIONS DES REGLES DU JEU SUR CETTE PAGE \n\n");
-  printf("\n   Appuyez sur la touche entrée pour commencer l'aventure ! ");
+  printf ("\033[34;01m\n   Que faites-vous ici ?\033[00m\n");
+  printf("\n   Vous êtes un survivant dans un monde post-apocalyptique ravagé par une guerre nucléaire.\n");
+  printf("   Situé dans une zone contaminée, vous devez survivre dans ce monde hostile et trouver une sortie le plus vite possible !\n");
+  printf("   Vous disposez de 15 tours pour vous échapper avant de mourir ici ! Vos points de vie sont à 100, tout comme vos points d'énergie et vous avez 5 points d'action.\n");
+  printf("\n   Pour trouver une des sorties possibles, explorez les prairies, montagnes, villes, lacs... des environs.\n");
+  printf("   Lors de votre aventure, vous risquez de faire des rencontres (plus ou moins amicales) qui nécessiteront parfois de combattre pour sauver votre vie.\n");
+  printf("\n   En fouillant la zone, vous devriez trouver certains items utiles à votre survie : armes, armures, objets divers ou nourriture.\n");
+  printf("   Pour le moment, vous n'avez aucun équipement sur vous, juste votre sac à dos. Vide pour l'instant, il a une capacité de 10 items maximum.\n");
+  printf("\n\n   \033[1;32m>>> Appuyez sur la touche entrée pour commencer l'aventure !\033[00m");
   while(getchar() != '\n');
 }
 
 void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete, sauv_t sauv, item_t * Tab_Items, int nb_items_available){
   int choise, choix_combat, q;
-
-  /* Pour combat */
   npc_t * enemy;
   stat_t * field;
 
@@ -29,7 +40,7 @@ void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], q
         q = quetes(&player, map, quest_map, &quete, Tab_Items, nb_items_available);
         /*Le joueur est mort lors de la quete*/
         if(q == 1)
-            exit(1);
+            exit(0);
     }
     else if(map[player.posY][player.posX].encounter){
       field=init_field();
@@ -49,7 +60,6 @@ void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], q
       else{
         printf("\n   Courage fuyons, vous prenez la poudre d'escampette!\n");
         sleep(2);
-
       }
       map[player.posY][player.posX].encounter = 0;
       clrscr();
@@ -84,8 +94,8 @@ void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], q
       case 7: clrscr(); rest_and_heal(&player); clrscr(); break;
       case 8: clrscr(); next_turn(&player); clrscr(); break;
       case 9: clrscr(); sauvegarder_progression(player,map,quest_map,quete,sauv); break;
-      case 10: clrscr(); printf("FICHIER PDF"); clrscr(); break;
-      case -1: exit(1); break;
+      case 10: clrscr(); printf("Fichier PDF"); clrscr(); break;
+      case -1: clrscr(); exit(0); break;
       default: printf("   Commande inconnue. Veuillez ressaisir: "); goto jump; break;
     }
   }
@@ -108,7 +118,7 @@ void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], q
   clrscr();
 }
 
-void choix_partie(sauv_t * sauv){
+void choix_partie(sauv_t * sauv, int demo){
   int choix;
   char nom_partie[21];
 
@@ -134,6 +144,9 @@ void choix_partie(sauv_t * sauv){
   sauv->numPartie = choix;
   if(sauvegarde_existante(*sauv)){
       load(&player,map,quest_map,&quete,*sauv);
+      if(demo){
+        demo_afficher_items(&player,Tab_Items,nb_items_available);
+      }
   }
   else {
     printf("\n   Quel nom souhaitez-vous donner à votre partie ? (20 caractères max)\n   ");
@@ -146,9 +159,14 @@ void choix_partie(sauv_t * sauv){
      default: break;
     }
 
-    init_player(&player);
-    map_init(map,quest_map,player);
+    map_init(map,quest_map);
+    init_player(&player,map);
     init_quete(&quete,quest_map,Tab_Items,nb_items_available);
+
+    if(demo){
+      demo_afficher_items(&player,Tab_Items,nb_items_available);
+    }
+
     save(player,map,quest_map,quete,*sauv);
     printf("\n   >>> Initialisation. Sauvegarde automatique.\n"); sleep(1);
     presentation_regle_jeu();
@@ -157,11 +175,17 @@ void choix_partie(sauv_t * sauv){
   menu_principal_jeu(player,map,quest_map,quete,*sauv,Tab_Items,nb_items_available);
 }
 
-int main(){
+int main(int argc, char * argv[], char * env[]){
   sauv_t sauv;
-  int choix;
+  int choix, demo = 0;
+  char c;
   srand(time(NULL));
 
+  while ((c = getopt_long(argc,argv,"d",longopts,NULL)) != -1){
+    if(c == 'd'){
+      demo = 1;
+    }
+  }
   menu:
   update_etat_sauvegarde(&sauv);
   clrscr();
@@ -179,7 +203,7 @@ int main(){
   } while (choix < 1 || choix > 3);
 
   if(choix == 1){
-    choix_partie(&sauv);
+    choix_partie(&sauv,demo);
   }
   else if(choix == 2){
     effacer_partie(sauv);

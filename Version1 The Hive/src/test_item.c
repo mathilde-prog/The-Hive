@@ -6,6 +6,14 @@
 
 #define NB_SIMULATIONS 10
 
+/**
+ * \file test_item.c
+ * \brief Fichier TEST - Item
+ * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
+ * \version 1.0
+ * \date 2020
+*/
+
 void display_position (cell_t map[D][D],perso_t player){
   printf("\n=== Où suis-je ? ===\n");
   printf("posX = %d\nposY = %d\n", player.posX, player.posY);
@@ -60,8 +68,8 @@ int main(){
 
   // Creation des items
   if(creation_tab_item(Tab_Items, &nb_items_available)){
-    init_player(&player);
-    map_init(map,quest_map,player);
+    map_init(map,quest_map);
+    init_player(&player,map);
     init_quete(&quete,quest_map,Tab_Items,nb_items_available);
 
     //display_TEXT(player.posX,player.posY, map);

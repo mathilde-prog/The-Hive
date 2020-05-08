@@ -4,6 +4,26 @@
 #include <unistd.h>
 #include "lib/structure.h"
 
+/**
+ * \file test_backup.c
+ * \brief Fichier TEST - Sauvegarde d'une partie
+ * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
+ * \version 1.0
+ * \date 2020
+*/
+
+/**
+ * \void save_test (perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete)
+ * \brief Sauvegarde les informations sur le joueur, son inventaire, son équipement ainsi que les informations sur la carte et les quêtes d'une partie test.
+ * \details Informations sur le joueur : points de vie, points d'énergie, points d'action, position sur la carte, nombre de tours restants
+ * \details Informations sur la carte : pour chaque case de la matrice map, on sauvegarde son type, sa catégorie, s'il y a un combat, si le joueur a déjà fouillé la case et si une quête y est positionnée.
+ * \details Informations sur les quêtes : on sauvegarde les coordonnées de chaque quête ainsi que leurs états.
+ * \param perso_t player
+ * \param cell_t map[D][D]
+ * \param int quest_map[6][2]
+ * \param quete_t quete
+ * \return Rien
+*/
 void save_test (perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete){
   int l, c, i;
   FILE * fic = fopen("../sauv/sauv_test.csv","w");
@@ -102,96 +122,6 @@ void save_test (perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t q
   fclose(fic);
 }
 
-
-void details_map(cell_t map[D][D]){
-  int l, c;
-
-  printf("\033[34;01m   Type\033[00m\n");
-  for(l = 0; l < D; l++){
-    for(c = 0; c < D; c++){
-      if(c == 0){
-        printf("   ");
-      }
-      printf("%2d ", map[l][c].type);
-    }
-    printf("\n");
-  }
-  printf("\n\n");
-
-  printf("\033[34;01mCateg\033[00m\n");
-  for(l = 0; l < D; l++){
-    for(c = 0; c < D; c++){
-      if(c == 0){
-        printf("   ");
-      }
-      printf("%2d ", map[l][c].categ);
-    }
-    printf("\n");
-  }
-  printf("\n\n");
-
-  printf("\033[34;01m   Encounter\033[00m\n");
-  for(l = 0; l < D; l++){
-    for(c = 0; c < D; c++){
-      if(c == 0){
-        printf("   ");
-      }
-      printf("%2d ", map[l][c].encounter);
-    }
-    printf("\n");
-  }
-  printf("\n\n");
-
-  printf("\033[34;01m   Quest ID\033[00m\n");
-  for(l = 0; l < D; l++){
-    for(c = 0; c < D; c++){
-      if(c == 0){
-        printf("   ");
-      }
-      printf("%2d ", map[l][c].quest_id);
-    }
-    printf("\n");
-  }
-  printf("\n\n");
-
-  printf("\033[34;01m   Scavenged\033[00m\n");
-  for(l = 0; l < D; l++){
-    for(c = 0; c < D; c++){
-      if(c == 0){
-        printf("   ");
-      }
-      printf("%2d ", map[l][c].scavenged);
-    }
-    printf("\n");
-  }
-  printf("\n\n");
-}
-
-void info_quetes(int quest_map[6][2], quete_t quete){
-  int l, c;
-
-  printf ("\033[34;01m\n\n\n   [Affichage matrice quest_map]\033[00m\n\n");
-
-  for(l = 0; l < 6; l++){
-    for(c = 0; c < 2; c++){
-      if(c == 0){
-        printf("   ");
-      }
-      printf("%2d ",quest_map[l][c]);
-    }
-      printf("\n");
-  }
-
-  printf ("\033[34;01m\n   [Affichage quete_t quete]\033[00m\n\n");
-  printf("   soin : %d\n", quete.soin);
-  printf("   recherche :\n      situation : %d\n      trouve : %d\n      bunkerX : %d\n      bunkerY : %d\n", quete.recherche.situation, quete.recherche.trouve, quete.recherche.bunkerX, quete.recherche.bunkerY);
-  display_item(quete.recherche.wanted);
-  printf("\n   bunker : %d\n", quete.bunker);
-  printf("   montagne : %d\n", quete.montagne);
-  printf("   frontiere : %d\n", quete.frontiere);
-  printf("   bandits : %d\n\n", quete.bandits);
-}
-
 int main(){
   srand(time(NULL));
 
@@ -204,8 +134,8 @@ int main(){
   int nb_items_available = 0;
   creation_tab_item(Tab_Items, &nb_items_available);
 
-  init_player(&player);
-  map_init(map,quest_map,player);
+  map_init(map,quest_map);
+  init_player(&player,map);
   init_quete(&quete,quest_map,Tab_Items,nb_items_available);
 
   player.nb_items_inventory = 0; /* Le joueur commence le jeu avec un inventaire vide. */
@@ -225,16 +155,16 @@ int main(){
     player.competence = comp;
 */
 
-  item_t * pistol = creer_item("pistol",weapon,5,25,15,30,85,60,0,1,0,20,60);
-  item_t * shotgun = creer_item("shotgun",weapon,10,40,30,40,85,60,0,1,0,15,50);
-  item_t * bow_and_arrows = creer_item("bow and arrows",weapon,0,0,0,0,0,0,0,1,30,0,0);
-  item_t * bulletproof_vest = creer_item("bulletproof vest",armor,0,0,0,0,0,0,0.7,2,0,10,70);
-  item_t * helmet = creer_item("helmet",armor,0,0,0,0,0,0,0.6,3,0,0,0);
-  item_t * fishing_rod = creer_item("fishing rod",misc,0,0,0,0,0,0,0,0,0,40,0);
-  item_t * rope = creer_item("rope",misc,0,0,0,0,0,0,0,0,0,40,50);
-  item_t * map_item = creer_item("map",misc,0,0,0,0,0,0,0,0,0,20,70);
-  item_t * fish = creer_item("fish",food,0,0,0,0,0,0,0,0,0,0,0);
-  item_t * bottle_water = creer_item("bottle water",food,0,0,0,0,0,0,0,0,0,50,50);
+  item_t * pistol = creer_item("pistolet",weapon,5,25,15,30,85,60,0,1,0,20,60);
+  item_t * shotgun = creer_item("fusil",weapon,10,40,30,40,85,60,0,1,0,15,50);
+  item_t * bow_and_arrows = creer_item("arc et fleches",weapon,0,0,0,0,0,0,0,1,30,0,0);
+  item_t * bulletproof_vest = creer_item("gilet pare-balles",armor,0,0,0,0,0,0,0.7,2,0,10,70);
+  item_t * helmet = creer_item("casque",armor,0,0,0,0,0,0,0.6,3,0,0,0);
+  item_t * fishing_rod = creer_item("canne a peche",misc,0,0,0,0,0,0,0,0,0,40,0);
+  item_t * rope = creer_item("corde",misc,0,0,0,0,0,0,0,0,0,40,50);
+  item_t * map_item = creer_item("carte",misc,0,0,0,0,0,0,0,0,0,20,70);
+  item_t * fish = creer_item("poisson",food,0,0,0,0,0,0,0,0,0,0,0);
+  item_t * bottle_water = creer_item("bouteille eau",food,0,0,0,0,0,0,0,0,0,50,50);
 
   add_item_to_inventory(&player,*pistol);
   add_item_to_inventory(&player,*shotgun);
@@ -247,9 +177,9 @@ int main(){
   add_item_to_inventory(&player,*fish);
   add_item_to_inventory(&player,*bottle_water);
 
-  player.head = &player.inventory[4];       //helmet
-  player.right_hand = &player.inventory[0]; //pistol
-  player.left_hand = &player.inventory[1];  // shotgun
+  player.head = &player.inventory[4];       //casque
+  player.right_hand = &player.inventory[0]; //pistolet
+  player.left_hand = &player.inventory[1];  //fusil
 
   save_test(player,map,quest_map,quete);
 
@@ -271,13 +201,9 @@ int main(){
         case 1: clrscr(); display_player_characteristics(map, player); entree_pour_continuer(); break;
         case 2: clrscr(); display_inventory(player); entree_pour_continuer(); break;
         case 3: clrscr(); display_equipment_player(player); entree_pour_continuer(); break;
-        case 4: clrscr();
-                display_TEXT(player.posY,player.posX,map);
-                count(map);
-                printf("\n");
-                break;
-        case 5: clrscr(); details_map(map); entree_pour_continuer(); break;
-        case 6: clrscr(); info_quetes(quest_map, quete); entree_pour_continuer(); break;
+        case 4: clrscr(); display_TEXT(player.posY,player.posX,map); break;
+        case 5: clrscr(); informations_map(map); entree_pour_continuer(); break;
+        case 6: clrscr(); informations_quetes(map,quest_map, quete); entree_pour_continuer(); break;
         default: printf("   Command not found\n"); sleep(1); goto menu; break;
       }
     }

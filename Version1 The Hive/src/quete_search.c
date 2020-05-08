@@ -7,20 +7,28 @@
 
 /**
  * \file quete_search.c
- * \brief Fonctions utilis�es dans la quete "recherche".
+ * \brief Fonctions utilisées dans la quete "recherche".
  * \author Mathilde Mottay, Anais Mottier, Clement Mainguy, Moustapha Tsamarayev
  * \version 1.0
  * \date 2020
 */
 
+/**
+ * \fn void affichage_quete_search_en_cours(quete_t quete, cell_t map[D][D], perso_t player)
+ * \brief Affiche certaines informations selon l'état de la quête recherche
+ * \param quete_t quete
+ * \param cell_t map[D][D]
+ * \param perso_t player
+ * \return Rien
+*/
 void affichage_quete_search_en_cours(quete_t quete, cell_t map[D][D], perso_t player){
   //Si la quete "recherche" est en cours + joueur cherche l'item demande par l'homme
   if(quete.recherche.trouve == 0){
     printf("          +-----------------------------------------------------------------+\n");
     printf("          |                         INFORMATIONS                            |\n");
     printf("          +-----------------------------------------------------------------+\n");
-    if(map[player.posY][player.posX].categ != urbain){
-     printf("          | Item à trouver pour l'homme : %-20s              |\n          | Allez en ville, au marché ou dans une favella pour le trouver ! |\n", quete.recherche.wanted.name);
+    if( (map[player.posY][player.posX].categ == other) || ((map[player.posY][player.posX].categ == nature) && (quete.recherche.wanted.pc_nature == 0)) || ((map[player.posY][player.posX].categ == militaire) && (quete.recherche.wanted.pc_military == 0))){
+     printf("          | Item à trouver pour l'homme : %-20s              |\n          | Vous ne trouverez jamais cet item ici !                         |\n", quete.recherche.wanted.name);
      printf("          +-----------------------------------------------------------------+\n\n");
    }
    else {
@@ -46,7 +54,6 @@ void affichage_quete_search_en_cours(quete_t quete, cell_t map[D][D], perso_t pl
   }
 }
 
-
 /**
  * \fn void init_Tab_Items_urbain(item_t * Tab_Items_urbain, item_t * Tab_Items, int nb_items_urbain)
  * \brief Initialise un tableau contenant tous les items trouvable dans un hexagone de catégorie "urbain".
@@ -55,17 +62,15 @@ void affichage_quete_search_en_cours(quete_t quete, cell_t map[D][D], perso_t pl
  * \param int nb_items_urbain
  * \return Rien
 */
-void init_Tab_Items_urbain(item_t * Tab_Items_urbain, item_t * Tab_Items, int nb_items_urbain){
-    int i, num, cpt;
+void init_Tab_Items_urbain(item_t * Tab_Items_urbain, item_t * Tab_Items, int nb_items_available){
+    int i, cpt;
 
-    for(i=0, cpt=0; i<nb_items_urbain; i++){
-        num = rand()%nb_items_urbain;
+    for(i=0, cpt=0; i<nb_items_available; i++){
         /*Si l'item peut etre trouver d'un hexagone de categorie urbain*/
-        if(Tab_Items[num].pc_urban != 0)
-           Tab_Items_urbain[cpt++] = Tab_Items[num];
+        if(Tab_Items[i].pc_urban != 0)
+           Tab_Items_urbain[cpt++] = Tab_Items[i];
     }
 }
-
 
 /**
  * \fn int compter_items_urbain(item_t * Tab_Items, int nb_items_available)
@@ -86,16 +91,13 @@ int compter_items_urbain(item_t * Tab_Items, int nb_items_available){
 
 
 /**
- * \fn void quete_recherche(perso_t * player, cell_t map[D][D], quete_t * quete, quest_map[6][2], item_t * Tab_Items, int nb_items_available)
+ * \fn int quete_recherche(perso_t * player, cell_t map[D][D], quete_t * quete)
  * \brief Accès à la quete "recherche".
  * \details
-    Le joueur doit aller � un endroit donné pour trouver un item et le ramener.
+    Le joueur doit aller à un endroit donné pour trouver un item et le ramener.
  * \param perso_t * player
  * \param cell_t map[D][D]
  * \param quete_t * quete
- * \param quest_map[6][2];
- * \param item_t * Tab_Items
- * \param int nb_items_available
  * \return Retourne un \a int : 0 si le jeu continue et -1 si problème dans la quete.
 */
 int quete_recherche(perso_t * player, cell_t map[D][D], quete_t * quete){
@@ -108,7 +110,7 @@ int quete_recherche(perso_t * player, cell_t map[D][D], quete_t * quete){
         /*Description de la situation*/
         printf("\n   Vous croisez le chemin d'un homme qui paraît sympathique. Il vient à votre rencontre, vous commencez à discuter.\n");
         printf("   Il vous explique qu'il connait très bien les environs, et qu'il pourrait vous aider à vous mettre en sécurité dans un lieu discret.\n");
-        printf("\n   Vous êtes très intéressé par l'aide qu'il vous propose, et il l'a très bien compris. Il vous propose un marché :\n");
+        printf("\n   Vous êtes très intéressé par l'aide qu'il vous propose et il l'a très bien compris. Il vous propose un marché :\n");
         printf("   \"J'ai besoin de trouver l'item %s, si tu acceptes d'aller me chercher cet item et de me le ramener par la suite, je t'aiderai à te sortir d'ici.\"\n", quete->recherche.wanted.name);
 
         printf("\n   Vous avez deux possibilités :\n");
@@ -152,7 +154,7 @@ int quete_recherche(perso_t * player, cell_t map[D][D], quete_t * quete){
                 return 0;
               }
               else if (conf == 2){
-                printf("\n   Vous lui annoncez ne pas souhaiter honorer cette requête, il est déçu mais vous laisse repartir explorer la map.\n\n");
+                printf("\n   Vous lui annoncez ne pas souhaiter honorer cette requête, il est déçu mais vous laisse repartir explorer la carte.\n\n");
                 entree_pour_continuer();
                 return 0;
               }
@@ -173,7 +175,7 @@ int quete_recherche(perso_t * player, cell_t map[D][D], quete_t * quete){
               clrscr();
               /*Le joueur renonce à la requete*/
               if(conf==2){
-                  printf("\n   Vous lui annoncez renoncer à cette requête, il est déçu mais vous laisse repartir explorer la map.\n\n");
+                  printf("\n   Vous lui annoncez renoncer à cette requête, il est déçu mais vous laisse repartir explorer la carte.\n\n");
                   entree_pour_continuer();
                   return 0;
               }
@@ -188,7 +190,7 @@ int quete_recherche(perso_t * player, cell_t map[D][D], quete_t * quete){
         }
         /*Le joueur ne souhaite pas trouver l'item demandé par l'homme*/
         else if(choix==2){
-            printf("\n   Vous lui annoncez ne pas souhaiter honorer cette requête, il est déçu mais vous laisse repartir explorer la map.\n\n");
+            printf("\n   Vous lui annoncez ne pas souhaiter honorer cette requête, il est déçu mais vous laisse repartir explorer la carte.\n\n");
             entree_pour_continuer();
             return 0;
         }
@@ -199,7 +201,7 @@ int quete_recherche(perso_t * player, cell_t map[D][D], quete_t * quete){
         /*Le joueur n'est pas sur un hexagone de categorie urbain*/
           printf("\n   L'homme vous demande ce que vous faîtes encore ici... \n");
           printf("   Allez trouver %s dans une ville, un marché ou une favella.\n", quete->recherche.wanted.name);
-          printf("   Continuez votre route sur la map, afin d'aller dans un des lieux cités ci-dessus.\n\n");
+          printf("   Continuez votre route sur la carte, afin d'aller dans un des lieux cités ci-dessus.\n\n");
           entree_pour_continuer();
           return 0;
     }

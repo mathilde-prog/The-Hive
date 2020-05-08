@@ -3,6 +3,14 @@
 #include <time.h>
 #include "lib/structure.h"
 
+/**
+ * \file test_item_in_inventory.c
+ * \brief Fichier TEST - Fonction item_in_inventory
+ * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
+ * \version 1.0
+ * \date 2020
+*/
+
 int main(){
   srand(time(NULL));
 
@@ -14,29 +22,29 @@ int main(){
 
   creation_tab_item(Tab_Items, &nb_items_available);
 
-  init_player(&player);
-  map_init(map,quest_map,player);
+  map_init(map,quest_map);
+  init_player(&player,map);
 
   check_the_map(player,map);
 
-  item_t * fishing_rod = creer_item("fishing rod",misc,0,0,0,0,0,0,0,0,0,0,0);
-  item_t * map_item = creer_item("map",misc,0,0,0,0,0,0,0,0,0,0,0);
-  item_t * medical_kit = creer_item("medical kit",misc,0,0,0,0,0,0,0,0,0,0,0);
+  item_t * fishing_rod = creer_item("canne a peche",misc,0,0,0,0,0,0,0,0,0,0,0);
+  item_t * map_item = creer_item("carte",misc,0,0,0,0,0,0,0,0,0,0,0);
+  item_t * medical_kit = creer_item("kit medical",misc,0,0,0,0,0,0,0,0,0,0,0);
 
-  printf("TEST map : \n");
-  (item_in_inventory(player,"map") == -1) ? printf("Test OK\n") : printf("Test KO\n");
+  printf("TEST carte : \n");
+  (item_in_inventory(player,"carte") == -1) ? printf("Test OK\n") : printf("Test KO\n");
   add_item_to_inventory(&player,*map_item);
-  (item_in_inventory(player,"map") != -1) ? printf("Test OK\n\n") : printf("Test KO\n\n");
+  (item_in_inventory(player,"carte") != -1) ? printf("Test OK\n\n") : printf("Test KO\n\n");
 
-  printf("TEST fishing rod : \n");
-  (item_in_inventory(player,"fishing rod") == -1) ? printf("Test OK\n") : printf("Test KO\n");
+  printf("TEST canne à pêche : \n");
+  (item_in_inventory(player,"canne a peche") == -1) ? printf("Test OK\n") : printf("Test KO\n");
   add_item_to_inventory(&player,*fishing_rod);
-  item_in_inventory(player,"fishing rod") != -1 ? printf("Test OK\n\n") : printf("Test KO\n\n");
+  item_in_inventory(player,"canne a peche") != -1 ? printf("Test OK\n\n") : printf("Test KO\n\n");
 
-  printf("TEST medical kit : \n");
-  (item_in_inventory(player,"medical kit") == -1) ? printf("Test OK\n") : printf("Test KO\n");
+  printf("TEST kit médical : \n");
+  (item_in_inventory(player,"kit medical") == -1) ? printf("Test OK\n") : printf("Test KO\n");
   add_item_to_inventory(&player,*medical_kit);
-  (item_in_inventory(player,"map") != -1) ? printf("Test OK\n") : printf("Test KO\n");
+  (item_in_inventory(player,"kit medical") != -1) ? printf("Test OK\n") : printf("Test KO\n");
 
   return EXIT_SUCCESS;
 }

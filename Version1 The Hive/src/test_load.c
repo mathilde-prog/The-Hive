@@ -4,6 +4,26 @@
 #include <unistd.h>
 #include "lib/structure.h"
 
+/**
+ * \file test_load.c
+ * \brief Fichier TEST - Charger une partie
+ * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
+ * \version 1.0
+ * \date 2020
+*/
+
+/**
+ * \fn void load_test (perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete)
+ * \brief Charge les informations sur le joueur, son inventaire, son équipement ainsi que les informations sur la carte et les quêtes d'une partie test.
+ * \details Informations sur le joueur : points de vie, points d'énergie, points d'action, position sur la carte, nombre de tours restants
+ * \details Informations sur la carte : pour chaque case de la matrice map, on récupère son type, sa catégorie, s'il y a un combat, si le joueur a déjà fouillé la case et si une quête y est positionnée.
+ * \details Informations sur les quêtes : on récupère les coordonnées de chaque quête ainsi que leurs états.
+ * \param perso_t * player
+ * \param cell_t map[D][D]
+ * \param int quest_map[6][2]
+ * \param quete_t * quete
+ * \return Rien
+*/
 void load_test (perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete){
   int l, c, ind_rh, ind_lh, ind_head, ind_body, i = 0;
   FILE * fic = fopen("../sauv/sauv_test.csv","r");
@@ -104,96 +124,6 @@ void load_test (perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t
   }
 }
 
-void details_map(cell_t map[D][D]){
-  int l, c;
-
-  printf("\033[34;01m   Type\033[00m\n");
-  for(l = 0; l < D; l++){
-    for(c = 0; c < D; c++){
-      if(c == 0){
-        printf("   ");
-      }
-      printf("%2d ", map[l][c].type);
-    }
-    printf("\n");
-  }
-  printf("\n\n");
-
-  printf("\033[34;01mCateg\033[00m\n");
-  for(l = 0; l < D; l++){
-    for(c = 0; c < D; c++){
-      if(c == 0){
-        printf("   ");
-      }
-      printf("%2d ", map[l][c].categ);
-    }
-    printf("\n");
-  }
-  printf("\n\n");
-
-  printf("\033[34;01m   Encounter\033[00m\n");
-  for(l = 0; l < D; l++){
-    for(c = 0; c < D; c++){
-      if(c == 0){
-        printf("   ");
-      }
-      printf("%2d ", map[l][c].encounter);
-    }
-    printf("\n");
-  }
-  printf("\n\n");
-
-  printf("\033[34;01m   Quest ID\033[00m\n");
-  for(l = 0; l < D; l++){
-    for(c = 0; c < D; c++){
-      if(c == 0){
-        printf("   ");
-      }
-      printf("%2d ", map[l][c].quest_id);
-    }
-    printf("\n");
-  }
-  printf("\n\n");
-
-  printf("\033[34;01m   Scavenged\033[00m\n");
-  for(l = 0; l < D; l++){
-    for(c = 0; c < D; c++){
-      if(c == 0){
-        printf("   ");
-      }
-      printf("%2d ", map[l][c].scavenged);
-    }
-    printf("\n");
-  }
-  printf("\n\n");
-}
-
-void info_quetes(int quest_map[6][2], quete_t quete){
-  int l, c;
-
-  printf ("\033[34;01m\n\n\n   [Affichage matrice quest_map]\033[00m\n\n");
-
-  for(l = 0; l < 6; l++){
-    for(c = 0; c < 2; c++){
-      if(c == 0){
-        printf("   ");
-      }
-      printf("%2d ",quest_map[l][c]);
-    }
-      printf("\n");
-  }
-
-  printf ("\033[34;01m\n   [Affichage quete_t quete]\033[00m\n\n");
-  printf("   soin : %d\n", quete.soin);
-  printf("   recherche :\n      situation : %d\n      trouve : %d\n      bunkerX : %d\n      bunkerY : %d\n", quete.recherche.situation, quete.recherche.trouve, quete.recherche.bunkerX, quete.recherche.bunkerY);
-  display_item(quete.recherche.wanted);
-  printf("\n   bunker : %d\n", quete.bunker);
-  printf("   montagne : %d\n", quete.montagne);
-  printf("   frontiere : %d\n", quete.frontiere);
-  printf("   bandits : %d\n\n", quete.bandits);
-}
-
-
 int main(){
   int nb;
   item_t Tab_Items[20];
@@ -224,12 +154,9 @@ int main(){
             case 1: clrscr(); display_player_characteristics(map, player); entree_pour_continuer(); break;
             case 2: clrscr(); display_inventory(player); entree_pour_continuer(); break;
             case 3: clrscr(); display_equipment_player(player); entree_pour_continuer(); break;
-            case 4: clrscr(); display_TEXT(player.posY,player.posX,map);
-                    count(map);
-                    printf("\n");
-                    break;
-            case 5: clrscr(); details_map(map); entree_pour_continuer(); break;
-            case 6: clrscr(); info_quetes(quest_map,quete); entree_pour_continuer(); break;
+            case 4: clrscr(); display_TEXT(player.posY,player.posX,map); entree_pour_continuer();  break;
+            case 5: clrscr(); informations_map(map); entree_pour_continuer(); break;
+            case 6: clrscr(); informations_quetes(map,quest_map,quete); entree_pour_continuer(); break;
             default: printf("\tCommand not found\n"); sleep(1); goto menu; break;
           }
         }

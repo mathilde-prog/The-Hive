@@ -11,12 +11,27 @@
  * \version 1.0
  * \date 2020
 */
+
+/**
+ * \fn void sauvegarder_progression(perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete, sauv_t sauv)
+ * \brief Sauvegarde la progression du joueur et lui propose de continuer ou quitter le jeu
+ * \param perso_t player
+ * \param cell_t map[D][D]
+ * \param int quest_map[6][2]
+ * \param quete_t quete
+ * \param sauv_t sauv
+ * \return Rien
+*/
 void sauvegarder_progression(perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete, sauv_t sauv){
   int rep;
 
   clrscr();
+
+  // Sauvegarde
   save(player,map,quest_map,quete,sauv);
   printf("   \n   Votre progression a été sauvegardée !\n");
+
+  // Choix : continuer ou quitter le jeu ?
   printf("\n   Un choix s'offre à vous : \n");
   printf("   1. Continuer le jeu\n");
   printf("   2. Quitter le jeu\n");
@@ -30,7 +45,7 @@ void sauvegarder_progression(perso_t player, cell_t map[D][D], int quest_map[6][
 
   clrscr();
   if(rep == 2){
-    exit(1);
+    exit(0);
   }
 }
 
@@ -51,7 +66,7 @@ int sauvegarde_existante(sauv_t sauv){
 
 /**
  * \fn void affichage_parties(sauv_t sauv)
- * \brief Affiche les parties sauvegardées
+ * \brief Affiche les parties sauvegardées et disponibles
  * \param sauv_t sauv
  * \return Rien
 */
@@ -75,16 +90,17 @@ void affichage_parties(sauv_t sauv){
 */
 void update_etat_sauvegarde(sauv_t * sauv){
   FILE * sauv1, * sauv2, * sauv3;
+  // Ouverture des fichiers de sauvegarde en lecture
   sauv1 = fopen("../sauv/sauv1.csv","r");
   sauv2 = fopen("../sauv/sauv2.csv","r");
   sauv3 = fopen("../sauv/sauv3.csv","r");
 
-  if(sauv1){
+  if(sauv1){    // Si ouverture réussie, alors la sauvegarde existe
     sauv->sauv1_existe = 1;
     fscanf(sauv1," %[^\n]",sauv->nomPartie1);
     fclose(sauv1);
   }
-  else {
+  else {        // Sinon, pas de sauvegarde existante
     sauv->sauv1_existe = 0;
     strcpy(sauv->nomPartie1,"Nouvelle partie");
   }
@@ -112,7 +128,7 @@ void update_etat_sauvegarde(sauv_t * sauv){
 
 /**
  * \fn void effacer_partie(sauv_t sauv)
- * \brief Efface une partie
+ * \brief Efface une partie choisie par l'utilisateur
  * \param sauv_t sauv
  * \return Rien
 */
@@ -141,7 +157,7 @@ void effacer_partie(sauv_t sauv){
     if(choix == 1){
       if(sauv.sauv1_existe){
         printf("   Partie %s effacée\n", sauv.nomPartie1);
-        remove("../sauv/sauv1.csv");
+        remove("../sauv/sauv1.csv"); // La fonction remove efface le fichier
         update_etat_sauvegarde(&sauv);
       }
       else {
@@ -183,7 +199,10 @@ void effacer_partie(sauv_t sauv){
 
 /**
  * \fn void save (perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete, sauv_t sauv)
- * \brief Sauvegarde les informations sur le joueur, son inventaire, son équipement ainsi que les informations sur la carte et les quêtes d'une partie
+ * \brief Sauvegarde les informations sur le joueur, son inventaire, son équipement ainsi que les informations sur la carte et les quêtes d'une partie.
+ * \details Informations sur le joueur : points de vie, points d'énergie, points d'action, position sur la carte, nombre de tours restants
+ * \details Informations sur la carte : pour chaque case de la matrice map, on sauvegarde son type, sa catégorie, s'il y a un combat, si le joueur a déjà fouillé la case et si une quête y est positionnée.
+ * \details Informations sur les quêtes : on sauvegarde les coordonnées de chaque quête ainsi que leurs états.
  * \param perso_t player
  * \param cell_t map[D][D]
  * \param int quest_map[6][2]
@@ -305,7 +324,10 @@ void save (perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete,
 
 /**
  * \fn void load (perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete, sauv_t sauv)
- * \brief Charge les informations sur le joueur, son inventaire, son équipement ainsi que les informations sur la carte et les quêtes d'une partie
+ * \brief Charge les informations sur le joueur, son inventaire, son équipement ainsi que les informations sur la carte et les quêtes d'une partie.
+ * \details Informations sur le joueur : points de vie, points d'énergie, points d'action, position sur la carte, nombre de tours restants
+ * \details Informations sur la carte : pour chaque case de la matrice map, on récupère son type, sa catégorie, s'il y a un combat, si le joueur a déjà fouillé la case et si une quête y est positionnée.
+ * \details Informations sur les quêtes : on récupère les coordonnées de chaque quête ainsi que leurs états.
  * \param perso_t * player
  * \param cell_t map[D][D]
  * \param int quest_map[6][2]

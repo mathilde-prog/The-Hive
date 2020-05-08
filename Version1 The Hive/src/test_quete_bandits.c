@@ -4,6 +4,14 @@
 #include <unistd.h>
 #include "lib/structure.h"
 
+/**
+ * \file test_quete_bandits.c
+ * \brief Fichier TEST - Quête bandits
+ * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
+ * \version 1.0
+ * \date 2020
+*/
+
 int main(){
   srand(time(NULL));
 
@@ -18,14 +26,14 @@ int main(){
   int nb_items_available = 0;
   creation_tab_item(Tab_Items, &nb_items_available);
 
-  item_t * pistol = creer_item("pistol",weapon,5,25,15,30,85,60,0,1,0,20,60);
-  item_t * shotgun = creer_item("shotgun",weapon,10,40,30,40,85,60,0,1,0,15,50);
-  item_t * bulletproof_vest = creer_item("bulletproof vest",armor,0,0,0,0,0,0,0.7,2,0,10,70);
-  item_t * helmet = creer_item("helmet",armor,0,0,0,0,0,0,0.6,3,0,0,0);
-  item_t * knife = creer_item("knife",weapon,20,0,0,75,0,0,0,1,0,70,70);
+  item_t * pistol = creer_item("pistolet",weapon,5,25,15,30,85,60,0,1,0,20,60);
+  item_t * shotgun = creer_item("fusil",weapon,10,40,30,40,85,60,0,1,0,15,50);
+  item_t * bulletproof_vest = creer_item("gilet pare-balles",armor,0,0,0,0,0,0,0.7,2,0,10,70);
+  item_t * helmet = creer_item("casque",armor,0,0,0,0,0,0,0.6,3,0,0,0);
+  item_t * knife = creer_item("couteau",weapon,20,0,0,75,0,0,0,1,0,70,70);
 
-  init_player(&player);
-  map_init(map,quest_map,player);
+  map_init(map,quest_map);
+  init_player(&player,map);
   init_quete(&quete,quest_map,Tab_Items,nb_items_available);
 
   add_item_to_inventory(&player,*pistol);
@@ -47,7 +55,7 @@ int main(){
   switch(choix){
       case 0: break;
       case 1: clrscr();
-              printf("\n   Souhaitez-vous tester avec shotgun (1) ou pistol (2) ? \n");
+              printf("\n   Souhaitez-vous tester avec fusil (1) ou pistolet (2) ? \n");
               printf("   Votre choix : ");
               do {
                 scanf("%d",&arme);
@@ -74,7 +82,7 @@ int main(){
 
 
   clrscr();
-  sortie = quete_bandits(&player,&quete,Tab_Items,nb_items_available);
+  sortie = quete_bandits(&player,&quete,Tab_Items,nb_items_available,map);
   switch(sortie){
     case 0: printf("\n   Le jeu continue!\n"); break;
     case 1: printf("\n   Fin du jeu\n"); break;

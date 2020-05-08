@@ -23,7 +23,6 @@ void entree_pour_continuer(){
   while(getchar() != '\n');
 }
 
-
 /**
  * \fn void clrscr()
  * \brief Efface la sortie du terminal, le remet à zéro.
@@ -36,7 +35,7 @@ void clrscr(){ // fonction pour clear l'output de terminal
 
 /**
  * \fn int range(int a,int b)
- * \brief Génère un nombre aléatoire compris entre deux entiers passés en paramètre.
+ * \brief Génère un nombre aléatoire compris entre deux entiers passés en paramètre. Intervalle [a;b]
  * \param int a
  * \param int b
  * \return Retourne un \a int

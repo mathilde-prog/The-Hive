@@ -4,6 +4,14 @@
 #include <unistd.h>
 #include "lib/structure.h"
 
+/**
+ * \file test_quete_montagne.c
+ * \brief Fichier TEST - Quête montagne
+ * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
+ * \version 1.0
+ * \date 2020
+*/
+
 int main(){
   srand(time(NULL));
   clrscr();
@@ -18,17 +26,17 @@ int main(){
   int nb_items_available = 0;
   creation_tab_item(Tab_Items, &nb_items_available);
 
-  item_t * rope = creer_item("rope",misc,0,0,0,0,0,0,0,0,0,40,50);
-  item_t * walking_stick = creer_item("walking stick",misc,0,0,0,0,0,0,0,0,70,30,0);
+  item_t * rope = creer_item("corde",misc,0,0,0,0,0,0,0,0,0,40,50);
+  item_t * walking_stick = creer_item("baton de marche",misc,0,0,0,0,0,0,0,0,70,30,0);
 
-  init_player(&player);
-  map_init(map,quest_map,player);
+  map_init(map,quest_map);
+  init_player(&player,map);
   init_quete(&quete,quest_map,Tab_Items,nb_items_available);
 
   printf ("\033[34;01m\n   Menu test quête montagne\033[00m\n");
-  printf("   1. Rope + Walking stick\n");
-  printf("   2. Rope\n");
-  printf("   3. Walking stick\n");
+  printf("   1. Corde + Bâtone de marche\n");
+  printf("   2. Corde\n");
+  printf("   3. Bâton de marche\n");
   printf("   4. Rien\n");
 
   printf("\n   Votre réponse : ");

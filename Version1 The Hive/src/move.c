@@ -288,8 +288,14 @@ void move (perso_t * player, cell_t map[D][D]){
   }
 }
 
-/* ATTENTION : X et Y déjà inversés ! */
-void random_move(perso_t * player){
+/**
+ * \fn void random_move(perso_t * player, cell_t map[D][D])
+ * \brief Déplace aléatoirement le joueur sur un des hexagones qui l'entoure 
+ * \param perso_t * player
+ * \param cell_t map[D][D]
+ * \return Rien
+*/
+void random_move(perso_t * player, cell_t map[D][D]){
   int code, l = player->posY, c = player->posX;
   while(1){
     code=range(1,8);

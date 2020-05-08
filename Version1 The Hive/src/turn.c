@@ -34,7 +34,6 @@ void next_turn(perso_t * player){
  * \param perso_t * player
  * \return Rien
 */
-/* rest_and_heal: allows the player to rest and gain pv and pe (proportionate to his number of pa) */
 void rest_and_heal(perso_t * player){
   int value_pv = player->pa*5;
   int value_pe = player->pa*5;

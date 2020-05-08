@@ -13,17 +13,22 @@
 */
 
 /**
- * \fn void init_player(perso_t * player)
+ * \fn void init_player(perso_t * player, cell_t map[D][D])
  * \brief Initialise les paramètres du joueur quand il commence le jeu
  * \param perso_t * player
+ * \param cell_t map[D][D]
  * \return Rien
 */
-/* init_player: initializes the player's settings when he starts the game */
-void init_player(perso_t * player){
+void init_player(perso_t * player, cell_t map[D][D]){
   player->turns = 15;
-  player->nb_items_inventory = 0; /* The player starts the game with an empty inventory. */
-  player->posX = rand()%D;
-  player->posY = rand()%D;
+  player->nb_items_inventory = 0; /* Le joueur commence la partie avec un inventaire vide. */
+
+  // Impossible pour le joueur de commencer une partie par un combat ou une quête
+  do{
+    player->posY = rand()%D;
+    player->posX = rand()%D;
+  } while((map[player->posY][player->posX].encounter == 1) || (map[player->posY][player->posX].quest_id != 0));
+
   player->pv = 100;
   player->pe = 100;
   player->pa = 5;
@@ -52,32 +57,11 @@ void init_player(perso_t * player){
  * \param perso_t player
  * \return Rien
 */
-/* display_player_characteristics: displays the player parameters (pv,pe,pa,location,turns) */
 void display_player_characteristics(cell_t map[D][D], perso_t player){
   printf("\n   ================================== INFO JOUEUR =====================================\n");
-
   printf("   PV = %3d  PE = %3d  PA = %3d\n",player.pv,player.pe,player.pa);
   printf("   Position joueur:  x = %d  y = %d  ",player.posX,player.posY);
-  switch(map[player.posY][player.posX].type){
-    case prairie   : printf("prairie "); break;
-    case foret     : printf("forêt ");    break;
-    case ville     : printf("ville ");    break;
-    case lac       : printf("lac ");     break;
-    case camp_mil  : printf("camp militaire ");  break;
-    case camp_ban  : printf("camp des bandits ");     break;
-    case market    : printf("marché ");   break;
-    case favella   : printf("favella ");   break;
-    case montagne  : printf("montagne ");     break;
-    case frontiere : printf("frontière ");      break;
-    case mer       : printf("mer ");   break;
-    case wasteland : printf("wasteland ");    break;
-  }
-  switch(map[player.posY][player.posX].categ){
-    case other   : printf("[AUTRE]\n"); break;
-    case nature  : printf("[NATURE]\n"); break;
-    case urbain  : printf("[URBAIN]\n"); break;
-    case militaire : printf("[MILITAIRE]\n");  break;
-  }
+  afficher_type_categ_hexa(map,player.posY,player.posX);
 
   /* No special competence for version 1 */
   /*

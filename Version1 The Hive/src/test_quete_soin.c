@@ -4,6 +4,14 @@
 #include <unistd.h>
 #include "lib/structure.h"
 
+/**
+ * \file test_quete_soin.c
+ * \brief Fichier TEST - Quête soin
+ * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
+ * \version 1.0
+ * \date 2020
+*/
+
 int main(){
   srand(time(NULL));
   clrscr();
@@ -19,18 +27,18 @@ int main(){
   creation_tab_item(Tab_Items,&nb_items_available);
 
   item_t * fruits = creer_item("fruits",food,0,0,0,0,0,0,0,0,60,10,50);
-  item_t * fish = creer_item("fish",food,0,0,0,0,0,0,0,0,0,0,0);
-  item_t * canned_food = creer_item("canned food",food,0,0,0,0,0,0,0,0,0,60,75);
-  item_t * medical_kit = creer_item("medical kit",misc,0,0,0,0,0,0,0,0,0,60,80);
-  item_t * rope = creer_item("rope",misc,0,0,0,0,0,0,0,0,0,40,50);
-  item_t * map_item = creer_item("map",misc,0,0,0,0,0,0,0,0,0,20,70);
-  item_t * pistol = creer_item("pistol",weapon,5,25,15,30,85,60,0,1,0,20,60);
-  item_t * shotgun = creer_item("shotgun",weapon,10,40,30,40,85,60,0,1,0,15,50);
-  item_t * bulletproof_vest = creer_item("bulletproof vest",armor,0,0,0,0,0,0,0.7,2,0,10,70);
-  item_t * helmet = creer_item("helmet",armor,0,0,0,0,0,0,0.6,3,0,0,0);
+  item_t * fish = creer_item("poisson",food,0,0,0,0,0,0,0,0,0,0,0);
+  item_t * canned_food = creer_item("boite de conserve",food,0,0,0,0,0,0,0,0,0,60,75);
+  item_t * medical_kit = creer_item("kit medical",misc,0,0,0,0,0,0,0,0,0,60,80);
+  item_t * rope = creer_item("corde",misc,0,0,0,0,0,0,0,0,0,40,50);
+  item_t * map_item = creer_item("carte",misc,0,0,0,0,0,0,0,0,0,20,70);
+  item_t * pistol = creer_item("pistolet",weapon,5,25,15,30,85,60,0,1,0,20,60);
+  item_t * shotgun = creer_item("fusil",weapon,10,40,30,40,85,60,0,1,0,15,50);
+  item_t * bulletproof_vest = creer_item("gilet pare-balles",armor,0,0,0,0,0,0,0.7,2,0,10,70);
+  item_t * helmet = creer_item("casque",armor,0,0,0,0,0,0,0.6,3,0,0,0);
 
-  init_player(&player);
-  map_init(map,quest_map,player);
+  map_init(map,quest_map);
+  init_player(&player,map);
   init_quete(&quete,quest_map,Tab_Items,nb_items_available);
 
   printf ("\033[34;01m\n   Menu test quête soin\033[00m\n");
@@ -113,5 +121,5 @@ int main(){
   free(shotgun);
   free(bulletproof_vest);
   free(helmet);
-  free(Tab_Items); 
+  free(Tab_Items);
 }

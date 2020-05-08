@@ -4,6 +4,14 @@
 #include <unistd.h>
 #include "lib/structure.h"
 
+/**
+ * \file test_quete_bunker.c
+ * \brief Fichier TEST - Quête bunker
+ * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
+ * \version 1.0
+ * \date 2020
+*/
+
 int main(){
   srand(time(NULL));
   clrscr();
@@ -18,10 +26,10 @@ int main(){
   int nb_items_available = 0;
   creation_tab_item(Tab_Items, &nb_items_available);
 
-  item_t * pass_card = creer_item("pass card", misc, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+  item_t * pass_card = creer_item("pass", misc, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
-  init_player(&player);
-  map_init(map,quest_map,player);
+  map_init(map,quest_map);
+  init_player(&player,map);
   init_quete(&quete,quest_map,Tab_Items,nb_items_available);
 
   printf ("\033[34;01m\n   Menu test quête bunker\033[00m\n");

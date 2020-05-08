@@ -16,7 +16,7 @@
 
 /**
  * \fn npc_t * init_npc_quete(item_t * Tab_Items, int pers)
- * \brief Initialisation du personnage de l'homme bless�.
+ * \brief Initialisation du personnage de l'homme blessé.
  * \details
     L'initialisation est différente en fonction du "metier" de l'homme : soldat, policier. Il n'aura pas la même arme mais aura la même armure.
  * \param item_t * Tab_Items
@@ -217,8 +217,8 @@ int aider_homme_blesse(perso_t * player, item_t * pass_card, quete_t * quete, in
     }
 
     /*Recherche du medical_kit dans l'inventaire du joueur*/
-    if(item_in_inventory(*player,"medical kit") !=  -1){
-            mk = item_in_inventory(*player,"medical kit");
+    if(item_in_inventory(*player,"kit medical") !=  -1){
+            mk = item_in_inventory(*player,"kit medical");
             ind_items_soin[cpt] = mk;
     }
 
@@ -244,8 +244,8 @@ int aider_homme_blesse(perso_t * player, item_t * pass_card, quete_t * quete, in
             printf("   0 - Changement d'avis, ne rien lui donner, ne pas l'aider\n");
             printf("   1 - Donner de la nourriture pour qu'il reprenne des forces\n");
             if(mk!=-1){
-                printf("   2 - Utiliser le medical kit pour lui soigner ses blessures\n");
-                printf("   3 - Donner de la nourriture et utiliser le medical kit\n");
+                printf("   2 - Utiliser le kit médical pour lui soigner ses blessures\n");
+                printf("   3 - Donner de la nourriture et utiliser le kit médical\n");
             }
             printf("\n   Comment souhaitez-vous l'aider ? ");
             do{
@@ -332,7 +332,7 @@ int aider_homme_blesse(perso_t * player, item_t * pass_card, quete_t * quete, in
 
                 /*Utilisation du medical kit*/
                 if(choix>1){
-                    printf("\n   Le medical kit a bien été utilisé pour soigner l'homme.\n");
+                    printf("\n   Le kit médical a bien été utilisé pour soigner l'homme.\n");
                     delete_item_in_inventory(player, player->inventory[mk]);
                 }
 

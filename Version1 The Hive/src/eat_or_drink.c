@@ -36,12 +36,11 @@ void gain_energie(perso_t * player, int val_e){
 /**
  * \fn void eat_or_drink (perso_t * player, item_t item)
  * \brief Permet au joueur de boire ou manger un item de type \a food et récupérer des points d'énergie ou action (si cela est possible).
- * \details Retire l'item de l'inventaire
+ * \details Retire l'item mangé / bu de l'inventaire
  * \param perso_t * player
  * \param item_t item
  * \return Rien
 */
-/* eat_or_drink: allows the player to drink or eat an item (if type food) and to recover pe and pa when it's possible */
 void eat_or_drink (perso_t * player, item_t item){
   printf("\n");
   if(item.type == food){
@@ -49,11 +48,11 @@ void eat_or_drink (perso_t * player, item_t item){
       printf("   Ces fruits sont délicieux! ");
       gain_energie(player,10);
     }
-    else if(!strcmp(item.name,"fish")){
+    else if(!strcmp(item.name,"poisson")){
       printf("   Attention aux arrêtes... ");
       gain_energie(player,15);
     }
-    else if (!strcmp(item.name,"canned food")){
+    else if (!strcmp(item.name,"boite de conserve")){
       printf("   Qui aurait pensé qu'une boîte de conserve ferait un si bon repas! ");
       gain_energie(player,50);
     }
@@ -61,7 +60,7 @@ void eat_or_drink (perso_t * player, item_t item){
       printf("   Ce soda est très sucré. ");
       gain_energie(player,12);
     }
-    else if(!strcmp(item.name,"energy drink")){
+    else if(!strcmp(item.name,"boisson energie+")){
       printf("   Une boisson - énergisante - ! ");
       if(player->pa < 5){
         player->pa++;
@@ -69,7 +68,7 @@ void eat_or_drink (perso_t * player, item_t item){
       }
       gain_energie(player,20);
     }
-    else if(!strcmp(item.name,"bottle water")){
+    else if(!strcmp(item.name,"bouteille eau")){
       printf("   C'est rafraichissant! ");
       gain_energie(player,10);
     }

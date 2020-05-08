@@ -11,6 +11,107 @@
  * \date 2020
 */
 
+/**
+ * \fn void afficher_type_categ_hexa(cell_t map[D][D], int l, int c)
+ * \brief Affiche le type et la catégorie de l'hexagone de la carte dont les coordonnées sont passées en paramètres
+ * \param cell_t map[D][D]
+ * \param int l
+ * \param int c
+ * \return Rien
+*/
+void afficher_type_categ_hexa(cell_t map[D][D], int l, int c){
+  switch(map[l][c].type){
+    case prairie   : printf("prairie "); break;
+    case foret     : printf("forêt ");    break;
+    case ville     : printf("ville ");    break;
+    case lac       : printf("lac ");     break;
+    case camp_mil  : printf("camp militaire ");  break;
+    case camp_ban  : printf("camp des bandits ");     break;
+    case market    : printf("marché ");   break;
+    case favella   : printf("favella ");   break;
+    case montagne  : printf("montagne ");     break;
+    case frontiere : printf("frontière ");      break;
+    case mer       : printf("mer ");   break;
+    case wasteland : printf("wasteland ");    break;
+  }
+
+  switch(map[l][c].categ){
+    case other   : printf("[AUTRE]\n"); break;
+    case nature  : printf("[NATURE]\n"); break;
+    case urbain  : printf("[URBAIN]\n"); break;
+    case militaire : printf("[MILITAIRE]\n");  break;
+  }
+}
+
+/**
+ * \fn void informations_map(cell_t map[D][D])
+ * \brief Affiche les informations de la carte
+ * \param cell_t map[D][D]
+ * \return Rien
+*/
+void informations_map(cell_t map[D][D]){
+  int l, c;
+
+  printf("\033[34;01m   Type\033[00m\n");
+  for(l = 0; l < D; l++){
+    for(c = 0; c < D; c++){
+      if(c == 0){
+        printf("   ");
+      }
+      printf("%2d ", map[l][c].type);
+    }
+    printf("\n");
+  }
+  printf("\n\n");
+
+  printf("\033[34;01mCateg\033[00m\n");
+  for(l = 0; l < D; l++){
+    for(c = 0; c < D; c++){
+      if(c == 0){
+        printf("   ");
+      }
+      printf("%2d ", map[l][c].categ);
+    }
+    printf("\n");
+  }
+  printf("\n\n");
+
+  printf("\033[34;01m   Encounter\033[00m\n");
+  for(l = 0; l < D; l++){
+    for(c = 0; c < D; c++){
+      if(c == 0){
+        printf("   ");
+      }
+      printf("%2d ", map[l][c].encounter);
+    }
+    printf("\n");
+  }
+  printf("\n\n");
+
+  printf("\033[34;01m   Quest ID\033[00m\n");
+  for(l = 0; l < D; l++){
+    for(c = 0; c < D; c++){
+      if(c == 0){
+        printf("   ");
+      }
+      printf("%2d ", map[l][c].quest_id);
+    }
+    printf("\n");
+  }
+  printf("\n\n");
+
+  printf("\033[34;01m   Scavenged\033[00m\n");
+  for(l = 0; l < D; l++){
+    for(c = 0; c < D; c++){
+      if(c == 0){
+        printf("   ");
+      }
+      printf("%2d ", map[l][c].scavenged);
+    }
+    printf("\n");
+  }
+  printf("\n\n");
+}
 
 /**
  * \fn void init_border(cell_t map[D][D])
@@ -38,29 +139,16 @@ void init_border(cell_t map[D][D]){ // initiates border of the map
   }
 }
 
-
 /**
- * \fn int bordercross(int i, int j, cell_t map[D][D])
- * \brief MOUSTAPHA
- * \param int i
- * \param int j
+ * \fn void topup(cell_t map[D][D], int quest_map[6][2])
+ * \brief Positionne un nombre déterminé de différents types/catégories d'hexagones (coordonnées aléatoires)
  * \param cell_t map[D][D]
- * \return Retourne un \a int : MOUSTAPHA
-*/
-int bordercross(int i, int j, cell_t map[D][D]){ // fonction to prevent favellas spawning on border
-  return (map[i-1][j].type>=9 || map[i-1][j-1].type>=9 || map[i-1][j+1].type>=9 || map[i][j-1].type>=9 || map[i][j+1].type>=9 || map[i+1][j-1].type>=9 || map[i+1][j].type>=9 || map[i+1][j+1].type>=9);
-}
-
-
-/**
- * \fn void topup(cell_t map[D][D])
- * \brief MOUSTAPHA
- * \param cell_t map[D][D]
+ * \param int quest_map[6][2]
  * \return Rien
 */
 void topup(cell_t map[D][D], int quest_map[6][2]){ // spawns fixed amount of essential hexes on random coordinates
   int s,i,j;
-  int low=1, high=13;
+  int low=1, high=D-1;
 
   i = range(low+1,high-1);
   j = range(low+1,high-1);
@@ -97,7 +185,6 @@ void topup(cell_t map[D][D], int quest_map[6][2]){ // spawns fixed amount of ess
   map[i][j].type=camp_mil;
   map[i][j].categ=militaire;
 
-
   while(map[i][j].type!=prairie){
     i = range(low,high);
     j = range(low,high);
@@ -107,7 +194,6 @@ void topup(cell_t map[D][D], int quest_map[6][2]){ // spawns fixed amount of ess
   quest_map[3][0]=i; // bandits
   quest_map[3][1]=j;
   map[i][j].quest_id=4;
-
 
   for(s=5;s!=0;s--){
     while(map[i][j].type!=prairie){
@@ -356,10 +442,9 @@ void display_TEXT(int l, int c, cell_t map[D][D]){ // AFFICHE LA MAP EN VERSION 
 
 
 /**
- * \fn void inti_base(cell_t map[D][D])
+ * \fn void init_base(cell_t map[D][D])
  * \brief Initialise la base de la map
- \details
-    La map est initialisé par des hexagones de type prairie, donc catégorie "nature". Et les differents \a int de la structure cell_t map sont mis à 0.
+ * \details La map est initialisée par des hexagones de type prairie, donc catégorie "nature". Et les differents \a int de la structure cell_t map sont mis à 0.
  * \param cell_t map[D][D]
  * \return Rien
 */
@@ -461,43 +546,19 @@ void display_grid(const cell_t map[D][D]){ // AFFICHE LA MAP COMPLETE AVEC LA LE
   printf("+\n");
 }
 
-
 /**
- * \fn void display_quest(int quest_map[6][2])
- * \brief MOUSTPAHA
- * \param int quest_map[6][2]
- * \return Rien
-*/
-void display_quest(int quest_map[6][2]){
-  int i,j;
-  for(i=0; i<6; i++){
-    printf("Quest %d coordinates: ", i);
-    for(j=0; j<2; j++){
-      printf(" %d", quest_map[i][j]);
-    }
-    printf("\n");
-  }
-}
-
-
-/**
- * \fn void encounter_init(cell_t map[D][D], perso_t player)
- * \brief MOUSTAPHA
- \details
-    MOUSTAPHA
+ * \fn void encounter_init(cell_t map[D][D])
+ * \brief Initialise les positions des combats sur la carte
  * \param cell_t map[D][D]
- * \param perso_t player
  * \return Rien
 */
-void encounter_init(cell_t map[D][D], perso_t player){
+void encounter_init(cell_t map[D][D]){
   int i,j;
 
   for(i=1;i<D-1;i++){
     for(j=1;j<D-1;j++){
       if(rng(10)){
-        if((i != player.posY) || (j != player.posX)){ //Pour ne pas que le joueur commence la partie directement par un combat
           map[i][j].encounter=1;
-        }
       }
     }
   }
@@ -514,48 +575,52 @@ void encounter_init(cell_t map[D][D], perso_t player){
  * \return Rien
 */
 void quest_init(cell_t map[D][D], int quest_map[6][2]){
-  /*Quête montagne*/
+  /*Quête montagne  - Sur un hexagone de type montagne*/
   quest_map[0][0]=0;
-  quest_map[0][1]=range(0,D);
+  quest_map[0][1]=range(0,D-1);
   map[quest_map[0][0]][quest_map[0][1]].quest_id=1;
 
-  /*Quête frontière*/
-  quest_map[1][0]=range(0,D);
-  quest_map[1][1]=1;
+  /*Quête frontière - Sur un hexagone de type frontière */
+  quest_map[1][0]=range(0,D-1);
+  quest_map[1][1]=D-1;
   map[quest_map[1][0]][quest_map[1][1]].quest_id=2;
 
-  /*Quête bunker*/
-  quest_map[2][0]=range(1,D-1);
-  quest_map[2][1]=range(1,D-1);
+  /*Quête bunker - Hexagone hors bordure de type nature (mais pas un lac) */
+  do {
+    quest_map[2][0]=range(1,D-1);
+    quest_map[2][1]=range(1,D-1);
+  } while(map[quest_map[2][0]][quest_map[2][1]].categ != nature || map[quest_map[2][0]][quest_map[2][1]].type == lac );
   map[quest_map[2][0]][quest_map[2][1]].quest_id=3;
 
-  /*Quête soin*/
-  quest_map[4][0]=range(1,D-1);
-  quest_map[4][1]=range(1,D-1);
+  /*Quête soin - Hexagone hors bordure - ni lac, ni camp bandits */
+  do {
+    quest_map[4][0]=range(1,D-2);
+    quest_map[4][1]=range(1,D-2);
+  } while(map[quest_map[4][0]][quest_map[4][1]].type == lac || (map[quest_map[4][0]][quest_map[4][1]].type == camp_ban));
   map[quest_map[4][0]][quest_map[4][1]].quest_id=5;
 
-  /*Quête search*/
-  do{ //L'hexagone où se trouve la quete search doit être sur un hexagone de categorie non urbain
-      quest_map[5][0]=range(1,D-1);
+  /*Quête search - Hexagone hors bordure - ni urbain, ni camp_bandits*/
+  do{
+    quest_map[5][0]=range(1,D-1);
       quest_map[5][1]=range(1,D-1);
-  }while(map[quest_map[5][0]][quest_map[5][1]].categ == 2);
+  }while(map[quest_map[5][0]][quest_map[5][1]].categ == urbain || map[quest_map[5][0]][quest_map[5][1]].type == camp_ban );
   map[quest_map[5][0]][quest_map[5][1]].quest_id=6;
 }
 
 
 /**
- * \fn void map_init(cell_t map[D][D], int quest_map[6][2], perso_t player)
+ * \fn void map_init(cell_t map[D][D], int quest_map[6][2])
  * \brief Initialise la map au début de chaque partie
  * \param cell_t map[D][D]
  * \param int quest_map[6][2]
  * \param perso_t player
  * \return Rien
 */
-void map_init(cell_t map[D][D], int quest_map[6][2], perso_t player){
+void map_init(cell_t map[D][D], int quest_map[6][2]){
   init_base(map);
   init_border(map);
   topup(map, quest_map);
   nextgen(map);
-  encounter_init(map,player);
+  encounter_init(map);
   quest_init(map,quest_map);
 }

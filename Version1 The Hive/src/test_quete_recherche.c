@@ -4,6 +4,14 @@
 #include <unistd.h>
 #include "lib/structure.h"
 
+/**
+ * \file test_quete_recherche.c
+ * \brief Fichier TEST - Quête recherche
+ * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
+ * \version 1.0
+ * \date 2020
+*/
+
 int main(){
   srand(time(NULL));
 
@@ -17,11 +25,9 @@ int main(){
   int nb_items_available = 0;
   creation_tab_item(Tab_Items, &nb_items_available);
 
-  init_player(&player);
-  map_init(map,quest_map,player);
+  map_init(map,quest_map);
+  init_player(&player,map);
   init_quete(&quete,quest_map,Tab_Items,nb_items_available);
-
-  item_t * recherche = creer_item(quete.recherche.wanted.name,misc,5,25,15,30,85,60,0,1,0,20,60);
 
   clrscr();
   printf ("\033[34;01m\n   Menu test quête recherche\033[00m\n");
@@ -62,13 +68,13 @@ int main(){
       case 4:  player.posY = quest_map[5][0];
                player.posX = quest_map[5][1];
                quete.recherche.situation = 0;
-               add_item_to_inventory(&player,*recherche);
+               add_item_to_inventory(&player,quete.recherche.wanted);
                quete.recherche.trouve = 1;
                clrscr();
                sortie = quete_recherche(&player,map,&quete);
                break;
       case 5 : quete.recherche.situation = 0;
-               add_item_to_inventory(&player,*recherche);
+               add_item_to_inventory(&player,quete.recherche.wanted);
                quete.recherche.trouve = 1;
                do {
                  player.posY = rand()%D;
@@ -104,6 +110,6 @@ int main(){
   printf("\n   Quitter sans sauvegarder : -1\n\n");
   entree_pour_continuer();
   clrscr();
+
   free(Tab_Items);
-  free(recherche);
 }

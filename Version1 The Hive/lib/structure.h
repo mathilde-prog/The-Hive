@@ -6,6 +6,12 @@
  * \date 2020
 */
 
+/********************************* FONCTIONS PRATIQUES ***********************************/
+void entree_pour_continuer(); // fonctions_pratiques.c
+void clrscr(); 								// fonctions_pratiques.c
+int range(int a,int b);       // fonctions_pratiques.c
+int rng(int prob);            // fonctions_pratiques.c
+/*****************************************************************************************/
 
 /************************************* ITEMS *************************************/
 /**
@@ -27,27 +33,22 @@ typedef enum {none,hand,body,head} equip_t; 	/* where the player may wear equipm
 typedef struct {
 	char name[20];       /**< Nom item */
 	type_t type;         /**< Type item */
-
- 	int attack[3]; 				 /**< Valeur d'attaque */
-  int hitchance[3];      /**< A COMPLETER */
-
-	float defense; 				 /**< Valeur de défense */
-	equip_t equipable; 	 /**< Indicateur si le joueur peut s'équiper avec cet item et où */                        // indicates whether the player can equip himself with this item and where
-	int pc_nature; 			 /**< Pourcentage de chance de trouver cet item dans un hexagone de catégorie nature */    // percentage chance of finding this item in a nature hexagon
-	int pc_urban;  			 /**< Pourcentage de chance de trouver cet item dans un hexagone de catégorie urbain */    // percentage chance of finding this item in an urban hexagon
-	int pc_military;		 /**< Pourcentage de chance de trouver cet item dans un hexagone de catégorie militaire */ // percentage chance of finding this item in a military hexagon
+ 	int attack[3]; 			 /**< Valeur d'attaque */
+  int hitchance[3];    /**< Chance d'attaquer */
+	float defense; 			 /**< Valeur de défense */
+	equip_t equipable; 	 /**< Indicateur si le joueur peut s'équiper avec cet item et où */
+	int pc_nature; 			 /**< Pourcentage de chance de trouver cet item dans un hexagone de catégorie nature */
+	int pc_urban;  			 /**< Pourcentage de chance de trouver cet item dans un hexagone de catégorie urbain */
+	int pc_military;		 /**< Pourcentage de chance de trouver cet item dans un hexagone de catégorie militaire */
 	int index; 					 /**< Position de l'item dans l'inventaire du joueur (-1 si absent) */
 } item_t;
 
-item_t * creer_item (char * chaine, type_t type, int attack0, int attack1, int attack2, int hitchance0, int hitchance1, int hitchance2, float defense, int equipable, int pc_nature, int pc_urban, int pc_military);
+item_t * creer_item (char * chaine, type_t type, int attack0, int attack1, int attack2, int hitchance0, int hitchance1, int hitchance2, float defense, int equipable, int pc_nature, int pc_urban, int pc_military); //items.c
 int creation_tab_item(item_t * Tab_Items, int * nb_items); //items.c
 void display_item (item_t item); //items.c
-
 /*********************************************************************************/
 
-
 /************************************* PERSO *************************************/
-
 #define INVENTORY_CAPACITY 10 /**< INVENTORY_CAPACITY représente le nombre maximum d'items que peut contenir l'inventaire du joueur (10 items dans la version 1.0) */
 
 //typedef enum {normal,sprinter,metabolism,luck,scout} skill_t;
@@ -63,23 +64,18 @@ typedef struct  {
 	int posX;   /**< Position X sur la carte */
 	int posY;   /**< Position Y sur la carte */
 	int turns;  /**< Nombre de tours restants */
-
 //  skill_t competence; /**< Compétence spéciale */
-
   item_t inventory[INVENTORY_CAPACITY];  /**< Inventaire */
   int nb_items_inventory;  /**< Nombre d'items dans l'inventaire */
-
   item_t * left_hand; 	/**< Pointeur sur item main gauche */
   item_t * right_hand; 	/**< Pointeur sur item main droite */
   item_t * body; 				/**< Pointeur sur item corps */
   item_t * head;				/**< Pointeur sur item tête */
-
 } perso_t;
 
-void init_player(perso_t * player); //perso.c
+
 
 /**********************************************************************************/
-
 
 /************************************* MAP *************************************/
 #define ITEMS_MAX 5 /**< ITEMS_MAX représente le nombre maximum d'items générés sur un hexagone de la carte */
@@ -110,70 +106,56 @@ typedef struct {
   int scavenged;      /**< Indicateur si le joueur a déjà fouillé cet hexagone */
 }cell_t;
 
-int coordonnees_valides(int l, int c); 		           		//world_generation.c
-void init_border(cell_t map[D][D]);									    //world_generation.c
+void afficher_type_categ_hexa(cell_t map[D][D], int l, int c); //world_generation.c
+void informations_map(cell_t map[D][D]); //world_generation.c
+int coordonnees_valides(int l, int c); //world_generation.c
 void quest_init(cell_t map[D][D], int quest_map[6][2]); //world_generation.c
-int bordercross(int i, int j, cell_t map[D][D]); 		    //world_generation.c
-void topup(cell_t map[D][D], int quest_map[6][2]); 			//world_generation.c
-int spawntype(int l, int c, cell_t map[D][D]); 			    //world_generation.c
-void nextgen(cell_t map[D][D]); 											  //world_generation.c
-void portable_switch(int i, int j, cell_t map[D][D]);   //world_generation.c
-void display_TEXT(int l, int c, cell_t map[D][D]); 	    //world_generation.c
-void init_base(cell_t map[D][D]); 										  //world_generation.c
-void count(const cell_t map[D][D]); 									  //world_generation.c
-void display_grid(const cell_t map[D][D]); 					    //world_generation.c
-void map_init(cell_t map[D][D], int quest_map[6][2], perso_t player); 	//world_generation.c
-
+void display_TEXT(int l, int c, cell_t map[D][D]); 	//world_generation.c
+void map_init(cell_t map[D][D], int quest_map[6][2]); //world_generation.c
+void portable_switch(int i, int j, cell_t map[D][D]); //world_generation.c
 /*********************************************************************************/
 
-
-
-
-
 // suite perso
+void init_player(perso_t * player, cell_t map[D][D]); //perso.c
 void display_player_characteristics(cell_t map[D][D], perso_t player); //perso.c
 
 /************************************* COMBAT *************************************/
-
-typedef struct { // structure to manage battlefield
-	int posA;   // position of player
-	int posB; // position of bot
-	int coverA;
-	int coverB;
-	int distance; // distance between A and B;
+/**
+	* \struct stat_t
+	* \brief Structure pour gérer champ de bataille
+*/
+typedef struct {
+	int posA;   	/**< Position du joueur*/
+	int posB;   	/**< Position ennemi */
+	int coverA; 	/**< Couverture joueur */
+	int coverB; 	/**< Couverture ennemi */
+	int distance; /**< Distance entre joueur et ennemi */
 }stat_t;
 
+/**
+	* \struct npc_t
+	* \brief Structure pour ennemi (NPC)
+*/
 typedef struct {
-  char name[10]; //
-  int pv; // Points de vie
-  item_t * weapon; 	/* Pointeur sur item dans les mains */
-  item_t * armor; 	/* Pointeur sur item armure */
+  char name[10]; 		/**< Nom ennemi */
+  int pv; 					/**< Points de vie ennemi */
+  item_t * weapon; 	/**< Pointeur sur arme */
+  item_t * armor; 	/**< Pointeur sur armure */
 } npc_t;
 
-
-void damage_calculator(item_t * weapon, item_t * armor, int * hp, int distance , int cover, int scenario);
-npc_t * init_npc(item_t * Tab_Items);
-stat_t * init_field();
-void show_field(stat_t field);
-void turn_npc(npc_t * enemy, stat_t * field, perso_t * player);
-int run_away(int position, int distance, perso_t * player);
-void combat_info(int print_type, perso_t player, npc_t enemy, stat_t field);
-void combat(perso_t * player, npc_t * enemy, stat_t * field, cell_t map[D][D], item_t * Tab_Items, int nb_items_available);
-void loot_enemy (item_t * Tab_Items, int nb_items_available, npc_t * enemy, perso_t * player);
-
+npc_t * init_npc(item_t * Tab_Items); //combat.c
+stat_t * init_field(); //combat.c
+void combat(perso_t * player, npc_t * enemy, stat_t * field, cell_t map[D][D], item_t * Tab_Items, int nb_items_available); //combat.c
 /*********************************************************************************/
 
 /************************************* MOVE **************************************/
-int move_lose_pa (hex_t type_hexa); 						   //move.c
-void look_around(int i, int j, cell_t map[D][D]);  //move.c
 void move (perso_t * player, cell_t map[D][D]);		 //move.c
-void random_move(perso_t * player); //move.c
+void random_move(perso_t * player, cell_t map[D][D]); //move.c
 /*********************************************************************************/
 
 /*********************************** INVENTORY ***********************************/
 void check_the_map(perso_t player, cell_t map[D][D]);         //inventory.c
 int item_in_inventory(perso_t player, char * nom_item);       //inventory.c
-int too_much_of_the_same_item(perso_t player, item_t item);   //inventory.c
 void display_inventory (perso_t player);                      //inventory.c
 void delete_item_in_inventory(perso_t * player, item_t item); //inventory.c
 int add_item_to_inventory(perso_t * player, item_t item);     //inventory.c
@@ -187,13 +169,10 @@ void manage_inventory(perso_t * player);                      //inventory.c
 #define BODY 3         /**< BODY indique qu'un item est équipé sur le corps du joueur */
 #define HEAD 4         /**< HEAD indique qu'un item est équipé sur la tête du joueur */
 
-void display_equipment_player(perso_t player);              //equipment.c
-int is_equipped(perso_t player, item_t item);               //equipment.c
-void swap_equipment_player(perso_t * player, item_t item);  //equipment.c
-void equip_player(perso_t * player);                        //equipement.c
+void display_equipment_player(perso_t player);             //equipment.c
+int is_equipped(perso_t player, item_t item);              //equipment.c
 int nb_equipement(perso_t player);                         //equipment.c
-void remove_equipment_player(perso_t * player);             //equipment.c
-void manage_equipment(perso_t * player);                    //equipment.c
+void manage_equipment(perso_t * player);                   //equipment.c
 /**********************************************************************************/
 
 /************************************* FISH  *******************************************/
@@ -201,7 +180,6 @@ void fish (perso_t * player, cell_t map[D][D]);   //fish.c
 /***************************************************************************************/
 
 /*********************************** EAT_OR_DRINK ***********************************/
-void gain_energie(perso_t * player, int val_e);  //eat_or_drink.c
 void eat_or_drink (perso_t * player, item_t item);  //eat_or_drink.c
 /************************************************************************************/
 
@@ -213,7 +191,7 @@ void rest_and_heal(perso_t * player); //turn.c
 /************************************* QUETES *************************************/
 /**
 	* \struct search_t
-	* \brief Structure de suivi de la quete "recherche"
+	* \brief Structure de suivi de la quête "recherche"
 	* \details
         situation = -1 : quete encore non joué
         situation = 0 : quete en cours
@@ -226,8 +204,8 @@ typedef struct{
     int situation;  /**< Indicateur pour savoir l'avancer du joueur dans la quete "recherche"*/
     item_t wanted;  /**< Item que le joueur doit trouver*/
     int trouve;     /**< Indicateur afin de savoir si l'item a été trouvé*/
-    int bunkerX;
-    int bunkerY;
+    int bunkerX; 		/**< Coordonnée X du bunker */
+    int bunkerY; 		/**< Coordonnée Y du bunker */
 }search_t;
 
 /**
@@ -243,40 +221,30 @@ typedef struct{
 typedef struct{
   int soin;             /**< Indicateur pour savoir l'avancer du joueur dans la quete "soin" : si le joueur a aider l'homme blessé : quete "soin" */
   search_t recherche;   /**< Indicateur de type search_t pour savoir l'avancer du joueur dans la quete "recheche" */
-  int bunker;           /**< Indicateur pour savoir l'avancer du joueur dans la quete "bunker" */
-  int montagne;         /**< Indicateur pour savoir l'avancer du joueur dans la quete "montagne" */
-  int frontiere;        /**< Indicateur pour savoir l'avancer du joueur dans la quete "frontiere" */
-  int bandits;          /**< Indicateur pour savoir l'avancer du joueur dans la quete "bandits" */
+  int bunker;           /**< Indicateur pour savoir l'avancée du joueur dans la quete "bunker" */
+  int montagne;         /**< Indicateur pour savoir l'avancée du joueur dans la quete "montagne" */
+  int frontiere;        /**< Indicateur pour savoir l'avancée du joueur dans la quete "frontiere" */
+  int bandits;          /**< Indicateur pour savoir l'avancée du joueur dans la quete "bandits" */
 }quete_t;
 
-int exit_game();
-void init_quete(quete_t * quete, int quest_map[6][2], item_t * Tab_Items, int nb_items_available);
+int exit_game(); // quetes.c
+void informations_quetes(cell_t map[D][D], int quest_map[6][2], quete_t quete); //quetes.c
+void init_quete(quete_t * quete, int quest_map[6][2], item_t * Tab_Items, int nb_items_available); //quetes.c
 int quetes(perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete, item_t * Tab_Items, int nb_items_available);   //quetes.c
-int quete_montagne(perso_t * player, quete_t * quete);                                                                              //quetes.c
-int quete_frontiere(perso_t * player, quete_t * quete);                                                                             //quetes.c
-int quete_bunker(perso_t * player, quete_t * quete);                                                                                //quetes.c
-int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_items_available);                                   //quetes.c
-void affichage_quete_search_en_cours(quete_t quete, cell_t map[D][D], perso_t player);
-
-int quete_soin(perso_t * player, quete_t * quete, item_t * Tab_Items);                          //quete_soin.c
-npc_t * init_npc_quete(item_t * Tab_Items, int pers);                                           //quete_soin.c
-int ajout_item_blesse(perso_t * player, npc_t * homme, int item);                               //quete_soin.c
-int ajout_pass_card(perso_t * player, item_t * pass_card);                                      //quete_soin.c
-int menu_choix_ajout_item(perso_t * player, item_t * pass_card, npc_t * homme);                 //quete_soin.c
-int recup_1item_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t * pass_card);    //quete_soin.c
-int recup_2items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t * pass_card);   //quete_soin.c
-int recup_3items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t * pass_card);   //quete_soin.c
-
-void init_Tab_Items_urbain(item_t * Tab_Items_urbain, item_t * Tab_Items, int nb_items_urbain)  //quete_search.c
-int compter_items_urbain(item_t * Tab_Items, int nb_items_available);                           //quete_search.c
-int quete_recherche(perso_t * player, cell_t map[D][D], quete_t * quete);                       //quete_search.c
+int quete_montagne(perso_t * player, quete_t * quete);  //quetes.c
+int quete_frontiere(perso_t * player, quete_t * quete); //quetes.c
+int quete_bunker(perso_t * player, quete_t * quete); //quetes.c
+int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_items_available, cell_t map[D][D]);  //quetes.c
+int quete_soin(perso_t * player, quete_t * quete, item_t * Tab_Items); //quete_soin.c
+int quete_recherche(perso_t * player, cell_t map[D][D], quete_t * quete); //quete_search.c
+void affichage_quete_search_en_cours(quete_t quete, cell_t map[D][D], perso_t player); //quete_search.c
+int compter_items_urbain(item_t * Tab_Items, int nb_items_available); //quete_search.c
+void init_Tab_Items_urbain(item_t * Tab_items_search, item_t * Tab_Items, int nb_items_urbain); //quete_search.c
 /***************************************************************************************/
 
 /************************************* SCAVENGE **************************************/
-void generate_items(item_t * Tab_Items, int nb_items_available, perso_t * player, categ_hexa categ); //scavenge.c
 void scavenge(cell_t map[D][D], perso_t * player, item_t * Tab_Items, int nb_items_available, quete_t quete); //scavenge.c
 /************************************************************************************/
-
 
 /************************************* BACKUP_AND_LOAD *************************************/
 /**
@@ -284,12 +252,10 @@ void scavenge(cell_t map[D][D], perso_t * player, item_t * Tab_Items, int nb_ite
 	* \brief Structure pour sauvegarder les parties
 */
 typedef struct{
-  int numPartie;  /**< Numéro de la partie jouée */
-
-  int sauv1_existe; /**< Indicateur si sauvegarde 1 existe */
-  int sauv2_existe; /**< Indicateur si sauvegarde 2 existe */
-  int sauv3_existe; /**< Indicateur si sauvegarde 3 existe */
-
+  int numPartie;  		 /**< Numéro de la partie jouée */
+  int sauv1_existe; 	 /**< Indicateur si sauvegarde 1 existe */
+  int sauv2_existe; 	 /**< Indicateur si sauvegarde 2 existe */
+  int sauv3_existe; 	 /**< Indicateur si sauvegarde 3 existe */
   char nomPartie1[21]; /**< Nom de la partie 1 */
   char nomPartie2[21]; /**< Nom de la partie 2 */
   char nomPartie3[21]; /**< Nom de la partie 3 */
@@ -304,9 +270,6 @@ void save (perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete,
 void load (perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete, sauv_t sauv);  //backup_and_load.c
 /*******************************************************************************************/
 
-/********************************* FONCTIONS PRATIQUES ***********************************/
-void entree_pour_continuer(); // fonctions_pratiques.c
-void clrscr(); //fonctions_pratiques.c
-int range(int a,int b); //fonctions_pratiques.c
-int rng(int prob); //fonctions_pratiques.c
-/*****************************************************************************************/
+/************************************* DEMO *************************************/
+void demo_afficher_items(perso_t * player, item_t * Tab_Items, int nb_items_available);
+/********************************************************************************/
