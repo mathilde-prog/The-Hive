@@ -577,7 +577,7 @@ void encounter_init(cell_t map[D][D]){
 void quest_init(cell_t map[D][D], int quest_map[6][2]){
   /*Quête montagne  - Sur un hexagone de type montagne*/
   quest_map[0][0]=0;
-  quest_map[0][1]=range(0,D-1);
+  quest_map[0][1]=range(0,D-2);
   map[quest_map[0][0]][quest_map[0][1]].quest_id=1;
 
   /*Quête frontière - Sur un hexagone de type frontière */
