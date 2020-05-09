@@ -21,9 +21,33 @@
 */
 /* Passer au prochain tour */
 void next_turn(perso_t * player){
-  printf("\n   On passe au tour suivant!\n");
-  printf("   Vous récupérez %d points d'action!\n", 5-player->pa);
-  player->pa = 5; //Récupère 5 points d'actions
+  int base_value, prev_value;
+  if(player->pa<5){
+    printf("\n   On passe au tour suivant!\n");
+    prev_value=player->pa;
+    if((player->pe%20)>=10){
+      base_value=player->pe/20;
+      player->pa+=base_value+1;
+      if((player->pa)>5){
+        player->pa=5;
+        printf("   Vous récupérez %d points d'action!\n", 5 - prev_value);
+      }else{
+        printf("   Vous récupérez %d points d'action!\n", player->pa - prev_value);
+      }
+    }else{
+      base_value=player->pe/20;
+      player->pa+=base_value;
+      if((player->pa)>5){
+        player->pa=5;
+        printf("   Vous récupérez %d points d'action!\n", 5 - prev_value);
+      }else{
+        printf("   Vous récupérez %d points d'action!\n", player->pa - prev_value);
+      }
+    }
+  }else{
+    printf("\n   On passe au tour suivant!\n");
+  }
+  player->pe-=15; //Perds 15 points d'energie
   player->turns--;
   sleep(2);
 }
