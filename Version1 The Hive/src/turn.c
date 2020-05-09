@@ -3,7 +3,7 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
-#include "structure.h"
+#include "lib/structure.h"
 
 /**
  * \file turn.c
@@ -21,8 +21,8 @@
 */
 /* Passer au prochain tour */
 void next_turn(perso_t * player){
-  printf("On passe au tour suivant!\n");
-  printf("Vous récupérez %d points d'action!\n", 5-player->pa);
+  printf("\n   On passe au tour suivant!\n");
+  printf("   Vous récupérez %d points d'action!\n", 5-player->pa);
   player->pa = 5; //Récupère 5 points d'actions
   player->turns--;
   sleep(2);
@@ -34,12 +34,11 @@ void next_turn(perso_t * player){
  * \param perso_t * player
  * \return Rien
 */
-/* rest_and_heal: allows the player to rest and gain pv and pe (proportionate to his number of pa) */
 void rest_and_heal(perso_t * player){
   int value_pv = player->pa*5;
   int value_pe = player->pa*5;
 
-  printf("Reposez vous un instant zzZZ\n");
+  printf("\n   Reposez vous un instant zzZZ\n");
   sleep(1);
 
   /* PV */
@@ -54,7 +53,7 @@ void rest_and_heal(perso_t * player){
   }
   player->pe += value_pe;
 
-  printf("PV +%d\tPE +%d\n",value_pv,value_pe);
+  printf("   PV +%d\tPE +%d\n",value_pv,value_pe);
   sleep(2);
   next_turn(player);
 }

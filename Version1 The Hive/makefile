@@ -1,5 +1,5 @@
 # project name (generate executable with this name)
-TARGETS  = menu test_combat test_backup test_category_hexagon test_creation_items test_eat_or_drink test_inventory test_item test_item_in_inventory test_load test_loot test_map
+GAME_WITH_TESTS  = game test_quete_recherche test_quete_soin test_quete_bandits test_quete_bunker test_quete_montagne test_quete_frontiere test_combat test_backup test_creation_items test_eat_or_drink test_inventory test_item test_item_in_inventory test_load
 
 CC       = gcc
 # compiling flags here
@@ -10,11 +10,11 @@ LINKER   = gcc
 LFLAGS   = -Wall -I. -lm
 
 # change these to proper directories where each file should be
-SRCDIR   = src
+SRCDIR   = ./src
 OBJDIR   = obj
 BINDIR   = bin
-TRGS	 := $(TARGETS:%=$(BINDIR)/%)
-
+LIBDIR = lib
+TRGS	 := $(GAME_WITH_TESTS:%=$(BINDIR)/%)
 DIRS	 = $(OBJDIR) $(BINDIR)
 
 .PHONY: DIRS
@@ -26,9 +26,9 @@ $(BINDIR):
 	mkdir -p $(BINDIR)
 
 SOURCES  := $(wildcard $(SRCDIR)/*.c)
-INCLUDES := $(wildcard $(SRCDIR)/*.h)
+INCLUDES := $(wildcard $(LIBDIR)/*.h)
 OBJECTS  := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
-MAINS	 := $(TARGETS:%=$(OBJDIR)/%.o)
+MAINS	 := $(GAME_WITH_TESTS:%=$(OBJDIR)/%.o)
 # Liste des fichiers .o sans ceux contenant un main
 OBJS	 := $(filter-out $(MAINS),$(OBJECTS))
 rm       = rm -f
@@ -52,8 +52,8 @@ clean:
 
 .PHONY: remove
 remove: clean
-	@$(rm) $(BINDIR)/$(TARGETS)
-	@echo "Executable removed!"
+	@$(rm) -rf $(BINDIR)
+	@echo "Executables removed!"
 
 .PHONY: docs
 docs:

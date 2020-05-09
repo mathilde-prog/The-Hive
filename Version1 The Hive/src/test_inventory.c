@@ -1,8 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "structure.h"
+#include "lib/structure.h"
 
-/* Fichier test pour la gestion de l'inventaire */
+/**
+ * \file test_inventory.c
+ * \brief Fichier TEST - Gestion inventaire
+ * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
+ * \version 1.0
+ * \date 2020
+*/
 
 void test_suivant(){
   int rep;
@@ -17,11 +23,14 @@ void test_suivant(){
 int main(){
   // Déclarations
   perso_t player;
+  cell_t map[D][D];
+  int quest_map[6][2]; 
   item_t * Tab_Items = malloc(20 * sizeof(item_t));
   int nb_items_available = 0;
 
   if(creation_tab_item(Tab_Items, &nb_items_available)){
-    init_player(&player);
+    map_init(map,quest_map);
+    init_player(&player,map);
 
     printf(">>> Début du test\n\n");
 

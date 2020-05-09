@@ -2,15 +2,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "structure.h"
+#include "lib/structure.h"
 
 #define NB_SIMULATIONS 10
+
+/**
+ * \file test_item.c
+ * \brief Fichier TEST - Item
+ * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
+ * \version 1.0
+ * \date 2020
+*/
 
 void display_position (cell_t map[D][D],perso_t player){
   printf("\n=== Où suis-je ? ===\n");
   printf("posX = %d\nposY = %d\n", player.posX, player.posY);
   printf("hex_t : ");
-  switch(map[player.posX][player.posY].type){
+  switch(map[player.posY][player.posX].type){
     case prairie:     printf("prairie ");  break;
     case foret:       printf("foret ");    break;
     case ville:       printf("ville ");    break;
@@ -26,7 +34,7 @@ void display_position (cell_t map[D][D],perso_t player){
     default: break;
   }
   printf("\ncateg_hexa : ");
-  switch(map[player.posX][player.posY].categ){
+  switch(map[player.posY][player.posX].categ){
     case other:     printf("other\n");     break;
     case nature:    printf("nature\n");    break;
     case urbain:    printf("urbain\n");    break;
@@ -53,13 +61,16 @@ int main(){
   perso_t player;
   item_t * Tab_Items = malloc(20 * sizeof(item_t));
   cell_t map[D][D];
+  int quest_map[6][2];
+  quete_t quete;
 
   clrscr();
 
   // Creation des items
   if(creation_tab_item(Tab_Items, &nb_items_available)){
-    init_player(&player);
-    map_init(map);
+    map_init(map,quest_map);
+    init_player(&player,map);
+    init_quete(&quete,quest_map,Tab_Items,nb_items_available);
 
     //display_TEXT(player.posX,player.posY, map);
 
@@ -70,7 +81,7 @@ int main(){
 
       printf("=== Simulation n°%d === \n", i+1);
       display_position(map,player);
-      scavenge(map, &player, Tab_Items, nb_items_available);
+      scavenge(map, &player, Tab_Items, nb_items_available,quete);
       printf("\n");
       display_inventory(player);
       printf("\n");

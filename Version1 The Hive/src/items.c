@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <time.h>
-#include "structure.h"
+#include "lib/structure.h"
 
 /**
  * \file items.c
@@ -15,14 +15,13 @@
 
 /************************************** CREATION + DISPLAY ITEMS (MATHILDE) **************************************/
 /**
- * \fn item_t * creer_item (char * chaine, type_t type, int attack0, int attack1, int attack2, int hitchance0, int hitchance1, int hitchance2, int defense, int equipable, int pc_nature, int pc_urban, int pc_military)
+ * \fn item_t * creer_item (char * chaine, type_t type, int attack0, int attack1, int attack2, int hitchance0, int hitchance1, int hitchance2, float defense, int equipable, int pc_nature, int pc_urban, int pc_military){
  * \brief Crée un item à partir des informations passées en paramètres
  * \param char * chaine
  * \param type_t type
  * \param int attack0
  * \param int attack1
  * \param int attack2
- * \param int attack3
  * \param int hitchance0
  * \param int hitchance1
  * \param int hitchance2
@@ -35,7 +34,6 @@
 */
 item_t * creer_item (char * chaine, type_t type, int attack0, int attack1, int attack2, int hitchance0, int hitchance1, int hitchance2, float defense, int equipable, int pc_nature, int pc_urban, int pc_military){
   item_t * item = malloc(sizeof(item_t));
-
 
   strcpy(item->name,chaine);
   item->type = type;
@@ -60,15 +58,11 @@ item_t * creer_item (char * chaine, type_t type, int attack0, int attack1, int a
 
 /**
  * \fn int creation_tab_item(item_t * Tab_Items, int * nb_items)
- * \brief Récupère les items du fichier 'items.csv' et les stocke dans le tableau passé en paramètres.
+ * \brief Récupère les items du fichier 'data/items.csv' et les stocke dans le tableau passé en paramètres.
  * \details Affiche un message d'erreur si fichier 'items.csv' non trouvé
  * \param char * Tab_Items
  * \param int * nb_items
  * \return Un \a int : 1 si création des items réalisée avec succès. 0 sinon.
-*/
-/* creation_tab_item: retrieves items from the file 'items.csv' and stores them in a table passed in parameters
-                      displays error message if file 'items.csv' not found
-                      returns whether the creation of the items has been successfully completed (0 or 1)
 */
 int creation_tab_item(item_t * Tab_Items, int * nb_items){
   * nb_items = 0;
@@ -84,7 +78,7 @@ int creation_tab_item(item_t * Tab_Items, int * nb_items){
     return 1;
   }
   else {
-    printf("Le fichier 'items.csv' est introuvable. Impossible de récupérer les items pour jouer.\n");
+    printf("\n   Le fichier 'items.csv' est introuvable. Impossible de récupérer les items pour jouer.\n");
     return 0;
   }
 }
@@ -95,38 +89,37 @@ int creation_tab_item(item_t * Tab_Items, int * nb_items){
  * \param item_t item
  * \return Rien
 */
-/* display_item: displays all the characteristics of an item (name, type, value of attack, value of defense, equipable or not) */
 void display_item (item_t item){
-	printf("\nITEM: %s\n",item.name);
-	printf("Type : ");
+	printf("\n   Nom item: %s\n",item.name);
+	printf("\n   Type : ");
 	switch(item.type){
 		case armor:  printf("armure\n");         break;
 		case weapon: printf("arme\n");        break;
-		case misc:   printf("divers\n");          break;
-		case food:   printf("nourriture\n");          break;
-		default:     printf("non reconnu\n");  break;
+		case misc:   printf("divers\n\n");          break;
+		case food:   printf("nourriture\n\n");          break;
+		default:     printf("non reconnu\n\n");  break;
 	}
 
-  /* Displays attack value if the item is a weapon and defense value if the item is armor */
 	if(item.type == weapon){
-		printf("Attaque : %d %d %d\n",item.attack[0], item.attack[1], item.attack[2]);
-    printf("Hitchance : %d %d %d\n", item.hitchance[0], item.hitchance[1], item.hitchance[2]);
+		printf("\n   Valeur d'attaque :\n       Distance 0 : %d\n       Distance 1 : %d\n       Distance 2 : %d\n\n",item.attack[0], item.attack[1], item.attack[2]);
+    printf("   Chance de toucher l'ennemi :\n       Distance 0 : %d\n       Distance 1 : %d\n       Distance 2 : %d\n\n", item.hitchance[0], item.hitchance[1], item.hitchance[2]);
 	}
 	else if(item.type == armor){
-		printf("Défense : %f\n",item.defense);
+		printf("\n   Valeur de défense : %d\n\n",(int)(item.defense*100));
 	}
 
   switch(item.equipable){
-    case none: printf("Pas équipable\n");   break;
-    case hand: printf("Equipable (main)\n");  break;
-    case body: printf("Equipable (corps)\n");  break;
-    case head: printf("Equipable (tête)\n");  break;
-    default:   printf("non reconnu\n");    break;
+    case none: printf("   Pas équipable\n");   break;
+    case hand: printf("   Equipable (main)\n");  break;
+    case body: printf("   Equipable (corps)\n");  break;
+    case head: printf("   Equipable (tête)\n");  break;
+    default:   printf("   non reconnu\n");    break;
   }
 
-  printf("pc_nature = %d\n", item.pc_nature);
-  printf("pc_urban = %d\n", item.pc_urban);
-  printf("pc_military = %d\n\n", item.pc_military);
+  printf("\n   Chance de trouver cet item dans ces lieux : \n");
+  printf("      Nature = %d%%\n", item.pc_nature);
+  printf("      Urbain = %d%%\n", item.pc_urban);
+  printf("      Militaire = %d%%\n\n", item.pc_military);
 }
 
 /***************************************************************************************************************/
