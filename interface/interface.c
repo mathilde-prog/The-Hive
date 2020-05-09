@@ -7,6 +7,14 @@
 #include"combat.h"
 #include"interface.h"
 
+/**
+ * \file interface.c
+ * \brief Affichage de l'interface de jeu via SDL2
+ * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
+ * \version 1.0
+ * \date 2020
+*/
+
 char *map[N*N];
 /*
  * fonction de test qui permet de tester l'affichage de la map avec une version d'essais, simplifiée
@@ -23,8 +31,12 @@ void init_map_essai(int mapint[N][N]){
 }
 
 
-/*
- * fonction qui remplit map des chaines de caracteres correspondants à l'image a affiché
+/**
+ * \fn void relation_hexa_char(char* mapchar[], int mapint[N][N])
+ * \brief Remplit un matrice des nom des cases a afficher (images) à partir du chiffre contenu dans la matrice initiale
+ * \param char* mapchar[]
+ * \param int mapint[N][N]
+ * \return Rien
  */
 void relation_hexa_char(char*mapchar[], int mapint[N][N]){
 	int i,j,k=0;
@@ -47,8 +59,11 @@ void relation_hexa_char(char*mapchar[], int mapint[N][N]){
 		}
 	}
 }
-/*
- *	fonction qui affiche dans la case "centrale" un hilight sur la case et affiche le personnage
+/**
+ * \fn void affichage_case_centrale(SDL_Renderer **renderer)
+ * \brief Affiche dans la case centrale de l'écran un hilight et le personnage
+ * \param SDL_Renderer **renderer
+ * \return Rien
  */
 void affichage_case_centrale(SDL_Renderer **renderer){
 	SDL_Surface *hilight_surface, *personnage;
@@ -74,9 +89,12 @@ void affichage_case_centrale(SDL_Renderer **renderer){
 }
 
 
-/*
- * fonction qui affiche uniquement la map c'est a dire la partie composée d'hexagones
- * collés les uns aux autres
+/**
+ * \fn void affichage_map(SDL_Renderer **renderer, char *map[])
+ * \brief Affiche la map, c'est à dire la partie composée d'hexagones
+ * \param SDL_Renderer **renderer
+ * \param char *map[]
+ * \return Rien
  */
 void affichage_map(SDL_Renderer **renderer, char *map[]){
 	SDL_Surface *image[N*N];
@@ -143,8 +161,10 @@ void affichage_map(SDL_Renderer **renderer, char *map[]){
 }
 
 
-/*
- * fonction qui affiche l'interface
+/**
+ * \fn int interface()
+ * \brief Affiche l'interface en elle-même
+ * \return 0 si tout c'est bien passé
  */
 int interface(){
   //Le pointeur vers la fenetre

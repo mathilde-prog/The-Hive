@@ -5,6 +5,23 @@
 #include<SDL2/SDL_image.h>
 #include"combat.h"
 
+/**
+ * \file combat.c
+ * \brief Affichage de l'interface de combat via SDL2
+ * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
+ * \version 1.0
+ * \date 2020
+*/
+
+/**
+ * \fn void affichage_personnage(SDL_Renderer *renderer, char *img_perso, int x, int y)
+ * \brief Affiche un personnage dont l'image est en paramètre aux coordonées passées en paramètres
+ * \param SDL_Renderer *renderer
+ * \param char *img_perso
+ * \param int x
+ * \param int y
+ * \return Rien
+ */
 void affichage_personnage(SDL_Renderer *renderer, char *img_perso, int x, int y){
 	SDL_Surface *personnage;
 	SDL_Rect dest_centre;
@@ -21,8 +38,14 @@ void affichage_personnage(SDL_Renderer *renderer, char *img_perso, int x, int y)
 	SDL_FreeSurface(personnage);
 }
 
-/*
- * fonction qui gere l'interface de combat
+/**
+ * \fn int combat(SDL_Renderer * renderer, TTF_Font *police, stat_t * combat_stats, npc_t * npc)
+ * \brief Affiche l'interface de combat
+ * \param SDL_Renderer * renderer
+ * \param TTF_Font *police
+ * \param stat_t * combat_stats
+ * \param npc_t * npc
+ * \return Rien
  */
 int combat(SDL_Renderer * renderer, TTF_Font *police/*, stat_t * combat_stats, npc_t * npc*/){
 	SDL_Rect rect_fight = {400,0,900,550};
