@@ -86,7 +86,7 @@ typedef struct  {
   * \enum hex_t
   * \brief Type hexagone
 */
-typedef enum {prairie = 1,foret,ville,lac,camp_mil,camp_ban,market,favella,montagne,frontiere,mer,wasteland} hex_t;
+typedef enum {prairie = 1,foret,ville,lac,camp_mil,camp_ban,market,favela,montagne,frontiere,mer,wasteland} hex_t;
 
 /**
   * \enum categ_hexa

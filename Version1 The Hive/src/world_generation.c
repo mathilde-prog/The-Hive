@@ -28,7 +28,7 @@ void afficher_type_categ_hexa(cell_t map[D][D], int l, int c){
     case camp_mil  : printf("camp militaire ");  break;
     case camp_ban  : printf("camp des bandits ");     break;
     case market    : printf("marché ");   break;
-    case favella   : printf("favella ");   break;
+    case favela   : printf("favela ");   break;
     case montagne  : printf("montagne ");     break;
     case frontiere : printf("frontière ");      break;
     case mer       : printf("mer ");   break;
@@ -154,21 +154,21 @@ void topup(cell_t map[D][D], int quest_map[6][2]){ // spawns fixed amount of ess
   j = range(low+1,high-1);
   map[i][j].type=market;
   map[i][j].categ=urbain;
-  map[i-1][j].type=favella;
+  map[i-1][j].type=favela;
   map[i-1][j].categ=urbain;
-  map[i-1][j-1].type=favella;
+  map[i-1][j-1].type=favela;
   map[i-1][j-1].categ=urbain;
-  map[i-1][j+1].type=favella;
+  map[i-1][j+1].type=favela;
   map[i-1][j+1].categ=urbain;
-  map[i][j-1].type=favella;
+  map[i][j-1].type=favela;
   map[i][j-1].categ=urbain;
-  map[i][j+1].type=favella;
+  map[i][j+1].type=favela;
   map[i][j+1].categ=urbain;
-  map[i+1][j-1].type=favella;
+  map[i+1][j-1].type=favela;
   map[i+1][j-1].categ=urbain;
-  map[i+1][j].type=favella;
+  map[i+1][j].type=favela;
   map[i+1][j].categ=urbain;
-  map[i+1][j+1].type=favella;
+  map[i+1][j+1].type=favela;
   map[i+1][j+1].categ=urbain;
 
   for(s=3; s!=0;s--){
@@ -418,7 +418,7 @@ void display_TEXT(int l, int c, cell_t map[D][D]){ // AFFICHE LA MAP EN VERSION 
     }else if(i==8){
       printf("|     MK - Marchand\n");
     }else if(i==9){
-      printf("|     FV - Favella\n");
+      printf("|     FV - Favela\n");
     }else if(i==10){
       printf("|     MT - Montagne\n");
     }else if(i==11){
@@ -428,7 +428,7 @@ void display_TEXT(int l, int c, cell_t map[D][D]){ // AFFICHE LA MAP EN VERSION 
     }else if(i==13){
       printf("|     WT - Wasteland\n");
     }else{
-      //prairie=1,foret,ville,lac,camp_mil,camp_ban,market,favella,montagne,frontiere,mer,wasteland
+      //prairie=1,foret,ville,lac,camp_mil,camp_ban,market,favela,montagne,frontiere,mer,wasteland
       printf("|\n");
     }
   }
@@ -484,12 +484,12 @@ void count(const cell_t map[D][D]){ // COMPTE LE NOMBRE D'OCCURENCE DE CHAQUE TY
         cm++;
       }if(map[i][j].type==market){
         mr++;
-      }if(map[i][j].type==favella){
+      }if(map[i][j].type==favela){
         fv++;
       }
     }
   }
-  printf("\nCity: %d\nForest: %d\nHills: %d\nBandit camp: %d\nMilitary camp: %d\nMarket: %d\nFavella: %d\n",c,f,h,cb,cm,mr,fv);
+  printf("\nCity: %d\nForest: %d\nHills: %d\nBandit camp: %d\nMilitary camp: %d\nMarket: %d\nFavela: %d\n",c,f,h,cb,cm,mr,fv);
 }
 
 

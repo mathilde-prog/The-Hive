@@ -26,7 +26,7 @@ void display_position (cell_t map[D][D],perso_t player){
     case camp_mil:    printf("camp_mil "); break;
     case camp_ban:    printf("camp_ban "); break;
     case market:      printf("market ");   break;
-    case favella:     printf("favella ");  break;
+    case favela:     printf("favela ");  break;
     case montagne:    printf("montagne "); break;
     case frontiere:   printf("frontiere ");break;
     case mer:         printf("mer ");      break;
