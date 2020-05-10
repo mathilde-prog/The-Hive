@@ -301,7 +301,7 @@ stat_t * init_field(){
 
 /**
  * \fn void turn_npc(npc_t * enemy, stat_t * field, perso_t * player)
- * \brief Tour du non-player character (NPC) lors du combat
+ * \brief Tour du non-player character (NPC) lors du combat, le compertement de NPC est explique sur <a href="PEPEGA">ce schema</a>
  * \param npc_t * enemy
  * \param stat_t * field
  * \param perso_t * player

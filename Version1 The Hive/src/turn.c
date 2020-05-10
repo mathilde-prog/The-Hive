@@ -15,7 +15,7 @@
 
 /**
  * \fn void next_turn(perso_t * player)
- * \brief Passer au tour suivant
+ * \brief Calcule les points d’action qui vont etre recuperees a partir de l'énergie qui reste puis passe au tour suivant.
  * \param perso_t * player
  * \return Rien
 */
@@ -26,7 +26,7 @@ void next_turn(perso_t * player){
     printf("\n   On passe au tour suivant!\n");
     prev_value=player->pa;
     if((player->pe%20)>=10){
-      base_value=player->pe/20;
+      base_value=(player->pe/20)+1;
       player->pa+=base_value+1;
       if((player->pa)>5){
         player->pa=5;
@@ -35,7 +35,7 @@ void next_turn(perso_t * player){
         printf("   Vous récupérez %d points d'action!\n", player->pa - prev_value);
       }
     }else{
-      base_value=player->pe/20;
+      base_value=(player->pe/20)+1;
       player->pa+=base_value;
       if((player->pa)>5){
         player->pa=5;
@@ -48,6 +48,9 @@ void next_turn(perso_t * player){
     printf("\n   On passe au tour suivant!\n");
   }
   player->pe-=15; //Perds 15 points d'energie
+  if(player->pe < 0){
+    player->pe=0;
+  }
   player->turns--;
   sleep(2);
 }

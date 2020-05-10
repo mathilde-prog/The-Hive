@@ -5,7 +5,7 @@
 
 /**
  * \file world_generation.c
- * \brief Génération de la carte (Moustapha --> COMPLETER ET VERIFIER DOCUMENTATION DES FONCTIONS)
+ * \brief Génération de la carte
  * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
  * \version 1.0
  * \date 2020
@@ -141,7 +141,7 @@ void init_border(cell_t map[D][D]){ // initiates border of the map
 
 /**
  * \fn void topup(cell_t map[D][D], int quest_map[6][2])
- * \brief Positionne un nombre déterminé de différents types/catégories d'hexagones (coordonnées aléatoires)
+ * \brief Crée un nombre déterminé d’hexagones indispensables pour la map (comme camp militaire/bandit par exemple) sur les coordonnées aléatoires
  * \param cell_t map[D][D]
  * \param int quest_map[6][2]
  * \return Rien
@@ -150,8 +150,8 @@ void topup(cell_t map[D][D], int quest_map[6][2]){ // spawns fixed amount of ess
   int s,i,j;
   int low=1, high=D-1;
 
-  i = range(low+1,high-1);
-  j = range(low+1,high-1);
+  i = range(low+1,high-2);
+  j = range(low+1,high-2);
   map[i][j].type=market;
   map[i][j].categ=urbain;
   map[i-1][j].type=favella;
@@ -172,8 +172,8 @@ void topup(cell_t map[D][D], int quest_map[6][2]){ // spawns fixed amount of ess
   map[i+1][j+1].categ=urbain;
 
   for(s=3; s!=0;s--){
-    i = range(low,high);
-    j = range(low,high);
+    i = range(low,high-1);
+    j = range(low,high-1);
     map[i][j].type=ville;
     map[i][j].categ=urbain;
   }
@@ -208,11 +208,11 @@ void topup(cell_t map[D][D], int quest_map[6][2]){ // spawns fixed amount of ess
 
 /**
  * \fn int spawntype(int l, int c, cell_t map[D][D])
- * \brief MOUSTAPHA
+ * \brief Fonction compte le nombre des hexagones-voisines (hexagones similaires) et selon ce nombre, après les calculs de probabilité, renvoie le type d’hexagone qui va être cree sur les coordonnées passées en paramètre
  * \param int l
  * \param int c
  * \param cell_t map[D][D]
- * \return Retourne un \a int : MOUSTAPHA
+ * \return Retourne un \a int : le type d'hexagone qui va etre cree
 */
 int spawntype(int l, int c, cell_t map[D][D]){ // returns hex type that must be spawned on current matrix position
   int tab[3]={0}; // number of each type of hex around the current one
@@ -306,7 +306,7 @@ int categ_switch(int input){ // returns hexagone category (urbain,nature, milita
 
 /**
  * \fn void nextgen(cell_t map[D][D])
- * \brief MOUSTAPHA
+ * \brief Parcours le tableau d’hexagones et fait appel a “spawntype” qui calcule le type d’hexagone qui va apparaître dans la cellule courante
  * \param cell_t map[D][D]
  * \return Rien
 */
@@ -464,7 +464,7 @@ void init_base(cell_t map[D][D]){
 
 /**
  * \fn void count(const cell_t map[D][D])
- * \brief Compte le nombre d'occurence de chaque type de cellule
+ * \brief Compte le nombre d'occurence de chaque type de cellule (outil de test)
  * \param const cell_t map[D][D]
  * \return Rien
 */
