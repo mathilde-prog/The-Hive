@@ -160,7 +160,7 @@ int quete_recherche(perso_t * player, cell_t map[D][D], quete_t * quete){
               }
             }
             else {
-              printf("   \"Tu as le choix d'aller dans une ville, dans un marché ou dans une favella pour trouver l'item %s. Une fois que tu as trouvé l'item il faudra que tu reviennes ici pour me le redonner.\n", quete->recherche.wanted.name);
+              printf("   \"Tu as le choix d'aller dans une ville, dans un marché ou dans une favela pour trouver l'item %s. Une fois que tu as trouvé l'item il faudra que tu reviennes ici pour me le redonner.\n", quete->recherche.wanted.name);
 
               printf("\n   Souhaitez-vous toujours trouver l'item demandé par l'homme ?\n");
               printf("   1 - Oui\n");
@@ -200,7 +200,7 @@ int quete_recherche(perso_t * player, cell_t map[D][D], quete_t * quete){
     else if(quete->recherche.trouve==0){
         /*Le joueur n'est pas sur un hexagone de categorie urbain*/
           printf("\n   L'homme vous demande ce que vous faîtes encore ici... \n");
-          printf("   Allez trouver %s dans une ville, un marché ou une favella.\n", quete->recherche.wanted.name);
+          printf("   Allez trouver %s dans une ville, un marché ou une favela.\n", quete->recherche.wanted.name);
           printf("   Continuez votre route sur la carte, afin d'aller dans un des lieux cités ci-dessus.\n\n");
           entree_pour_continuer();
           return 0;

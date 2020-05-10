@@ -16,7 +16,7 @@
  * \fn int move_lose_pa (hex_t type_hexa)
  * \brief Calcule le nombre de points d'actions nécessaires pour se déplacer dans le type d'hexagone passé en paramètre
  * \param hex_t type_hexa
- * \return Un \a int représentant le nombre de points d'action nécessaires (prairie : 1, foret : 2, ville : 1, lac : 2, camp_mil : 2, camp_ban : 2, market : 1, favella : 2, montagne : 3, frontiere : 1, mer : 1, wasteland : 1)
+ * \return Un \a int représentant le nombre de points d'action nécessaires (prairie : 1, foret : 2, ville : 1, lac : 2, camp_mil : 2, camp_ban : 2, market : 1, favela : 2, montagne : 3, frontiere : 1, mer : 1, wasteland : 1)
 */
 int move_lose_pa (hex_t type_hexa){
   switch(type_hexa){
@@ -27,7 +27,7 @@ int move_lose_pa (hex_t type_hexa){
     case camp_mil: return 2; break;
     case camp_ban: return 2; break;
     case market: return 1; break;
-    case favella: return 2; break;
+    case favela: return 2; break;
     case montagne: return 3; break;
     case frontiere: return 1; break;
     case mer: return 1; break;
@@ -122,7 +122,7 @@ void move (perso_t * player, cell_t map[D][D]){
   printf("              PR - Prairie        (-1 pa)   FR - Forêt           (-2 pa)\n");
   printf("              VL - Ville          (-1 pa)   LC - Lac             (-2 pa)\n");
   printf("              CM - Camp militaire (-2 pa)   CB - Camp de bandits (-2 pa)\n");
-  printf("              MK - Marché         (-1 pa)   FV - Favella         (-2 pa)\n");
+  printf("              MK - Marché         (-1 pa)   FV - Favela          (-2 pa)\n");
   printf("              MT - Montagne       (-3 pa)   BD - Frontière       (-1 pa)\n");
   printf("              SE - Mer            (-1 pa)   WT - Wasteland       (-1 pa)\n");
   printf("             ===========================================================\n\n");
@@ -290,7 +290,7 @@ void move (perso_t * player, cell_t map[D][D]){
 
 /**
  * \fn void random_move(perso_t * player, cell_t map[D][D])
- * \brief Déplace aléatoirement le joueur sur un des hexagones qui l'entoure 
+ * \brief Déplace aléatoirement le joueur sur un des hexagones qui l'entoure
  * \param perso_t * player
  * \param cell_t map[D][D]
  * \return Rien
