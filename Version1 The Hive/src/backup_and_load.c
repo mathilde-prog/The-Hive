@@ -14,7 +14,7 @@
 
 /**
  * \fn void sauvegarder_progression(perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete, sauv_t sauv)
- * \brief Sauvegarde la progression du joueur et lui propose de continuer ou quitter le jeu
+ * \brief Sauvegarde de la progression la partie actuellement en cours
  * \param perso_t player
  * \param cell_t map[D][D]
  * \param int quest_map[6][2]
