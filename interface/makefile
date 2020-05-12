@@ -1,18 +1,19 @@
 CC=gcc
-FLAGS=-Wall -g
+
 SDL_DIR=${HOME}/SDL2
 SDLLIB_DIR=${SDL_DIR}/lib
 SDLINC_DIR=${SDL_DIR}/include
 
-LIBS=-L${SDLLIB_DIR} -lSDL2 -lSDL2_ttf -lSDL2_image
+FONCTIONS= interface.c interface_combat.c scan.c
+LIBS=-L${SDLLIB_DIR} -lSDL2 -lSDL2_ttf -lSDL2_image 
 INCLUDES=-I${SDLINC_DIR}
 
-PROG=The_Hive
+PROG=interface
 
-all: The_Hive
+all: interface
 
-The_Hive: interface.c
-	${CC} -o ${PROG} interface.c ${LIBS} ${INCLUDES} ${FLAGS}
+interface: interface.c
+	${CC} -o ${PROG} ${FONCTIONS} ${LIBS} ${INCLUDES}
 
 clean:
 	rm -f ${PROG}
