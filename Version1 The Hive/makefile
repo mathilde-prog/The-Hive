@@ -7,7 +7,16 @@ CFLAGS   = -std=c99 -Wall -I.
 
 LINKER   = gcc
 # linking flags here
-LFLAGS   = -Wall -I. -lm
+LFLAGS   = -Wall -I. -lm -g
+
+SDL_DIR=${HOME}/SDL2
+SDLLIB_DIR=${SDL_DIR}/lib
+SDLINC_DIR=${SDL_DIR}/include
+
+FONCTIONS= interface.c interface_combat.c scan.c
+LIBS=-L${SDLLIB_DIR} -lSDL2 -lSDL2_ttf -lSDL2_image -lSDL2_mixer
+INCLUDES_SDL=-I${SDLINC_DIR}
+SDL= sdl
 
 # change these to proper directories where each file should be
 SRCDIR   = ./src
@@ -18,7 +27,7 @@ TRGS	 := $(GAME_WITH_TESTS:%=$(BINDIR)/%)
 DIRS	 = $(OBJDIR) $(BINDIR)
 
 .PHONY: DIRS
-all: $(DIRS) $(TRGS)
+all: $(DIRS) $(TRGS) $(SDL:%=$(BINDIR)/%)
 
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
@@ -41,6 +50,9 @@ $(TRGS): $(OBJECTS)
 $(OBJECTS): $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "Compiled "$<" successfully!"
+
+sdl: interface.c
+		${CC} -o ${INTERFACE} $(SRCDIR)/${FONCTIONS} ${LIBS} ${INCLUDES_SDL}
 
 .PHONY: clean
 clean:

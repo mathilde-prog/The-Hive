@@ -4,7 +4,7 @@
 #include<SDL2/SDL_ttf.h>
 #include<SDL2/SDL_image.h>
 #include<time.h>
-#include"combat.h"
+#include"interface_combat.h"
 #include"interface.h"
 
 /**
