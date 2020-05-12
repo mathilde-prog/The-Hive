@@ -47,7 +47,7 @@ void affichage_personnage(SDL_Renderer *renderer, char *img_perso, int x, int y)
  * \param npc_t * npc
  * \return Rien
  */
-int combat(SDL_Renderer * renderer, TTF_Font *police/*, stat_t * combat_stats, npc_t * npc*/){
+int combat_bis(SDL_Renderer * renderer, TTF_Font *police/*, stat_t * combat_stats, npc_t * npc*/){
 	SDL_Rect rect_fight = {400,0,900,550};
 	SDL_Rect cases[7];
 	SDL_Surface *texte_fuir=NULL, *texte_reculer=NULL, *texte_attaquer=NULL, *texte_avancer=NULL;
@@ -58,7 +58,7 @@ int combat(SDL_Renderer * renderer, TTF_Font *police/*, stat_t * combat_stats, n
 	SDL_Color couleurRouge = {255, 0, 0};
 	int i, position_perso = 640, position_npc = 960;
 
-	texte_fuir = TTF_RenderUTF8_Blended(police, "Fuire",couleurRouge);
+	texte_fuir = TTF_RenderUTF8_Blended(police, "Fuir",couleurRouge);
 	texte_reculer = TTF_RenderUTF8_Blended(police, "Reculer",couleurRouge);
 	texte_attaquer = TTF_RenderUTF8_Blended(police, "Attaquer",couleurRouge);
 	texte_avancer = TTF_RenderUTF8_Blended(police, "Avancer",couleurRouge);
@@ -99,8 +99,8 @@ int combat(SDL_Renderer * renderer, TTF_Font *police/*, stat_t * combat_stats, n
 	SDL_RenderDrawRect(renderer,&bouton_attaquer);
 	SDL_RenderDrawRect(renderer,&bouton_avancer);
 
-	affichage_personnage(renderer,"img/CreBandit03_inv.png", position_perso, 290);
-	affichage_personnage(renderer,"img/CreBandit02.png",position_npc,290);
+	affichage_personnage(renderer,"../data/img/CreBandit03_inv.png", position_perso, 290);
+	affichage_personnage(renderer,"../data/img/CreBandit02.png",position_npc,290);
 
 	SDL_SetRenderDrawColor(renderer,0,0,0,255);
 	SDL_RenderPresent(renderer);
@@ -135,7 +135,7 @@ int combat(SDL_Renderer * renderer, TTF_Font *police/*, stat_t * combat_stats, n
 					}
 					if(event.button.x > bouton_avancer.x && event.button.x < bouton_avancer.x+bouton_avancer.h && (event.button.y > bouton_avancer.y && event.button.y < bouton_avancer.y+bouton_avancer.h)){
 						if(position_npc <= position_perso+80)
-							printf("Impossible d'avancer d'avantage, votre adversaire est devant vous\n");
+							printf("Impossible d'avancer davantage, votre adversaire est devant vous\n");
 						else
 							position_perso += 80;
 					}
@@ -158,8 +158,8 @@ int combat(SDL_Renderer * renderer, TTF_Font *police/*, stat_t * combat_stats, n
 				SDL_RenderDrawRect(renderer,&bouton_attaquer);
 				SDL_RenderDrawRect(renderer,&bouton_avancer);
 
-				affichage_personnage(renderer,"img/CreBandit03_inv.png", position_perso, 290);
-				affichage_personnage(renderer,"img/CreBandit02.png",position_npc,290);
+				affichage_personnage(renderer,"../data/img/CreBandit03_inv.png", position_perso, 290);
+				affichage_personnage(renderer,"../data/img/CreBandit02.png",position_npc,290);
 
 				SDL_SetRenderDrawColor(renderer,0,0,0,255);
 				SDL_RenderPresent(renderer);

@@ -43,18 +43,18 @@ void relation_hexa_char(char*mapchar[], int mapint[N][N]){
 	for (i=0; i<N;i++){
 		for (j=0; j<N;j++){
 			switch(mapint[i][j]){
-				case 1 : mapchar[k]="hexa_png/hex_forest2.png";k++;break;
-				case 2 : mapchar[k]="hexa_png/hex_city1.png";k++;break;
-				case 3 : mapchar[k]="hexa_png/hex_lake1.png";k++;break;
-				case 4 : mapchar[k]="hexa_png/hex_military_base.png";k++;break;
-				case 5 : mapchar[k]="hexa_png/hex_bandit_camp.png";k++;break;
-				case 6 : mapchar[k]="hexa_png/hex_market.png";k++;break;
-				case 7 : mapchar[k]="hexa_png/hex_favella.png";k++;break;
-				case 8 : mapchar[k]="hexa_png/hex_mountains.png";k++;break;
-				case 9 : mapchar[k]="hexa_png/hex_border.png";k++;break;
-				case 10 : mapchar[k]="hexa_png/hex_sea.png";k++;break;
-				case 11 : mapchar[k]="hexa_png/hex_wasteland1.png";k++;break;
-				default : mapchar[k]="hexa_png/HexBlankDay.png";k++;
+				case 1 : mapchar[k]="../data/hexa_png/hex_forest2.png";k++;break;
+				case 2 : mapchar[k]="../data/hexa_png/hex_city1.png";k++;break;
+				case 3 : mapchar[k]="../data/hexa_png/hex_lake1.png";k++;break;
+				case 4 : mapchar[k]="../data/hexa_png/hex_military_base.png";k++;break;
+				case 5 : mapchar[k]="../data/hexa_png/hex_bandit_camp.png";k++;break;
+				case 6 : mapchar[k]="../data/hexa_png/hex_market.png";k++;break;
+				case 7 : mapchar[k]="../data/hexa_png/hex_favella.png";k++;break;
+				case 8 : mapchar[k]="../datahexa_png/hex_mountains.png";k++;break;
+				case 9 : mapchar[k]="../data/hexa_png/hex_border.png";k++;break;
+				case 10 : mapchar[k]="../data/hexa_png/hex_sea.png";k++;break;
+				case 11 : mapchar[k]="../data/hexa_png/hex_wasteland1.png";k++;break;
+				default : mapchar[k]="../data/hexa_png/HexBlankDay.png";k++;
 			}
 		}
 	}
@@ -71,8 +71,8 @@ void affichage_case_centrale(SDL_Renderer **renderer){
 	SDL_Texture *hilight_txt, *personnage_txt;
 	SDL_RWops *rwop_hilight, *rwop_personnage;
 	//cellule surligné qui indique ou es le personnage
-	rwop_hilight = SDL_RWFromFile("img/HexHilight.png","rb");
-	rwop_personnage = SDL_RWFromFile("img/CreBandit03.png","rb");
+	rwop_hilight = SDL_RWFromFile("../data/img/HexHilight.png","rb");
+	rwop_personnage = SDL_RWFromFile("../data/img/CreBandit03.png","rb");
 	hilight_surface = IMG_LoadPNG_RW(rwop_hilight);
 	personnage = IMG_LoadPNG_RW(rwop_personnage);
 	hilight_txt = SDL_CreateTextureFromSurface(*renderer,hilight_surface);
@@ -203,7 +203,7 @@ int interface(){
 	/* icone de la fenetre */
 	SDL_Surface *icon=NULL;
 	SDL_RWops *icon_rwop=NULL;
-	icon_rwop=SDL_RWFromFile("img/ItmEncMergaLoupe.png","rb");
+	icon_rwop=SDL_RWFromFile("../data/img/ItmEncMergaLoupe.png","rb");
 	icon=IMG_LoadPNG_RW(icon_rwop);
 	SDL_SetWindowIcon(ecran,icon);
 
@@ -217,12 +217,12 @@ int interface(){
 		fprintf(stderr, "Erreur à la création du renderer\n");
 		exit(EXIT_FAILURE);
 	}
-	if( (police1 = TTF_OpenFont("Menlo-Regular.ttf", 55)) == NULL){
-		fprintf(stderr, "erreur chargement font\n");
+	if( (police1 = TTF_OpenFont("../data/Menlo-Regular.ttf", 55)) == NULL){
+		fprintf(stderr, "1 erreur chargement font\n");
 		exit(EXIT_FAILURE);
 	}
-	if( (police2 = TTF_OpenFont("Menlo-Regular.ttf", 25)) == NULL){
-		fprintf(stderr, "erreur chargement font\n");
+	if( (police2 = TTF_OpenFont("../data/Menlo-Regular.ttf", 25)) == NULL){
+		fprintf(stderr, "2 erreur chargement font\n");
 		exit(EXIT_FAILURE);
 	}
 
@@ -320,7 +320,7 @@ int interface(){
 							}
 							if(event.button.x > bouton_fouille.x && event.button.x < bouton_fouille.x+bouton_fouille.w && event.button.y > bouton_fouille.y && event.button.y < bouton_fouille.y+bouton_fouille.h){
 								printf("search button pressed\n");
-								combat(renderer,police2);
+								combat_bis(renderer,police2);
 								affichage_map(&renderer,map);
 							}
 							if(event.button.x > bouton_inv.x && event.button.x < bouton_inv.x+bouton_inv.w && event.button.y > bouton_inv.y && event.button.y < bouton_inv.y+bouton_inv.h){
