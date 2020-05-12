@@ -4,8 +4,8 @@
 #include<SDL2/SDL_ttf.h>
 #include<SDL2/SDL_image.h>
 #include<time.h>
-#include"interface_combat.h"
-#include"interface.h"
+#include"lib/interface_combat.h"
+#include"lib/interface.h"
 
 /**
  * \file interface.c

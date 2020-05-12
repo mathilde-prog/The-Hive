@@ -3,7 +3,7 @@
 #include<SDL2/SDL.h>
 #include<SDL2/SDL_ttf.h>
 #include<SDL2/SDL_image.h>
-#include"interface_combat.h"
+#include"lib/interface_combat.h"
 
 /**
  * \file combat.c
