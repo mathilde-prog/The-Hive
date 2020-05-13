@@ -43,17 +43,18 @@ void relation_hexa_char(char*mapchar[], int mapint[N][N]){
 	for (i=0; i<N;i++){
 		for (j=0; j<N;j++){
 			switch(mapint[i][j]){
-				case 1 : mapchar[k]="../data/hexa_png/hex_forest2.png";k++;break;
-				case 2 : mapchar[k]="../data/hexa_png/hex_city1.png";k++;break;
-				case 3 : mapchar[k]="../data/hexa_png/hex_lake1.png";k++;break;
-				case 4 : mapchar[k]="../data/hexa_png/hex_military_base.png";k++;break;
-				case 5 : mapchar[k]="../data/hexa_png/hex_bandit_camp.png";k++;break;
-				case 6 : mapchar[k]="../data/hexa_png/hex_market.png";k++;break;
-				case 7 : mapchar[k]="../data/hexa_png/hex_favella.png";k++;break;
-				case 8 : mapchar[k]="../data/hexa_png/hex_mountains.png";k++;break;
-				case 9 : mapchar[k]="../data/hexa_png/hex_border.png";k++;break;
-				case 10 : mapchar[k]="../data/hexa_png/hex_sea.png";k++;break;
-				case 11 : mapchar[k]="../data/hexa_png/hex_wasteland1.png";k++;break;
+				case 1 : mapchar[k]="../data/hexa_png/hex_prairie1.png";k++;break;
+				case 2 : mapchar[k]="../data/hexa_png/hex_forest2.png";k++;break;
+				case 3 : mapchar[k]="../data/hexa_png/hex_city1.png";k++;break;
+				case 4 : mapchar[k]="../data/hexa_png/hex_lake1.png";k++;break;
+				case 5 : mapchar[k]="../data/hexa_png/hex_military_base.png";k++;break;
+				case 6 : mapchar[k]="../data/hexa_png/hex_bandit_camp.png";k++;break;
+				case 7 : mapchar[k]="../data/hexa_png/hex_market.png";k++;break;
+				case 8 : mapchar[k]="../data/hexa_png/hex_favella.png";k++;break;
+				case 9 : mapchar[k]="../data/hexa_png/hex_mountains.png";k++;break;
+				case 10 : mapchar[k]="../data/hexa_png/hex_border.png";k++;break;
+				case 11 : mapchar[k]="../data/hexa_png/hex_sea.png";k++;break;
+				case 12 : mapchar[k]="../data/hexa_png/hex_wasteland1.png";k++;break;
 				default : mapchar[k]="../data/hexa_png/HexBlankDay.png";k++;
 			}
 		}
