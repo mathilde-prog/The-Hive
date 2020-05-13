@@ -12,3 +12,10 @@ void relation_hexa_char(char*mapchar[], int mapint[][N]);
 void affichage_case_centrale(SDL_Renderer **renderer);
 void affichage_map(SDL_Renderer **renderer, char *map[]);
 int interface();
+
+void affichage_personnage(SDL_Renderer *renderer, char *img_perso, int x, int y);
+int combat_bis(TTF_Font *police/*, stat_t * combat_stats, npc_t * npc*/);
+void affichage_help();
+
+int monscanf(char * c);
+int testscanf();

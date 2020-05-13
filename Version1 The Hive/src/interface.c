@@ -4,8 +4,8 @@
 #include<SDL2/SDL_ttf.h>
 #include<SDL2/SDL_image.h>
 #include<time.h>
-#include"lib/interface_options.h"
 #include"lib/interface.h"
+#include"lib/commun.h"
 
 /**
  * \file interface.c

@@ -39,6 +39,7 @@ int monscanf(char * c){
       }
     }
   }
+  return 0;
 }
 
 int testscanf(){
