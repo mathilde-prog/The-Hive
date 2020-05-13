@@ -3,9 +3,12 @@
 #include <string.h>
 #include <unistd.h>
 #include <time.h>
+#include<SDL2/SDL.h>
+#include<SDL2/SDL_ttf.h>
+#include<SDL2/SDL_image.h>
 #include <getopt.h>
 #include "lib/commun.h"
-
+#include "lib/interface_options.h"
 /**
  * \file game.c
  * \brief Jeu
@@ -118,7 +121,7 @@ void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], q
       case 7: clrscr(); rest_and_heal(&player); clrscr(); break;
       case 8: clrscr(); next_turn(&player); clrscr(); break;
       case 9: clrscr(); sauvegarder_progression(player,map,quest_map,quete,sauv); break;
-      case 10: clrscr(); printf("Fichier PDF"); clrscr(); break;
+      case 10: clrscr(); affichage_help(); clrscr(); break;
       case -1: clrscr(); exit(0); break;
       default: printf("   Commande inconnue. Veuillez ressaisir: "); goto jump; break;
     }
