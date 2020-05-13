@@ -50,7 +50,7 @@ void relation_hexa_char(char*mapchar[], int mapint[N][N]){
 				case 5 : mapchar[k]="../data/hexa_png/hex_bandit_camp.png";k++;break;
 				case 6 : mapchar[k]="../data/hexa_png/hex_market.png";k++;break;
 				case 7 : mapchar[k]="../data/hexa_png/hex_favella.png";k++;break;
-				case 8 : mapchar[k]="../datahexa_png/hex_mountains.png";k++;break;
+				case 8 : mapchar[k]="../data/hexa_png/hex_mountains.png";k++;break;
 				case 9 : mapchar[k]="../data/hexa_png/hex_border.png";k++;break;
 				case 10 : mapchar[k]="../data/hexa_png/hex_sea.png";k++;break;
 				case 11 : mapchar[k]="../data/hexa_png/hex_wasteland1.png";k++;break;
@@ -320,8 +320,7 @@ int interface(){
 							}
 							if(event.button.x > bouton_fouille.x && event.button.x < bouton_fouille.x+bouton_fouille.w && event.button.y > bouton_fouille.y && event.button.y < bouton_fouille.y+bouton_fouille.h){
 								printf("search button pressed\n");
-								//combat_bis(renderer,police2);
-								//affichage_map(&renderer,map);
+								combat_bis(police2);
 							}
 							if(event.button.x > bouton_inv.x && event.button.x < bouton_inv.x+bouton_inv.w && event.button.y > bouton_inv.y && event.button.y < bouton_inv.y+bouton_inv.h){
 								printf("inventory button pressed\n");

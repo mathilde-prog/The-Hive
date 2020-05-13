@@ -7,5 +7,5 @@
 */
 
 void affichage_personnage(SDL_Renderer *renderer, char *img_perso, int x, int y);
-int combat_bis(SDL_Renderer * renderer, TTF_Font *police/*, stat_t * combat_stats, npc_t * npc*/);
+int combat_bis(TTF_Font *police/*, stat_t * combat_stats, npc_t * npc*/);
 void affichage_help();
