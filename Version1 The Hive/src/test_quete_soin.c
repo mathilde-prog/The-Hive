@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
-#include "lib/structure.h"
+#include "lib/commun.h"
 
 /**
  * \file test_quete_soin.c
@@ -12,6 +12,17 @@
  * \date 2020
 */
 
+/**
+ * \void int main()
+ * \brief Programme principal pour tester l'affichage et le bon fonctionnement de la quête soin
+ * \details Avant de commencer la quête, l'utilisateur choisit :
+    - Inventaire vide
+    - Inventaire : inclus 1 item food
+    - Inventaire : inclus 3 items food dans l'inventaire
+    - Inventaire : inclus 1 medical kit
+    - Inventaire : inclus 1 medical kit + 1 item food
+    - Inventaire plein (inclus 1 medical kit + items food)
+*/
 int main(){
   srand(time(NULL));
   clrscr();

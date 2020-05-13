@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include "lib/structure.h"
+#include "lib/commun.h"
 
 /**
  * \file equipment.c
@@ -16,7 +16,7 @@
  * \fn void display_equipment_player(perso_t player)
  * \brief Affiche l'équipement du joueur
  * \details Si la tête, la main gauche, la main droite ou le corps du joueur sont équipés, indique avec quels items en précisant leurs positions dans l'inventaire.
- * \param perso_t player
+ * \param player Joueur
  * \return Rien
 */
 void display_equipment_player(perso_t player){
@@ -40,9 +40,9 @@ void display_equipment_player(perso_t player){
 /**
  * \fn int is_equipped(perso_t player, item_t item)
  * \brief Indique si le joueur est équipé de l'item passé en paramètre
- * \param perso_t player
- * \param item_t item
- * \return Un \a int : si le joueur n'est pas équipé de l'item retourne 0 (NOT_EQUIPPED), sinon retourne où l'item est équipé sur le joueur (LEFT_HAND = 1, RIGHT_HAND = 2, BODY = 3, HEAD = 4)
+ * \param player Joueur
+ * \param item Item
+ * \return Un \a int : si le joueur n'est pas équipé de l'item retourne 0 (#NOT_EQUIPPED), sinon retourne où l'item est équipé sur le joueur (#LEFT_HAND = 1, #RIGHT_HAND = 2, #BODY = 3, #HEAD = 4)
 */
 int is_equipped(perso_t player, item_t item){
 	/* On commence par vérifier si l'item passé en paramètre est équipable.
@@ -85,8 +85,8 @@ int is_equipped(perso_t player, item_t item){
  * \fn void swap_equipment_player(perso_t * player, item_t item)
  * \brief Echange l'item passé en paramètre avec un item choisi par le joueur figurant dans son équipement
  * \details Cette fonction est appelée lorsque le joueur souhaite s'équiper d'un item sur une zone de son corps déjà équipée.
- * \param perso_t * player
- * \param item_t item
+ * \param player Pointeur sur un objet de type perso_t correspond au joueur
+ * \param item Item
  * \return Rien
 */
 void swap_equipment_player(perso_t * player, item_t item){
@@ -152,7 +152,7 @@ void swap_equipment_player(perso_t * player, item_t item){
 /**
  * \fn void equip_player(perso_t * player)
  * \brief Equipe le joueur, au bon endroit, avec un item de son inventaire qu'il choisit. L'item doit être équipable.
- * \param perso_t * player
+ * \param player Pointeur sur un objet de type perso_t correspond au joueur
  * \return Rien
 */
 void equip_player(perso_t * player){
@@ -213,8 +213,8 @@ void equip_player(perso_t * player){
 /**
  * \fn int nb_equipement(perso_t player)
  * \brief Compte le nombre d'item(s) équipé(s) sur le joueur
- * \param perso_t player
- * \return Un \a int correspondant au nombre d'équipement (items) actuellement sur le joueur
+ * \param player Joueur
+ * \return Un \a int correspondant au nombre d'équipement(s) (items) actuellement sur le joueur
 */
 int nb_equipement(perso_t player){
     int cpt = 0;
@@ -234,8 +234,8 @@ int nb_equipement(perso_t player){
 /**
  * \fn int nb_items_equipables_non_equipe(perso_t player)
  * \brief Compte le nombre d'item(s) équipable(s) (armes et armures) mais non équipé(s) que le joueur a dans son inventaire
- * \param perso_t player
- * \return Un \a int correspondant au nombre d'équipement équipables mais non équipé(s) que le joueur a dans son inventaire
+ * \param player Joueur
+ * \return Un \a int correspondant au nombre d'équipement(s) équipable(s) mais non équipé(s) que le joueur a dans son inventaire
 */
 int nb_items_equipables_non_equipe(perso_t player){
 	int cpt, i;
@@ -254,10 +254,9 @@ int nb_items_equipables_non_equipe(perso_t player){
 /**
  * \fn void remove_equipment_player(perso_t * player)
  * \brief Retire un item choisi par le joueur de son équipement
- * \param perso_t * player
+ * \param player Pointeur sur un objet de type perso_t correspondant au joueur
  * \return Rien
 */
-/*	remove_equipment_player: removes an item from the player's equipment */
 void remove_equipment_player(perso_t * player){
 	int num; // variable pour le choix du joueur
 
@@ -286,10 +285,9 @@ void remove_equipment_player(perso_t * player){
  * \fn void manage_equipment(perso_t * player)
  * \brief Fonction centrale du fichier equipment.c permettant au joueur de gérer son équipement
  * \details Menu équipement : Possibilité pour le joueur de s'équiper d'un item de son inventaire, de retirer un item de son équipement.
- * \param perso_t * player
+ * \param player Pointeur sur un objet de type perso_t correspondant au joueur
  * \return Rien
 */
-/* manage_equipment: equipment menu */
 void manage_equipment(perso_t * player){
 	int choise, configuration = 0, choix_max;
 

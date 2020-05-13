@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "lib/structure.h"
+#include "lib/commun.h"
 
 /**
  * \file test_item_in_inventory.c
@@ -11,6 +11,11 @@
  * \date 2020
 */
 
+/**
+ * \void int main()
+ * \brief Programme principal pour tester si un item est présent dans l'inventaire du joueur
+ * \details Objectif : Tester la fonction #item_in_inventory
+*/
 int main(){
   srand(time(NULL));
 

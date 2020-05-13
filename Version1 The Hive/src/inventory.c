@@ -3,7 +3,7 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
-#include "lib/structure.h"
+#include "lib/commun.h"
 
 /**
  * \file inventory.c
@@ -14,10 +14,85 @@
 */
 
 /**
+ * \fn void gain_energie(perso_t * player, int val_e)
+ * \brief Calcule et met à jour les points d'énergie du joueur selon la valeur énergétique de l'item mangé / bu
+ * \param player Pointeur sur un objet de type perso_t correspondant au joueur
+ * \param val_e Valeur énergétique de l'item mangé/bu
+ * \return Rien
+*/
+void gain_energie(perso_t * player, int val_e){
+  int val = val_e;
+
+  if((player->pe + val) > 100){
+    val = (100 - player->pe);
+  }
+  if(val != 0){
+    player->pe += val;
+    printf("   Vous gagnez %d points d'énergie.\n", val);
+  }
+  else {
+    printf("\n   Vous êtes déjà au max de votre forme. Vous ne gagnez aucun point d'énergie.\n");
+  }
+}
+
+/**
+ * \fn void eat_or_drink (perso_t * player, item_t item)
+ * \brief Permet au joueur de boire ou manger un item de type \a food et récupérer des points d'énergie ou action (si cela est possible).
+ * \details Retire l'item mangé / bu de l'inventaire
+ * \param player Pointeur sur un objet de type perso_t correspondant au joueur
+ * \param item Item que le joueur désire manger ou boire
+ * \return Rien
+*/
+void eat_or_drink (perso_t * player, item_t item){
+  printf("\n");
+  if(item.type == food){
+    if(!strcmp(item.name,"fruits")){
+      printf("   Ces fruits sont délicieux! ");
+      gain_energie(player,10);
+    }
+    else if(!strcmp(item.name,"poisson")){
+      printf("   Attention aux arrêtes... ");
+      gain_energie(player,15);
+    }
+    else if (!strcmp(item.name,"boite de conserve")){
+      printf("   Qui aurait pensé qu'une boîte de conserve ferait un si bon repas! ");
+      gain_energie(player,50);
+    }
+    else if (!strcmp(item.name,"soda")){
+      printf("   Ce soda est très sucré. ");
+      gain_energie(player,12);
+    }
+    else if(!strcmp(item.name,"boisson energie+")){
+      printf("   Une boisson - énergisante - ! ");
+      if(player->pa < 5){
+        player->pa++;
+        printf("   Vous gagnez 1 point d'action. ");
+      }
+      gain_energie(player,20);
+    }
+    else if(!strcmp(item.name,"bouteille eau")){
+      printf("   C'est rafraichissant! ");
+      gain_energie(player,10);
+    }
+    delete_item_in_inventory(player, item);
+  }
+  else {
+    printf("   Vous ne pouvez pas manger ou boire cet item, ");
+    switch(item.type){
+      case weapon: printf("c'est une arme.\n"); break;
+      case armor: printf("c'est une armure.\n"); break;
+      case misc: printf("c'est un objet.\n"); break;
+      default: break;
+    }
+  }
+  printf("\n");
+}
+
+/**
  * \fn void check_the_map(perso_t player, cell_t map[D][D])
  * \brief Affiche la carte, si le joueur en possède une dans son inventaire
- * \param perso_t player
- * \param cell_t map[D][D]
+ * \param player Joueur
+ * \param map[D][D] Matrice de la carte
  * \return Rien
 */
 void check_the_map(perso_t player, cell_t map[D][D]){
@@ -35,8 +110,8 @@ void check_the_map(perso_t player, cell_t map[D][D]){
 /**
  * \fn int item_in_inventory(perso_t player, char * nom_item)
  * \brief Recherche si l'item dont le nom est passé en paramètre est présent ou non dans l'inventaire
- * \param perso_t player
- * \param char * nom_item
+ * \param player Joueur
+ * \param nom_item Nom de l'item à rechercher dans l'inventaire
  * \return Un \a int : position de l'item dans l'inventaire si présent, -1 si absent
 */
 int item_in_inventory(perso_t player, char * nom_item){
@@ -52,9 +127,9 @@ int item_in_inventory(perso_t player, char * nom_item){
 
 /**
  * \fn int food_in_inventory(perso_t player)
- * \brief Calcule le nombre d'items food dans l'inventaire du joueur
- * \param perso_t player
- * \return Un \a int : nombre d'items food dans l'inventaire du joueur
+ * \brief Calcule le nombre d'items \a food dans l'inventaire du joueur
+ * \param player Joueur
+ * \return Un \a int : nombre d'items \a food dans l'inventaire du joueur
 */
 int food_in_inventory(perso_t player){
 	int i, cpt;
@@ -71,8 +146,8 @@ int food_in_inventory(perso_t player){
  * \fn int too_much_of_the_same_item(perso_t player, item_t item)
  * \brief Indique si l'item passé en paramètre apparaît 2 fois ou plus dans l'inventaire du joueur
  * \details Remarque : Un item peut figurer au maximum 2 fois dans l'inventaire du joueur
- * \param perso_t player
- * \param item_t item
+ * \param player Joueur
+ * \param item Item
  * \return Un \a int : retourne 1 si l'item est présent 2 fois ou plus dans l'inventaire. 0 sinon.
 */
 /* too_much_of_the_same_item: returns 1 if an item is present 2 times or more in the inventory.*/
@@ -92,18 +167,20 @@ int too_much_of_the_same_item(perso_t player, item_t item){
  * \fn void display_inventory (perso_t player)
  * \brief Affiche l'inventaire du joueur
  * \details Affichage des items de l'inventaire avec leurs positions, par catégorie (armes, armures, divers, nourriture). Indique si item équipé pour les armes et armures.
- * \param perso_t player
+ * \param player Joueur
  * \return Rien
 */
 void display_inventory (perso_t player){
 	int i, cpt;
 
+  // Inventaire vide
 	if(player.nb_items_inventory == 0){
 		printf("\n   Votre inventaire est vide. Vous ne pouvez rien faire ici sans item.\n\n");
 		entree_pour_continuer();
 	}
 	else {
-		/* display items from the inventory */
+		// Affiche les items de l'inventaire du joueur
+
 		if(player.nb_items_inventory > 1){
 			printf("\n   ========== INVENTAIRE (%d items) ==========\n\n", player.nb_items_inventory);
 		}
@@ -171,8 +248,8 @@ void display_inventory (perso_t player){
 /**
  * \fn void delete_item_in_inventory(perso_t * player, item_t item)
  * \brief Retire l'item passé en paramètre de l'inventaire (et de l'équipement si besoin) du joueur
- * \param perso_t * player
- * \param item_t item
+ * \param player Pointeur sur un objet de type perso_t correspondant au joueur
+ * \param item Item à retirer de l'inventaire
  * \return Rien
 */
 void delete_item_in_inventory(perso_t * player, item_t item){
@@ -237,8 +314,8 @@ void delete_item_in_inventory(perso_t * player, item_t item){
 /**
  * \fn int add_item_to_inventory(perso_t * player, item_t item)
  * \brief Ajoute un item à l'inventaire du joueur. Si son inventaire est plein, propose un échange.
- * \param perso_t * player
- * \param item_t item
+ * \param player Pointeur sur un objet de type perso_t correspondant au joueur
+ * \param item Item à ajouter à l'inventaire
  * \return Un \a int : 1 si ajout effectué. 0 sinon.
 */
 int add_item_to_inventory(perso_t * player, item_t item){
@@ -301,10 +378,9 @@ int add_item_to_inventory(perso_t * player, item_t item){
  * \fn void manage_inventory(perso_t * player)
  * \brief Fonction centrale du fichier inventory.c permettant au joueur de gérer son inventaire
  * \details Menu inventaire : Possibilité pour le joueur d'en savoir plus sur un de ses items, de se débarasser d'un item, de manger/boire un item, d'utiliser son kit médical (s'il en possède un)
- * \param perso_t * player
+ * \param player Pointeur sur un objet de type perso_t correspondant au joueur
  * \return Rien
 */
-/* manage_inventory: menu inventory */
 void manage_inventory(perso_t * player){
 	int nb, choise, ind_food, ind_mk, choix_max, val;
 
@@ -327,7 +403,7 @@ void manage_inventory(perso_t * player){
 				choix_max = 2;
 			}
 
-			// Menu management inventory
+			// Menu gestion inventaire
 			printf("   Que souhaitez-vous faire ?\n");
 			printf("   1. En savoir plus sur un item\n");
 			printf("   2. Se débarasser d'un item\n");

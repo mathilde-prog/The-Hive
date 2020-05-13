@@ -3,25 +3,25 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
-#include "lib/structure.h"
+#include "lib/commun.h"
+
 
 /**
  * \file quete_soin.c
- * \brief Fonctions utilisees dans la quete "soin".
+ * \brief Quête "soin".
  * \author Mathilde Mottay, Anais Mottier, Clement Mainguy, Moustapha Tsamarayev
  * \version
  * \date 2020
 */
 
-
 /**
  * \fn npc_t * init_npc_quete(item_t * Tab_Items, int pers)
  * \brief Initialisation du personnage de l'homme blessé.
  * \details
-    L'initialisation est différente en fonction du "metier" de l'homme : soldat, policier. Il n'aura pas la même arme mais aura la même armure.
- * \param item_t * Tab_Items
- * \param int pers
- * \return Un pointeur (npc_t) sur le npc créé
+    L'initialisation est différente en fonction du "métier" de l'homme : soldat, policier. Il n'aura pas la même arme mais aura la même armure.
+  * \param Tab_Items Tableau contenant tous les items disponibles dans le jeu
+ * \param pers Indicateur si l'homme blessé dans la quête est un soldat ou policier
+ * \return Un pointeur sur un objet de type npc_t correspondant à l'homme blessé
 */
 npc_t * init_npc_quete(item_t * Tab_Items, int pers){
   npc_t * blesse;
@@ -50,12 +50,12 @@ npc_t * init_npc_quete(item_t * Tab_Items, int pers){
  * \brief Récupération des items voler sur l'homme blessé par le joueur.
  * \details
     Génération des items volés + décision du joueur de les récupérer ou non dans son inventaire
- * \param perso_t * player
- * \param int nb_items_vole
- * \param npc_t* homme
- * \param item_t * pass_card
- * \param quete_t * quete
- * \return Retourne un \a int : 0 si le jeu continue et -1 si probleme dans la quete.
+ * \param player Pointeur sur un objet de type perso_t correspondant au joueur
+ * \param nb_items_vole Nombre d'items volés par le joueur
+ * \param homme Pointeur sur un objet de type npc_t correspondant à l'homme blessé
+ * \param pass_card Pointeur sur un objet de type item_t correspondant au pass
+ * \param quete Pointeur sur un objet de type quete_t correspondant à l'état des quêtes
+ * \return Retourne un \a int : 0 si le jeu continue et -1 si problème dans la quête.
 */
 int recup_items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t * pass_card, quete_t * quete){
     int i, item2, ajout, recup;
@@ -194,10 +194,10 @@ int recup_items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t *
  * \brief Fonction où se déroule la partie aide de la quete "soin".
  * \details
     Le joueur peut aider l'homme de différentes façons, il choisit comment il souhaite le faire ou non.
- * \param perso_t * player
- * \param item_t * pass_card
- * \param quete_t * quete
- * \param int pers
+ * \param player Pointeur sur un objet de type perso_t correspondant au joueur
+ * \param pass_card Pointeur sur un objet de type item_t correspondant au pass
+ * \param quete Pointeur sur un objet de type quete_t correspondant à l'état des quêtes
+ * \param pers Indicateur si l'homme blessé dans la quête est un soldat ou policier
  * \return Retourne un \a int : 0 si le jeu continue et -1 si problème dans la quete.
 */
 int aider_homme_blesse(perso_t * player, item_t * pass_card, quete_t * quete, int pers){
@@ -407,14 +407,14 @@ int aider_homme_blesse(perso_t * player, item_t * pass_card, quete_t * quete, in
 
 /**
  * \fn void quete_soin(perso_t * player, quete_t * quete, item_t * Tab_Items)
- * \brief Deroulement de la quete "soin" : rencontre d'un individu blesse.
+ * \brief Déroulement de la quête "soin" : rencontre d'un individu blessé.
  * \details
     Le joueur rencontre un individu blesse. Il a le choix entre l'ignorer, lui voler ses items ou l'aider.
     Cet individu est un homme de l'Etat, en charge de la protection des civiles (policier ou soldat).
     Pour pouvoir aider le blesse le joueur doit être en possession du medical kit ou de nourriture.
- * \param perso_t * player
- * \param quete_t * quete
- * \param item_t * Tab_Items
+ * \param player Pointeur sur un objet de type perso_t correspondant au joueur
+ * \param quete Pointeur sur un objet de type quete_t correspondant à l'état des quêtes
+ * \param Tab_Items Tableau contenant tous les items disponibles dans le jeu
  * \return Retourne un \a int : 0 si le jeu continue et -1 si probleme dans la quete.
 */
 int quete_soin(perso_t * player, quete_t * quete, item_t * Tab_Items){

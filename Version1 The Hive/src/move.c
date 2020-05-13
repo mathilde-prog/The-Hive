@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
-#include "lib/structure.h"
+#include "lib/commun.h"
 
 /**
  * \file move.c
- * \brief Gestion du déplacement du joueur
+ * \brief Déplacement du joueur
  * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
  * \version 1.0
  * \date 2020
@@ -14,9 +14,9 @@
 
 /**
  * \fn int move_lose_pa (hex_t type_hexa)
- * \brief Calcule le nombre de points d'actions nécessaires pour se déplacer dans le type d'hexagone passé en paramètre
- * \param hex_t type_hexa
- * \return Un \a int représentant le nombre de points d'action nécessaires (prairie : 1, foret : 2, ville : 1, lac : 2, camp_mil : 2, camp_ban : 2, market : 1, favela : 2, montagne : 3, frontiere : 1, mer : 1, wasteland : 1)
+ * \brief Calcule le nombre de points d'action nécessaires pour se déplacer dans le type d'hexagone passé en paramètre
+ * \param type_hexa Type de l'hexagone sur lequel le joueur souhaite se déplacer
+ * \return Un \a int représentant le nombre de points d'action nécessaires (prairie : 1, forêt : 2, ville : 1, lac : 2, camp militaire : 2, camp des bandits : 2, marché : 1, favela : 2, montagne : 3, frontière : 1, mer : 1, wasteland : 1)
 */
 int move_lose_pa (hex_t type_hexa){
   switch(type_hexa){
@@ -39,9 +39,9 @@ int move_lose_pa (hex_t type_hexa){
 /**
  * \fn void look_around(int i, int j, cell_t map[D][D])
  * \brief Affiche une vue des 8 hexagones qui entourent le joueur et les codes pour choisir où se déplacer
- * \param int i
- * \param int j
- * \param cell_t map[D][D]
+ * \param i Coordonnée ligne de l'hexagone sur lequel le joueur se trouve
+ * \param j Coordonnée colonne de l'hexagone sur lequel le joueur se trouve
+ * \param map[D][D] Matrice de la carte
  * \return Rien
 */
 void look_around(int i, int j, cell_t map[D][D]){
@@ -107,8 +107,8 @@ void look_around(int i, int j, cell_t map[D][D]){
 /**
  * \fn void move (perso_t * player, cell_t map[D][D])
  * \brief Déplace le joueur où il le souhaite, si cela est possible (conditions : coordonnées valides et assez de points d'action)
- * \param perso_t * player
- * \param cell_t map[D][D]
+ * \param player Pointeur sur un objet de type perso_t correspondant au joueur
+ * \param map[D][D] Matrice de la carte
  * \return Rien
 */
 void move (perso_t * player, cell_t map[D][D]){
@@ -291,8 +291,8 @@ void move (perso_t * player, cell_t map[D][D]){
 /**
  * \fn void random_move(perso_t * player, cell_t map[D][D])
  * \brief Déplace aléatoirement le joueur sur un des hexagones qui l'entoure
- * \param perso_t * player
- * \param cell_t map[D][D]
+ * \param player Pointeur sur un objet de type perso_t correspondant au joueur
+ * \param map[D][D] Matrice de la carte
  * \return Rien
 */
 void random_move(perso_t * player, cell_t map[D][D]){

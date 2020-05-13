@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
-#include "lib/structure.h"
+#include "lib/commun.h"
 
 /**
  * \file test_quete_bunker.c
@@ -12,6 +12,11 @@
  * \date 2020
 */
 
+/**
+ * \void int main()
+ * \brief Programme principal pour tester l'affichage et le bon fonctionnement de la quête bunker
+ * \details L'utilisateur choisit s'il possède un pass avant de commencer la quête.
+*/
 int main(){
   srand(time(NULL));
   clrscr();

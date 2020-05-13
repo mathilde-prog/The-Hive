@@ -3,7 +3,7 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
-#include "lib/structure.h"
+#include "lib/commun.h"
 
 /**
  * \file combat.c
@@ -17,9 +17,9 @@
  * \fn void retrieve_enemy_items(item_t * Tab_Items, int nb_items_available, perso_t * player)
  * \brief Génère aléatoirement 0 à 3 items (correspondant au sac à dos de l'ennemi) que le joueur peut récupérer s'il le souhaite.
  * \details Cette fonction est appelée uniquement si le joueur gagne au combat.
- * \param item_t * Tab_Items
- * \param int nb_items_available
- * \param perso_t * player
+ * \param Tab_Items Tableau contenant tous les items disponibles dans le jeu
+ * \param nb_items_available Nombre d'items disponibles dans le jeu
+ * \param player Pointeur sur un objet de type perso_t correspondant au joueur
  * \return Rien
 */
 void retrieve_enemy_items(item_t * Tab_Items, int nb_items_available, perso_t * player){
@@ -120,10 +120,10 @@ void retrieve_enemy_items(item_t * Tab_Items, int nb_items_available, perso_t * 
  * \fn void loot_enemy (item_t * Tab_Items, int nb_items_available, npc_t * enemy, perso_t * player)
  * \brief Propose au joueur de récupérer l'arme et/ou l'armure et/ou les items de l'ennemi.
  * \details Cette fonction est appelée uniquement si le joueur gagne au combat.
- * \param item_t * Tab_Items
- * \param int nb_items_available
- * \param npc_t * enemy
- * \param perso_t * player
+ * \param Tab_Items Tableau contenant tous les items disponibles dans le jeu
+ * \param nb_items_available Nombre d'items disponibles dans le jeu
+ * \param enemy Pointeur sur un objet de type npc_t correspondant à l'ennemi
+ * \param player Pointeur sur un objet de type perso_t correspondant au joueur
  * \return Rien
 */
 void loot_enemy (item_t * Tab_Items, int nb_items_available, npc_t * enemy, perso_t * player){
@@ -189,12 +189,12 @@ void loot_enemy (item_t * Tab_Items, int nb_items_available, npc_t * enemy, pers
 /**
  * \fn void damage_calculator(item_t * weapon, item_t * armor, int * hp, int distance , int cover, int scenario)
  * \brief Calcule les dommages causés par l'attaquant (scénario 1 : ennemi, scénario 2 : joueur)
- * \param item_t * weapon
- * \param item_t * armor
- * \param int * hp
- * \param int distance
- * \param int cover
- * \param int scenario
+ * \param weapon Pointeur sur un objet de type item_t correspondant à l'arme attaquant
+ * \param armor Pointeur sur un objet de type item_t correspondant à l'armure non-attaquant
+ * \param hp Pointeur sur un objet de type int correspondant aux points de vie
+ * \param distance Distance qui sépare l'ennemi et le joueur sur le champ de bataille
+ * \param cover Couverture non-attaquant
+ * \param scenario Scénario
  * \return Rien
 */
 void damage_calculator(item_t * weapon, item_t * armor, int * hp, int distance , int cover, int scenario){
@@ -204,8 +204,8 @@ void damage_calculator(item_t * weapon, item_t * armor, int * hp, int distance ,
    * - Scénario 1 : ennemi
    * - Scénario 2 : joueur
    */
-  // Calcul chance que l'attaquant touche sa cible selon la distance qui les sépare et la couverture de sa cible
   if(distance <= 2){
+    // Calcul chance que l'attaquant touche sa cible selon la distance qui les sépare et la couverture de sa cible
     if(rng(weapon->hitchance[distance]-(15*cover))){
       if(armor==NULL){
         damage=weapon->attack[distance];
@@ -239,9 +239,9 @@ void damage_calculator(item_t * weapon, item_t * armor, int * hp, int distance ,
 
 /**
  * \fn npc_t * init_npc(item_t * Tab_Items)
- * \brief Initialise un non-player character (NPC) ennemi (nom,arme,armure et points de vie)
- * \param item_t * Tab_Items
- * \return Pointeur sur npc_t
+ * \brief Initialise un non-player character (NPC) ennemi (nom, arme, armure et points de vie)
+ * \param Tab_Items Tableau contenant tous les items disponibles dans le jeu
+ * \return Pointeur sur un objet de type npc_t correspondant à l'ennemi créé
 */
 npc_t * init_npc(item_t * Tab_Items){
   npc_t * enemy;
@@ -256,14 +256,14 @@ npc_t * init_npc(item_t * Tab_Items){
     enemy->pv=40;
     if(rng(70)){ // 70% de chance qu'il ait une batte de baseball
       enemy->weapon=&Tab_Items[5];
-    }else{ // 30% qu'il ait un couteau
+    }else{ // 30% de chance qu'il ait un couteau
       enemy->weapon=&Tab_Items[3];
     }
   }else if(rng(30)){ // 30% de chance que ce maraudeur soit de classe "moyen"
     enemy->pv=80;
     if(rng(30)){ // 30% de chance qu'il ait un pistolet
       enemy->weapon=&Tab_Items[0];
-    }else{ // 70% qu'il ait une batte de baseball et un gilet pare-balles
+    }else{ // 70% de chance qu'il ait une batte de baseball et un gilet pare-balles
       enemy->weapon=&Tab_Items[5];
       enemy->armor=&Tab_Items[6];
     }
@@ -286,7 +286,7 @@ npc_t * init_npc(item_t * Tab_Items){
 /**
  * \fn stat_t * init_field()
  * \brief Initialise le champ de bataille du combat (positions et couvertures des adversaires, distance qui les sépare)
- * \return Pointeur sur stat_t
+ * \return Pointeur sur un objet de type stat_t correspondant au champ de bataille créé
 */
 stat_t * init_field(){
   stat_t * field;
@@ -301,10 +301,10 @@ stat_t * init_field(){
 
 /**
  * \fn void turn_npc(npc_t * enemy, stat_t * field, perso_t * player)
- * \brief Tour du non-player character (NPC) lors du combat, le compertement de NPC est explique sur <a href="PEPEGA">ce schema</a>
- * \param npc_t * enemy
- * \param stat_t * field
- * \param perso_t * player
+ * \brief Tour du non-player character (NPC) lors du combat, le comportement du NPC est expliqué sur <a href="PEPEGA">ce schéma</a>
+ * \param enemy Pointeur sur un objet de type npc_t correspondant à l'ennemi
+ * \param field Pointeur sur un objet de type stat_t correspondant au champ de bataille
+ * \param player Pointeur sur un objet de type perso_t correspondant au joueur
  * \return Rien
 */
 void turn_npc(npc_t * enemy, stat_t * field, perso_t * player){
@@ -326,7 +326,7 @@ void turn_npc(npc_t * enemy, stat_t * field, perso_t * player){
 					field->posB+=1;
           field->distance=(field->posB - field->posA) -1;
           printf("   L'ennemi s'éloigne de vous !\n");
-				}else if(rng(30)){  // 30% de chance que l'ennemi se mette à l'abri
+				}else if(rng(30)){  // 30% de chance que l'ennemi se défende
 					field->coverB=1;
           printf("   L'ennemi décide de se défendre.\n");
 				}else{  // L'ennemi essaie d'attaquer
@@ -338,7 +338,7 @@ void turn_npc(npc_t * enemy, stat_t * field, perso_t * player){
 				if(enemy->pv > 50){   // Si ses points de vie sont supérieurs à 50, l'ennemi essaie d'attaquer.
 					damage_calculator(enemy->weapon, player->body, &player->pv, field->distance, field->coverA, 1);
         }else{
-          if(rng(50)){ // 50% de chance que l'ennemi se mette à l'abri.
+          if(rng(50)){ // 50% de chance que l'ennemi se défende
             field->coverB=1;
             printf("   L'ennemi décide de se défendre.\n");
           }else{
@@ -353,7 +353,7 @@ void turn_npc(npc_t * enemy, stat_t * field, perso_t * player){
           field->posB-=1;
           field->distance=(field->posB - field->posA) -1;
           printf("   L'ennemi se dirige vers vous !\n");
-        }else if(rng(30)){ // 30% de chance que l'ennemi se mette à l'abri
+        }else if(rng(30)){ // 30% de chance que l'ennemi se défende
           field->coverB=1;
           printf("   L'ennemi décide de se défendre.\n");
         }else{ // L'ennemi essaie d'attaquer
@@ -377,7 +377,7 @@ void turn_npc(npc_t * enemy, stat_t * field, perso_t * player){
 					field->posB+=1;
           field->distance=(field->posB - field->posA) -1;
           printf("   L'ennemi s'éloigne de vous !\n");
-        }else if(rng(30)){  // 30% de chance que l'ennemi se mette à l'abri
+        }else if(rng(30)){  // 30% de chance que l'ennemi se défende
 					field->coverB=1;
           printf("   L'ennemi décide de se défendre.\n");
 				}else{ // L'ennemi essaie d'attaquer
@@ -390,7 +390,7 @@ void turn_npc(npc_t * enemy, stat_t * field, perso_t * player){
           field->posB+=1;
           field->distance=(field->posB - field->posA) -1;
           printf("   L'ennemi s'éloigne de vous !\n");
-        }else if(rng(30)){ // 30% de chance que l'ennemi se mette à l'abri
+        }else if(rng(30)){ // 30% de chance que l'ennemi se défende
           field->coverB=1;
           printf("   L'ennemi décide de se défendre.\n");
         }else{ // L'ennemi essaie d'attaquer.
@@ -402,7 +402,7 @@ void turn_npc(npc_t * enemy, stat_t * field, perso_t * player){
 				if(enemy->pv > 50){  // Si ses points de vie sont supérieurs à 50, l'ennemi essaie d'attaquer.
 					damage_calculator(enemy->weapon, player->body, &player->pv, field->distance, field->coverA, 1);
         }
-        else if(rng(50)){ // 50% de chance que l'ennemi se mette à l'abri
+        else if(rng(50)){ // 50% de chance que l'ennemi se défende
             field->coverB=1;
             printf("   L'ennemi décide de se défendre.\n");
         }else{ // L'ennemi essaie d'attaquer.
@@ -420,7 +420,7 @@ void turn_npc(npc_t * enemy, stat_t * field, perso_t * player){
           field->posB-=1;
           field->distance=(field->posB - field->posA) -1;
           printf("   L'ennemi se dirige vers vous !\n");
-        }else{ // 20% de chance que l'ennemi se mette à l'abri
+        }else{ // 20% de chance que l'ennemi se défende
           field->coverB=1;
           printf("   L'ennemi décide de se défendre.\n");
         }
@@ -435,8 +435,9 @@ void turn_npc(npc_t * enemy, stat_t * field, perso_t * player){
 /**
  * \fn int run_away(int position, int distance, cell_t map[D][D], perso_t * player)
  * \brief Détermine si le joueur réussit à fuir ou non (selon sa position et la distance qui le sépare de son ennemi)
- * \param int position
- * \param int distance
+ * \param position Position du joueur sur le champ de bataille
+ * \param distance Distance entre le joueur et l'ennemi sur le champ de bataille
+ * \param player Pointeur sur un objet de type perso_t correspondant au joueur
  * \return Un \a int : 1 si le joueur réussit à fuir. 0 s'il échoue.
 */
 int run_away(int position, int distance, cell_t map[D][D], perso_t * player){
@@ -463,8 +464,8 @@ int run_away(int position, int distance, cell_t map[D][D], perso_t * player){
 /**
  * \fn void afficher_lettre(int chiffre, stat_t field)
  * \brief Affiche les lettres correspondant au joueur et à l'ennemi si le chiffre passé en paramètre correspond à leur position
- * \param int chiffre
- * \param stat_t field
+ * \param chiffre Chiffre correspondant à une des positions possibles sur le champ de bataille
+ * \param field Champ de bataille
  * \return Rien
 */
 void afficher_lettre(int chiffre, stat_t field){
@@ -482,7 +483,7 @@ void afficher_lettre(int chiffre, stat_t field){
 /**
  * \fn void show_field(stat_t field)
  * \brief Affiche le champ de bataille du combat en indiquant où se situent le joueur et l'ennemi
- * \param stat_t field
+ * \param field Champ de bataille
  * \return Rien
 */
 void show_field(stat_t field){
@@ -503,14 +504,13 @@ void show_field(stat_t field){
   printf("\n    E : Ennemi                +-----+-----+-----+-----+-----+-----+\n");
 }
 
-
 /**
  * \fn void combat_info(int print_type, perso_t player, npc_t enemy, stat_t field)
  * \brief Affiche les informations sur le joueur et l'ennemi (pv, armes, armures, distance), le champ de bataille et les actions possibles lors du combat
- * \param int print_type
- * \param perso_t player
- * \param npc_t enemy
- * \param stat_t field
+ * \param print_type Configuration du combat
+ * \param player Joueur
+ * \param enemy Ennemi
+ * \param field Champ de bataille
  * \return Rien
 */
 void combat_info(int print_type, perso_t player, npc_t enemy, stat_t field){
@@ -564,12 +564,12 @@ void combat_info(int print_type, perso_t player, npc_t enemy, stat_t field){
 /**
  * \fn void combat(perso_t * player, npc_t * enemy, stat_t * field, cell_t map[D][D], item_t * Tab_Items, int nb_items_available)
  * \brief Fonction principale du combat qui gère les actions du joueur et ennemi
- * \param perso_t * player
- * \param npc_t * enemy
- * \param stat_t * field
- * \cell_t map[D][D]
- * \item_t * Tab_Items
- * \int nb_items_available
+ * \param player Pointeur sur un objet de type perso_t correspondant au joueur
+ * \param enemy Pointeur sur un objet de type npc_t correspondant à l'ennemi
+ * \param field Pointeur sur un objet de type stat_t correspond au champ de bataille
+ * \param map[D][D] Matrice de la carte
+ * \param Tab_Items Tableau contenant tous les items disponibles dans le jeu
+ * \param nb_items_available Nombre d'items disponibles dans le jeu
  * \return Rien
 */
 void combat(perso_t * player, npc_t * enemy, stat_t * field, cell_t map[D][D], item_t * Tab_Items, int nb_items_available){
@@ -639,14 +639,11 @@ void combat(perso_t * player, npc_t * enemy, stat_t * field, cell_t map[D][D], i
       field->coverA=1; printf("   Vous réussissez à vous défendre.\n");
     }
     /*
-     * print_type 1 = Attaquer avec arme (main gauche)
-     * print_type 2 ET 3 = Attaquer avec arme
+     * print_type 1 : Attaquer avec arme (main gauche)
+     * print_type 2 et 3 : Attaquer avec son arme
      */
     else if(choise==4){
-      if(print_type == 1){ // Le joueur essaie d'attaquer avec son arme (main gauche)
-        damage_calculator(player->left_hand, enemy->armor, &enemy->pv, field->distance, field->coverB, 2);
-      }
-      else if(print_type == 2){ // Le joueur essaie d'attaquer avec son arme (main gauche)
+      if((print_type == 1) || (print_type == 2)){ // Le joueur essaie d'attaquer avec son arme (main gauche)
         damage_calculator(player->left_hand, enemy->armor, &enemy->pv, field->distance, field->coverB, 2);
       }
       else if(print_type == 3){ // Le joueur essaie d'attaquer avec son arme (main droite)

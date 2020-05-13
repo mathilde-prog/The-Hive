@@ -3,11 +3,11 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
-#include "lib/structure.h"
+#include "lib/commun.h"
 
 /**
  * \file quete_search.c
- * \brief Fonctions utilisées dans la quete "recherche".
+ * \brief Quête "recherche".
  * \author Mathilde Mottay, Anais Mottier, Clement Mainguy, Moustapha Tsamarayev
  * \version 1.0
  * \date 2020
@@ -16,9 +16,9 @@
 /**
  * \fn void affichage_quete_search_en_cours(quete_t quete, cell_t map[D][D], perso_t player)
  * \brief Affiche certaines informations selon l'état de la quête recherche
- * \param quete_t quete
- * \param cell_t map[D][D]
- * \param perso_t player
+ * \param quete Etat des quêtes
+ * \param map[D][D] Matrice de la carte
+ * \param player Joueur
  * \return Rien
 */
 void affichage_quete_search_en_cours(quete_t quete, cell_t map[D][D], perso_t player){
@@ -55,18 +55,18 @@ void affichage_quete_search_en_cours(quete_t quete, cell_t map[D][D], perso_t pl
 }
 
 /**
- * \fn void init_Tab_Items_urbain(item_t * Tab_Items_urbain, item_t * Tab_Items, int nb_items_urbain)
- * \brief Initialise un tableau contenant tous les items trouvable dans un hexagone de catégorie "urbain".
- * \param item_t * Tab_Items_urbain
- * \param item_t * Tab_Items
- * \param int nb_items_urbain
+ * \fn void init_Tab_Items_urbain(item_t * Tab_Items_urbain, item_t * Tab_Items, int nb_items_available)
+ * \brief Initialise un tableau contenant tous les items pouvant être trouvés dans un hexagone de catégorie urbain.
+ * \param Tab_Items_urbain Tableau contenant les items pouvant être trouvés sur des hexagones de catégorie urbain
+ * \param Tab_Items Tableau contenant tous les items disponibles dans le jeu
+ * \param nb_items_available Nombre d'items disponibles dans le jeu
  * \return Rien
 */
 void init_Tab_Items_urbain(item_t * Tab_Items_urbain, item_t * Tab_Items, int nb_items_available){
     int i, cpt;
 
     for(i=0, cpt=0; i<nb_items_available; i++){
-        /*Si l'item peut etre trouver d'un hexagone de categorie urbain*/
+        /*Si l'item peut être trouvé sur un hexagone de catégorie urbain*/
         if(Tab_Items[i].pc_urban != 0)
            Tab_Items_urbain[cpt++] = Tab_Items[i];
     }
@@ -74,10 +74,10 @@ void init_Tab_Items_urbain(item_t * Tab_Items_urbain, item_t * Tab_Items, int nb
 
 /**
  * \fn int compter_items_urbain(item_t * Tab_Items, int nb_items_available)
- * \brief Compte le nombre d'items trouvables dans un hexagone de catégorie "urbain" (pc_urban > 0).
- * \param item_t * Tab_Items
- * \param int nb_items_available
- * \return Retourne un \a int : nombre de items ayant un pc_urban > 0
+ * \brief Compte le nombre d'items pouvant être trouvés dans un hexagone de catégorie urbain (pc_urban > 0).
+ * \param Tab_Items Tableau contenant tous les items disponibles dans le jeu
+ * \param nb_items_available Nombre d'items disponibles dans le jeu
+ * \return Retourne un \a int : nombre d'items pouvant être trouvés sur des hexagones de catégorie urbain
 */
 int compter_items_urbain(item_t * Tab_Items, int nb_items_available){
     int i, cpt;
@@ -95,15 +95,15 @@ int compter_items_urbain(item_t * Tab_Items, int nb_items_available){
  * \brief Accès à la quete "recherche".
  * \details
     Le joueur doit aller à un endroit donné pour trouver un item et le ramener.
- * \param perso_t * player
- * \param cell_t map[D][D]
- * \param quete_t * quete
- * \return Retourne un \a int : 0 si le jeu continue et -1 si problème dans la quete.
+ * \param player Pointeur sur un objet de type perso_t correspondant au joueur
+ * \param map[D][D] Matrice de la carte
+ * \param quete Pointeur sur un objet de type quete_t correspondant à l'état des quêtes
+ * \return Retourne un \a int : 0 si le jeu continue et -1 si problème dans la quête.
 */
 int quete_recherche(perso_t * player, cell_t map[D][D], quete_t * quete){
     int choix, conf, ind;
 
-    /*Si la quete n'est pas encore commencé, ou que le joueur y a deja renoncé*/
+    /*Si la quête n'est pas encore commencéé ou que le joueur y a déjà renoncée*/
     if(quete->recherche.trouve==-1){
         quete->recherche.situation=0;
 
@@ -160,7 +160,7 @@ int quete_recherche(perso_t * player, cell_t map[D][D], quete_t * quete){
               }
             }
             else {
-              printf("   \"Tu as le choix d'aller dans une ville, dans un marché ou dans une favela pour trouver l'item %s. Une fois que tu as trouvé l'item il faudra que tu reviennes ici pour me le redonner.\n", quete->recherche.wanted.name);
+              printf("   \"Je te conseille d'aller dans une ville, un marché ou une favela pour trouver l'item %s. Une fois que tu as trouvé l'item il faudra que tu reviennes ici pour me le redonner.\n", quete->recherche.wanted.name);
 
               printf("\n   Souhaitez-vous toujours trouver l'item demandé par l'homme ?\n");
               printf("   1 - Oui\n");
@@ -209,7 +209,7 @@ int quete_recherche(perso_t * player, cell_t map[D][D], quete_t * quete){
     else if(quete->recherche.trouve==1){
         /*Le joueur est sur le bon hexagone pour retrouver l'homme*/
         printf("\n   Vous êtes dans le lieu où vous avez rencontré l'homme !\n");
-        printf("   Il se tient face a vous avec un grand sourire. Vous lui donnez son item, il est au passage retiré de votre inventaire.\n");
+        printf("   Il se tient face à vous avec un grand sourire. Vous lui donnez son item, il est au passage retiré de votre inventaire.\n");
         ind = item_in_inventory(*player,quete->recherche.wanted.name);
         delete_item_in_inventory(player, player->inventory[ind]);
 

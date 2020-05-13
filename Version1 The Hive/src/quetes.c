@@ -3,16 +3,15 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
-#include "lib/structure.h"
+#include "lib/commun.h"
 
 /**
  * \file quetes.c
- * \brief Fonctionalite : Actionner quetes du jeu.
+ * \brief Fonctions relatives aux quêtes du jeu (initialisation, lancement des quêtes) + 4 quêtes (montagne, frontière, bunker, bandits)
  * \author Mathilde Mottay, Anais Mottier, Clement Mainguy, Moustapha Tsamarayev
  * \version
  * \date 2020
 */
-
 
 /**
  * \fn int exit_game()
@@ -23,7 +22,7 @@ int exit_game(){
     int rep;
 
     clrscr();
-    printf("\n   Vous venez de trouver la sortie ! Souhaitez-vous quitter la map ? (Oui = 1, Non = 0)\n");
+    printf("\n   Vous venez de trouver la sortie ! Souhaitez-vous quitter la carte ? (Oui = 1, Non = 0)\n");
     printf("   Votre réponse : ");
     do {
       scanf("%d", &rep);
@@ -48,7 +47,9 @@ int exit_game(){
 /**
  * \fn void informations_quetes(cell_t map[D][D], int quest_map[6][2], quete_t quete)
  * \brief Affiche les informations des quêtes (coordonnées et états)
- * \param cell_t map[D][D]
+ * \param map[D][D] Matrice de la carte
+ * \param quest_map[6][2] Matrice des coordonnées des quêtes
+ * \param quete Etat des quêtes
  * \return Rien
 */
 void informations_quetes(cell_t map[D][D], int quest_map[6][2], quete_t quete){
@@ -89,10 +90,10 @@ void informations_quetes(cell_t map[D][D], int quest_map[6][2], quete_t quete){
 /**
  * \fn void init_quete(quete_t * quete, int quest_map[6][2], item_t * Tab_Items, int nb_items_available)
  * \brief Initialisation d'une variable de type quete_t
- * \param quete_t * quete
- * \param int quest_map[6][2]
- * \param item_t * Tab_Items
- * \param int nb_items_available
+ * \param quete Pointeur sur un objet de type quete_t correspondant à l'état des quêtes
+ * \param quest_map[6][2] Matrice des coordonnées des quêtes
+ * \param Tab_Items Tableau contenant tous les items disponibles dans le jeu
+ * \param nb_items_available Nombre d'items disponibles dans le jeu
  * \return Rien
 */
 void init_quete(quete_t * quete, int quest_map[6][2], item_t * Tab_Items, int nb_items_available){
@@ -106,14 +107,14 @@ void init_quete(quete_t * quete, int quest_map[6][2], item_t * Tab_Items, int nb
     quete->frontiere = -1;
     quete->bandits = -1;
 
-    /*Initialisation de la structure recherche*/
+    // Initialisation de la structure recherche
     quete->recherche.situation = -1;
     quete->recherche.trouve = -1;
     quete->recherche.bunkerY = quest_map[2][0];
     quete->recherche.bunkerX = quest_map[2][1];
 
     init_Tab_Items_urbain(Tab_items_search,Tab_Items,nb_items_available);
-    /*Generation aleatoire de l'item à trouver*/
+    // Génération aléatoire de l'item à trouver
     num = rand()%nb_items_urbain;
     quete->recherche.wanted = Tab_items_search[num];
 
@@ -122,17 +123,17 @@ void init_quete(quete_t * quete, int quest_map[6][2], item_t * Tab_Items, int nb
 
 /**
  * \fn int quetes(perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete, item_t * Tab_Items, int nb_items_available)
- * \brief Recupere le numero de la quete pour par la suite acceder a la quete correspondante.
- * \param perso_t * player
- * \param cell_t map[D][D]
- * \param int quest_map[6][2]
- * \param quete_t * quete
- * \param item_t * Tab_Items
- * \param int nb_items_available
- * \return Retourne un \a int : 0 si le jeu continue, 1 si le jeu est fini et -1 si probleme dans la quete.
+ * \brief Récupère le numéro de la quête pour accéder à la quête correspondante.
+ * \param player Pointeur sur un objet de type perso_t correspondant au joueur
+ * \param map[D][D] Matrice de la carte
+ * \param quest_map[6][2] Matrice des coordonnées des quêtes
+ * \param quete Pointeur sur un objet de type quete_t correspond à l'état des quêtes
+ * \param Tab_Items Tableau contenant tous les items disponibles dans le jeu
+ * \param nb_items_available Nombre d'items disponibles dans le jeu
+ * \return Retourne un \a int : 0 si le jeu continue, 1 si le jeu est fini et -1 si problème dans la quête.
 */
 int quetes(perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete, item_t * Tab_Items, int nb_items_available){
-    int ok=10; //initialisé par un chiffre pour être sur du résultat par la suite
+    int ok=10; //initialisé par un chiffre pour être sûr du résultat par la suite
     clrscr();
     switch(map[player->posY][player->posX].quest_id){
         case 1 :    if(quete->montagne != 1)
@@ -186,11 +187,11 @@ int quetes(perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * qu
  * \brief Accès à la quete "montagne".
  * \details
     Le joueur a le choix de franchir la montagne (finir le jeu) ou non.
-    Si il a en sa possession l'équipement de montagne alors ses chances de s'échapper sont importantes. Mais si il ne l'a pas il est très risqué pour lui de vouloir s'échapper.
+    S'il a en sa possession l'équipement de montagne alors ses chances de s'échapper sont importantes. Mais s'il ne l'a pas, il est très risqué pour lui de vouloir s'échapper.
     La chance est donné par un nombre entier compris entre 0 et 100.
- * \param perso_t * player
- * \param quete_t * quete
- * \return Retourne un \a int : 0 si le jeu continue, 1 si le jeu est fini et -1 si probleme dans la quete.
+ * \param player Pointeur sur un objet de type perso_t correspondant au joueur
+ * \param quete Pointeur sur un objet de type quete_t correspondant à l'état des quêtes
+ * \return Retourne un \a int : 0 si le jeu continue, 1 si le jeu est fini et -1 si problème dans la quête.
 */
 int quete_montagne(perso_t * player, quete_t * quete){
     int choix, num_r, num_w, chance, conf1;
@@ -218,33 +219,33 @@ int quete_montagne(perso_t * player, quete_t * quete){
 
         clrscr();
 
-        /*Recuperation des indices des items rope et walking_stick*/
+        /*Récuperation des indices des items corde et bâton de marche*/
         num_r = item_in_inventory(*player,"corde");
         num_w = item_in_inventory(*player,"baton de marche");
 
 
-        /*Si le joueur possede l'equipement complet*/
+        /*Si le joueur possède l'equipement complet*/
         if((num_r != -1) && (num_w != -1)){
             printf("\n   Bonne nouvelle, vous êtes en possession des bons équipements (corde et bâton de marche) pour gravir la montagne !\n");
             chance = 100;
         }
-        /*Si le joueur possede uniquement la corde*/
+        /*Si le joueur possède uniquement la corde*/
         else if(num_r != -1){
             printf("\n   Vous ne possédez qu'une corde pour vous aider à escalader la montagne, le bâton de marche n'est pas dans votre inventaire.\n   Son franchissement sera dangereux pour votre vie.\n");
             chance = 45;
         }
-        /*Si le joueur possede uniquement le baton de marche*/
+        /*Si le joueur possède uniquement le bâton de marche*/
         else if(num_w !=-1){
             printf("\n   Vous ne possédez que le bâton de marche pour vous aider à escalader la montagne, vous n'avez pas de corde.\n   Son franchissement sera dangereux pour votre vie.\n");
             chance = 45;
         }
-        /*Si le joueur ne possede aucun equipement de montagne*/
+        /*Si le joueur ne possède aucun équipement de montagne*/
         else{
             printf("\n   Malheureusement vous n'avez aucun équipement pour la montagne, ni corde, ni bâton de marche... L'escalader sera presque mission impossible. Le risque de mourir est important.\n");
             chance = 5;
         }
 
-        /*Le joueur confirme si il franchit ou pas la montagne*/
+        /*Le joueur confirme s'il franchit ou pas la montagne*/
         printf("\n   Voulez-vous vraiment tenter l'ascension ?\n");
         printf("   1 - Oui\n");
         printf("   2 - Non\n");
@@ -263,7 +264,7 @@ int quete_montagne(perso_t * player, quete_t * quete){
             printf("\n   >>> Allons franchir cette montagne !\n");
 
             if (chance == 100){
-                /*Suppression des items  de son inventaire qu'il va utiliser*/
+                /*Suppression des items de son inventaire qu'il va utiliser*/
                 printf("\n");
                 delete_item_in_inventory(player, player->inventory[num_r]);
                 delete_item_in_inventory(player, player->inventory[num_w]);
@@ -302,7 +303,7 @@ int quete_montagne(perso_t * player, quete_t * quete){
                         delete_item_in_inventory(player, player->inventory[num_r]);
                     if (num_w != -1)
                         delete_item_in_inventory(player, player->inventory[num_w]);
-                    sortie = rng(chance); //Fonction déterminant si le joueur reussi a s'echapper ou non
+                    sortie = rng(chance); //Fonction déterminant si le joueur réussit à s'échapper ou non
                     if(sortie == 1){
                         printf("\n   Félicitations, malgré la grande difficulté de l'ascension vous y êtes arrivé ! Vous voilà de l'autre côté !\n\n");
                         quete->montagne=1;
@@ -342,11 +343,11 @@ int quete_montagne(perso_t * player, quete_t * quete){
  * \brief Accès à la quete "frontière".
  * \details
     Le joueur trouve la sortie de la frontière, il a le choix de la franchir (finir le jeu) ou non.
-    Si il a joué la quete "soin" et qu'il a aide l'homme blessé alors ses chances de la franchir sont importantes. Mais si il ne l'a pas fait, ses chances le sont moins.
-    La chance est donné par un nombre entier compris entre 0 et 100.
- * \param perso_t * player
- * \param quete_t * quete
- * \return Retourne un \a int : 0 si le jeu continue, 1 si le jeu est fini et -1 si probleme dans la quete.
+    S'il a joué la quête "soin" et qu'il a aidé l'homme blessé alors ses chances de la franchir sont importantes. Mais s'il ne l'a pas fait, ses chances le sont moins.
+    La chance est donnée par un nombre entier compris entre 0 et 100.
+ * \param player Pointeur sur un objet de type perso_t correspondant au joueur
+ * \param quete Pointeur sur un objet de type quete_t correspondant à l'état des quêtes
+ * \return Retourne un \a int : 0 si le jeu continue, 1 si le jeu est fini et -1 si problème dans la quête.
 */
 int quete_frontiere(perso_t * player, quete_t * quete){
     int choix, chance, sortie, conf;
@@ -370,9 +371,9 @@ int quete_frontiere(perso_t * player, quete_t * quete){
 
     clrscr();
 
-    /*Le joueur tente le franchissement de la frontiere*/
+    /*Le joueur tente le franchissement de la frontière*/
     if(choix == 1){
-        /*Si le joueur a aide l'homme blesse (quete "soin")*/
+        /*Si le joueur a aidé l'homme blessé (quête "soin")*/
         if(quete->soin == 2){
             printf("\n   Surprise ! Vous voyez l'homme que vous avez rencontré et aidé lors de votre exploration et qui vous avait donné la carte !\n");
             printf("   Il vous aperçoit également et vient à votre rencontre. Il vous remercie une nouvelle fois.\n");
@@ -383,7 +384,7 @@ int quete_frontiere(perso_t * player, quete_t * quete){
             entree_pour_continuer();
             return exit_game();
         }
-        /*Si le joueur a voulu aider l'homme blesse (quete "soin") mais sans succes*/
+        /*Si le joueur a voulu aider l'homme blessé (quête "soin") mais sans succès*/
         else if(quete->soin == 3){
             printf("\n   Surprise ! Vous voyez l'homme que vous avez rencontré et tenté d'aider lors de votre exploration mais vous n'aviez pas les bons items en votre possession.\n");
             printf("   Il vous aperçoit également et vient à votre rencontre. Il vous remercie d'avoir voulu essayer de l'aider.\n");
@@ -395,10 +396,10 @@ int quete_frontiere(perso_t * player, quete_t * quete){
         else{
             int pass;
 
-            /*Recuperation de l'indice du pass_card dans l'inventaire*/
+            /*Récuperation de l'indice du pass_card dans l'inventaire*/
             pass = item_in_inventory(*player,"pass");
 
-            /*Si le joueur possede le pass_card*/
+            /*Si le joueur possède le pass_card*/
             if(pass != -1){
                 printf("\n   Vous vous rappelez soudainement que vous êtes en possession du pass (carte plastique).\n");
                 printf("   Il pourrait peut-être vous permettre de franchir la frontière, mais sans certitude.\n");
@@ -412,7 +413,7 @@ int quete_frontiere(perso_t * player, quete_t * quete){
             }
         }
 
-        /*Le joueur confirme ou non son souhait de franchir la frontiere*/
+        /*Le joueur confirme ou non son souhait de franchir la frontière*/
         printf("\n   Au vu des circonstances, voulez-vous toujours franchir la frontière ?\n");
         printf("   1 - Oui\n");
         printf("   2 - Non\n");
@@ -426,7 +427,7 @@ int quete_frontiere(perso_t * player, quete_t * quete){
         clrscr();
         /*Le joueur a confirme sa volonté de franchir la frontière*/
         if(conf == 1){
-            /*Determination de la reussite de franchissement de la frontiere ou non par le calcul de la fonction rng*/
+            /*Détermination de la réussite de franchissement de la frontière ou non par le calcul de la fonction rng*/
             sortie = rng(chance);
             quete->frontiere=1;
             switch(sortie){
@@ -450,7 +451,7 @@ int quete_frontiere(perso_t * player, quete_t * quete){
             return 0;
         }
     }
-    /*Le joueur ne souhaite pas tentez le franchissement de la frontiere*/
+    /*Le joueur ne souhaite pas tenter le franchissement de la frontière*/
     else{
         printf("\n   Vous ne souhaitez pas franchir pas la frontière. Continuez d'explorer la map.\n\n");
         entree_pour_continuer();
@@ -462,13 +463,13 @@ int quete_frontiere(perso_t * player, quete_t * quete){
 
 /**
  * \fn void quete_bunker(perso_t * player, quete_t * quete)
- * \brief Accès à la quete "bunker".
+ * \brief Accès à la quête "bunker".
  * \details
-    Si le joueur possede le pass_card il aura le choix de rentrer dans le bunker ou non.
+    Si le joueur possède le pass_card, il aura le choix de rentrer dans le bunker ou non.
     Sinon il fait demi-tour.
- * \param perso_t * player
- * \param quete_t * quete
- * \return Retourne un \a int : 0 si le jeu continue, 1 si le jeu est fini et -1 si problème dans la quete.
+ * \param player Pointeur sur un objet de type perso_t correspondant au joueur
+ * \param quete Pointeur sur un objet de type quete_t correspondant à l'état des quêtes
+ * \return Retourne un \a int : 0 si le jeu continue, 1 si le jeu est fini et -1 si problème dans la quête.
 */
 int quete_bunker(perso_t * player, quete_t * quete){
     int choix, num;
@@ -480,7 +481,7 @@ int quete_bunker(perso_t * player, quete_t * quete){
     printf("   Elle est en métal, sans ouverture, camouflée par une verdure sauvage. Sur la droite, vous voyez un petit boitier électronique avec une fente.\n");
     printf("   La porte est tellement lourde qu'il est impossible pour vous de l'ouvrir ne serait ce que d'un millimètre.\n");
 
-    /*Recuperation du numero de l'item pass_card dans l'inventaire*/
+    /*Récuperation du numéro de l'item pass_card dans l'inventaire*/
     num = item_in_inventory(*player,"pass");
 
     /*Si le joueur a le pass_card dans son inventaire*/
@@ -508,7 +509,7 @@ int quete_bunker(perso_t * player, quete_t * quete){
             entree_pour_continuer();
             return exit_game(); //1 si quitte la map, 0 si continue.
         }
-        /*Le joueur decide de ne pas entrer dans le bunker*/
+        /*Le joueur décide de ne pas entrer dans le bunker*/
         else {
            printf("\n   Continuez votre exploration de la map.\n\n");
            entree_pour_continuer();
@@ -528,12 +529,13 @@ int quete_bunker(perso_t * player, quete_t * quete){
  * \fn int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_items_available, cell_t map[D][D])
  * \brief Accès à la quete "bandits".
  * \details
-    Le joueur combat contre un npc aléatoire. Il en sort vivant, blesse ou mort.
- * \param perso_t * player
- * \param quete_t * quete
- * \param item_t * Tab_Items
- * \param int nb_items_available
- * \return Retourne un \a int : 0 si le jeu continue, 1 si le jeu est fini et -1 si problème dans la quete.
+    Le joueur combat contre un npc aléatoire. Il en sort vivant, blessé ou mort.
+ * \param player Pointeur sur un objet de type perso_t correspondant au joueur
+ * \param quete Pointeur sur un objet de type quete_t correspondant à l'état des quêtes
+ * \param Tab_Items Tableau contenant tous les items disponibles dans le jeu
+ * \param nb_items_available Nombre d'items disponibles dans le jeu
+ * \param map[D][D] Matrice de la carte
+ * \return Retourne un \a int : 0 si le jeu continue, 1 si le jeu est fini et -1 si problème dans la quête.
 */
 int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_items_available, cell_t map[D][D]){
     int choix, combat, chance, voler=0, ind_lh, ind_rh;
@@ -565,10 +567,10 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
         return 0;
     }
     else if(choix==2){
-        jump: //jump afin que quand le joueur choisi l'option "voler items" il rencontre les bandits de la meme facon que si il les avait attendu
+        jump: //jump afin que quand le joueur choisit l'option "voler items" il rencontre les bandits de la même facon que s'il les avait attendus
         clrscr();
 
-        /*Le joueur décide de d'attendre le retour des bandits, ou le joueur vient de voler des items*/
+        /*Le joueur décide de d'attendre le retour des bandits ou le joueur vient de voler des items*/
         if(choix==2 || voler==1){
             int equip;
 
@@ -601,7 +603,7 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
 
             clrscr();
 
-            /*Le joueur décide de ne pas combattre et s'enfui*/
+            /*Le joueur décide de ne pas combattre et s'enfuit*/
             if(combat==1){
                 int fuir;
 
@@ -616,7 +618,7 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
                 }
                 fuir = rng(chance);
 
-                /*Le joueur reussi a s'enfuir*/
+                /*Le joueur réussit à s'enfuir*/
                 if(fuir){
                     printf("\n   Vous fuyez le camp  et ses occupants plus vite qu'un éclair, ils n'ont pas eu le temps de vous rattraper !\n");
                     printf("   Vous avez échappé de justesse à la mort. Continuez a explorer la map.\n\n");
@@ -625,7 +627,7 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
                     entree_pour_continuer();
                     return 0;
                 }
-                /*Le joueur ne reussi pas a s'enfuir*/
+                /*Le joueur ne réussit pas à s'enfuir*/
                 else{
                     printf("\n   Vous fuyez le camp et ses occupants plus vite qu'un éclair, mais malheureusement ils ont réussi a vous rattraper !\n");
                     printf("   Ils s'acharnent sur vous et vous tuent\n\n");
@@ -641,8 +643,7 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
                 printf("\n   Le courage est en vous, mais il risque d'être une arme faible face à ces individus très dangereux qui n'ont peur de rien, ni de personnes !\n");
                 printf("   Le combat est rude, vous vous prenez des coups sur l'ensemble du corps, mais vous arrivez à blesser et mettre à terre certains de vos adversaires.\n");
 
-                /*Détermination de la chance : plus il a d'équipement et plus il a de la chance de combattre les bandits
-                et suppression des point de vie*/
+                /*Détermination de la chance : plus il a d'équipement et plus il a de chance de combattre les bandits et suppression des point de vie*/
                 switch(nb_equipement(*player)){
                     case 0 :    chance = 1;
                                 if(player->pv > 50)
@@ -755,13 +756,12 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
 
             printf("\n   Vous partez à la recherche d'items à voler dans le camp de bandits !\n");
             voler=1;
-            item_t items_camp_bandits[ITEMS_MAX]; //Tableau ou se trouveras les items trouvé dans le camp de bandits
-            /*Initialisation du tableau items_camp_bandits*/
+            item_t items_camp_bandits[ITEMS_MAX]; //Tableau où se trouvera les items trouvés dans le camp des bandits
 
             /*Génération des items trouvés*/
             for(i=0, nb_items=0; i<ITEMS_MAX; i++){
                 num = rand()%nb_items_available;
-                /*Le joueur peut trouver les items suivant : pistol, shotgun, knife, baseball bat ou helmet*/
+                /*Le joueur peut trouver les items suivant : pistolet, fusil, couteau, batte de baseball ou casque */
                 if((!strcmp(Tab_Items[num].name,"pistolet")) || (!strcmp(Tab_Items[num].name,"fusil")) || (!strcmp(Tab_Items[num].name,"couteau")) || (!strcmp(Tab_Items[num].name,"batte de baseball")) || (!strcmp(Tab_Items[num].name,"casque"))){
                     items_camp_bandits[nb_items] = Tab_Items[num];
                     nb_items++;
@@ -781,7 +781,7 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
                 i = 0;
                 choix_item:
                 clrscr();
-                /*Pour chaque item trouve sur le camp*/
+                /*Pour chaque item trouvé sur le camp*/
                 /*Choix du joueur pour chaque item : ajouter à l'inventaire ou non*/
                 printf("\n   Vous avez le choix entre :\n");
                 printf("   1 - Ajouter l'item %s à l'inventaire\n", items_camp_bandits[i].name);
@@ -813,7 +813,7 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
 
                 printf("\n   Vous avez récupéré tous les items possible sur le camp de bandits.\n");
             }
-            goto jump; //Arrivé des bandits sur le camps
+            goto jump; //Arrivée des bandits sur le camp
         }
     }
     return(-1);

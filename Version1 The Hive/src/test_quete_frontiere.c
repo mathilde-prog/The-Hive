@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
-#include "lib/structure.h"
+#include "lib/commun.h"
 
 /**
  * \file test_quete_frontiere.c
@@ -12,6 +12,14 @@
  * \date 2020
 */
 
+/**
+ * \void int main()
+ * \brief Programme principal pour tester l'affichage et le bon fonctionnement de la quête frontière
+ * \details Avant de commencer la quête, l'utilisateur choisit si :
+    - Le joueur a aidé l'homme blessé (quête soin)
+    - Le joueur a voulu aider l'homme blessé (quête soin) mais sans succès
+    - Le joueur ne connait pas de soldat
+*/
 int main(){
   srand(time(NULL));
   clrscr();
@@ -32,7 +40,7 @@ int main(){
 
   printf ("\033[34;01m\n   Menu test quête frontière\033[00m\n");
   printf("   1. Le joueur a aidé l'homme blessé (quête soin)\n");
-  printf("   2. Le joueur a voulu aidé l'homme blessé (quête soin) mais sans succès\n");
+  printf("   2. Le joueur a voulu aider l'homme blessé (quête soin) mais sans succès\n");
   printf("   3. Le joueur ne connait pas de soldat\n");
   printf("\n   Votre réponse : ");
   saisie:

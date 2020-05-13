@@ -2,48 +2,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "lib/structure.h"
+#include "lib/commun.h"
 
 #define NB_SIMULATIONS 10
 
 /**
  * \file test_item.c
- * \brief Fichier TEST - Item
+ * \brief Fichier TEST - Génération aléatoire d'items sur différentes catégories d'hexagone (10 simulations)
  * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
  * \version 1.0
  * \date 2020
 */
 
-void display_position (cell_t map[D][D],perso_t player){
-  printf("\n=== Où suis-je ? ===\n");
-  printf("posX = %d\nposY = %d\n", player.posX, player.posY);
-  printf("hex_t : ");
-  switch(map[player.posY][player.posX].type){
-    case prairie:     printf("prairie ");  break;
-    case foret:       printf("foret ");    break;
-    case ville:       printf("ville ");    break;
-    case lac:         printf("lac ");      break;
-    case camp_mil:    printf("camp_mil "); break;
-    case camp_ban:    printf("camp_ban "); break;
-    case market:      printf("market ");   break;
-    case favela:     printf("favela ");  break;
-    case montagne:    printf("montagne "); break;
-    case frontiere:   printf("frontiere ");break;
-    case mer:         printf("mer ");      break;
-    case wasteland:   printf("wasteland ");break;
-    default: break;
-  }
-  printf("\ncateg_hexa : ");
-  switch(map[player.posY][player.posX].categ){
-    case other:     printf("other\n");     break;
-    case nature:    printf("nature\n");    break;
-    case urbain:    printf("urbain\n");    break;
-    case militaire: printf("militaire\n"); break;
-    default: break;
-  }
-  printf("====================\n\n");
-}
-
+/**
+ * \void void simulation_suivante()
+ * \brief Fonction mineure pour passer à la simulation suivante
+*/
 void simulation_suivante(){
   int rep;
 
@@ -53,6 +27,11 @@ void simulation_suivante(){
   } while (rep != 1);
 }
 
+/**
+ * \void int main()
+ * \brief Programme principal pour tester la génération d'items sur plusieurs hexagones aléatoires
+ * \details Objectif : Tester la fonction #scavenge
+*/
 int main(){
   srand(time(NULL));
 
@@ -72,15 +51,13 @@ int main(){
     init_player(&player,map);
     init_quete(&quete,quest_map,Tab_Items,nb_items_available);
 
-    //display_TEXT(player.posX,player.posY, map);
-
     // SIMULATIONS
     for(i = 0; i < NB_SIMULATIONS; i++){
       player.posX = rand()%D;
       player.posY = rand()%D;
 
       printf("=== Simulation n°%d === \n", i+1);
-      display_position(map,player);
+      display_player_characteristics(map,player);
       scavenge(map, &player, Tab_Items, nb_items_available,quete);
       printf("\n");
       display_inventory(player);

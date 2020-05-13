@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include "lib/structure.h"
+#include "lib/commun.h"
 
 /**
- * \file combat.c
- * \brief Démo
+ * \file demo.c
+ * \brief Démo [Mode de jeu pour choisir ses items avant de commencer la partie - utile pour tester certaines fonctionnalités]
  * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
  * \version 1.0
  * \date 2020
@@ -14,11 +14,12 @@
 
 /**
  * \fn void demo_afficher_items(perso_t * player, item_t * Tab_Items, int nb_items_available)
- * \brief Permettre au joueur de choisir les items qu'il souhaite ajouter à son inventaire (cheat)
- * \details Cette fonction est appelée UNIQUEMENT en mode demo 
- * \param perso_t * player
- * \param item_t * Tab_Items
- * \param int nb_items_available
+ * \brief Permet au joueur de choisir les items qu'il souhaite ajouter à son inventaire parmi ceux disponibles
+ * \details Cette fonction est appelée UNIQUEMENT en mode demo.
+ * \details Mode demo : ./game --demo ou ./game -d
+ * \param player Pointeur sur un objet de type perso_t correspondant au joueur
+ * \param Tab_Items Tableau contenant tous les items disponibles dans le jeu
+ * \param nb_items_available Nombre d'items disponibles dans le jeu
  * \return Rien
 */
 void demo_afficher_items(perso_t * player, item_t * Tab_Items, int nb_items_available){

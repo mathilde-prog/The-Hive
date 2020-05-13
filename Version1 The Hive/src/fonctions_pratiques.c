@@ -1,16 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "lib/structure.h"
+#include "lib/commun.h"
 
 /**
  * \file fonctions_pratiques.c
- * \brief Petites fontions récurrentes, utilisées très souvent un peu partout
+ * \brief Fontions pratiques utilisées dans tout le code
  * \author Mathilde Mottay, Anais Mottier, Clement Mainguy, Moustapha Tsamarayev
  * \version 1.0
  * \date 2020
 */
-
 
 /**
  * \fn void entree_pour_continuer()
@@ -35,10 +34,10 @@ void clrscr(){ // fonction pour clear l'output de terminal
 
 /**
  * \fn int range(int a,int b)
- * \brief Génère un nombre aléatoire compris entre deux entiers passés en paramètre. Intervalle [a;b]
- * \param int a
- * \param int b
- * \return Retourne un \a int
+ * \brief Génère un nombre aléatoire compris entre deux entiers passés en paramètre.
+ * \param a Valeur min de l'intervalle (inclus)
+ * \param b Valeur max de l'intervalle (inclus)
+ * \return Retourne un \a int dans l'intervalle [a;b]
 */
 int range(int a,int b){ // generates random number in range
   return (rand()%(b-a+1))+a;
@@ -46,9 +45,9 @@ int range(int a,int b){ // generates random number in range
 
 /**
  * \fn int rng(int prob)
- * \brief Génère soit 0 ou 1 en fonction de la probabilité passée en paramètre.
- * \param int prob
- * \return Retourne un \a int
+ * \brief Génère 0 ou 1 en fonction de la probabilité en pourcentage passée en paramètre.
+ * \param prob Probabilité en pourcentage
+ * \return Retourne un \a int : 1 ou 0.
 */
 int rng(int prob){ // returns 0 or 1 with a given chance
   return (rand()%100)<prob;

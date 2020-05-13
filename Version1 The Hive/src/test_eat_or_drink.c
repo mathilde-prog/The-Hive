@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "lib/structure.h"
+#include "lib/commun.h"
 
 /**
  * \file test_eat_or_drink.c
@@ -11,6 +11,11 @@
  * \date 2020
 */
 
+/**
+ * \void int main()
+ * \brief Programme principal pour tester le calcul des points d'énergie lorsque le joueur veut manger/boire un item
+ * \details Objectif : Tester les fonctions #eat_or_drink et #gain_energie.
+*/
 int main(){
   perso_t player;
   cell_t map[D][D];

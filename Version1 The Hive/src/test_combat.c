@@ -3,7 +3,7 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
-#include "lib/structure.h"
+#include "lib/commun.h"
 
 /**
  * \file test_combat.c
@@ -13,6 +13,12 @@
  * \date 2020
 */
 
+/**
+ * \void int main()
+ * \brief Programme principal pour tester le système de combat
+ * \details Le menu test_combat permet de tester le système de combat selon tous les cas possibles.
+    L'utilisateur choisit s'il souhaite combattre avec ou sans armure, s'il souhaite porter une arme. Si oui, où ? combien ? lesquelles ?
+*/
 int main(){
   srand(time(NULL));
 

@@ -3,11 +3,11 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
-#include "lib/structure.h"
+#include "lib/commun.h"
 
 /**
  * \file fish.c
- * \brief Fonctionnalité : pêcher
+ * \brief Pêcher
  * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
  * \version 1.0
  * \date 2020
@@ -16,8 +16,8 @@
 /**
  * \fn void fish (perso_t * player, cell_t map[D][D])
  * \brief Permet au joueur de pêcher s'il se situe sur un hexagone de type \a lac ou \a mer et s'il a une canne à pêche dans son inventaire.
- * \param perso_t * player
- * \param cell_t map[D][D]
+ * \param player Pointeur sur un objet de type perso_t correspondant au joueur
+ * \param map[D][D] Matrice de la carte
  * \return Rien
 */
 void fish (perso_t * player, cell_t map[D][D]){
@@ -36,7 +36,7 @@ void fish (perso_t * player, cell_t map[D][D]){
         do {
           scanf("%d",&rep);
           if (rep < 0 || rep > 1){
-            printf("Valeur incorrecte. Veuillez resaissir : ");
+            printf("   Valeur incorrecte. Veuillez resaissir : ");
           }
         } while(rep < 0 || rep > 1);
 

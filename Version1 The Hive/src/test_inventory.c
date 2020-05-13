@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "lib/structure.h"
+#include "lib/commun.h"
 
 /**
  * \file test_inventory.c
@@ -10,6 +10,10 @@
  * \date 2020
 */
 
+/**
+ * \void void test_suivant()
+ * \brief Fonction mineure pour passer au test suivant
+*/
 void test_suivant(){
   int rep;
 
@@ -20,11 +24,23 @@ void test_suivant(){
   clrscr();
 }
 
+/**
+ * \void int main()
+ * \brief Programme principal pour tester la gestion de l'inventaire
+ * \details
+    Tests effectués :
+    - Inventaire vide
+    - Ajout quelques items dans l'inventaire
+    - Ajout impossible si 2 fois ou plus un même item dans l'inventaire
+    - Echange d'items
+    - Suppression item (sans échange)
+    - Echange avec gestion équipement
+*/
 int main(){
   // Déclarations
   perso_t player;
   cell_t map[D][D];
-  int quest_map[6][2]; 
+  int quest_map[6][2];
   item_t * Tab_Items = malloc(20 * sizeof(item_t));
   int nb_items_available = 0;
 

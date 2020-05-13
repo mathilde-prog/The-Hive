@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
-#include "lib/structure.h"
+#include "lib/commun.h"
 
 /**
  * \file test_quete_recherche.c
@@ -12,6 +12,16 @@
  * \date 2020
 */
 
+/**
+ * \void int main()
+ * \brief Programme principal pour tester l'affichage et le bon fonctionnement de la quête recherche
+ * \details Avant de commencer la quête, l'utilisateur choisit :
+    - Première fois sur la quête
+    - Recherche de l'item (pas sur une case urbain)
+    - Recherche de l'item (case urbain)
+    - Donner l'item (case quête)
+    - Donner l'item (pas case quête)
+*/
 int main(){
   srand(time(NULL));
 

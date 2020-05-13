@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
-#include "lib/structure.h"
+#include "lib/commun.h"
 
 /**
  * \file test_load.c
@@ -18,10 +18,11 @@
  * \details Informations sur le joueur : points de vie, points d'énergie, points d'action, position sur la carte, nombre de tours restants
  * \details Informations sur la carte : pour chaque case de la matrice map, on récupère son type, sa catégorie, s'il y a un combat, si le joueur a déjà fouillé la case et si une quête y est positionnée.
  * \details Informations sur les quêtes : on récupère les coordonnées de chaque quête ainsi que leurs états.
- * \param perso_t * player
- * \param cell_t map[D][D]
- * \param int quest_map[6][2]
- * \param quete_t * quete
+ * \details Fonction TEST
+ * \param player Pointeur sur un objet de type perso_t correspondant au joueur
+ * \param map[D][D] Matrice de la carte
+ * \param quest_map[6][2] Matrice des coordonnées des quêtes
+ * \param quete Pointeur sur un objet de type quete_t correspondant à l'état des quêtes
  * \return Rien
 */
 void load_test (perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete){
@@ -45,11 +46,11 @@ void load_test (perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t
      */
 
     fscanf(fic,"%d\n",&player->nb_items_inventory);
-    fscanf(fic,"%d;%d;%d;%d;%d;%d;%d;%f;%d;%d;%d;%d;%[^\n]", &player->inventory[i].type, &player->inventory[i].attack[0], &player->inventory[i].attack[1],&player->inventory[i].attack[2], &player->inventory[i].hitchance[0], &player->inventory[i].hitchance[1],&player->inventory[i].hitchance[2],&player->inventory[i].defense, &player->inventory[i].equipable, &player->inventory[i].pc_nature, &player->inventory[i].pc_urban, &player->inventory[i].pc_military, player->inventory[i].name);
+    fscanf(fic,"%d;%d;%d;%d;%d;%d;%d;%f;%d;%d;%d;%d;%[^\n]", (int *)(&player->inventory[i].type), &player->inventory[i].attack[0], &player->inventory[i].attack[1],&player->inventory[i].attack[2], &player->inventory[i].hitchance[0], &player->inventory[i].hitchance[1],&player->inventory[i].hitchance[2],&player->inventory[i].defense, (int *)(&player->inventory[i].equipable), &player->inventory[i].pc_nature, &player->inventory[i].pc_urban, &player->inventory[i].pc_military, player->inventory[i].name);
     while(i < player->nb_items_inventory){
       player->inventory[i].index = i;
       i++;
-      fscanf(fic,"%d;%d;%d;%d;%d;%d;%d;%f;%d;%d;%d;%d;%[^\n]", &player->inventory[i].type, &player->inventory[i].attack[0], &player->inventory[i].attack[1],&player->inventory[i].attack[2], &player->inventory[i].hitchance[0], &player->inventory[i].hitchance[1],&player->inventory[i].hitchance[2],&player->inventory[i].defense, &player->inventory[i].equipable, &player->inventory[i].pc_nature, &player->inventory[i].pc_urban, &player->inventory[i].pc_military, player->inventory[i].name);
+      fscanf(fic,"%d;%d;%d;%d;%d;%d;%d;%f;%d;%d;%d;%d;%[^\n]",(int *)(&player->inventory[i].type), &player->inventory[i].attack[0], &player->inventory[i].attack[1],&player->inventory[i].attack[2], &player->inventory[i].hitchance[0], &player->inventory[i].hitchance[1],&player->inventory[i].hitchance[2],&player->inventory[i].defense,(int *)(&player->inventory[i].equipable), &player->inventory[i].pc_nature, &player->inventory[i].pc_urban, &player->inventory[i].pc_military, player->inventory[i].name);
     }
 
     /*
@@ -69,14 +70,14 @@ void load_test (perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t
     // type
     for(l = 0; l < D; l++){
       for(c = 0; c < D; c++){
-        fscanf(fic,"%d;",&map[l][c].type);
+        fscanf(fic,"%d;",(int *)(&map[l][c].type));
       }
     }
 
     // categ
     for(l = 0; l < D; l++){
       for(c = 0; c < D; c++){
-        fscanf(fic,"%d;",&map[l][c].categ);
+        fscanf(fic,"%d;",(int *)(&map[l][c].categ));
       }
     }
 
@@ -114,8 +115,7 @@ void load_test (perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t
 
     // Chargement quete_t quete
     fscanf(fic,"%d;%d;%d;%d;%d;%d;%d;%d;%d",&quete->soin,&quete->recherche.situation,&quete->recherche.trouve,&quete->recherche.bunkerX,&quete->recherche.bunkerY,&quete->bunker,&quete->montagne,&quete->frontiere,&quete->bandits);
-    fscanf(fic,"%d;%d;%d;%d;%d;%d;%d;%f;%d;%d;%d;%d;%[^\n]",&quete->recherche.wanted.type,&quete->recherche.wanted.attack[0],&quete->recherche.wanted.attack[1],&quete->recherche.wanted.attack[2],&quete->recherche.wanted.hitchance[0],&quete->recherche.wanted.hitchance[1],&quete->recherche.wanted.hitchance[2],&quete->recherche.wanted.defense,&quete->recherche.wanted.equipable,&quete->recherche.wanted.pc_nature,&quete->recherche.wanted.pc_urban,&quete->recherche.wanted.pc_military,quete->recherche.wanted.name);
-
+    fscanf(fic,"%d;%d;%d;%d;%d;%d;%d;%f;%d;%d;%d;%d;%[^\n]",(int *)(&quete->recherche.wanted.type),&quete->recherche.wanted.attack[0],&quete->recherche.wanted.attack[1],&quete->recherche.wanted.attack[2],&quete->recherche.wanted.hitchance[0],&quete->recherche.wanted.hitchance[1],&quete->recherche.wanted.hitchance[2],&quete->recherche.wanted.defense,(int *)(&quete->recherche.wanted.equipable),&quete->recherche.wanted.pc_nature,&quete->recherche.wanted.pc_urban,&quete->recherche.wanted.pc_military,quete->recherche.wanted.name);
 
     fclose(fic);
   }
@@ -124,6 +124,20 @@ void load_test (perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t
   }
 }
 
+/**
+ * \void int main()
+ * \brief Programme principal pour tester le système de chargement
+ * \details Charge la sauvegarde d'une partie test
+ * \details
+   Menu test_backup:
+    1. Afficher les caractéristiques du joueur
+    2. Affiche l'inventaire
+    3. Afficher l'équipement
+    4. Afficher la carte
+    5. Afficher les détails de la carte
+    6. Afficher les informations sur les quêtes
+ * \details Ce menu permet de comparer avec le résultat obtenu au test de sauvegarde (test_backup.c)
+*/
 int main(){
   int nb;
   item_t Tab_Items[20];
@@ -139,12 +153,12 @@ int main(){
         menu:
         clrscr();
         printf ("\033[34;01m\n\n\n\tMenu test_load.c\033[00m\n");
-        printf("\t1. Afficher les caractéristiques du joueur\n");
-        printf("\t2. Afficher l'inventaire\n");
-        printf("\t3. Afficher l'équipement\n");
-        printf("\t4. Afficher la carte\n");
-        printf("\t5. Détails carte\n");
-        printf("\t6. Détails quêtes\n");
+        printf("   1. Afficher les caractéristiques du joueur\n");
+        printf("   2. Affiche l'inventaire\n");
+        printf("   3. Afficher l'équipement\n");
+        printf("   4. Afficher la carte\n");
+        printf("   5. Afficher les détails de la carte\n");
+        printf("   6. Afficher les infos sur les quêtes\n");
         printf("\n\tQuitter -1\n\n");
         printf("\tN°");
         scanf("%d",&nb);

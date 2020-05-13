@@ -1,6 +1,6 @@
 /**
- * \file combat.h
- * \brief Les en-têtes des fonctions de combat.c
+ * \file interface_combat.h
+ * \brief Les en-têtes des fonctions de interface_combat.c
  * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
  * \version 1.0
  * \date 2020

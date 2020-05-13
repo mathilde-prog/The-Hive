@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
-#include "lib/structure.h"
+#include "lib/commun.h"
 
 /**
  * \file test_backup.c
- * \brief Fichier TEST - Sauvegarde d'une partie
+ * \brief Fichier TEST - Sauvegarder une partie
  * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
  * \version 1.0
  * \date 2020
@@ -18,10 +18,11 @@
  * \details Informations sur le joueur : points de vie, points d'énergie, points d'action, position sur la carte, nombre de tours restants
  * \details Informations sur la carte : pour chaque case de la matrice map, on sauvegarde son type, sa catégorie, s'il y a un combat, si le joueur a déjà fouillé la case et si une quête y est positionnée.
  * \details Informations sur les quêtes : on sauvegarde les coordonnées de chaque quête ainsi que leurs états.
- * \param perso_t player
- * \param cell_t map[D][D]
- * \param int quest_map[6][2]
- * \param quete_t quete
+ * \details Fonction TEST
+ * \param player Joueur
+ * \param map[D][D] Matrice de la carte
+ * \param quest_map[6][2] Matrice des coordonnées des quêtes
+ * \param quete Etat des quêtes
  * \return Rien
 */
 void save_test (perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete){
@@ -122,6 +123,21 @@ void save_test (perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t q
   fclose(fic);
 }
 
+/**
+ * \void int main()
+ * \brief Programme principal pour tester le système de sauvegarde
+ * \details Crée aléatoirement une carte, des paramètres joueur, remplit l'inventaire du joueur et son équipement puis sauvegarde.
+ * \details
+   Menu test_backup:
+    1. Afficher les caractéristiques du joueur
+    2. Affiche l'inventaire
+    3. Afficher l'équipement
+    4. Afficher la carte
+    5. Afficher les détails de la carte
+    6. Afficher les informations sur les quêtes
+ * \details Ce menu permet de comparer avec le résultat obtenu au test de chargement (test_load.c)
+*/
+
 int main(){
   srand(time(NULL));
 
@@ -143,17 +159,6 @@ int main(){
   player.pe = rand()%101;
   player.pa = rand()%6;
   player.turns = rand()%16;
-
-/* Pas de compétence spéciale en version 1
-    do {
-      printf("Which skill do you want for your character? (normal = 0, sprinter = 1, metabolism = 2, luck = 3, scout = 4)\n");
-      scanf("%d",&comp);
-      if(comp < 0 || comp > 4){
-        printf("Incorrect value (value must be between 0 and 4)\n");
-      }
-    } while(comp < 0 || comp > 4);
-    player.competence = comp;
-*/
 
   item_t * pistol = creer_item("pistolet",weapon,5,25,15,30,85,60,0,1,0,20,60);
   item_t * shotgun = creer_item("fusil",weapon,10,40,30,40,85,60,0,1,0,15,50);
@@ -191,7 +196,7 @@ int main(){
     printf("   2. Affiche l'inventaire\n");
     printf("   3. Afficher l'équipement\n");
     printf("   4. Afficher la carte\n");
-    printf("   5. Afficher détails map\n");
+    printf("   5. Afficher les détails de la carte\n");
     printf("   6. Afficher les infos sur les quêtes\n");
     printf("\n   Quitter -1\n\n");
     printf("   N°");

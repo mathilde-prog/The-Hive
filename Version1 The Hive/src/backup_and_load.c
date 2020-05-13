@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include "lib/structure.h"
+#include "lib/commun.h"
 
 /**
  * \file backup_and_load.c
@@ -14,12 +14,12 @@
 
 /**
  * \fn void sauvegarder_progression(perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete, sauv_t sauv)
- * \brief Sauvegarde de la progression la partie actuellement en cours
- * \param perso_t player
- * \param cell_t map[D][D]
- * \param int quest_map[6][2]
- * \param quete_t quete
- * \param sauv_t sauv
+ * \brief Sauvegarde la progression de la partie actuellement en cours et propose au joueur de continuer ou quitter le jeu
+ * \param player Joueur
+ * \param map[D][D] Matrice de la carte
+ * \param quest_map[6][2] Matrice des coordonnées des quêtes
+ * \param quete Etat des quêtes
+ * \param sauv Etat des sauvegardes
  * \return Rien
 */
 void sauvegarder_progression(perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete, sauv_t sauv){
@@ -52,7 +52,7 @@ void sauvegarder_progression(perso_t player, cell_t map[D][D], int quest_map[6][
 /**
  * \fn int sauvegarde_existante(sauv_t sauv)
  * \brief Indique s'il existe une sauvegarde pour la partie choisie par l'utilisateur
- * \param sauv_t sauv
+ * \param sauv Etat des sauvegardes
  * \return Un \a int : 1 si une sauvegarde existe. 0 sinon.
 */
 int sauvegarde_existante(sauv_t sauv){
@@ -67,7 +67,7 @@ int sauvegarde_existante(sauv_t sauv){
 /**
  * \fn void affichage_parties(sauv_t sauv)
  * \brief Affiche les parties sauvegardées et disponibles
- * \param sauv_t sauv
+ * \param sauv Etat des sauvegardes
  * \return Rien
 */
 void affichage_parties(sauv_t sauv){
@@ -85,7 +85,7 @@ void affichage_parties(sauv_t sauv){
 /**
  * \fn void update_etat_sauvegarde(sauv_t * sauv)
  * \brief Met à jour l'état des sauvegardes (si elles existent et leurs noms)
- * \param sauv_t * sauv
+ * \param sauv Pointeur sur un objet de type sauv_t correspondant à l'état des sauvegardes
  * \return Rien
 */
 void update_etat_sauvegarde(sauv_t * sauv){
@@ -129,7 +129,7 @@ void update_etat_sauvegarde(sauv_t * sauv){
 /**
  * \fn void effacer_partie(sauv_t sauv)
  * \brief Efface une partie choisie par l'utilisateur
- * \param sauv_t sauv
+ * \param sauv Etat des sauvegardes
  * \return Rien
 */
 void effacer_partie(sauv_t sauv){
@@ -201,13 +201,13 @@ void effacer_partie(sauv_t sauv){
  * \fn void save (perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete, sauv_t sauv)
  * \brief Sauvegarde les informations sur le joueur, son inventaire, son équipement ainsi que les informations sur la carte et les quêtes d'une partie.
  * \details Informations sur le joueur : points de vie, points d'énergie, points d'action, position sur la carte, nombre de tours restants
- * \details Informations sur la carte : pour chaque case de la matrice map, on sauvegarde son type, sa catégorie, s'il y a un combat, si le joueur a déjà fouillé la case et si une quête y est positionnée.
- * \details Informations sur les quêtes : on sauvegarde les coordonnées de chaque quête ainsi que leurs états.
- * \param perso_t player
- * \param cell_t map[D][D]
- * \param int quest_map[6][2]
- * \param quete_t quete
- * \param sauv_t sauv
+ * \details Informations sur la carte : pour chaque case de la matrice map, sauvegarde de son type, sa catégorie, s'il y a un combat, si le joueur a déjà fouillé la case et si une quête y est positionnée.
+ * \details Informations sur les quêtes : sauvegarde des coordonnées de chaque quête et de leurs états.
+ * \param player Joueur
+ * \param map[D][D] Matrice de la carte
+ * \param quest_map[6][2] Matrice des coordonnées des quêtes
+ * \param quete Etat des quêtes
+ * \param sauv Etat des sauvegardes
  * \return Rien
 */
 void save (perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete, sauv_t sauv){
@@ -326,13 +326,13 @@ void save (perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete,
  * \fn void load (perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete, sauv_t sauv)
  * \brief Charge les informations sur le joueur, son inventaire, son équipement ainsi que les informations sur la carte et les quêtes d'une partie.
  * \details Informations sur le joueur : points de vie, points d'énergie, points d'action, position sur la carte, nombre de tours restants
- * \details Informations sur la carte : pour chaque case de la matrice map, on récupère son type, sa catégorie, s'il y a un combat, si le joueur a déjà fouillé la case et si une quête y est positionnée.
- * \details Informations sur les quêtes : on récupère les coordonnées de chaque quête ainsi que leurs états.
- * \param perso_t * player
- * \param cell_t map[D][D]
- * \param int quest_map[6][2]
- * \param quete_t * quete
- * \param sauv_t sauv
+ * \details Informations sur la carte : pour chaque case de la matrice map, chargement de son type, sa catégorie, s'il y a un combat, si le joueur a déjà fouillé la case et si une quête y est positionnée.
+ * \details Informations sur les quêtes : chargement des coordonnées de chaque quête et de leurs états.
+ * \param player Pointeur sur un objet de type perso_t correspondant au joueur
+ * \param map[D][D] Matrice de la carte
+ * \param quest_map[6][2] Matrice des coordonnées des quêtes
+ * \param quete Pointeur sur un objet de type quete_t correspondant à l'état des quêtes
+ * \param sauv Etat des sauvegardes
  * \return Rien
 */
 void load (perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * quete, sauv_t sauv){
@@ -364,11 +364,11 @@ void load (perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * qu
      */
 
     fscanf(fic,"%d\n",&player->nb_items_inventory);
-    fscanf(fic,"%d;%d;%d;%d;%d;%d;%d;%f;%d;%d;%d;%d;%[^\n]", &player->inventory[i].type, &player->inventory[i].attack[0], &player->inventory[i].attack[1],&player->inventory[i].attack[2], &player->inventory[i].hitchance[0], &player->inventory[i].hitchance[1],&player->inventory[i].hitchance[2],&player->inventory[i].defense, &player->inventory[i].equipable, &player->inventory[i].pc_nature, &player->inventory[i].pc_urban, &player->inventory[i].pc_military, player->inventory[i].name);
+    fscanf(fic,"%d;%d;%d;%d;%d;%d;%d;%f;%d;%d;%d;%d;%[^\n]", (int *)(&player->inventory[i].type), &player->inventory[i].attack[0], &player->inventory[i].attack[1],&player->inventory[i].attack[2], &player->inventory[i].hitchance[0], &player->inventory[i].hitchance[1],&player->inventory[i].hitchance[2],&player->inventory[i].defense, (int *)(&player->inventory[i].equipable), &player->inventory[i].pc_nature, &player->inventory[i].pc_urban, &player->inventory[i].pc_military, player->inventory[i].name);
     while(i < player->nb_items_inventory){
       player->inventory[i].index = i;
       i++;
-      fscanf(fic,"%d;%d;%d;%d;%d;%d;%d;%f;%d;%d;%d;%d;%[^\n]", &player->inventory[i].type, &player->inventory[i].attack[0], &player->inventory[i].attack[1],&player->inventory[i].attack[2], &player->inventory[i].hitchance[0], &player->inventory[i].hitchance[1],&player->inventory[i].hitchance[2],&player->inventory[i].defense, &player->inventory[i].equipable, &player->inventory[i].pc_nature, &player->inventory[i].pc_urban, &player->inventory[i].pc_military, player->inventory[i].name);
+      fscanf(fic,"%d;%d;%d;%d;%d;%d;%d;%f;%d;%d;%d;%d;%[^\n]", (int *)(&player->inventory[i].type), &player->inventory[i].attack[0], &player->inventory[i].attack[1],&player->inventory[i].attack[2], &player->inventory[i].hitchance[0], &player->inventory[i].hitchance[1],&player->inventory[i].hitchance[2],&player->inventory[i].defense, (int *)(&player->inventory[i].equipable), &player->inventory[i].pc_nature, &player->inventory[i].pc_urban, &player->inventory[i].pc_military, player->inventory[i].name);
     }
 
     /*
@@ -388,14 +388,14 @@ void load (perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * qu
     // type
     for(l = 0; l < D; l++){
       for(c = 0; c < D; c++){
-        fscanf(fic,"%d;",&map[l][c].type);
+        fscanf(fic,"%d;",(int *)(&map[l][c].type));
       }
     }
 
     // categ
     for(l = 0; l < D; l++){
       for(c = 0; c < D; c++){
-        fscanf(fic,"%d;",&map[l][c].categ);
+        fscanf(fic,"%d;",(int *)(&map[l][c].categ));
       }
     }
 
@@ -433,7 +433,7 @@ void load (perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * qu
 
     // Chargement quete_t quete
     fscanf(fic,"%d;%d;%d;%d;%d;%d;%d;%d;%d",&quete->soin,&quete->recherche.situation,&quete->recherche.trouve,&quete->recherche.bunkerX,&quete->recherche.bunkerY,&quete->bunker,&quete->montagne,&quete->frontiere,&quete->bandits);
-    fscanf(fic,"%d;%d;%d;%d;%d;%d;%d;%f;%d;%d;%d;%d;%[^\n]",&quete->recherche.wanted.type,&quete->recherche.wanted.attack[0],&quete->recherche.wanted.attack[1],&quete->recherche.wanted.attack[2],&quete->recherche.wanted.hitchance[0],&quete->recherche.wanted.hitchance[1],&quete->recherche.wanted.hitchance[2],&quete->recherche.wanted.defense,&quete->recherche.wanted.equipable,&quete->recherche.wanted.pc_nature,&quete->recherche.wanted.pc_urban,&quete->recherche.wanted.pc_military,quete->recherche.wanted.name);
+    fscanf(fic,"%d;%d;%d;%d;%d;%d;%d;%f;%d;%d;%d;%d;%[^\n]",(int *)(&quete->recherche.wanted.type),&quete->recherche.wanted.attack[0],&quete->recherche.wanted.attack[1],&quete->recherche.wanted.attack[2],&quete->recherche.wanted.hitchance[0],&quete->recherche.wanted.hitchance[1],&quete->recherche.wanted.hitchance[2],&quete->recherche.wanted.defense,(int *)(&quete->recherche.wanted.equipable),&quete->recherche.wanted.pc_nature,&quete->recherche.wanted.pc_urban,&quete->recherche.wanted.pc_military,quete->recherche.wanted.name);
 
 
     fclose(fic);

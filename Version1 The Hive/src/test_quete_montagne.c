@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
-#include "lib/structure.h"
+#include "lib/commun.h"
 
 /**
  * \file test_quete_montagne.c
@@ -12,6 +12,11 @@
  * \date 2020
 */
 
+/**
+ * \void int main()
+ * \brief Programme principal pour tester l'affichage et le bon fonctionnement de la quête montagne
+ * \details Avant de commencer la quête, l'utilisateur choisit s'il a une corde et/ou un bâton de marche dans son inventaire ou aucun des deux.
+*/
 int main(){
   srand(time(NULL));
   clrscr();
@@ -34,7 +39,7 @@ int main(){
   init_quete(&quete,quest_map,Tab_Items,nb_items_available);
 
   printf ("\033[34;01m\n   Menu test quête montagne\033[00m\n");
-  printf("   1. Corde + Bâtone de marche\n");
+  printf("   1. Corde + Bâton de marche\n");
   printf("   2. Corde\n");
   printf("   3. Bâton de marche\n");
   printf("   4. Rien\n");

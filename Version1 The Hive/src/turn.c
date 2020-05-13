@@ -3,7 +3,7 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
-#include "lib/structure.h"
+#include "lib/commun.h"
 
 /**
  * \file turn.c
@@ -15,11 +15,10 @@
 
 /**
  * \fn void next_turn(perso_t * player)
- * \brief Calcule les points d’action qui vont etre recuperees a partir de l'énergie qui reste puis passe au tour suivant.
- * \param perso_t * player
+ * \brief Calcule le nombre de points d’action récupérés à partir de la valeur des points d'énergie du joueur puis passe au tour suivant.
+ * \param player Pointeur sur un objet de type perso_t correspondant au joueur
  * \return Rien
 */
-/* Passer au prochain tour */
 void next_turn(perso_t * player){
   int base_value, prev_value;
   if(player->pa<5){
@@ -47,7 +46,7 @@ void next_turn(perso_t * player){
   }else{
     printf("\n   On passe au tour suivant!\n");
   }
-  player->pe-=15; //Perds 15 points d'energie
+  player->pe-=15; //Perd 15 points d'énergie
   if(player->pe < 0){
     player->pe=0;
   }
@@ -58,7 +57,7 @@ void next_turn(perso_t * player){
 /**
  * \fn void rest_and_heal(perso_t * player)
  * \brief Permet au joueur de se reposer et récupérer des points de vie et points d'énergie (proportionnellement au nombre de points d'action)
- * \param perso_t * player
+ * \param player Pointeur sur un objet de type perso_t correspondant au joueur
  * \return Rien
 */
 void rest_and_heal(perso_t * player){

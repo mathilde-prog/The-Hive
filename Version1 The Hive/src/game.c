@@ -4,13 +4,26 @@
 #include <unistd.h>
 #include <time.h>
 #include <getopt.h>
-#include "lib/structure.h"
+#include "lib/commun.h"
+
+/**
+ * \file game.c
+ * \brief Jeu
+ * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
+ * \version 1.0
+ * \date 2020
+*/
 
 static struct option longopts[] = {
   {"demo", no_argument, NULL, (int)'d'},
   {0, 0, 0, 0}
 };
 
+/**
+ * \fn void presentation_regle_jeu()
+ * \brief Présentation des règles du jeu quand le joueur commence une nouvelle partie
+ * \return Rien
+*/
 void presentation_regle_jeu(){
   while(getchar() != '\n');
   clrscr();
@@ -26,6 +39,17 @@ void presentation_regle_jeu(){
   while(getchar() != '\n');
 }
 
+/**
+ * \fn void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete, sauv_t sauv, item_t * Tab_Items, int nb_items_available)
+ * \brief Menu principal du jeu. Le joueur choisit ce qu'il souhaite faire.
+ * \param player Joueur
+ * \param map[D][D] Matrice de la carte
+ * \param quete Etat des quêtes
+ * \param sauv Etat des sauvegardes
+ * \param Tab_Items Tableau contenant tous les items disponibles dans le jeu
+ * \param nb_items_available Nombre d'items disponibles dans le jeu
+ * \return Rien
+*/
 void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete, sauv_t sauv, item_t * Tab_Items, int nb_items_available){
   int choise, choix_combat, q;
   npc_t * enemy;
@@ -118,6 +142,14 @@ void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], q
   clrscr();
 }
 
+/**
+ * \fn void choix_partie(sauv_t * sauv, int demo)
+ * \brief Propose au joueur de choisir une partie (sauvegardée ou nouvelle partie)
+ * \details Initialisation différente si le joueur continue une partie précédemment sauvegardée ou en commence une nouvelle.
+ * \param sauv Pointeur sur un objet de type sauv_t correspondant à l'état des sauvegardes
+ * \param demo Indicateur si mode demo
+ * \return Rien
+*/
 void choix_partie(sauv_t * sauv, int demo){
   int choix;
   char nom_partie[21];
@@ -128,53 +160,75 @@ void choix_partie(sauv_t * sauv, int demo){
   quete_t quete;
   item_t * Tab_Items = malloc(20 * sizeof(item_t));
   int nb_items_available = 0;
-  creation_tab_item(Tab_Items, &nb_items_available);
 
-  clrscr();
-  affichage_parties(*sauv);
-  printf("   A quelle partie souhaitez-vous jouer ?\n");
-  printf("   Numéro partie : ");
-  do {
-    scanf("%d",&choix);
-    if((choix < 1) || (choix > 3)){
-      printf("   Valeur incorrecte. Veuillez ressaisir : ");
+  if(creation_tab_item(Tab_Items, &nb_items_available)){
+    clrscr();
+    affichage_parties(*sauv);
+    // Choix partie
+    printf("   A quelle partie souhaitez-vous jouer ?\n");
+    printf("   Numéro partie : ");
+    do {
+      scanf("%d",&choix);
+      if((choix < 1) || (choix > 3)){
+        printf("   Valeur incorrecte. Veuillez ressaisir : ");
+      }
+    } while ((choix < 1) || (choix > 3));
+
+    sauv->numPartie = choix;
+    // Si le joueur souhaite jouer à une partie précédemment sauvegardée
+    if(sauvegarde_existante(*sauv)){
+        // Chargement des données sauvegardées
+        load(&player,map,quest_map,&quete,*sauv);
+        if(demo){
+          demo_afficher_items(&player,Tab_Items,nb_items_available);
+        }
     }
-  } while ((choix < 1) || (choix > 3));
+    // Nouvelle partie
+    else {
+      // Choix du nom de la nouvelle partie
+      printf("\n   Quel nom souhaitez-vous donner à votre partie ? (20 caractères max)\n   ");
+      scanf(" %[^\n]",nom_partie);
 
-  sauv->numPartie = choix;
-  if(sauvegarde_existante(*sauv)){
-      load(&player,map,quest_map,&quete,*sauv);
+      switch(sauv->numPartie){
+       case 1: strcpy(sauv->nomPartie1,nom_partie); break;
+       case 2: strcpy(sauv->nomPartie2,nom_partie); break;
+       case 3: strcpy(sauv->nomPartie3,nom_partie); break;
+       default: break;
+      }
+
+      // Initialisations carte, joueur et quêtes
+      map_init(map,quest_map);
+      init_player(&player,map);
+      init_quete(&quete,quest_map,Tab_Items,nb_items_available);
+
       if(demo){
         demo_afficher_items(&player,Tab_Items,nb_items_available);
       }
+
+      // Sauvegarde automatique
+      save(player,map,quest_map,quete,*sauv);
+      printf("\n   >>> Initialisation. Sauvegarde automatique.\n"); sleep(1);
+
+      // Présentation des règles du jeu
+      presentation_regle_jeu();
+    }
+
+    menu_principal_jeu(player,map,quest_map,quete,*sauv,Tab_Items,nb_items_available);
   }
   else {
-    printf("\n   Quel nom souhaitez-vous donner à votre partie ? (20 caractères max)\n   ");
-    scanf(" %[^\n]",nom_partie);
-
-    switch(sauv->numPartie){
-     case 1: strcpy(sauv->nomPartie1,nom_partie); break;
-     case 2: strcpy(sauv->nomPartie2,nom_partie); break;
-     case 3: strcpy(sauv->nomPartie3,nom_partie); break;
-     default: break;
-    }
-
-    map_init(map,quest_map);
-    init_player(&player,map);
-    init_quete(&quete,quest_map,Tab_Items,nb_items_available);
-
-    if(demo){
-      demo_afficher_items(&player,Tab_Items,nb_items_available);
-    }
-
-    save(player,map,quest_map,quete,*sauv);
-    printf("\n   >>> Initialisation. Sauvegarde automatique.\n"); sleep(1);
-    presentation_regle_jeu();
+    printf("   Erreur lors de la récupération des données items.\n");
+    exit(1);
   }
-
-  menu_principal_jeu(player,map,quest_map,quete,*sauv,Tab_Items,nb_items_available);
 }
 
+/**
+ * \fn int main(int argc, char * argv[], char * env[])
+ * \brief Programme principal - Menu début de jeu : choisir une partie pour jouer, effacer une partie ou quitter le jeu
+ * \details Exécuter ./game --demo ou ./game -d pour mode demo
+ * \param sauv Pointeur sur un objet de type sauv_t correspondant à l'état des sauvegardes
+ * \param demo Indicateur si mode demo
+ * \return Rien
+*/
 int main(int argc, char * argv[], char * env[]){
   sauv_t sauv;
   int choix, demo = 0;

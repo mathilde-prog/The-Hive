@@ -1,16 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "lib/structure.h"
+#include "lib/commun.h"
 
 /**
  * \file test_creation_items.c
- * \brief Fichier TEST - Création des items
+ * \brief Fichier TEST - Extraction des items du fichier externe
  * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
  * \version 1.0
  * \date 2020
 */
 
+/**
+ * \void int main()
+ * \brief Programme principal pour tester l'extraction des items à partir du fichier externe "items.csv" (dossier data)
+ * \details Objectif : Tester la fonction #creation_tab_item.
+*/
 int main(){
   item_t * Tab_Items = malloc(20 * sizeof(item_t));
   int i, nb_items_available = 0;
