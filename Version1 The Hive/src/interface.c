@@ -4,7 +4,7 @@
 #include<SDL2/SDL_ttf.h>
 #include<SDL2/SDL_image.h>
 #include<time.h>
-#include"lib/interface_combat.h"
+#include"lib/interface_options.h"
 #include"lib/interface.h"
 
 /**
@@ -308,7 +308,7 @@ int interface(){
 									running = 0;
 								}
 								if (event.button.y > bouton_help.y && event.button.y < bouton_help.y+bouton_help.h){
-									printf("help button pressed \n");
+									affichage_help();
 								}
 							}
 							//si on clique sur un des 4 autres boutons
@@ -320,8 +320,8 @@ int interface(){
 							}
 							if(event.button.x > bouton_fouille.x && event.button.x < bouton_fouille.x+bouton_fouille.w && event.button.y > bouton_fouille.y && event.button.y < bouton_fouille.y+bouton_fouille.h){
 								printf("search button pressed\n");
-								combat_bis(renderer,police2);
-								affichage_map(&renderer,map);
+								//combat_bis(renderer,police2);
+								//affichage_map(&renderer,map);
 							}
 							if(event.button.x > bouton_inv.x && event.button.x < bouton_inv.x+bouton_inv.w && event.button.y > bouton_inv.y && event.button.y < bouton_inv.y+bouton_inv.h){
 								printf("inventory button pressed\n");

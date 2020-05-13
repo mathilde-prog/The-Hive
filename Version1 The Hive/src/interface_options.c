@@ -3,10 +3,10 @@
 #include<SDL2/SDL.h>
 #include<SDL2/SDL_ttf.h>
 #include<SDL2/SDL_image.h>
-#include"lib/interface_combat.h"
+#include"lib/interface_options.h"
 
 /**
- * \file combat.c
+ * \file interface_options.c
  * \brief Affichage de l'interface de combat via SDL2
  * \author Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev
  * \version 1.0
@@ -166,5 +166,83 @@ int combat_bis(SDL_Renderer * renderer, TTF_Font *police/*, stat_t * combat_stat
 				break;
 			}
 		}
+	}
+}
+
+
+/**
+ * \fn void affichage_help()
+ * \brief Affiche la document d'aide pour le joueur
+ * \return Rien
+ */
+void affichage_help(){
+	//Le pointeur vers la fenetre
+	SDL_Window* help_window = NULL;
+	SDL_Renderer *help_renderer=NULL;
+	SDL_Surface *help_surface;
+	SDL_Rect dest_img;
+	SDL_Texture *help_txt;
+	SDL_RWops *rwop_help;
+
+	help_window = SDL_CreateWindow("The Hive - Help",SDL_WINDOWPOS_UNDEFINED,  SDL_WINDOWPOS_UNDEFINED,840,710, SDL_WINDOW_SHOWN | SDL_WINDOW_BORDERLESS);
+	if(!help_window){
+		fprintf(stderr, "Erreur à la création de la fenetre : %s\n", SDL_GetError());
+		exit(EXIT_FAILURE);
+	}
+
+	help_renderer = SDL_CreateRenderer(help_window, -1, SDL_RENDERER_ACCELERATED);
+	if(help_renderer == NULL){
+		fprintf(stderr, "Erreur à la création du renderer\n");
+		exit(EXIT_FAILURE);
+	}
+
+	rwop_help = SDL_RWFromFile("../data/help_the_hive_v2.png","rb");
+	help_surface = IMG_LoadPNG_RW(rwop_help);
+	help_txt = SDL_CreateTextureFromSurface(help_renderer,help_surface);
+	dest_img.x = 0;
+	dest_img.y = 0;
+	SDL_QueryTexture(help_txt, NULL, NULL, &(dest_img.w), &(dest_img.h));
+	SDL_FreeSurface(help_surface);
+
+	if (help_window){
+		int run =1;
+		while(run){
+			SDL_Event event1;
+			while(SDL_PollEvent(&event1)) {
+				switch(event1.type) {
+					case SDL_WINDOWEVENT:
+					switch(event1.window.event){
+						case SDL_WINDOWEVENT_EXPOSED:
+						case SDL_WINDOWEVENT_SIZE_CHANGED:
+						case SDL_WINDOWEVENT_SHOWN:
+						SDL_RenderClear(help_renderer);
+						SDL_RenderCopy(help_renderer, help_txt, NULL, &dest_img);
+						SDL_RenderPresent(help_renderer);
+						break;
+					}
+					break;
+					case SDL_KEYDOWN:
+            switch(event1.key.keysym.sym){
+                 case SDLK_ESCAPE:
+                 run = 0;
+                 break;
+            }
+            break;
+					case SDL_MOUSEWHEEL:
+						if (event1.wheel.y > 0)
+							if (dest_img.y < 0)
+								dest_img.y +=15;
+						if (event1.wheel.y < 0)
+							if (dest_img.y > -(1500-710))
+								dest_img.y -=15;
+						SDL_QueryTexture(help_txt, NULL, NULL, &(dest_img.w), &(dest_img.h));
+						SDL_RenderClear(help_renderer);
+						SDL_RenderCopy(help_renderer, help_txt, NULL, &dest_img);
+						SDL_RenderPresent(help_renderer);
+						break;
+				}
+			}
+		}
+		SDL_DestroyWindow(help_window);
 	}
 }
