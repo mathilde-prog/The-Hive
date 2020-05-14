@@ -529,7 +529,7 @@ int quete_bunker(perso_t * player, quete_t * quete){
  * \fn int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_items_available, cell_t map[D][D])
  * \brief Accès à la quete "bandits".
  * \details
-    Le joueur combat contre un npc aléatoire. Il en sort vivant, blessé ou mort.
+    Le joueur arrive sur un camp de bandits. Il a le choix entre fuir, attendre les hommes ou voler des items. Il en sort vivant ou mort.
  * \param player Pointeur sur un objet de type perso_t correspondant au joueur
  * \param quete Pointeur sur un objet de type quete_t correspondant à l'état des quêtes
  * \param Tab_Items Tableau contenant tous les items disponibles dans le jeu

@@ -159,6 +159,7 @@ int quete_recherche(perso_t * player, cell_t map[D][D], quete_t * quete){
                 return 0;
               }
             }
+            //Si le joueur n'a pas l'item sur lui
             else {
               printf("   \"Je te conseille d'aller dans une ville, un marché ou une favela pour trouver l'item %s. Une fois que tu as trouvé l'item il faudra que tu reviennes ici pour me le redonner.\n", quete->recherche.wanted.name);
 
@@ -196,18 +197,16 @@ int quete_recherche(perso_t * player, cell_t map[D][D], quete_t * quete){
         }
         return (-1);
     }
-    /*Si la quete est déjà commencé par le joueur, et qu'il est entrain de chercher l'item, il souhaite rechercher les items sur l'hexagone actuel*/
+    /*Si la quete est déjà commencé par le joueur mais qu'il n'a pas trouvé l'item*/
     else if(quete->recherche.trouve==0){
-        /*Le joueur n'est pas sur un hexagone de categorie urbain*/
-          printf("\n   L'homme vous demande ce que vous faîtes encore ici... \n");
-          printf("   Allez trouver %s dans une ville, un marché ou une favela.\n", quete->recherche.wanted.name);
-          printf("   Continuez votre route sur la carte, afin d'aller dans un des lieux cités ci-dessus.\n\n");
-          entree_pour_continuer();
-          return 0;
+        printf("\n   L'homme vous demande ce que vous faîtes encore ici... \n");
+        printf("   Allez trouver l'item %s dans une ville, un marché ou une favela.\n", quete->recherche.wanted.name);
+        printf("   Continuez votre route sur la carte, afin d'aller dans un des lieux cités ci-dessus.\n\n");
+        entree_pour_continuer();
+        return 0;
     }
-    /*Le joueur a trouvé par l'item, il doit maintenant le donner à l'homme*/
+    /*Le joueur a trouvé par l'item, est sur le bon hexagone pour retrouver l'homme*/
     else if(quete->recherche.trouve==1){
-        /*Le joueur est sur le bon hexagone pour retrouver l'homme*/
         printf("\n   Vous êtes dans le lieu où vous avez rencontré l'homme !\n");
         printf("   Il se tient face à vous avec un grand sourire. Vous lui donnez son item, il est au passage retiré de votre inventaire.\n");
         ind = item_in_inventory(*player,quete->recherche.wanted.name);

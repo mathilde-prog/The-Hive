@@ -249,7 +249,7 @@ typedef struct{
     int situation;  /**< Indicateur pour savoir l'avancée du joueur dans la quête "recherche"*/
     item_t wanted;  /**< Item que le joueur doit trouver*/
     int trouve;     /**< Indicateur afin de savoir si l'item a été trouvé*/
-		int bunkerY; 		/**< Coordonnée Y (ligne) du bunker */
+    int bunkerY; 		/**< Coordonnée Y (ligne) du bunker */
     int bunkerX; 		/**< Coordonnée X (colonne) du bunker */
 }search_t;
 
