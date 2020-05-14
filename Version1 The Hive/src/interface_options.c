@@ -38,7 +38,7 @@ void affichage_personnage(SDL_Renderer *renderer, char *img_perso, int x, int y)
 }
 
 /**
- * \fn int combat(TTF_Font *police, stat_t * combat_stats, npc_t * npc)
+ * \fn int combat_bis(TTF_Font *police, stat_t * combat_stats, npc_t * npc)
  * \brief Affiche l'interface de combat
  * \param TTF_Font *police
  * \param stat_t * combat_stats
