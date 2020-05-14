@@ -33,8 +33,9 @@ void presentation_regle_jeu(){
   printf("   Vous disposez de 15 tours pour vous échapper avant de mourir ici ! Vos points de vie sont à 100, tout comme vos points d'énergie et vous avez 5 points d'action.\n");
   printf("\n   Pour trouver une des sorties possibles, explorez les prairies, montagnes, villes, lacs... des environs.\n");
   printf("   Lors de votre aventure, vous risquez de faire des rencontres (plus ou moins amicales) qui nécessiteront parfois de combattre pour sauver votre vie.\n");
+  printf("   Faîtes attention au choix que vous ferez lors des quêtes qui se présenteront à vous, cela aura un impact sur la suite de votre aventure.\n");
   printf("\n   En fouillant la zone, vous devriez trouver certains items utiles à votre survie : armes, armures, objets divers ou nourriture.\n");
-  printf("   Pour le moment, vous n'avez aucun équipement sur vous, juste votre sac à dos. Vide pour l'instant, il a une capacité de 10 items maximum.\n");
+  printf("   Pour le moment, vous n'avez aucun équipement (le maximum possible est de 4)sur vous, juste votre sac à dos. Vide pour l'instant, il a une capacité de 10 items maximum.\n");
   printf("\n\n   \033[1;32m>>> Appuyez sur la touche entrée pour commencer l'aventure !\033[00m");
   while(getchar() != '\n');
 }
