@@ -1,0 +1,416 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projet L2 Informatique - The Hive: Référence du fichier src/backup_and_load.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Projet L2 Informatique - The Hive
+   </div>
+   <div id="projectbrief">Documentation jeu The Hive (Projet L2 Informatique)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier backup_and_load.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Sauvegarde et chargement d'une partie.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="commun_8h_source.html">lib/commun.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de backup_and_load.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="backup__and__load_8c__incl.png" border="0" usemap="#src_2backup__and__load_8c" alt=""/></div>
+<map name="src_2backup__and__load_8c" id="src_2backup__and__load_8c">
+<area shape="rect" id="node6" href="commun_8h.html" title="Tous les prototypes de fonctions, énumérations, structures, macros appelés dans plusieurs fichiers du..." alt="" coords="361,80,461,107"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:abf3bd1684d5f65e10f183757d06706df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="backup__and__load_8c.html#abf3bd1684d5f65e10f183757d06706df">sauvegarder_progression</a> (<a class="el" href="structperso__t.html">perso_t</a> player, <a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>], int quest_map[6][2], <a class="el" href="structquete__t.html">quete_t</a> quete, <a class="el" href="structsauv__t.html">sauv_t</a> sauv)</td></tr>
+<tr class="memdesc:abf3bd1684d5f65e10f183757d06706df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sauvegarde la progression de la partie actuellement en cours et propose au joueur de continuer ou quitter le jeu.  <a href="#abf3bd1684d5f65e10f183757d06706df">Plus de détails...</a><br /></td></tr>
+<tr class="separator:abf3bd1684d5f65e10f183757d06706df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3a35e6ca5de07de881517f1c47a1435"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="backup__and__load_8c.html#ae3a35e6ca5de07de881517f1c47a1435">sauvegarde_existante</a> (<a class="el" href="structsauv__t.html">sauv_t</a> sauv)</td></tr>
+<tr class="memdesc:ae3a35e6ca5de07de881517f1c47a1435"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique s'il existe une sauvegarde pour la partie choisie par l'utilisateur.  <a href="#ae3a35e6ca5de07de881517f1c47a1435">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae3a35e6ca5de07de881517f1c47a1435"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a609a5fc89bd1df4a2f14a3e436b6ed93"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="backup__and__load_8c.html#a609a5fc89bd1df4a2f14a3e436b6ed93">affichage_parties</a> (<a class="el" href="structsauv__t.html">sauv_t</a> sauv)</td></tr>
+<tr class="memdesc:a609a5fc89bd1df4a2f14a3e436b6ed93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche les parties sauvegardées et disponibles.  <a href="#a609a5fc89bd1df4a2f14a3e436b6ed93">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a609a5fc89bd1df4a2f14a3e436b6ed93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08446349c2ace9f33a111be928403978"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="backup__and__load_8c.html#a08446349c2ace9f33a111be928403978">update_etat_sauvegarde</a> (<a class="el" href="structsauv__t.html">sauv_t</a> *sauv)</td></tr>
+<tr class="memdesc:a08446349c2ace9f33a111be928403978"><td class="mdescLeft">&#160;</td><td class="mdescRight">Met à jour l'état des sauvegardes (si elles existent et leurs noms)  <a href="#a08446349c2ace9f33a111be928403978">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a08446349c2ace9f33a111be928403978"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c9a1c312a2d24dc4a9d4db757e55711"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="backup__and__load_8c.html#a8c9a1c312a2d24dc4a9d4db757e55711">effacer_partie</a> (<a class="el" href="structsauv__t.html">sauv_t</a> sauv)</td></tr>
+<tr class="memdesc:a8c9a1c312a2d24dc4a9d4db757e55711"><td class="mdescLeft">&#160;</td><td class="mdescRight">Efface une partie choisie par l'utilisateur.  <a href="#a8c9a1c312a2d24dc4a9d4db757e55711">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a8c9a1c312a2d24dc4a9d4db757e55711"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafdde294bbc0144a5a6a0417248fcf90"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="backup__and__load_8c.html#aafdde294bbc0144a5a6a0417248fcf90">save</a> (<a class="el" href="structperso__t.html">perso_t</a> player, <a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>], int quest_map[6][2], <a class="el" href="structquete__t.html">quete_t</a> quete, <a class="el" href="structsauv__t.html">sauv_t</a> sauv)</td></tr>
+<tr class="memdesc:aafdde294bbc0144a5a6a0417248fcf90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sauvegarde les informations sur le joueur, son inventaire, son équipement ainsi que les informations sur la carte et les quêtes d'une partie.  <a href="#aafdde294bbc0144a5a6a0417248fcf90">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aafdde294bbc0144a5a6a0417248fcf90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a04035a05160ad8111695a53423eb1f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="backup__and__load_8c.html#a3a04035a05160ad8111695a53423eb1f">load</a> (<a class="el" href="structperso__t.html">perso_t</a> *player, <a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>], int quest_map[6][2], <a class="el" href="structquete__t.html">quete_t</a> *quete, <a class="el" href="structsauv__t.html">sauv_t</a> sauv)</td></tr>
+<tr class="memdesc:a3a04035a05160ad8111695a53423eb1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge les informations sur le joueur, son inventaire, son équipement ainsi que les informations sur la carte et les quêtes d'une partie.  <a href="#a3a04035a05160ad8111695a53423eb1f">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a3a04035a05160ad8111695a53423eb1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Sauvegarde et chargement d'une partie. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2020 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a609a5fc89bd1df4a2f14a3e436b6ed93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a609a5fc89bd1df4a2f14a3e436b6ed93">&#9670;&nbsp;</a></span>affichage_parties()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void affichage_parties </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structsauv__t.html">sauv_t</a>&#160;</td>
+          <td class="paramname"><em>sauv</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche les parties sauvegardées et disponibles. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sauv</td><td>Etat des sauvegardes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a8c9a1c312a2d24dc4a9d4db757e55711"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c9a1c312a2d24dc4a9d4db757e55711">&#9670;&nbsp;</a></span>effacer_partie()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void effacer_partie </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structsauv__t.html">sauv_t</a>&#160;</td>
+          <td class="paramname"><em>sauv</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Efface une partie choisie par l'utilisateur. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sauv</td><td>Etat des sauvegardes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a3a04035a05160ad8111695a53423eb1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a04035a05160ad8111695a53423eb1f">&#9670;&nbsp;</a></span>load()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void load </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>quest_map</em>[6][2], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structquete__t.html">quete_t</a> *&#160;</td>
+          <td class="paramname"><em>quete</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsauv__t.html">sauv_t</a>&#160;</td>
+          <td class="paramname"><em>sauv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Charge les informations sur le joueur, son inventaire, son équipement ainsi que les informations sur la carte et les quêtes d'une partie. </p>
+<p>Informations sur le joueur : points de vie, points d'énergie, points d'action, position sur la carte, nombre de tours restants</p>
+<p>Informations sur la carte : pour chaque case de la matrice map, chargement de son type, sa catégorie, s'il y a un combat, si le joueur a déjà fouillé la case et si une quête y est positionnée.</p>
+<p>Informations sur les quêtes : chargement des coordonnées de chaque quête et de leurs états. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+    <tr><td class="paramname">quest_map[6][2]</td><td>Matrice des coordonnées des quêtes </td></tr>
+    <tr><td class="paramname">quete</td><td>Pointeur sur un objet de type <a class="el" href="structquete__t.html" title="Structure de suivi des quêtes. ">quete_t</a> correspondant à l'état des quêtes </td></tr>
+    <tr><td class="paramname">sauv</td><td>Etat des sauvegardes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="ae3a35e6ca5de07de881517f1c47a1435"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3a35e6ca5de07de881517f1c47a1435">&#9670;&nbsp;</a></span>sauvegarde_existante()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sauvegarde_existante </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structsauv__t.html">sauv_t</a>&#160;</td>
+          <td class="paramname"><em>sauv</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indique s'il existe une sauvegarde pour la partie choisie par l'utilisateur. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sauv</td><td>Etat des sauvegardes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un <em>int</em> : 1 si une sauvegarde existe. 0 sinon. </dd></dl>
+
+</div>
+</div>
+<a id="abf3bd1684d5f65e10f183757d06706df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf3bd1684d5f65e10f183757d06706df">&#9670;&nbsp;</a></span>sauvegarder_progression()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sauvegarder_progression </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a>&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>quest_map</em>[6][2], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structquete__t.html">quete_t</a>&#160;</td>
+          <td class="paramname"><em>quete</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsauv__t.html">sauv_t</a>&#160;</td>
+          <td class="paramname"><em>sauv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sauvegarde la progression de la partie actuellement en cours et propose au joueur de continuer ou quitter le jeu. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Joueur </td></tr>
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+    <tr><td class="paramname">quest_map[6][2]</td><td>Matrice des coordonnées des quêtes </td></tr>
+    <tr><td class="paramname">quete</td><td>Etat des quêtes </td></tr>
+    <tr><td class="paramname">sauv</td><td>Etat des sauvegardes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="aafdde294bbc0144a5a6a0417248fcf90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafdde294bbc0144a5a6a0417248fcf90">&#9670;&nbsp;</a></span>save()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void save </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a>&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>quest_map</em>[6][2], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structquete__t.html">quete_t</a>&#160;</td>
+          <td class="paramname"><em>quete</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsauv__t.html">sauv_t</a>&#160;</td>
+          <td class="paramname"><em>sauv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sauvegarde les informations sur le joueur, son inventaire, son équipement ainsi que les informations sur la carte et les quêtes d'une partie. </p>
+<p>Informations sur le joueur : points de vie, points d'énergie, points d'action, position sur la carte, nombre de tours restants</p>
+<p>Informations sur la carte : pour chaque case de la matrice map, sauvegarde de son type, sa catégorie, s'il y a un combat, si le joueur a déjà fouillé la case et si une quête y est positionnée.</p>
+<p>Informations sur les quêtes : sauvegarde des coordonnées de chaque quête et de leurs états. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Joueur </td></tr>
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+    <tr><td class="paramname">quest_map[6][2]</td><td>Matrice des coordonnées des quêtes </td></tr>
+    <tr><td class="paramname">quete</td><td>Etat des quêtes </td></tr>
+    <tr><td class="paramname">sauv</td><td>Etat des sauvegardes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a08446349c2ace9f33a111be928403978"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08446349c2ace9f33a111be928403978">&#9670;&nbsp;</a></span>update_etat_sauvegarde()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void update_etat_sauvegarde </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structsauv__t.html">sauv_t</a> *&#160;</td>
+          <td class="paramname"><em>sauv</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Met à jour l'état des sauvegardes (si elles existent et leurs noms) </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sauv</td><td>Pointeur sur un objet de type <a class="el" href="structsauv__t.html" title="Structure pour sauvegarder les parties. ">sauv_t</a> correspondant à l'état des sauvegardes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

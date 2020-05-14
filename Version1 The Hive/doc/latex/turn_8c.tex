@@ -1,0 +1,81 @@
+\hypertarget{turn_8c}{}\section{Référence du fichier src/turn.c}
+\label{turn_8c}\index{src/turn.\+c@{src/turn.\+c}}
+
+
+Fonctions relatives à un tour du jeu.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}lib/commun.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de turn.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{turn_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{turn_8c_ab34814b4d8a3404f1d08ca212259c39b}{next\+\_\+turn} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player)
+\begin{DoxyCompactList}\small\item\em Calcule le nombre de points d’action récupérés à partir de la valeur des points d\textquotesingle{}énergie du joueur puis passe au tour suivant. \end{DoxyCompactList}\item 
+void \hyperlink{turn_8c_a16623bb45a52000b8ec7b116aaa46173}{rest\+\_\+and\+\_\+heal} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player)
+\begin{DoxyCompactList}\small\item\em Permet au joueur de se reposer et récupérer des points de vie et points d\textquotesingle{}énergie (proportionnellement au nombre de points d\textquotesingle{}action) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Fonctions relatives à un tour du jeu. 
+
+\begin{DoxyAuthor}{Auteur}
+Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{turn_8c_ab34814b4d8a3404f1d08ca212259c39b}\label{turn_8c_ab34814b4d8a3404f1d08ca212259c39b}} 
+\index{turn.\+c@{turn.\+c}!next\+\_\+turn@{next\+\_\+turn}}
+\index{next\+\_\+turn@{next\+\_\+turn}!turn.\+c@{turn.\+c}}
+\subsubsection{\texorpdfstring{next\+\_\+turn()}{next\_turn()}}
+{\footnotesize\ttfamily void next\+\_\+turn (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player }\end{DoxyParamCaption})}
+
+
+
+Calcule le nombre de points d’action récupérés à partir de la valeur des points d\textquotesingle{}énergie du joueur puis passe au tour suivant. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{turn_8c_a16623bb45a52000b8ec7b116aaa46173}\label{turn_8c_a16623bb45a52000b8ec7b116aaa46173}} 
+\index{turn.\+c@{turn.\+c}!rest\+\_\+and\+\_\+heal@{rest\+\_\+and\+\_\+heal}}
+\index{rest\+\_\+and\+\_\+heal@{rest\+\_\+and\+\_\+heal}!turn.\+c@{turn.\+c}}
+\subsubsection{\texorpdfstring{rest\+\_\+and\+\_\+heal()}{rest\_and\_heal()}}
+{\footnotesize\ttfamily void rest\+\_\+and\+\_\+heal (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player }\end{DoxyParamCaption})}
+
+
+
+Permet au joueur de se reposer et récupérer des points de vie et points d\textquotesingle{}énergie (proportionnellement au nombre de points d\textquotesingle{}action) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}

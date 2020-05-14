@@ -1,0 +1,230 @@
+\hypertarget{quetes_8c}{}\section{Référence du fichier src/quetes.c}
+\label{quetes_8c}\index{src/quetes.\+c@{src/quetes.\+c}}
+
+
+Fonctions relatives aux quêtes du jeu (initialisation, lancement des quêtes) + 4 quêtes (montagne, frontière, bunker, bandits)  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}lib/commun.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de quetes.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{quetes_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{quetes_8c_afd7728c9e6ae89e5932e641b54556aba}{exit\+\_\+game} ()
+\begin{DoxyCompactList}\small\item\em Propose au joueur de quitter ou non la carte lorsqu\textquotesingle{}il vient de trouver la sortie. \end{DoxyCompactList}\item 
+void \hyperlink{quetes_8c_a8467aba54144bfdead8e1a614e563e23}{informations\+\_\+quetes} (\hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, int quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}, \hyperlink{structquete__t}{quete\+\_\+t} quete)
+\begin{DoxyCompactList}\small\item\em Affiche les informations des quêtes (coordonnées et états) \end{DoxyCompactList}\item 
+void \hyperlink{quetes_8c_a88d64826f8f2155e0cbf149e18aa33c0}{init\+\_\+quete} (\hyperlink{structquete__t}{quete\+\_\+t} $\ast$quete, int quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}, \hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items, int nb\+\_\+items\+\_\+available)
+\begin{DoxyCompactList}\small\item\em Initialisation d\textquotesingle{}une variable de type \hyperlink{structquete__t}{quete\+\_\+t}. \end{DoxyCompactList}\item 
+int \hyperlink{quetes_8c_adc1d91bf20af02d88470e87ff9bb9e8b}{quetes} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, int quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}, \hyperlink{structquete__t}{quete\+\_\+t} $\ast$quete, \hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items, int nb\+\_\+items\+\_\+available)
+\begin{DoxyCompactList}\small\item\em Récupère le numéro de la quête pour accéder à la quête correspondante. \end{DoxyCompactList}\item 
+int \hyperlink{quetes_8c_ab993120c9273aa16f7789c84428d4ab9}{quete\+\_\+montagne} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structquete__t}{quete\+\_\+t} $\ast$quete)
+\begin{DoxyCompactList}\small\item\em Accès à la quete \char`\"{}montagne\char`\"{}. \end{DoxyCompactList}\item 
+int \hyperlink{quetes_8c_a7da8ac2437b193c7740204da24c04ae8}{quete\+\_\+frontiere} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structquete__t}{quete\+\_\+t} $\ast$quete)
+\begin{DoxyCompactList}\small\item\em Accès à la quete \char`\"{}frontière\char`\"{}. \end{DoxyCompactList}\item 
+int \hyperlink{quetes_8c_a266486f088d93c87682a8c3f1d130d64}{quete\+\_\+bunker} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structquete__t}{quete\+\_\+t} $\ast$quete)
+\begin{DoxyCompactList}\small\item\em Accès à la quête \char`\"{}bunker\char`\"{}. \end{DoxyCompactList}\item 
+int \hyperlink{quetes_8c_ae3a10faf1284038599e3098a8253ce43}{quete\+\_\+bandits} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structquete__t}{quete\+\_\+t} $\ast$quete, \hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items, int nb\+\_\+items\+\_\+available, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Accès à la quete \char`\"{}bandits\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Fonctions relatives aux quêtes du jeu (initialisation, lancement des quêtes) + 4 quêtes (montagne, frontière, bunker, bandits) 
+
+\begin{DoxyAuthor}{Auteur}
+Mathilde Mottay, Anais Mottier, Clement Mainguy, Moustapha Tsamarayev 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{quetes_8c_afd7728c9e6ae89e5932e641b54556aba}\label{quetes_8c_afd7728c9e6ae89e5932e641b54556aba}} 
+\index{quetes.\+c@{quetes.\+c}!exit\+\_\+game@{exit\+\_\+game}}
+\index{exit\+\_\+game@{exit\+\_\+game}!quetes.\+c@{quetes.\+c}}
+\subsubsection{\texorpdfstring{exit\+\_\+game()}{exit\_game()}}
+{\footnotesize\ttfamily int exit\+\_\+game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Propose au joueur de quitter ou non la carte lorsqu\textquotesingle{}il vient de trouver la sortie. 
+
+\begin{DoxyReturn}{Renvoie}
+Un {\itshape int} \+: 1 si le joueur décide de quitter la carte. 0 s\textquotesingle{}il décide de continuer l\textquotesingle{}aventure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{quetes_8c_a8467aba54144bfdead8e1a614e563e23}\label{quetes_8c_a8467aba54144bfdead8e1a614e563e23}} 
+\index{quetes.\+c@{quetes.\+c}!informations\+\_\+quetes@{informations\+\_\+quetes}}
+\index{informations\+\_\+quetes@{informations\+\_\+quetes}!quetes.\+c@{quetes.\+c}}
+\subsubsection{\texorpdfstring{informations\+\_\+quetes()}{informations\_quetes()}}
+{\footnotesize\ttfamily void informations\+\_\+quetes (\begin{DoxyParamCaption}\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{int}]{quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]},  }\item[{\hyperlink{structquete__t}{quete\+\_\+t}}]{quete }\end{DoxyParamCaption})}
+
+
+
+Affiche les informations des quêtes (coordonnées et états) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+{\em quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}} & Matrice des coordonnées des quêtes \\
+\hline
+{\em quete} & Etat des quêtes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{quetes_8c_a88d64826f8f2155e0cbf149e18aa33c0}\label{quetes_8c_a88d64826f8f2155e0cbf149e18aa33c0}} 
+\index{quetes.\+c@{quetes.\+c}!init\+\_\+quete@{init\+\_\+quete}}
+\index{init\+\_\+quete@{init\+\_\+quete}!quetes.\+c@{quetes.\+c}}
+\subsubsection{\texorpdfstring{init\+\_\+quete()}{init\_quete()}}
+{\footnotesize\ttfamily void init\+\_\+quete (\begin{DoxyParamCaption}\item[{\hyperlink{structquete__t}{quete\+\_\+t} $\ast$}]{quete,  }\item[{int}]{quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]},  }\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items,  }\item[{int}]{nb\+\_\+items\+\_\+available }\end{DoxyParamCaption})}
+
+
+
+Initialisation d\textquotesingle{}une variable de type \hyperlink{structquete__t}{quete\+\_\+t}. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em quete} & Pointeur sur un objet de type \hyperlink{structquete__t}{quete\+\_\+t} correspondant à l\textquotesingle{}état des quêtes \\
+\hline
+{\em quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}} & Matrice des coordonnées des quêtes \\
+\hline
+{\em Tab\+\_\+\+Items} & Tableau contenant tous les items disponibles dans le jeu \\
+\hline
+{\em nb\+\_\+items\+\_\+available} & Nombre d\textquotesingle{}items disponibles dans le jeu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{quetes_8c_ae3a10faf1284038599e3098a8253ce43}\label{quetes_8c_ae3a10faf1284038599e3098a8253ce43}} 
+\index{quetes.\+c@{quetes.\+c}!quete\+\_\+bandits@{quete\+\_\+bandits}}
+\index{quete\+\_\+bandits@{quete\+\_\+bandits}!quetes.\+c@{quetes.\+c}}
+\subsubsection{\texorpdfstring{quete\+\_\+bandits()}{quete\_bandits()}}
+{\footnotesize\ttfamily int quete\+\_\+bandits (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structquete__t}{quete\+\_\+t} $\ast$}]{quete,  }\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items,  }\item[{int}]{nb\+\_\+items\+\_\+available,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Accès à la quete \char`\"{}bandits\char`\"{}. 
+
+Le joueur combat contre un npc aléatoire. Il en sort vivant, blessé ou mort. 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em quete} & Pointeur sur un objet de type \hyperlink{structquete__t}{quete\+\_\+t} correspondant à l\textquotesingle{}état des quêtes \\
+\hline
+{\em Tab\+\_\+\+Items} & Tableau contenant tous les items disponibles dans le jeu \\
+\hline
+{\em nb\+\_\+items\+\_\+available} & Nombre d\textquotesingle{}items disponibles dans le jeu \\
+\hline
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\itshape int} \+: 0 si le jeu continue, 1 si le jeu est fini et -\/1 si problème dans la quête. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{quetes_8c_a266486f088d93c87682a8c3f1d130d64}\label{quetes_8c_a266486f088d93c87682a8c3f1d130d64}} 
+\index{quetes.\+c@{quetes.\+c}!quete\+\_\+bunker@{quete\+\_\+bunker}}
+\index{quete\+\_\+bunker@{quete\+\_\+bunker}!quetes.\+c@{quetes.\+c}}
+\subsubsection{\texorpdfstring{quete\+\_\+bunker()}{quete\_bunker()}}
+{\footnotesize\ttfamily void quete\+\_\+bunker (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structquete__t}{quete\+\_\+t} $\ast$}]{quete }\end{DoxyParamCaption})}
+
+
+
+Accès à la quête \char`\"{}bunker\char`\"{}. 
+
+Si le joueur possède le pass\+\_\+card, il aura le choix de rentrer dans le bunker ou non. Sinon il fait demi-\/tour. 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em quete} & Pointeur sur un objet de type \hyperlink{structquete__t}{quete\+\_\+t} correspondant à l\textquotesingle{}état des quêtes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\itshape int} \+: 0 si le jeu continue, 1 si le jeu est fini et -\/1 si problème dans la quête. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{quetes_8c_a7da8ac2437b193c7740204da24c04ae8}\label{quetes_8c_a7da8ac2437b193c7740204da24c04ae8}} 
+\index{quetes.\+c@{quetes.\+c}!quete\+\_\+frontiere@{quete\+\_\+frontiere}}
+\index{quete\+\_\+frontiere@{quete\+\_\+frontiere}!quetes.\+c@{quetes.\+c}}
+\subsubsection{\texorpdfstring{quete\+\_\+frontiere()}{quete\_frontiere()}}
+{\footnotesize\ttfamily void quete\+\_\+frontiere (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structquete__t}{quete\+\_\+t} $\ast$}]{quete }\end{DoxyParamCaption})}
+
+
+
+Accès à la quete \char`\"{}frontière\char`\"{}. 
+
+Le joueur trouve la sortie de la frontière, il a le choix de la franchir (finir le jeu) ou non. S\textquotesingle{}il a joué la quête \char`\"{}soin\char`\"{} et qu\textquotesingle{}il a aidé l\textquotesingle{}homme blessé alors ses chances de la franchir sont importantes. Mais s\textquotesingle{}il ne l\textquotesingle{}a pas fait, ses chances le sont moins. La chance est donnée par un nombre entier compris entre 0 et 100. 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em quete} & Pointeur sur un objet de type \hyperlink{structquete__t}{quete\+\_\+t} correspondant à l\textquotesingle{}état des quêtes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\itshape int} \+: 0 si le jeu continue, 1 si le jeu est fini et -\/1 si problème dans la quête. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{quetes_8c_ab993120c9273aa16f7789c84428d4ab9}\label{quetes_8c_ab993120c9273aa16f7789c84428d4ab9}} 
+\index{quetes.\+c@{quetes.\+c}!quete\+\_\+montagne@{quete\+\_\+montagne}}
+\index{quete\+\_\+montagne@{quete\+\_\+montagne}!quetes.\+c@{quetes.\+c}}
+\subsubsection{\texorpdfstring{quete\+\_\+montagne()}{quete\_montagne()}}
+{\footnotesize\ttfamily void quete\+\_\+montagne (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structquete__t}{quete\+\_\+t} $\ast$}]{quete }\end{DoxyParamCaption})}
+
+
+
+Accès à la quete \char`\"{}montagne\char`\"{}. 
+
+Le joueur a le choix de franchir la montagne (finir le jeu) ou non. S\textquotesingle{}il a en sa possession l\textquotesingle{}équipement de montagne alors ses chances de s\textquotesingle{}échapper sont importantes. Mais s\textquotesingle{}il ne l\textquotesingle{}a pas, il est très risqué pour lui de vouloir s\textquotesingle{}échapper. La chance est donné par un nombre entier compris entre 0 et 100. 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em quete} & Pointeur sur un objet de type \hyperlink{structquete__t}{quete\+\_\+t} correspondant à l\textquotesingle{}état des quêtes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\itshape int} \+: 0 si le jeu continue, 1 si le jeu est fini et -\/1 si problème dans la quête. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{quetes_8c_adc1d91bf20af02d88470e87ff9bb9e8b}\label{quetes_8c_adc1d91bf20af02d88470e87ff9bb9e8b}} 
+\index{quetes.\+c@{quetes.\+c}!quetes@{quetes}}
+\index{quetes@{quetes}!quetes.\+c@{quetes.\+c}}
+\subsubsection{\texorpdfstring{quetes()}{quetes()}}
+{\footnotesize\ttfamily int quetes (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{int}]{quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]},  }\item[{\hyperlink{structquete__t}{quete\+\_\+t} $\ast$}]{quete,  }\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items,  }\item[{int}]{nb\+\_\+items\+\_\+available }\end{DoxyParamCaption})}
+
+
+
+Récupère le numéro de la quête pour accéder à la quête correspondante. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+{\em quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}} & Matrice des coordonnées des quêtes \\
+\hline
+{\em quete} & Pointeur sur un objet de type \hyperlink{structquete__t}{quete\+\_\+t} correspond à l\textquotesingle{}état des quêtes \\
+\hline
+{\em Tab\+\_\+\+Items} & Tableau contenant tous les items disponibles dans le jeu \\
+\hline
+{\em nb\+\_\+items\+\_\+available} & Nombre d\textquotesingle{}items disponibles dans le jeu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\itshape int} \+: 0 si le jeu continue, 1 si le jeu est fini et -\/1 si problème dans la quête. 
+\end{DoxyReturn}

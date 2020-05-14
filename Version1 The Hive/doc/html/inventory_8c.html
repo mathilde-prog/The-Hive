@@ -1,0 +1,484 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projet L2 Informatique - The Hive: Référence du fichier src/inventory.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Projet L2 Informatique - The Hive
+   </div>
+   <div id="projectbrief">Documentation jeu The Hive (Projet L2 Informatique)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier inventory.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Gestion de l'inventaire du joueur.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;time.h&gt;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="commun_8h_source.html">lib/commun.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de inventory.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="inventory_8c__incl.png" border="0" usemap="#src_2inventory_8c" alt=""/></div>
+<map name="src_2inventory_8c" id="src_2inventory_8c">
+<area shape="rect" id="node7" href="commun_8h.html" title="Tous les prototypes de fonctions, énumérations, structures, macros appelés dans plusieurs fichiers du..." alt="" coords="445,80,545,107"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a400e5d6c52a35b165053c2475905d656"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inventory_8c.html#a400e5d6c52a35b165053c2475905d656">gain_energie</a> (<a class="el" href="structperso__t.html">perso_t</a> *player, int val_e)</td></tr>
+<tr class="memdesc:a400e5d6c52a35b165053c2475905d656"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcule et met à jour les points d'énergie du joueur selon la valeur énergétique de l'item mangé / bu.  <a href="#a400e5d6c52a35b165053c2475905d656">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a400e5d6c52a35b165053c2475905d656"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3d3633d751f914bb3b4609a9950c513"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inventory_8c.html#ab3d3633d751f914bb3b4609a9950c513">eat_or_drink</a> (<a class="el" href="structperso__t.html">perso_t</a> *player, <a class="el" href="structitem__t.html">item_t</a> item)</td></tr>
+<tr class="memdesc:ab3d3633d751f914bb3b4609a9950c513"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet au joueur de boire ou manger un item de type <em>food</em> et récupérer des points d'énergie ou action (si cela est possible).  <a href="#ab3d3633d751f914bb3b4609a9950c513">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ab3d3633d751f914bb3b4609a9950c513"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08b9c4c266cfcf2e07d74de53285d88f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inventory_8c.html#a08b9c4c266cfcf2e07d74de53285d88f">check_the_map</a> (<a class="el" href="structperso__t.html">perso_t</a> player, <a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>])</td></tr>
+<tr class="memdesc:a08b9c4c266cfcf2e07d74de53285d88f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche la carte, si le joueur en possède une dans son inventaire.  <a href="#a08b9c4c266cfcf2e07d74de53285d88f">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a08b9c4c266cfcf2e07d74de53285d88f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a422fba7d76e9ed4b5783cf5d9177aad8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inventory_8c.html#a422fba7d76e9ed4b5783cf5d9177aad8">item_in_inventory</a> (<a class="el" href="structperso__t.html">perso_t</a> player, char *nom_item)</td></tr>
+<tr class="memdesc:a422fba7d76e9ed4b5783cf5d9177aad8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recherche si l'item dont le nom est passé en paramètre est présent ou non dans l'inventaire.  <a href="#a422fba7d76e9ed4b5783cf5d9177aad8">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a422fba7d76e9ed4b5783cf5d9177aad8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74d9dc2f174857b3bf7ec5453faae17e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inventory_8c.html#a74d9dc2f174857b3bf7ec5453faae17e">food_in_inventory</a> (<a class="el" href="structperso__t.html">perso_t</a> player)</td></tr>
+<tr class="memdesc:a74d9dc2f174857b3bf7ec5453faae17e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcule le nombre d'items <em>food</em> dans l'inventaire du joueur.  <a href="#a74d9dc2f174857b3bf7ec5453faae17e">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a74d9dc2f174857b3bf7ec5453faae17e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae86124ec1e7b0d9c46acbd4327e9885d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inventory_8c.html#ae86124ec1e7b0d9c46acbd4327e9885d">too_much_of_the_same_item</a> (<a class="el" href="structperso__t.html">perso_t</a> player, <a class="el" href="structitem__t.html">item_t</a> item)</td></tr>
+<tr class="memdesc:ae86124ec1e7b0d9c46acbd4327e9885d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si l'item passé en paramètre apparaît 2 fois ou plus dans l'inventaire du joueur.  <a href="#ae86124ec1e7b0d9c46acbd4327e9885d">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae86124ec1e7b0d9c46acbd4327e9885d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a354d78a490ef30d40f4a726524090b21"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inventory_8c.html#a354d78a490ef30d40f4a726524090b21">display_inventory</a> (<a class="el" href="structperso__t.html">perso_t</a> player)</td></tr>
+<tr class="memdesc:a354d78a490ef30d40f4a726524090b21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche l'inventaire du joueur.  <a href="#a354d78a490ef30d40f4a726524090b21">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a354d78a490ef30d40f4a726524090b21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bc6d36c93298c7aead4ea6e7e6e3e26"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inventory_8c.html#a9bc6d36c93298c7aead4ea6e7e6e3e26">delete_item_in_inventory</a> (<a class="el" href="structperso__t.html">perso_t</a> *player, <a class="el" href="structitem__t.html">item_t</a> item)</td></tr>
+<tr class="memdesc:a9bc6d36c93298c7aead4ea6e7e6e3e26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retire l'item passé en paramètre de l'inventaire (et de l'équipement si besoin) du joueur.  <a href="#a9bc6d36c93298c7aead4ea6e7e6e3e26">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a9bc6d36c93298c7aead4ea6e7e6e3e26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1668516cd0e1d31746805efdbd4a5f34"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inventory_8c.html#a1668516cd0e1d31746805efdbd4a5f34">add_item_to_inventory</a> (<a class="el" href="structperso__t.html">perso_t</a> *player, <a class="el" href="structitem__t.html">item_t</a> item)</td></tr>
+<tr class="memdesc:a1668516cd0e1d31746805efdbd4a5f34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute un item à l'inventaire du joueur.  <a href="#a1668516cd0e1d31746805efdbd4a5f34">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a1668516cd0e1d31746805efdbd4a5f34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35b519c6835c9aa90ff5fd35b0e68f66"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inventory_8c.html#a35b519c6835c9aa90ff5fd35b0e68f66">manage_inventory</a> (<a class="el" href="structperso__t.html">perso_t</a> *player)</td></tr>
+<tr class="memdesc:a35b519c6835c9aa90ff5fd35b0e68f66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction centrale du fichier <a class="el" href="inventory_8c.html" title="Gestion de l&#39;inventaire du joueur. ">inventory.c</a> permettant au joueur de gérer son inventaire.  <a href="#a35b519c6835c9aa90ff5fd35b0e68f66">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a35b519c6835c9aa90ff5fd35b0e68f66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Gestion de l'inventaire du joueur. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2020 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a1668516cd0e1d31746805efdbd4a5f34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1668516cd0e1d31746805efdbd4a5f34">&#9670;&nbsp;</a></span>add_item_to_inventory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int add_item_to_inventory </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a>&#160;</td>
+          <td class="paramname"><em>item</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ajoute un item à l'inventaire du joueur. </p>
+<p>Si son inventaire est plein, propose un échange. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+    <tr><td class="paramname">item</td><td>Item à ajouter à l'inventaire </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un <em>int</em> : 1 si ajout effectué. 0 sinon. </dd></dl>
+
+</div>
+</div>
+<a id="a08b9c4c266cfcf2e07d74de53285d88f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08b9c4c266cfcf2e07d74de53285d88f">&#9670;&nbsp;</a></span>check_the_map()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void check_the_map </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a>&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche la carte, si le joueur en possède une dans son inventaire. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Joueur </td></tr>
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a9bc6d36c93298c7aead4ea6e7e6e3e26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bc6d36c93298c7aead4ea6e7e6e3e26">&#9670;&nbsp;</a></span>delete_item_in_inventory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void delete_item_in_inventory </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a>&#160;</td>
+          <td class="paramname"><em>item</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retire l'item passé en paramètre de l'inventaire (et de l'équipement si besoin) du joueur. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+    <tr><td class="paramname">item</td><td>Item à retirer de l'inventaire </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a354d78a490ef30d40f4a726524090b21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a354d78a490ef30d40f4a726524090b21">&#9670;&nbsp;</a></span>display_inventory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void display_inventory </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a>&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche l'inventaire du joueur. </p>
+<p>Affichage des items de l'inventaire avec leurs positions, par catégorie (armes, armures, divers, nourriture). Indique si item équipé pour les armes et armures. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="ab3d3633d751f914bb3b4609a9950c513"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3d3633d751f914bb3b4609a9950c513">&#9670;&nbsp;</a></span>eat_or_drink()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void eat_or_drink </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a>&#160;</td>
+          <td class="paramname"><em>item</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet au joueur de boire ou manger un item de type <em>food</em> et récupérer des points d'énergie ou action (si cela est possible). </p>
+<p>Retire l'item mangé / bu de l'inventaire </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+    <tr><td class="paramname">item</td><td>Item que le joueur désire manger ou boire </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a74d9dc2f174857b3bf7ec5453faae17e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74d9dc2f174857b3bf7ec5453faae17e">&#9670;&nbsp;</a></span>food_in_inventory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int food_in_inventory </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a>&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calcule le nombre d'items <em>food</em> dans l'inventaire du joueur. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un <em>int</em> : nombre d'items <em>food</em> dans l'inventaire du joueur </dd></dl>
+
+</div>
+</div>
+<a id="a400e5d6c52a35b165053c2475905d656"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a400e5d6c52a35b165053c2475905d656">&#9670;&nbsp;</a></span>gain_energie()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gain_energie </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>val_e</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calcule et met à jour les points d'énergie du joueur selon la valeur énergétique de l'item mangé / bu. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+    <tr><td class="paramname">val_e</td><td>Valeur énergétique de l'item mangé/bu </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a422fba7d76e9ed4b5783cf5d9177aad8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a422fba7d76e9ed4b5783cf5d9177aad8">&#9670;&nbsp;</a></span>item_in_inventory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int item_in_inventory </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a>&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>nom_item</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Recherche si l'item dont le nom est passé en paramètre est présent ou non dans l'inventaire. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Joueur </td></tr>
+    <tr><td class="paramname">nom_item</td><td>Nom de l'item à rechercher dans l'inventaire </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un <em>int</em> : position de l'item dans l'inventaire si présent, -1 si absent </dd></dl>
+
+</div>
+</div>
+<a id="a35b519c6835c9aa90ff5fd35b0e68f66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35b519c6835c9aa90ff5fd35b0e68f66">&#9670;&nbsp;</a></span>manage_inventory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void manage_inventory </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction centrale du fichier <a class="el" href="inventory_8c.html" title="Gestion de l&#39;inventaire du joueur. ">inventory.c</a> permettant au joueur de gérer son inventaire. </p>
+<p>Menu inventaire : Possibilité pour le joueur d'en savoir plus sur un de ses items, de se débarasser d'un item, de manger/boire un item, d'utiliser son kit médical (s'il en possède un) </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="ae86124ec1e7b0d9c46acbd4327e9885d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae86124ec1e7b0d9c46acbd4327e9885d">&#9670;&nbsp;</a></span>too_much_of_the_same_item()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int too_much_of_the_same_item </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a>&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a>&#160;</td>
+          <td class="paramname"><em>item</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indique si l'item passé en paramètre apparaît 2 fois ou plus dans l'inventaire du joueur. </p>
+<p>Remarque : Un item peut figurer au maximum 2 fois dans l'inventaire du joueur </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Joueur </td></tr>
+    <tr><td class="paramname">item</td><td>Item </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un <em>int</em> : retourne 1 si l'item est présent 2 fois ou plus dans l'inventaire. 0 sinon. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

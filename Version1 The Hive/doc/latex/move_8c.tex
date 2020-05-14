@@ -1,0 +1,128 @@
+\hypertarget{move_8c}{}\section{Référence du fichier src/move.c}
+\label{move_8c}\index{src/move.\+c@{src/move.\+c}}
+
+
+Déplacement du joueur.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}lib/commun.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de move.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{move_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{move_8c_aaad16c14a2221260ca0a7b633c2991ae}{move\+\_\+lose\+\_\+pa} (\hyperlink{commun_8h_a86b2798c02561aa7def13bc6565d7290}{hex\+\_\+t} type\+\_\+hexa)
+\begin{DoxyCompactList}\small\item\em Calcule le nombre de points d\textquotesingle{}action nécessaires pour se déplacer dans le type d\textquotesingle{}hexagone passé en paramètre. \end{DoxyCompactList}\item 
+void \hyperlink{move_8c_a8810aae2a102048ffb6d87f85d4aa226}{look\+\_\+around} (int i, int j, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Affiche une vue des 8 hexagones qui entourent le joueur et les codes pour choisir où se déplacer. \end{DoxyCompactList}\item 
+void \hyperlink{move_8c_ac9fb4bd5a16513e8faf4bf23dcb3d2bf}{move} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Déplace le joueur où il le souhaite, si cela est possible (conditions \+: coordonnées valides et assez de points d\textquotesingle{}action) \end{DoxyCompactList}\item 
+void \hyperlink{move_8c_a27e09d79b0c98039d2d6f07dd485ccc0}{random\+\_\+move} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Déplace aléatoirement le joueur sur un des hexagones qui l\textquotesingle{}entoure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Déplacement du joueur. 
+
+\begin{DoxyAuthor}{Auteur}
+Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{move_8c_a8810aae2a102048ffb6d87f85d4aa226}\label{move_8c_a8810aae2a102048ffb6d87f85d4aa226}} 
+\index{move.\+c@{move.\+c}!look\+\_\+around@{look\+\_\+around}}
+\index{look\+\_\+around@{look\+\_\+around}!move.\+c@{move.\+c}}
+\subsubsection{\texorpdfstring{look\+\_\+around()}{look\_around()}}
+{\footnotesize\ttfamily void look\+\_\+around (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Affiche une vue des 8 hexagones qui entourent le joueur et les codes pour choisir où se déplacer. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em i} & Coordonnée ligne de l\textquotesingle{}hexagone sur lequel le joueur se trouve \\
+\hline
+{\em j} & Coordonnée colonne de l\textquotesingle{}hexagone sur lequel le joueur se trouve \\
+\hline
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{move_8c_ac9fb4bd5a16513e8faf4bf23dcb3d2bf}\label{move_8c_ac9fb4bd5a16513e8faf4bf23dcb3d2bf}} 
+\index{move.\+c@{move.\+c}!move@{move}}
+\index{move@{move}!move.\+c@{move.\+c}}
+\subsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily void move (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Déplace le joueur où il le souhaite, si cela est possible (conditions \+: coordonnées valides et assez de points d\textquotesingle{}action) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{move_8c_aaad16c14a2221260ca0a7b633c2991ae}\label{move_8c_aaad16c14a2221260ca0a7b633c2991ae}} 
+\index{move.\+c@{move.\+c}!move\+\_\+lose\+\_\+pa@{move\+\_\+lose\+\_\+pa}}
+\index{move\+\_\+lose\+\_\+pa@{move\+\_\+lose\+\_\+pa}!move.\+c@{move.\+c}}
+\subsubsection{\texorpdfstring{move\+\_\+lose\+\_\+pa()}{move\_lose\_pa()}}
+{\footnotesize\ttfamily int move\+\_\+lose\+\_\+pa (\begin{DoxyParamCaption}\item[{\hyperlink{commun_8h_a86b2798c02561aa7def13bc6565d7290}{hex\+\_\+t}}]{type\+\_\+hexa }\end{DoxyParamCaption})}
+
+
+
+Calcule le nombre de points d\textquotesingle{}action nécessaires pour se déplacer dans le type d\textquotesingle{}hexagone passé en paramètre. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em type\+\_\+hexa} & Type de l\textquotesingle{}hexagone sur lequel le joueur souhaite se déplacer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un {\itshape int} représentant le nombre de points d\textquotesingle{}action nécessaires (prairie \+: 1, forêt \+: 2, ville \+: 1, lac \+: 2, camp militaire \+: 2, camp des bandits \+: 2, marché \+: 1, favela \+: 2, montagne \+: 3, frontière \+: 1, mer \+: 1, wasteland \+: 1) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{move_8c_a27e09d79b0c98039d2d6f07dd485ccc0}\label{move_8c_a27e09d79b0c98039d2d6f07dd485ccc0}} 
+\index{move.\+c@{move.\+c}!random\+\_\+move@{random\+\_\+move}}
+\index{random\+\_\+move@{random\+\_\+move}!move.\+c@{move.\+c}}
+\subsubsection{\texorpdfstring{random\+\_\+move()}{random\_move()}}
+{\footnotesize\ttfamily void random\+\_\+move (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Déplace aléatoirement le joueur sur un des hexagones qui l\textquotesingle{}entoure. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}

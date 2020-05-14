@@ -1,0 +1,1723 @@
+\hypertarget{commun_8h}{}\section{Référence du fichier lib/commun.h}
+\label{commun_8h}\index{lib/commun.\+h@{lib/commun.\+h}}
+
+
+Tous les prototypes de fonctions, énumérations, structures, macros appelés dans plusieurs fichiers du projet.  
+
+
+{\ttfamily \#include $<$S\+D\+L2/\+S\+D\+L.\+h$>$}\newline
+{\ttfamily \#include $<$S\+D\+L2/\+S\+D\+L\+\_\+ttf.\+h$>$}\newline
+{\ttfamily \#include $<$S\+D\+L2/\+S\+D\+L\+\_\+image.\+h$>$}\newline
+Graphe des dépendances par inclusion de commun.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{commun_8h__incl}
+\end{center}
+\end{figure}
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{commun_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structitem__t}{item\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Structure pour un item. \end{DoxyCompactList}\item 
+struct \hyperlink{structperso__t}{perso\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Structure pour un personnage. \end{DoxyCompactList}\item 
+struct \hyperlink{structcell__t}{cell\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Structure pour un hexagone. \end{DoxyCompactList}\item 
+struct \hyperlink{structstat__t}{stat\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Structure pour un champ de bataille. \end{DoxyCompactList}\item 
+struct \hyperlink{structnpc__t}{npc\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Structure pour ennemi (N\+PC) \end{DoxyCompactList}\item 
+struct \hyperlink{structsearch__t}{search\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Structure de suivi de la quête \char`\"{}recherche\char`\"{}. \end{DoxyCompactList}\item 
+struct \hyperlink{structquete__t}{quete\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Structure de suivi des quêtes. \end{DoxyCompactList}\item 
+struct \hyperlink{structsauv__t}{sauv\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Structure pour sauvegarder les parties. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{commun_8h_ace96e07dcfbce0348b898efd6e6d1956}\label{commun_8h_ace96e07dcfbce0348b898efd6e6d1956}} 
+\#define \hyperlink{commun_8h_ace96e07dcfbce0348b898efd6e6d1956}{I\+N\+V\+E\+N\+T\+O\+R\+Y\+\_\+\+C\+A\+P\+A\+C\+I\+TY}~10
+\begin{DoxyCompactList}\small\item\em I\+N\+V\+E\+N\+T\+O\+R\+Y\+\_\+\+C\+A\+P\+A\+C\+I\+TY représente le nombre maximum d\textquotesingle{}items que peut contenir l\textquotesingle{}inventaire du joueur (10 items dans la version 1.\+0) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{commun_8h_a36e5fda7aa9e2b6219f41c354ecc1c93}\label{commun_8h_a36e5fda7aa9e2b6219f41c354ecc1c93}} 
+\#define \hyperlink{commun_8h_a36e5fda7aa9e2b6219f41c354ecc1c93}{I\+T\+E\+M\+S\+\_\+\+M\+AX}~5
+\begin{DoxyCompactList}\small\item\em I\+T\+E\+M\+S\+\_\+\+M\+AX représente le nombre maximum d\textquotesingle{}items générés sur un hexagone de la carte. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{commun_8h_af316c33cc298530f245e8b55330e86b5}\label{commun_8h_af316c33cc298530f245e8b55330e86b5}} 
+\#define \hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}~15
+\begin{DoxyCompactList}\small\item\em D représente la dimension de la carte. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{commun_8h_a6764330ff4f04cee324e30f775960f02}\label{commun_8h_a6764330ff4f04cee324e30f775960f02}} 
+\#define \hyperlink{commun_8h_a6764330ff4f04cee324e30f775960f02}{N\+O\+T\+\_\+\+E\+Q\+U\+I\+P\+P\+ED}~0
+\begin{DoxyCompactList}\small\item\em N\+O\+T\+\_\+\+E\+Q\+U\+I\+P\+P\+ED indique qu\textquotesingle{}un item n\textquotesingle{}est pas équipé \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{commun_8h_a2eff09387fb5d20d8af4fa186ae37c4d}\label{commun_8h_a2eff09387fb5d20d8af4fa186ae37c4d}} 
+\#define \hyperlink{commun_8h_a2eff09387fb5d20d8af4fa186ae37c4d}{L\+E\+F\+T\+\_\+\+H\+A\+ND}~1
+\begin{DoxyCompactList}\small\item\em L\+E\+F\+T\+\_\+\+H\+A\+ND indique qu\textquotesingle{}un item est équipé sur la main gauche du joueur. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{commun_8h_a5d1d275cfec76197e014fe4d58f2e569}\label{commun_8h_a5d1d275cfec76197e014fe4d58f2e569}} 
+\#define \hyperlink{commun_8h_a5d1d275cfec76197e014fe4d58f2e569}{R\+I\+G\+H\+T\+\_\+\+H\+A\+ND}~2
+\begin{DoxyCompactList}\small\item\em R\+I\+G\+H\+T\+\_\+\+H\+A\+ND indique qu\textquotesingle{}un item est équipé sur la main droite du joueur. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{commun_8h_aa6bdf6a6d9916c343e1e17774d84a156}\label{commun_8h_aa6bdf6a6d9916c343e1e17774d84a156}} 
+\#define \hyperlink{commun_8h_aa6bdf6a6d9916c343e1e17774d84a156}{B\+O\+DY}~3
+\begin{DoxyCompactList}\small\item\em B\+O\+DY indique qu\textquotesingle{}un item est équipé sur le corps du joueur. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{commun_8h_a110f3b6cdacd45daee818b3e5965f6da}\label{commun_8h_a110f3b6cdacd45daee818b3e5965f6da}} 
+\#define \hyperlink{commun_8h_a110f3b6cdacd45daee818b3e5965f6da}{H\+E\+AD}~4
+\begin{DoxyCompactList}\small\item\em H\+E\+AD indique qu\textquotesingle{}un item est équipé sur la tête du joueur. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{commun_8h_a0240ac851181b84ac374872dc5434ee4}\label{commun_8h_a0240ac851181b84ac374872dc5434ee4}} 
+\#define {\bfseries N}~13
+\end{DoxyCompactItemize}
+\subsection*{Énumérations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{commun_8h_adee610a3c7375031538811d29f6a4124}{type\+\_\+t} \{ \hyperlink{commun_8h_adee610a3c7375031538811d29f6a4124aa5d58d178c61dcf6fc59831895e79b3a}{armor}, 
+\hyperlink{commun_8h_adee610a3c7375031538811d29f6a4124aae810997129ae8ca5fdbb5d446720ad8}{weapon}, 
+\hyperlink{commun_8h_adee610a3c7375031538811d29f6a4124a8e61437747405a9d1a65e5020e375e08}{misc}, 
+\hyperlink{commun_8h_adee610a3c7375031538811d29f6a4124af56e815b1ce6b664d92e7464d40b4fb5}{food}
+ \}\begin{DoxyCompactList}\small\item\em Type d\textquotesingle{}un item. \end{DoxyCompactList}
+\item 
+enum \hyperlink{commun_8h_a3ea2f7654645c7af9da2451ca3a656eb}{equip\+\_\+t} \{ \hyperlink{commun_8h_a3ea2f7654645c7af9da2451ca3a656ebab7e4e0120a041dbe6528b050c04269e0}{none}, 
+\hyperlink{commun_8h_a3ea2f7654645c7af9da2451ca3a656ebaf4614dbbcd15f357a1717a525d1cae7c}{hand}, 
+\hyperlink{commun_8h_a3ea2f7654645c7af9da2451ca3a656eba441239ef907ce5dd02c6c1f5c35fb1d5}{body}, 
+\hyperlink{commun_8h_a3ea2f7654645c7af9da2451ca3a656eba04f1b071f494983129aefb83ff7e90bd}{head}
+ \}\begin{DoxyCompactList}\small\item\em Zone où un item est équipable. \end{DoxyCompactList}
+\item 
+enum \hyperlink{commun_8h_a86b2798c02561aa7def13bc6565d7290}{hex\+\_\+t} \{ \newline
+\hyperlink{commun_8h_a86b2798c02561aa7def13bc6565d7290a7d69cc5fad37b74c0663bb239b4d40b4}{prairie} = 1, 
+\hyperlink{commun_8h_a86b2798c02561aa7def13bc6565d7290a3791fc23864414c638cdf979a8fed0a5}{foret}, 
+\hyperlink{commun_8h_a86b2798c02561aa7def13bc6565d7290aa0748bea0863ca8b94d935d003a5fdd0}{ville}, 
+\hyperlink{commun_8h_a86b2798c02561aa7def13bc6565d7290ad2b7d6c474bb425990df79f27b35a165}{lac}, 
+\newline
+\hyperlink{commun_8h_a86b2798c02561aa7def13bc6565d7290afbd5325264e3a8f32dbb224b3ed32c8c}{camp\+\_\+mil}, 
+\hyperlink{commun_8h_a86b2798c02561aa7def13bc6565d7290aa1467ed66a4488889c3849deec1e4703}{camp\+\_\+ban}, 
+\hyperlink{commun_8h_a86b2798c02561aa7def13bc6565d7290a9cc2bff9d6718d5354471a6ecf53fe93}{market}, 
+\hyperlink{commun_8h_a86b2798c02561aa7def13bc6565d7290a8289c77518411d744bb91415c75b479a}{favela}, 
+\newline
+\hyperlink{commun_8h_a86b2798c02561aa7def13bc6565d7290af14f1759a3ba315e6a5483cd6f55ce0a}{montagne}, 
+\hyperlink{commun_8h_a86b2798c02561aa7def13bc6565d7290a908b0a5088d5e7b40d973e720847fd8a}{frontiere}, 
+\hyperlink{commun_8h_a86b2798c02561aa7def13bc6565d7290a008ac7feb3ac562506fa8aa45597274d}{mer}, 
+\hyperlink{commun_8h_a86b2798c02561aa7def13bc6565d7290a1249d80794551e75a61297f5e5b7cadf}{wasteland}
+ \}\begin{DoxyCompactList}\small\item\em Type d\textquotesingle{}un hexagone. \end{DoxyCompactList}
+\item 
+enum \hyperlink{commun_8h_a730487a66d035e35d2c63cfa39cea020}{categ\+\_\+hexa} \{ \hyperlink{commun_8h_a730487a66d035e35d2c63cfa39cea020a7e338ad381a84ef6df07e7d425707025}{other}, 
+\hyperlink{commun_8h_a730487a66d035e35d2c63cfa39cea020ad35b4aa88e030162bff461bdd951f4d1}{nature}, 
+\hyperlink{commun_8h_a730487a66d035e35d2c63cfa39cea020a72707e76ca684d1587bbf8dae722008f}{urbain}, 
+\hyperlink{commun_8h_a730487a66d035e35d2c63cfa39cea020a30cd85dbaf210be8c53b046aa594b8a7}{militaire}
+ \}\begin{DoxyCompactList}\small\item\em Catégorie hexagone. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{commun_8h_aa4899d80cb631c57ee63b3d4a04b5cbe}{entree\+\_\+pour\+\_\+continuer} ()
+\begin{DoxyCompactList}\small\item\em Actionne la continuité du jeu par la touche \char`\"{}entrée\char`\"{}. \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_af3eac3ad203ab091baad010ef3f7ab0a}{clrscr} ()
+\begin{DoxyCompactList}\small\item\em Efface la sortie du terminal, le remet à zéro. \end{DoxyCompactList}\item 
+int \hyperlink{commun_8h_acff6b648c6726c70104531f080bfa710}{range} (int a, int b)
+\begin{DoxyCompactList}\small\item\em Génère un nombre aléatoire compris entre deux entiers passés en paramètre. \end{DoxyCompactList}\item 
+int \hyperlink{commun_8h_a40356000b1ed5cc4b2798194e57acefc}{rng} (int prob)
+\begin{DoxyCompactList}\small\item\em Génère 0 ou 1 en fonction de la probabilité en pourcentage passée en paramètre. \end{DoxyCompactList}\item 
+\hyperlink{structitem__t}{item\+\_\+t} $\ast$ \hyperlink{commun_8h_ad37eb49f35a18814ef964030603d0ab8}{creer\+\_\+item} (char $\ast$chaine, \hyperlink{commun_8h_adee610a3c7375031538811d29f6a4124}{type\+\_\+t} type, int attack0, int attack1, int attack2, int hitchance0, int hitchance1, int hitchance2, float defense, int equipable, int pc\+\_\+nature, int pc\+\_\+urban, int pc\+\_\+military)
+\begin{DoxyCompactList}\small\item\em Crée un item à partir des informations passées en paramètres. \end{DoxyCompactList}\item 
+int \hyperlink{commun_8h_a6bfcbccc63814dc4ba0642b7872e8681}{creation\+\_\+tab\+\_\+item} (\hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items, int $\ast$nb\+\_\+items)
+\begin{DoxyCompactList}\small\item\em Récupère les items du fichier \textquotesingle{}data/items.\+csv\textquotesingle{} et les stocke dans le tableau passé en paramètres. \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_af20ce6de62a477209830e29feb783aa1}{display\+\_\+item} (\hyperlink{structitem__t}{item\+\_\+t} item)
+\begin{DoxyCompactList}\small\item\em Affiche toutes les caractéristiques d\textquotesingle{}un item (nom, type, valeur d\textquotesingle{}attaque si arme, valeur de défense si armure, équipable ou non, pourcentage de chance de trouver cet item sur un hexagone de catégorie nature, urbain et militaire) \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_a719ffd0c2cb14a6236922fac92933adb}{afficher\+\_\+type\+\_\+categ\+\_\+hexa} (\hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, int l, int c)
+\begin{DoxyCompactList}\small\item\em Affiche le type et la catégorie de l\textquotesingle{}hexagone de la carte dont les coordonnées sont passées en paramètres. \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_acc7e7b34903dd75f8563deda4e525f39}{informations\+\_\+map} (\hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Affiche les informations de la carte. \end{DoxyCompactList}\item 
+int \hyperlink{commun_8h_a0f6eb129fcf00e592e708ad17e0a65ac}{coordonnees\+\_\+valides} (int l, int c)
+\begin{DoxyCompactList}\small\item\em Vérifie si les coordonnées sont valides. \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_a61aa43ceaa893c5807b45cd54fd140e8}{quest\+\_\+init} (\hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, int quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]})
+\begin{DoxyCompactList}\small\item\em Initialise les quêtes (quest\+\_\+id) sur la carte. \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_a3bc1a448a2edbe81a579122cd06467ac}{display\+\_\+\+T\+E\+XT} (int l, int c, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Affiche la map en version texte avec la légende. \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_a309363eb6ec82b7f53f004bbd01c21c4}{map\+\_\+init} (\hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, int quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]})
+\begin{DoxyCompactList}\small\item\em Initialise la carte au début de chaque partie. \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_ac44e2e3723ce06a3660665d0adc23079}{portable\+\_\+switch} (int i, int j, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Affiche le code de la cellule. \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_aa4185f5937661c9591dce0ad1d7b80d6}{init\+\_\+player} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Initialise les paramètres du joueur quand il commence le jeu. \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_abb56898d20ef15d05edb82a7dfbe8df9}{display\+\_\+player\+\_\+characteristics} (\hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, \hyperlink{structperso__t}{perso\+\_\+t} player)
+\begin{DoxyCompactList}\small\item\em Affiche les paramètres du joueur (points de vie, points d\textquotesingle{}énergie, points d\textquotesingle{}action, position sur la carte, nombre de tours restants) \end{DoxyCompactList}\item 
+\hyperlink{structnpc__t}{npc\+\_\+t} $\ast$ \hyperlink{commun_8h_ac8928522f1a66ba3d5a8c3cb97d144da}{init\+\_\+npc} (\hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items)
+\begin{DoxyCompactList}\small\item\em Initialise un non-\/player character (N\+PC) ennemi (nom, arme, armure et points de vie) \end{DoxyCompactList}\item 
+\hyperlink{structstat__t}{stat\+\_\+t} $\ast$ \hyperlink{commun_8h_a5cb6f755d33b58efdb98f491dc2d9c45}{init\+\_\+field} ()
+\begin{DoxyCompactList}\small\item\em Initialise le champ de bataille du combat (positions et couvertures des adversaires, distance qui les sépare) \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_a04ffb19fc8145784ad26f44adac4c4ed}{combat} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structnpc__t}{npc\+\_\+t} $\ast$enemy, \hyperlink{structstat__t}{stat\+\_\+t} $\ast$field, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, \hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items, int nb\+\_\+items\+\_\+available)
+\begin{DoxyCompactList}\small\item\em Fonction principale du combat qui gère les actions du joueur et ennemi. \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_ac9fb4bd5a16513e8faf4bf23dcb3d2bf}{move} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Déplace le joueur où il le souhaite, si cela est possible (conditions \+: coordonnées valides et assez de points d\textquotesingle{}action) \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_a27e09d79b0c98039d2d6f07dd485ccc0}{random\+\_\+move} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Déplace aléatoirement le joueur sur un des hexagones qui l\textquotesingle{}entoure. \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_ab3d3633d751f914bb3b4609a9950c513}{eat\+\_\+or\+\_\+drink} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structitem__t}{item\+\_\+t} item)
+\begin{DoxyCompactList}\small\item\em Permet au joueur de boire ou manger un item de type {\itshape food} et récupérer des points d\textquotesingle{}énergie ou action (si cela est possible). \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_a08b9c4c266cfcf2e07d74de53285d88f}{check\+\_\+the\+\_\+map} (\hyperlink{structperso__t}{perso\+\_\+t} player, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Affiche la carte, si le joueur en possède une dans son inventaire. \end{DoxyCompactList}\item 
+int \hyperlink{commun_8h_a422fba7d76e9ed4b5783cf5d9177aad8}{item\+\_\+in\+\_\+inventory} (\hyperlink{structperso__t}{perso\+\_\+t} player, char $\ast$nom\+\_\+item)
+\begin{DoxyCompactList}\small\item\em Recherche si l\textquotesingle{}item dont le nom est passé en paramètre est présent ou non dans l\textquotesingle{}inventaire. \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_a354d78a490ef30d40f4a726524090b21}{display\+\_\+inventory} (\hyperlink{structperso__t}{perso\+\_\+t} player)
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}inventaire du joueur. \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_a9bc6d36c93298c7aead4ea6e7e6e3e26}{delete\+\_\+item\+\_\+in\+\_\+inventory} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structitem__t}{item\+\_\+t} item)
+\begin{DoxyCompactList}\small\item\em Retire l\textquotesingle{}item passé en paramètre de l\textquotesingle{}inventaire (et de l\textquotesingle{}équipement si besoin) du joueur. \end{DoxyCompactList}\item 
+int \hyperlink{commun_8h_a1668516cd0e1d31746805efdbd4a5f34}{add\+\_\+item\+\_\+to\+\_\+inventory} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structitem__t}{item\+\_\+t} item)
+\begin{DoxyCompactList}\small\item\em Ajoute un item à l\textquotesingle{}inventaire du joueur. \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_a35b519c6835c9aa90ff5fd35b0e68f66}{manage\+\_\+inventory} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player)
+\begin{DoxyCompactList}\small\item\em Fonction centrale du fichier \hyperlink{inventory_8c}{inventory.\+c} permettant au joueur de gérer son inventaire. \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_ac912edb0758df17f229cb8d8fbd66924}{display\+\_\+equipment\+\_\+player} (\hyperlink{structperso__t}{perso\+\_\+t} player)
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}équipement du joueur. \end{DoxyCompactList}\item 
+int \hyperlink{commun_8h_aae5f9602614f22807a8f2719fb015bdd}{is\+\_\+equipped} (\hyperlink{structperso__t}{perso\+\_\+t} player, \hyperlink{structitem__t}{item\+\_\+t} item)
+\begin{DoxyCompactList}\small\item\em Indique si le joueur est équipé de l\textquotesingle{}item passé en paramètre. \end{DoxyCompactList}\item 
+int \hyperlink{commun_8h_a588235e6d46f215c009c995d07f31ec2}{nb\+\_\+equipement} (\hyperlink{structperso__t}{perso\+\_\+t} player)
+\begin{DoxyCompactList}\small\item\em Compte le nombre d\textquotesingle{}item(s) équipé(s) sur le joueur. \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_afe6c66728ce22be9ff976516f8b77c68}{manage\+\_\+equipment} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player)
+\begin{DoxyCompactList}\small\item\em Fonction centrale du fichier \hyperlink{equipment_8c}{equipment.\+c} permettant au joueur de gérer son équipement. \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_aec4be0e1e14efa931211be073ea33cab}{fish} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Permet au joueur de pêcher s\textquotesingle{}il se situe sur un hexagone de type {\itshape lac} ou {\itshape mer} et s\textquotesingle{}il a une canne à pêche dans son inventaire. \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_ab34814b4d8a3404f1d08ca212259c39b}{next\+\_\+turn} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player)
+\begin{DoxyCompactList}\small\item\em Calcule le nombre de points d’action récupérés à partir de la valeur des points d\textquotesingle{}énergie du joueur puis passe au tour suivant. \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_a16623bb45a52000b8ec7b116aaa46173}{rest\+\_\+and\+\_\+heal} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player)
+\begin{DoxyCompactList}\small\item\em Permet au joueur de se reposer et récupérer des points de vie et points d\textquotesingle{}énergie (proportionnellement au nombre de points d\textquotesingle{}action) \end{DoxyCompactList}\item 
+int \hyperlink{commun_8h_afd7728c9e6ae89e5932e641b54556aba}{exit\+\_\+game} ()
+\begin{DoxyCompactList}\small\item\em Propose au joueur de quitter ou non la carte lorsqu\textquotesingle{}il vient de trouver la sortie. \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_a8467aba54144bfdead8e1a614e563e23}{informations\+\_\+quetes} (\hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, int quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}, \hyperlink{structquete__t}{quete\+\_\+t} quete)
+\begin{DoxyCompactList}\small\item\em Affiche les informations des quêtes (coordonnées et états) \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_a88d64826f8f2155e0cbf149e18aa33c0}{init\+\_\+quete} (\hyperlink{structquete__t}{quete\+\_\+t} $\ast$quete, int quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}, \hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items, int nb\+\_\+items\+\_\+available)
+\begin{DoxyCompactList}\small\item\em Initialisation d\textquotesingle{}une variable de type \hyperlink{structquete__t}{quete\+\_\+t}. \end{DoxyCompactList}\item 
+int \hyperlink{commun_8h_adc1d91bf20af02d88470e87ff9bb9e8b}{quetes} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, int quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}, \hyperlink{structquete__t}{quete\+\_\+t} $\ast$quete, \hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items, int nb\+\_\+items\+\_\+available)
+\begin{DoxyCompactList}\small\item\em Récupère le numéro de la quête pour accéder à la quête correspondante. \end{DoxyCompactList}\item 
+int \hyperlink{commun_8h_aa6e4089158a870a21df474d0977de085}{quete\+\_\+montagne} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structquete__t}{quete\+\_\+t} $\ast$quete)
+\begin{DoxyCompactList}\small\item\em Accès à la quete \char`\"{}montagne\char`\"{}. \end{DoxyCompactList}\item 
+int \hyperlink{commun_8h_adbd858f4a2365f62831b49f54f41528b}{quete\+\_\+frontiere} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structquete__t}{quete\+\_\+t} $\ast$quete)
+\begin{DoxyCompactList}\small\item\em Accès à la quete \char`\"{}frontière\char`\"{}. \end{DoxyCompactList}\item 
+int \hyperlink{commun_8h_a931bac6752154b310757ff2026789ba0}{quete\+\_\+bunker} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structquete__t}{quete\+\_\+t} $\ast$quete)
+\begin{DoxyCompactList}\small\item\em Accès à la quête \char`\"{}bunker\char`\"{}. \end{DoxyCompactList}\item 
+int \hyperlink{commun_8h_ae3a10faf1284038599e3098a8253ce43}{quete\+\_\+bandits} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structquete__t}{quete\+\_\+t} $\ast$quete, \hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items, int nb\+\_\+items\+\_\+available, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Accès à la quete \char`\"{}bandits\char`\"{}. \end{DoxyCompactList}\item 
+int \hyperlink{commun_8h_a402540673166e0323939a3d3e518bad2}{quete\+\_\+soin} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structquete__t}{quete\+\_\+t} $\ast$quete, \hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items)
+\begin{DoxyCompactList}\small\item\em Déroulement de la quête \char`\"{}soin\char`\"{} \+: rencontre d\textquotesingle{}un individu blessé. \end{DoxyCompactList}\item 
+int \hyperlink{commun_8h_a4c3d223c6fd93383772b82f032cc8bcc}{quete\+\_\+recherche} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, \hyperlink{structquete__t}{quete\+\_\+t} $\ast$quete)
+\begin{DoxyCompactList}\small\item\em Accès à la quete \char`\"{}recherche\char`\"{}. \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_a6bec744d50dcccb53e78814e10baeb30}{affichage\+\_\+quete\+\_\+search\+\_\+en\+\_\+cours} (\hyperlink{structquete__t}{quete\+\_\+t} quete, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, \hyperlink{structperso__t}{perso\+\_\+t} player)
+\begin{DoxyCompactList}\small\item\em Affiche certaines informations selon l\textquotesingle{}état de la quête recherche. \end{DoxyCompactList}\item 
+int \hyperlink{commun_8h_a383694135dc6ea4c93f6290ea506d752}{compter\+\_\+items\+\_\+urbain} (\hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items, int nb\+\_\+items\+\_\+available)
+\begin{DoxyCompactList}\small\item\em Compte le nombre d\textquotesingle{}items pouvant être trouvés dans un hexagone de catégorie urbain (pc\+\_\+urban $>$ 0). \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_ab3150620b999a50e0b971d888263e018}{init\+\_\+\+Tab\+\_\+\+Items\+\_\+urbain} (\hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+items\+\_\+search, \hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items, int nb\+\_\+items\+\_\+urbain)
+\begin{DoxyCompactList}\small\item\em Initialise un tableau contenant tous les items pouvant être trouvés dans un hexagone de catégorie urbain. \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_a40672738b4eba05b66ae0a8127346356}{scavenge} (\hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, \hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items, int nb\+\_\+items\+\_\+available, \hyperlink{structquete__t}{quete\+\_\+t} quete)
+\begin{DoxyCompactList}\small\item\em Permet au joueur de fouiller l\textquotesingle{}hexagone sur lequel il se trouve pour récupérer des items. \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_abf3bd1684d5f65e10f183757d06706df}{sauvegarder\+\_\+progression} (\hyperlink{structperso__t}{perso\+\_\+t} player, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, int quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}, \hyperlink{structquete__t}{quete\+\_\+t} quete, \hyperlink{structsauv__t}{sauv\+\_\+t} sauv)
+\begin{DoxyCompactList}\small\item\em Sauvegarde la progression de la partie actuellement en cours et propose au joueur de continuer ou quitter le jeu. \end{DoxyCompactList}\item 
+int \hyperlink{commun_8h_ae3a35e6ca5de07de881517f1c47a1435}{sauvegarde\+\_\+existante} (\hyperlink{structsauv__t}{sauv\+\_\+t} sauv)
+\begin{DoxyCompactList}\small\item\em Indique s\textquotesingle{}il existe une sauvegarde pour la partie choisie par l\textquotesingle{}utilisateur. \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_a609a5fc89bd1df4a2f14a3e436b6ed93}{affichage\+\_\+parties} (\hyperlink{structsauv__t}{sauv\+\_\+t} sauv)
+\begin{DoxyCompactList}\small\item\em Affiche les parties sauvegardées et disponibles. \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_a08446349c2ace9f33a111be928403978}{update\+\_\+etat\+\_\+sauvegarde} (\hyperlink{structsauv__t}{sauv\+\_\+t} $\ast$sauv)
+\begin{DoxyCompactList}\small\item\em Met à jour l\textquotesingle{}état des sauvegardes (si elles existent et leurs noms) \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_a8c9a1c312a2d24dc4a9d4db757e55711}{effacer\+\_\+partie} (\hyperlink{structsauv__t}{sauv\+\_\+t} sauv)
+\begin{DoxyCompactList}\small\item\em Efface une partie choisie par l\textquotesingle{}utilisateur. \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_aafdde294bbc0144a5a6a0417248fcf90}{save} (\hyperlink{structperso__t}{perso\+\_\+t} player, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, int quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}, \hyperlink{structquete__t}{quete\+\_\+t} quete, \hyperlink{structsauv__t}{sauv\+\_\+t} sauv)
+\begin{DoxyCompactList}\small\item\em Sauvegarde les informations sur le joueur, son inventaire, son équipement ainsi que les informations sur la carte et les quêtes d\textquotesingle{}une partie. \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_a3a04035a05160ad8111695a53423eb1f}{load} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, int quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}, \hyperlink{structquete__t}{quete\+\_\+t} $\ast$quete, \hyperlink{structsauv__t}{sauv\+\_\+t} sauv)
+\begin{DoxyCompactList}\small\item\em Charge les informations sur le joueur, son inventaire, son équipement ainsi que les informations sur la carte et les quêtes d\textquotesingle{}une partie. \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_a02045ba00f9d77ebc465f2ba0b5b2333}{demo\+\_\+afficher\+\_\+items} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items, int nb\+\_\+items\+\_\+available)
+\begin{DoxyCompactList}\small\item\em Permet au joueur de choisir les items qu\textquotesingle{}il souhaite ajouter à son inventaire parmi ceux disponibles. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{commun_8h_a72e40a3baec27ad650a1e64232c469ff}\label{commun_8h_a72e40a3baec27ad650a1e64232c469ff}} 
+void {\bfseries init\+\_\+map\+\_\+essai} (int mapint\mbox{[}N\mbox{]}\mbox{[}N\mbox{]})
+\item 
+void \hyperlink{commun_8h_a5318d44075c0401496dab8ec961a63c3}{map\+\_\+correspondance} (\hyperlink{structcell__t}{cell\+\_\+t} map\+\_\+cell\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, int mapaff\mbox{[}N\mbox{]}\mbox{[}N\mbox{]}, int position\+\_\+x, int position\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Met en relation la map sur laquelle évolue le personnage et la amtrice gérant l\textquotesingle{}affichage de celle-\/ci en prenant en compte les coordonées où se situe le personnage. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{commun_8h_a07626fbfd2b5bbe8362c4dc137ed5945}\label{commun_8h_a07626fbfd2b5bbe8362c4dc137ed5945}} 
+void {\bfseries relation\+\_\+hexa\+\_\+char} (char $\ast$mapchar\mbox{[}$\,$\mbox{]}, int mapint\mbox{[}$\,$\mbox{]}\mbox{[}N\mbox{]})
+\item 
+void \hyperlink{commun_8h_a202b6b178b6f39512d209566a7777b3a}{affichage\+\_\+case\+\_\+centrale} (S\+D\+L\+\_\+\+Renderer $\ast$renderer)
+\begin{DoxyCompactList}\small\item\em Affiche dans la case centrale de l\textquotesingle{}écran un hilight et le personnage. \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_a0b028eabee5f6bf85ea666fb76055b90}{affichage\+\_\+map} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, char $\ast$map\mbox{[}$\,$\mbox{]}, int maptest\mbox{[}N\mbox{]}\mbox{[}N\mbox{]}, \hyperlink{structcell__t}{cell\+\_\+t} map1\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, \hyperlink{structperso__t}{perso\+\_\+t} player)
+\begin{DoxyCompactList}\small\item\em Affiche la map, c\textquotesingle{}est à dire la partie composée d\textquotesingle{}hexagones à partir de la position du personnage. \end{DoxyCompactList}\item 
+int \hyperlink{commun_8h_a08c7b7c98d57d8ea66889f08d78587e1}{interface} ()
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}interface en elle-\/même. \end{DoxyCompactList}\item 
+void \hyperlink{commun_8h_a7eab34c1e4c25af1f30ce0d107f0be96}{affichage\+\_\+personnage} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, char $\ast$img\+\_\+perso, int x, int y)
+\begin{DoxyCompactList}\small\item\em Affiche un personnage dont l\textquotesingle{}image est en paramètre aux coordonées passées en paramètres. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{commun_8h_a67d5f519d62021f4a148b30ac49aad48}\label{commun_8h_a67d5f519d62021f4a148b30ac49aad48}} 
+int {\bfseries combat\+\_\+bis} (T\+T\+F\+\_\+\+Font $\ast$police)
+\item 
+void \hyperlink{commun_8h_a1d0f8f3272ce4fe83344792a19375ff5}{affichage\+\_\+help} ()
+\begin{DoxyCompactList}\small\item\em Affiche la document d\textquotesingle{}aide pour le joueur. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{commun_8h_a18862992617505c90ac9f35a29e6b713}\label{commun_8h_a18862992617505c90ac9f35a29e6b713}} 
+int {\bfseries monscanf} (char $\ast$c)
+\item 
+\mbox{\Hypertarget{commun_8h_a3997ec19d54ec55aaf83993559efff6e}\label{commun_8h_a3997ec19d54ec55aaf83993559efff6e}} 
+int {\bfseries testscanf} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Tous les prototypes de fonctions, énumérations, structures, macros appelés dans plusieurs fichiers du projet. 
+
+\begin{DoxyAuthor}{Auteur}
+Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020 
+\end{DoxyDate}
+
+
+\subsection{Documentation du type de l\textquotesingle{}énumération}
+\mbox{\Hypertarget{commun_8h_a730487a66d035e35d2c63cfa39cea020}\label{commun_8h_a730487a66d035e35d2c63cfa39cea020}} 
+\index{commun.\+h@{commun.\+h}!categ\+\_\+hexa@{categ\+\_\+hexa}}
+\index{categ\+\_\+hexa@{categ\+\_\+hexa}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{categ\+\_\+hexa}{categ\_hexa}}
+{\footnotesize\ttfamily enum \hyperlink{commun_8h_a730487a66d035e35d2c63cfa39cea020}{categ\+\_\+hexa}}
+
+
+
+Catégorie hexagone. 
+
+\begin{DoxyEnumFields}{Valeurs énumérées}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{other@{other}!commun.\+h@{commun.\+h}}\index{commun.\+h@{commun.\+h}!other@{other}}}\mbox{\Hypertarget{commun_8h_a730487a66d035e35d2c63cfa39cea020a7e338ad381a84ef6df07e7d425707025}\label{commun_8h_a730487a66d035e35d2c63cfa39cea020a7e338ad381a84ef6df07e7d425707025}} 
+other&Autre \+: camp des bandits, frontière et wasteland \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{nature@{nature}!commun.\+h@{commun.\+h}}\index{commun.\+h@{commun.\+h}!nature@{nature}}}\mbox{\Hypertarget{commun_8h_a730487a66d035e35d2c63cfa39cea020ad35b4aa88e030162bff461bdd951f4d1}\label{commun_8h_a730487a66d035e35d2c63cfa39cea020ad35b4aa88e030162bff461bdd951f4d1}} 
+nature&Nature \+: prairie, forêt, lac, montagne, mer \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{urbain@{urbain}!commun.\+h@{commun.\+h}}\index{commun.\+h@{commun.\+h}!urbain@{urbain}}}\mbox{\Hypertarget{commun_8h_a730487a66d035e35d2c63cfa39cea020a72707e76ca684d1587bbf8dae722008f}\label{commun_8h_a730487a66d035e35d2c63cfa39cea020a72707e76ca684d1587bbf8dae722008f}} 
+urbain&Urbain \+: ville, marché, favela \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{militaire@{militaire}!commun.\+h@{commun.\+h}}\index{commun.\+h@{commun.\+h}!militaire@{militaire}}}\mbox{\Hypertarget{commun_8h_a730487a66d035e35d2c63cfa39cea020a30cd85dbaf210be8c53b046aa594b8a7}\label{commun_8h_a730487a66d035e35d2c63cfa39cea020a30cd85dbaf210be8c53b046aa594b8a7}} 
+militaire&Militaire \+: camp militaire \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{commun_8h_a3ea2f7654645c7af9da2451ca3a656eb}\label{commun_8h_a3ea2f7654645c7af9da2451ca3a656eb}} 
+\index{commun.\+h@{commun.\+h}!equip\+\_\+t@{equip\+\_\+t}}
+\index{equip\+\_\+t@{equip\+\_\+t}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{equip\+\_\+t}{equip\_t}}
+{\footnotesize\ttfamily enum \hyperlink{commun_8h_a3ea2f7654645c7af9da2451ca3a656eb}{equip\+\_\+t}}
+
+
+
+Zone où un item est équipable. 
+
+\begin{DoxyEnumFields}{Valeurs énumérées}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{none@{none}!commun.\+h@{commun.\+h}}\index{commun.\+h@{commun.\+h}!none@{none}}}\mbox{\Hypertarget{commun_8h_a3ea2f7654645c7af9da2451ca3a656ebab7e4e0120a041dbe6528b050c04269e0}\label{commun_8h_a3ea2f7654645c7af9da2451ca3a656ebab7e4e0120a041dbe6528b050c04269e0}} 
+none&Pas équipable \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{hand@{hand}!commun.\+h@{commun.\+h}}\index{commun.\+h@{commun.\+h}!hand@{hand}}}\mbox{\Hypertarget{commun_8h_a3ea2f7654645c7af9da2451ca3a656ebaf4614dbbcd15f357a1717a525d1cae7c}\label{commun_8h_a3ea2f7654645c7af9da2451ca3a656ebaf4614dbbcd15f357a1717a525d1cae7c}} 
+hand&Main \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{body@{body}!commun.\+h@{commun.\+h}}\index{commun.\+h@{commun.\+h}!body@{body}}}\mbox{\Hypertarget{commun_8h_a3ea2f7654645c7af9da2451ca3a656eba441239ef907ce5dd02c6c1f5c35fb1d5}\label{commun_8h_a3ea2f7654645c7af9da2451ca3a656eba441239ef907ce5dd02c6c1f5c35fb1d5}} 
+body&Corps \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{head@{head}!commun.\+h@{commun.\+h}}\index{commun.\+h@{commun.\+h}!head@{head}}}\mbox{\Hypertarget{commun_8h_a3ea2f7654645c7af9da2451ca3a656eba04f1b071f494983129aefb83ff7e90bd}\label{commun_8h_a3ea2f7654645c7af9da2451ca3a656eba04f1b071f494983129aefb83ff7e90bd}} 
+head&Tête \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{commun_8h_a86b2798c02561aa7def13bc6565d7290}\label{commun_8h_a86b2798c02561aa7def13bc6565d7290}} 
+\index{commun.\+h@{commun.\+h}!hex\+\_\+t@{hex\+\_\+t}}
+\index{hex\+\_\+t@{hex\+\_\+t}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{hex\+\_\+t}{hex\_t}}
+{\footnotesize\ttfamily enum \hyperlink{commun_8h_a86b2798c02561aa7def13bc6565d7290}{hex\+\_\+t}}
+
+
+
+Type d\textquotesingle{}un hexagone. 
+
+\begin{DoxyEnumFields}{Valeurs énumérées}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{prairie@{prairie}!commun.\+h@{commun.\+h}}\index{commun.\+h@{commun.\+h}!prairie@{prairie}}}\mbox{\Hypertarget{commun_8h_a86b2798c02561aa7def13bc6565d7290a7d69cc5fad37b74c0663bb239b4d40b4}\label{commun_8h_a86b2798c02561aa7def13bc6565d7290a7d69cc5fad37b74c0663bb239b4d40b4}} 
+prairie&Prairie \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{foret@{foret}!commun.\+h@{commun.\+h}}\index{commun.\+h@{commun.\+h}!foret@{foret}}}\mbox{\Hypertarget{commun_8h_a86b2798c02561aa7def13bc6565d7290a3791fc23864414c638cdf979a8fed0a5}\label{commun_8h_a86b2798c02561aa7def13bc6565d7290a3791fc23864414c638cdf979a8fed0a5}} 
+foret&Forêt \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ville@{ville}!commun.\+h@{commun.\+h}}\index{commun.\+h@{commun.\+h}!ville@{ville}}}\mbox{\Hypertarget{commun_8h_a86b2798c02561aa7def13bc6565d7290aa0748bea0863ca8b94d935d003a5fdd0}\label{commun_8h_a86b2798c02561aa7def13bc6565d7290aa0748bea0863ca8b94d935d003a5fdd0}} 
+ville&Ville \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{lac@{lac}!commun.\+h@{commun.\+h}}\index{commun.\+h@{commun.\+h}!lac@{lac}}}\mbox{\Hypertarget{commun_8h_a86b2798c02561aa7def13bc6565d7290ad2b7d6c474bb425990df79f27b35a165}\label{commun_8h_a86b2798c02561aa7def13bc6565d7290ad2b7d6c474bb425990df79f27b35a165}} 
+lac&Lac \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{camp\+\_\+mil@{camp\+\_\+mil}!commun.\+h@{commun.\+h}}\index{commun.\+h@{commun.\+h}!camp\+\_\+mil@{camp\+\_\+mil}}}\mbox{\Hypertarget{commun_8h_a86b2798c02561aa7def13bc6565d7290afbd5325264e3a8f32dbb224b3ed32c8c}\label{commun_8h_a86b2798c02561aa7def13bc6565d7290afbd5325264e3a8f32dbb224b3ed32c8c}} 
+camp\+\_\+mil&Camp militaire \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{camp\+\_\+ban@{camp\+\_\+ban}!commun.\+h@{commun.\+h}}\index{commun.\+h@{commun.\+h}!camp\+\_\+ban@{camp\+\_\+ban}}}\mbox{\Hypertarget{commun_8h_a86b2798c02561aa7def13bc6565d7290aa1467ed66a4488889c3849deec1e4703}\label{commun_8h_a86b2798c02561aa7def13bc6565d7290aa1467ed66a4488889c3849deec1e4703}} 
+camp\+\_\+ban&Camp des bandits \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{market@{market}!commun.\+h@{commun.\+h}}\index{commun.\+h@{commun.\+h}!market@{market}}}\mbox{\Hypertarget{commun_8h_a86b2798c02561aa7def13bc6565d7290a9cc2bff9d6718d5354471a6ecf53fe93}\label{commun_8h_a86b2798c02561aa7def13bc6565d7290a9cc2bff9d6718d5354471a6ecf53fe93}} 
+market&Marché \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{favela@{favela}!commun.\+h@{commun.\+h}}\index{commun.\+h@{commun.\+h}!favela@{favela}}}\mbox{\Hypertarget{commun_8h_a86b2798c02561aa7def13bc6565d7290a8289c77518411d744bb91415c75b479a}\label{commun_8h_a86b2798c02561aa7def13bc6565d7290a8289c77518411d744bb91415c75b479a}} 
+favela&Favela \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{montagne@{montagne}!commun.\+h@{commun.\+h}}\index{commun.\+h@{commun.\+h}!montagne@{montagne}}}\mbox{\Hypertarget{commun_8h_a86b2798c02561aa7def13bc6565d7290af14f1759a3ba315e6a5483cd6f55ce0a}\label{commun_8h_a86b2798c02561aa7def13bc6565d7290af14f1759a3ba315e6a5483cd6f55ce0a}} 
+montagne&Montagne \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{frontiere@{frontiere}!commun.\+h@{commun.\+h}}\index{commun.\+h@{commun.\+h}!frontiere@{frontiere}}}\mbox{\Hypertarget{commun_8h_a86b2798c02561aa7def13bc6565d7290a908b0a5088d5e7b40d973e720847fd8a}\label{commun_8h_a86b2798c02561aa7def13bc6565d7290a908b0a5088d5e7b40d973e720847fd8a}} 
+frontiere&Frontière \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{mer@{mer}!commun.\+h@{commun.\+h}}\index{commun.\+h@{commun.\+h}!mer@{mer}}}\mbox{\Hypertarget{commun_8h_a86b2798c02561aa7def13bc6565d7290a008ac7feb3ac562506fa8aa45597274d}\label{commun_8h_a86b2798c02561aa7def13bc6565d7290a008ac7feb3ac562506fa8aa45597274d}} 
+mer&Mer \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{wasteland@{wasteland}!commun.\+h@{commun.\+h}}\index{commun.\+h@{commun.\+h}!wasteland@{wasteland}}}\mbox{\Hypertarget{commun_8h_a86b2798c02561aa7def13bc6565d7290a1249d80794551e75a61297f5e5b7cadf}\label{commun_8h_a86b2798c02561aa7def13bc6565d7290a1249d80794551e75a61297f5e5b7cadf}} 
+wasteland&Wasteland (terres abandonnées) \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{commun_8h_adee610a3c7375031538811d29f6a4124}\label{commun_8h_adee610a3c7375031538811d29f6a4124}} 
+\index{commun.\+h@{commun.\+h}!type\+\_\+t@{type\+\_\+t}}
+\index{type\+\_\+t@{type\+\_\+t}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{type\+\_\+t}{type\_t}}
+{\footnotesize\ttfamily enum \hyperlink{commun_8h_adee610a3c7375031538811d29f6a4124}{type\+\_\+t}}
+
+
+
+Type d\textquotesingle{}un item. 
+
+\begin{DoxyEnumFields}{Valeurs énumérées}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{armor@{armor}!commun.\+h@{commun.\+h}}\index{commun.\+h@{commun.\+h}!armor@{armor}}}\mbox{\Hypertarget{commun_8h_adee610a3c7375031538811d29f6a4124aa5d58d178c61dcf6fc59831895e79b3a}\label{commun_8h_adee610a3c7375031538811d29f6a4124aa5d58d178c61dcf6fc59831895e79b3a}} 
+armor&Armure \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{weapon@{weapon}!commun.\+h@{commun.\+h}}\index{commun.\+h@{commun.\+h}!weapon@{weapon}}}\mbox{\Hypertarget{commun_8h_adee610a3c7375031538811d29f6a4124aae810997129ae8ca5fdbb5d446720ad8}\label{commun_8h_adee610a3c7375031538811d29f6a4124aae810997129ae8ca5fdbb5d446720ad8}} 
+weapon&Arme \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{misc@{misc}!commun.\+h@{commun.\+h}}\index{commun.\+h@{commun.\+h}!misc@{misc}}}\mbox{\Hypertarget{commun_8h_adee610a3c7375031538811d29f6a4124a8e61437747405a9d1a65e5020e375e08}\label{commun_8h_adee610a3c7375031538811d29f6a4124a8e61437747405a9d1a65e5020e375e08}} 
+misc&Objet divers \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{food@{food}!commun.\+h@{commun.\+h}}\index{commun.\+h@{commun.\+h}!food@{food}}}\mbox{\Hypertarget{commun_8h_adee610a3c7375031538811d29f6a4124af56e815b1ce6b664d92e7464d40b4fb5}\label{commun_8h_adee610a3c7375031538811d29f6a4124af56e815b1ce6b664d92e7464d40b4fb5}} 
+food&Nourriture \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{commun_8h_a1668516cd0e1d31746805efdbd4a5f34}\label{commun_8h_a1668516cd0e1d31746805efdbd4a5f34}} 
+\index{commun.\+h@{commun.\+h}!add\+\_\+item\+\_\+to\+\_\+inventory@{add\+\_\+item\+\_\+to\+\_\+inventory}}
+\index{add\+\_\+item\+\_\+to\+\_\+inventory@{add\+\_\+item\+\_\+to\+\_\+inventory}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{add\+\_\+item\+\_\+to\+\_\+inventory()}{add\_item\_to\_inventory()}}
+{\footnotesize\ttfamily int add\+\_\+item\+\_\+to\+\_\+inventory (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structitem__t}{item\+\_\+t}}]{item }\end{DoxyParamCaption})}
+
+
+
+Ajoute un item à l\textquotesingle{}inventaire du joueur. 
+
+Si son inventaire est plein, propose un échange. 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em item} & Item à ajouter à l\textquotesingle{}inventaire \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un {\itshape int} \+: 1 si ajout effectué. 0 sinon. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a202b6b178b6f39512d209566a7777b3a}\label{commun_8h_a202b6b178b6f39512d209566a7777b3a}} 
+\index{commun.\+h@{commun.\+h}!affichage\+\_\+case\+\_\+centrale@{affichage\+\_\+case\+\_\+centrale}}
+\index{affichage\+\_\+case\+\_\+centrale@{affichage\+\_\+case\+\_\+centrale}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{affichage\+\_\+case\+\_\+centrale()}{affichage\_case\_centrale()}}
+{\footnotesize\ttfamily void affichage\+\_\+case\+\_\+centrale (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})}
+
+
+
+Affiche dans la case centrale de l\textquotesingle{}écran un hilight et le personnage. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em S\+D\+L\+\_\+\+Renderer} & $\ast$renderer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a1d0f8f3272ce4fe83344792a19375ff5}\label{commun_8h_a1d0f8f3272ce4fe83344792a19375ff5}} 
+\index{commun.\+h@{commun.\+h}!affichage\+\_\+help@{affichage\+\_\+help}}
+\index{affichage\+\_\+help@{affichage\+\_\+help}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{affichage\+\_\+help()}{affichage\_help()}}
+{\footnotesize\ttfamily void affichage\+\_\+help (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Affiche la document d\textquotesingle{}aide pour le joueur. 
+
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a0b028eabee5f6bf85ea666fb76055b90}\label{commun_8h_a0b028eabee5f6bf85ea666fb76055b90}} 
+\index{commun.\+h@{commun.\+h}!affichage\+\_\+map@{affichage\+\_\+map}}
+\index{affichage\+\_\+map@{affichage\+\_\+map}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{affichage\+\_\+map()}{affichage\_map()}}
+{\footnotesize\ttfamily void affichage\+\_\+map (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{char $\ast$}]{map\mbox{[}$\,$\mbox{]},  }\item[{int}]{maptest\mbox{[}\+N\mbox{]}\mbox{[}\+N\mbox{]},  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map1\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{\hyperlink{structperso__t}{perso\+\_\+t}}]{player }\end{DoxyParamCaption})}
+
+
+
+Affiche la map, c\textquotesingle{}est à dire la partie composée d\textquotesingle{}hexagones à partir de la position du personnage. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em S\+D\+L\+\_\+\+Renderer} & $\ast$renderer \\
+\hline
+{\em char} & $\ast$map\mbox{[}\mbox{]} \\
+\hline
+{\em int} & maptest\mbox{[}N\mbox{]}\mbox{[}N\mbox{]} \\
+\hline
+{\em \hyperlink{structcell__t}{cell\+\_\+t}} & map1\mbox{[}D\mbox{]}\mbox{[}D\mbox{]} \\
+\hline
+{\em \hyperlink{structperso__t}{perso\+\_\+t}} & player \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a609a5fc89bd1df4a2f14a3e436b6ed93}\label{commun_8h_a609a5fc89bd1df4a2f14a3e436b6ed93}} 
+\index{commun.\+h@{commun.\+h}!affichage\+\_\+parties@{affichage\+\_\+parties}}
+\index{affichage\+\_\+parties@{affichage\+\_\+parties}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{affichage\+\_\+parties()}{affichage\_parties()}}
+{\footnotesize\ttfamily void affichage\+\_\+parties (\begin{DoxyParamCaption}\item[{\hyperlink{structsauv__t}{sauv\+\_\+t}}]{sauv }\end{DoxyParamCaption})}
+
+
+
+Affiche les parties sauvegardées et disponibles. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em sauv} & Etat des sauvegardes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a7eab34c1e4c25af1f30ce0d107f0be96}\label{commun_8h_a7eab34c1e4c25af1f30ce0d107f0be96}} 
+\index{commun.\+h@{commun.\+h}!affichage\+\_\+personnage@{affichage\+\_\+personnage}}
+\index{affichage\+\_\+personnage@{affichage\+\_\+personnage}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{affichage\+\_\+personnage()}{affichage\_personnage()}}
+{\footnotesize\ttfamily void affichage\+\_\+personnage (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{char $\ast$}]{img\+\_\+perso,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Affiche un personnage dont l\textquotesingle{}image est en paramètre aux coordonées passées en paramètres. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em S\+D\+L\+\_\+\+Renderer} & $\ast$renderer \\
+\hline
+{\em char} & $\ast$img\+\_\+perso \\
+\hline
+{\em int} & x \\
+\hline
+{\em int} & y \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a6bec744d50dcccb53e78814e10baeb30}\label{commun_8h_a6bec744d50dcccb53e78814e10baeb30}} 
+\index{commun.\+h@{commun.\+h}!affichage\+\_\+quete\+\_\+search\+\_\+en\+\_\+cours@{affichage\+\_\+quete\+\_\+search\+\_\+en\+\_\+cours}}
+\index{affichage\+\_\+quete\+\_\+search\+\_\+en\+\_\+cours@{affichage\+\_\+quete\+\_\+search\+\_\+en\+\_\+cours}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{affichage\+\_\+quete\+\_\+search\+\_\+en\+\_\+cours()}{affichage\_quete\_search\_en\_cours()}}
+{\footnotesize\ttfamily void affichage\+\_\+quete\+\_\+search\+\_\+en\+\_\+cours (\begin{DoxyParamCaption}\item[{\hyperlink{structquete__t}{quete\+\_\+t}}]{quete,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{\hyperlink{structperso__t}{perso\+\_\+t}}]{player }\end{DoxyParamCaption})}
+
+
+
+Affiche certaines informations selon l\textquotesingle{}état de la quête recherche. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em quete} & Etat des quêtes \\
+\hline
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+{\em player} & Joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a719ffd0c2cb14a6236922fac92933adb}\label{commun_8h_a719ffd0c2cb14a6236922fac92933adb}} 
+\index{commun.\+h@{commun.\+h}!afficher\+\_\+type\+\_\+categ\+\_\+hexa@{afficher\+\_\+type\+\_\+categ\+\_\+hexa}}
+\index{afficher\+\_\+type\+\_\+categ\+\_\+hexa@{afficher\+\_\+type\+\_\+categ\+\_\+hexa}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{afficher\+\_\+type\+\_\+categ\+\_\+hexa()}{afficher\_type\_categ\_hexa()}}
+{\footnotesize\ttfamily void afficher\+\_\+type\+\_\+categ\+\_\+hexa (\begin{DoxyParamCaption}\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{int}]{l,  }\item[{int}]{c }\end{DoxyParamCaption})}
+
+
+
+Affiche le type et la catégorie de l\textquotesingle{}hexagone de la carte dont les coordonnées sont passées en paramètres. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+{\em l} & Coordonnée ligne de l\textquotesingle{}hexagone qu\textquotesingle{}on souhaite afficher \\
+\hline
+{\em c} & Coordonnée colonne de l\textquotesingle{}hexagone qu\textquotesingle{}on souhaite afficher \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a08b9c4c266cfcf2e07d74de53285d88f}\label{commun_8h_a08b9c4c266cfcf2e07d74de53285d88f}} 
+\index{commun.\+h@{commun.\+h}!check\+\_\+the\+\_\+map@{check\+\_\+the\+\_\+map}}
+\index{check\+\_\+the\+\_\+map@{check\+\_\+the\+\_\+map}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{check\+\_\+the\+\_\+map()}{check\_the\_map()}}
+{\footnotesize\ttfamily void check\+\_\+the\+\_\+map (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t}}]{player,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Affiche la carte, si le joueur en possède une dans son inventaire. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em player} & Joueur \\
+\hline
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_af3eac3ad203ab091baad010ef3f7ab0a}\label{commun_8h_af3eac3ad203ab091baad010ef3f7ab0a}} 
+\index{commun.\+h@{commun.\+h}!clrscr@{clrscr}}
+\index{clrscr@{clrscr}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{clrscr()}{clrscr()}}
+{\footnotesize\ttfamily void clrscr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Efface la sortie du terminal, le remet à zéro. 
+
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a04ffb19fc8145784ad26f44adac4c4ed}\label{commun_8h_a04ffb19fc8145784ad26f44adac4c4ed}} 
+\index{commun.\+h@{commun.\+h}!combat@{combat}}
+\index{combat@{combat}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{combat()}{combat()}}
+{\footnotesize\ttfamily void combat (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structnpc__t}{npc\+\_\+t} $\ast$}]{enemy,  }\item[{\hyperlink{structstat__t}{stat\+\_\+t} $\ast$}]{field,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items,  }\item[{int}]{nb\+\_\+items\+\_\+available }\end{DoxyParamCaption})}
+
+
+
+Fonction principale du combat qui gère les actions du joueur et ennemi. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em enemy} & Pointeur sur un objet de type \hyperlink{structnpc__t}{npc\+\_\+t} correspondant à l\textquotesingle{}ennemi \\
+\hline
+{\em field} & Pointeur sur un objet de type \hyperlink{structstat__t}{stat\+\_\+t} correspond au champ de bataille \\
+\hline
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+{\em Tab\+\_\+\+Items} & Tableau contenant tous les items disponibles dans le jeu \\
+\hline
+{\em nb\+\_\+items\+\_\+available} & Nombre d\textquotesingle{}items disponibles dans le jeu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a383694135dc6ea4c93f6290ea506d752}\label{commun_8h_a383694135dc6ea4c93f6290ea506d752}} 
+\index{commun.\+h@{commun.\+h}!compter\+\_\+items\+\_\+urbain@{compter\+\_\+items\+\_\+urbain}}
+\index{compter\+\_\+items\+\_\+urbain@{compter\+\_\+items\+\_\+urbain}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{compter\+\_\+items\+\_\+urbain()}{compter\_items\_urbain()}}
+{\footnotesize\ttfamily int compter\+\_\+items\+\_\+urbain (\begin{DoxyParamCaption}\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items,  }\item[{int}]{nb\+\_\+items\+\_\+available }\end{DoxyParamCaption})}
+
+
+
+Compte le nombre d\textquotesingle{}items pouvant être trouvés dans un hexagone de catégorie urbain (pc\+\_\+urban $>$ 0). 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em Tab\+\_\+\+Items} & Tableau contenant tous les items disponibles dans le jeu \\
+\hline
+{\em nb\+\_\+items\+\_\+available} & Nombre d\textquotesingle{}items disponibles dans le jeu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\itshape int} \+: nombre d\textquotesingle{}items pouvant être trouvés sur des hexagones de catégorie urbain 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a0f6eb129fcf00e592e708ad17e0a65ac}\label{commun_8h_a0f6eb129fcf00e592e708ad17e0a65ac}} 
+\index{commun.\+h@{commun.\+h}!coordonnees\+\_\+valides@{coordonnees\+\_\+valides}}
+\index{coordonnees\+\_\+valides@{coordonnees\+\_\+valides}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{coordonnees\+\_\+valides()}{coordonnees\_valides()}}
+{\footnotesize\ttfamily int coordonnees\+\_\+valides (\begin{DoxyParamCaption}\item[{int}]{l,  }\item[{int}]{c }\end{DoxyParamCaption})}
+
+
+
+Vérifie si les coordonnées sont valides. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em l} & Coordonnée ligne \\
+\hline
+{\em c} & Coordonnée colonne \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\itshape int} \+: 1 si les coordonnées sont valides, 0 si non 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a6bfcbccc63814dc4ba0642b7872e8681}\label{commun_8h_a6bfcbccc63814dc4ba0642b7872e8681}} 
+\index{commun.\+h@{commun.\+h}!creation\+\_\+tab\+\_\+item@{creation\+\_\+tab\+\_\+item}}
+\index{creation\+\_\+tab\+\_\+item@{creation\+\_\+tab\+\_\+item}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{creation\+\_\+tab\+\_\+item()}{creation\_tab\_item()}}
+{\footnotesize\ttfamily int creation\+\_\+tab\+\_\+item (\begin{DoxyParamCaption}\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items,  }\item[{int $\ast$}]{nb\+\_\+items }\end{DoxyParamCaption})}
+
+
+
+Récupère les items du fichier \textquotesingle{}data/items.\+csv\textquotesingle{} et les stocke dans le tableau passé en paramètres. 
+
+Affiche un message d\textquotesingle{}erreur si fichier \textquotesingle{}items.\+csv\textquotesingle{} introuvable 
+\begin{DoxyParams}{Paramètres}
+{\em Tab\+\_\+\+Items} & Tableau contenant tous les items disponibles dans le jeu \\
+\hline
+{\em nb\+\_\+items} & Pointeur sur un entier correspondant au nombre d\textquotesingle{}items extraits du fichier externe \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un {\itshape int} \+: 1 si récupération des items réalisée avec succès. 0 sinon. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_ad37eb49f35a18814ef964030603d0ab8}\label{commun_8h_ad37eb49f35a18814ef964030603d0ab8}} 
+\index{commun.\+h@{commun.\+h}!creer\+\_\+item@{creer\+\_\+item}}
+\index{creer\+\_\+item@{creer\+\_\+item}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{creer\+\_\+item()}{creer\_item()}}
+{\footnotesize\ttfamily \hyperlink{structitem__t}{item\+\_\+t}$\ast$ creer\+\_\+item (\begin{DoxyParamCaption}\item[{char $\ast$}]{chaine,  }\item[{\hyperlink{commun_8h_adee610a3c7375031538811d29f6a4124}{type\+\_\+t}}]{type,  }\item[{int}]{attack0,  }\item[{int}]{attack1,  }\item[{int}]{attack2,  }\item[{int}]{hitchance0,  }\item[{int}]{hitchance1,  }\item[{int}]{hitchance2,  }\item[{float}]{defense,  }\item[{int}]{equipable,  }\item[{int}]{pc\+\_\+nature,  }\item[{int}]{pc\+\_\+urban,  }\item[{int}]{pc\+\_\+military }\end{DoxyParamCaption})}
+
+
+
+Crée un item à partir des informations passées en paramètres. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em chaine} & Nom de l\textquotesingle{}item \\
+\hline
+{\em type} & Type de l\textquotesingle{}item \\
+\hline
+{\em attack0} & Valeur d\textquotesingle{}attaque si distance égale à 0 pendant un combat \\
+\hline
+{\em attack1} & Valeur d\textquotesingle{}attaque si distance égale à 1 pendant un combat \\
+\hline
+{\em attack2} & Valeur d\textquotesingle{}attaque si distance égale à 2 pendant un combat \\
+\hline
+{\em hitchance0} & Probabilité en pourcentage de toucher l\textquotesingle{}ennemi si distance égale à 0 pendant un combat \\
+\hline
+{\em hitchance1} & Probabilité en pourcentage de toucher l\textquotesingle{}ennemi si distance égale à 1 pendant un combat \\
+\hline
+{\em hitchance2} & Probabilité en pourcentage de toucher l\textquotesingle{}ennemi si distance égale à 2 pendant un combat \\
+\hline
+{\em defense} & Valeur de défense \\
+\hline
+{\em equipable} & Indicateur si l\textquotesingle{}item est équipable et où \\
+\hline
+{\em pc\+\_\+nature} & Probabilité en pourcentage de trouver l\textquotesingle{}item créé dans un hexagone de catégorie nature \\
+\hline
+{\em pc\+\_\+urban} & Probabilité en pourcentage de trouver l\textquotesingle{}item créé dans un hexagone de catégorie urbaine \\
+\hline
+{\em pc\+\_\+military} & Probabilité en pourcentage de trouver l\textquotesingle{}item créé dans un hexagone de catégorie militaire \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur un objet de type \hyperlink{structitem__t}{item\+\_\+t} correspondant à l\textquotesingle{}item créé 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a9bc6d36c93298c7aead4ea6e7e6e3e26}\label{commun_8h_a9bc6d36c93298c7aead4ea6e7e6e3e26}} 
+\index{commun.\+h@{commun.\+h}!delete\+\_\+item\+\_\+in\+\_\+inventory@{delete\+\_\+item\+\_\+in\+\_\+inventory}}
+\index{delete\+\_\+item\+\_\+in\+\_\+inventory@{delete\+\_\+item\+\_\+in\+\_\+inventory}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{delete\+\_\+item\+\_\+in\+\_\+inventory()}{delete\_item\_in\_inventory()}}
+{\footnotesize\ttfamily void delete\+\_\+item\+\_\+in\+\_\+inventory (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structitem__t}{item\+\_\+t}}]{item }\end{DoxyParamCaption})}
+
+
+
+Retire l\textquotesingle{}item passé en paramètre de l\textquotesingle{}inventaire (et de l\textquotesingle{}équipement si besoin) du joueur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em item} & Item à retirer de l\textquotesingle{}inventaire \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a02045ba00f9d77ebc465f2ba0b5b2333}\label{commun_8h_a02045ba00f9d77ebc465f2ba0b5b2333}} 
+\index{commun.\+h@{commun.\+h}!demo\+\_\+afficher\+\_\+items@{demo\+\_\+afficher\+\_\+items}}
+\index{demo\+\_\+afficher\+\_\+items@{demo\+\_\+afficher\+\_\+items}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{demo\+\_\+afficher\+\_\+items()}{demo\_afficher\_items()}}
+{\footnotesize\ttfamily void demo\+\_\+afficher\+\_\+items (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items,  }\item[{int}]{nb\+\_\+items\+\_\+available }\end{DoxyParamCaption})}
+
+
+
+Permet au joueur de choisir les items qu\textquotesingle{}il souhaite ajouter à son inventaire parmi ceux disponibles. 
+
+Cette fonction est appelée U\+N\+I\+Q\+U\+E\+M\+E\+NT en mode demo.
+
+Mode demo \+: ./game --demo ou ./game -\/d 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em Tab\+\_\+\+Items} & Tableau contenant tous les items disponibles dans le jeu \\
+\hline
+{\em nb\+\_\+items\+\_\+available} & Nombre d\textquotesingle{}items disponibles dans le jeu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_ac912edb0758df17f229cb8d8fbd66924}\label{commun_8h_ac912edb0758df17f229cb8d8fbd66924}} 
+\index{commun.\+h@{commun.\+h}!display\+\_\+equipment\+\_\+player@{display\+\_\+equipment\+\_\+player}}
+\index{display\+\_\+equipment\+\_\+player@{display\+\_\+equipment\+\_\+player}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{display\+\_\+equipment\+\_\+player()}{display\_equipment\_player()}}
+{\footnotesize\ttfamily void display\+\_\+equipment\+\_\+player (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t}}]{player }\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}équipement du joueur. 
+
+Si la tête, la main gauche, la main droite ou le corps du joueur sont équipés, indique avec quels items en précisant leurs positions dans l\textquotesingle{}inventaire. 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a354d78a490ef30d40f4a726524090b21}\label{commun_8h_a354d78a490ef30d40f4a726524090b21}} 
+\index{commun.\+h@{commun.\+h}!display\+\_\+inventory@{display\+\_\+inventory}}
+\index{display\+\_\+inventory@{display\+\_\+inventory}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{display\+\_\+inventory()}{display\_inventory()}}
+{\footnotesize\ttfamily void display\+\_\+inventory (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t}}]{player }\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}inventaire du joueur. 
+
+Affichage des items de l\textquotesingle{}inventaire avec leurs positions, par catégorie (armes, armures, divers, nourriture). Indique si item équipé pour les armes et armures. 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_af20ce6de62a477209830e29feb783aa1}\label{commun_8h_af20ce6de62a477209830e29feb783aa1}} 
+\index{commun.\+h@{commun.\+h}!display\+\_\+item@{display\+\_\+item}}
+\index{display\+\_\+item@{display\+\_\+item}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{display\+\_\+item()}{display\_item()}}
+{\footnotesize\ttfamily void display\+\_\+item (\begin{DoxyParamCaption}\item[{\hyperlink{structitem__t}{item\+\_\+t}}]{item }\end{DoxyParamCaption})}
+
+
+
+Affiche toutes les caractéristiques d\textquotesingle{}un item (nom, type, valeur d\textquotesingle{}attaque si arme, valeur de défense si armure, équipable ou non, pourcentage de chance de trouver cet item sur un hexagone de catégorie nature, urbain et militaire) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em item} & Item à afficher \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_abb56898d20ef15d05edb82a7dfbe8df9}\label{commun_8h_abb56898d20ef15d05edb82a7dfbe8df9}} 
+\index{commun.\+h@{commun.\+h}!display\+\_\+player\+\_\+characteristics@{display\+\_\+player\+\_\+characteristics}}
+\index{display\+\_\+player\+\_\+characteristics@{display\+\_\+player\+\_\+characteristics}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{display\+\_\+player\+\_\+characteristics()}{display\_player\_characteristics()}}
+{\footnotesize\ttfamily void display\+\_\+player\+\_\+characteristics (\begin{DoxyParamCaption}\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{\hyperlink{structperso__t}{perso\+\_\+t}}]{player }\end{DoxyParamCaption})}
+
+
+
+Affiche les paramètres du joueur (points de vie, points d\textquotesingle{}énergie, points d\textquotesingle{}action, position sur la carte, nombre de tours restants) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+{\em player} & Joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a3bc1a448a2edbe81a579122cd06467ac}\label{commun_8h_a3bc1a448a2edbe81a579122cd06467ac}} 
+\index{commun.\+h@{commun.\+h}!display\+\_\+\+T\+E\+XT@{display\+\_\+\+T\+E\+XT}}
+\index{display\+\_\+\+T\+E\+XT@{display\+\_\+\+T\+E\+XT}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{display\+\_\+\+T\+E\+X\+T()}{display\_TEXT()}}
+{\footnotesize\ttfamily void display\+\_\+\+T\+E\+XT (\begin{DoxyParamCaption}\item[{int}]{l,  }\item[{int}]{c,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Affiche la map en version texte avec la légende. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em l} & Coordonnée ligne \\
+\hline
+{\em c} & Coordonnée colonne \\
+\hline
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_ab3d3633d751f914bb3b4609a9950c513}\label{commun_8h_ab3d3633d751f914bb3b4609a9950c513}} 
+\index{commun.\+h@{commun.\+h}!eat\+\_\+or\+\_\+drink@{eat\+\_\+or\+\_\+drink}}
+\index{eat\+\_\+or\+\_\+drink@{eat\+\_\+or\+\_\+drink}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{eat\+\_\+or\+\_\+drink()}{eat\_or\_drink()}}
+{\footnotesize\ttfamily void eat\+\_\+or\+\_\+drink (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structitem__t}{item\+\_\+t}}]{item }\end{DoxyParamCaption})}
+
+
+
+Permet au joueur de boire ou manger un item de type {\itshape food} et récupérer des points d\textquotesingle{}énergie ou action (si cela est possible). 
+
+Retire l\textquotesingle{}item mangé / bu de l\textquotesingle{}inventaire 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em item} & Item que le joueur désire manger ou boire \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a8c9a1c312a2d24dc4a9d4db757e55711}\label{commun_8h_a8c9a1c312a2d24dc4a9d4db757e55711}} 
+\index{commun.\+h@{commun.\+h}!effacer\+\_\+partie@{effacer\+\_\+partie}}
+\index{effacer\+\_\+partie@{effacer\+\_\+partie}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{effacer\+\_\+partie()}{effacer\_partie()}}
+{\footnotesize\ttfamily void effacer\+\_\+partie (\begin{DoxyParamCaption}\item[{\hyperlink{structsauv__t}{sauv\+\_\+t}}]{sauv }\end{DoxyParamCaption})}
+
+
+
+Efface une partie choisie par l\textquotesingle{}utilisateur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em sauv} & Etat des sauvegardes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_aa4899d80cb631c57ee63b3d4a04b5cbe}\label{commun_8h_aa4899d80cb631c57ee63b3d4a04b5cbe}} 
+\index{commun.\+h@{commun.\+h}!entree\+\_\+pour\+\_\+continuer@{entree\+\_\+pour\+\_\+continuer}}
+\index{entree\+\_\+pour\+\_\+continuer@{entree\+\_\+pour\+\_\+continuer}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{entree\+\_\+pour\+\_\+continuer()}{entree\_pour\_continuer()}}
+{\footnotesize\ttfamily void entree\+\_\+pour\+\_\+continuer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Actionne la continuité du jeu par la touche \char`\"{}entrée\char`\"{}. 
+
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_afd7728c9e6ae89e5932e641b54556aba}\label{commun_8h_afd7728c9e6ae89e5932e641b54556aba}} 
+\index{commun.\+h@{commun.\+h}!exit\+\_\+game@{exit\+\_\+game}}
+\index{exit\+\_\+game@{exit\+\_\+game}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{exit\+\_\+game()}{exit\_game()}}
+{\footnotesize\ttfamily int exit\+\_\+game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Propose au joueur de quitter ou non la carte lorsqu\textquotesingle{}il vient de trouver la sortie. 
+
+\begin{DoxyReturn}{Renvoie}
+Un {\itshape int} \+: 1 si le joueur décide de quitter la carte. 0 s\textquotesingle{}il décide de continuer l\textquotesingle{}aventure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_aec4be0e1e14efa931211be073ea33cab}\label{commun_8h_aec4be0e1e14efa931211be073ea33cab}} 
+\index{commun.\+h@{commun.\+h}!fish@{fish}}
+\index{fish@{fish}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{fish()}{fish()}}
+{\footnotesize\ttfamily void fish (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Permet au joueur de pêcher s\textquotesingle{}il se situe sur un hexagone de type {\itshape lac} ou {\itshape mer} et s\textquotesingle{}il a une canne à pêche dans son inventaire. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_acc7e7b34903dd75f8563deda4e525f39}\label{commun_8h_acc7e7b34903dd75f8563deda4e525f39}} 
+\index{commun.\+h@{commun.\+h}!informations\+\_\+map@{informations\+\_\+map}}
+\index{informations\+\_\+map@{informations\+\_\+map}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{informations\+\_\+map()}{informations\_map()}}
+{\footnotesize\ttfamily void informations\+\_\+map (\begin{DoxyParamCaption}\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Affiche les informations de la carte. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a8467aba54144bfdead8e1a614e563e23}\label{commun_8h_a8467aba54144bfdead8e1a614e563e23}} 
+\index{commun.\+h@{commun.\+h}!informations\+\_\+quetes@{informations\+\_\+quetes}}
+\index{informations\+\_\+quetes@{informations\+\_\+quetes}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{informations\+\_\+quetes()}{informations\_quetes()}}
+{\footnotesize\ttfamily void informations\+\_\+quetes (\begin{DoxyParamCaption}\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{int}]{quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]},  }\item[{\hyperlink{structquete__t}{quete\+\_\+t}}]{quete }\end{DoxyParamCaption})}
+
+
+
+Affiche les informations des quêtes (coordonnées et états) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+{\em quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}} & Matrice des coordonnées des quêtes \\
+\hline
+{\em quete} & Etat des quêtes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a5cb6f755d33b58efdb98f491dc2d9c45}\label{commun_8h_a5cb6f755d33b58efdb98f491dc2d9c45}} 
+\index{commun.\+h@{commun.\+h}!init\+\_\+field@{init\+\_\+field}}
+\index{init\+\_\+field@{init\+\_\+field}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{init\+\_\+field()}{init\_field()}}
+{\footnotesize\ttfamily \hyperlink{structstat__t}{stat\+\_\+t}$\ast$ init\+\_\+field (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initialise le champ de bataille du combat (positions et couvertures des adversaires, distance qui les sépare) 
+
+\begin{DoxyReturn}{Renvoie}
+Pointeur sur un objet de type \hyperlink{structstat__t}{stat\+\_\+t} correspondant au champ de bataille créé 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_ac8928522f1a66ba3d5a8c3cb97d144da}\label{commun_8h_ac8928522f1a66ba3d5a8c3cb97d144da}} 
+\index{commun.\+h@{commun.\+h}!init\+\_\+npc@{init\+\_\+npc}}
+\index{init\+\_\+npc@{init\+\_\+npc}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{init\+\_\+npc()}{init\_npc()}}
+{\footnotesize\ttfamily \hyperlink{structnpc__t}{npc\+\_\+t}$\ast$ init\+\_\+npc (\begin{DoxyParamCaption}\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items }\end{DoxyParamCaption})}
+
+
+
+Initialise un non-\/player character (N\+PC) ennemi (nom, arme, armure et points de vie) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em Tab\+\_\+\+Items} & Tableau contenant tous les items disponibles dans le jeu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Pointeur sur un objet de type \hyperlink{structnpc__t}{npc\+\_\+t} correspondant à l\textquotesingle{}ennemi créé 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_aa4185f5937661c9591dce0ad1d7b80d6}\label{commun_8h_aa4185f5937661c9591dce0ad1d7b80d6}} 
+\index{commun.\+h@{commun.\+h}!init\+\_\+player@{init\+\_\+player}}
+\index{init\+\_\+player@{init\+\_\+player}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{init\+\_\+player()}{init\_player()}}
+{\footnotesize\ttfamily void init\+\_\+player (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Initialise les paramètres du joueur quand il commence le jeu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a88d64826f8f2155e0cbf149e18aa33c0}\label{commun_8h_a88d64826f8f2155e0cbf149e18aa33c0}} 
+\index{commun.\+h@{commun.\+h}!init\+\_\+quete@{init\+\_\+quete}}
+\index{init\+\_\+quete@{init\+\_\+quete}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{init\+\_\+quete()}{init\_quete()}}
+{\footnotesize\ttfamily void init\+\_\+quete (\begin{DoxyParamCaption}\item[{\hyperlink{structquete__t}{quete\+\_\+t} $\ast$}]{quete,  }\item[{int}]{quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]},  }\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items,  }\item[{int}]{nb\+\_\+items\+\_\+available }\end{DoxyParamCaption})}
+
+
+
+Initialisation d\textquotesingle{}une variable de type \hyperlink{structquete__t}{quete\+\_\+t}. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em quete} & Pointeur sur un objet de type \hyperlink{structquete__t}{quete\+\_\+t} correspondant à l\textquotesingle{}état des quêtes \\
+\hline
+{\em quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}} & Matrice des coordonnées des quêtes \\
+\hline
+{\em Tab\+\_\+\+Items} & Tableau contenant tous les items disponibles dans le jeu \\
+\hline
+{\em nb\+\_\+items\+\_\+available} & Nombre d\textquotesingle{}items disponibles dans le jeu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_ab3150620b999a50e0b971d888263e018}\label{commun_8h_ab3150620b999a50e0b971d888263e018}} 
+\index{commun.\+h@{commun.\+h}!init\+\_\+\+Tab\+\_\+\+Items\+\_\+urbain@{init\+\_\+\+Tab\+\_\+\+Items\+\_\+urbain}}
+\index{init\+\_\+\+Tab\+\_\+\+Items\+\_\+urbain@{init\+\_\+\+Tab\+\_\+\+Items\+\_\+urbain}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{init\+\_\+\+Tab\+\_\+\+Items\+\_\+urbain()}{init\_Tab\_Items\_urbain()}}
+{\footnotesize\ttfamily void init\+\_\+\+Tab\+\_\+\+Items\+\_\+urbain (\begin{DoxyParamCaption}\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items\+\_\+urbain,  }\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items,  }\item[{int}]{nb\+\_\+items\+\_\+available }\end{DoxyParamCaption})}
+
+
+
+Initialise un tableau contenant tous les items pouvant être trouvés dans un hexagone de catégorie urbain. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em Tab\+\_\+\+Items\+\_\+urbain} & Tableau contenant les items pouvant être trouvés sur des hexagones de catégorie urbain \\
+\hline
+{\em Tab\+\_\+\+Items} & Tableau contenant tous les items disponibles dans le jeu \\
+\hline
+{\em nb\+\_\+items\+\_\+available} & Nombre d\textquotesingle{}items disponibles dans le jeu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a08c7b7c98d57d8ea66889f08d78587e1}\label{commun_8h_a08c7b7c98d57d8ea66889f08d78587e1}} 
+\index{commun.\+h@{commun.\+h}!interface@{interface}}
+\index{interface@{interface}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{interface()}{interface()}}
+{\footnotesize\ttfamily int interface (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}interface en elle-\/même. 
+
+\begin{DoxyReturn}{Renvoie}
+0 si tout c\textquotesingle{}est bien passé 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_aae5f9602614f22807a8f2719fb015bdd}\label{commun_8h_aae5f9602614f22807a8f2719fb015bdd}} 
+\index{commun.\+h@{commun.\+h}!is\+\_\+equipped@{is\+\_\+equipped}}
+\index{is\+\_\+equipped@{is\+\_\+equipped}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{is\+\_\+equipped()}{is\_equipped()}}
+{\footnotesize\ttfamily int is\+\_\+equipped (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t}}]{player,  }\item[{\hyperlink{structitem__t}{item\+\_\+t}}]{item }\end{DoxyParamCaption})}
+
+
+
+Indique si le joueur est équipé de l\textquotesingle{}item passé en paramètre. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em player} & Joueur \\
+\hline
+{\em item} & Item \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un {\itshape int} \+: si le joueur n\textquotesingle{}est pas équipé de l\textquotesingle{}item retourne 0 (\hyperlink{commun_8h_a6764330ff4f04cee324e30f775960f02}{N\+O\+T\+\_\+\+E\+Q\+U\+I\+P\+P\+ED}), sinon retourne où l\textquotesingle{}item est équipé sur le joueur (\hyperlink{commun_8h_a2eff09387fb5d20d8af4fa186ae37c4d}{L\+E\+F\+T\+\_\+\+H\+A\+ND} = 1, \hyperlink{commun_8h_a5d1d275cfec76197e014fe4d58f2e569}{R\+I\+G\+H\+T\+\_\+\+H\+A\+ND} = 2, \hyperlink{commun_8h_aa6bdf6a6d9916c343e1e17774d84a156}{B\+O\+DY} = 3, \hyperlink{commun_8h_a110f3b6cdacd45daee818b3e5965f6da}{H\+E\+AD} = 4) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a422fba7d76e9ed4b5783cf5d9177aad8}\label{commun_8h_a422fba7d76e9ed4b5783cf5d9177aad8}} 
+\index{commun.\+h@{commun.\+h}!item\+\_\+in\+\_\+inventory@{item\+\_\+in\+\_\+inventory}}
+\index{item\+\_\+in\+\_\+inventory@{item\+\_\+in\+\_\+inventory}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{item\+\_\+in\+\_\+inventory()}{item\_in\_inventory()}}
+{\footnotesize\ttfamily int item\+\_\+in\+\_\+inventory (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t}}]{player,  }\item[{char $\ast$}]{nom\+\_\+item }\end{DoxyParamCaption})}
+
+
+
+Recherche si l\textquotesingle{}item dont le nom est passé en paramètre est présent ou non dans l\textquotesingle{}inventaire. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em player} & Joueur \\
+\hline
+{\em nom\+\_\+item} & Nom de l\textquotesingle{}item à rechercher dans l\textquotesingle{}inventaire \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un {\itshape int} \+: position de l\textquotesingle{}item dans l\textquotesingle{}inventaire si présent, -\/1 si absent 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a3a04035a05160ad8111695a53423eb1f}\label{commun_8h_a3a04035a05160ad8111695a53423eb1f}} 
+\index{commun.\+h@{commun.\+h}!load@{load}}
+\index{load@{load}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily void load (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{int}]{quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]},  }\item[{\hyperlink{structquete__t}{quete\+\_\+t} $\ast$}]{quete,  }\item[{\hyperlink{structsauv__t}{sauv\+\_\+t}}]{sauv }\end{DoxyParamCaption})}
+
+
+
+Charge les informations sur le joueur, son inventaire, son équipement ainsi que les informations sur la carte et les quêtes d\textquotesingle{}une partie. 
+
+Informations sur le joueur \+: points de vie, points d\textquotesingle{}énergie, points d\textquotesingle{}action, position sur la carte, nombre de tours restants
+
+Informations sur la carte \+: pour chaque case de la matrice map, chargement de son type, sa catégorie, s\textquotesingle{}il y a un combat, si le joueur a déjà fouillé la case et si une quête y est positionnée.
+
+Informations sur les quêtes \+: chargement des coordonnées de chaque quête et de leurs états. 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+{\em quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}} & Matrice des coordonnées des quêtes \\
+\hline
+{\em quete} & Pointeur sur un objet de type \hyperlink{structquete__t}{quete\+\_\+t} correspondant à l\textquotesingle{}état des quêtes \\
+\hline
+{\em sauv} & Etat des sauvegardes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_afe6c66728ce22be9ff976516f8b77c68}\label{commun_8h_afe6c66728ce22be9ff976516f8b77c68}} 
+\index{commun.\+h@{commun.\+h}!manage\+\_\+equipment@{manage\+\_\+equipment}}
+\index{manage\+\_\+equipment@{manage\+\_\+equipment}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{manage\+\_\+equipment()}{manage\_equipment()}}
+{\footnotesize\ttfamily void manage\+\_\+equipment (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player }\end{DoxyParamCaption})}
+
+
+
+Fonction centrale du fichier \hyperlink{equipment_8c}{equipment.\+c} permettant au joueur de gérer son équipement. 
+
+Menu équipement \+: Possibilité pour le joueur de s\textquotesingle{}équiper d\textquotesingle{}un item de son inventaire, de retirer un item de son équipement. 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a35b519c6835c9aa90ff5fd35b0e68f66}\label{commun_8h_a35b519c6835c9aa90ff5fd35b0e68f66}} 
+\index{commun.\+h@{commun.\+h}!manage\+\_\+inventory@{manage\+\_\+inventory}}
+\index{manage\+\_\+inventory@{manage\+\_\+inventory}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{manage\+\_\+inventory()}{manage\_inventory()}}
+{\footnotesize\ttfamily void manage\+\_\+inventory (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player }\end{DoxyParamCaption})}
+
+
+
+Fonction centrale du fichier \hyperlink{inventory_8c}{inventory.\+c} permettant au joueur de gérer son inventaire. 
+
+Menu inventaire \+: Possibilité pour le joueur d\textquotesingle{}en savoir plus sur un de ses items, de se débarasser d\textquotesingle{}un item, de manger/boire un item, d\textquotesingle{}utiliser son kit médical (s\textquotesingle{}il en possède un) 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a5318d44075c0401496dab8ec961a63c3}\label{commun_8h_a5318d44075c0401496dab8ec961a63c3}} 
+\index{commun.\+h@{commun.\+h}!map\+\_\+correspondance@{map\+\_\+correspondance}}
+\index{map\+\_\+correspondance@{map\+\_\+correspondance}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{map\+\_\+correspondance()}{map\_correspondance()}}
+{\footnotesize\ttfamily void map\+\_\+correspondance (\begin{DoxyParamCaption}\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\+\_\+cell\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{int}]{mapaff\mbox{[}\+N\mbox{]}\mbox{[}\+N\mbox{]},  }\item[{int}]{position\+\_\+x,  }\item[{int}]{position\+\_\+y }\end{DoxyParamCaption})}
+
+
+
+Met en relation la map sur laquelle évolue le personnage et la amtrice gérant l\textquotesingle{}affichage de celle-\/ci en prenant en compte les coordonées où se situe le personnage. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em \hyperlink{structcell__t}{cell\+\_\+t}} & map\+\_\+cell\mbox{[}D\mbox{]}\mbox{[}D\mbox{]} \\
+\hline
+{\em int} & mapaff\mbox{[}N\mbox{]}\mbox{[}N\mbox{]} \\
+\hline
+{\em int} & position\+\_\+x \\
+\hline
+{\em int} & position\+\_\+y \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a309363eb6ec82b7f53f004bbd01c21c4}\label{commun_8h_a309363eb6ec82b7f53f004bbd01c21c4}} 
+\index{commun.\+h@{commun.\+h}!map\+\_\+init@{map\+\_\+init}}
+\index{map\+\_\+init@{map\+\_\+init}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{map\+\_\+init()}{map\_init()}}
+{\footnotesize\ttfamily void map\+\_\+init (\begin{DoxyParamCaption}\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{int}]{quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Initialise la carte au début de chaque partie. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+{\em quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}} & Matrice des coordonnées des quêtes \\
+\hline
+{\em player} & Joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_ac9fb4bd5a16513e8faf4bf23dcb3d2bf}\label{commun_8h_ac9fb4bd5a16513e8faf4bf23dcb3d2bf}} 
+\index{commun.\+h@{commun.\+h}!move@{move}}
+\index{move@{move}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily void move (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Déplace le joueur où il le souhaite, si cela est possible (conditions \+: coordonnées valides et assez de points d\textquotesingle{}action) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a588235e6d46f215c009c995d07f31ec2}\label{commun_8h_a588235e6d46f215c009c995d07f31ec2}} 
+\index{commun.\+h@{commun.\+h}!nb\+\_\+equipement@{nb\+\_\+equipement}}
+\index{nb\+\_\+equipement@{nb\+\_\+equipement}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{nb\+\_\+equipement()}{nb\_equipement()}}
+{\footnotesize\ttfamily int nb\+\_\+equipement (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t}}]{player }\end{DoxyParamCaption})}
+
+
+
+Compte le nombre d\textquotesingle{}item(s) équipé(s) sur le joueur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em player} & Joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un {\itshape int} correspondant au nombre d\textquotesingle{}équipement(s) (items) actuellement sur le joueur 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_ab34814b4d8a3404f1d08ca212259c39b}\label{commun_8h_ab34814b4d8a3404f1d08ca212259c39b}} 
+\index{commun.\+h@{commun.\+h}!next\+\_\+turn@{next\+\_\+turn}}
+\index{next\+\_\+turn@{next\+\_\+turn}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{next\+\_\+turn()}{next\_turn()}}
+{\footnotesize\ttfamily void next\+\_\+turn (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player }\end{DoxyParamCaption})}
+
+
+
+Calcule le nombre de points d’action récupérés à partir de la valeur des points d\textquotesingle{}énergie du joueur puis passe au tour suivant. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_ac44e2e3723ce06a3660665d0adc23079}\label{commun_8h_ac44e2e3723ce06a3660665d0adc23079}} 
+\index{commun.\+h@{commun.\+h}!portable\+\_\+switch@{portable\+\_\+switch}}
+\index{portable\+\_\+switch@{portable\+\_\+switch}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{portable\+\_\+switch()}{portable\_switch()}}
+{\footnotesize\ttfamily void portable\+\_\+switch (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Affiche le code de la cellule. 
+
+Cette fonction a été créée pour éviter de refaire le switch dans différentes fonctions d\textquotesingle{}affichage. 
+\begin{DoxyParams}{Paramètres}
+{\em i} & Coordonnée ligne \\
+\hline
+{\em j} & Coordonnée colonne \\
+\hline
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a61aa43ceaa893c5807b45cd54fd140e8}\label{commun_8h_a61aa43ceaa893c5807b45cd54fd140e8}} 
+\index{commun.\+h@{commun.\+h}!quest\+\_\+init@{quest\+\_\+init}}
+\index{quest\+\_\+init@{quest\+\_\+init}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{quest\+\_\+init()}{quest\_init()}}
+{\footnotesize\ttfamily void quest\+\_\+init (\begin{DoxyParamCaption}\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{int}]{quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Initialise les quêtes (quest\+\_\+id) sur la carte. 
+
+Les quêtes sont placées aléatoirement sur la carte. 
+\begin{DoxyParams}{Paramètres}
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+{\em quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}} & Matrice des coordonnées des quêtes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_ae3a10faf1284038599e3098a8253ce43}\label{commun_8h_ae3a10faf1284038599e3098a8253ce43}} 
+\index{commun.\+h@{commun.\+h}!quete\+\_\+bandits@{quete\+\_\+bandits}}
+\index{quete\+\_\+bandits@{quete\+\_\+bandits}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{quete\+\_\+bandits()}{quete\_bandits()}}
+{\footnotesize\ttfamily int quete\+\_\+bandits (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structquete__t}{quete\+\_\+t} $\ast$}]{quete,  }\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items,  }\item[{int}]{nb\+\_\+items\+\_\+available,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Accès à la quete \char`\"{}bandits\char`\"{}. 
+
+Le joueur combat contre un npc aléatoire. Il en sort vivant, blessé ou mort. 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em quete} & Pointeur sur un objet de type \hyperlink{structquete__t}{quete\+\_\+t} correspondant à l\textquotesingle{}état des quêtes \\
+\hline
+{\em Tab\+\_\+\+Items} & Tableau contenant tous les items disponibles dans le jeu \\
+\hline
+{\em nb\+\_\+items\+\_\+available} & Nombre d\textquotesingle{}items disponibles dans le jeu \\
+\hline
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\itshape int} \+: 0 si le jeu continue, 1 si le jeu est fini et -\/1 si problème dans la quête. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a931bac6752154b310757ff2026789ba0}\label{commun_8h_a931bac6752154b310757ff2026789ba0}} 
+\index{commun.\+h@{commun.\+h}!quete\+\_\+bunker@{quete\+\_\+bunker}}
+\index{quete\+\_\+bunker@{quete\+\_\+bunker}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{quete\+\_\+bunker()}{quete\_bunker()}}
+{\footnotesize\ttfamily int quete\+\_\+bunker (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structquete__t}{quete\+\_\+t} $\ast$}]{quete }\end{DoxyParamCaption})}
+
+
+
+Accès à la quête \char`\"{}bunker\char`\"{}. 
+
+Si le joueur possède le pass\+\_\+card, il aura le choix de rentrer dans le bunker ou non. Sinon il fait demi-\/tour. 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em quete} & Pointeur sur un objet de type \hyperlink{structquete__t}{quete\+\_\+t} correspondant à l\textquotesingle{}état des quêtes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\itshape int} \+: 0 si le jeu continue, 1 si le jeu est fini et -\/1 si problème dans la quête. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_adbd858f4a2365f62831b49f54f41528b}\label{commun_8h_adbd858f4a2365f62831b49f54f41528b}} 
+\index{commun.\+h@{commun.\+h}!quete\+\_\+frontiere@{quete\+\_\+frontiere}}
+\index{quete\+\_\+frontiere@{quete\+\_\+frontiere}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{quete\+\_\+frontiere()}{quete\_frontiere()}}
+{\footnotesize\ttfamily int quete\+\_\+frontiere (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structquete__t}{quete\+\_\+t} $\ast$}]{quete }\end{DoxyParamCaption})}
+
+
+
+Accès à la quete \char`\"{}frontière\char`\"{}. 
+
+Le joueur trouve la sortie de la frontière, il a le choix de la franchir (finir le jeu) ou non. S\textquotesingle{}il a joué la quête \char`\"{}soin\char`\"{} et qu\textquotesingle{}il a aidé l\textquotesingle{}homme blessé alors ses chances de la franchir sont importantes. Mais s\textquotesingle{}il ne l\textquotesingle{}a pas fait, ses chances le sont moins. La chance est donnée par un nombre entier compris entre 0 et 100. 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em quete} & Pointeur sur un objet de type \hyperlink{structquete__t}{quete\+\_\+t} correspondant à l\textquotesingle{}état des quêtes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\itshape int} \+: 0 si le jeu continue, 1 si le jeu est fini et -\/1 si problème dans la quête. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_aa6e4089158a870a21df474d0977de085}\label{commun_8h_aa6e4089158a870a21df474d0977de085}} 
+\index{commun.\+h@{commun.\+h}!quete\+\_\+montagne@{quete\+\_\+montagne}}
+\index{quete\+\_\+montagne@{quete\+\_\+montagne}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{quete\+\_\+montagne()}{quete\_montagne()}}
+{\footnotesize\ttfamily int quete\+\_\+montagne (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structquete__t}{quete\+\_\+t} $\ast$}]{quete }\end{DoxyParamCaption})}
+
+
+
+Accès à la quete \char`\"{}montagne\char`\"{}. 
+
+Le joueur a le choix de franchir la montagne (finir le jeu) ou non. S\textquotesingle{}il a en sa possession l\textquotesingle{}équipement de montagne alors ses chances de s\textquotesingle{}échapper sont importantes. Mais s\textquotesingle{}il ne l\textquotesingle{}a pas, il est très risqué pour lui de vouloir s\textquotesingle{}échapper. La chance est donné par un nombre entier compris entre 0 et 100. 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em quete} & Pointeur sur un objet de type \hyperlink{structquete__t}{quete\+\_\+t} correspondant à l\textquotesingle{}état des quêtes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\itshape int} \+: 0 si le jeu continue, 1 si le jeu est fini et -\/1 si problème dans la quête. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a4c3d223c6fd93383772b82f032cc8bcc}\label{commun_8h_a4c3d223c6fd93383772b82f032cc8bcc}} 
+\index{commun.\+h@{commun.\+h}!quete\+\_\+recherche@{quete\+\_\+recherche}}
+\index{quete\+\_\+recherche@{quete\+\_\+recherche}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{quete\+\_\+recherche()}{quete\_recherche()}}
+{\footnotesize\ttfamily int quete\+\_\+recherche (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{\hyperlink{structquete__t}{quete\+\_\+t} $\ast$}]{quete }\end{DoxyParamCaption})}
+
+
+
+Accès à la quete \char`\"{}recherche\char`\"{}. 
+
+Le joueur doit aller à un endroit donné pour trouver un item et le ramener. 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+{\em quete} & Pointeur sur un objet de type \hyperlink{structquete__t}{quete\+\_\+t} correspondant à l\textquotesingle{}état des quêtes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\itshape int} \+: 0 si le jeu continue et -\/1 si problème dans la quête. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a402540673166e0323939a3d3e518bad2}\label{commun_8h_a402540673166e0323939a3d3e518bad2}} 
+\index{commun.\+h@{commun.\+h}!quete\+\_\+soin@{quete\+\_\+soin}}
+\index{quete\+\_\+soin@{quete\+\_\+soin}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{quete\+\_\+soin()}{quete\_soin()}}
+{\footnotesize\ttfamily int quete\+\_\+soin (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structquete__t}{quete\+\_\+t} $\ast$}]{quete,  }\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items }\end{DoxyParamCaption})}
+
+
+
+Déroulement de la quête \char`\"{}soin\char`\"{} \+: rencontre d\textquotesingle{}un individu blessé. 
+
+Le joueur rencontre un individu blesse. Il a le choix entre l\textquotesingle{}ignorer, lui voler ses items ou l\textquotesingle{}aider. Cet individu est un homme de l\textquotesingle{}Etat, en charge de la protection des civiles (policier ou soldat). Pour pouvoir aider le blesse le joueur doit être en possession du medical kit ou de nourriture. 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em quete} & Pointeur sur un objet de type \hyperlink{structquete__t}{quete\+\_\+t} correspondant à l\textquotesingle{}état des quêtes \\
+\hline
+{\em Tab\+\_\+\+Items} & Tableau contenant tous les items disponibles dans le jeu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\itshape int} \+: 0 si le jeu continue et -\/1 si probleme dans la quete. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_adc1d91bf20af02d88470e87ff9bb9e8b}\label{commun_8h_adc1d91bf20af02d88470e87ff9bb9e8b}} 
+\index{commun.\+h@{commun.\+h}!quetes@{quetes}}
+\index{quetes@{quetes}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{quetes()}{quetes()}}
+{\footnotesize\ttfamily int quetes (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{int}]{quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]},  }\item[{\hyperlink{structquete__t}{quete\+\_\+t} $\ast$}]{quete,  }\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items,  }\item[{int}]{nb\+\_\+items\+\_\+available }\end{DoxyParamCaption})}
+
+
+
+Récupère le numéro de la quête pour accéder à la quête correspondante. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+{\em quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}} & Matrice des coordonnées des quêtes \\
+\hline
+{\em quete} & Pointeur sur un objet de type \hyperlink{structquete__t}{quete\+\_\+t} correspond à l\textquotesingle{}état des quêtes \\
+\hline
+{\em Tab\+\_\+\+Items} & Tableau contenant tous les items disponibles dans le jeu \\
+\hline
+{\em nb\+\_\+items\+\_\+available} & Nombre d\textquotesingle{}items disponibles dans le jeu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\itshape int} \+: 0 si le jeu continue, 1 si le jeu est fini et -\/1 si problème dans la quête. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a27e09d79b0c98039d2d6f07dd485ccc0}\label{commun_8h_a27e09d79b0c98039d2d6f07dd485ccc0}} 
+\index{commun.\+h@{commun.\+h}!random\+\_\+move@{random\+\_\+move}}
+\index{random\+\_\+move@{random\+\_\+move}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{random\+\_\+move()}{random\_move()}}
+{\footnotesize\ttfamily void random\+\_\+move (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Déplace aléatoirement le joueur sur un des hexagones qui l\textquotesingle{}entoure. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_acff6b648c6726c70104531f080bfa710}\label{commun_8h_acff6b648c6726c70104531f080bfa710}} 
+\index{commun.\+h@{commun.\+h}!range@{range}}
+\index{range@{range}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{range()}{range()}}
+{\footnotesize\ttfamily int range (\begin{DoxyParamCaption}\item[{int}]{a,  }\item[{int}]{b }\end{DoxyParamCaption})}
+
+
+
+Génère un nombre aléatoire compris entre deux entiers passés en paramètre. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em a} & Valeur min de l\textquotesingle{}intervalle (inclus) \\
+\hline
+{\em b} & Valeur max de l\textquotesingle{}intervalle (inclus) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\itshape int} dans l\textquotesingle{}intervalle \mbox{[}a;b\mbox{]} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a16623bb45a52000b8ec7b116aaa46173}\label{commun_8h_a16623bb45a52000b8ec7b116aaa46173}} 
+\index{commun.\+h@{commun.\+h}!rest\+\_\+and\+\_\+heal@{rest\+\_\+and\+\_\+heal}}
+\index{rest\+\_\+and\+\_\+heal@{rest\+\_\+and\+\_\+heal}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{rest\+\_\+and\+\_\+heal()}{rest\_and\_heal()}}
+{\footnotesize\ttfamily void rest\+\_\+and\+\_\+heal (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player }\end{DoxyParamCaption})}
+
+
+
+Permet au joueur de se reposer et récupérer des points de vie et points d\textquotesingle{}énergie (proportionnellement au nombre de points d\textquotesingle{}action) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a40356000b1ed5cc4b2798194e57acefc}\label{commun_8h_a40356000b1ed5cc4b2798194e57acefc}} 
+\index{commun.\+h@{commun.\+h}!rng@{rng}}
+\index{rng@{rng}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{rng()}{rng()}}
+{\footnotesize\ttfamily int rng (\begin{DoxyParamCaption}\item[{int}]{prob }\end{DoxyParamCaption})}
+
+
+
+Génère 0 ou 1 en fonction de la probabilité en pourcentage passée en paramètre. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em prob} & Probabilité en pourcentage \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\itshape int} \+: 1 ou 0. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_ae3a35e6ca5de07de881517f1c47a1435}\label{commun_8h_ae3a35e6ca5de07de881517f1c47a1435}} 
+\index{commun.\+h@{commun.\+h}!sauvegarde\+\_\+existante@{sauvegarde\+\_\+existante}}
+\index{sauvegarde\+\_\+existante@{sauvegarde\+\_\+existante}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{sauvegarde\+\_\+existante()}{sauvegarde\_existante()}}
+{\footnotesize\ttfamily int sauvegarde\+\_\+existante (\begin{DoxyParamCaption}\item[{\hyperlink{structsauv__t}{sauv\+\_\+t}}]{sauv }\end{DoxyParamCaption})}
+
+
+
+Indique s\textquotesingle{}il existe une sauvegarde pour la partie choisie par l\textquotesingle{}utilisateur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em sauv} & Etat des sauvegardes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un {\itshape int} \+: 1 si une sauvegarde existe. 0 sinon. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_abf3bd1684d5f65e10f183757d06706df}\label{commun_8h_abf3bd1684d5f65e10f183757d06706df}} 
+\index{commun.\+h@{commun.\+h}!sauvegarder\+\_\+progression@{sauvegarder\+\_\+progression}}
+\index{sauvegarder\+\_\+progression@{sauvegarder\+\_\+progression}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{sauvegarder\+\_\+progression()}{sauvegarder\_progression()}}
+{\footnotesize\ttfamily void sauvegarder\+\_\+progression (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t}}]{player,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{int}]{quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]},  }\item[{\hyperlink{structquete__t}{quete\+\_\+t}}]{quete,  }\item[{\hyperlink{structsauv__t}{sauv\+\_\+t}}]{sauv }\end{DoxyParamCaption})}
+
+
+
+Sauvegarde la progression de la partie actuellement en cours et propose au joueur de continuer ou quitter le jeu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em player} & Joueur \\
+\hline
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+{\em quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}} & Matrice des coordonnées des quêtes \\
+\hline
+{\em quete} & Etat des quêtes \\
+\hline
+{\em sauv} & Etat des sauvegardes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_aafdde294bbc0144a5a6a0417248fcf90}\label{commun_8h_aafdde294bbc0144a5a6a0417248fcf90}} 
+\index{commun.\+h@{commun.\+h}!save@{save}}
+\index{save@{save}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily void save (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t}}]{player,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{int}]{quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]},  }\item[{\hyperlink{structquete__t}{quete\+\_\+t}}]{quete,  }\item[{\hyperlink{structsauv__t}{sauv\+\_\+t}}]{sauv }\end{DoxyParamCaption})}
+
+
+
+Sauvegarde les informations sur le joueur, son inventaire, son équipement ainsi que les informations sur la carte et les quêtes d\textquotesingle{}une partie. 
+
+Informations sur le joueur \+: points de vie, points d\textquotesingle{}énergie, points d\textquotesingle{}action, position sur la carte, nombre de tours restants
+
+Informations sur la carte \+: pour chaque case de la matrice map, sauvegarde de son type, sa catégorie, s\textquotesingle{}il y a un combat, si le joueur a déjà fouillé la case et si une quête y est positionnée.
+
+Informations sur les quêtes \+: sauvegarde des coordonnées de chaque quête et de leurs états. 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Joueur \\
+\hline
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+{\em quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}} & Matrice des coordonnées des quêtes \\
+\hline
+{\em quete} & Etat des quêtes \\
+\hline
+{\em sauv} & Etat des sauvegardes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a40672738b4eba05b66ae0a8127346356}\label{commun_8h_a40672738b4eba05b66ae0a8127346356}} 
+\index{commun.\+h@{commun.\+h}!scavenge@{scavenge}}
+\index{scavenge@{scavenge}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{scavenge()}{scavenge()}}
+{\footnotesize\ttfamily void scavenge (\begin{DoxyParamCaption}\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items,  }\item[{int}]{nb\+\_\+items\+\_\+available,  }\item[{\hyperlink{structquete__t}{quete\+\_\+t}}]{quete }\end{DoxyParamCaption})}
+
+
+
+Permet au joueur de fouiller l\textquotesingle{}hexagone sur lequel il se trouve pour récupérer des items. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em Tab\+\_\+\+Items} & Tableau contenant tous les items disponibles dans le jeu \\
+\hline
+{\em nb\+\_\+items\+\_\+available} & Nombre d\textquotesingle{}items disponibles dans le jeu \\
+\hline
+{\em quete} & Etat des quêtes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{commun_8h_a08446349c2ace9f33a111be928403978}\label{commun_8h_a08446349c2ace9f33a111be928403978}} 
+\index{commun.\+h@{commun.\+h}!update\+\_\+etat\+\_\+sauvegarde@{update\+\_\+etat\+\_\+sauvegarde}}
+\index{update\+\_\+etat\+\_\+sauvegarde@{update\+\_\+etat\+\_\+sauvegarde}!commun.\+h@{commun.\+h}}
+\subsubsection{\texorpdfstring{update\+\_\+etat\+\_\+sauvegarde()}{update\_etat\_sauvegarde()}}
+{\footnotesize\ttfamily void update\+\_\+etat\+\_\+sauvegarde (\begin{DoxyParamCaption}\item[{\hyperlink{structsauv__t}{sauv\+\_\+t} $\ast$}]{sauv }\end{DoxyParamCaption})}
+
+
+
+Met à jour l\textquotesingle{}état des sauvegardes (si elles existent et leurs noms) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em sauv} & Pointeur sur un objet de type \hyperlink{structsauv__t}{sauv\+\_\+t} correspondant à l\textquotesingle{}état des sauvegardes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}

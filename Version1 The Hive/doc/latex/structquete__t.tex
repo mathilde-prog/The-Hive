@@ -1,0 +1,59 @@
+\hypertarget{structquete__t}{}\section{Référence de la structure quete\+\_\+t}
+\label{structquete__t}\index{quete\+\_\+t@{quete\+\_\+t}}
+
+
+Structure de suivi des quêtes.  
+
+
+
+
+{\ttfamily \#include $<$commun.\+h$>$}
+
+
+
+Graphe de collaboration de quete\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=153pt]{structquete__t__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Attributs publics}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structquete__t_a400ce45a6acc4633289e352e65940e43}\label{structquete__t_a400ce45a6acc4633289e352e65940e43}} 
+int \hyperlink{structquete__t_a400ce45a6acc4633289e352e65940e43}{soin}
+\begin{DoxyCompactList}\small\item\em Indicateur pour savoir l\textquotesingle{}avancée du joueur dans la quête \char`\"{}soin\char`\"{}, si le joueur a aidé l\textquotesingle{}homme blessé \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structquete__t_afa01c2d7f63f97e980a9881cc66789b0}\label{structquete__t_afa01c2d7f63f97e980a9881cc66789b0}} 
+\hyperlink{structsearch__t}{search\+\_\+t} \hyperlink{structquete__t_afa01c2d7f63f97e980a9881cc66789b0}{recherche}
+\begin{DoxyCompactList}\small\item\em Indicateur de type \hyperlink{structsearch__t}{search\+\_\+t} pour savoir l\textquotesingle{}avancée du joueur dans la quête \char`\"{}recheche\char`\"{}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structquete__t_a8d0b29d5041dd3a5e16bd1a61bd739fd}\label{structquete__t_a8d0b29d5041dd3a5e16bd1a61bd739fd}} 
+int \hyperlink{structquete__t_a8d0b29d5041dd3a5e16bd1a61bd739fd}{bunker}
+\begin{DoxyCompactList}\small\item\em Indicateur pour savoir l\textquotesingle{}avancée du joueur dans la quête \char`\"{}bunker\char`\"{}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structquete__t_a5460a0036fa3d7ee2be1709ad0aa983f}\label{structquete__t_a5460a0036fa3d7ee2be1709ad0aa983f}} 
+int \hyperlink{structquete__t_a5460a0036fa3d7ee2be1709ad0aa983f}{montagne}
+\begin{DoxyCompactList}\small\item\em Indicateur pour savoir l\textquotesingle{}avancée du joueur dans la quête \char`\"{}montagne\char`\"{}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structquete__t_aa868cfb9c0666dedb9ba8626a08b9286}\label{structquete__t_aa868cfb9c0666dedb9ba8626a08b9286}} 
+int \hyperlink{structquete__t_aa868cfb9c0666dedb9ba8626a08b9286}{frontiere}
+\begin{DoxyCompactList}\small\item\em Indicateur pour savoir l\textquotesingle{}avancée du joueur dans la quête \char`\"{}frontiere\char`\"{}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structquete__t_a234d64b7cb00513bcdb48456235f88bc}\label{structquete__t_a234d64b7cb00513bcdb48456235f88bc}} 
+int \hyperlink{structquete__t_a234d64b7cb00513bcdb48456235f88bc}{bandits}
+\begin{DoxyCompactList}\small\item\em Indicateur pour savoir l\textquotesingle{}avancée du joueur dans la quête \char`\"{}bandits\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Structure de suivi des quêtes. 
+
+
+\begin{DoxyItemize}
+\item int = -\/1 \+: quête encore non jouée
+\item int = 0 \+: quête en cours
+\item int = 1 \+: quête déja jouée/finie
+\item soin = 2 \+: quête jouée le joueur a aide l\textquotesingle{}homme blesse
+\item soin = 3 \+: quête jouée le joueur a voulu aider l\textquotesingle{}homme blesse mais sans succes 
+\end{DoxyItemize}
+
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+lib/\hyperlink{commun_8h}{commun.\+h}\end{DoxyCompactItemize}

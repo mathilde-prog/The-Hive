@@ -1,0 +1,302 @@
+\hypertarget{combat_8c}{}\section{Référence du fichier src/combat.c}
+\label{combat_8c}\index{src/combat.\+c@{src/combat.\+c}}
+
+
+Combat.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}lib/commun.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de combat.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{combat_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{combat_8c_a3ba4cc3d7ab9c1c648fdee636ec187a4}{retrieve\+\_\+enemy\+\_\+items} (\hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items, int nb\+\_\+items\+\_\+available, \hyperlink{structperso__t}{perso\+\_\+t} $\ast$player)
+\begin{DoxyCompactList}\small\item\em Génère aléatoirement 0 à 3 items (correspondant au sac à dos de l\textquotesingle{}ennemi) que le joueur peut récupérer s\textquotesingle{}il le souhaite. \end{DoxyCompactList}\item 
+void \hyperlink{combat_8c_a1892ac675df072893808c9df0d0a9931}{loot\+\_\+enemy} (\hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items, int nb\+\_\+items\+\_\+available, \hyperlink{structnpc__t}{npc\+\_\+t} $\ast$enemy, \hyperlink{structperso__t}{perso\+\_\+t} $\ast$player)
+\begin{DoxyCompactList}\small\item\em Propose au joueur de récupérer l\textquotesingle{}arme et/ou l\textquotesingle{}armure et/ou les items de l\textquotesingle{}ennemi. \end{DoxyCompactList}\item 
+void \hyperlink{combat_8c_ad3e807e3952a8790ef6e49b93090a52b}{damage\+\_\+calculator} (\hyperlink{structitem__t}{item\+\_\+t} $\ast$\hyperlink{commun_8h_adee610a3c7375031538811d29f6a4124aae810997129ae8ca5fdbb5d446720ad8}{weapon}, \hyperlink{structitem__t}{item\+\_\+t} $\ast$\hyperlink{commun_8h_adee610a3c7375031538811d29f6a4124aa5d58d178c61dcf6fc59831895e79b3a}{armor}, int $\ast$hp, int distance, int cover, int scenario)
+\begin{DoxyCompactList}\small\item\em Calcule les dommages causés par l\textquotesingle{}attaquant (scénario 1 \+: ennemi, scénario 2 \+: joueur) \end{DoxyCompactList}\item 
+\hyperlink{structnpc__t}{npc\+\_\+t} $\ast$ \hyperlink{combat_8c_aea4055090690f86a2f53512657fc89ef}{init\+\_\+npc} (\hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items)
+\begin{DoxyCompactList}\small\item\em Initialise un non-\/player character (N\+PC) ennemi (nom, arme, armure et points de vie) \end{DoxyCompactList}\item 
+\hyperlink{structstat__t}{stat\+\_\+t} $\ast$ \hyperlink{combat_8c_abc8f836ff0a959a5ebf1e6ae8654d099}{init\+\_\+field} ()
+\begin{DoxyCompactList}\small\item\em Initialise le champ de bataille du combat (positions et couvertures des adversaires, distance qui les sépare) \end{DoxyCompactList}\item 
+void \hyperlink{combat_8c_a1e91c0f609ee9f7c4da396050f0fb5ab}{turn\+\_\+npc} (\hyperlink{structnpc__t}{npc\+\_\+t} $\ast$enemy, \hyperlink{structstat__t}{stat\+\_\+t} $\ast$field, \hyperlink{structperso__t}{perso\+\_\+t} $\ast$player)
+\begin{DoxyCompactList}\small\item\em Tour du non-\/player character (N\+PC) lors du combat, le comportement du N\+PC est expliqué sur \href{https://i.imgur.com/YcOPj8o.png}{\tt ce schéma} \end{DoxyCompactList}\item 
+int \hyperlink{combat_8c_a9910d9ed72e5f5b74ca932d09cad5a3a}{run\+\_\+away} (int position, int distance, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, \hyperlink{structperso__t}{perso\+\_\+t} $\ast$player)
+\begin{DoxyCompactList}\small\item\em Détermine si le joueur réussit à fuir ou non (selon sa position et la distance qui le sépare de son ennemi) \end{DoxyCompactList}\item 
+void \hyperlink{combat_8c_a331dc85c1543198f66af77a112a2449c}{afficher\+\_\+lettre} (int chiffre, \hyperlink{structstat__t}{stat\+\_\+t} field)
+\begin{DoxyCompactList}\small\item\em Affiche les lettres correspondant au joueur et à l\textquotesingle{}ennemi si le chiffre passé en paramètre correspond à leur position. \end{DoxyCompactList}\item 
+void \hyperlink{combat_8c_a05c995612f4949ab24df8c0db4299198}{show\+\_\+field} (\hyperlink{structstat__t}{stat\+\_\+t} field)
+\begin{DoxyCompactList}\small\item\em Affiche le champ de bataille du combat en indiquant où se situent le joueur et l\textquotesingle{}ennemi. \end{DoxyCompactList}\item 
+void \hyperlink{combat_8c_a9899d498dbb5e1e935fbfb460348cb7e}{combat\+\_\+info} (int print\+\_\+type, \hyperlink{structperso__t}{perso\+\_\+t} player, \hyperlink{structnpc__t}{npc\+\_\+t} enemy, \hyperlink{structstat__t}{stat\+\_\+t} field)
+\begin{DoxyCompactList}\small\item\em Affiche les informations sur le joueur et l\textquotesingle{}ennemi (pv, armes, armures, distance), le champ de bataille et les actions possibles lors du combat. \end{DoxyCompactList}\item 
+void \hyperlink{combat_8c_a04ffb19fc8145784ad26f44adac4c4ed}{combat} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structnpc__t}{npc\+\_\+t} $\ast$enemy, \hyperlink{structstat__t}{stat\+\_\+t} $\ast$field, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, \hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items, int nb\+\_\+items\+\_\+available)
+\begin{DoxyCompactList}\small\item\em Fonction principale du combat qui gère les actions du joueur et ennemi. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Combat. 
+
+\begin{DoxyAuthor}{Auteur}
+Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{combat_8c_a331dc85c1543198f66af77a112a2449c}\label{combat_8c_a331dc85c1543198f66af77a112a2449c}} 
+\index{combat.\+c@{combat.\+c}!afficher\+\_\+lettre@{afficher\+\_\+lettre}}
+\index{afficher\+\_\+lettre@{afficher\+\_\+lettre}!combat.\+c@{combat.\+c}}
+\subsubsection{\texorpdfstring{afficher\+\_\+lettre()}{afficher\_lettre()}}
+{\footnotesize\ttfamily void afficher\+\_\+lettre (\begin{DoxyParamCaption}\item[{int}]{chiffre,  }\item[{\hyperlink{structstat__t}{stat\+\_\+t}}]{field }\end{DoxyParamCaption})}
+
+
+
+Affiche les lettres correspondant au joueur et à l\textquotesingle{}ennemi si le chiffre passé en paramètre correspond à leur position. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em chiffre} & Chiffre correspondant à une des positions possibles sur le champ de bataille \\
+\hline
+{\em field} & Champ de bataille \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{combat_8c_a04ffb19fc8145784ad26f44adac4c4ed}\label{combat_8c_a04ffb19fc8145784ad26f44adac4c4ed}} 
+\index{combat.\+c@{combat.\+c}!combat@{combat}}
+\index{combat@{combat}!combat.\+c@{combat.\+c}}
+\subsubsection{\texorpdfstring{combat()}{combat()}}
+{\footnotesize\ttfamily void combat (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structnpc__t}{npc\+\_\+t} $\ast$}]{enemy,  }\item[{\hyperlink{structstat__t}{stat\+\_\+t} $\ast$}]{field,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items,  }\item[{int}]{nb\+\_\+items\+\_\+available }\end{DoxyParamCaption})}
+
+
+
+Fonction principale du combat qui gère les actions du joueur et ennemi. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em enemy} & Pointeur sur un objet de type \hyperlink{structnpc__t}{npc\+\_\+t} correspondant à l\textquotesingle{}ennemi \\
+\hline
+{\em field} & Pointeur sur un objet de type \hyperlink{structstat__t}{stat\+\_\+t} correspond au champ de bataille \\
+\hline
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+{\em Tab\+\_\+\+Items} & Tableau contenant tous les items disponibles dans le jeu \\
+\hline
+{\em nb\+\_\+items\+\_\+available} & Nombre d\textquotesingle{}items disponibles dans le jeu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{combat_8c_a9899d498dbb5e1e935fbfb460348cb7e}\label{combat_8c_a9899d498dbb5e1e935fbfb460348cb7e}} 
+\index{combat.\+c@{combat.\+c}!combat\+\_\+info@{combat\+\_\+info}}
+\index{combat\+\_\+info@{combat\+\_\+info}!combat.\+c@{combat.\+c}}
+\subsubsection{\texorpdfstring{combat\+\_\+info()}{combat\_info()}}
+{\footnotesize\ttfamily void combat\+\_\+info (\begin{DoxyParamCaption}\item[{int}]{print\+\_\+type,  }\item[{\hyperlink{structperso__t}{perso\+\_\+t}}]{player,  }\item[{\hyperlink{structnpc__t}{npc\+\_\+t}}]{enemy,  }\item[{\hyperlink{structstat__t}{stat\+\_\+t}}]{field }\end{DoxyParamCaption})}
+
+
+
+Affiche les informations sur le joueur et l\textquotesingle{}ennemi (pv, armes, armures, distance), le champ de bataille et les actions possibles lors du combat. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em print\+\_\+type} & Configuration du combat \\
+\hline
+{\em player} & Joueur \\
+\hline
+{\em enemy} & Ennemi \\
+\hline
+{\em field} & Champ de bataille \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{combat_8c_ad3e807e3952a8790ef6e49b93090a52b}\label{combat_8c_ad3e807e3952a8790ef6e49b93090a52b}} 
+\index{combat.\+c@{combat.\+c}!damage\+\_\+calculator@{damage\+\_\+calculator}}
+\index{damage\+\_\+calculator@{damage\+\_\+calculator}!combat.\+c@{combat.\+c}}
+\subsubsection{\texorpdfstring{damage\+\_\+calculator()}{damage\_calculator()}}
+{\footnotesize\ttfamily void damage\+\_\+calculator (\begin{DoxyParamCaption}\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{weapon,  }\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{armor,  }\item[{int $\ast$}]{hp,  }\item[{int}]{distance,  }\item[{int}]{cover,  }\item[{int}]{scenario }\end{DoxyParamCaption})}
+
+
+
+Calcule les dommages causés par l\textquotesingle{}attaquant (scénario 1 \+: ennemi, scénario 2 \+: joueur) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em weapon} & Pointeur sur un objet de type \hyperlink{structitem__t}{item\+\_\+t} correspondant à l\textquotesingle{}arme attaquant \\
+\hline
+{\em armor} & Pointeur sur un objet de type \hyperlink{structitem__t}{item\+\_\+t} correspondant à l\textquotesingle{}armure non-\/attaquant \\
+\hline
+{\em hp} & Pointeur sur un objet de type int correspondant aux points de vie \\
+\hline
+{\em distance} & Distance qui sépare l\textquotesingle{}ennemi et le joueur sur le champ de bataille \\
+\hline
+{\em cover} & Couverture non-\/attaquant \\
+\hline
+{\em scenario} & Scénario \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{combat_8c_abc8f836ff0a959a5ebf1e6ae8654d099}\label{combat_8c_abc8f836ff0a959a5ebf1e6ae8654d099}} 
+\index{combat.\+c@{combat.\+c}!init\+\_\+field@{init\+\_\+field}}
+\index{init\+\_\+field@{init\+\_\+field}!combat.\+c@{combat.\+c}}
+\subsubsection{\texorpdfstring{init\+\_\+field()}{init\_field()}}
+{\footnotesize\ttfamily \hyperlink{structstat__t}{stat\+\_\+t} $\ast$ init\+\_\+field (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initialise le champ de bataille du combat (positions et couvertures des adversaires, distance qui les sépare) 
+
+\begin{DoxyReturn}{Renvoie}
+Pointeur sur un objet de type \hyperlink{structstat__t}{stat\+\_\+t} correspondant au champ de bataille créé 
+\end{DoxyReturn}
+\mbox{\Hypertarget{combat_8c_aea4055090690f86a2f53512657fc89ef}\label{combat_8c_aea4055090690f86a2f53512657fc89ef}} 
+\index{combat.\+c@{combat.\+c}!init\+\_\+npc@{init\+\_\+npc}}
+\index{init\+\_\+npc@{init\+\_\+npc}!combat.\+c@{combat.\+c}}
+\subsubsection{\texorpdfstring{init\+\_\+npc()}{init\_npc()}}
+{\footnotesize\ttfamily \hyperlink{structnpc__t}{npc\+\_\+t} $\ast$ init\+\_\+npc (\begin{DoxyParamCaption}\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items }\end{DoxyParamCaption})}
+
+
+
+Initialise un non-\/player character (N\+PC) ennemi (nom, arme, armure et points de vie) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em Tab\+\_\+\+Items} & Tableau contenant tous les items disponibles dans le jeu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Pointeur sur un objet de type \hyperlink{structnpc__t}{npc\+\_\+t} correspondant à l\textquotesingle{}ennemi créé 
+\end{DoxyReturn}
+\mbox{\Hypertarget{combat_8c_a1892ac675df072893808c9df0d0a9931}\label{combat_8c_a1892ac675df072893808c9df0d0a9931}} 
+\index{combat.\+c@{combat.\+c}!loot\+\_\+enemy@{loot\+\_\+enemy}}
+\index{loot\+\_\+enemy@{loot\+\_\+enemy}!combat.\+c@{combat.\+c}}
+\subsubsection{\texorpdfstring{loot\+\_\+enemy()}{loot\_enemy()}}
+{\footnotesize\ttfamily void loot\+\_\+enemy (\begin{DoxyParamCaption}\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items,  }\item[{int}]{nb\+\_\+items\+\_\+available,  }\item[{\hyperlink{structnpc__t}{npc\+\_\+t} $\ast$}]{enemy,  }\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player }\end{DoxyParamCaption})}
+
+
+
+Propose au joueur de récupérer l\textquotesingle{}arme et/ou l\textquotesingle{}armure et/ou les items de l\textquotesingle{}ennemi. 
+
+Cette fonction est appelée uniquement si le joueur gagne au combat. 
+\begin{DoxyParams}{Paramètres}
+{\em Tab\+\_\+\+Items} & Tableau contenant tous les items disponibles dans le jeu \\
+\hline
+{\em nb\+\_\+items\+\_\+available} & Nombre d\textquotesingle{}items disponibles dans le jeu \\
+\hline
+{\em enemy} & Pointeur sur un objet de type \hyperlink{structnpc__t}{npc\+\_\+t} correspondant à l\textquotesingle{}ennemi \\
+\hline
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{combat_8c_a3ba4cc3d7ab9c1c648fdee636ec187a4}\label{combat_8c_a3ba4cc3d7ab9c1c648fdee636ec187a4}} 
+\index{combat.\+c@{combat.\+c}!retrieve\+\_\+enemy\+\_\+items@{retrieve\+\_\+enemy\+\_\+items}}
+\index{retrieve\+\_\+enemy\+\_\+items@{retrieve\+\_\+enemy\+\_\+items}!combat.\+c@{combat.\+c}}
+\subsubsection{\texorpdfstring{retrieve\+\_\+enemy\+\_\+items()}{retrieve\_enemy\_items()}}
+{\footnotesize\ttfamily void retrieve\+\_\+enemy\+\_\+items (\begin{DoxyParamCaption}\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items,  }\item[{int}]{nb\+\_\+items\+\_\+available,  }\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player }\end{DoxyParamCaption})}
+
+
+
+Génère aléatoirement 0 à 3 items (correspondant au sac à dos de l\textquotesingle{}ennemi) que le joueur peut récupérer s\textquotesingle{}il le souhaite. 
+
+Cette fonction est appelée uniquement si le joueur gagne au combat. 
+\begin{DoxyParams}{Paramètres}
+{\em Tab\+\_\+\+Items} & Tableau contenant tous les items disponibles dans le jeu \\
+\hline
+{\em nb\+\_\+items\+\_\+available} & Nombre d\textquotesingle{}items disponibles dans le jeu \\
+\hline
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{combat_8c_a9910d9ed72e5f5b74ca932d09cad5a3a}\label{combat_8c_a9910d9ed72e5f5b74ca932d09cad5a3a}} 
+\index{combat.\+c@{combat.\+c}!run\+\_\+away@{run\+\_\+away}}
+\index{run\+\_\+away@{run\+\_\+away}!combat.\+c@{combat.\+c}}
+\subsubsection{\texorpdfstring{run\+\_\+away()}{run\_away()}}
+{\footnotesize\ttfamily int run\+\_\+away (\begin{DoxyParamCaption}\item[{int}]{position,  }\item[{int}]{distance,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player }\end{DoxyParamCaption})}
+
+
+
+Détermine si le joueur réussit à fuir ou non (selon sa position et la distance qui le sépare de son ennemi) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em position} & Position du joueur sur le champ de bataille \\
+\hline
+{\em distance} & Distance entre le joueur et l\textquotesingle{}ennemi sur le champ de bataille \\
+\hline
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un {\itshape int} \+: 1 si le joueur réussit à fuir. 0 s\textquotesingle{}il échoue. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{combat_8c_a05c995612f4949ab24df8c0db4299198}\label{combat_8c_a05c995612f4949ab24df8c0db4299198}} 
+\index{combat.\+c@{combat.\+c}!show\+\_\+field@{show\+\_\+field}}
+\index{show\+\_\+field@{show\+\_\+field}!combat.\+c@{combat.\+c}}
+\subsubsection{\texorpdfstring{show\+\_\+field()}{show\_field()}}
+{\footnotesize\ttfamily void show\+\_\+field (\begin{DoxyParamCaption}\item[{\hyperlink{structstat__t}{stat\+\_\+t}}]{field }\end{DoxyParamCaption})}
+
+
+
+Affiche le champ de bataille du combat en indiquant où se situent le joueur et l\textquotesingle{}ennemi. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em field} & Champ de bataille \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{combat_8c_a1e91c0f609ee9f7c4da396050f0fb5ab}\label{combat_8c_a1e91c0f609ee9f7c4da396050f0fb5ab}} 
+\index{combat.\+c@{combat.\+c}!turn\+\_\+npc@{turn\+\_\+npc}}
+\index{turn\+\_\+npc@{turn\+\_\+npc}!combat.\+c@{combat.\+c}}
+\subsubsection{\texorpdfstring{turn\+\_\+npc()}{turn\_npc()}}
+{\footnotesize\ttfamily void turn\+\_\+npc (\begin{DoxyParamCaption}\item[{\hyperlink{structnpc__t}{npc\+\_\+t} $\ast$}]{enemy,  }\item[{\hyperlink{structstat__t}{stat\+\_\+t} $\ast$}]{field,  }\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player }\end{DoxyParamCaption})}
+
+
+
+Tour du non-\/player character (N\+PC) lors du combat, le comportement du N\+PC est expliqué sur \href{https://i.imgur.com/YcOPj8o.png}{\tt ce schéma} 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em enemy} & Pointeur sur un objet de type \hyperlink{structnpc__t}{npc\+\_\+t} correspondant à l\textquotesingle{}ennemi \\
+\hline
+{\em field} & Pointeur sur un objet de type \hyperlink{structstat__t}{stat\+\_\+t} correspondant au champ de bataille \\
+\hline
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}

@@ -13,7 +13,7 @@
 */
 
 /**
- * \void save_test (perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete)
+ * \fn void save_test (perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t quete)
  * \brief Sauvegarde les informations sur le joueur, son inventaire, son équipement ainsi que les informations sur la carte et les quêtes d'une partie test.
  * \details Informations sur le joueur : points de vie, points d'énergie, points d'action, position sur la carte, nombre de tours restants
  * \details Informations sur la carte : pour chaque case de la matrice map, on sauvegarde son type, sa catégorie, s'il y a un combat, si le joueur a déjà fouillé la case et si une quête y est positionnée.

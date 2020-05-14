@@ -1,0 +1,111 @@
+\hypertarget{fonctions__pratiques_8c}{}\section{Référence du fichier src/fonctions\+\_\+pratiques.c}
+\label{fonctions__pratiques_8c}\index{src/fonctions\+\_\+pratiques.\+c@{src/fonctions\+\_\+pratiques.\+c}}
+
+
+Fontions pratiques utilisées dans tout le code.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}lib/commun.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de fonctions\+\_\+pratiques.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fonctions__pratiques_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{fonctions__pratiques_8c_aa4899d80cb631c57ee63b3d4a04b5cbe}{entree\+\_\+pour\+\_\+continuer} ()
+\begin{DoxyCompactList}\small\item\em Actionne la continuité du jeu par la touche \char`\"{}entrée\char`\"{}. \end{DoxyCompactList}\item 
+void \hyperlink{fonctions__pratiques_8c_af3eac3ad203ab091baad010ef3f7ab0a}{clrscr} ()
+\begin{DoxyCompactList}\small\item\em Efface la sortie du terminal, le remet à zéro. \end{DoxyCompactList}\item 
+int \hyperlink{fonctions__pratiques_8c_acff6b648c6726c70104531f080bfa710}{range} (int a, int b)
+\begin{DoxyCompactList}\small\item\em Génère un nombre aléatoire compris entre deux entiers passés en paramètre. \end{DoxyCompactList}\item 
+int \hyperlink{fonctions__pratiques_8c_a40356000b1ed5cc4b2798194e57acefc}{rng} (int prob)
+\begin{DoxyCompactList}\small\item\em Génère 0 ou 1 en fonction de la probabilité en pourcentage passée en paramètre. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Fontions pratiques utilisées dans tout le code. 
+
+\begin{DoxyAuthor}{Auteur}
+Mathilde Mottay, Anais Mottier, Clement Mainguy, Moustapha Tsamarayev 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{fonctions__pratiques_8c_af3eac3ad203ab091baad010ef3f7ab0a}\label{fonctions__pratiques_8c_af3eac3ad203ab091baad010ef3f7ab0a}} 
+\index{fonctions\+\_\+pratiques.\+c@{fonctions\+\_\+pratiques.\+c}!clrscr@{clrscr}}
+\index{clrscr@{clrscr}!fonctions\+\_\+pratiques.\+c@{fonctions\+\_\+pratiques.\+c}}
+\subsubsection{\texorpdfstring{clrscr()}{clrscr()}}
+{\footnotesize\ttfamily void clrscr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Efface la sortie du terminal, le remet à zéro. 
+
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{fonctions__pratiques_8c_aa4899d80cb631c57ee63b3d4a04b5cbe}\label{fonctions__pratiques_8c_aa4899d80cb631c57ee63b3d4a04b5cbe}} 
+\index{fonctions\+\_\+pratiques.\+c@{fonctions\+\_\+pratiques.\+c}!entree\+\_\+pour\+\_\+continuer@{entree\+\_\+pour\+\_\+continuer}}
+\index{entree\+\_\+pour\+\_\+continuer@{entree\+\_\+pour\+\_\+continuer}!fonctions\+\_\+pratiques.\+c@{fonctions\+\_\+pratiques.\+c}}
+\subsubsection{\texorpdfstring{entree\+\_\+pour\+\_\+continuer()}{entree\_pour\_continuer()}}
+{\footnotesize\ttfamily void entree\+\_\+pour\+\_\+continuer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Actionne la continuité du jeu par la touche \char`\"{}entrée\char`\"{}. 
+
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{fonctions__pratiques_8c_acff6b648c6726c70104531f080bfa710}\label{fonctions__pratiques_8c_acff6b648c6726c70104531f080bfa710}} 
+\index{fonctions\+\_\+pratiques.\+c@{fonctions\+\_\+pratiques.\+c}!range@{range}}
+\index{range@{range}!fonctions\+\_\+pratiques.\+c@{fonctions\+\_\+pratiques.\+c}}
+\subsubsection{\texorpdfstring{range()}{range()}}
+{\footnotesize\ttfamily int range (\begin{DoxyParamCaption}\item[{int}]{a,  }\item[{int}]{b }\end{DoxyParamCaption})}
+
+
+
+Génère un nombre aléatoire compris entre deux entiers passés en paramètre. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em a} & Valeur min de l\textquotesingle{}intervalle (inclus) \\
+\hline
+{\em b} & Valeur max de l\textquotesingle{}intervalle (inclus) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\itshape int} dans l\textquotesingle{}intervalle \mbox{[}a;b\mbox{]} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{fonctions__pratiques_8c_a40356000b1ed5cc4b2798194e57acefc}\label{fonctions__pratiques_8c_a40356000b1ed5cc4b2798194e57acefc}} 
+\index{fonctions\+\_\+pratiques.\+c@{fonctions\+\_\+pratiques.\+c}!rng@{rng}}
+\index{rng@{rng}!fonctions\+\_\+pratiques.\+c@{fonctions\+\_\+pratiques.\+c}}
+\subsubsection{\texorpdfstring{rng()}{rng()}}
+{\footnotesize\ttfamily int rng (\begin{DoxyParamCaption}\item[{int}]{prob }\end{DoxyParamCaption})}
+
+
+
+Génère 0 ou 1 en fonction de la probabilité en pourcentage passée en paramètre. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em prob} & Probabilité en pourcentage \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\itshape int} \+: 1 ou 0. 
+\end{DoxyReturn}

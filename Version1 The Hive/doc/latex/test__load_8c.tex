@@ -1,0 +1,97 @@
+\hypertarget{test__load_8c}{}\section{Référence du fichier src/test\+\_\+load.c}
+\label{test__load_8c}\index{src/test\+\_\+load.\+c@{src/test\+\_\+load.\+c}}
+
+
+Fichier T\+E\+ST -\/ Charger une partie.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}lib/commun.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de test\+\_\+load.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test__load_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{test__load_8c_a83ea4b7b92a36ea1f45ac9ee32442a6e}{load\+\_\+test} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, int quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}, \hyperlink{structquete__t}{quete\+\_\+t} $\ast$quete)
+\begin{DoxyCompactList}\small\item\em Charge les informations sur le joueur, son inventaire, son équipement ainsi que les informations sur la carte et les quêtes d\textquotesingle{}une partie test. \end{DoxyCompactList}\item 
+int \hyperlink{test__load_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
+\begin{DoxyCompactList}\small\item\em Programme principal pour tester le système de chargement. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Fichier T\+E\+ST -\/ Charger une partie. 
+
+\begin{DoxyAuthor}{Auteur}
+Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{test__load_8c_a83ea4b7b92a36ea1f45ac9ee32442a6e}\label{test__load_8c_a83ea4b7b92a36ea1f45ac9ee32442a6e}} 
+\index{test\+\_\+load.\+c@{test\+\_\+load.\+c}!load\+\_\+test@{load\+\_\+test}}
+\index{load\+\_\+test@{load\+\_\+test}!test\+\_\+load.\+c@{test\+\_\+load.\+c}}
+\subsubsection{\texorpdfstring{load\+\_\+test()}{load\_test()}}
+{\footnotesize\ttfamily void load\+\_\+test (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{int}]{quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]},  }\item[{\hyperlink{structquete__t}{quete\+\_\+t} $\ast$}]{quete }\end{DoxyParamCaption})}
+
+
+
+Charge les informations sur le joueur, son inventaire, son équipement ainsi que les informations sur la carte et les quêtes d\textquotesingle{}une partie test. 
+
+Informations sur le joueur \+: points de vie, points d\textquotesingle{}énergie, points d\textquotesingle{}action, position sur la carte, nombre de tours restants
+
+Informations sur la carte \+: pour chaque case de la matrice map, on récupère son type, sa catégorie, s\textquotesingle{}il y a un combat, si le joueur a déjà fouillé la case et si une quête y est positionnée.
+
+Informations sur les quêtes \+: on récupère les coordonnées de chaque quête ainsi que leurs états.
+
+Fonction T\+E\+ST 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+{\em quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}} & Matrice des coordonnées des quêtes \\
+\hline
+{\em quete} & Pointeur sur un objet de type \hyperlink{structquete__t}{quete\+\_\+t} correspondant à l\textquotesingle{}état des quêtes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{test__load_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{test__load_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{test\+\_\+load.\+c@{test\+\_\+load.\+c}!main@{main}}
+\index{main@{main}!test\+\_\+load.\+c@{test\+\_\+load.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Programme principal pour tester le système de chargement. 
+
+Charge la sauvegarde d\textquotesingle{}une partie test
+
+Menu test\+\_\+backup\+:
+\begin{DoxyEnumerate}
+\item Afficher les caractéristiques du joueur
+\item Affiche l\textquotesingle{}inventaire
+\item Afficher l\textquotesingle{}équipement
+\item Afficher la carte
+\item Afficher les détails de la carte
+\item Afficher les informations sur les quêtes
+\end{DoxyEnumerate}
+
+Ce menu permet de comparer avec le résultat obtenu au test de sauvegarde (\hyperlink{test__backup_8c}{test\+\_\+backup.\+c}) 

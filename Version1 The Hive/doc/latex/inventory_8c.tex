@@ -1,0 +1,255 @@
+\hypertarget{inventory_8c}{}\section{Référence du fichier src/inventory.c}
+\label{inventory_8c}\index{src/inventory.\+c@{src/inventory.\+c}}
+
+
+Gestion de l\textquotesingle{}inventaire du joueur.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}lib/commun.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de inventory.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{inventory_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{inventory_8c_a400e5d6c52a35b165053c2475905d656}{gain\+\_\+energie} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, int val\+\_\+e)
+\begin{DoxyCompactList}\small\item\em Calcule et met à jour les points d\textquotesingle{}énergie du joueur selon la valeur énergétique de l\textquotesingle{}item mangé / bu. \end{DoxyCompactList}\item 
+void \hyperlink{inventory_8c_ab3d3633d751f914bb3b4609a9950c513}{eat\+\_\+or\+\_\+drink} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structitem__t}{item\+\_\+t} item)
+\begin{DoxyCompactList}\small\item\em Permet au joueur de boire ou manger un item de type {\itshape food} et récupérer des points d\textquotesingle{}énergie ou action (si cela est possible). \end{DoxyCompactList}\item 
+void \hyperlink{inventory_8c_a08b9c4c266cfcf2e07d74de53285d88f}{check\+\_\+the\+\_\+map} (\hyperlink{structperso__t}{perso\+\_\+t} player, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Affiche la carte, si le joueur en possède une dans son inventaire. \end{DoxyCompactList}\item 
+int \hyperlink{inventory_8c_a422fba7d76e9ed4b5783cf5d9177aad8}{item\+\_\+in\+\_\+inventory} (\hyperlink{structperso__t}{perso\+\_\+t} player, char $\ast$nom\+\_\+item)
+\begin{DoxyCompactList}\small\item\em Recherche si l\textquotesingle{}item dont le nom est passé en paramètre est présent ou non dans l\textquotesingle{}inventaire. \end{DoxyCompactList}\item 
+int \hyperlink{inventory_8c_a74d9dc2f174857b3bf7ec5453faae17e}{food\+\_\+in\+\_\+inventory} (\hyperlink{structperso__t}{perso\+\_\+t} player)
+\begin{DoxyCompactList}\small\item\em Calcule le nombre d\textquotesingle{}items {\itshape food} dans l\textquotesingle{}inventaire du joueur. \end{DoxyCompactList}\item 
+int \hyperlink{inventory_8c_ae86124ec1e7b0d9c46acbd4327e9885d}{too\+\_\+much\+\_\+of\+\_\+the\+\_\+same\+\_\+item} (\hyperlink{structperso__t}{perso\+\_\+t} player, \hyperlink{structitem__t}{item\+\_\+t} item)
+\begin{DoxyCompactList}\small\item\em Indique si l\textquotesingle{}item passé en paramètre apparaît 2 fois ou plus dans l\textquotesingle{}inventaire du joueur. \end{DoxyCompactList}\item 
+void \hyperlink{inventory_8c_a354d78a490ef30d40f4a726524090b21}{display\+\_\+inventory} (\hyperlink{structperso__t}{perso\+\_\+t} player)
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}inventaire du joueur. \end{DoxyCompactList}\item 
+void \hyperlink{inventory_8c_a9bc6d36c93298c7aead4ea6e7e6e3e26}{delete\+\_\+item\+\_\+in\+\_\+inventory} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structitem__t}{item\+\_\+t} item)
+\begin{DoxyCompactList}\small\item\em Retire l\textquotesingle{}item passé en paramètre de l\textquotesingle{}inventaire (et de l\textquotesingle{}équipement si besoin) du joueur. \end{DoxyCompactList}\item 
+int \hyperlink{inventory_8c_a1668516cd0e1d31746805efdbd4a5f34}{add\+\_\+item\+\_\+to\+\_\+inventory} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structitem__t}{item\+\_\+t} item)
+\begin{DoxyCompactList}\small\item\em Ajoute un item à l\textquotesingle{}inventaire du joueur. \end{DoxyCompactList}\item 
+void \hyperlink{inventory_8c_a35b519c6835c9aa90ff5fd35b0e68f66}{manage\+\_\+inventory} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player)
+\begin{DoxyCompactList}\small\item\em Fonction centrale du fichier \hyperlink{inventory_8c}{inventory.\+c} permettant au joueur de gérer son inventaire. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Gestion de l\textquotesingle{}inventaire du joueur. 
+
+\begin{DoxyAuthor}{Auteur}
+Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{inventory_8c_a1668516cd0e1d31746805efdbd4a5f34}\label{inventory_8c_a1668516cd0e1d31746805efdbd4a5f34}} 
+\index{inventory.\+c@{inventory.\+c}!add\+\_\+item\+\_\+to\+\_\+inventory@{add\+\_\+item\+\_\+to\+\_\+inventory}}
+\index{add\+\_\+item\+\_\+to\+\_\+inventory@{add\+\_\+item\+\_\+to\+\_\+inventory}!inventory.\+c@{inventory.\+c}}
+\subsubsection{\texorpdfstring{add\+\_\+item\+\_\+to\+\_\+inventory()}{add\_item\_to\_inventory()}}
+{\footnotesize\ttfamily int add\+\_\+item\+\_\+to\+\_\+inventory (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structitem__t}{item\+\_\+t}}]{item }\end{DoxyParamCaption})}
+
+
+
+Ajoute un item à l\textquotesingle{}inventaire du joueur. 
+
+Si son inventaire est plein, propose un échange. 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em item} & Item à ajouter à l\textquotesingle{}inventaire \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un {\itshape int} \+: 1 si ajout effectué. 0 sinon. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{inventory_8c_a08b9c4c266cfcf2e07d74de53285d88f}\label{inventory_8c_a08b9c4c266cfcf2e07d74de53285d88f}} 
+\index{inventory.\+c@{inventory.\+c}!check\+\_\+the\+\_\+map@{check\+\_\+the\+\_\+map}}
+\index{check\+\_\+the\+\_\+map@{check\+\_\+the\+\_\+map}!inventory.\+c@{inventory.\+c}}
+\subsubsection{\texorpdfstring{check\+\_\+the\+\_\+map()}{check\_the\_map()}}
+{\footnotesize\ttfamily void check\+\_\+the\+\_\+map (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t}}]{player,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Affiche la carte, si le joueur en possède une dans son inventaire. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em player} & Joueur \\
+\hline
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{inventory_8c_a9bc6d36c93298c7aead4ea6e7e6e3e26}\label{inventory_8c_a9bc6d36c93298c7aead4ea6e7e6e3e26}} 
+\index{inventory.\+c@{inventory.\+c}!delete\+\_\+item\+\_\+in\+\_\+inventory@{delete\+\_\+item\+\_\+in\+\_\+inventory}}
+\index{delete\+\_\+item\+\_\+in\+\_\+inventory@{delete\+\_\+item\+\_\+in\+\_\+inventory}!inventory.\+c@{inventory.\+c}}
+\subsubsection{\texorpdfstring{delete\+\_\+item\+\_\+in\+\_\+inventory()}{delete\_item\_in\_inventory()}}
+{\footnotesize\ttfamily void delete\+\_\+item\+\_\+in\+\_\+inventory (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structitem__t}{item\+\_\+t}}]{item }\end{DoxyParamCaption})}
+
+
+
+Retire l\textquotesingle{}item passé en paramètre de l\textquotesingle{}inventaire (et de l\textquotesingle{}équipement si besoin) du joueur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em item} & Item à retirer de l\textquotesingle{}inventaire \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{inventory_8c_a354d78a490ef30d40f4a726524090b21}\label{inventory_8c_a354d78a490ef30d40f4a726524090b21}} 
+\index{inventory.\+c@{inventory.\+c}!display\+\_\+inventory@{display\+\_\+inventory}}
+\index{display\+\_\+inventory@{display\+\_\+inventory}!inventory.\+c@{inventory.\+c}}
+\subsubsection{\texorpdfstring{display\+\_\+inventory()}{display\_inventory()}}
+{\footnotesize\ttfamily void display\+\_\+inventory (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t}}]{player }\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}inventaire du joueur. 
+
+Affichage des items de l\textquotesingle{}inventaire avec leurs positions, par catégorie (armes, armures, divers, nourriture). Indique si item équipé pour les armes et armures. 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{inventory_8c_ab3d3633d751f914bb3b4609a9950c513}\label{inventory_8c_ab3d3633d751f914bb3b4609a9950c513}} 
+\index{inventory.\+c@{inventory.\+c}!eat\+\_\+or\+\_\+drink@{eat\+\_\+or\+\_\+drink}}
+\index{eat\+\_\+or\+\_\+drink@{eat\+\_\+or\+\_\+drink}!inventory.\+c@{inventory.\+c}}
+\subsubsection{\texorpdfstring{eat\+\_\+or\+\_\+drink()}{eat\_or\_drink()}}
+{\footnotesize\ttfamily void eat\+\_\+or\+\_\+drink (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structitem__t}{item\+\_\+t}}]{item }\end{DoxyParamCaption})}
+
+
+
+Permet au joueur de boire ou manger un item de type {\itshape food} et récupérer des points d\textquotesingle{}énergie ou action (si cela est possible). 
+
+Retire l\textquotesingle{}item mangé / bu de l\textquotesingle{}inventaire 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em item} & Item que le joueur désire manger ou boire \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{inventory_8c_a74d9dc2f174857b3bf7ec5453faae17e}\label{inventory_8c_a74d9dc2f174857b3bf7ec5453faae17e}} 
+\index{inventory.\+c@{inventory.\+c}!food\+\_\+in\+\_\+inventory@{food\+\_\+in\+\_\+inventory}}
+\index{food\+\_\+in\+\_\+inventory@{food\+\_\+in\+\_\+inventory}!inventory.\+c@{inventory.\+c}}
+\subsubsection{\texorpdfstring{food\+\_\+in\+\_\+inventory()}{food\_in\_inventory()}}
+{\footnotesize\ttfamily int food\+\_\+in\+\_\+inventory (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t}}]{player }\end{DoxyParamCaption})}
+
+
+
+Calcule le nombre d\textquotesingle{}items {\itshape food} dans l\textquotesingle{}inventaire du joueur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em player} & Joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un {\itshape int} \+: nombre d\textquotesingle{}items {\itshape food} dans l\textquotesingle{}inventaire du joueur 
+\end{DoxyReturn}
+\mbox{\Hypertarget{inventory_8c_a400e5d6c52a35b165053c2475905d656}\label{inventory_8c_a400e5d6c52a35b165053c2475905d656}} 
+\index{inventory.\+c@{inventory.\+c}!gain\+\_\+energie@{gain\+\_\+energie}}
+\index{gain\+\_\+energie@{gain\+\_\+energie}!inventory.\+c@{inventory.\+c}}
+\subsubsection{\texorpdfstring{gain\+\_\+energie()}{gain\_energie()}}
+{\footnotesize\ttfamily void gain\+\_\+energie (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{int}]{val\+\_\+e }\end{DoxyParamCaption})}
+
+
+
+Calcule et met à jour les points d\textquotesingle{}énergie du joueur selon la valeur énergétique de l\textquotesingle{}item mangé / bu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em val\+\_\+e} & Valeur énergétique de l\textquotesingle{}item mangé/bu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{inventory_8c_a422fba7d76e9ed4b5783cf5d9177aad8}\label{inventory_8c_a422fba7d76e9ed4b5783cf5d9177aad8}} 
+\index{inventory.\+c@{inventory.\+c}!item\+\_\+in\+\_\+inventory@{item\+\_\+in\+\_\+inventory}}
+\index{item\+\_\+in\+\_\+inventory@{item\+\_\+in\+\_\+inventory}!inventory.\+c@{inventory.\+c}}
+\subsubsection{\texorpdfstring{item\+\_\+in\+\_\+inventory()}{item\_in\_inventory()}}
+{\footnotesize\ttfamily int item\+\_\+in\+\_\+inventory (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t}}]{player,  }\item[{char $\ast$}]{nom\+\_\+item }\end{DoxyParamCaption})}
+
+
+
+Recherche si l\textquotesingle{}item dont le nom est passé en paramètre est présent ou non dans l\textquotesingle{}inventaire. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em player} & Joueur \\
+\hline
+{\em nom\+\_\+item} & Nom de l\textquotesingle{}item à rechercher dans l\textquotesingle{}inventaire \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un {\itshape int} \+: position de l\textquotesingle{}item dans l\textquotesingle{}inventaire si présent, -\/1 si absent 
+\end{DoxyReturn}
+\mbox{\Hypertarget{inventory_8c_a35b519c6835c9aa90ff5fd35b0e68f66}\label{inventory_8c_a35b519c6835c9aa90ff5fd35b0e68f66}} 
+\index{inventory.\+c@{inventory.\+c}!manage\+\_\+inventory@{manage\+\_\+inventory}}
+\index{manage\+\_\+inventory@{manage\+\_\+inventory}!inventory.\+c@{inventory.\+c}}
+\subsubsection{\texorpdfstring{manage\+\_\+inventory()}{manage\_inventory()}}
+{\footnotesize\ttfamily void manage\+\_\+inventory (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player }\end{DoxyParamCaption})}
+
+
+
+Fonction centrale du fichier \hyperlink{inventory_8c}{inventory.\+c} permettant au joueur de gérer son inventaire. 
+
+Menu inventaire \+: Possibilité pour le joueur d\textquotesingle{}en savoir plus sur un de ses items, de se débarasser d\textquotesingle{}un item, de manger/boire un item, d\textquotesingle{}utiliser son kit médical (s\textquotesingle{}il en possède un) 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{inventory_8c_ae86124ec1e7b0d9c46acbd4327e9885d}\label{inventory_8c_ae86124ec1e7b0d9c46acbd4327e9885d}} 
+\index{inventory.\+c@{inventory.\+c}!too\+\_\+much\+\_\+of\+\_\+the\+\_\+same\+\_\+item@{too\+\_\+much\+\_\+of\+\_\+the\+\_\+same\+\_\+item}}
+\index{too\+\_\+much\+\_\+of\+\_\+the\+\_\+same\+\_\+item@{too\+\_\+much\+\_\+of\+\_\+the\+\_\+same\+\_\+item}!inventory.\+c@{inventory.\+c}}
+\subsubsection{\texorpdfstring{too\+\_\+much\+\_\+of\+\_\+the\+\_\+same\+\_\+item()}{too\_much\_of\_the\_same\_item()}}
+{\footnotesize\ttfamily int too\+\_\+much\+\_\+of\+\_\+the\+\_\+same\+\_\+item (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t}}]{player,  }\item[{\hyperlink{structitem__t}{item\+\_\+t}}]{item }\end{DoxyParamCaption})}
+
+
+
+Indique si l\textquotesingle{}item passé en paramètre apparaît 2 fois ou plus dans l\textquotesingle{}inventaire du joueur. 
+
+Remarque \+: Un item peut figurer au maximum 2 fois dans l\textquotesingle{}inventaire du joueur 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Joueur \\
+\hline
+{\em item} & Item \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un {\itshape int} \+: retourne 1 si l\textquotesingle{}item est présent 2 fois ou plus dans l\textquotesingle{}inventaire. 0 sinon. 
+\end{DoxyReturn}

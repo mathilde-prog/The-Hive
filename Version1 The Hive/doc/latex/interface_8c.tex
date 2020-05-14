@@ -1,0 +1,165 @@
+\hypertarget{interface_8c}{}\section{Référence du fichier src/interface.c}
+\label{interface_8c}\index{src/interface.\+c@{src/interface.\+c}}
+
+
+Affichage de l\textquotesingle{}interface de jeu via S\+D\+L2.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$S\+D\+L2/\+S\+D\+L.\+h$>$}\newline
+{\ttfamily \#include $<$S\+D\+L2/\+S\+D\+L\+\_\+ttf.\+h$>$}\newline
+{\ttfamily \#include $<$S\+D\+L2/\+S\+D\+L\+\_\+image.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}lib/commun.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de interface.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{interface_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{interface_8c_a72e40a3baec27ad650a1e64232c469ff}\label{interface_8c_a72e40a3baec27ad650a1e64232c469ff}} 
+void {\bfseries init\+\_\+map\+\_\+essai} (int mapint\mbox{[}N\mbox{]}\mbox{[}N\mbox{]})
+\item 
+void \hyperlink{interface_8c_ae576b56c42790f66810ea77bbd0110c8}{map\+\_\+correspondance} (\hyperlink{structcell__t}{cell\+\_\+t} map\+\_\+cell\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, int mapaff\mbox{[}N\mbox{]}\mbox{[}N\mbox{]}, int position\+\_\+x, int position\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Met en relation la map sur laquelle évolue le personnage et la amtrice gérant l\textquotesingle{}affichage de celle-\/ci en prenant en compte les coordonées où se situe le personnage. \end{DoxyCompactList}\item 
+void \hyperlink{interface_8c_a72234564c5e3874c5e5436ef744cadae}{relation\+\_\+hexa\+\_\+char} (char $\ast$mapchar\mbox{[}$\,$\mbox{]}, int mapint\mbox{[}N\mbox{]}\mbox{[}N\mbox{]})
+\begin{DoxyCompactList}\small\item\em Remplit un matrice des nom des cases a afficher (images) à partir du chiffre contenu dans la matrice initiale. \end{DoxyCompactList}\item 
+void \hyperlink{interface_8c_a202b6b178b6f39512d209566a7777b3a}{affichage\+\_\+case\+\_\+centrale} (S\+D\+L\+\_\+\+Renderer $\ast$renderer)
+\begin{DoxyCompactList}\small\item\em Affiche dans la case centrale de l\textquotesingle{}écran un hilight et le personnage. \end{DoxyCompactList}\item 
+void \hyperlink{interface_8c_ae8bd235fc0856651fa0fc487fe9ede40}{affichage\+\_\+map} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, char $\ast$map\mbox{[}$\,$\mbox{]}, int maptest\mbox{[}N\mbox{]}\mbox{[}N\mbox{]}, \hyperlink{structcell__t}{cell\+\_\+t} map1\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, \hyperlink{structperso__t}{perso\+\_\+t} player)
+\begin{DoxyCompactList}\small\item\em Affiche la map, c\textquotesingle{}est à dire la partie composée d\textquotesingle{}hexagones à partir de la position du personnage. \end{DoxyCompactList}\item 
+int \hyperlink{interface_8c_a08c7b7c98d57d8ea66889f08d78587e1}{interface} ()
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}interface en elle-\/même. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{interface_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{interface_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+int {\bfseries main} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{interface_8c_a3e6e7db94ea5600cce7563ea4a47b5f3}\label{interface_8c_a3e6e7db94ea5600cce7563ea4a47b5f3}} 
+char $\ast$ {\bfseries map} \mbox{[}N $\ast$N\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Affichage de l\textquotesingle{}interface de jeu via S\+D\+L2. 
+
+\begin{DoxyAuthor}{Auteur}
+Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{interface_8c_a202b6b178b6f39512d209566a7777b3a}\label{interface_8c_a202b6b178b6f39512d209566a7777b3a}} 
+\index{interface.\+c@{interface.\+c}!affichage\+\_\+case\+\_\+centrale@{affichage\+\_\+case\+\_\+centrale}}
+\index{affichage\+\_\+case\+\_\+centrale@{affichage\+\_\+case\+\_\+centrale}!interface.\+c@{interface.\+c}}
+\subsubsection{\texorpdfstring{affichage\+\_\+case\+\_\+centrale()}{affichage\_case\_centrale()}}
+{\footnotesize\ttfamily void affichage\+\_\+case\+\_\+centrale (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})}
+
+
+
+Affiche dans la case centrale de l\textquotesingle{}écran un hilight et le personnage. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em S\+D\+L\+\_\+\+Renderer} & $\ast$renderer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interface_8c_ae8bd235fc0856651fa0fc487fe9ede40}\label{interface_8c_ae8bd235fc0856651fa0fc487fe9ede40}} 
+\index{interface.\+c@{interface.\+c}!affichage\+\_\+map@{affichage\+\_\+map}}
+\index{affichage\+\_\+map@{affichage\+\_\+map}!interface.\+c@{interface.\+c}}
+\subsubsection{\texorpdfstring{affichage\+\_\+map()}{affichage\_map()}}
+{\footnotesize\ttfamily void void affichage\+\_\+map (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{char $\ast$}]{map\mbox{[}$\,$\mbox{]},  }\item[{int}]{maptest\mbox{[}\+N\mbox{]}\mbox{[}\+N\mbox{]},  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map1\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{\hyperlink{structperso__t}{perso\+\_\+t}}]{player }\end{DoxyParamCaption})}
+
+
+
+Affiche la map, c\textquotesingle{}est à dire la partie composée d\textquotesingle{}hexagones à partir de la position du personnage. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em S\+D\+L\+\_\+\+Renderer} & $\ast$renderer \\
+\hline
+{\em char} & $\ast$map\mbox{[}\mbox{]} \\
+\hline
+{\em int} & maptest\mbox{[}N\mbox{]}\mbox{[}N\mbox{]} \\
+\hline
+{\em \hyperlink{structcell__t}{cell\+\_\+t}} & map1\mbox{[}D\mbox{]}\mbox{[}D\mbox{]} \\
+\hline
+{\em \hyperlink{structperso__t}{perso\+\_\+t}} & player \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interface_8c_a08c7b7c98d57d8ea66889f08d78587e1}\label{interface_8c_a08c7b7c98d57d8ea66889f08d78587e1}} 
+\index{interface.\+c@{interface.\+c}!interface@{interface}}
+\index{interface@{interface}!interface.\+c@{interface.\+c}}
+\subsubsection{\texorpdfstring{interface()}{interface()}}
+{\footnotesize\ttfamily int interface (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}interface en elle-\/même. 
+
+\begin{DoxyReturn}{Renvoie}
+0 si tout c\textquotesingle{}est bien passé 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interface_8c_ae576b56c42790f66810ea77bbd0110c8}\label{interface_8c_ae576b56c42790f66810ea77bbd0110c8}} 
+\index{interface.\+c@{interface.\+c}!map\+\_\+correspondance@{map\+\_\+correspondance}}
+\index{map\+\_\+correspondance@{map\+\_\+correspondance}!interface.\+c@{interface.\+c}}
+\subsubsection{\texorpdfstring{map\+\_\+correspondance()}{map\_correspondance()}}
+{\footnotesize\ttfamily map\+\_\+correspondance (\begin{DoxyParamCaption}\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\+\_\+cell\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{int}]{mapaff\mbox{[}\+N\mbox{]}\mbox{[}\+N\mbox{]},  }\item[{int}]{position\+\_\+x,  }\item[{int}]{position\+\_\+y }\end{DoxyParamCaption})}
+
+
+
+Met en relation la map sur laquelle évolue le personnage et la amtrice gérant l\textquotesingle{}affichage de celle-\/ci en prenant en compte les coordonées où se situe le personnage. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em \hyperlink{structcell__t}{cell\+\_\+t}} & map\+\_\+cell\mbox{[}D\mbox{]}\mbox{[}D\mbox{]} \\
+\hline
+{\em int} & mapaff\mbox{[}N\mbox{]}\mbox{[}N\mbox{]} \\
+\hline
+{\em int} & position\+\_\+x \\
+\hline
+{\em int} & position\+\_\+y \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interface_8c_a72234564c5e3874c5e5436ef744cadae}\label{interface_8c_a72234564c5e3874c5e5436ef744cadae}} 
+\index{interface.\+c@{interface.\+c}!relation\+\_\+hexa\+\_\+char@{relation\+\_\+hexa\+\_\+char}}
+\index{relation\+\_\+hexa\+\_\+char@{relation\+\_\+hexa\+\_\+char}!interface.\+c@{interface.\+c}}
+\subsubsection{\texorpdfstring{relation\+\_\+hexa\+\_\+char()}{relation\_hexa\_char()}}
+{\footnotesize\ttfamily void relation\+\_\+hexa\+\_\+char (\begin{DoxyParamCaption}\item[{char $\ast$}]{mapchar\mbox{[}$\,$\mbox{]},  }\item[{int}]{mapint\mbox{[}\+N\mbox{]}\mbox{[}\+N\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Remplit un matrice des nom des cases a afficher (images) à partir du chiffre contenu dans la matrice initiale. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em char$\ast$} & mapchar\mbox{[}\mbox{]} \\
+\hline
+{\em int} & mapint\mbox{[}N\mbox{]}\mbox{[}N\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}

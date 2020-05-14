@@ -1,0 +1,3060 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projet L2 Informatique - The Hive: Référence du fichier lib/commun.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Projet L2 Informatique - The Hive
+   </div>
+   <div id="projectbrief">Documentation jeu The Hive (Projet L2 Informatique)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#enum-members">Énumérations</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier commun.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Tous les prototypes de fonctions, énumérations, structures, macros appelés dans plusieurs fichiers du projet.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;SDL2/SDL.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL_ttf.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL_image.h&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de commun.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="commun_8h__incl.png" border="0" usemap="#lib_2commun_8h" alt=""/></div>
+<map name="lib_2commun_8h" id="lib_2commun_8h">
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="commun_8h__dep__incl.png" border="0" usemap="#lib_2commun_8hdep" alt=""/></div>
+<map name="lib_2commun_8hdep" id="lib_2commun_8hdep">
+<area shape="rect" id="node2" href="backup__and__load_8c.html" title="Sauvegarde et chargement d&#39;une partie. " alt="" coords="5,80,161,107"/>
+<area shape="rect" id="node3" href="combat_8c.html" title="Combat. " alt="" coords="186,80,285,107"/>
+<area shape="rect" id="node4" href="demo_8c.html" title="Démo [Mode de jeu pour choisir ses items avant de commencer la partie &#45; utile pour tester certaines f..." alt="" coords="309,80,396,107"/>
+<area shape="rect" id="node5" href="equipment_8c.html" title="Gestion de l&#39;équipement du joueur. " alt="" coords="421,80,535,107"/>
+<area shape="rect" id="node6" href="fish_8c.html" title="Pêcher. " alt="" coords="560,80,636,107"/>
+<area shape="rect" id="node7" href="fonctions__pratiques_8c.html" title="Fontions pratiques utilisées dans tout le code. " alt="" coords="661,80,829,107"/>
+<area shape="rect" id="node8" href="game_8c.html" title="Jeu. " alt="" coords="853,80,940,107"/>
+<area shape="rect" id="node9" href="interface_8c.html" title="Affichage de l&#39;interface de jeu via SDL2. " alt="" coords="964,80,1069,107"/>
+<area shape="rect" id="node10" href="interface__options_8c.html" title="Affichage de l&#39;interface de combat via SDL2. " alt="" coords="1093,80,1247,107"/>
+<area shape="rect" id="node11" href="inventory_8c.html" title="Gestion de l&#39;inventaire du joueur. " alt="" coords="1272,80,1380,107"/>
+<area shape="rect" id="node12" href="items_8c.html" title="Items (création, affichage, génération aléatoire lors de fouille d&#39;hexagones) " alt="" coords="1404,80,1491,107"/>
+<area shape="rect" id="node13" href="move_8c.html" title="Déplacement du joueur. " alt="" coords="1515,80,1601,107"/>
+<area shape="rect" id="node14" href="perso_8c.html" title="Initialisation et affichage joueur. " alt="" coords="1625,80,1712,107"/>
+<area shape="rect" id="node15" href="quete__search_8c.html" title="Quête &quot;recherche&quot;. " alt="" coords="1737,80,1870,107"/>
+<area shape="rect" id="node16" href="quete__soin_8c.html" title="Quête &quot;soin&quot;. " alt="" coords="1895,80,2013,107"/>
+<area shape="rect" id="node17" href="quetes_8c.html" title="Fonctions relatives aux quêtes du jeu (initialisation, lancement des quêtes) + 4 quêtes (montagne..." alt="" coords="2037,80,2132,107"/>
+<area shape="rect" id="node18" href="test__backup_8c.html" title="Fichier TEST &#45; Sauvegarder une partie. " alt="" coords="2156,80,2283,107"/>
+<area shape="rect" id="node19" href="test__combat_8c.html" title="Fichier TEST &#45; Combat. " alt="" coords="2307,80,2433,107"/>
+<area shape="rect" id="node20" href="test__creation__items_8c.html" title="Fichier TEST &#45; Extraction des items du fichier externe. " alt="" coords="2457,80,2627,107"/>
+<area shape="rect" id="node21" href="test__eat__or__drink_8c.html" title="Fichier TEST &#45; Manger ou boire un item. " alt="" coords="2651,80,2806,107"/>
+<area shape="rect" id="node22" href="test__inventory_8c.html" title="Fichier TEST &#45; Gestion inventaire. " alt="" coords="2831,80,2968,107"/>
+<area shape="rect" id="node23" href="test__item_8c.html" title="Fichier TEST &#45; Génération aléatoire d&#39;items sur différentes catégories d&#39;hexagone (10 simulations) ..." alt="" coords="2993,80,3102,107"/>
+<area shape="rect" id="node24" href="test__item__in__inventory_8c.html" title="Fichier TEST &#45; Fonction item_in_inventory. " alt="" coords="3126,80,3313,107"/>
+<area shape="rect" id="node25" href="test__load_8c.html" title="Fichier TEST &#45; Charger une partie. " alt="" coords="3337,80,3445,107"/>
+<area shape="rect" id="node26" href="test__quete__bandits_8c.html" title="Fichier TEST &#45; Quête bandits. " alt="" coords="3470,80,3635,107"/>
+<area shape="rect" id="node27" href="test__quete__bunker_8c.html" title="Fichier TEST &#45; Quête bunker. " alt="" coords="3659,80,3822,107"/>
+<area shape="rect" id="node28" href="test__quete__frontiere_8c.html" title="Fichier TEST &#45; Quête frontière. " alt="" coords="3846,80,4017,107"/>
+<area shape="rect" id="node29" href="test__quete__montagne_8c.html" title="Fichier TEST &#45; Quête montagne. " alt="" coords="4041,80,4221,107"/>
+<area shape="rect" id="node30" href="test__quete__recherche_8c.html" title="Fichier TEST &#45; Quête recherche. " alt="" coords="4245,80,4425,107"/>
+<area shape="rect" id="node31" href="test__quete__soin_8c.html" title="Fichier TEST &#45; Quête soin. " alt="" coords="4450,80,4597,107"/>
+<area shape="rect" id="node32" href="turn_8c.html" title="Fonctions relatives à un tour du jeu. " alt="" coords="4621,80,4698,107"/>
+<area shape="rect" id="node33" href="world__generation_8c.html" title="Génération de la carte. " alt="" coords="4723,80,4876,107"/>
+</map>
+</div>
+</div>
+<p><a href="commun_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structitem__t.html">item_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure pour un item.  <a href="structitem__t.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structperso__t.html">perso_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure pour un personnage.  <a href="structperso__t.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcell__t.html">cell_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure pour un hexagone.  <a href="structcell__t.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structstat__t.html">stat_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure pour un champ de bataille.  <a href="structstat__t.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnpc__t.html">npc_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure pour ennemi (NPC)  <a href="structnpc__t.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsearch__t.html">search_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure de suivi de la quête "recherche".  <a href="structsearch__t.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structquete__t.html">quete_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure de suivi des quêtes.  <a href="structquete__t.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsauv__t.html">sauv_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure pour sauvegarder les parties.  <a href="structsauv__t.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ace96e07dcfbce0348b898efd6e6d1956"><td class="memItemLeft" align="right" valign="top"><a id="ace96e07dcfbce0348b898efd6e6d1956"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#ace96e07dcfbce0348b898efd6e6d1956">INVENTORY_CAPACITY</a>&#160;&#160;&#160;10</td></tr>
+<tr class="memdesc:ace96e07dcfbce0348b898efd6e6d1956"><td class="mdescLeft">&#160;</td><td class="mdescRight">INVENTORY_CAPACITY représente le nombre maximum d'items que peut contenir l'inventaire du joueur (10 items dans la version 1.0) <br /></td></tr>
+<tr class="separator:ace96e07dcfbce0348b898efd6e6d1956"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36e5fda7aa9e2b6219f41c354ecc1c93"><td class="memItemLeft" align="right" valign="top"><a id="a36e5fda7aa9e2b6219f41c354ecc1c93"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a36e5fda7aa9e2b6219f41c354ecc1c93">ITEMS_MAX</a>&#160;&#160;&#160;5</td></tr>
+<tr class="memdesc:a36e5fda7aa9e2b6219f41c354ecc1c93"><td class="mdescLeft">&#160;</td><td class="mdescRight">ITEMS_MAX représente le nombre maximum d'items générés sur un hexagone de la carte. <br /></td></tr>
+<tr class="separator:a36e5fda7aa9e2b6219f41c354ecc1c93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af316c33cc298530f245e8b55330e86b5"><td class="memItemLeft" align="right" valign="top"><a id="af316c33cc298530f245e8b55330e86b5"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>&#160;&#160;&#160;15</td></tr>
+<tr class="memdesc:af316c33cc298530f245e8b55330e86b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">D représente la dimension de la carte. <br /></td></tr>
+<tr class="separator:af316c33cc298530f245e8b55330e86b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6764330ff4f04cee324e30f775960f02"><td class="memItemLeft" align="right" valign="top"><a id="a6764330ff4f04cee324e30f775960f02"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a6764330ff4f04cee324e30f775960f02">NOT_EQUIPPED</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memdesc:a6764330ff4f04cee324e30f775960f02"><td class="mdescLeft">&#160;</td><td class="mdescRight">NOT_EQUIPPED indique qu'un item n'est pas équipé <br /></td></tr>
+<tr class="separator:a6764330ff4f04cee324e30f775960f02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2eff09387fb5d20d8af4fa186ae37c4d"><td class="memItemLeft" align="right" valign="top"><a id="a2eff09387fb5d20d8af4fa186ae37c4d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a2eff09387fb5d20d8af4fa186ae37c4d">LEFT_HAND</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memdesc:a2eff09387fb5d20d8af4fa186ae37c4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">LEFT_HAND indique qu'un item est équipé sur la main gauche du joueur. <br /></td></tr>
+<tr class="separator:a2eff09387fb5d20d8af4fa186ae37c4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d1d275cfec76197e014fe4d58f2e569"><td class="memItemLeft" align="right" valign="top"><a id="a5d1d275cfec76197e014fe4d58f2e569"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a5d1d275cfec76197e014fe4d58f2e569">RIGHT_HAND</a>&#160;&#160;&#160;2</td></tr>
+<tr class="memdesc:a5d1d275cfec76197e014fe4d58f2e569"><td class="mdescLeft">&#160;</td><td class="mdescRight">RIGHT_HAND indique qu'un item est équipé sur la main droite du joueur. <br /></td></tr>
+<tr class="separator:a5d1d275cfec76197e014fe4d58f2e569"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6bdf6a6d9916c343e1e17774d84a156"><td class="memItemLeft" align="right" valign="top"><a id="aa6bdf6a6d9916c343e1e17774d84a156"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#aa6bdf6a6d9916c343e1e17774d84a156">BODY</a>&#160;&#160;&#160;3</td></tr>
+<tr class="memdesc:aa6bdf6a6d9916c343e1e17774d84a156"><td class="mdescLeft">&#160;</td><td class="mdescRight">BODY indique qu'un item est équipé sur le corps du joueur. <br /></td></tr>
+<tr class="separator:aa6bdf6a6d9916c343e1e17774d84a156"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a110f3b6cdacd45daee818b3e5965f6da"><td class="memItemLeft" align="right" valign="top"><a id="a110f3b6cdacd45daee818b3e5965f6da"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a110f3b6cdacd45daee818b3e5965f6da">HEAD</a>&#160;&#160;&#160;4</td></tr>
+<tr class="memdesc:a110f3b6cdacd45daee818b3e5965f6da"><td class="mdescLeft">&#160;</td><td class="mdescRight">HEAD indique qu'un item est équipé sur la tête du joueur. <br /></td></tr>
+<tr class="separator:a110f3b6cdacd45daee818b3e5965f6da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0240ac851181b84ac374872dc5434ee4"><td class="memItemLeft" align="right" valign="top"><a id="a0240ac851181b84ac374872dc5434ee4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>N</b>&#160;&#160;&#160;13</td></tr>
+<tr class="separator:a0240ac851181b84ac374872dc5434ee4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Énumérations</h2></td></tr>
+<tr class="memitem:adee610a3c7375031538811d29f6a4124"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#adee610a3c7375031538811d29f6a4124">type_t</a> { <a class="el" href="commun_8h.html#adee610a3c7375031538811d29f6a4124aa5d58d178c61dcf6fc59831895e79b3a">armor</a>, 
+<a class="el" href="commun_8h.html#adee610a3c7375031538811d29f6a4124aae810997129ae8ca5fdbb5d446720ad8">weapon</a>, 
+<a class="el" href="commun_8h.html#adee610a3c7375031538811d29f6a4124a8e61437747405a9d1a65e5020e375e08">misc</a>, 
+<a class="el" href="commun_8h.html#adee610a3c7375031538811d29f6a4124af56e815b1ce6b664d92e7464d40b4fb5">food</a>
+ }<tr class="memdesc:adee610a3c7375031538811d29f6a4124"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type d'un item.  <a href="commun_8h.html#adee610a3c7375031538811d29f6a4124">Plus de détails...</a><br /></td></tr>
+</td></tr>
+<tr class="separator:adee610a3c7375031538811d29f6a4124"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ea2f7654645c7af9da2451ca3a656eb"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a3ea2f7654645c7af9da2451ca3a656eb">equip_t</a> { <a class="el" href="commun_8h.html#a3ea2f7654645c7af9da2451ca3a656ebab7e4e0120a041dbe6528b050c04269e0">none</a>, 
+<a class="el" href="commun_8h.html#a3ea2f7654645c7af9da2451ca3a656ebaf4614dbbcd15f357a1717a525d1cae7c">hand</a>, 
+<a class="el" href="commun_8h.html#a3ea2f7654645c7af9da2451ca3a656eba441239ef907ce5dd02c6c1f5c35fb1d5">body</a>, 
+<a class="el" href="commun_8h.html#a3ea2f7654645c7af9da2451ca3a656eba04f1b071f494983129aefb83ff7e90bd">head</a>
+ }<tr class="memdesc:a3ea2f7654645c7af9da2451ca3a656eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zone où un item est équipable.  <a href="commun_8h.html#a3ea2f7654645c7af9da2451ca3a656eb">Plus de détails...</a><br /></td></tr>
+</td></tr>
+<tr class="separator:a3ea2f7654645c7af9da2451ca3a656eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86b2798c02561aa7def13bc6565d7290"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a86b2798c02561aa7def13bc6565d7290">hex_t</a> { <br />
+&#160;&#160;<a class="el" href="commun_8h.html#a86b2798c02561aa7def13bc6565d7290a7d69cc5fad37b74c0663bb239b4d40b4">prairie</a> = 1, 
+<a class="el" href="commun_8h.html#a86b2798c02561aa7def13bc6565d7290a3791fc23864414c638cdf979a8fed0a5">foret</a>, 
+<a class="el" href="commun_8h.html#a86b2798c02561aa7def13bc6565d7290aa0748bea0863ca8b94d935d003a5fdd0">ville</a>, 
+<a class="el" href="commun_8h.html#a86b2798c02561aa7def13bc6565d7290ad2b7d6c474bb425990df79f27b35a165">lac</a>, 
+<br />
+&#160;&#160;<a class="el" href="commun_8h.html#a86b2798c02561aa7def13bc6565d7290afbd5325264e3a8f32dbb224b3ed32c8c">camp_mil</a>, 
+<a class="el" href="commun_8h.html#a86b2798c02561aa7def13bc6565d7290aa1467ed66a4488889c3849deec1e4703">camp_ban</a>, 
+<a class="el" href="commun_8h.html#a86b2798c02561aa7def13bc6565d7290a9cc2bff9d6718d5354471a6ecf53fe93">market</a>, 
+<a class="el" href="commun_8h.html#a86b2798c02561aa7def13bc6565d7290a8289c77518411d744bb91415c75b479a">favela</a>, 
+<br />
+&#160;&#160;<a class="el" href="commun_8h.html#a86b2798c02561aa7def13bc6565d7290af14f1759a3ba315e6a5483cd6f55ce0a">montagne</a>, 
+<a class="el" href="commun_8h.html#a86b2798c02561aa7def13bc6565d7290a908b0a5088d5e7b40d973e720847fd8a">frontiere</a>, 
+<a class="el" href="commun_8h.html#a86b2798c02561aa7def13bc6565d7290a008ac7feb3ac562506fa8aa45597274d">mer</a>, 
+<a class="el" href="commun_8h.html#a86b2798c02561aa7def13bc6565d7290a1249d80794551e75a61297f5e5b7cadf">wasteland</a>
+<br />
+ }<tr class="memdesc:a86b2798c02561aa7def13bc6565d7290"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type d'un hexagone.  <a href="commun_8h.html#a86b2798c02561aa7def13bc6565d7290">Plus de détails...</a><br /></td></tr>
+</td></tr>
+<tr class="separator:a86b2798c02561aa7def13bc6565d7290"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a730487a66d035e35d2c63cfa39cea020"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a730487a66d035e35d2c63cfa39cea020">categ_hexa</a> { <a class="el" href="commun_8h.html#a730487a66d035e35d2c63cfa39cea020a7e338ad381a84ef6df07e7d425707025">other</a>, 
+<a class="el" href="commun_8h.html#a730487a66d035e35d2c63cfa39cea020ad35b4aa88e030162bff461bdd951f4d1">nature</a>, 
+<a class="el" href="commun_8h.html#a730487a66d035e35d2c63cfa39cea020a72707e76ca684d1587bbf8dae722008f">urbain</a>, 
+<a class="el" href="commun_8h.html#a730487a66d035e35d2c63cfa39cea020a30cd85dbaf210be8c53b046aa594b8a7">militaire</a>
+ }<tr class="memdesc:a730487a66d035e35d2c63cfa39cea020"><td class="mdescLeft">&#160;</td><td class="mdescRight">Catégorie hexagone.  <a href="commun_8h.html#a730487a66d035e35d2c63cfa39cea020">Plus de détails...</a><br /></td></tr>
+</td></tr>
+<tr class="separator:a730487a66d035e35d2c63cfa39cea020"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:aa4899d80cb631c57ee63b3d4a04b5cbe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#aa4899d80cb631c57ee63b3d4a04b5cbe">entree_pour_continuer</a> ()</td></tr>
+<tr class="memdesc:aa4899d80cb631c57ee63b3d4a04b5cbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actionne la continuité du jeu par la touche "entrée".  <a href="#aa4899d80cb631c57ee63b3d4a04b5cbe">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aa4899d80cb631c57ee63b3d4a04b5cbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3eac3ad203ab091baad010ef3f7ab0a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#af3eac3ad203ab091baad010ef3f7ab0a">clrscr</a> ()</td></tr>
+<tr class="memdesc:af3eac3ad203ab091baad010ef3f7ab0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Efface la sortie du terminal, le remet à zéro.  <a href="#af3eac3ad203ab091baad010ef3f7ab0a">Plus de détails...</a><br /></td></tr>
+<tr class="separator:af3eac3ad203ab091baad010ef3f7ab0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acff6b648c6726c70104531f080bfa710"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#acff6b648c6726c70104531f080bfa710">range</a> (int a, int b)</td></tr>
+<tr class="memdesc:acff6b648c6726c70104531f080bfa710"><td class="mdescLeft">&#160;</td><td class="mdescRight">Génère un nombre aléatoire compris entre deux entiers passés en paramètre.  <a href="#acff6b648c6726c70104531f080bfa710">Plus de détails...</a><br /></td></tr>
+<tr class="separator:acff6b648c6726c70104531f080bfa710"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40356000b1ed5cc4b2798194e57acefc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a40356000b1ed5cc4b2798194e57acefc">rng</a> (int prob)</td></tr>
+<tr class="memdesc:a40356000b1ed5cc4b2798194e57acefc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Génère 0 ou 1 en fonction de la probabilité en pourcentage passée en paramètre.  <a href="#a40356000b1ed5cc4b2798194e57acefc">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a40356000b1ed5cc4b2798194e57acefc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad37eb49f35a18814ef964030603d0ab8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structitem__t.html">item_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#ad37eb49f35a18814ef964030603d0ab8">creer_item</a> (char *chaine, <a class="el" href="commun_8h.html#adee610a3c7375031538811d29f6a4124">type_t</a> type, int attack0, int attack1, int attack2, int hitchance0, int hitchance1, int hitchance2, float defense, int equipable, int pc_nature, int pc_urban, int pc_military)</td></tr>
+<tr class="memdesc:ad37eb49f35a18814ef964030603d0ab8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crée un item à partir des informations passées en paramètres.  <a href="#ad37eb49f35a18814ef964030603d0ab8">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ad37eb49f35a18814ef964030603d0ab8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bfcbccc63814dc4ba0642b7872e8681"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a6bfcbccc63814dc4ba0642b7872e8681">creation_tab_item</a> (<a class="el" href="structitem__t.html">item_t</a> *Tab_Items, int *nb_items)</td></tr>
+<tr class="memdesc:a6bfcbccc63814dc4ba0642b7872e8681"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère les items du fichier 'data/items.csv' et les stocke dans le tableau passé en paramètres.  <a href="#a6bfcbccc63814dc4ba0642b7872e8681">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a6bfcbccc63814dc4ba0642b7872e8681"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af20ce6de62a477209830e29feb783aa1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#af20ce6de62a477209830e29feb783aa1">display_item</a> (<a class="el" href="structitem__t.html">item_t</a> item)</td></tr>
+<tr class="memdesc:af20ce6de62a477209830e29feb783aa1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche toutes les caractéristiques d'un item (nom, type, valeur d'attaque si arme, valeur de défense si armure, équipable ou non, pourcentage de chance de trouver cet item sur un hexagone de catégorie nature, urbain et militaire)  <a href="#af20ce6de62a477209830e29feb783aa1">Plus de détails...</a><br /></td></tr>
+<tr class="separator:af20ce6de62a477209830e29feb783aa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a719ffd0c2cb14a6236922fac92933adb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a719ffd0c2cb14a6236922fac92933adb">afficher_type_categ_hexa</a> (<a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>], int l, int c)</td></tr>
+<tr class="memdesc:a719ffd0c2cb14a6236922fac92933adb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche le type et la catégorie de l'hexagone de la carte dont les coordonnées sont passées en paramètres.  <a href="#a719ffd0c2cb14a6236922fac92933adb">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a719ffd0c2cb14a6236922fac92933adb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc7e7b34903dd75f8563deda4e525f39"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#acc7e7b34903dd75f8563deda4e525f39">informations_map</a> (<a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>])</td></tr>
+<tr class="memdesc:acc7e7b34903dd75f8563deda4e525f39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche les informations de la carte.  <a href="#acc7e7b34903dd75f8563deda4e525f39">Plus de détails...</a><br /></td></tr>
+<tr class="separator:acc7e7b34903dd75f8563deda4e525f39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f6eb129fcf00e592e708ad17e0a65ac"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a0f6eb129fcf00e592e708ad17e0a65ac">coordonnees_valides</a> (int l, int c)</td></tr>
+<tr class="memdesc:a0f6eb129fcf00e592e708ad17e0a65ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie si les coordonnées sont valides.  <a href="#a0f6eb129fcf00e592e708ad17e0a65ac">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a0f6eb129fcf00e592e708ad17e0a65ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61aa43ceaa893c5807b45cd54fd140e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a61aa43ceaa893c5807b45cd54fd140e8">quest_init</a> (<a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>], int quest_map[6][2])</td></tr>
+<tr class="memdesc:a61aa43ceaa893c5807b45cd54fd140e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise les quêtes (quest_id) sur la carte.  <a href="#a61aa43ceaa893c5807b45cd54fd140e8">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a61aa43ceaa893c5807b45cd54fd140e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bc1a448a2edbe81a579122cd06467ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a3bc1a448a2edbe81a579122cd06467ac">display_TEXT</a> (int l, int c, <a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>])</td></tr>
+<tr class="memdesc:a3bc1a448a2edbe81a579122cd06467ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche la map en version texte avec la légende.  <a href="#a3bc1a448a2edbe81a579122cd06467ac">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a3bc1a448a2edbe81a579122cd06467ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a309363eb6ec82b7f53f004bbd01c21c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a309363eb6ec82b7f53f004bbd01c21c4">map_init</a> (<a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>], int quest_map[6][2])</td></tr>
+<tr class="memdesc:a309363eb6ec82b7f53f004bbd01c21c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise la carte au début de chaque partie.  <a href="#a309363eb6ec82b7f53f004bbd01c21c4">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a309363eb6ec82b7f53f004bbd01c21c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac44e2e3723ce06a3660665d0adc23079"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#ac44e2e3723ce06a3660665d0adc23079">portable_switch</a> (int i, int j, <a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>])</td></tr>
+<tr class="memdesc:ac44e2e3723ce06a3660665d0adc23079"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche le code de la cellule.  <a href="#ac44e2e3723ce06a3660665d0adc23079">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ac44e2e3723ce06a3660665d0adc23079"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4185f5937661c9591dce0ad1d7b80d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#aa4185f5937661c9591dce0ad1d7b80d6">init_player</a> (<a class="el" href="structperso__t.html">perso_t</a> *player, <a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>])</td></tr>
+<tr class="memdesc:aa4185f5937661c9591dce0ad1d7b80d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise les paramètres du joueur quand il commence le jeu.  <a href="#aa4185f5937661c9591dce0ad1d7b80d6">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aa4185f5937661c9591dce0ad1d7b80d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb56898d20ef15d05edb82a7dfbe8df9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#abb56898d20ef15d05edb82a7dfbe8df9">display_player_characteristics</a> (<a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>], <a class="el" href="structperso__t.html">perso_t</a> player)</td></tr>
+<tr class="memdesc:abb56898d20ef15d05edb82a7dfbe8df9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche les paramètres du joueur (points de vie, points d'énergie, points d'action, position sur la carte, nombre de tours restants)  <a href="#abb56898d20ef15d05edb82a7dfbe8df9">Plus de détails...</a><br /></td></tr>
+<tr class="separator:abb56898d20ef15d05edb82a7dfbe8df9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8928522f1a66ba3d5a8c3cb97d144da"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structnpc__t.html">npc_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#ac8928522f1a66ba3d5a8c3cb97d144da">init_npc</a> (<a class="el" href="structitem__t.html">item_t</a> *Tab_Items)</td></tr>
+<tr class="memdesc:ac8928522f1a66ba3d5a8c3cb97d144da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise un non-player character (NPC) ennemi (nom, arme, armure et points de vie)  <a href="#ac8928522f1a66ba3d5a8c3cb97d144da">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ac8928522f1a66ba3d5a8c3cb97d144da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cb6f755d33b58efdb98f491dc2d9c45"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structstat__t.html">stat_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a5cb6f755d33b58efdb98f491dc2d9c45">init_field</a> ()</td></tr>
+<tr class="memdesc:a5cb6f755d33b58efdb98f491dc2d9c45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise le champ de bataille du combat (positions et couvertures des adversaires, distance qui les sépare)  <a href="#a5cb6f755d33b58efdb98f491dc2d9c45">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a5cb6f755d33b58efdb98f491dc2d9c45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04ffb19fc8145784ad26f44adac4c4ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a04ffb19fc8145784ad26f44adac4c4ed">combat</a> (<a class="el" href="structperso__t.html">perso_t</a> *player, <a class="el" href="structnpc__t.html">npc_t</a> *enemy, <a class="el" href="structstat__t.html">stat_t</a> *field, <a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>], <a class="el" href="structitem__t.html">item_t</a> *Tab_Items, int nb_items_available)</td></tr>
+<tr class="memdesc:a04ffb19fc8145784ad26f44adac4c4ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction principale du combat qui gère les actions du joueur et ennemi.  <a href="#a04ffb19fc8145784ad26f44adac4c4ed">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a04ffb19fc8145784ad26f44adac4c4ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9fb4bd5a16513e8faf4bf23dcb3d2bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#ac9fb4bd5a16513e8faf4bf23dcb3d2bf">move</a> (<a class="el" href="structperso__t.html">perso_t</a> *player, <a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>])</td></tr>
+<tr class="memdesc:ac9fb4bd5a16513e8faf4bf23dcb3d2bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Déplace le joueur où il le souhaite, si cela est possible (conditions : coordonnées valides et assez de points d'action)  <a href="#ac9fb4bd5a16513e8faf4bf23dcb3d2bf">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ac9fb4bd5a16513e8faf4bf23dcb3d2bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27e09d79b0c98039d2d6f07dd485ccc0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a27e09d79b0c98039d2d6f07dd485ccc0">random_move</a> (<a class="el" href="structperso__t.html">perso_t</a> *player, <a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>])</td></tr>
+<tr class="memdesc:a27e09d79b0c98039d2d6f07dd485ccc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Déplace aléatoirement le joueur sur un des hexagones qui l'entoure.  <a href="#a27e09d79b0c98039d2d6f07dd485ccc0">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a27e09d79b0c98039d2d6f07dd485ccc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3d3633d751f914bb3b4609a9950c513"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#ab3d3633d751f914bb3b4609a9950c513">eat_or_drink</a> (<a class="el" href="structperso__t.html">perso_t</a> *player, <a class="el" href="structitem__t.html">item_t</a> item)</td></tr>
+<tr class="memdesc:ab3d3633d751f914bb3b4609a9950c513"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet au joueur de boire ou manger un item de type <em>food</em> et récupérer des points d'énergie ou action (si cela est possible).  <a href="#ab3d3633d751f914bb3b4609a9950c513">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ab3d3633d751f914bb3b4609a9950c513"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08b9c4c266cfcf2e07d74de53285d88f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a08b9c4c266cfcf2e07d74de53285d88f">check_the_map</a> (<a class="el" href="structperso__t.html">perso_t</a> player, <a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>])</td></tr>
+<tr class="memdesc:a08b9c4c266cfcf2e07d74de53285d88f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche la carte, si le joueur en possède une dans son inventaire.  <a href="#a08b9c4c266cfcf2e07d74de53285d88f">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a08b9c4c266cfcf2e07d74de53285d88f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a422fba7d76e9ed4b5783cf5d9177aad8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a422fba7d76e9ed4b5783cf5d9177aad8">item_in_inventory</a> (<a class="el" href="structperso__t.html">perso_t</a> player, char *nom_item)</td></tr>
+<tr class="memdesc:a422fba7d76e9ed4b5783cf5d9177aad8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recherche si l'item dont le nom est passé en paramètre est présent ou non dans l'inventaire.  <a href="#a422fba7d76e9ed4b5783cf5d9177aad8">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a422fba7d76e9ed4b5783cf5d9177aad8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a354d78a490ef30d40f4a726524090b21"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a354d78a490ef30d40f4a726524090b21">display_inventory</a> (<a class="el" href="structperso__t.html">perso_t</a> player)</td></tr>
+<tr class="memdesc:a354d78a490ef30d40f4a726524090b21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche l'inventaire du joueur.  <a href="#a354d78a490ef30d40f4a726524090b21">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a354d78a490ef30d40f4a726524090b21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bc6d36c93298c7aead4ea6e7e6e3e26"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a9bc6d36c93298c7aead4ea6e7e6e3e26">delete_item_in_inventory</a> (<a class="el" href="structperso__t.html">perso_t</a> *player, <a class="el" href="structitem__t.html">item_t</a> item)</td></tr>
+<tr class="memdesc:a9bc6d36c93298c7aead4ea6e7e6e3e26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retire l'item passé en paramètre de l'inventaire (et de l'équipement si besoin) du joueur.  <a href="#a9bc6d36c93298c7aead4ea6e7e6e3e26">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a9bc6d36c93298c7aead4ea6e7e6e3e26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1668516cd0e1d31746805efdbd4a5f34"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a1668516cd0e1d31746805efdbd4a5f34">add_item_to_inventory</a> (<a class="el" href="structperso__t.html">perso_t</a> *player, <a class="el" href="structitem__t.html">item_t</a> item)</td></tr>
+<tr class="memdesc:a1668516cd0e1d31746805efdbd4a5f34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute un item à l'inventaire du joueur.  <a href="#a1668516cd0e1d31746805efdbd4a5f34">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a1668516cd0e1d31746805efdbd4a5f34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35b519c6835c9aa90ff5fd35b0e68f66"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a35b519c6835c9aa90ff5fd35b0e68f66">manage_inventory</a> (<a class="el" href="structperso__t.html">perso_t</a> *player)</td></tr>
+<tr class="memdesc:a35b519c6835c9aa90ff5fd35b0e68f66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction centrale du fichier <a class="el" href="inventory_8c.html" title="Gestion de l&#39;inventaire du joueur. ">inventory.c</a> permettant au joueur de gérer son inventaire.  <a href="#a35b519c6835c9aa90ff5fd35b0e68f66">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a35b519c6835c9aa90ff5fd35b0e68f66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac912edb0758df17f229cb8d8fbd66924"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#ac912edb0758df17f229cb8d8fbd66924">display_equipment_player</a> (<a class="el" href="structperso__t.html">perso_t</a> player)</td></tr>
+<tr class="memdesc:ac912edb0758df17f229cb8d8fbd66924"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche l'équipement du joueur.  <a href="#ac912edb0758df17f229cb8d8fbd66924">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ac912edb0758df17f229cb8d8fbd66924"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae5f9602614f22807a8f2719fb015bdd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#aae5f9602614f22807a8f2719fb015bdd">is_equipped</a> (<a class="el" href="structperso__t.html">perso_t</a> player, <a class="el" href="structitem__t.html">item_t</a> item)</td></tr>
+<tr class="memdesc:aae5f9602614f22807a8f2719fb015bdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si le joueur est équipé de l'item passé en paramètre.  <a href="#aae5f9602614f22807a8f2719fb015bdd">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aae5f9602614f22807a8f2719fb015bdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a588235e6d46f215c009c995d07f31ec2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a588235e6d46f215c009c995d07f31ec2">nb_equipement</a> (<a class="el" href="structperso__t.html">perso_t</a> player)</td></tr>
+<tr class="memdesc:a588235e6d46f215c009c995d07f31ec2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compte le nombre d'item(s) équipé(s) sur le joueur.  <a href="#a588235e6d46f215c009c995d07f31ec2">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a588235e6d46f215c009c995d07f31ec2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe6c66728ce22be9ff976516f8b77c68"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#afe6c66728ce22be9ff976516f8b77c68">manage_equipment</a> (<a class="el" href="structperso__t.html">perso_t</a> *player)</td></tr>
+<tr class="memdesc:afe6c66728ce22be9ff976516f8b77c68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction centrale du fichier <a class="el" href="equipment_8c.html" title="Gestion de l&#39;équipement du joueur. ">equipment.c</a> permettant au joueur de gérer son équipement.  <a href="#afe6c66728ce22be9ff976516f8b77c68">Plus de détails...</a><br /></td></tr>
+<tr class="separator:afe6c66728ce22be9ff976516f8b77c68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec4be0e1e14efa931211be073ea33cab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#aec4be0e1e14efa931211be073ea33cab">fish</a> (<a class="el" href="structperso__t.html">perso_t</a> *player, <a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>])</td></tr>
+<tr class="memdesc:aec4be0e1e14efa931211be073ea33cab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet au joueur de pêcher s'il se situe sur un hexagone de type <em>lac</em> ou <em>mer</em> et s'il a une canne à pêche dans son inventaire.  <a href="#aec4be0e1e14efa931211be073ea33cab">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aec4be0e1e14efa931211be073ea33cab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab34814b4d8a3404f1d08ca212259c39b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#ab34814b4d8a3404f1d08ca212259c39b">next_turn</a> (<a class="el" href="structperso__t.html">perso_t</a> *player)</td></tr>
+<tr class="memdesc:ab34814b4d8a3404f1d08ca212259c39b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcule le nombre de points d’action récupérés à partir de la valeur des points d'énergie du joueur puis passe au tour suivant.  <a href="#ab34814b4d8a3404f1d08ca212259c39b">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ab34814b4d8a3404f1d08ca212259c39b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16623bb45a52000b8ec7b116aaa46173"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a16623bb45a52000b8ec7b116aaa46173">rest_and_heal</a> (<a class="el" href="structperso__t.html">perso_t</a> *player)</td></tr>
+<tr class="memdesc:a16623bb45a52000b8ec7b116aaa46173"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet au joueur de se reposer et récupérer des points de vie et points d'énergie (proportionnellement au nombre de points d'action)  <a href="#a16623bb45a52000b8ec7b116aaa46173">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a16623bb45a52000b8ec7b116aaa46173"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd7728c9e6ae89e5932e641b54556aba"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#afd7728c9e6ae89e5932e641b54556aba">exit_game</a> ()</td></tr>
+<tr class="memdesc:afd7728c9e6ae89e5932e641b54556aba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Propose au joueur de quitter ou non la carte lorsqu'il vient de trouver la sortie.  <a href="#afd7728c9e6ae89e5932e641b54556aba">Plus de détails...</a><br /></td></tr>
+<tr class="separator:afd7728c9e6ae89e5932e641b54556aba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8467aba54144bfdead8e1a614e563e23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a8467aba54144bfdead8e1a614e563e23">informations_quetes</a> (<a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>], int quest_map[6][2], <a class="el" href="structquete__t.html">quete_t</a> quete)</td></tr>
+<tr class="memdesc:a8467aba54144bfdead8e1a614e563e23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche les informations des quêtes (coordonnées et états)  <a href="#a8467aba54144bfdead8e1a614e563e23">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a8467aba54144bfdead8e1a614e563e23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88d64826f8f2155e0cbf149e18aa33c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a88d64826f8f2155e0cbf149e18aa33c0">init_quete</a> (<a class="el" href="structquete__t.html">quete_t</a> *quete, int quest_map[6][2], <a class="el" href="structitem__t.html">item_t</a> *Tab_Items, int nb_items_available)</td></tr>
+<tr class="memdesc:a88d64826f8f2155e0cbf149e18aa33c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation d'une variable de type <a class="el" href="structquete__t.html" title="Structure de suivi des quêtes. ">quete_t</a>.  <a href="#a88d64826f8f2155e0cbf149e18aa33c0">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a88d64826f8f2155e0cbf149e18aa33c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc1d91bf20af02d88470e87ff9bb9e8b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#adc1d91bf20af02d88470e87ff9bb9e8b">quetes</a> (<a class="el" href="structperso__t.html">perso_t</a> *player, <a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>], int quest_map[6][2], <a class="el" href="structquete__t.html">quete_t</a> *quete, <a class="el" href="structitem__t.html">item_t</a> *Tab_Items, int nb_items_available)</td></tr>
+<tr class="memdesc:adc1d91bf20af02d88470e87ff9bb9e8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère le numéro de la quête pour accéder à la quête correspondante.  <a href="#adc1d91bf20af02d88470e87ff9bb9e8b">Plus de détails...</a><br /></td></tr>
+<tr class="separator:adc1d91bf20af02d88470e87ff9bb9e8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6e4089158a870a21df474d0977de085"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#aa6e4089158a870a21df474d0977de085">quete_montagne</a> (<a class="el" href="structperso__t.html">perso_t</a> *player, <a class="el" href="structquete__t.html">quete_t</a> *quete)</td></tr>
+<tr class="memdesc:aa6e4089158a870a21df474d0977de085"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accès à la quete "montagne".  <a href="#aa6e4089158a870a21df474d0977de085">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aa6e4089158a870a21df474d0977de085"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbd858f4a2365f62831b49f54f41528b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#adbd858f4a2365f62831b49f54f41528b">quete_frontiere</a> (<a class="el" href="structperso__t.html">perso_t</a> *player, <a class="el" href="structquete__t.html">quete_t</a> *quete)</td></tr>
+<tr class="memdesc:adbd858f4a2365f62831b49f54f41528b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accès à la quete "frontière".  <a href="#adbd858f4a2365f62831b49f54f41528b">Plus de détails...</a><br /></td></tr>
+<tr class="separator:adbd858f4a2365f62831b49f54f41528b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a931bac6752154b310757ff2026789ba0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a931bac6752154b310757ff2026789ba0">quete_bunker</a> (<a class="el" href="structperso__t.html">perso_t</a> *player, <a class="el" href="structquete__t.html">quete_t</a> *quete)</td></tr>
+<tr class="memdesc:a931bac6752154b310757ff2026789ba0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accès à la quête "bunker".  <a href="#a931bac6752154b310757ff2026789ba0">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a931bac6752154b310757ff2026789ba0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3a10faf1284038599e3098a8253ce43"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#ae3a10faf1284038599e3098a8253ce43">quete_bandits</a> (<a class="el" href="structperso__t.html">perso_t</a> *player, <a class="el" href="structquete__t.html">quete_t</a> *quete, <a class="el" href="structitem__t.html">item_t</a> *Tab_Items, int nb_items_available, <a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>])</td></tr>
+<tr class="memdesc:ae3a10faf1284038599e3098a8253ce43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accès à la quete "bandits".  <a href="#ae3a10faf1284038599e3098a8253ce43">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae3a10faf1284038599e3098a8253ce43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a402540673166e0323939a3d3e518bad2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a402540673166e0323939a3d3e518bad2">quete_soin</a> (<a class="el" href="structperso__t.html">perso_t</a> *player, <a class="el" href="structquete__t.html">quete_t</a> *quete, <a class="el" href="structitem__t.html">item_t</a> *Tab_Items)</td></tr>
+<tr class="memdesc:a402540673166e0323939a3d3e518bad2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Déroulement de la quête "soin" : rencontre d'un individu blessé.  <a href="#a402540673166e0323939a3d3e518bad2">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a402540673166e0323939a3d3e518bad2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c3d223c6fd93383772b82f032cc8bcc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a4c3d223c6fd93383772b82f032cc8bcc">quete_recherche</a> (<a class="el" href="structperso__t.html">perso_t</a> *player, <a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>], <a class="el" href="structquete__t.html">quete_t</a> *quete)</td></tr>
+<tr class="memdesc:a4c3d223c6fd93383772b82f032cc8bcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accès à la quete "recherche".  <a href="#a4c3d223c6fd93383772b82f032cc8bcc">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a4c3d223c6fd93383772b82f032cc8bcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bec744d50dcccb53e78814e10baeb30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a6bec744d50dcccb53e78814e10baeb30">affichage_quete_search_en_cours</a> (<a class="el" href="structquete__t.html">quete_t</a> quete, <a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>], <a class="el" href="structperso__t.html">perso_t</a> player)</td></tr>
+<tr class="memdesc:a6bec744d50dcccb53e78814e10baeb30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche certaines informations selon l'état de la quête recherche.  <a href="#a6bec744d50dcccb53e78814e10baeb30">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a6bec744d50dcccb53e78814e10baeb30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a383694135dc6ea4c93f6290ea506d752"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a383694135dc6ea4c93f6290ea506d752">compter_items_urbain</a> (<a class="el" href="structitem__t.html">item_t</a> *Tab_Items, int nb_items_available)</td></tr>
+<tr class="memdesc:a383694135dc6ea4c93f6290ea506d752"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compte le nombre d'items pouvant être trouvés dans un hexagone de catégorie urbain (pc_urban &gt; 0).  <a href="#a383694135dc6ea4c93f6290ea506d752">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a383694135dc6ea4c93f6290ea506d752"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3150620b999a50e0b971d888263e018"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#ab3150620b999a50e0b971d888263e018">init_Tab_Items_urbain</a> (<a class="el" href="structitem__t.html">item_t</a> *Tab_items_search, <a class="el" href="structitem__t.html">item_t</a> *Tab_Items, int nb_items_urbain)</td></tr>
+<tr class="memdesc:ab3150620b999a50e0b971d888263e018"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise un tableau contenant tous les items pouvant être trouvés dans un hexagone de catégorie urbain.  <a href="#ab3150620b999a50e0b971d888263e018">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ab3150620b999a50e0b971d888263e018"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40672738b4eba05b66ae0a8127346356"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a40672738b4eba05b66ae0a8127346356">scavenge</a> (<a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>], <a class="el" href="structperso__t.html">perso_t</a> *player, <a class="el" href="structitem__t.html">item_t</a> *Tab_Items, int nb_items_available, <a class="el" href="structquete__t.html">quete_t</a> quete)</td></tr>
+<tr class="memdesc:a40672738b4eba05b66ae0a8127346356"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet au joueur de fouiller l'hexagone sur lequel il se trouve pour récupérer des items.  <a href="#a40672738b4eba05b66ae0a8127346356">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a40672738b4eba05b66ae0a8127346356"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf3bd1684d5f65e10f183757d06706df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#abf3bd1684d5f65e10f183757d06706df">sauvegarder_progression</a> (<a class="el" href="structperso__t.html">perso_t</a> player, <a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>], int quest_map[6][2], <a class="el" href="structquete__t.html">quete_t</a> quete, <a class="el" href="structsauv__t.html">sauv_t</a> sauv)</td></tr>
+<tr class="memdesc:abf3bd1684d5f65e10f183757d06706df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sauvegarde la progression de la partie actuellement en cours et propose au joueur de continuer ou quitter le jeu.  <a href="#abf3bd1684d5f65e10f183757d06706df">Plus de détails...</a><br /></td></tr>
+<tr class="separator:abf3bd1684d5f65e10f183757d06706df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3a35e6ca5de07de881517f1c47a1435"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#ae3a35e6ca5de07de881517f1c47a1435">sauvegarde_existante</a> (<a class="el" href="structsauv__t.html">sauv_t</a> sauv)</td></tr>
+<tr class="memdesc:ae3a35e6ca5de07de881517f1c47a1435"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique s'il existe une sauvegarde pour la partie choisie par l'utilisateur.  <a href="#ae3a35e6ca5de07de881517f1c47a1435">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae3a35e6ca5de07de881517f1c47a1435"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a609a5fc89bd1df4a2f14a3e436b6ed93"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a609a5fc89bd1df4a2f14a3e436b6ed93">affichage_parties</a> (<a class="el" href="structsauv__t.html">sauv_t</a> sauv)</td></tr>
+<tr class="memdesc:a609a5fc89bd1df4a2f14a3e436b6ed93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche les parties sauvegardées et disponibles.  <a href="#a609a5fc89bd1df4a2f14a3e436b6ed93">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a609a5fc89bd1df4a2f14a3e436b6ed93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08446349c2ace9f33a111be928403978"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a08446349c2ace9f33a111be928403978">update_etat_sauvegarde</a> (<a class="el" href="structsauv__t.html">sauv_t</a> *sauv)</td></tr>
+<tr class="memdesc:a08446349c2ace9f33a111be928403978"><td class="mdescLeft">&#160;</td><td class="mdescRight">Met à jour l'état des sauvegardes (si elles existent et leurs noms)  <a href="#a08446349c2ace9f33a111be928403978">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a08446349c2ace9f33a111be928403978"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c9a1c312a2d24dc4a9d4db757e55711"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a8c9a1c312a2d24dc4a9d4db757e55711">effacer_partie</a> (<a class="el" href="structsauv__t.html">sauv_t</a> sauv)</td></tr>
+<tr class="memdesc:a8c9a1c312a2d24dc4a9d4db757e55711"><td class="mdescLeft">&#160;</td><td class="mdescRight">Efface une partie choisie par l'utilisateur.  <a href="#a8c9a1c312a2d24dc4a9d4db757e55711">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a8c9a1c312a2d24dc4a9d4db757e55711"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafdde294bbc0144a5a6a0417248fcf90"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#aafdde294bbc0144a5a6a0417248fcf90">save</a> (<a class="el" href="structperso__t.html">perso_t</a> player, <a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>], int quest_map[6][2], <a class="el" href="structquete__t.html">quete_t</a> quete, <a class="el" href="structsauv__t.html">sauv_t</a> sauv)</td></tr>
+<tr class="memdesc:aafdde294bbc0144a5a6a0417248fcf90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sauvegarde les informations sur le joueur, son inventaire, son équipement ainsi que les informations sur la carte et les quêtes d'une partie.  <a href="#aafdde294bbc0144a5a6a0417248fcf90">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aafdde294bbc0144a5a6a0417248fcf90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a04035a05160ad8111695a53423eb1f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a3a04035a05160ad8111695a53423eb1f">load</a> (<a class="el" href="structperso__t.html">perso_t</a> *player, <a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>], int quest_map[6][2], <a class="el" href="structquete__t.html">quete_t</a> *quete, <a class="el" href="structsauv__t.html">sauv_t</a> sauv)</td></tr>
+<tr class="memdesc:a3a04035a05160ad8111695a53423eb1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge les informations sur le joueur, son inventaire, son équipement ainsi que les informations sur la carte et les quêtes d'une partie.  <a href="#a3a04035a05160ad8111695a53423eb1f">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a3a04035a05160ad8111695a53423eb1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02045ba00f9d77ebc465f2ba0b5b2333"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a02045ba00f9d77ebc465f2ba0b5b2333">demo_afficher_items</a> (<a class="el" href="structperso__t.html">perso_t</a> *player, <a class="el" href="structitem__t.html">item_t</a> *Tab_Items, int nb_items_available)</td></tr>
+<tr class="memdesc:a02045ba00f9d77ebc465f2ba0b5b2333"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet au joueur de choisir les items qu'il souhaite ajouter à son inventaire parmi ceux disponibles.  <a href="#a02045ba00f9d77ebc465f2ba0b5b2333">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a02045ba00f9d77ebc465f2ba0b5b2333"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72e40a3baec27ad650a1e64232c469ff"><td class="memItemLeft" align="right" valign="top"><a id="a72e40a3baec27ad650a1e64232c469ff"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_map_essai</b> (int mapint[N][N])</td></tr>
+<tr class="separator:a72e40a3baec27ad650a1e64232c469ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5318d44075c0401496dab8ec961a63c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a5318d44075c0401496dab8ec961a63c3">map_correspondance</a> (<a class="el" href="structcell__t.html">cell_t</a> map_cell[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>], int mapaff[N][N], int position_x, int position_y)</td></tr>
+<tr class="memdesc:a5318d44075c0401496dab8ec961a63c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Met en relation la map sur laquelle évolue le personnage et la amtrice gérant l'affichage de celle-ci en prenant en compte les coordonées où se situe le personnage.  <a href="#a5318d44075c0401496dab8ec961a63c3">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a5318d44075c0401496dab8ec961a63c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07626fbfd2b5bbe8362c4dc137ed5945"><td class="memItemLeft" align="right" valign="top"><a id="a07626fbfd2b5bbe8362c4dc137ed5945"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>relation_hexa_char</b> (char *mapchar[], int mapint[][N])</td></tr>
+<tr class="separator:a07626fbfd2b5bbe8362c4dc137ed5945"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a202b6b178b6f39512d209566a7777b3a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a202b6b178b6f39512d209566a7777b3a">affichage_case_centrale</a> (SDL_Renderer *renderer)</td></tr>
+<tr class="memdesc:a202b6b178b6f39512d209566a7777b3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche dans la case centrale de l'écran un hilight et le personnage.  <a href="#a202b6b178b6f39512d209566a7777b3a">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a202b6b178b6f39512d209566a7777b3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b028eabee5f6bf85ea666fb76055b90"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a0b028eabee5f6bf85ea666fb76055b90">affichage_map</a> (SDL_Renderer *renderer, char *map[], int maptest[N][N], <a class="el" href="structcell__t.html">cell_t</a> map1[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>], <a class="el" href="structperso__t.html">perso_t</a> player)</td></tr>
+<tr class="memdesc:a0b028eabee5f6bf85ea666fb76055b90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche la map, c'est à dire la partie composée d'hexagones à partir de la position du personnage.  <a href="#a0b028eabee5f6bf85ea666fb76055b90">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a0b028eabee5f6bf85ea666fb76055b90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08c7b7c98d57d8ea66889f08d78587e1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a08c7b7c98d57d8ea66889f08d78587e1">interface</a> ()</td></tr>
+<tr class="memdesc:a08c7b7c98d57d8ea66889f08d78587e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche l'interface en elle-même.  <a href="#a08c7b7c98d57d8ea66889f08d78587e1">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a08c7b7c98d57d8ea66889f08d78587e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7eab34c1e4c25af1f30ce0d107f0be96"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a7eab34c1e4c25af1f30ce0d107f0be96">affichage_personnage</a> (SDL_Renderer *renderer, char *img_perso, int x, int y)</td></tr>
+<tr class="memdesc:a7eab34c1e4c25af1f30ce0d107f0be96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche un personnage dont l'image est en paramètre aux coordonées passées en paramètres.  <a href="#a7eab34c1e4c25af1f30ce0d107f0be96">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a7eab34c1e4c25af1f30ce0d107f0be96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67d5f519d62021f4a148b30ac49aad48"><td class="memItemLeft" align="right" valign="top"><a id="a67d5f519d62021f4a148b30ac49aad48"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>combat_bis</b> (TTF_Font *police)</td></tr>
+<tr class="separator:a67d5f519d62021f4a148b30ac49aad48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d0f8f3272ce4fe83344792a19375ff5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commun_8h.html#a1d0f8f3272ce4fe83344792a19375ff5">affichage_help</a> ()</td></tr>
+<tr class="memdesc:a1d0f8f3272ce4fe83344792a19375ff5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche la document d'aide pour le joueur.  <a href="#a1d0f8f3272ce4fe83344792a19375ff5">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a1d0f8f3272ce4fe83344792a19375ff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18862992617505c90ac9f35a29e6b713"><td class="memItemLeft" align="right" valign="top"><a id="a18862992617505c90ac9f35a29e6b713"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>monscanf</b> (char *c)</td></tr>
+<tr class="separator:a18862992617505c90ac9f35a29e6b713"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3997ec19d54ec55aaf83993559efff6e"><td class="memItemLeft" align="right" valign="top"><a id="a3997ec19d54ec55aaf83993559efff6e"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>testscanf</b> ()</td></tr>
+<tr class="separator:a3997ec19d54ec55aaf83993559efff6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Tous les prototypes de fonctions, énumérations, structures, macros appelés dans plusieurs fichiers du projet. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2020 </dd></dl>
+</div><h2 class="groupheader">Documentation du type de l'énumération</h2>
+<a id="a730487a66d035e35d2c63cfa39cea020"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a730487a66d035e35d2c63cfa39cea020">&#9670;&nbsp;</a></span>categ_hexa</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="commun_8h.html#a730487a66d035e35d2c63cfa39cea020">categ_hexa</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Catégorie hexagone. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="a730487a66d035e35d2c63cfa39cea020a7e338ad381a84ef6df07e7d425707025"></a>other&#160;</td><td class="fielddoc"><p>Autre : camp des bandits, frontière et wasteland </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a730487a66d035e35d2c63cfa39cea020ad35b4aa88e030162bff461bdd951f4d1"></a>nature&#160;</td><td class="fielddoc"><p>Nature : prairie, forêt, lac, montagne, mer </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a730487a66d035e35d2c63cfa39cea020a72707e76ca684d1587bbf8dae722008f"></a>urbain&#160;</td><td class="fielddoc"><p>Urbain : ville, marché, favela </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a730487a66d035e35d2c63cfa39cea020a30cd85dbaf210be8c53b046aa594b8a7"></a>militaire&#160;</td><td class="fielddoc"><p>Militaire : camp militaire </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="a3ea2f7654645c7af9da2451ca3a656eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ea2f7654645c7af9da2451ca3a656eb">&#9670;&nbsp;</a></span>equip_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="commun_8h.html#a3ea2f7654645c7af9da2451ca3a656eb">equip_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Zone où un item est équipable. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="a3ea2f7654645c7af9da2451ca3a656ebab7e4e0120a041dbe6528b050c04269e0"></a>none&#160;</td><td class="fielddoc"><p>Pas équipable </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a3ea2f7654645c7af9da2451ca3a656ebaf4614dbbcd15f357a1717a525d1cae7c"></a>hand&#160;</td><td class="fielddoc"><p>Main </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a3ea2f7654645c7af9da2451ca3a656eba441239ef907ce5dd02c6c1f5c35fb1d5"></a>body&#160;</td><td class="fielddoc"><p>Corps </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a3ea2f7654645c7af9da2451ca3a656eba04f1b071f494983129aefb83ff7e90bd"></a>head&#160;</td><td class="fielddoc"><p>Tête </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="a86b2798c02561aa7def13bc6565d7290"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86b2798c02561aa7def13bc6565d7290">&#9670;&nbsp;</a></span>hex_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="commun_8h.html#a86b2798c02561aa7def13bc6565d7290">hex_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Type d'un hexagone. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="a86b2798c02561aa7def13bc6565d7290a7d69cc5fad37b74c0663bb239b4d40b4"></a>prairie&#160;</td><td class="fielddoc"><p>Prairie </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a86b2798c02561aa7def13bc6565d7290a3791fc23864414c638cdf979a8fed0a5"></a>foret&#160;</td><td class="fielddoc"><p>Forêt </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a86b2798c02561aa7def13bc6565d7290aa0748bea0863ca8b94d935d003a5fdd0"></a>ville&#160;</td><td class="fielddoc"><p>Ville </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a86b2798c02561aa7def13bc6565d7290ad2b7d6c474bb425990df79f27b35a165"></a>lac&#160;</td><td class="fielddoc"><p>Lac </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a86b2798c02561aa7def13bc6565d7290afbd5325264e3a8f32dbb224b3ed32c8c"></a>camp_mil&#160;</td><td class="fielddoc"><p>Camp militaire </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a86b2798c02561aa7def13bc6565d7290aa1467ed66a4488889c3849deec1e4703"></a>camp_ban&#160;</td><td class="fielddoc"><p>Camp des bandits </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a86b2798c02561aa7def13bc6565d7290a9cc2bff9d6718d5354471a6ecf53fe93"></a>market&#160;</td><td class="fielddoc"><p>Marché </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a86b2798c02561aa7def13bc6565d7290a8289c77518411d744bb91415c75b479a"></a>favela&#160;</td><td class="fielddoc"><p>Favela </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a86b2798c02561aa7def13bc6565d7290af14f1759a3ba315e6a5483cd6f55ce0a"></a>montagne&#160;</td><td class="fielddoc"><p>Montagne </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a86b2798c02561aa7def13bc6565d7290a908b0a5088d5e7b40d973e720847fd8a"></a>frontiere&#160;</td><td class="fielddoc"><p>Frontière </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a86b2798c02561aa7def13bc6565d7290a008ac7feb3ac562506fa8aa45597274d"></a>mer&#160;</td><td class="fielddoc"><p>Mer </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a86b2798c02561aa7def13bc6565d7290a1249d80794551e75a61297f5e5b7cadf"></a>wasteland&#160;</td><td class="fielddoc"><p>Wasteland (terres abandonnées) </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="adee610a3c7375031538811d29f6a4124"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adee610a3c7375031538811d29f6a4124">&#9670;&nbsp;</a></span>type_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="commun_8h.html#adee610a3c7375031538811d29f6a4124">type_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Type d'un item. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="adee610a3c7375031538811d29f6a4124aa5d58d178c61dcf6fc59831895e79b3a"></a>armor&#160;</td><td class="fielddoc"><p>Armure </p>
+</td></tr>
+<tr><td class="fieldname"><a id="adee610a3c7375031538811d29f6a4124aae810997129ae8ca5fdbb5d446720ad8"></a>weapon&#160;</td><td class="fielddoc"><p>Arme </p>
+</td></tr>
+<tr><td class="fieldname"><a id="adee610a3c7375031538811d29f6a4124a8e61437747405a9d1a65e5020e375e08"></a>misc&#160;</td><td class="fielddoc"><p>Objet divers </p>
+</td></tr>
+<tr><td class="fieldname"><a id="adee610a3c7375031538811d29f6a4124af56e815b1ce6b664d92e7464d40b4fb5"></a>food&#160;</td><td class="fielddoc"><p>Nourriture </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a1668516cd0e1d31746805efdbd4a5f34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1668516cd0e1d31746805efdbd4a5f34">&#9670;&nbsp;</a></span>add_item_to_inventory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int add_item_to_inventory </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a>&#160;</td>
+          <td class="paramname"><em>item</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ajoute un item à l'inventaire du joueur. </p>
+<p>Si son inventaire est plein, propose un échange. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+    <tr><td class="paramname">item</td><td>Item à ajouter à l'inventaire </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un <em>int</em> : 1 si ajout effectué. 0 sinon. </dd></dl>
+
+</div>
+</div>
+<a id="a202b6b178b6f39512d209566a7777b3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a202b6b178b6f39512d209566a7777b3a">&#9670;&nbsp;</a></span>affichage_case_centrale()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void affichage_case_centrale </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche dans la case centrale de l'écran un hilight et le personnage. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">SDL_Renderer</td><td>*renderer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a1d0f8f3272ce4fe83344792a19375ff5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d0f8f3272ce4fe83344792a19375ff5">&#9670;&nbsp;</a></span>affichage_help()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void affichage_help </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche la document d'aide pour le joueur. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a0b028eabee5f6bf85ea666fb76055b90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b028eabee5f6bf85ea666fb76055b90">&#9670;&nbsp;</a></span>affichage_map()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void affichage_map </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>map</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>maptest</em>[N][N], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map1</em>[D][D], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a>&#160;</td>
+          <td class="paramname"><em>player</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche la map, c'est à dire la partie composée d'hexagones à partir de la position du personnage. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">SDL_Renderer</td><td>*renderer </td></tr>
+    <tr><td class="paramname">char</td><td>*map[] </td></tr>
+    <tr><td class="paramname">int</td><td>maptest[N][N] </td></tr>
+    <tr><td class="paramname"><a class="el" href="structcell__t.html" title="Structure pour un hexagone. ">cell_t</a></td><td>map1[D][D] </td></tr>
+    <tr><td class="paramname"><a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a></td><td>player </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a609a5fc89bd1df4a2f14a3e436b6ed93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a609a5fc89bd1df4a2f14a3e436b6ed93">&#9670;&nbsp;</a></span>affichage_parties()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void affichage_parties </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structsauv__t.html">sauv_t</a>&#160;</td>
+          <td class="paramname"><em>sauv</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche les parties sauvegardées et disponibles. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sauv</td><td>Etat des sauvegardes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a7eab34c1e4c25af1f30ce0d107f0be96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7eab34c1e4c25af1f30ce0d107f0be96">&#9670;&nbsp;</a></span>affichage_personnage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void affichage_personnage </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>img_perso</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche un personnage dont l'image est en paramètre aux coordonées passées en paramètres. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">SDL_Renderer</td><td>*renderer </td></tr>
+    <tr><td class="paramname">char</td><td>*img_perso </td></tr>
+    <tr><td class="paramname">int</td><td>x </td></tr>
+    <tr><td class="paramname">int</td><td>y </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a6bec744d50dcccb53e78814e10baeb30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bec744d50dcccb53e78814e10baeb30">&#9670;&nbsp;</a></span>affichage_quete_search_en_cours()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void affichage_quete_search_en_cours </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structquete__t.html">quete_t</a>&#160;</td>
+          <td class="paramname"><em>quete</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a>&#160;</td>
+          <td class="paramname"><em>player</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche certaines informations selon l'état de la quête recherche. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">quete</td><td>Etat des quêtes </td></tr>
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+    <tr><td class="paramname">player</td><td>Joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a719ffd0c2cb14a6236922fac92933adb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a719ffd0c2cb14a6236922fac92933adb">&#9670;&nbsp;</a></span>afficher_type_categ_hexa()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void afficher_type_categ_hexa </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>l</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche le type et la catégorie de l'hexagone de la carte dont les coordonnées sont passées en paramètres. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+    <tr><td class="paramname">l</td><td>Coordonnée ligne de l'hexagone qu'on souhaite afficher </td></tr>
+    <tr><td class="paramname">c</td><td>Coordonnée colonne de l'hexagone qu'on souhaite afficher </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a08b9c4c266cfcf2e07d74de53285d88f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08b9c4c266cfcf2e07d74de53285d88f">&#9670;&nbsp;</a></span>check_the_map()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void check_the_map </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a>&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche la carte, si le joueur en possède une dans son inventaire. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Joueur </td></tr>
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="af3eac3ad203ab091baad010ef3f7ab0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3eac3ad203ab091baad010ef3f7ab0a">&#9670;&nbsp;</a></span>clrscr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clrscr </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Efface la sortie du terminal, le remet à zéro. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a04ffb19fc8145784ad26f44adac4c4ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04ffb19fc8145784ad26f44adac4c4ed">&#9670;&nbsp;</a></span>combat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void combat </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structnpc__t.html">npc_t</a> *&#160;</td>
+          <td class="paramname"><em>enemy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structstat__t.html">stat_t</a> *&#160;</td>
+          <td class="paramname"><em>field</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a> *&#160;</td>
+          <td class="paramname"><em>Tab_Items</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nb_items_available</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction principale du combat qui gère les actions du joueur et ennemi. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+    <tr><td class="paramname">enemy</td><td>Pointeur sur un objet de type <a class="el" href="structnpc__t.html" title="Structure pour ennemi (NPC) ">npc_t</a> correspondant à l'ennemi </td></tr>
+    <tr><td class="paramname">field</td><td>Pointeur sur un objet de type <a class="el" href="structstat__t.html" title="Structure pour un champ de bataille. ">stat_t</a> correspond au champ de bataille </td></tr>
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+    <tr><td class="paramname">Tab_Items</td><td>Tableau contenant tous les items disponibles dans le jeu </td></tr>
+    <tr><td class="paramname">nb_items_available</td><td>Nombre d'items disponibles dans le jeu </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a383694135dc6ea4c93f6290ea506d752"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a383694135dc6ea4c93f6290ea506d752">&#9670;&nbsp;</a></span>compter_items_urbain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int compter_items_urbain </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a> *&#160;</td>
+          <td class="paramname"><em>Tab_Items</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nb_items_available</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compte le nombre d'items pouvant être trouvés dans un hexagone de catégorie urbain (pc_urban &gt; 0). </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Tab_Items</td><td>Tableau contenant tous les items disponibles dans le jeu </td></tr>
+    <tr><td class="paramname">nb_items_available</td><td>Nombre d'items disponibles dans le jeu </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne un <em>int</em> : nombre d'items pouvant être trouvés sur des hexagones de catégorie urbain </dd></dl>
+
+</div>
+</div>
+<a id="a0f6eb129fcf00e592e708ad17e0a65ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f6eb129fcf00e592e708ad17e0a65ac">&#9670;&nbsp;</a></span>coordonnees_valides()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int coordonnees_valides </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>l</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie si les coordonnées sont valides. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">l</td><td>Coordonnée ligne </td></tr>
+    <tr><td class="paramname">c</td><td>Coordonnée colonne </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne un <em>int</em> : 1 si les coordonnées sont valides, 0 si non </dd></dl>
+
+</div>
+</div>
+<a id="a6bfcbccc63814dc4ba0642b7872e8681"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bfcbccc63814dc4ba0642b7872e8681">&#9670;&nbsp;</a></span>creation_tab_item()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int creation_tab_item </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a> *&#160;</td>
+          <td class="paramname"><em>Tab_Items</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>nb_items</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Récupère les items du fichier 'data/items.csv' et les stocke dans le tableau passé en paramètres. </p>
+<p>Affiche un message d'erreur si fichier 'items.csv' introuvable </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Tab_Items</td><td>Tableau contenant tous les items disponibles dans le jeu </td></tr>
+    <tr><td class="paramname">nb_items</td><td>Pointeur sur un entier correspondant au nombre d'items extraits du fichier externe </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un <em>int</em> : 1 si récupération des items réalisée avec succès. 0 sinon. </dd></dl>
+
+</div>
+</div>
+<a id="ad37eb49f35a18814ef964030603d0ab8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad37eb49f35a18814ef964030603d0ab8">&#9670;&nbsp;</a></span>creer_item()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structitem__t.html">item_t</a>* creer_item </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>chaine</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="commun_8h.html#adee610a3c7375031538811d29f6a4124">type_t</a>&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>attack0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>attack1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>attack2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>hitchance0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>hitchance1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>hitchance2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>defense</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>equipable</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pc_nature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pc_urban</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pc_military</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Crée un item à partir des informations passées en paramètres. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">chaine</td><td>Nom de l'item </td></tr>
+    <tr><td class="paramname">type</td><td>Type de l'item </td></tr>
+    <tr><td class="paramname">attack0</td><td>Valeur d'attaque si distance égale à 0 pendant un combat </td></tr>
+    <tr><td class="paramname">attack1</td><td>Valeur d'attaque si distance égale à 1 pendant un combat </td></tr>
+    <tr><td class="paramname">attack2</td><td>Valeur d'attaque si distance égale à 2 pendant un combat </td></tr>
+    <tr><td class="paramname">hitchance0</td><td>Probabilité en pourcentage de toucher l'ennemi si distance égale à 0 pendant un combat </td></tr>
+    <tr><td class="paramname">hitchance1</td><td>Probabilité en pourcentage de toucher l'ennemi si distance égale à 1 pendant un combat </td></tr>
+    <tr><td class="paramname">hitchance2</td><td>Probabilité en pourcentage de toucher l'ennemi si distance égale à 2 pendant un combat </td></tr>
+    <tr><td class="paramname">defense</td><td>Valeur de défense </td></tr>
+    <tr><td class="paramname">equipable</td><td>Indicateur si l'item est équipable et où </td></tr>
+    <tr><td class="paramname">pc_nature</td><td>Probabilité en pourcentage de trouver l'item créé dans un hexagone de catégorie nature </td></tr>
+    <tr><td class="paramname">pc_urban</td><td>Probabilité en pourcentage de trouver l'item créé dans un hexagone de catégorie urbaine </td></tr>
+    <tr><td class="paramname">pc_military</td><td>Probabilité en pourcentage de trouver l'item créé dans un hexagone de catégorie militaire </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un pointeur sur un objet de type <a class="el" href="structitem__t.html" title="Structure pour un item. ">item_t</a> correspondant à l'item créé </dd></dl>
+
+</div>
+</div>
+<a id="a9bc6d36c93298c7aead4ea6e7e6e3e26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bc6d36c93298c7aead4ea6e7e6e3e26">&#9670;&nbsp;</a></span>delete_item_in_inventory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void delete_item_in_inventory </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a>&#160;</td>
+          <td class="paramname"><em>item</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retire l'item passé en paramètre de l'inventaire (et de l'équipement si besoin) du joueur. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+    <tr><td class="paramname">item</td><td>Item à retirer de l'inventaire </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a02045ba00f9d77ebc465f2ba0b5b2333"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02045ba00f9d77ebc465f2ba0b5b2333">&#9670;&nbsp;</a></span>demo_afficher_items()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void demo_afficher_items </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a> *&#160;</td>
+          <td class="paramname"><em>Tab_Items</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nb_items_available</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet au joueur de choisir les items qu'il souhaite ajouter à son inventaire parmi ceux disponibles. </p>
+<p>Cette fonction est appelée UNIQUEMENT en mode demo.</p>
+<p>Mode demo : ./game &ndash;demo ou ./game -d </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+    <tr><td class="paramname">Tab_Items</td><td>Tableau contenant tous les items disponibles dans le jeu </td></tr>
+    <tr><td class="paramname">nb_items_available</td><td>Nombre d'items disponibles dans le jeu </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="ac912edb0758df17f229cb8d8fbd66924"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac912edb0758df17f229cb8d8fbd66924">&#9670;&nbsp;</a></span>display_equipment_player()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void display_equipment_player </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a>&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche l'équipement du joueur. </p>
+<p>Si la tête, la main gauche, la main droite ou le corps du joueur sont équipés, indique avec quels items en précisant leurs positions dans l'inventaire. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a354d78a490ef30d40f4a726524090b21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a354d78a490ef30d40f4a726524090b21">&#9670;&nbsp;</a></span>display_inventory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void display_inventory </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a>&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche l'inventaire du joueur. </p>
+<p>Affichage des items de l'inventaire avec leurs positions, par catégorie (armes, armures, divers, nourriture). Indique si item équipé pour les armes et armures. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="af20ce6de62a477209830e29feb783aa1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af20ce6de62a477209830e29feb783aa1">&#9670;&nbsp;</a></span>display_item()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void display_item </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a>&#160;</td>
+          <td class="paramname"><em>item</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche toutes les caractéristiques d'un item (nom, type, valeur d'attaque si arme, valeur de défense si armure, équipable ou non, pourcentage de chance de trouver cet item sur un hexagone de catégorie nature, urbain et militaire) </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">item</td><td>Item à afficher </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="abb56898d20ef15d05edb82a7dfbe8df9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb56898d20ef15d05edb82a7dfbe8df9">&#9670;&nbsp;</a></span>display_player_characteristics()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void display_player_characteristics </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a>&#160;</td>
+          <td class="paramname"><em>player</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche les paramètres du joueur (points de vie, points d'énergie, points d'action, position sur la carte, nombre de tours restants) </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+    <tr><td class="paramname">player</td><td>Joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a3bc1a448a2edbe81a579122cd06467ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bc1a448a2edbe81a579122cd06467ac">&#9670;&nbsp;</a></span>display_TEXT()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void display_TEXT </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>l</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche la map en version texte avec la légende. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">l</td><td>Coordonnée ligne </td></tr>
+    <tr><td class="paramname">c</td><td>Coordonnée colonne </td></tr>
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="ab3d3633d751f914bb3b4609a9950c513"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3d3633d751f914bb3b4609a9950c513">&#9670;&nbsp;</a></span>eat_or_drink()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void eat_or_drink </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a>&#160;</td>
+          <td class="paramname"><em>item</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet au joueur de boire ou manger un item de type <em>food</em> et récupérer des points d'énergie ou action (si cela est possible). </p>
+<p>Retire l'item mangé / bu de l'inventaire </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+    <tr><td class="paramname">item</td><td>Item que le joueur désire manger ou boire </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a8c9a1c312a2d24dc4a9d4db757e55711"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c9a1c312a2d24dc4a9d4db757e55711">&#9670;&nbsp;</a></span>effacer_partie()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void effacer_partie </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structsauv__t.html">sauv_t</a>&#160;</td>
+          <td class="paramname"><em>sauv</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Efface une partie choisie par l'utilisateur. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sauv</td><td>Etat des sauvegardes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="aa4899d80cb631c57ee63b3d4a04b5cbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4899d80cb631c57ee63b3d4a04b5cbe">&#9670;&nbsp;</a></span>entree_pour_continuer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void entree_pour_continuer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Actionne la continuité du jeu par la touche "entrée". </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="afd7728c9e6ae89e5932e641b54556aba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd7728c9e6ae89e5932e641b54556aba">&#9670;&nbsp;</a></span>exit_game()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int exit_game </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Propose au joueur de quitter ou non la carte lorsqu'il vient de trouver la sortie. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Un <em>int</em> : 1 si le joueur décide de quitter la carte. 0 s'il décide de continuer l'aventure. </dd></dl>
+
+</div>
+</div>
+<a id="aec4be0e1e14efa931211be073ea33cab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec4be0e1e14efa931211be073ea33cab">&#9670;&nbsp;</a></span>fish()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fish </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet au joueur de pêcher s'il se situe sur un hexagone de type <em>lac</em> ou <em>mer</em> et s'il a une canne à pêche dans son inventaire. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="acc7e7b34903dd75f8563deda4e525f39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc7e7b34903dd75f8563deda4e525f39">&#9670;&nbsp;</a></span>informations_map()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void informations_map </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche les informations de la carte. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a8467aba54144bfdead8e1a614e563e23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8467aba54144bfdead8e1a614e563e23">&#9670;&nbsp;</a></span>informations_quetes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void informations_quetes </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>quest_map</em>[6][2], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structquete__t.html">quete_t</a>&#160;</td>
+          <td class="paramname"><em>quete</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche les informations des quêtes (coordonnées et états) </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+    <tr><td class="paramname">quest_map[6][2]</td><td>Matrice des coordonnées des quêtes </td></tr>
+    <tr><td class="paramname">quete</td><td>Etat des quêtes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a5cb6f755d33b58efdb98f491dc2d9c45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5cb6f755d33b58efdb98f491dc2d9c45">&#9670;&nbsp;</a></span>init_field()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structstat__t.html">stat_t</a>* init_field </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise le champ de bataille du combat (positions et couvertures des adversaires, distance qui les sépare) </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Pointeur sur un objet de type <a class="el" href="structstat__t.html" title="Structure pour un champ de bataille. ">stat_t</a> correspondant au champ de bataille créé </dd></dl>
+
+</div>
+</div>
+<a id="ac8928522f1a66ba3d5a8c3cb97d144da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8928522f1a66ba3d5a8c3cb97d144da">&#9670;&nbsp;</a></span>init_npc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structnpc__t.html">npc_t</a>* init_npc </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a> *&#160;</td>
+          <td class="paramname"><em>Tab_Items</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise un non-player character (NPC) ennemi (nom, arme, armure et points de vie) </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Tab_Items</td><td>Tableau contenant tous les items disponibles dans le jeu </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Pointeur sur un objet de type <a class="el" href="structnpc__t.html" title="Structure pour ennemi (NPC) ">npc_t</a> correspondant à l'ennemi créé </dd></dl>
+
+</div>
+</div>
+<a id="aa4185f5937661c9591dce0ad1d7b80d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4185f5937661c9591dce0ad1d7b80d6">&#9670;&nbsp;</a></span>init_player()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_player </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise les paramètres du joueur quand il commence le jeu. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a88d64826f8f2155e0cbf149e18aa33c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88d64826f8f2155e0cbf149e18aa33c0">&#9670;&nbsp;</a></span>init_quete()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_quete </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structquete__t.html">quete_t</a> *&#160;</td>
+          <td class="paramname"><em>quete</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>quest_map</em>[6][2], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a> *&#160;</td>
+          <td class="paramname"><em>Tab_Items</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nb_items_available</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialisation d'une variable de type <a class="el" href="structquete__t.html" title="Structure de suivi des quêtes. ">quete_t</a>. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">quete</td><td>Pointeur sur un objet de type <a class="el" href="structquete__t.html" title="Structure de suivi des quêtes. ">quete_t</a> correspondant à l'état des quêtes </td></tr>
+    <tr><td class="paramname">quest_map[6][2]</td><td>Matrice des coordonnées des quêtes </td></tr>
+    <tr><td class="paramname">Tab_Items</td><td>Tableau contenant tous les items disponibles dans le jeu </td></tr>
+    <tr><td class="paramname">nb_items_available</td><td>Nombre d'items disponibles dans le jeu </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="ab3150620b999a50e0b971d888263e018"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3150620b999a50e0b971d888263e018">&#9670;&nbsp;</a></span>init_Tab_Items_urbain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_Tab_Items_urbain </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a> *&#160;</td>
+          <td class="paramname"><em>Tab_Items_urbain</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a> *&#160;</td>
+          <td class="paramname"><em>Tab_Items</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nb_items_available</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise un tableau contenant tous les items pouvant être trouvés dans un hexagone de catégorie urbain. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Tab_Items_urbain</td><td>Tableau contenant les items pouvant être trouvés sur des hexagones de catégorie urbain </td></tr>
+    <tr><td class="paramname">Tab_Items</td><td>Tableau contenant tous les items disponibles dans le jeu </td></tr>
+    <tr><td class="paramname">nb_items_available</td><td>Nombre d'items disponibles dans le jeu </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a08c7b7c98d57d8ea66889f08d78587e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08c7b7c98d57d8ea66889f08d78587e1">&#9670;&nbsp;</a></span>interface()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int interface </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche l'interface en elle-même. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>0 si tout c'est bien passé </dd></dl>
+
+</div>
+</div>
+<a id="aae5f9602614f22807a8f2719fb015bdd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae5f9602614f22807a8f2719fb015bdd">&#9670;&nbsp;</a></span>is_equipped()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int is_equipped </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a>&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a>&#160;</td>
+          <td class="paramname"><em>item</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indique si le joueur est équipé de l'item passé en paramètre. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Joueur </td></tr>
+    <tr><td class="paramname">item</td><td>Item </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un <em>int</em> : si le joueur n'est pas équipé de l'item retourne 0 (<a class="el" href="commun_8h.html#a6764330ff4f04cee324e30f775960f02" title="NOT_EQUIPPED indique qu&#39;un item n&#39;est pas équipé ">NOT_EQUIPPED</a>), sinon retourne où l'item est équipé sur le joueur (<a class="el" href="commun_8h.html#a2eff09387fb5d20d8af4fa186ae37c4d" title="LEFT_HAND indique qu&#39;un item est équipé sur la main gauche du joueur. ">LEFT_HAND</a> = 1, <a class="el" href="commun_8h.html#a5d1d275cfec76197e014fe4d58f2e569" title="RIGHT_HAND indique qu&#39;un item est équipé sur la main droite du joueur. ">RIGHT_HAND</a> = 2, <a class="el" href="commun_8h.html#aa6bdf6a6d9916c343e1e17774d84a156" title="BODY indique qu&#39;un item est équipé sur le corps du joueur. ">BODY</a> = 3, <a class="el" href="commun_8h.html#a110f3b6cdacd45daee818b3e5965f6da" title="HEAD indique qu&#39;un item est équipé sur la tête du joueur. ">HEAD</a> = 4) </dd></dl>
+
+</div>
+</div>
+<a id="a422fba7d76e9ed4b5783cf5d9177aad8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a422fba7d76e9ed4b5783cf5d9177aad8">&#9670;&nbsp;</a></span>item_in_inventory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int item_in_inventory </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a>&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>nom_item</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Recherche si l'item dont le nom est passé en paramètre est présent ou non dans l'inventaire. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Joueur </td></tr>
+    <tr><td class="paramname">nom_item</td><td>Nom de l'item à rechercher dans l'inventaire </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un <em>int</em> : position de l'item dans l'inventaire si présent, -1 si absent </dd></dl>
+
+</div>
+</div>
+<a id="a3a04035a05160ad8111695a53423eb1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a04035a05160ad8111695a53423eb1f">&#9670;&nbsp;</a></span>load()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void load </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>quest_map</em>[6][2], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structquete__t.html">quete_t</a> *&#160;</td>
+          <td class="paramname"><em>quete</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsauv__t.html">sauv_t</a>&#160;</td>
+          <td class="paramname"><em>sauv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Charge les informations sur le joueur, son inventaire, son équipement ainsi que les informations sur la carte et les quêtes d'une partie. </p>
+<p>Informations sur le joueur : points de vie, points d'énergie, points d'action, position sur la carte, nombre de tours restants</p>
+<p>Informations sur la carte : pour chaque case de la matrice map, chargement de son type, sa catégorie, s'il y a un combat, si le joueur a déjà fouillé la case et si une quête y est positionnée.</p>
+<p>Informations sur les quêtes : chargement des coordonnées de chaque quête et de leurs états. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+    <tr><td class="paramname">quest_map[6][2]</td><td>Matrice des coordonnées des quêtes </td></tr>
+    <tr><td class="paramname">quete</td><td>Pointeur sur un objet de type <a class="el" href="structquete__t.html" title="Structure de suivi des quêtes. ">quete_t</a> correspondant à l'état des quêtes </td></tr>
+    <tr><td class="paramname">sauv</td><td>Etat des sauvegardes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="afe6c66728ce22be9ff976516f8b77c68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe6c66728ce22be9ff976516f8b77c68">&#9670;&nbsp;</a></span>manage_equipment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void manage_equipment </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction centrale du fichier <a class="el" href="equipment_8c.html" title="Gestion de l&#39;équipement du joueur. ">equipment.c</a> permettant au joueur de gérer son équipement. </p>
+<p>Menu équipement : Possibilité pour le joueur de s'équiper d'un item de son inventaire, de retirer un item de son équipement. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a35b519c6835c9aa90ff5fd35b0e68f66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35b519c6835c9aa90ff5fd35b0e68f66">&#9670;&nbsp;</a></span>manage_inventory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void manage_inventory </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction centrale du fichier <a class="el" href="inventory_8c.html" title="Gestion de l&#39;inventaire du joueur. ">inventory.c</a> permettant au joueur de gérer son inventaire. </p>
+<p>Menu inventaire : Possibilité pour le joueur d'en savoir plus sur un de ses items, de se débarasser d'un item, de manger/boire un item, d'utiliser son kit médical (s'il en possède un) </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a5318d44075c0401496dab8ec961a63c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5318d44075c0401496dab8ec961a63c3">&#9670;&nbsp;</a></span>map_correspondance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void map_correspondance </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map_cell</em>[D][D], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mapaff</em>[N][N], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>position_x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>position_y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Met en relation la map sur laquelle évolue le personnage et la amtrice gérant l'affichage de celle-ci en prenant en compte les coordonées où se situe le personnage. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcell__t.html" title="Structure pour un hexagone. ">cell_t</a></td><td>map_cell[D][D] </td></tr>
+    <tr><td class="paramname">int</td><td>mapaff[N][N] </td></tr>
+    <tr><td class="paramname">int</td><td>position_x </td></tr>
+    <tr><td class="paramname">int</td><td>position_y </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a309363eb6ec82b7f53f004bbd01c21c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a309363eb6ec82b7f53f004bbd01c21c4">&#9670;&nbsp;</a></span>map_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void map_init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>quest_map</em>[6][2]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise la carte au début de chaque partie. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+    <tr><td class="paramname">quest_map[6][2]</td><td>Matrice des coordonnées des quêtes </td></tr>
+    <tr><td class="paramname">player</td><td>Joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="ac9fb4bd5a16513e8faf4bf23dcb3d2bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9fb4bd5a16513e8faf4bf23dcb3d2bf">&#9670;&nbsp;</a></span>move()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void move </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Déplace le joueur où il le souhaite, si cela est possible (conditions : coordonnées valides et assez de points d'action) </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a588235e6d46f215c009c995d07f31ec2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a588235e6d46f215c009c995d07f31ec2">&#9670;&nbsp;</a></span>nb_equipement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int nb_equipement </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a>&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compte le nombre d'item(s) équipé(s) sur le joueur. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un <em>int</em> correspondant au nombre d'équipement(s) (items) actuellement sur le joueur </dd></dl>
+
+</div>
+</div>
+<a id="ab34814b4d8a3404f1d08ca212259c39b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab34814b4d8a3404f1d08ca212259c39b">&#9670;&nbsp;</a></span>next_turn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void next_turn </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calcule le nombre de points d’action récupérés à partir de la valeur des points d'énergie du joueur puis passe au tour suivant. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="ac44e2e3723ce06a3660665d0adc23079"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac44e2e3723ce06a3660665d0adc23079">&#9670;&nbsp;</a></span>portable_switch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void portable_switch </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche le code de la cellule. </p>
+<p>Cette fonction a été créée pour éviter de refaire le switch dans différentes fonctions d'affichage. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>Coordonnée ligne </td></tr>
+    <tr><td class="paramname">j</td><td>Coordonnée colonne </td></tr>
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a61aa43ceaa893c5807b45cd54fd140e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61aa43ceaa893c5807b45cd54fd140e8">&#9670;&nbsp;</a></span>quest_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void quest_init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>quest_map</em>[6][2]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise les quêtes (quest_id) sur la carte. </p>
+<p>Les quêtes sont placées aléatoirement sur la carte. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+    <tr><td class="paramname">quest_map[6][2]</td><td>Matrice des coordonnées des quêtes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="ae3a10faf1284038599e3098a8253ce43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3a10faf1284038599e3098a8253ce43">&#9670;&nbsp;</a></span>quete_bandits()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int quete_bandits </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structquete__t.html">quete_t</a> *&#160;</td>
+          <td class="paramname"><em>quete</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a> *&#160;</td>
+          <td class="paramname"><em>Tab_Items</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nb_items_available</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Accès à la quete "bandits". </p>
+<p>Le joueur combat contre un npc aléatoire. Il en sort vivant, blessé ou mort. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+    <tr><td class="paramname">quete</td><td>Pointeur sur un objet de type <a class="el" href="structquete__t.html" title="Structure de suivi des quêtes. ">quete_t</a> correspondant à l'état des quêtes </td></tr>
+    <tr><td class="paramname">Tab_Items</td><td>Tableau contenant tous les items disponibles dans le jeu </td></tr>
+    <tr><td class="paramname">nb_items_available</td><td>Nombre d'items disponibles dans le jeu </td></tr>
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne un <em>int</em> : 0 si le jeu continue, 1 si le jeu est fini et -1 si problème dans la quête. </dd></dl>
+
+</div>
+</div>
+<a id="a931bac6752154b310757ff2026789ba0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a931bac6752154b310757ff2026789ba0">&#9670;&nbsp;</a></span>quete_bunker()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int quete_bunker </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structquete__t.html">quete_t</a> *&#160;</td>
+          <td class="paramname"><em>quete</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Accès à la quête "bunker". </p>
+<p>Si le joueur possède le pass_card, il aura le choix de rentrer dans le bunker ou non. Sinon il fait demi-tour. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+    <tr><td class="paramname">quete</td><td>Pointeur sur un objet de type <a class="el" href="structquete__t.html" title="Structure de suivi des quêtes. ">quete_t</a> correspondant à l'état des quêtes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne un <em>int</em> : 0 si le jeu continue, 1 si le jeu est fini et -1 si problème dans la quête. </dd></dl>
+
+</div>
+</div>
+<a id="adbd858f4a2365f62831b49f54f41528b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbd858f4a2365f62831b49f54f41528b">&#9670;&nbsp;</a></span>quete_frontiere()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int quete_frontiere </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structquete__t.html">quete_t</a> *&#160;</td>
+          <td class="paramname"><em>quete</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Accès à la quete "frontière". </p>
+<p>Le joueur trouve la sortie de la frontière, il a le choix de la franchir (finir le jeu) ou non. S'il a joué la quête "soin" et qu'il a aidé l'homme blessé alors ses chances de la franchir sont importantes. Mais s'il ne l'a pas fait, ses chances le sont moins. La chance est donnée par un nombre entier compris entre 0 et 100. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+    <tr><td class="paramname">quete</td><td>Pointeur sur un objet de type <a class="el" href="structquete__t.html" title="Structure de suivi des quêtes. ">quete_t</a> correspondant à l'état des quêtes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne un <em>int</em> : 0 si le jeu continue, 1 si le jeu est fini et -1 si problème dans la quête. </dd></dl>
+
+</div>
+</div>
+<a id="aa6e4089158a870a21df474d0977de085"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6e4089158a870a21df474d0977de085">&#9670;&nbsp;</a></span>quete_montagne()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int quete_montagne </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structquete__t.html">quete_t</a> *&#160;</td>
+          <td class="paramname"><em>quete</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Accès à la quete "montagne". </p>
+<p>Le joueur a le choix de franchir la montagne (finir le jeu) ou non. S'il a en sa possession l'équipement de montagne alors ses chances de s'échapper sont importantes. Mais s'il ne l'a pas, il est très risqué pour lui de vouloir s'échapper. La chance est donné par un nombre entier compris entre 0 et 100. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+    <tr><td class="paramname">quete</td><td>Pointeur sur un objet de type <a class="el" href="structquete__t.html" title="Structure de suivi des quêtes. ">quete_t</a> correspondant à l'état des quêtes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne un <em>int</em> : 0 si le jeu continue, 1 si le jeu est fini et -1 si problème dans la quête. </dd></dl>
+
+</div>
+</div>
+<a id="a4c3d223c6fd93383772b82f032cc8bcc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c3d223c6fd93383772b82f032cc8bcc">&#9670;&nbsp;</a></span>quete_recherche()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int quete_recherche </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structquete__t.html">quete_t</a> *&#160;</td>
+          <td class="paramname"><em>quete</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Accès à la quete "recherche". </p>
+<p>Le joueur doit aller à un endroit donné pour trouver un item et le ramener. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+    <tr><td class="paramname">quete</td><td>Pointeur sur un objet de type <a class="el" href="structquete__t.html" title="Structure de suivi des quêtes. ">quete_t</a> correspondant à l'état des quêtes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne un <em>int</em> : 0 si le jeu continue et -1 si problème dans la quête. </dd></dl>
+
+</div>
+</div>
+<a id="a402540673166e0323939a3d3e518bad2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a402540673166e0323939a3d3e518bad2">&#9670;&nbsp;</a></span>quete_soin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int quete_soin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structquete__t.html">quete_t</a> *&#160;</td>
+          <td class="paramname"><em>quete</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a> *&#160;</td>
+          <td class="paramname"><em>Tab_Items</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Déroulement de la quête "soin" : rencontre d'un individu blessé. </p>
+<p>Le joueur rencontre un individu blesse. Il a le choix entre l'ignorer, lui voler ses items ou l'aider. Cet individu est un homme de l'Etat, en charge de la protection des civiles (policier ou soldat). Pour pouvoir aider le blesse le joueur doit être en possession du medical kit ou de nourriture. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+    <tr><td class="paramname">quete</td><td>Pointeur sur un objet de type <a class="el" href="structquete__t.html" title="Structure de suivi des quêtes. ">quete_t</a> correspondant à l'état des quêtes </td></tr>
+    <tr><td class="paramname">Tab_Items</td><td>Tableau contenant tous les items disponibles dans le jeu </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne un <em>int</em> : 0 si le jeu continue et -1 si probleme dans la quete. </dd></dl>
+
+</div>
+</div>
+<a id="adc1d91bf20af02d88470e87ff9bb9e8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc1d91bf20af02d88470e87ff9bb9e8b">&#9670;&nbsp;</a></span>quetes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int quetes </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>quest_map</em>[6][2], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structquete__t.html">quete_t</a> *&#160;</td>
+          <td class="paramname"><em>quete</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a> *&#160;</td>
+          <td class="paramname"><em>Tab_Items</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nb_items_available</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Récupère le numéro de la quête pour accéder à la quête correspondante. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+    <tr><td class="paramname">quest_map[6][2]</td><td>Matrice des coordonnées des quêtes </td></tr>
+    <tr><td class="paramname">quete</td><td>Pointeur sur un objet de type <a class="el" href="structquete__t.html" title="Structure de suivi des quêtes. ">quete_t</a> correspond à l'état des quêtes </td></tr>
+    <tr><td class="paramname">Tab_Items</td><td>Tableau contenant tous les items disponibles dans le jeu </td></tr>
+    <tr><td class="paramname">nb_items_available</td><td>Nombre d'items disponibles dans le jeu </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne un <em>int</em> : 0 si le jeu continue, 1 si le jeu est fini et -1 si problème dans la quête. </dd></dl>
+
+</div>
+</div>
+<a id="a27e09d79b0c98039d2d6f07dd485ccc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27e09d79b0c98039d2d6f07dd485ccc0">&#9670;&nbsp;</a></span>random_move()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void random_move </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Déplace aléatoirement le joueur sur un des hexagones qui l'entoure. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="acff6b648c6726c70104531f080bfa710"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acff6b648c6726c70104531f080bfa710">&#9670;&nbsp;</a></span>range()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int range </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Génère un nombre aléatoire compris entre deux entiers passés en paramètre. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>Valeur min de l'intervalle (inclus) </td></tr>
+    <tr><td class="paramname">b</td><td>Valeur max de l'intervalle (inclus) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne un <em>int</em> dans l'intervalle [a;b] </dd></dl>
+
+</div>
+</div>
+<a id="a16623bb45a52000b8ec7b116aaa46173"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16623bb45a52000b8ec7b116aaa46173">&#9670;&nbsp;</a></span>rest_and_heal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rest_and_heal </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet au joueur de se reposer et récupérer des points de vie et points d'énergie (proportionnellement au nombre de points d'action) </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a40356000b1ed5cc4b2798194e57acefc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40356000b1ed5cc4b2798194e57acefc">&#9670;&nbsp;</a></span>rng()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rng </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>prob</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Génère 0 ou 1 en fonction de la probabilité en pourcentage passée en paramètre. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">prob</td><td>Probabilité en pourcentage </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne un <em>int</em> : 1 ou 0. </dd></dl>
+
+</div>
+</div>
+<a id="ae3a35e6ca5de07de881517f1c47a1435"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3a35e6ca5de07de881517f1c47a1435">&#9670;&nbsp;</a></span>sauvegarde_existante()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sauvegarde_existante </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structsauv__t.html">sauv_t</a>&#160;</td>
+          <td class="paramname"><em>sauv</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indique s'il existe une sauvegarde pour la partie choisie par l'utilisateur. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sauv</td><td>Etat des sauvegardes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un <em>int</em> : 1 si une sauvegarde existe. 0 sinon. </dd></dl>
+
+</div>
+</div>
+<a id="abf3bd1684d5f65e10f183757d06706df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf3bd1684d5f65e10f183757d06706df">&#9670;&nbsp;</a></span>sauvegarder_progression()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sauvegarder_progression </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a>&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>quest_map</em>[6][2], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structquete__t.html">quete_t</a>&#160;</td>
+          <td class="paramname"><em>quete</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsauv__t.html">sauv_t</a>&#160;</td>
+          <td class="paramname"><em>sauv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sauvegarde la progression de la partie actuellement en cours et propose au joueur de continuer ou quitter le jeu. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Joueur </td></tr>
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+    <tr><td class="paramname">quest_map[6][2]</td><td>Matrice des coordonnées des quêtes </td></tr>
+    <tr><td class="paramname">quete</td><td>Etat des quêtes </td></tr>
+    <tr><td class="paramname">sauv</td><td>Etat des sauvegardes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="aafdde294bbc0144a5a6a0417248fcf90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafdde294bbc0144a5a6a0417248fcf90">&#9670;&nbsp;</a></span>save()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void save </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a>&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>quest_map</em>[6][2], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structquete__t.html">quete_t</a>&#160;</td>
+          <td class="paramname"><em>quete</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsauv__t.html">sauv_t</a>&#160;</td>
+          <td class="paramname"><em>sauv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sauvegarde les informations sur le joueur, son inventaire, son équipement ainsi que les informations sur la carte et les quêtes d'une partie. </p>
+<p>Informations sur le joueur : points de vie, points d'énergie, points d'action, position sur la carte, nombre de tours restants</p>
+<p>Informations sur la carte : pour chaque case de la matrice map, sauvegarde de son type, sa catégorie, s'il y a un combat, si le joueur a déjà fouillé la case et si une quête y est positionnée.</p>
+<p>Informations sur les quêtes : sauvegarde des coordonnées de chaque quête et de leurs états. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Joueur </td></tr>
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+    <tr><td class="paramname">quest_map[6][2]</td><td>Matrice des coordonnées des quêtes </td></tr>
+    <tr><td class="paramname">quete</td><td>Etat des quêtes </td></tr>
+    <tr><td class="paramname">sauv</td><td>Etat des sauvegardes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a40672738b4eba05b66ae0a8127346356"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40672738b4eba05b66ae0a8127346356">&#9670;&nbsp;</a></span>scavenge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void scavenge </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a> *&#160;</td>
+          <td class="paramname"><em>Tab_Items</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nb_items_available</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structquete__t.html">quete_t</a>&#160;</td>
+          <td class="paramname"><em>quete</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet au joueur de fouiller l'hexagone sur lequel il se trouve pour récupérer des items. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+    <tr><td class="paramname">Tab_Items</td><td>Tableau contenant tous les items disponibles dans le jeu </td></tr>
+    <tr><td class="paramname">nb_items_available</td><td>Nombre d'items disponibles dans le jeu </td></tr>
+    <tr><td class="paramname">quete</td><td>Etat des quêtes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a08446349c2ace9f33a111be928403978"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08446349c2ace9f33a111be928403978">&#9670;&nbsp;</a></span>update_etat_sauvegarde()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void update_etat_sauvegarde </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structsauv__t.html">sauv_t</a> *&#160;</td>
+          <td class="paramname"><em>sauv</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Met à jour l'état des sauvegardes (si elles existent et leurs noms) </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sauv</td><td>Pointeur sur un objet de type <a class="el" href="structsauv__t.html" title="Structure pour sauvegarder les parties. ">sauv_t</a> correspondant à l'état des sauvegardes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

@@ -1,0 +1,131 @@
+\hypertarget{game_8c}{}\section{Référence du fichier src/game.c}
+\label{game_8c}\index{src/game.\+c@{src/game.\+c}}
+
+
+Jeu.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$getopt.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}lib/commun.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de game.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{game_8c_ad300b634b9461af9dda7f2c96afa455d}{presentation\+\_\+regle\+\_\+jeu} ()
+\begin{DoxyCompactList}\small\item\em Présentation des règles du jeu quand le joueur commence une nouvelle partie. \end{DoxyCompactList}\item 
+void \hyperlink{game_8c_a2c0f13f342efb90f2f53297790e7fa89}{menu\+\_\+principal\+\_\+jeu} (\hyperlink{structperso__t}{perso\+\_\+t} player, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, int quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}, \hyperlink{structquete__t}{quete\+\_\+t} quete, \hyperlink{structsauv__t}{sauv\+\_\+t} sauv, \hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items, int nb\+\_\+items\+\_\+available)
+\begin{DoxyCompactList}\small\item\em Menu principal du jeu. \end{DoxyCompactList}\item 
+void \hyperlink{game_8c_a79acdc5e51118452ff7efb76aa95a1fa}{choix\+\_\+partie} (\hyperlink{structsauv__t}{sauv\+\_\+t} $\ast$sauv, int demo)
+\begin{DoxyCompactList}\small\item\em Propose au joueur de choisir une partie (sauvegardée ou nouvelle partie) \end{DoxyCompactList}\item 
+int \hyperlink{game_8c_a7f567e72b4713406998c6192bb2a10e7}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]}, char $\ast$env\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Programme principal -\/ Menu début de jeu \+: choisir une partie pour jouer, effacer une partie ou quitter le jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Jeu. 
+
+\begin{DoxyAuthor}{Auteur}
+Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{game_8c_a79acdc5e51118452ff7efb76aa95a1fa}\label{game_8c_a79acdc5e51118452ff7efb76aa95a1fa}} 
+\index{game.\+c@{game.\+c}!choix\+\_\+partie@{choix\+\_\+partie}}
+\index{choix\+\_\+partie@{choix\+\_\+partie}!game.\+c@{game.\+c}}
+\subsubsection{\texorpdfstring{choix\+\_\+partie()}{choix\_partie()}}
+{\footnotesize\ttfamily void choix\+\_\+partie (\begin{DoxyParamCaption}\item[{\hyperlink{structsauv__t}{sauv\+\_\+t} $\ast$}]{sauv,  }\item[{int}]{demo }\end{DoxyParamCaption})}
+
+
+
+Propose au joueur de choisir une partie (sauvegardée ou nouvelle partie) 
+
+Initialisation différente si le joueur continue une partie précédemment sauvegardée ou en commence une nouvelle. 
+\begin{DoxyParams}{Paramètres}
+{\em sauv} & Pointeur sur un objet de type \hyperlink{structsauv__t}{sauv\+\_\+t} correspondant à l\textquotesingle{}état des sauvegardes \\
+\hline
+{\em demo} & Indicateur si mode demo \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8c_a7f567e72b4713406998c6192bb2a10e7}\label{game_8c_a7f567e72b4713406998c6192bb2a10e7}} 
+\index{game.\+c@{game.\+c}!main@{main}}
+\index{main@{main}!game.\+c@{game.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]},  }\item[{char $\ast$}]{env\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Programme principal -\/ Menu début de jeu \+: choisir une partie pour jouer, effacer une partie ou quitter le jeu. 
+
+Exécuter ./game --demo ou ./game -\/d pour mode demo 
+\begin{DoxyParams}{Paramètres}
+{\em sauv} & Pointeur sur un objet de type \hyperlink{structsauv__t}{sauv\+\_\+t} correspondant à l\textquotesingle{}état des sauvegardes \\
+\hline
+{\em demo} & Indicateur si mode demo \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8c_a2c0f13f342efb90f2f53297790e7fa89}\label{game_8c_a2c0f13f342efb90f2f53297790e7fa89}} 
+\index{game.\+c@{game.\+c}!menu\+\_\+principal\+\_\+jeu@{menu\+\_\+principal\+\_\+jeu}}
+\index{menu\+\_\+principal\+\_\+jeu@{menu\+\_\+principal\+\_\+jeu}!game.\+c@{game.\+c}}
+\subsubsection{\texorpdfstring{menu\+\_\+principal\+\_\+jeu()}{menu\_principal\_jeu()}}
+{\footnotesize\ttfamily void menu\+\_\+principal\+\_\+jeu (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t}}]{player,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{int}]{quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]},  }\item[{\hyperlink{structquete__t}{quete\+\_\+t}}]{quete,  }\item[{\hyperlink{structsauv__t}{sauv\+\_\+t}}]{sauv,  }\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items,  }\item[{int}]{nb\+\_\+items\+\_\+available }\end{DoxyParamCaption})}
+
+
+
+Menu principal du jeu. 
+
+Le joueur choisit ce qu\textquotesingle{}il souhaite faire. 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Joueur \\
+\hline
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+{\em quete} & Etat des quêtes \\
+\hline
+{\em sauv} & Etat des sauvegardes \\
+\hline
+{\em Tab\+\_\+\+Items} & Tableau contenant tous les items disponibles dans le jeu \\
+\hline
+{\em nb\+\_\+items\+\_\+available} & Nombre d\textquotesingle{}items disponibles dans le jeu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8c_ad300b634b9461af9dda7f2c96afa455d}\label{game_8c_ad300b634b9461af9dda7f2c96afa455d}} 
+\index{game.\+c@{game.\+c}!presentation\+\_\+regle\+\_\+jeu@{presentation\+\_\+regle\+\_\+jeu}}
+\index{presentation\+\_\+regle\+\_\+jeu@{presentation\+\_\+regle\+\_\+jeu}!game.\+c@{game.\+c}}
+\subsubsection{\texorpdfstring{presentation\+\_\+regle\+\_\+jeu()}{presentation\_regle\_jeu()}}
+{\footnotesize\ttfamily void presentation\+\_\+regle\+\_\+jeu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Présentation des règles du jeu quand le joueur commence une nouvelle partie. 
+
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}

@@ -1,0 +1,212 @@
+\hypertarget{backup__and__load_8c}{}\section{Référence du fichier src/backup\+\_\+and\+\_\+load.c}
+\label{backup__and__load_8c}\index{src/backup\+\_\+and\+\_\+load.\+c@{src/backup\+\_\+and\+\_\+load.\+c}}
+
+
+Sauvegarde et chargement d\textquotesingle{}une partie.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}lib/commun.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de backup\+\_\+and\+\_\+load.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{backup__and__load_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{backup__and__load_8c_abf3bd1684d5f65e10f183757d06706df}{sauvegarder\+\_\+progression} (\hyperlink{structperso__t}{perso\+\_\+t} player, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, int quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}, \hyperlink{structquete__t}{quete\+\_\+t} quete, \hyperlink{structsauv__t}{sauv\+\_\+t} sauv)
+\begin{DoxyCompactList}\small\item\em Sauvegarde la progression de la partie actuellement en cours et propose au joueur de continuer ou quitter le jeu. \end{DoxyCompactList}\item 
+int \hyperlink{backup__and__load_8c_ae3a35e6ca5de07de881517f1c47a1435}{sauvegarde\+\_\+existante} (\hyperlink{structsauv__t}{sauv\+\_\+t} sauv)
+\begin{DoxyCompactList}\small\item\em Indique s\textquotesingle{}il existe une sauvegarde pour la partie choisie par l\textquotesingle{}utilisateur. \end{DoxyCompactList}\item 
+void \hyperlink{backup__and__load_8c_a609a5fc89bd1df4a2f14a3e436b6ed93}{affichage\+\_\+parties} (\hyperlink{structsauv__t}{sauv\+\_\+t} sauv)
+\begin{DoxyCompactList}\small\item\em Affiche les parties sauvegardées et disponibles. \end{DoxyCompactList}\item 
+void \hyperlink{backup__and__load_8c_a08446349c2ace9f33a111be928403978}{update\+\_\+etat\+\_\+sauvegarde} (\hyperlink{structsauv__t}{sauv\+\_\+t} $\ast$sauv)
+\begin{DoxyCompactList}\small\item\em Met à jour l\textquotesingle{}état des sauvegardes (si elles existent et leurs noms) \end{DoxyCompactList}\item 
+void \hyperlink{backup__and__load_8c_a8c9a1c312a2d24dc4a9d4db757e55711}{effacer\+\_\+partie} (\hyperlink{structsauv__t}{sauv\+\_\+t} sauv)
+\begin{DoxyCompactList}\small\item\em Efface une partie choisie par l\textquotesingle{}utilisateur. \end{DoxyCompactList}\item 
+void \hyperlink{backup__and__load_8c_aafdde294bbc0144a5a6a0417248fcf90}{save} (\hyperlink{structperso__t}{perso\+\_\+t} player, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, int quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}, \hyperlink{structquete__t}{quete\+\_\+t} quete, \hyperlink{structsauv__t}{sauv\+\_\+t} sauv)
+\begin{DoxyCompactList}\small\item\em Sauvegarde les informations sur le joueur, son inventaire, son équipement ainsi que les informations sur la carte et les quêtes d\textquotesingle{}une partie. \end{DoxyCompactList}\item 
+void \hyperlink{backup__and__load_8c_a3a04035a05160ad8111695a53423eb1f}{load} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, int quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}, \hyperlink{structquete__t}{quete\+\_\+t} $\ast$quete, \hyperlink{structsauv__t}{sauv\+\_\+t} sauv)
+\begin{DoxyCompactList}\small\item\em Charge les informations sur le joueur, son inventaire, son équipement ainsi que les informations sur la carte et les quêtes d\textquotesingle{}une partie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Sauvegarde et chargement d\textquotesingle{}une partie. 
+
+\begin{DoxyAuthor}{Auteur}
+Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{backup__and__load_8c_a609a5fc89bd1df4a2f14a3e436b6ed93}\label{backup__and__load_8c_a609a5fc89bd1df4a2f14a3e436b6ed93}} 
+\index{backup\+\_\+and\+\_\+load.\+c@{backup\+\_\+and\+\_\+load.\+c}!affichage\+\_\+parties@{affichage\+\_\+parties}}
+\index{affichage\+\_\+parties@{affichage\+\_\+parties}!backup\+\_\+and\+\_\+load.\+c@{backup\+\_\+and\+\_\+load.\+c}}
+\subsubsection{\texorpdfstring{affichage\+\_\+parties()}{affichage\_parties()}}
+{\footnotesize\ttfamily void affichage\+\_\+parties (\begin{DoxyParamCaption}\item[{\hyperlink{structsauv__t}{sauv\+\_\+t}}]{sauv }\end{DoxyParamCaption})}
+
+
+
+Affiche les parties sauvegardées et disponibles. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em sauv} & Etat des sauvegardes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{backup__and__load_8c_a8c9a1c312a2d24dc4a9d4db757e55711}\label{backup__and__load_8c_a8c9a1c312a2d24dc4a9d4db757e55711}} 
+\index{backup\+\_\+and\+\_\+load.\+c@{backup\+\_\+and\+\_\+load.\+c}!effacer\+\_\+partie@{effacer\+\_\+partie}}
+\index{effacer\+\_\+partie@{effacer\+\_\+partie}!backup\+\_\+and\+\_\+load.\+c@{backup\+\_\+and\+\_\+load.\+c}}
+\subsubsection{\texorpdfstring{effacer\+\_\+partie()}{effacer\_partie()}}
+{\footnotesize\ttfamily void effacer\+\_\+partie (\begin{DoxyParamCaption}\item[{\hyperlink{structsauv__t}{sauv\+\_\+t}}]{sauv }\end{DoxyParamCaption})}
+
+
+
+Efface une partie choisie par l\textquotesingle{}utilisateur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em sauv} & Etat des sauvegardes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{backup__and__load_8c_a3a04035a05160ad8111695a53423eb1f}\label{backup__and__load_8c_a3a04035a05160ad8111695a53423eb1f}} 
+\index{backup\+\_\+and\+\_\+load.\+c@{backup\+\_\+and\+\_\+load.\+c}!load@{load}}
+\index{load@{load}!backup\+\_\+and\+\_\+load.\+c@{backup\+\_\+and\+\_\+load.\+c}}
+\subsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily void load (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{int}]{quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]},  }\item[{\hyperlink{structquete__t}{quete\+\_\+t} $\ast$}]{quete,  }\item[{\hyperlink{structsauv__t}{sauv\+\_\+t}}]{sauv }\end{DoxyParamCaption})}
+
+
+
+Charge les informations sur le joueur, son inventaire, son équipement ainsi que les informations sur la carte et les quêtes d\textquotesingle{}une partie. 
+
+Informations sur le joueur \+: points de vie, points d\textquotesingle{}énergie, points d\textquotesingle{}action, position sur la carte, nombre de tours restants
+
+Informations sur la carte \+: pour chaque case de la matrice map, chargement de son type, sa catégorie, s\textquotesingle{}il y a un combat, si le joueur a déjà fouillé la case et si une quête y est positionnée.
+
+Informations sur les quêtes \+: chargement des coordonnées de chaque quête et de leurs états. 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+{\em quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}} & Matrice des coordonnées des quêtes \\
+\hline
+{\em quete} & Pointeur sur un objet de type \hyperlink{structquete__t}{quete\+\_\+t} correspondant à l\textquotesingle{}état des quêtes \\
+\hline
+{\em sauv} & Etat des sauvegardes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{backup__and__load_8c_ae3a35e6ca5de07de881517f1c47a1435}\label{backup__and__load_8c_ae3a35e6ca5de07de881517f1c47a1435}} 
+\index{backup\+\_\+and\+\_\+load.\+c@{backup\+\_\+and\+\_\+load.\+c}!sauvegarde\+\_\+existante@{sauvegarde\+\_\+existante}}
+\index{sauvegarde\+\_\+existante@{sauvegarde\+\_\+existante}!backup\+\_\+and\+\_\+load.\+c@{backup\+\_\+and\+\_\+load.\+c}}
+\subsubsection{\texorpdfstring{sauvegarde\+\_\+existante()}{sauvegarde\_existante()}}
+{\footnotesize\ttfamily int sauvegarde\+\_\+existante (\begin{DoxyParamCaption}\item[{\hyperlink{structsauv__t}{sauv\+\_\+t}}]{sauv }\end{DoxyParamCaption})}
+
+
+
+Indique s\textquotesingle{}il existe une sauvegarde pour la partie choisie par l\textquotesingle{}utilisateur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em sauv} & Etat des sauvegardes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un {\itshape int} \+: 1 si une sauvegarde existe. 0 sinon. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{backup__and__load_8c_abf3bd1684d5f65e10f183757d06706df}\label{backup__and__load_8c_abf3bd1684d5f65e10f183757d06706df}} 
+\index{backup\+\_\+and\+\_\+load.\+c@{backup\+\_\+and\+\_\+load.\+c}!sauvegarder\+\_\+progression@{sauvegarder\+\_\+progression}}
+\index{sauvegarder\+\_\+progression@{sauvegarder\+\_\+progression}!backup\+\_\+and\+\_\+load.\+c@{backup\+\_\+and\+\_\+load.\+c}}
+\subsubsection{\texorpdfstring{sauvegarder\+\_\+progression()}{sauvegarder\_progression()}}
+{\footnotesize\ttfamily void sauvegarder\+\_\+progression (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t}}]{player,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{int}]{quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]},  }\item[{\hyperlink{structquete__t}{quete\+\_\+t}}]{quete,  }\item[{\hyperlink{structsauv__t}{sauv\+\_\+t}}]{sauv }\end{DoxyParamCaption})}
+
+
+
+Sauvegarde la progression de la partie actuellement en cours et propose au joueur de continuer ou quitter le jeu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em player} & Joueur \\
+\hline
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+{\em quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}} & Matrice des coordonnées des quêtes \\
+\hline
+{\em quete} & Etat des quêtes \\
+\hline
+{\em sauv} & Etat des sauvegardes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{backup__and__load_8c_aafdde294bbc0144a5a6a0417248fcf90}\label{backup__and__load_8c_aafdde294bbc0144a5a6a0417248fcf90}} 
+\index{backup\+\_\+and\+\_\+load.\+c@{backup\+\_\+and\+\_\+load.\+c}!save@{save}}
+\index{save@{save}!backup\+\_\+and\+\_\+load.\+c@{backup\+\_\+and\+\_\+load.\+c}}
+\subsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily void save (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t}}]{player,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{int}]{quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]},  }\item[{\hyperlink{structquete__t}{quete\+\_\+t}}]{quete,  }\item[{\hyperlink{structsauv__t}{sauv\+\_\+t}}]{sauv }\end{DoxyParamCaption})}
+
+
+
+Sauvegarde les informations sur le joueur, son inventaire, son équipement ainsi que les informations sur la carte et les quêtes d\textquotesingle{}une partie. 
+
+Informations sur le joueur \+: points de vie, points d\textquotesingle{}énergie, points d\textquotesingle{}action, position sur la carte, nombre de tours restants
+
+Informations sur la carte \+: pour chaque case de la matrice map, sauvegarde de son type, sa catégorie, s\textquotesingle{}il y a un combat, si le joueur a déjà fouillé la case et si une quête y est positionnée.
+
+Informations sur les quêtes \+: sauvegarde des coordonnées de chaque quête et de leurs états. 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Joueur \\
+\hline
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+{\em quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}} & Matrice des coordonnées des quêtes \\
+\hline
+{\em quete} & Etat des quêtes \\
+\hline
+{\em sauv} & Etat des sauvegardes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{backup__and__load_8c_a08446349c2ace9f33a111be928403978}\label{backup__and__load_8c_a08446349c2ace9f33a111be928403978}} 
+\index{backup\+\_\+and\+\_\+load.\+c@{backup\+\_\+and\+\_\+load.\+c}!update\+\_\+etat\+\_\+sauvegarde@{update\+\_\+etat\+\_\+sauvegarde}}
+\index{update\+\_\+etat\+\_\+sauvegarde@{update\+\_\+etat\+\_\+sauvegarde}!backup\+\_\+and\+\_\+load.\+c@{backup\+\_\+and\+\_\+load.\+c}}
+\subsubsection{\texorpdfstring{update\+\_\+etat\+\_\+sauvegarde()}{update\_etat\_sauvegarde()}}
+{\footnotesize\ttfamily void update\+\_\+etat\+\_\+sauvegarde (\begin{DoxyParamCaption}\item[{\hyperlink{structsauv__t}{sauv\+\_\+t} $\ast$}]{sauv }\end{DoxyParamCaption})}
+
+
+
+Met à jour l\textquotesingle{}état des sauvegardes (si elles existent et leurs noms) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em sauv} & Pointeur sur un objet de type \hyperlink{structsauv__t}{sauv\+\_\+t} correspondant à l\textquotesingle{}état des sauvegardes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}

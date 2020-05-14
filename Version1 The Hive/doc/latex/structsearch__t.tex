@@ -1,0 +1,57 @@
+\hypertarget{structsearch__t}{}\section{Référence de la structure search\+\_\+t}
+\label{structsearch__t}\index{search\+\_\+t@{search\+\_\+t}}
+
+
+Structure de suivi de la quête \char`\"{}recherche\char`\"{}.  
+
+
+
+
+{\ttfamily \#include $<$commun.\+h$>$}
+
+
+
+Graphe de collaboration de search\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=142pt]{structsearch__t__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Attributs publics}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structsearch__t_ab6f5e606c8085b8394d0985ceb27f163}\label{structsearch__t_ab6f5e606c8085b8394d0985ceb27f163}} 
+int \hyperlink{structsearch__t_ab6f5e606c8085b8394d0985ceb27f163}{situation}
+\begin{DoxyCompactList}\small\item\em Indicateur pour savoir l\textquotesingle{}avancée du joueur dans la quête \char`\"{}recherche\char`\"{}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structsearch__t_ab2d79d72ccd04f94d3b887f6e5f0ec41}\label{structsearch__t_ab2d79d72ccd04f94d3b887f6e5f0ec41}} 
+\hyperlink{structitem__t}{item\+\_\+t} \hyperlink{structsearch__t_ab2d79d72ccd04f94d3b887f6e5f0ec41}{wanted}
+\begin{DoxyCompactList}\small\item\em Item que le joueur doit trouver. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structsearch__t_a2e6255a3d6a8618b8d727f933e6f2bb9}\label{structsearch__t_a2e6255a3d6a8618b8d727f933e6f2bb9}} 
+int \hyperlink{structsearch__t_a2e6255a3d6a8618b8d727f933e6f2bb9}{trouve}
+\begin{DoxyCompactList}\small\item\em Indicateur afin de savoir si l\textquotesingle{}item a été trouvé \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structsearch__t_a342257811026a1c17e7bc0c6b9726db3}\label{structsearch__t_a342257811026a1c17e7bc0c6b9726db3}} 
+int \hyperlink{structsearch__t_a342257811026a1c17e7bc0c6b9726db3}{bunkerY}
+\begin{DoxyCompactList}\small\item\em Coordonnée Y (ligne) du bunker. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structsearch__t_ac7cd3467b5cbdc6904358de0523fe606}\label{structsearch__t_ac7cd3467b5cbdc6904358de0523fe606}} 
+int \hyperlink{structsearch__t_ac7cd3467b5cbdc6904358de0523fe606}{bunkerX}
+\begin{DoxyCompactList}\small\item\em Coordonnée X (colonne) du bunker. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Structure de suivi de la quête \char`\"{}recherche\char`\"{}. 
+
+
+\begin{DoxyItemize}
+\item situation = -\/1 \+: quête encore non jouée
+\item situation = 0 \+: quête en cours
+\item situation = 1 \+: quête déjà jouée/finie
+\item trouve = -\/1 \+: la recherche de l\textquotesingle{}item n\textquotesingle{}est pas encore activée
+\item trouve = 0 \+: la recherche de l\textquotesingle{}item est en cours
+\item trouve = 1 \+: l\textquotesingle{}item recherché est trouvé 
+\end{DoxyItemize}
+
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+lib/\hyperlink{commun_8h}{commun.\+h}\end{DoxyCompactItemize}

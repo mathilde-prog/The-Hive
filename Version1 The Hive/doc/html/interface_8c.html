@@ -1,0 +1,332 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projet L2 Informatique - The Hive: Référence du fichier src/interface.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Projet L2 Informatique - The Hive
+   </div>
+   <div id="projectbrief">Documentation jeu The Hive (Projet L2 Informatique)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier interface.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Affichage de l'interface de jeu via SDL2.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL_ttf.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL_image.h&gt;</code><br />
+<code>#include &lt;time.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="commun_8h_source.html">lib/commun.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de interface.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="interface_8c__incl.png" border="0" usemap="#src_2interface_8c" alt=""/></div>
+<map name="src_2interface_8c" id="src_2interface_8c">
+<area shape="rect" id="node8" href="commun_8h.html" title="Tous les prototypes de fonctions, énumérations, structures, macros appelés dans plusieurs fichiers du..." alt="" coords="281,80,381,107"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a72e40a3baec27ad650a1e64232c469ff"><td class="memItemLeft" align="right" valign="top"><a id="a72e40a3baec27ad650a1e64232c469ff"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_map_essai</b> (int mapint[N][N])</td></tr>
+<tr class="separator:a72e40a3baec27ad650a1e64232c469ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae576b56c42790f66810ea77bbd0110c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8c.html#ae576b56c42790f66810ea77bbd0110c8">map_correspondance</a> (<a class="el" href="structcell__t.html">cell_t</a> map_cell[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>], int mapaff[N][N], int position_x, int position_y)</td></tr>
+<tr class="memdesc:ae576b56c42790f66810ea77bbd0110c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Met en relation la map sur laquelle évolue le personnage et la amtrice gérant l'affichage de celle-ci en prenant en compte les coordonées où se situe le personnage.  <a href="#ae576b56c42790f66810ea77bbd0110c8">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae576b56c42790f66810ea77bbd0110c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72234564c5e3874c5e5436ef744cadae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8c.html#a72234564c5e3874c5e5436ef744cadae">relation_hexa_char</a> (char *mapchar[], int mapint[N][N])</td></tr>
+<tr class="memdesc:a72234564c5e3874c5e5436ef744cadae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remplit un matrice des nom des cases a afficher (images) à partir du chiffre contenu dans la matrice initiale.  <a href="#a72234564c5e3874c5e5436ef744cadae">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a72234564c5e3874c5e5436ef744cadae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a202b6b178b6f39512d209566a7777b3a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8c.html#a202b6b178b6f39512d209566a7777b3a">affichage_case_centrale</a> (SDL_Renderer *renderer)</td></tr>
+<tr class="memdesc:a202b6b178b6f39512d209566a7777b3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche dans la case centrale de l'écran un hilight et le personnage.  <a href="#a202b6b178b6f39512d209566a7777b3a">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a202b6b178b6f39512d209566a7777b3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8bd235fc0856651fa0fc487fe9ede40"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8c.html#ae8bd235fc0856651fa0fc487fe9ede40">affichage_map</a> (SDL_Renderer *renderer, char *map[], int maptest[N][N], <a class="el" href="structcell__t.html">cell_t</a> map1[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>], <a class="el" href="structperso__t.html">perso_t</a> player)</td></tr>
+<tr class="memdesc:ae8bd235fc0856651fa0fc487fe9ede40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche la map, c'est à dire la partie composée d'hexagones à partir de la position du personnage.  <a href="#ae8bd235fc0856651fa0fc487fe9ede40">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae8bd235fc0856651fa0fc487fe9ede40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08c7b7c98d57d8ea66889f08d78587e1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_8c.html#a08c7b7c98d57d8ea66889f08d78587e1">interface</a> ()</td></tr>
+<tr class="memdesc:a08c7b7c98d57d8ea66889f08d78587e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche l'interface en elle-même.  <a href="#a08c7b7c98d57d8ea66889f08d78587e1">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a08c7b7c98d57d8ea66889f08d78587e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top"><a id="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>main</b> ()</td></tr>
+<tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a3e6e7db94ea5600cce7563ea4a47b5f3"><td class="memItemLeft" align="right" valign="top"><a id="a3e6e7db94ea5600cce7563ea4a47b5f3"></a>
+char *&#160;</td><td class="memItemRight" valign="bottom"><b>map</b> [N *N]</td></tr>
+<tr class="separator:a3e6e7db94ea5600cce7563ea4a47b5f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Affichage de l'interface de jeu via SDL2. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2020 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a202b6b178b6f39512d209566a7777b3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a202b6b178b6f39512d209566a7777b3a">&#9670;&nbsp;</a></span>affichage_case_centrale()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void affichage_case_centrale </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche dans la case centrale de l'écran un hilight et le personnage. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">SDL_Renderer</td><td>*renderer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="ae8bd235fc0856651fa0fc487fe9ede40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8bd235fc0856651fa0fc487fe9ede40">&#9670;&nbsp;</a></span>affichage_map()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void void affichage_map </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>map</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>maptest</em>[N][N], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map1</em>[D][D], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a>&#160;</td>
+          <td class="paramname"><em>player</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche la map, c'est à dire la partie composée d'hexagones à partir de la position du personnage. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">SDL_Renderer</td><td>*renderer </td></tr>
+    <tr><td class="paramname">char</td><td>*map[] </td></tr>
+    <tr><td class="paramname">int</td><td>maptest[N][N] </td></tr>
+    <tr><td class="paramname"><a class="el" href="structcell__t.html" title="Structure pour un hexagone. ">cell_t</a></td><td>map1[D][D] </td></tr>
+    <tr><td class="paramname"><a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a></td><td>player </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a08c7b7c98d57d8ea66889f08d78587e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08c7b7c98d57d8ea66889f08d78587e1">&#9670;&nbsp;</a></span>interface()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int interface </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche l'interface en elle-même. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>0 si tout c'est bien passé </dd></dl>
+
+</div>
+</div>
+<a id="ae576b56c42790f66810ea77bbd0110c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae576b56c42790f66810ea77bbd0110c8">&#9670;&nbsp;</a></span>map_correspondance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">map_correspondance </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map_cell</em>[D][D], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mapaff</em>[N][N], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>position_x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>position_y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Met en relation la map sur laquelle évolue le personnage et la amtrice gérant l'affichage de celle-ci en prenant en compte les coordonées où se situe le personnage. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcell__t.html" title="Structure pour un hexagone. ">cell_t</a></td><td>map_cell[D][D] </td></tr>
+    <tr><td class="paramname">int</td><td>mapaff[N][N] </td></tr>
+    <tr><td class="paramname">int</td><td>position_x </td></tr>
+    <tr><td class="paramname">int</td><td>position_y </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a72234564c5e3874c5e5436ef744cadae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72234564c5e3874c5e5436ef744cadae">&#9670;&nbsp;</a></span>relation_hexa_char()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void relation_hexa_char </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>mapchar</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mapint</em>[N][N]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remplit un matrice des nom des cases a afficher (images) à partir du chiffre contenu dans la matrice initiale. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">char*</td><td>mapchar[] </td></tr>
+    <tr><td class="paramname">int</td><td>mapint[N][N] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

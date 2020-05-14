@@ -1,0 +1,672 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projet L2 Informatique - The Hive: Référence du fichier src/world_generation.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Projet L2 Informatique - The Hive
+   </div>
+   <div id="projectbrief">Documentation jeu The Hive (Projet L2 Informatique)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier world_generation.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Génération de la carte.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;time.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="commun_8h_source.html">lib/commun.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de world_generation.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="world__generation_8c__incl.png" border="0" usemap="#src_2world__generation_8c" alt=""/></div>
+<map name="src_2world__generation_8c" id="src_2world__generation_8c">
+<area shape="rect" id="node5" href="commun_8h.html" title="Tous les prototypes de fonctions, énumérations, structures, macros appelés dans plusieurs fichiers du..." alt="" coords="262,80,362,107"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a719ffd0c2cb14a6236922fac92933adb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="world__generation_8c.html#a719ffd0c2cb14a6236922fac92933adb">afficher_type_categ_hexa</a> (<a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>], int l, int c)</td></tr>
+<tr class="memdesc:a719ffd0c2cb14a6236922fac92933adb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche le type et la catégorie de l'hexagone de la carte dont les coordonnées sont passées en paramètres.  <a href="#a719ffd0c2cb14a6236922fac92933adb">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a719ffd0c2cb14a6236922fac92933adb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc7e7b34903dd75f8563deda4e525f39"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="world__generation_8c.html#acc7e7b34903dd75f8563deda4e525f39">informations_map</a> (<a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>])</td></tr>
+<tr class="memdesc:acc7e7b34903dd75f8563deda4e525f39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche les informations de la carte.  <a href="#acc7e7b34903dd75f8563deda4e525f39">Plus de détails...</a><br /></td></tr>
+<tr class="separator:acc7e7b34903dd75f8563deda4e525f39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ab726a1d0a373a9b5e762ae74e6af55"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="world__generation_8c.html#a8ab726a1d0a373a9b5e762ae74e6af55">init_border</a> (<a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>])</td></tr>
+<tr class="memdesc:a8ab726a1d0a373a9b5e762ae74e6af55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise les contours de la map.  <a href="#a8ab726a1d0a373a9b5e762ae74e6af55">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a8ab726a1d0a373a9b5e762ae74e6af55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5c57c2778c1e760fad1f9d17f97f0d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="world__generation_8c.html#ad5c57c2778c1e760fad1f9d17f97f0d7">topup</a> (<a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>], int quest_map[6][2])</td></tr>
+<tr class="memdesc:ad5c57c2778c1e760fad1f9d17f97f0d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crée un nombre déterminé d’hexagones indispensables pour la carte (comme camp militaire/bandit par exemple) sur des coordonnées aléatoires.  <a href="#ad5c57c2778c1e760fad1f9d17f97f0d7">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ad5c57c2778c1e760fad1f9d17f97f0d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a610b48bca978adae918ba8c023c49571"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="world__generation_8c.html#a610b48bca978adae918ba8c023c49571">spawntype</a> (int l, int c, <a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>])</td></tr>
+<tr class="memdesc:a610b48bca978adae918ba8c023c49571"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compte le nombre d'hexagones-voisins similaires et selon ce nombre, après des calculs de probabilité, renvoie le type d’hexagone qui sera créé sur les coordonnées passées en paramètre.  <a href="#a610b48bca978adae918ba8c023c49571">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a610b48bca978adae918ba8c023c49571"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a53fec4d8948be421914833d195af0b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="world__generation_8c.html#a7a53fec4d8948be421914833d195af0b">categ_switch</a> (int input)</td></tr>
+<tr class="memdesc:a7a53fec4d8948be421914833d195af0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Donne la catégorie de l'hexagone passé en paramètre.  <a href="#a7a53fec4d8948be421914833d195af0b">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a7a53fec4d8948be421914833d195af0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a0d3066e88d63d7fb191f7a810e1d3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="world__generation_8c.html#a7a0d3066e88d63d7fb191f7a810e1d3d">nextgen</a> (<a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>])</td></tr>
+<tr class="memdesc:a7a0d3066e88d63d7fb191f7a810e1d3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parcours la matrice de la carte passée en paramètre et fait appel à <a class="el" href="world__generation_8c.html#a610b48bca978adae918ba8c023c49571" title="Compte le nombre d&#39;hexagones-voisins similaires et selon ce nombre, après des calculs de probabilité...">spawntype</a> pour calculer le type d’hexagone qui va apparaître dans la cellule courante.  <a href="#a7a0d3066e88d63d7fb191f7a810e1d3d">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a7a0d3066e88d63d7fb191f7a810e1d3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f6eb129fcf00e592e708ad17e0a65ac"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="world__generation_8c.html#a0f6eb129fcf00e592e708ad17e0a65ac">coordonnees_valides</a> (int l, int c)</td></tr>
+<tr class="memdesc:a0f6eb129fcf00e592e708ad17e0a65ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie si les coordonnées sont valides.  <a href="#a0f6eb129fcf00e592e708ad17e0a65ac">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a0f6eb129fcf00e592e708ad17e0a65ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac44e2e3723ce06a3660665d0adc23079"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="world__generation_8c.html#ac44e2e3723ce06a3660665d0adc23079">portable_switch</a> (int i, int j, <a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>])</td></tr>
+<tr class="memdesc:ac44e2e3723ce06a3660665d0adc23079"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche le code de la cellule.  <a href="#ac44e2e3723ce06a3660665d0adc23079">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ac44e2e3723ce06a3660665d0adc23079"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bc1a448a2edbe81a579122cd06467ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="world__generation_8c.html#a3bc1a448a2edbe81a579122cd06467ac">display_TEXT</a> (int l, int c, <a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>])</td></tr>
+<tr class="memdesc:a3bc1a448a2edbe81a579122cd06467ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche la map en version texte avec la légende.  <a href="#a3bc1a448a2edbe81a579122cd06467ac">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a3bc1a448a2edbe81a579122cd06467ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4a79a51d27f37c50336cf450fc770cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="world__generation_8c.html#ab4a79a51d27f37c50336cf450fc770cf">init_base</a> (<a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>])</td></tr>
+<tr class="memdesc:ab4a79a51d27f37c50336cf450fc770cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise la base de la carte.  <a href="#ab4a79a51d27f37c50336cf450fc770cf">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ab4a79a51d27f37c50336cf450fc770cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f2790bca8e59fe3b65ca808f1500821"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="world__generation_8c.html#a6f2790bca8e59fe3b65ca808f1500821">count</a> (const <a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>])</td></tr>
+<tr class="memdesc:a6f2790bca8e59fe3b65ca808f1500821"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compte le nombre d'occurence de chaque type de cellule (outil de test)  <a href="#a6f2790bca8e59fe3b65ca808f1500821">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a6f2790bca8e59fe3b65ca808f1500821"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2a948ed1b1ff33428390c62f9371aef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="world__generation_8c.html#ae2a948ed1b1ff33428390c62f9371aef">encounter_init</a> (<a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>])</td></tr>
+<tr class="memdesc:ae2a948ed1b1ff33428390c62f9371aef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise les positions des combats sur la carte.  <a href="#ae2a948ed1b1ff33428390c62f9371aef">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae2a948ed1b1ff33428390c62f9371aef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61aa43ceaa893c5807b45cd54fd140e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="world__generation_8c.html#a61aa43ceaa893c5807b45cd54fd140e8">quest_init</a> (<a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>], int quest_map[6][2])</td></tr>
+<tr class="memdesc:a61aa43ceaa893c5807b45cd54fd140e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise les quêtes (quest_id) sur la carte.  <a href="#a61aa43ceaa893c5807b45cd54fd140e8">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a61aa43ceaa893c5807b45cd54fd140e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a309363eb6ec82b7f53f004bbd01c21c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="world__generation_8c.html#a309363eb6ec82b7f53f004bbd01c21c4">map_init</a> (<a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>], int quest_map[6][2])</td></tr>
+<tr class="memdesc:a309363eb6ec82b7f53f004bbd01c21c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise la carte au début de chaque partie.  <a href="#a309363eb6ec82b7f53f004bbd01c21c4">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a309363eb6ec82b7f53f004bbd01c21c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Génération de la carte. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2020 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a719ffd0c2cb14a6236922fac92933adb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a719ffd0c2cb14a6236922fac92933adb">&#9670;&nbsp;</a></span>afficher_type_categ_hexa()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void afficher_type_categ_hexa </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>l</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche le type et la catégorie de l'hexagone de la carte dont les coordonnées sont passées en paramètres. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+    <tr><td class="paramname">l</td><td>Coordonnée ligne de l'hexagone qu'on souhaite afficher </td></tr>
+    <tr><td class="paramname">c</td><td>Coordonnée colonne de l'hexagone qu'on souhaite afficher </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a7a53fec4d8948be421914833d195af0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a53fec4d8948be421914833d195af0b">&#9670;&nbsp;</a></span>categ_switch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int categ_switch </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>input</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Donne la catégorie de l'hexagone passé en paramètre. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>Type d'hexagone </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne un <em>int</em> correspondant à la catégorie de l'hexagone </dd></dl>
+
+</div>
+</div>
+<a id="a0f6eb129fcf00e592e708ad17e0a65ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f6eb129fcf00e592e708ad17e0a65ac">&#9670;&nbsp;</a></span>coordonnees_valides()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int coordonnees_valides </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>l</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie si les coordonnées sont valides. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">l</td><td>Coordonnée ligne </td></tr>
+    <tr><td class="paramname">c</td><td>Coordonnée colonne </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne un <em>int</em> : 1 si les coordonnées sont valides, 0 si non </dd></dl>
+
+</div>
+</div>
+<a id="a6f2790bca8e59fe3b65ca808f1500821"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f2790bca8e59fe3b65ca808f1500821">&#9670;&nbsp;</a></span>count()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void count </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compte le nombre d'occurence de chaque type de cellule (outil de test) </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a3bc1a448a2edbe81a579122cd06467ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bc1a448a2edbe81a579122cd06467ac">&#9670;&nbsp;</a></span>display_TEXT()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void display_TEXT </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>l</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche la map en version texte avec la légende. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">l</td><td>Coordonnée ligne </td></tr>
+    <tr><td class="paramname">c</td><td>Coordonnée colonne </td></tr>
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="ae2a948ed1b1ff33428390c62f9371aef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2a948ed1b1ff33428390c62f9371aef">&#9670;&nbsp;</a></span>encounter_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void encounter_init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise les positions des combats sur la carte. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="acc7e7b34903dd75f8563deda4e525f39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc7e7b34903dd75f8563deda4e525f39">&#9670;&nbsp;</a></span>informations_map()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void informations_map </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche les informations de la carte. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="ab4a79a51d27f37c50336cf450fc770cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4a79a51d27f37c50336cf450fc770cf">&#9670;&nbsp;</a></span>init_base()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_base </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise la base de la carte. </p>
+<p>La carte est initialisée par des hexagones de type prairie (catégorie nature), sans combat, sans quête et sans hexagones fouillés. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a8ab726a1d0a373a9b5e762ae74e6af55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ab726a1d0a373a9b5e762ae74e6af55">&#9670;&nbsp;</a></span>init_border()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_border </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise les contours de la map. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a309363eb6ec82b7f53f004bbd01c21c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a309363eb6ec82b7f53f004bbd01c21c4">&#9670;&nbsp;</a></span>map_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void map_init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>quest_map</em>[6][2]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise la carte au début de chaque partie. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+    <tr><td class="paramname">quest_map[6][2]</td><td>Matrice des coordonnées des quêtes </td></tr>
+    <tr><td class="paramname">player</td><td>Joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a7a0d3066e88d63d7fb191f7a810e1d3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a0d3066e88d63d7fb191f7a810e1d3d">&#9670;&nbsp;</a></span>nextgen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void nextgen </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Parcours la matrice de la carte passée en paramètre et fait appel à <a class="el" href="world__generation_8c.html#a610b48bca978adae918ba8c023c49571" title="Compte le nombre d&#39;hexagones-voisins similaires et selon ce nombre, après des calculs de probabilité...">spawntype</a> pour calculer le type d’hexagone qui va apparaître dans la cellule courante. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="ac44e2e3723ce06a3660665d0adc23079"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac44e2e3723ce06a3660665d0adc23079">&#9670;&nbsp;</a></span>portable_switch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void portable_switch </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche le code de la cellule. </p>
+<p>Cette fonction a été créée pour éviter de refaire le switch dans différentes fonctions d'affichage. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>Coordonnée ligne </td></tr>
+    <tr><td class="paramname">j</td><td>Coordonnée colonne </td></tr>
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a61aa43ceaa893c5807b45cd54fd140e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61aa43ceaa893c5807b45cd54fd140e8">&#9670;&nbsp;</a></span>quest_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void quest_init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>quest_map</em>[6][2]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise les quêtes (quest_id) sur la carte. </p>
+<p>Les quêtes sont placées aléatoirement sur la carte. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+    <tr><td class="paramname">quest_map[6][2]</td><td>Matrice des coordonnées des quêtes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a610b48bca978adae918ba8c023c49571"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a610b48bca978adae918ba8c023c49571">&#9670;&nbsp;</a></span>spawntype()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int spawntype </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>l</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compte le nombre d'hexagones-voisins similaires et selon ce nombre, après des calculs de probabilité, renvoie le type d’hexagone qui sera créé sur les coordonnées passées en paramètre. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">l</td><td>Coordonnée ligne </td></tr>
+    <tr><td class="paramname">c</td><td>Coordonnée colonne </td></tr>
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne un <em>int</em> : le type de l'hexagone qui va être créé </dd></dl>
+
+</div>
+</div>
+<a id="ad5c57c2778c1e760fad1f9d17f97f0d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5c57c2778c1e760fad1f9d17f97f0d7">&#9670;&nbsp;</a></span>topup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void topup </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>quest_map</em>[6][2]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Crée un nombre déterminé d’hexagones indispensables pour la carte (comme camp militaire/bandit par exemple) sur des coordonnées aléatoires. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+    <tr><td class="paramname">quest_map[6][2]</td><td>Matrice des coordonnées des quêtes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

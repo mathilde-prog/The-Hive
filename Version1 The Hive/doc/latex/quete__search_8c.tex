@@ -1,0 +1,135 @@
+\hypertarget{quete__search_8c}{}\section{Référence du fichier src/quete\+\_\+search.c}
+\label{quete__search_8c}\index{src/quete\+\_\+search.\+c@{src/quete\+\_\+search.\+c}}
+
+
+Quête \char`\"{}recherche\char`\"{}.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}lib/commun.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de quete\+\_\+search.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{quete__search_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{quete__search_8c_a6bec744d50dcccb53e78814e10baeb30}{affichage\+\_\+quete\+\_\+search\+\_\+en\+\_\+cours} (\hyperlink{structquete__t}{quete\+\_\+t} quete, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, \hyperlink{structperso__t}{perso\+\_\+t} player)
+\begin{DoxyCompactList}\small\item\em Affiche certaines informations selon l\textquotesingle{}état de la quête recherche. \end{DoxyCompactList}\item 
+void \hyperlink{quete__search_8c_a10082720d43d86e8644724e0f7c8eccf}{init\+\_\+\+Tab\+\_\+\+Items\+\_\+urbain} (\hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items\+\_\+urbain, \hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items, int nb\+\_\+items\+\_\+available)
+\begin{DoxyCompactList}\small\item\em Initialise un tableau contenant tous les items pouvant être trouvés dans un hexagone de catégorie urbain. \end{DoxyCompactList}\item 
+int \hyperlink{quete__search_8c_a383694135dc6ea4c93f6290ea506d752}{compter\+\_\+items\+\_\+urbain} (\hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items, int nb\+\_\+items\+\_\+available)
+\begin{DoxyCompactList}\small\item\em Compte le nombre d\textquotesingle{}items pouvant être trouvés dans un hexagone de catégorie urbain (pc\+\_\+urban $>$ 0). \end{DoxyCompactList}\item 
+int \hyperlink{quete__search_8c_a4c3d223c6fd93383772b82f032cc8bcc}{quete\+\_\+recherche} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, \hyperlink{structquete__t}{quete\+\_\+t} $\ast$quete)
+\begin{DoxyCompactList}\small\item\em Accès à la quete \char`\"{}recherche\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Quête \char`\"{}recherche\char`\"{}. 
+
+\begin{DoxyAuthor}{Auteur}
+Mathilde Mottay, Anais Mottier, Clement Mainguy, Moustapha Tsamarayev 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{quete__search_8c_a6bec744d50dcccb53e78814e10baeb30}\label{quete__search_8c_a6bec744d50dcccb53e78814e10baeb30}} 
+\index{quete\+\_\+search.\+c@{quete\+\_\+search.\+c}!affichage\+\_\+quete\+\_\+search\+\_\+en\+\_\+cours@{affichage\+\_\+quete\+\_\+search\+\_\+en\+\_\+cours}}
+\index{affichage\+\_\+quete\+\_\+search\+\_\+en\+\_\+cours@{affichage\+\_\+quete\+\_\+search\+\_\+en\+\_\+cours}!quete\+\_\+search.\+c@{quete\+\_\+search.\+c}}
+\subsubsection{\texorpdfstring{affichage\+\_\+quete\+\_\+search\+\_\+en\+\_\+cours()}{affichage\_quete\_search\_en\_cours()}}
+{\footnotesize\ttfamily void affichage\+\_\+quete\+\_\+search\+\_\+en\+\_\+cours (\begin{DoxyParamCaption}\item[{\hyperlink{structquete__t}{quete\+\_\+t}}]{quete,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{\hyperlink{structperso__t}{perso\+\_\+t}}]{player }\end{DoxyParamCaption})}
+
+
+
+Affiche certaines informations selon l\textquotesingle{}état de la quête recherche. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em quete} & Etat des quêtes \\
+\hline
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+{\em player} & Joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{quete__search_8c_a383694135dc6ea4c93f6290ea506d752}\label{quete__search_8c_a383694135dc6ea4c93f6290ea506d752}} 
+\index{quete\+\_\+search.\+c@{quete\+\_\+search.\+c}!compter\+\_\+items\+\_\+urbain@{compter\+\_\+items\+\_\+urbain}}
+\index{compter\+\_\+items\+\_\+urbain@{compter\+\_\+items\+\_\+urbain}!quete\+\_\+search.\+c@{quete\+\_\+search.\+c}}
+\subsubsection{\texorpdfstring{compter\+\_\+items\+\_\+urbain()}{compter\_items\_urbain()}}
+{\footnotesize\ttfamily int compter\+\_\+items\+\_\+urbain (\begin{DoxyParamCaption}\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items,  }\item[{int}]{nb\+\_\+items\+\_\+available }\end{DoxyParamCaption})}
+
+
+
+Compte le nombre d\textquotesingle{}items pouvant être trouvés dans un hexagone de catégorie urbain (pc\+\_\+urban $>$ 0). 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em Tab\+\_\+\+Items} & Tableau contenant tous les items disponibles dans le jeu \\
+\hline
+{\em nb\+\_\+items\+\_\+available} & Nombre d\textquotesingle{}items disponibles dans le jeu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\itshape int} \+: nombre d\textquotesingle{}items pouvant être trouvés sur des hexagones de catégorie urbain 
+\end{DoxyReturn}
+\mbox{\Hypertarget{quete__search_8c_a10082720d43d86e8644724e0f7c8eccf}\label{quete__search_8c_a10082720d43d86e8644724e0f7c8eccf}} 
+\index{quete\+\_\+search.\+c@{quete\+\_\+search.\+c}!init\+\_\+\+Tab\+\_\+\+Items\+\_\+urbain@{init\+\_\+\+Tab\+\_\+\+Items\+\_\+urbain}}
+\index{init\+\_\+\+Tab\+\_\+\+Items\+\_\+urbain@{init\+\_\+\+Tab\+\_\+\+Items\+\_\+urbain}!quete\+\_\+search.\+c@{quete\+\_\+search.\+c}}
+\subsubsection{\texorpdfstring{init\+\_\+\+Tab\+\_\+\+Items\+\_\+urbain()}{init\_Tab\_Items\_urbain()}}
+{\footnotesize\ttfamily void init\+\_\+\+Tab\+\_\+\+Items\+\_\+urbain (\begin{DoxyParamCaption}\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items\+\_\+urbain,  }\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items,  }\item[{int}]{nb\+\_\+items\+\_\+available }\end{DoxyParamCaption})}
+
+
+
+Initialise un tableau contenant tous les items pouvant être trouvés dans un hexagone de catégorie urbain. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em Tab\+\_\+\+Items\+\_\+urbain} & Tableau contenant les items pouvant être trouvés sur des hexagones de catégorie urbain \\
+\hline
+{\em Tab\+\_\+\+Items} & Tableau contenant tous les items disponibles dans le jeu \\
+\hline
+{\em nb\+\_\+items\+\_\+available} & Nombre d\textquotesingle{}items disponibles dans le jeu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{quete__search_8c_a4c3d223c6fd93383772b82f032cc8bcc}\label{quete__search_8c_a4c3d223c6fd93383772b82f032cc8bcc}} 
+\index{quete\+\_\+search.\+c@{quete\+\_\+search.\+c}!quete\+\_\+recherche@{quete\+\_\+recherche}}
+\index{quete\+\_\+recherche@{quete\+\_\+recherche}!quete\+\_\+search.\+c@{quete\+\_\+search.\+c}}
+\subsubsection{\texorpdfstring{quete\+\_\+recherche()}{quete\_recherche()}}
+{\footnotesize\ttfamily int quete\+\_\+recherche (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{\hyperlink{structquete__t}{quete\+\_\+t} $\ast$}]{quete }\end{DoxyParamCaption})}
+
+
+
+Accès à la quete \char`\"{}recherche\char`\"{}. 
+
+Le joueur doit aller à un endroit donné pour trouver un item et le ramener. 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+{\em quete} & Pointeur sur un objet de type \hyperlink{structquete__t}{quete\+\_\+t} correspondant à l\textquotesingle{}état des quêtes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\itshape int} \+: 0 si le jeu continue et -\/1 si problème dans la quête. 
+\end{DoxyReturn}

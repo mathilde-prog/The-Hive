@@ -1,0 +1,365 @@
+\hypertarget{world__generation_8c}{}\section{Référence du fichier src/world\+\_\+generation.c}
+\label{world__generation_8c}\index{src/world\+\_\+generation.\+c@{src/world\+\_\+generation.\+c}}
+
+
+Génération de la carte.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}lib/commun.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de world\+\_\+generation.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{world__generation_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{world__generation_8c_a719ffd0c2cb14a6236922fac92933adb}{afficher\+\_\+type\+\_\+categ\+\_\+hexa} (\hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, int l, int c)
+\begin{DoxyCompactList}\small\item\em Affiche le type et la catégorie de l\textquotesingle{}hexagone de la carte dont les coordonnées sont passées en paramètres. \end{DoxyCompactList}\item 
+void \hyperlink{world__generation_8c_acc7e7b34903dd75f8563deda4e525f39}{informations\+\_\+map} (\hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Affiche les informations de la carte. \end{DoxyCompactList}\item 
+void \hyperlink{world__generation_8c_a8ab726a1d0a373a9b5e762ae74e6af55}{init\+\_\+border} (\hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Initialise les contours de la map. \end{DoxyCompactList}\item 
+void \hyperlink{world__generation_8c_ad5c57c2778c1e760fad1f9d17f97f0d7}{topup} (\hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, int quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]})
+\begin{DoxyCompactList}\small\item\em Crée un nombre déterminé d’hexagones indispensables pour la carte (comme camp militaire/bandit par exemple) sur des coordonnées aléatoires. \end{DoxyCompactList}\item 
+int \hyperlink{world__generation_8c_a610b48bca978adae918ba8c023c49571}{spawntype} (int l, int c, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Compte le nombre d\textquotesingle{}hexagones-\/voisins similaires et selon ce nombre, après des calculs de probabilité, renvoie le type d’hexagone qui sera créé sur les coordonnées passées en paramètre. \end{DoxyCompactList}\item 
+int \hyperlink{world__generation_8c_a7a53fec4d8948be421914833d195af0b}{categ\+\_\+switch} (int input)
+\begin{DoxyCompactList}\small\item\em Donne la catégorie de l\textquotesingle{}hexagone passé en paramètre. \end{DoxyCompactList}\item 
+void \hyperlink{world__generation_8c_a7a0d3066e88d63d7fb191f7a810e1d3d}{nextgen} (\hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Parcours la matrice de la carte passée en paramètre et fait appel à \hyperlink{world__generation_8c_a610b48bca978adae918ba8c023c49571}{spawntype} pour calculer le type d’hexagone qui va apparaître dans la cellule courante. \end{DoxyCompactList}\item 
+int \hyperlink{world__generation_8c_a0f6eb129fcf00e592e708ad17e0a65ac}{coordonnees\+\_\+valides} (int l, int c)
+\begin{DoxyCompactList}\small\item\em Vérifie si les coordonnées sont valides. \end{DoxyCompactList}\item 
+void \hyperlink{world__generation_8c_ac44e2e3723ce06a3660665d0adc23079}{portable\+\_\+switch} (int i, int j, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Affiche le code de la cellule. \end{DoxyCompactList}\item 
+void \hyperlink{world__generation_8c_a3bc1a448a2edbe81a579122cd06467ac}{display\+\_\+\+T\+E\+XT} (int l, int c, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Affiche la map en version texte avec la légende. \end{DoxyCompactList}\item 
+void \hyperlink{world__generation_8c_ab4a79a51d27f37c50336cf450fc770cf}{init\+\_\+base} (\hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Initialise la base de la carte. \end{DoxyCompactList}\item 
+void \hyperlink{world__generation_8c_a6f2790bca8e59fe3b65ca808f1500821}{count} (const \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Compte le nombre d\textquotesingle{}occurence de chaque type de cellule (outil de test) \end{DoxyCompactList}\item 
+void \hyperlink{world__generation_8c_ae2a948ed1b1ff33428390c62f9371aef}{encounter\+\_\+init} (\hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Initialise les positions des combats sur la carte. \end{DoxyCompactList}\item 
+void \hyperlink{world__generation_8c_a61aa43ceaa893c5807b45cd54fd140e8}{quest\+\_\+init} (\hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, int quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]})
+\begin{DoxyCompactList}\small\item\em Initialise les quêtes (quest\+\_\+id) sur la carte. \end{DoxyCompactList}\item 
+void \hyperlink{world__generation_8c_a309363eb6ec82b7f53f004bbd01c21c4}{map\+\_\+init} (\hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, int quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]})
+\begin{DoxyCompactList}\small\item\em Initialise la carte au début de chaque partie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Génération de la carte. 
+
+\begin{DoxyAuthor}{Auteur}
+Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{world__generation_8c_a719ffd0c2cb14a6236922fac92933adb}\label{world__generation_8c_a719ffd0c2cb14a6236922fac92933adb}} 
+\index{world\+\_\+generation.\+c@{world\+\_\+generation.\+c}!afficher\+\_\+type\+\_\+categ\+\_\+hexa@{afficher\+\_\+type\+\_\+categ\+\_\+hexa}}
+\index{afficher\+\_\+type\+\_\+categ\+\_\+hexa@{afficher\+\_\+type\+\_\+categ\+\_\+hexa}!world\+\_\+generation.\+c@{world\+\_\+generation.\+c}}
+\subsubsection{\texorpdfstring{afficher\+\_\+type\+\_\+categ\+\_\+hexa()}{afficher\_type\_categ\_hexa()}}
+{\footnotesize\ttfamily void afficher\+\_\+type\+\_\+categ\+\_\+hexa (\begin{DoxyParamCaption}\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{int}]{l,  }\item[{int}]{c }\end{DoxyParamCaption})}
+
+
+
+Affiche le type et la catégorie de l\textquotesingle{}hexagone de la carte dont les coordonnées sont passées en paramètres. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+{\em l} & Coordonnée ligne de l\textquotesingle{}hexagone qu\textquotesingle{}on souhaite afficher \\
+\hline
+{\em c} & Coordonnée colonne de l\textquotesingle{}hexagone qu\textquotesingle{}on souhaite afficher \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{world__generation_8c_a7a53fec4d8948be421914833d195af0b}\label{world__generation_8c_a7a53fec4d8948be421914833d195af0b}} 
+\index{world\+\_\+generation.\+c@{world\+\_\+generation.\+c}!categ\+\_\+switch@{categ\+\_\+switch}}
+\index{categ\+\_\+switch@{categ\+\_\+switch}!world\+\_\+generation.\+c@{world\+\_\+generation.\+c}}
+\subsubsection{\texorpdfstring{categ\+\_\+switch()}{categ\_switch()}}
+{\footnotesize\ttfamily int categ\+\_\+switch (\begin{DoxyParamCaption}\item[{int}]{input }\end{DoxyParamCaption})}
+
+
+
+Donne la catégorie de l\textquotesingle{}hexagone passé en paramètre. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em input} & Type d\textquotesingle{}hexagone \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\itshape int} correspondant à la catégorie de l\textquotesingle{}hexagone 
+\end{DoxyReturn}
+\mbox{\Hypertarget{world__generation_8c_a0f6eb129fcf00e592e708ad17e0a65ac}\label{world__generation_8c_a0f6eb129fcf00e592e708ad17e0a65ac}} 
+\index{world\+\_\+generation.\+c@{world\+\_\+generation.\+c}!coordonnees\+\_\+valides@{coordonnees\+\_\+valides}}
+\index{coordonnees\+\_\+valides@{coordonnees\+\_\+valides}!world\+\_\+generation.\+c@{world\+\_\+generation.\+c}}
+\subsubsection{\texorpdfstring{coordonnees\+\_\+valides()}{coordonnees\_valides()}}
+{\footnotesize\ttfamily int coordonnees\+\_\+valides (\begin{DoxyParamCaption}\item[{int}]{l,  }\item[{int}]{c }\end{DoxyParamCaption})}
+
+
+
+Vérifie si les coordonnées sont valides. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em l} & Coordonnée ligne \\
+\hline
+{\em c} & Coordonnée colonne \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\itshape int} \+: 1 si les coordonnées sont valides, 0 si non 
+\end{DoxyReturn}
+\mbox{\Hypertarget{world__generation_8c_a6f2790bca8e59fe3b65ca808f1500821}\label{world__generation_8c_a6f2790bca8e59fe3b65ca808f1500821}} 
+\index{world\+\_\+generation.\+c@{world\+\_\+generation.\+c}!count@{count}}
+\index{count@{count}!world\+\_\+generation.\+c@{world\+\_\+generation.\+c}}
+\subsubsection{\texorpdfstring{count()}{count()}}
+{\footnotesize\ttfamily void count (\begin{DoxyParamCaption}\item[{const \hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Compte le nombre d\textquotesingle{}occurence de chaque type de cellule (outil de test) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{world__generation_8c_a3bc1a448a2edbe81a579122cd06467ac}\label{world__generation_8c_a3bc1a448a2edbe81a579122cd06467ac}} 
+\index{world\+\_\+generation.\+c@{world\+\_\+generation.\+c}!display\+\_\+\+T\+E\+XT@{display\+\_\+\+T\+E\+XT}}
+\index{display\+\_\+\+T\+E\+XT@{display\+\_\+\+T\+E\+XT}!world\+\_\+generation.\+c@{world\+\_\+generation.\+c}}
+\subsubsection{\texorpdfstring{display\+\_\+\+T\+E\+X\+T()}{display\_TEXT()}}
+{\footnotesize\ttfamily void display\+\_\+\+T\+E\+XT (\begin{DoxyParamCaption}\item[{int}]{l,  }\item[{int}]{c,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Affiche la map en version texte avec la légende. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em l} & Coordonnée ligne \\
+\hline
+{\em c} & Coordonnée colonne \\
+\hline
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{world__generation_8c_ae2a948ed1b1ff33428390c62f9371aef}\label{world__generation_8c_ae2a948ed1b1ff33428390c62f9371aef}} 
+\index{world\+\_\+generation.\+c@{world\+\_\+generation.\+c}!encounter\+\_\+init@{encounter\+\_\+init}}
+\index{encounter\+\_\+init@{encounter\+\_\+init}!world\+\_\+generation.\+c@{world\+\_\+generation.\+c}}
+\subsubsection{\texorpdfstring{encounter\+\_\+init()}{encounter\_init()}}
+{\footnotesize\ttfamily void encounter\+\_\+init (\begin{DoxyParamCaption}\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Initialise les positions des combats sur la carte. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{world__generation_8c_acc7e7b34903dd75f8563deda4e525f39}\label{world__generation_8c_acc7e7b34903dd75f8563deda4e525f39}} 
+\index{world\+\_\+generation.\+c@{world\+\_\+generation.\+c}!informations\+\_\+map@{informations\+\_\+map}}
+\index{informations\+\_\+map@{informations\+\_\+map}!world\+\_\+generation.\+c@{world\+\_\+generation.\+c}}
+\subsubsection{\texorpdfstring{informations\+\_\+map()}{informations\_map()}}
+{\footnotesize\ttfamily void informations\+\_\+map (\begin{DoxyParamCaption}\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Affiche les informations de la carte. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{world__generation_8c_ab4a79a51d27f37c50336cf450fc770cf}\label{world__generation_8c_ab4a79a51d27f37c50336cf450fc770cf}} 
+\index{world\+\_\+generation.\+c@{world\+\_\+generation.\+c}!init\+\_\+base@{init\+\_\+base}}
+\index{init\+\_\+base@{init\+\_\+base}!world\+\_\+generation.\+c@{world\+\_\+generation.\+c}}
+\subsubsection{\texorpdfstring{init\+\_\+base()}{init\_base()}}
+{\footnotesize\ttfamily void init\+\_\+base (\begin{DoxyParamCaption}\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Initialise la base de la carte. 
+
+La carte est initialisée par des hexagones de type prairie (catégorie nature), sans combat, sans quête et sans hexagones fouillés. 
+\begin{DoxyParams}{Paramètres}
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{world__generation_8c_a8ab726a1d0a373a9b5e762ae74e6af55}\label{world__generation_8c_a8ab726a1d0a373a9b5e762ae74e6af55}} 
+\index{world\+\_\+generation.\+c@{world\+\_\+generation.\+c}!init\+\_\+border@{init\+\_\+border}}
+\index{init\+\_\+border@{init\+\_\+border}!world\+\_\+generation.\+c@{world\+\_\+generation.\+c}}
+\subsubsection{\texorpdfstring{init\+\_\+border()}{init\_border()}}
+{\footnotesize\ttfamily void init\+\_\+border (\begin{DoxyParamCaption}\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Initialise les contours de la map. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{world__generation_8c_a309363eb6ec82b7f53f004bbd01c21c4}\label{world__generation_8c_a309363eb6ec82b7f53f004bbd01c21c4}} 
+\index{world\+\_\+generation.\+c@{world\+\_\+generation.\+c}!map\+\_\+init@{map\+\_\+init}}
+\index{map\+\_\+init@{map\+\_\+init}!world\+\_\+generation.\+c@{world\+\_\+generation.\+c}}
+\subsubsection{\texorpdfstring{map\+\_\+init()}{map\_init()}}
+{\footnotesize\ttfamily void map\+\_\+init (\begin{DoxyParamCaption}\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{int}]{quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Initialise la carte au début de chaque partie. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+{\em quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}} & Matrice des coordonnées des quêtes \\
+\hline
+{\em player} & Joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{world__generation_8c_a7a0d3066e88d63d7fb191f7a810e1d3d}\label{world__generation_8c_a7a0d3066e88d63d7fb191f7a810e1d3d}} 
+\index{world\+\_\+generation.\+c@{world\+\_\+generation.\+c}!nextgen@{nextgen}}
+\index{nextgen@{nextgen}!world\+\_\+generation.\+c@{world\+\_\+generation.\+c}}
+\subsubsection{\texorpdfstring{nextgen()}{nextgen()}}
+{\footnotesize\ttfamily void nextgen (\begin{DoxyParamCaption}\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Parcours la matrice de la carte passée en paramètre et fait appel à \hyperlink{world__generation_8c_a610b48bca978adae918ba8c023c49571}{spawntype} pour calculer le type d’hexagone qui va apparaître dans la cellule courante. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{world__generation_8c_ac44e2e3723ce06a3660665d0adc23079}\label{world__generation_8c_ac44e2e3723ce06a3660665d0adc23079}} 
+\index{world\+\_\+generation.\+c@{world\+\_\+generation.\+c}!portable\+\_\+switch@{portable\+\_\+switch}}
+\index{portable\+\_\+switch@{portable\+\_\+switch}!world\+\_\+generation.\+c@{world\+\_\+generation.\+c}}
+\subsubsection{\texorpdfstring{portable\+\_\+switch()}{portable\_switch()}}
+{\footnotesize\ttfamily void portable\+\_\+switch (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Affiche le code de la cellule. 
+
+Cette fonction a été créée pour éviter de refaire le switch dans différentes fonctions d\textquotesingle{}affichage. 
+\begin{DoxyParams}{Paramètres}
+{\em i} & Coordonnée ligne \\
+\hline
+{\em j} & Coordonnée colonne \\
+\hline
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{world__generation_8c_a61aa43ceaa893c5807b45cd54fd140e8}\label{world__generation_8c_a61aa43ceaa893c5807b45cd54fd140e8}} 
+\index{world\+\_\+generation.\+c@{world\+\_\+generation.\+c}!quest\+\_\+init@{quest\+\_\+init}}
+\index{quest\+\_\+init@{quest\+\_\+init}!world\+\_\+generation.\+c@{world\+\_\+generation.\+c}}
+\subsubsection{\texorpdfstring{quest\+\_\+init()}{quest\_init()}}
+{\footnotesize\ttfamily void quest\+\_\+init (\begin{DoxyParamCaption}\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{int}]{quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Initialise les quêtes (quest\+\_\+id) sur la carte. 
+
+Les quêtes sont placées aléatoirement sur la carte. 
+\begin{DoxyParams}{Paramètres}
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+{\em quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}} & Matrice des coordonnées des quêtes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{world__generation_8c_a610b48bca978adae918ba8c023c49571}\label{world__generation_8c_a610b48bca978adae918ba8c023c49571}} 
+\index{world\+\_\+generation.\+c@{world\+\_\+generation.\+c}!spawntype@{spawntype}}
+\index{spawntype@{spawntype}!world\+\_\+generation.\+c@{world\+\_\+generation.\+c}}
+\subsubsection{\texorpdfstring{spawntype()}{spawntype()}}
+{\footnotesize\ttfamily int spawntype (\begin{DoxyParamCaption}\item[{int}]{l,  }\item[{int}]{c,  }\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Compte le nombre d\textquotesingle{}hexagones-\/voisins similaires et selon ce nombre, après des calculs de probabilité, renvoie le type d’hexagone qui sera créé sur les coordonnées passées en paramètre. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em l} & Coordonnée ligne \\
+\hline
+{\em c} & Coordonnée colonne \\
+\hline
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\itshape int} \+: le type de l\textquotesingle{}hexagone qui va être créé 
+\end{DoxyReturn}
+\mbox{\Hypertarget{world__generation_8c_ad5c57c2778c1e760fad1f9d17f97f0d7}\label{world__generation_8c_ad5c57c2778c1e760fad1f9d17f97f0d7}} 
+\index{world\+\_\+generation.\+c@{world\+\_\+generation.\+c}!topup@{topup}}
+\index{topup@{topup}!world\+\_\+generation.\+c@{world\+\_\+generation.\+c}}
+\subsubsection{\texorpdfstring{topup()}{topup()}}
+{\footnotesize\ttfamily void topup (\begin{DoxyParamCaption}\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{int}]{quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Crée un nombre déterminé d’hexagones indispensables pour la carte (comme camp militaire/bandit par exemple) sur des coordonnées aléatoires. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+{\em quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}} & Matrice des coordonnées des quêtes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}

@@ -1,0 +1,68 @@
+\hypertarget{structperso__t}{}\section{Référence de la structure perso\+\_\+t}
+\label{structperso__t}\index{perso\+\_\+t@{perso\+\_\+t}}
+
+
+Structure pour un personnage.  
+
+
+
+
+{\ttfamily \#include $<$commun.\+h$>$}
+
+
+
+Graphe de collaboration de perso\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=151pt]{structperso__t__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Attributs publics}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structperso__t_a3f11a75ec934e0df24f4cac92ce2bd72}\label{structperso__t_a3f11a75ec934e0df24f4cac92ce2bd72}} 
+int \hyperlink{structperso__t_a3f11a75ec934e0df24f4cac92ce2bd72}{pv}
+\begin{DoxyCompactList}\small\item\em Points de vie. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structperso__t_a07ccf45424cfd47a3199941889a4d71f}\label{structperso__t_a07ccf45424cfd47a3199941889a4d71f}} 
+int \hyperlink{structperso__t_a07ccf45424cfd47a3199941889a4d71f}{pa}
+\begin{DoxyCompactList}\small\item\em Points d\textquotesingle{}action. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structperso__t_af4874d4995aa7375d024428e2dbb78e7}\label{structperso__t_af4874d4995aa7375d024428e2dbb78e7}} 
+int \hyperlink{structperso__t_af4874d4995aa7375d024428e2dbb78e7}{pe}
+\begin{DoxyCompactList}\small\item\em Points d\textquotesingle{}énergie. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structperso__t_ab6ac3f0a4b6382b801e248270db55739}\label{structperso__t_ab6ac3f0a4b6382b801e248270db55739}} 
+int \hyperlink{structperso__t_ab6ac3f0a4b6382b801e248270db55739}{posY}
+\begin{DoxyCompactList}\small\item\em Position Y (ligne) sur la carte. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structperso__t_a844ca5ae82e0a65ee2fc268a23352b7a}\label{structperso__t_a844ca5ae82e0a65ee2fc268a23352b7a}} 
+int \hyperlink{structperso__t_a844ca5ae82e0a65ee2fc268a23352b7a}{posX}
+\begin{DoxyCompactList}\small\item\em Position X (colonne) sur la carte. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structperso__t_a6d298fd23c478b7276afd67adaaa78e2}\label{structperso__t_a6d298fd23c478b7276afd67adaaa78e2}} 
+int \hyperlink{structperso__t_a6d298fd23c478b7276afd67adaaa78e2}{turns}
+\begin{DoxyCompactList}\small\item\em Nombre de tours restants. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structperso__t_afb347e6d5a61815f8238fd45136cbddc}\label{structperso__t_afb347e6d5a61815f8238fd45136cbddc}} 
+\hyperlink{structitem__t}{item\+\_\+t} \hyperlink{structperso__t_afb347e6d5a61815f8238fd45136cbddc}{inventory} \mbox{[}\hyperlink{commun_8h_ace96e07dcfbce0348b898efd6e6d1956}{I\+N\+V\+E\+N\+T\+O\+R\+Y\+\_\+\+C\+A\+P\+A\+C\+I\+TY}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Inventaire. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structperso__t_acceec0b28540f38c6bb75f4519c1bb6d}\label{structperso__t_acceec0b28540f38c6bb75f4519c1bb6d}} 
+int \hyperlink{structperso__t_acceec0b28540f38c6bb75f4519c1bb6d}{nb\+\_\+items\+\_\+inventory}
+\begin{DoxyCompactList}\small\item\em Nombre d\textquotesingle{}items dans l\textquotesingle{}inventaire. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structperso__t_aca1d4b8c1aeb76d509e346a0fb2ee60e}\label{structperso__t_aca1d4b8c1aeb76d509e346a0fb2ee60e}} 
+\hyperlink{structitem__t}{item\+\_\+t} $\ast$ \hyperlink{structperso__t_aca1d4b8c1aeb76d509e346a0fb2ee60e}{left\+\_\+hand}
+\begin{DoxyCompactList}\small\item\em Pointeur sur item porté à la main gauche. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structperso__t_ae0e90f424cffee076e6c1238c1789f89}\label{structperso__t_ae0e90f424cffee076e6c1238c1789f89}} 
+\hyperlink{structitem__t}{item\+\_\+t} $\ast$ \hyperlink{structperso__t_ae0e90f424cffee076e6c1238c1789f89}{right\+\_\+hand}
+\begin{DoxyCompactList}\small\item\em Pointeur sur item porté à la main droite. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structperso__t_ad95e816d354cc2a3d0ed11be55c6407e}\label{structperso__t_ad95e816d354cc2a3d0ed11be55c6407e}} 
+\hyperlink{structitem__t}{item\+\_\+t} $\ast$ \hyperlink{structperso__t_ad95e816d354cc2a3d0ed11be55c6407e}{body}
+\begin{DoxyCompactList}\small\item\em Pointeur sur item porté le corps. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structperso__t_a8f5be8ec76f5bc34a9c83a25f0c77a84}\label{structperso__t_a8f5be8ec76f5bc34a9c83a25f0c77a84}} 
+\hyperlink{structitem__t}{item\+\_\+t} $\ast$ \hyperlink{structperso__t_a8f5be8ec76f5bc34a9c83a25f0c77a84}{head}
+\begin{DoxyCompactList}\small\item\em Pointeur sur item porté sur la tête. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Structure pour un personnage. 
+
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+lib/\hyperlink{commun_8h}{commun.\+h}\end{DoxyCompactItemize}

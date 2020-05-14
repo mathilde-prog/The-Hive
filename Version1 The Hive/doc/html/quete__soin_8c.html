@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projet L2 Informatique - The Hive: Référence du fichier src/quete_soin.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Projet L2 Informatique - The Hive
+   </div>
+   <div id="projectbrief">Documentation jeu The Hive (Projet L2 Informatique)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier quete_soin.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Quête "soin".  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;time.h&gt;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="commun_8h_source.html">lib/commun.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de quete_soin.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="quete__soin_8c__incl.png" border="0" usemap="#src_2quete__soin_8c" alt=""/></div>
+<map name="src_2quete__soin_8c" id="src_2quete__soin_8c">
+<area shape="rect" id="node7" href="commun_8h.html" title="Tous les prototypes de fonctions, énumérations, structures, macros appelés dans plusieurs fichiers du..." alt="" coords="445,80,545,107"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a7d129df227c67d85999f25b33eba672a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structnpc__t.html">npc_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="quete__soin_8c.html#a7d129df227c67d85999f25b33eba672a">init_npc_quete</a> (<a class="el" href="structitem__t.html">item_t</a> *Tab_Items, int pers)</td></tr>
+<tr class="memdesc:a7d129df227c67d85999f25b33eba672a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation du personnage de l'homme blessé.  <a href="#a7d129df227c67d85999f25b33eba672a">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a7d129df227c67d85999f25b33eba672a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af713a4b99028b0dad88c6eecab73f0bc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="quete__soin_8c.html#af713a4b99028b0dad88c6eecab73f0bc">recup_items_vole</a> (<a class="el" href="structperso__t.html">perso_t</a> *player, int nb_items_vole, <a class="el" href="structnpc__t.html">npc_t</a> *homme, <a class="el" href="structitem__t.html">item_t</a> *pass_card, <a class="el" href="structquete__t.html">quete_t</a> *quete)</td></tr>
+<tr class="memdesc:af713a4b99028b0dad88c6eecab73f0bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupération des items voler sur l'homme blessé par le joueur.  <a href="#af713a4b99028b0dad88c6eecab73f0bc">Plus de détails...</a><br /></td></tr>
+<tr class="separator:af713a4b99028b0dad88c6eecab73f0bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65989607b00b71423574e941b2e3f0b1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="quete__soin_8c.html#a65989607b00b71423574e941b2e3f0b1">aider_homme_blesse</a> (<a class="el" href="structperso__t.html">perso_t</a> *player, <a class="el" href="structitem__t.html">item_t</a> *pass_card, <a class="el" href="structquete__t.html">quete_t</a> *quete, int pers)</td></tr>
+<tr class="memdesc:a65989607b00b71423574e941b2e3f0b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction où se déroule la partie aide de la quete "soin".  <a href="#a65989607b00b71423574e941b2e3f0b1">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a65989607b00b71423574e941b2e3f0b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd30bff51f0864373d2bb70fb69a3de4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="quete__soin_8c.html#afd30bff51f0864373d2bb70fb69a3de4">quete_soin</a> (<a class="el" href="structperso__t.html">perso_t</a> *player, <a class="el" href="structquete__t.html">quete_t</a> *quete, <a class="el" href="structitem__t.html">item_t</a> *Tab_Items)</td></tr>
+<tr class="memdesc:afd30bff51f0864373d2bb70fb69a3de4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Déroulement de la quête "soin" : rencontre d'un individu blessé.  <a href="#afd30bff51f0864373d2bb70fb69a3de4">Plus de détails...</a><br /></td></tr>
+<tr class="separator:afd30bff51f0864373d2bb70fb69a3de4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Quête "soin". </p>
+<dl class="section author"><dt>Auteur</dt><dd>Mathilde Mottay, Anais Mottier, Clement Mainguy, Moustapha Tsamarayev </dd></dl>
+<dl class="section version"><dt>Version</dt><dd></dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2020 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a65989607b00b71423574e941b2e3f0b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65989607b00b71423574e941b2e3f0b1">&#9670;&nbsp;</a></span>aider_homme_blesse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int aider_homme_blesse </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a> *&#160;</td>
+          <td class="paramname"><em>pass_card</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structquete__t.html">quete_t</a> *&#160;</td>
+          <td class="paramname"><em>quete</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pers</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction où se déroule la partie aide de la quete "soin". </p>
+<p>Le joueur peut aider l'homme de différentes façons, il choisit comment il souhaite le faire ou non. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+    <tr><td class="paramname">pass_card</td><td>Pointeur sur un objet de type <a class="el" href="structitem__t.html" title="Structure pour un item. ">item_t</a> correspondant au pass </td></tr>
+    <tr><td class="paramname">quete</td><td>Pointeur sur un objet de type <a class="el" href="structquete__t.html" title="Structure de suivi des quêtes. ">quete_t</a> correspondant à l'état des quêtes </td></tr>
+    <tr><td class="paramname">pers</td><td>Indicateur si l'homme blessé dans la quête est un soldat ou policier </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne un <em>int</em> : 0 si le jeu continue et -1 si problème dans la quete. </dd></dl>
+
+</div>
+</div>
+<a id="a7d129df227c67d85999f25b33eba672a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d129df227c67d85999f25b33eba672a">&#9670;&nbsp;</a></span>init_npc_quete()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structnpc__t.html">npc_t</a> * init_npc_quete </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a> *&#160;</td>
+          <td class="paramname"><em>Tab_Items</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pers</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialisation du personnage de l'homme blessé. </p>
+<p>L'initialisation est différente en fonction du "métier" de l'homme : soldat, policier. Il n'aura pas la même arme mais aura la même armure. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Tab_Items</td><td>Tableau contenant tous les items disponibles dans le jeu </td></tr>
+    <tr><td class="paramname">pers</td><td>Indicateur si l'homme blessé dans la quête est un soldat ou policier </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un pointeur sur un objet de type <a class="el" href="structnpc__t.html" title="Structure pour ennemi (NPC) ">npc_t</a> correspondant à l'homme blessé </dd></dl>
+
+</div>
+</div>
+<a id="afd30bff51f0864373d2bb70fb69a3de4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd30bff51f0864373d2bb70fb69a3de4">&#9670;&nbsp;</a></span>quete_soin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void quete_soin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structquete__t.html">quete_t</a> *&#160;</td>
+          <td class="paramname"><em>quete</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a> *&#160;</td>
+          <td class="paramname"><em>Tab_Items</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Déroulement de la quête "soin" : rencontre d'un individu blessé. </p>
+<p>Le joueur rencontre un individu blesse. Il a le choix entre l'ignorer, lui voler ses items ou l'aider. Cet individu est un homme de l'Etat, en charge de la protection des civiles (policier ou soldat). Pour pouvoir aider le blesse le joueur doit être en possession du medical kit ou de nourriture. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+    <tr><td class="paramname">quete</td><td>Pointeur sur un objet de type <a class="el" href="structquete__t.html" title="Structure de suivi des quêtes. ">quete_t</a> correspondant à l'état des quêtes </td></tr>
+    <tr><td class="paramname">Tab_Items</td><td>Tableau contenant tous les items disponibles dans le jeu </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne un <em>int</em> : 0 si le jeu continue et -1 si probleme dans la quete. </dd></dl>
+
+</div>
+</div>
+<a id="af713a4b99028b0dad88c6eecab73f0bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af713a4b99028b0dad88c6eecab73f0bc">&#9670;&nbsp;</a></span>recup_items_vole()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int recup_items_vole </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nb_items_vole</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structnpc__t.html">npc_t</a> *&#160;</td>
+          <td class="paramname"><em>homme</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a> *&#160;</td>
+          <td class="paramname"><em>pass_card</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structquete__t.html">quete_t</a> *&#160;</td>
+          <td class="paramname"><em>quete</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Récupération des items voler sur l'homme blessé par le joueur. </p>
+<p>Génération des items volés + décision du joueur de les récupérer ou non dans son inventaire </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+    <tr><td class="paramname">nb_items_vole</td><td>Nombre d'items volés par le joueur </td></tr>
+    <tr><td class="paramname">homme</td><td>Pointeur sur un objet de type <a class="el" href="structnpc__t.html" title="Structure pour ennemi (NPC) ">npc_t</a> correspondant à l'homme blessé </td></tr>
+    <tr><td class="paramname">pass_card</td><td>Pointeur sur un objet de type <a class="el" href="structitem__t.html" title="Structure pour un item. ">item_t</a> correspondant au pass </td></tr>
+    <tr><td class="paramname">quete</td><td>Pointeur sur un objet de type <a class="el" href="structquete__t.html" title="Structure de suivi des quêtes. ">quete_t</a> correspondant à l'état des quêtes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne un <em>int</em> : 0 si le jeu continue et -1 si problème dans la quête. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

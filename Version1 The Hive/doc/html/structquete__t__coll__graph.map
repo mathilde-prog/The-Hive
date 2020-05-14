@@ -1,0 +1,4 @@
+<map id="quete_t" name="quete_t">
+<area shape="rect" id="node2" href="$structsearch__t.html" title="Structure de suivi de la quête &quot;recherche&quot;. " alt="" coords="5,95,77,121"/>
+<area shape="rect" id="node3" href="$structitem__t.html" title="Structure pour un item. " alt="" coords="12,5,71,32"/>
+</map>

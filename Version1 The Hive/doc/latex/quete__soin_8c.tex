@@ -1,0 +1,141 @@
+\hypertarget{quete__soin_8c}{}\section{Référence du fichier src/quete\+\_\+soin.c}
+\label{quete__soin_8c}\index{src/quete\+\_\+soin.\+c@{src/quete\+\_\+soin.\+c}}
+
+
+Quête \char`\"{}soin\char`\"{}.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}lib/commun.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de quete\+\_\+soin.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{quete__soin_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structnpc__t}{npc\+\_\+t} $\ast$ \hyperlink{quete__soin_8c_a7d129df227c67d85999f25b33eba672a}{init\+\_\+npc\+\_\+quete} (\hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items, int pers)
+\begin{DoxyCompactList}\small\item\em Initialisation du personnage de l\textquotesingle{}homme blessé. \end{DoxyCompactList}\item 
+int \hyperlink{quete__soin_8c_af713a4b99028b0dad88c6eecab73f0bc}{recup\+\_\+items\+\_\+vole} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, int nb\+\_\+items\+\_\+vole, \hyperlink{structnpc__t}{npc\+\_\+t} $\ast$homme, \hyperlink{structitem__t}{item\+\_\+t} $\ast$pass\+\_\+card, \hyperlink{structquete__t}{quete\+\_\+t} $\ast$quete)
+\begin{DoxyCompactList}\small\item\em Récupération des items voler sur l\textquotesingle{}homme blessé par le joueur. \end{DoxyCompactList}\item 
+int \hyperlink{quete__soin_8c_a65989607b00b71423574e941b2e3f0b1}{aider\+\_\+homme\+\_\+blesse} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structitem__t}{item\+\_\+t} $\ast$pass\+\_\+card, \hyperlink{structquete__t}{quete\+\_\+t} $\ast$quete, int pers)
+\begin{DoxyCompactList}\small\item\em Fonction où se déroule la partie aide de la quete \char`\"{}soin\char`\"{}. \end{DoxyCompactList}\item 
+int \hyperlink{quete__soin_8c_afd30bff51f0864373d2bb70fb69a3de4}{quete\+\_\+soin} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structquete__t}{quete\+\_\+t} $\ast$quete, \hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items)
+\begin{DoxyCompactList}\small\item\em Déroulement de la quête \char`\"{}soin\char`\"{} \+: rencontre d\textquotesingle{}un individu blessé. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Quête \char`\"{}soin\char`\"{}. 
+
+\begin{DoxyAuthor}{Auteur}
+Mathilde Mottay, Anais Mottier, Clement Mainguy, Moustapha Tsamarayev 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{quete__soin_8c_a65989607b00b71423574e941b2e3f0b1}\label{quete__soin_8c_a65989607b00b71423574e941b2e3f0b1}} 
+\index{quete\+\_\+soin.\+c@{quete\+\_\+soin.\+c}!aider\+\_\+homme\+\_\+blesse@{aider\+\_\+homme\+\_\+blesse}}
+\index{aider\+\_\+homme\+\_\+blesse@{aider\+\_\+homme\+\_\+blesse}!quete\+\_\+soin.\+c@{quete\+\_\+soin.\+c}}
+\subsubsection{\texorpdfstring{aider\+\_\+homme\+\_\+blesse()}{aider\_homme\_blesse()}}
+{\footnotesize\ttfamily int aider\+\_\+homme\+\_\+blesse (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{pass\+\_\+card,  }\item[{\hyperlink{structquete__t}{quete\+\_\+t} $\ast$}]{quete,  }\item[{int}]{pers }\end{DoxyParamCaption})}
+
+
+
+Fonction où se déroule la partie aide de la quete \char`\"{}soin\char`\"{}. 
+
+Le joueur peut aider l\textquotesingle{}homme de différentes façons, il choisit comment il souhaite le faire ou non. 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em pass\+\_\+card} & Pointeur sur un objet de type \hyperlink{structitem__t}{item\+\_\+t} correspondant au pass \\
+\hline
+{\em quete} & Pointeur sur un objet de type \hyperlink{structquete__t}{quete\+\_\+t} correspondant à l\textquotesingle{}état des quêtes \\
+\hline
+{\em pers} & Indicateur si l\textquotesingle{}homme blessé dans la quête est un soldat ou policier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\itshape int} \+: 0 si le jeu continue et -\/1 si problème dans la quete. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{quete__soin_8c_a7d129df227c67d85999f25b33eba672a}\label{quete__soin_8c_a7d129df227c67d85999f25b33eba672a}} 
+\index{quete\+\_\+soin.\+c@{quete\+\_\+soin.\+c}!init\+\_\+npc\+\_\+quete@{init\+\_\+npc\+\_\+quete}}
+\index{init\+\_\+npc\+\_\+quete@{init\+\_\+npc\+\_\+quete}!quete\+\_\+soin.\+c@{quete\+\_\+soin.\+c}}
+\subsubsection{\texorpdfstring{init\+\_\+npc\+\_\+quete()}{init\_npc\_quete()}}
+{\footnotesize\ttfamily \hyperlink{structnpc__t}{npc\+\_\+t} $\ast$ init\+\_\+npc\+\_\+quete (\begin{DoxyParamCaption}\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items,  }\item[{int}]{pers }\end{DoxyParamCaption})}
+
+
+
+Initialisation du personnage de l\textquotesingle{}homme blessé. 
+
+L\textquotesingle{}initialisation est différente en fonction du \char`\"{}métier\char`\"{} de l\textquotesingle{}homme \+: soldat, policier. Il n\textquotesingle{}aura pas la même arme mais aura la même armure. 
+\begin{DoxyParams}{Paramètres}
+{\em Tab\+\_\+\+Items} & Tableau contenant tous les items disponibles dans le jeu \\
+\hline
+{\em pers} & Indicateur si l\textquotesingle{}homme blessé dans la quête est un soldat ou policier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur un objet de type \hyperlink{structnpc__t}{npc\+\_\+t} correspondant à l\textquotesingle{}homme blessé 
+\end{DoxyReturn}
+\mbox{\Hypertarget{quete__soin_8c_afd30bff51f0864373d2bb70fb69a3de4}\label{quete__soin_8c_afd30bff51f0864373d2bb70fb69a3de4}} 
+\index{quete\+\_\+soin.\+c@{quete\+\_\+soin.\+c}!quete\+\_\+soin@{quete\+\_\+soin}}
+\index{quete\+\_\+soin@{quete\+\_\+soin}!quete\+\_\+soin.\+c@{quete\+\_\+soin.\+c}}
+\subsubsection{\texorpdfstring{quete\+\_\+soin()}{quete\_soin()}}
+{\footnotesize\ttfamily void quete\+\_\+soin (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structquete__t}{quete\+\_\+t} $\ast$}]{quete,  }\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items }\end{DoxyParamCaption})}
+
+
+
+Déroulement de la quête \char`\"{}soin\char`\"{} \+: rencontre d\textquotesingle{}un individu blessé. 
+
+Le joueur rencontre un individu blesse. Il a le choix entre l\textquotesingle{}ignorer, lui voler ses items ou l\textquotesingle{}aider. Cet individu est un homme de l\textquotesingle{}Etat, en charge de la protection des civiles (policier ou soldat). Pour pouvoir aider le blesse le joueur doit être en possession du medical kit ou de nourriture. 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em quete} & Pointeur sur un objet de type \hyperlink{structquete__t}{quete\+\_\+t} correspondant à l\textquotesingle{}état des quêtes \\
+\hline
+{\em Tab\+\_\+\+Items} & Tableau contenant tous les items disponibles dans le jeu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\itshape int} \+: 0 si le jeu continue et -\/1 si probleme dans la quete. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{quete__soin_8c_af713a4b99028b0dad88c6eecab73f0bc}\label{quete__soin_8c_af713a4b99028b0dad88c6eecab73f0bc}} 
+\index{quete\+\_\+soin.\+c@{quete\+\_\+soin.\+c}!recup\+\_\+items\+\_\+vole@{recup\+\_\+items\+\_\+vole}}
+\index{recup\+\_\+items\+\_\+vole@{recup\+\_\+items\+\_\+vole}!quete\+\_\+soin.\+c@{quete\+\_\+soin.\+c}}
+\subsubsection{\texorpdfstring{recup\+\_\+items\+\_\+vole()}{recup\_items\_vole()}}
+{\footnotesize\ttfamily int recup\+\_\+items\+\_\+vole (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{int}]{nb\+\_\+items\+\_\+vole,  }\item[{\hyperlink{structnpc__t}{npc\+\_\+t} $\ast$}]{homme,  }\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{pass\+\_\+card,  }\item[{\hyperlink{structquete__t}{quete\+\_\+t} $\ast$}]{quete }\end{DoxyParamCaption})}
+
+
+
+Récupération des items voler sur l\textquotesingle{}homme blessé par le joueur. 
+
+Génération des items volés + décision du joueur de les récupérer ou non dans son inventaire 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em nb\+\_\+items\+\_\+vole} & Nombre d\textquotesingle{}items volés par le joueur \\
+\hline
+{\em homme} & Pointeur sur un objet de type \hyperlink{structnpc__t}{npc\+\_\+t} correspondant à l\textquotesingle{}homme blessé \\
+\hline
+{\em pass\+\_\+card} & Pointeur sur un objet de type \hyperlink{structitem__t}{item\+\_\+t} correspondant au pass \\
+\hline
+{\em quete} & Pointeur sur un objet de type \hyperlink{structquete__t}{quete\+\_\+t} correspondant à l\textquotesingle{}état des quêtes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un {\itshape int} \+: 0 si le jeu continue et -\/1 si problème dans la quête. 
+\end{DoxyReturn}

@@ -1,0 +1,66 @@
+\hypertarget{demo_8c}{}\section{Référence du fichier src/demo.c}
+\label{demo_8c}\index{src/demo.\+c@{src/demo.\+c}}
+
+
+Démo \mbox{[}Mode de jeu pour choisir ses items avant de commencer la partie -\/ utile pour tester certaines fonctionnalités\mbox{]}.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}lib/commun.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de demo.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{demo_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{demo_8c_a02045ba00f9d77ebc465f2ba0b5b2333}{demo\+\_\+afficher\+\_\+items} (\hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items, int nb\+\_\+items\+\_\+available)
+\begin{DoxyCompactList}\small\item\em Permet au joueur de choisir les items qu\textquotesingle{}il souhaite ajouter à son inventaire parmi ceux disponibles. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Démo \mbox{[}Mode de jeu pour choisir ses items avant de commencer la partie -\/ utile pour tester certaines fonctionnalités\mbox{]}. 
+
+\begin{DoxyAuthor}{Auteur}
+Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{demo_8c_a02045ba00f9d77ebc465f2ba0b5b2333}\label{demo_8c_a02045ba00f9d77ebc465f2ba0b5b2333}} 
+\index{demo.\+c@{demo.\+c}!demo\+\_\+afficher\+\_\+items@{demo\+\_\+afficher\+\_\+items}}
+\index{demo\+\_\+afficher\+\_\+items@{demo\+\_\+afficher\+\_\+items}!demo.\+c@{demo.\+c}}
+\subsubsection{\texorpdfstring{demo\+\_\+afficher\+\_\+items()}{demo\_afficher\_items()}}
+{\footnotesize\ttfamily void demo\+\_\+afficher\+\_\+items (\begin{DoxyParamCaption}\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items,  }\item[{int}]{nb\+\_\+items\+\_\+available }\end{DoxyParamCaption})}
+
+
+
+Permet au joueur de choisir les items qu\textquotesingle{}il souhaite ajouter à son inventaire parmi ceux disponibles. 
+
+Cette fonction est appelée U\+N\+I\+Q\+U\+E\+M\+E\+NT en mode demo.
+
+Mode demo \+: ./game --demo ou ./game -\/d 
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em Tab\+\_\+\+Items} & Tableau contenant tous les items disponibles dans le jeu \\
+\hline
+{\em nb\+\_\+items\+\_\+available} & Nombre d\textquotesingle{}items disponibles dans le jeu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}

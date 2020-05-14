@@ -1,0 +1,629 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projet L2 Informatique - The Hive: Référence du fichier src/combat.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Projet L2 Informatique - The Hive
+   </div>
+   <div id="projectbrief">Documentation jeu The Hive (Projet L2 Informatique)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier combat.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Combat.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;time.h&gt;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="commun_8h_source.html">lib/commun.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de combat.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="combat_8c__incl.png" border="0" usemap="#src_2combat_8c" alt=""/></div>
+<map name="src_2combat_8c" id="src_2combat_8c">
+<area shape="rect" id="node7" href="commun_8h.html" title="Tous les prototypes de fonctions, énumérations, structures, macros appelés dans plusieurs fichiers du..." alt="" coords="445,80,545,107"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a3ba4cc3d7ab9c1c648fdee636ec187a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#a3ba4cc3d7ab9c1c648fdee636ec187a4">retrieve_enemy_items</a> (<a class="el" href="structitem__t.html">item_t</a> *Tab_Items, int nb_items_available, <a class="el" href="structperso__t.html">perso_t</a> *player)</td></tr>
+<tr class="memdesc:a3ba4cc3d7ab9c1c648fdee636ec187a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Génère aléatoirement 0 à 3 items (correspondant au sac à dos de l'ennemi) que le joueur peut récupérer s'il le souhaite.  <a href="#a3ba4cc3d7ab9c1c648fdee636ec187a4">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a3ba4cc3d7ab9c1c648fdee636ec187a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1892ac675df072893808c9df0d0a9931"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#a1892ac675df072893808c9df0d0a9931">loot_enemy</a> (<a class="el" href="structitem__t.html">item_t</a> *Tab_Items, int nb_items_available, <a class="el" href="structnpc__t.html">npc_t</a> *enemy, <a class="el" href="structperso__t.html">perso_t</a> *player)</td></tr>
+<tr class="memdesc:a1892ac675df072893808c9df0d0a9931"><td class="mdescLeft">&#160;</td><td class="mdescRight">Propose au joueur de récupérer l'arme et/ou l'armure et/ou les items de l'ennemi.  <a href="#a1892ac675df072893808c9df0d0a9931">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a1892ac675df072893808c9df0d0a9931"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3e807e3952a8790ef6e49b93090a52b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#ad3e807e3952a8790ef6e49b93090a52b">damage_calculator</a> (<a class="el" href="structitem__t.html">item_t</a> *<a class="el" href="commun_8h.html#adee610a3c7375031538811d29f6a4124aae810997129ae8ca5fdbb5d446720ad8">weapon</a>, <a class="el" href="structitem__t.html">item_t</a> *<a class="el" href="commun_8h.html#adee610a3c7375031538811d29f6a4124aa5d58d178c61dcf6fc59831895e79b3a">armor</a>, int *hp, int distance, int cover, int scenario)</td></tr>
+<tr class="memdesc:ad3e807e3952a8790ef6e49b93090a52b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcule les dommages causés par l'attaquant (scénario 1 : ennemi, scénario 2 : joueur)  <a href="#ad3e807e3952a8790ef6e49b93090a52b">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ad3e807e3952a8790ef6e49b93090a52b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea4055090690f86a2f53512657fc89ef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structnpc__t.html">npc_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#aea4055090690f86a2f53512657fc89ef">init_npc</a> (<a class="el" href="structitem__t.html">item_t</a> *Tab_Items)</td></tr>
+<tr class="memdesc:aea4055090690f86a2f53512657fc89ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise un non-player character (NPC) ennemi (nom, arme, armure et points de vie)  <a href="#aea4055090690f86a2f53512657fc89ef">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aea4055090690f86a2f53512657fc89ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc8f836ff0a959a5ebf1e6ae8654d099"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structstat__t.html">stat_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#abc8f836ff0a959a5ebf1e6ae8654d099">init_field</a> ()</td></tr>
+<tr class="memdesc:abc8f836ff0a959a5ebf1e6ae8654d099"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise le champ de bataille du combat (positions et couvertures des adversaires, distance qui les sépare)  <a href="#abc8f836ff0a959a5ebf1e6ae8654d099">Plus de détails...</a><br /></td></tr>
+<tr class="separator:abc8f836ff0a959a5ebf1e6ae8654d099"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e91c0f609ee9f7c4da396050f0fb5ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#a1e91c0f609ee9f7c4da396050f0fb5ab">turn_npc</a> (<a class="el" href="structnpc__t.html">npc_t</a> *enemy, <a class="el" href="structstat__t.html">stat_t</a> *field, <a class="el" href="structperso__t.html">perso_t</a> *player)</td></tr>
+<tr class="memdesc:a1e91c0f609ee9f7c4da396050f0fb5ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tour du non-player character (NPC) lors du combat, le comportement du NPC est expliqué sur <a href="https://i.imgur.com/YcOPj8o.png">ce schéma</a>  <a href="#a1e91c0f609ee9f7c4da396050f0fb5ab">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a1e91c0f609ee9f7c4da396050f0fb5ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9910d9ed72e5f5b74ca932d09cad5a3a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#a9910d9ed72e5f5b74ca932d09cad5a3a">run_away</a> (int position, int distance, <a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>], <a class="el" href="structperso__t.html">perso_t</a> *player)</td></tr>
+<tr class="memdesc:a9910d9ed72e5f5b74ca932d09cad5a3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Détermine si le joueur réussit à fuir ou non (selon sa position et la distance qui le sépare de son ennemi)  <a href="#a9910d9ed72e5f5b74ca932d09cad5a3a">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a9910d9ed72e5f5b74ca932d09cad5a3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a331dc85c1543198f66af77a112a2449c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#a331dc85c1543198f66af77a112a2449c">afficher_lettre</a> (int chiffre, <a class="el" href="structstat__t.html">stat_t</a> field)</td></tr>
+<tr class="memdesc:a331dc85c1543198f66af77a112a2449c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche les lettres correspondant au joueur et à l'ennemi si le chiffre passé en paramètre correspond à leur position.  <a href="#a331dc85c1543198f66af77a112a2449c">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a331dc85c1543198f66af77a112a2449c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05c995612f4949ab24df8c0db4299198"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#a05c995612f4949ab24df8c0db4299198">show_field</a> (<a class="el" href="structstat__t.html">stat_t</a> field)</td></tr>
+<tr class="memdesc:a05c995612f4949ab24df8c0db4299198"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche le champ de bataille du combat en indiquant où se situent le joueur et l'ennemi.  <a href="#a05c995612f4949ab24df8c0db4299198">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a05c995612f4949ab24df8c0db4299198"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9899d498dbb5e1e935fbfb460348cb7e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#a9899d498dbb5e1e935fbfb460348cb7e">combat_info</a> (int print_type, <a class="el" href="structperso__t.html">perso_t</a> player, <a class="el" href="structnpc__t.html">npc_t</a> enemy, <a class="el" href="structstat__t.html">stat_t</a> field)</td></tr>
+<tr class="memdesc:a9899d498dbb5e1e935fbfb460348cb7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche les informations sur le joueur et l'ennemi (pv, armes, armures, distance), le champ de bataille et les actions possibles lors du combat.  <a href="#a9899d498dbb5e1e935fbfb460348cb7e">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a9899d498dbb5e1e935fbfb460348cb7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04ffb19fc8145784ad26f44adac4c4ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="combat_8c.html#a04ffb19fc8145784ad26f44adac4c4ed">combat</a> (<a class="el" href="structperso__t.html">perso_t</a> *player, <a class="el" href="structnpc__t.html">npc_t</a> *enemy, <a class="el" href="structstat__t.html">stat_t</a> *field, <a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>], <a class="el" href="structitem__t.html">item_t</a> *Tab_Items, int nb_items_available)</td></tr>
+<tr class="memdesc:a04ffb19fc8145784ad26f44adac4c4ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction principale du combat qui gère les actions du joueur et ennemi.  <a href="#a04ffb19fc8145784ad26f44adac4c4ed">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a04ffb19fc8145784ad26f44adac4c4ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Combat. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2020 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a331dc85c1543198f66af77a112a2449c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a331dc85c1543198f66af77a112a2449c">&#9670;&nbsp;</a></span>afficher_lettre()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void afficher_lettre </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>chiffre</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structstat__t.html">stat_t</a>&#160;</td>
+          <td class="paramname"><em>field</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche les lettres correspondant au joueur et à l'ennemi si le chiffre passé en paramètre correspond à leur position. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">chiffre</td><td>Chiffre correspondant à une des positions possibles sur le champ de bataille </td></tr>
+    <tr><td class="paramname">field</td><td>Champ de bataille </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a04ffb19fc8145784ad26f44adac4c4ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04ffb19fc8145784ad26f44adac4c4ed">&#9670;&nbsp;</a></span>combat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void combat </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structnpc__t.html">npc_t</a> *&#160;</td>
+          <td class="paramname"><em>enemy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structstat__t.html">stat_t</a> *&#160;</td>
+          <td class="paramname"><em>field</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a> *&#160;</td>
+          <td class="paramname"><em>Tab_Items</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nb_items_available</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction principale du combat qui gère les actions du joueur et ennemi. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+    <tr><td class="paramname">enemy</td><td>Pointeur sur un objet de type <a class="el" href="structnpc__t.html" title="Structure pour ennemi (NPC) ">npc_t</a> correspondant à l'ennemi </td></tr>
+    <tr><td class="paramname">field</td><td>Pointeur sur un objet de type <a class="el" href="structstat__t.html" title="Structure pour un champ de bataille. ">stat_t</a> correspond au champ de bataille </td></tr>
+    <tr><td class="paramname">map[D][D]</td><td>Matrice de la carte </td></tr>
+    <tr><td class="paramname">Tab_Items</td><td>Tableau contenant tous les items disponibles dans le jeu </td></tr>
+    <tr><td class="paramname">nb_items_available</td><td>Nombre d'items disponibles dans le jeu </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a9899d498dbb5e1e935fbfb460348cb7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9899d498dbb5e1e935fbfb460348cb7e">&#9670;&nbsp;</a></span>combat_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void combat_info </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>print_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a>&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structnpc__t.html">npc_t</a>&#160;</td>
+          <td class="paramname"><em>enemy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structstat__t.html">stat_t</a>&#160;</td>
+          <td class="paramname"><em>field</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche les informations sur le joueur et l'ennemi (pv, armes, armures, distance), le champ de bataille et les actions possibles lors du combat. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">print_type</td><td>Configuration du combat </td></tr>
+    <tr><td class="paramname">player</td><td>Joueur </td></tr>
+    <tr><td class="paramname">enemy</td><td>Ennemi </td></tr>
+    <tr><td class="paramname">field</td><td>Champ de bataille </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="ad3e807e3952a8790ef6e49b93090a52b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3e807e3952a8790ef6e49b93090a52b">&#9670;&nbsp;</a></span>damage_calculator()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void damage_calculator </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a> *&#160;</td>
+          <td class="paramname"><em>weapon</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a> *&#160;</td>
+          <td class="paramname"><em>armor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>hp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>distance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cover</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>scenario</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calcule les dommages causés par l'attaquant (scénario 1 : ennemi, scénario 2 : joueur) </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">weapon</td><td>Pointeur sur un objet de type <a class="el" href="structitem__t.html" title="Structure pour un item. ">item_t</a> correspondant à l'arme attaquant </td></tr>
+    <tr><td class="paramname">armor</td><td>Pointeur sur un objet de type <a class="el" href="structitem__t.html" title="Structure pour un item. ">item_t</a> correspondant à l'armure non-attaquant </td></tr>
+    <tr><td class="paramname">hp</td><td>Pointeur sur un objet de type int correspondant aux points de vie </td></tr>
+    <tr><td class="paramname">distance</td><td>Distance qui sépare l'ennemi et le joueur sur le champ de bataille </td></tr>
+    <tr><td class="paramname">cover</td><td>Couverture non-attaquant </td></tr>
+    <tr><td class="paramname">scenario</td><td>Scénario </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="abc8f836ff0a959a5ebf1e6ae8654d099"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc8f836ff0a959a5ebf1e6ae8654d099">&#9670;&nbsp;</a></span>init_field()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structstat__t.html">stat_t</a> * init_field </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise le champ de bataille du combat (positions et couvertures des adversaires, distance qui les sépare) </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Pointeur sur un objet de type <a class="el" href="structstat__t.html" title="Structure pour un champ de bataille. ">stat_t</a> correspondant au champ de bataille créé </dd></dl>
+
+</div>
+</div>
+<a id="aea4055090690f86a2f53512657fc89ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea4055090690f86a2f53512657fc89ef">&#9670;&nbsp;</a></span>init_npc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structnpc__t.html">npc_t</a> * init_npc </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a> *&#160;</td>
+          <td class="paramname"><em>Tab_Items</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise un non-player character (NPC) ennemi (nom, arme, armure et points de vie) </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Tab_Items</td><td>Tableau contenant tous les items disponibles dans le jeu </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Pointeur sur un objet de type <a class="el" href="structnpc__t.html" title="Structure pour ennemi (NPC) ">npc_t</a> correspondant à l'ennemi créé </dd></dl>
+
+</div>
+</div>
+<a id="a1892ac675df072893808c9df0d0a9931"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1892ac675df072893808c9df0d0a9931">&#9670;&nbsp;</a></span>loot_enemy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void loot_enemy </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a> *&#160;</td>
+          <td class="paramname"><em>Tab_Items</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nb_items_available</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structnpc__t.html">npc_t</a> *&#160;</td>
+          <td class="paramname"><em>enemy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Propose au joueur de récupérer l'arme et/ou l'armure et/ou les items de l'ennemi. </p>
+<p>Cette fonction est appelée uniquement si le joueur gagne au combat. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Tab_Items</td><td>Tableau contenant tous les items disponibles dans le jeu </td></tr>
+    <tr><td class="paramname">nb_items_available</td><td>Nombre d'items disponibles dans le jeu </td></tr>
+    <tr><td class="paramname">enemy</td><td>Pointeur sur un objet de type <a class="el" href="structnpc__t.html" title="Structure pour ennemi (NPC) ">npc_t</a> correspondant à l'ennemi </td></tr>
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a3ba4cc3d7ab9c1c648fdee636ec187a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ba4cc3d7ab9c1c648fdee636ec187a4">&#9670;&nbsp;</a></span>retrieve_enemy_items()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void retrieve_enemy_items </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a> *&#160;</td>
+          <td class="paramname"><em>Tab_Items</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nb_items_available</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Génère aléatoirement 0 à 3 items (correspondant au sac à dos de l'ennemi) que le joueur peut récupérer s'il le souhaite. </p>
+<p>Cette fonction est appelée uniquement si le joueur gagne au combat. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Tab_Items</td><td>Tableau contenant tous les items disponibles dans le jeu </td></tr>
+    <tr><td class="paramname">nb_items_available</td><td>Nombre d'items disponibles dans le jeu </td></tr>
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a9910d9ed72e5f5b74ca932d09cad5a3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9910d9ed72e5f5b74ca932d09cad5a3a">&#9670;&nbsp;</a></span>run_away()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int run_away </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>distance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcell__t.html">cell_t</a>&#160;</td>
+          <td class="paramname"><em>map</em>[D][D], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Détermine si le joueur réussit à fuir ou non (selon sa position et la distance qui le sépare de son ennemi) </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>Position du joueur sur le champ de bataille </td></tr>
+    <tr><td class="paramname">distance</td><td>Distance entre le joueur et l'ennemi sur le champ de bataille </td></tr>
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un <em>int</em> : 1 si le joueur réussit à fuir. 0 s'il échoue. </dd></dl>
+
+</div>
+</div>
+<a id="a05c995612f4949ab24df8c0db4299198"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05c995612f4949ab24df8c0db4299198">&#9670;&nbsp;</a></span>show_field()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void show_field </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structstat__t.html">stat_t</a>&#160;</td>
+          <td class="paramname"><em>field</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche le champ de bataille du combat en indiquant où se situent le joueur et l'ennemi. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">field</td><td>Champ de bataille </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a1e91c0f609ee9f7c4da396050f0fb5ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e91c0f609ee9f7c4da396050f0fb5ab">&#9670;&nbsp;</a></span>turn_npc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void turn_npc </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structnpc__t.html">npc_t</a> *&#160;</td>
+          <td class="paramname"><em>enemy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structstat__t.html">stat_t</a> *&#160;</td>
+          <td class="paramname"><em>field</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tour du non-player character (NPC) lors du combat, le comportement du NPC est expliqué sur <a href="https://i.imgur.com/YcOPj8o.png">ce schéma</a> </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">enemy</td><td>Pointeur sur un objet de type <a class="el" href="structnpc__t.html" title="Structure pour ennemi (NPC) ">npc_t</a> correspondant à l'ennemi </td></tr>
+    <tr><td class="paramname">field</td><td>Pointeur sur un objet de type <a class="el" href="structstat__t.html" title="Structure pour un champ de bataille. ">stat_t</a> correspondant au champ de bataille </td></tr>
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

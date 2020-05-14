@@ -1,0 +1,181 @@
+\hypertarget{items_8c}{}\section{Référence du fichier src/items.c}
+\label{items_8c}\index{src/items.\+c@{src/items.\+c}}
+
+
+Items (création, affichage, génération aléatoire lors de fouille d\textquotesingle{}hexagones)  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}lib/commun.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de items.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{items_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structitem__t}{item\+\_\+t} $\ast$ \hyperlink{items_8c_a7305b870565393710d8794a7d1ac6d25}{creer\+\_\+item} (char $\ast$chaine, \hyperlink{commun_8h_adee610a3c7375031538811d29f6a4124}{type\+\_\+t} type, int attack0, int attack1, int attack2, int hitchance0, int hitchance1, int hitchance2, float defense, int equipable, int pc\+\_\+nature, int pc\+\_\+urban, int pc\+\_\+military)
+\begin{DoxyCompactList}\small\item\em Crée un item à partir des informations passées en paramètres. \end{DoxyCompactList}\item 
+int \hyperlink{items_8c_a6bfcbccc63814dc4ba0642b7872e8681}{creation\+\_\+tab\+\_\+item} (\hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items, int $\ast$nb\+\_\+items)
+\begin{DoxyCompactList}\small\item\em Récupère les items du fichier \textquotesingle{}data/items.\+csv\textquotesingle{} et les stocke dans le tableau passé en paramètres. \end{DoxyCompactList}\item 
+void \hyperlink{items_8c_af20ce6de62a477209830e29feb783aa1}{display\+\_\+item} (\hyperlink{structitem__t}{item\+\_\+t} item)
+\begin{DoxyCompactList}\small\item\em Affiche toutes les caractéristiques d\textquotesingle{}un item (nom, type, valeur d\textquotesingle{}attaque si arme, valeur de défense si armure, équipable ou non, pourcentage de chance de trouver cet item sur un hexagone de catégorie nature, urbain et militaire) \end{DoxyCompactList}\item 
+void \hyperlink{items_8c_a2b60c717462304f30e1266e9a5a9d020}{generate\+\_\+items} (\hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items, int nb\+\_\+items\+\_\+available, \hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{commun_8h_a730487a66d035e35d2c63cfa39cea020}{categ\+\_\+hexa} categ)
+\begin{DoxyCompactList}\small\item\em Génère aléatoirement 0 à \hyperlink{commun_8h_a36e5fda7aa9e2b6219f41c354ecc1c93}{I\+T\+E\+M\+S\+\_\+\+M\+AX} items en prenant en compte le pourcentage de chance des items d\textquotesingle{}apparaître dans un type d\textquotesingle{}hexagone en particulier. \end{DoxyCompactList}\item 
+void \hyperlink{items_8c_a40672738b4eba05b66ae0a8127346356}{scavenge} (\hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, \hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items, int nb\+\_\+items\+\_\+available, \hyperlink{structquete__t}{quete\+\_\+t} quete)
+\begin{DoxyCompactList}\small\item\em Permet au joueur de fouiller l\textquotesingle{}hexagone sur lequel il se trouve pour récupérer des items. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Items (création, affichage, génération aléatoire lors de fouille d\textquotesingle{}hexagones) 
+
+\begin{DoxyAuthor}{Auteur}
+Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{items_8c_a6bfcbccc63814dc4ba0642b7872e8681}\label{items_8c_a6bfcbccc63814dc4ba0642b7872e8681}} 
+\index{items.\+c@{items.\+c}!creation\+\_\+tab\+\_\+item@{creation\+\_\+tab\+\_\+item}}
+\index{creation\+\_\+tab\+\_\+item@{creation\+\_\+tab\+\_\+item}!items.\+c@{items.\+c}}
+\subsubsection{\texorpdfstring{creation\+\_\+tab\+\_\+item()}{creation\_tab\_item()}}
+{\footnotesize\ttfamily int creation\+\_\+tab\+\_\+item (\begin{DoxyParamCaption}\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items,  }\item[{int $\ast$}]{nb\+\_\+items }\end{DoxyParamCaption})}
+
+
+
+Récupère les items du fichier \textquotesingle{}data/items.\+csv\textquotesingle{} et les stocke dans le tableau passé en paramètres. 
+
+Affiche un message d\textquotesingle{}erreur si fichier \textquotesingle{}items.\+csv\textquotesingle{} introuvable 
+\begin{DoxyParams}{Paramètres}
+{\em Tab\+\_\+\+Items} & Tableau contenant tous les items disponibles dans le jeu \\
+\hline
+{\em nb\+\_\+items} & Pointeur sur un entier correspondant au nombre d\textquotesingle{}items extraits du fichier externe \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un {\itshape int} \+: 1 si récupération des items réalisée avec succès. 0 sinon. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{items_8c_a7305b870565393710d8794a7d1ac6d25}\label{items_8c_a7305b870565393710d8794a7d1ac6d25}} 
+\index{items.\+c@{items.\+c}!creer\+\_\+item@{creer\+\_\+item}}
+\index{creer\+\_\+item@{creer\+\_\+item}!items.\+c@{items.\+c}}
+\subsubsection{\texorpdfstring{creer\+\_\+item()}{creer\_item()}}
+{\footnotesize\ttfamily \hyperlink{structitem__t}{item\+\_\+t} $\ast$ creer\+\_\+item (\begin{DoxyParamCaption}\item[{char $\ast$}]{chaine,  }\item[{\hyperlink{commun_8h_adee610a3c7375031538811d29f6a4124}{type\+\_\+t}}]{type,  }\item[{int}]{attack0,  }\item[{int}]{attack1,  }\item[{int}]{attack2,  }\item[{int}]{hitchance0,  }\item[{int}]{hitchance1,  }\item[{int}]{hitchance2,  }\item[{float}]{defense,  }\item[{int}]{equipable,  }\item[{int}]{pc\+\_\+nature,  }\item[{int}]{pc\+\_\+urban,  }\item[{int}]{pc\+\_\+military }\end{DoxyParamCaption})}
+
+
+
+Crée un item à partir des informations passées en paramètres. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em chaine} & Nom de l\textquotesingle{}item \\
+\hline
+{\em type} & Type de l\textquotesingle{}item \\
+\hline
+{\em attack0} & Valeur d\textquotesingle{}attaque si distance égale à 0 pendant un combat \\
+\hline
+{\em attack1} & Valeur d\textquotesingle{}attaque si distance égale à 1 pendant un combat \\
+\hline
+{\em attack2} & Valeur d\textquotesingle{}attaque si distance égale à 2 pendant un combat \\
+\hline
+{\em hitchance0} & Probabilité en pourcentage de toucher l\textquotesingle{}ennemi si distance égale à 0 pendant un combat \\
+\hline
+{\em hitchance1} & Probabilité en pourcentage de toucher l\textquotesingle{}ennemi si distance égale à 1 pendant un combat \\
+\hline
+{\em hitchance2} & Probabilité en pourcentage de toucher l\textquotesingle{}ennemi si distance égale à 2 pendant un combat \\
+\hline
+{\em defense} & Valeur de défense \\
+\hline
+{\em equipable} & Indicateur si l\textquotesingle{}item est équipable et où \\
+\hline
+{\em pc\+\_\+nature} & Probabilité en pourcentage de trouver l\textquotesingle{}item créé dans un hexagone de catégorie nature \\
+\hline
+{\em pc\+\_\+urban} & Probabilité en pourcentage de trouver l\textquotesingle{}item créé dans un hexagone de catégorie urbaine \\
+\hline
+{\em pc\+\_\+military} & Probabilité en pourcentage de trouver l\textquotesingle{}item créé dans un hexagone de catégorie militaire \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur un objet de type \hyperlink{structitem__t}{item\+\_\+t} correspondant à l\textquotesingle{}item créé 
+\end{DoxyReturn}
+\mbox{\Hypertarget{items_8c_af20ce6de62a477209830e29feb783aa1}\label{items_8c_af20ce6de62a477209830e29feb783aa1}} 
+\index{items.\+c@{items.\+c}!display\+\_\+item@{display\+\_\+item}}
+\index{display\+\_\+item@{display\+\_\+item}!items.\+c@{items.\+c}}
+\subsubsection{\texorpdfstring{display\+\_\+item()}{display\_item()}}
+{\footnotesize\ttfamily void display\+\_\+item (\begin{DoxyParamCaption}\item[{\hyperlink{structitem__t}{item\+\_\+t}}]{item }\end{DoxyParamCaption})}
+
+
+
+Affiche toutes les caractéristiques d\textquotesingle{}un item (nom, type, valeur d\textquotesingle{}attaque si arme, valeur de défense si armure, équipable ou non, pourcentage de chance de trouver cet item sur un hexagone de catégorie nature, urbain et militaire) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em item} & Item à afficher \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{items_8c_a2b60c717462304f30e1266e9a5a9d020}\label{items_8c_a2b60c717462304f30e1266e9a5a9d020}} 
+\index{items.\+c@{items.\+c}!generate\+\_\+items@{generate\+\_\+items}}
+\index{generate\+\_\+items@{generate\+\_\+items}!items.\+c@{items.\+c}}
+\subsubsection{\texorpdfstring{generate\+\_\+items()}{generate\_items()}}
+{\footnotesize\ttfamily void generate\+\_\+items (\begin{DoxyParamCaption}\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items,  }\item[{int}]{nb\+\_\+items\+\_\+available,  }\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{commun_8h_a730487a66d035e35d2c63cfa39cea020}{categ\+\_\+hexa}}]{categ }\end{DoxyParamCaption})}
+
+
+
+Génère aléatoirement 0 à \hyperlink{commun_8h_a36e5fda7aa9e2b6219f41c354ecc1c93}{I\+T\+E\+M\+S\+\_\+\+M\+AX} items en prenant en compte le pourcentage de chance des items d\textquotesingle{}apparaître dans un type d\textquotesingle{}hexagone en particulier. 
+
+Propose au joueur de récupérer les items générés 
+\begin{DoxyParams}{Paramètres}
+{\em Tab\+\_\+\+Items} & Tableau contenant tous les items disponibles dans le jeu \\
+\hline
+{\em nb\+\_\+items\+\_\+available} & Nombre d\textquotesingle{}items disponibles dans le jeu \\
+\hline
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em categ} & Catégorie de l\textquotesingle{}hexagone inspecté \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}
+\mbox{\Hypertarget{items_8c_a40672738b4eba05b66ae0a8127346356}\label{items_8c_a40672738b4eba05b66ae0a8127346356}} 
+\index{items.\+c@{items.\+c}!scavenge@{scavenge}}
+\index{scavenge@{scavenge}!items.\+c@{items.\+c}}
+\subsubsection{\texorpdfstring{scavenge()}{scavenge()}}
+{\footnotesize\ttfamily void scavenge (\begin{DoxyParamCaption}\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items,  }\item[{int}]{nb\+\_\+items\+\_\+available,  }\item[{\hyperlink{structquete__t}{quete\+\_\+t}}]{quete }\end{DoxyParamCaption})}
+
+
+
+Permet au joueur de fouiller l\textquotesingle{}hexagone sur lequel il se trouve pour récupérer des items. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]}} & Matrice de la carte \\
+\hline
+{\em player} & Pointeur sur un objet de type \hyperlink{structperso__t}{perso\+\_\+t} correspondant au joueur \\
+\hline
+{\em Tab\+\_\+\+Items} & Tableau contenant tous les items disponibles dans le jeu \\
+\hline
+{\em nb\+\_\+items\+\_\+available} & Nombre d\textquotesingle{}items disponibles dans le jeu \\
+\hline
+{\em quete} & Etat des quêtes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Rien 
+\end{DoxyReturn}

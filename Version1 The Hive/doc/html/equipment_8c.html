@@ -1,0 +1,368 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projet L2 Informatique - The Hive: Référence du fichier src/equipment.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Projet L2 Informatique - The Hive
+   </div>
+   <div id="projectbrief">Documentation jeu The Hive (Projet L2 Informatique)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier equipment.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Gestion de l'équipement du joueur.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="commun_8h_source.html">lib/commun.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de equipment.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="equipment_8c__incl.png" border="0" usemap="#src_2equipment_8c" alt=""/></div>
+<map name="src_2equipment_8c" id="src_2equipment_8c">
+<area shape="rect" id="node6" href="commun_8h.html" title="Tous les prototypes de fonctions, énumérations, structures, macros appelés dans plusieurs fichiers du..." alt="" coords="361,80,461,107"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ac912edb0758df17f229cb8d8fbd66924"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="equipment_8c.html#ac912edb0758df17f229cb8d8fbd66924">display_equipment_player</a> (<a class="el" href="structperso__t.html">perso_t</a> player)</td></tr>
+<tr class="memdesc:ac912edb0758df17f229cb8d8fbd66924"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche l'équipement du joueur.  <a href="#ac912edb0758df17f229cb8d8fbd66924">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ac912edb0758df17f229cb8d8fbd66924"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae5f9602614f22807a8f2719fb015bdd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="equipment_8c.html#aae5f9602614f22807a8f2719fb015bdd">is_equipped</a> (<a class="el" href="structperso__t.html">perso_t</a> player, <a class="el" href="structitem__t.html">item_t</a> item)</td></tr>
+<tr class="memdesc:aae5f9602614f22807a8f2719fb015bdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si le joueur est équipé de l'item passé en paramètre.  <a href="#aae5f9602614f22807a8f2719fb015bdd">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aae5f9602614f22807a8f2719fb015bdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57d50802c8c7e012de81cff1ddd2082b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="equipment_8c.html#a57d50802c8c7e012de81cff1ddd2082b">swap_equipment_player</a> (<a class="el" href="structperso__t.html">perso_t</a> *player, <a class="el" href="structitem__t.html">item_t</a> item)</td></tr>
+<tr class="memdesc:a57d50802c8c7e012de81cff1ddd2082b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Echange l'item passé en paramètre avec un item choisi par le joueur figurant dans son équipement.  <a href="#a57d50802c8c7e012de81cff1ddd2082b">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a57d50802c8c7e012de81cff1ddd2082b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d4996c52c0585012b5efe58652892ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="equipment_8c.html#a4d4996c52c0585012b5efe58652892ee">equip_player</a> (<a class="el" href="structperso__t.html">perso_t</a> *player)</td></tr>
+<tr class="memdesc:a4d4996c52c0585012b5efe58652892ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Equipe le joueur, au bon endroit, avec un item de son inventaire qu'il choisit.  <a href="#a4d4996c52c0585012b5efe58652892ee">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a4d4996c52c0585012b5efe58652892ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a588235e6d46f215c009c995d07f31ec2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="equipment_8c.html#a588235e6d46f215c009c995d07f31ec2">nb_equipement</a> (<a class="el" href="structperso__t.html">perso_t</a> player)</td></tr>
+<tr class="memdesc:a588235e6d46f215c009c995d07f31ec2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compte le nombre d'item(s) équipé(s) sur le joueur.  <a href="#a588235e6d46f215c009c995d07f31ec2">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a588235e6d46f215c009c995d07f31ec2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee9562729defb895c78533429b4cb649"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="equipment_8c.html#aee9562729defb895c78533429b4cb649">nb_items_equipables_non_equipe</a> (<a class="el" href="structperso__t.html">perso_t</a> player)</td></tr>
+<tr class="memdesc:aee9562729defb895c78533429b4cb649"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compte le nombre d'item(s) équipable(s) (armes et armures) mais non équipé(s) que le joueur a dans son inventaire.  <a href="#aee9562729defb895c78533429b4cb649">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aee9562729defb895c78533429b4cb649"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b6ea8682d1d39157f54a7a84f7020ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="equipment_8c.html#a8b6ea8682d1d39157f54a7a84f7020ce">remove_equipment_player</a> (<a class="el" href="structperso__t.html">perso_t</a> *player)</td></tr>
+<tr class="memdesc:a8b6ea8682d1d39157f54a7a84f7020ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retire un item choisi par le joueur de son équipement.  <a href="#a8b6ea8682d1d39157f54a7a84f7020ce">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a8b6ea8682d1d39157f54a7a84f7020ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe6c66728ce22be9ff976516f8b77c68"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="equipment_8c.html#afe6c66728ce22be9ff976516f8b77c68">manage_equipment</a> (<a class="el" href="structperso__t.html">perso_t</a> *player)</td></tr>
+<tr class="memdesc:afe6c66728ce22be9ff976516f8b77c68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction centrale du fichier <a class="el" href="equipment_8c.html" title="Gestion de l&#39;équipement du joueur. ">equipment.c</a> permettant au joueur de gérer son équipement.  <a href="#afe6c66728ce22be9ff976516f8b77c68">Plus de détails...</a><br /></td></tr>
+<tr class="separator:afe6c66728ce22be9ff976516f8b77c68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Gestion de l'équipement du joueur. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Mathilde Mottay, Anaïs Mottier, Clément Mainguy, Moustapha Tsamarayev </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2020 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="ac912edb0758df17f229cb8d8fbd66924"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac912edb0758df17f229cb8d8fbd66924">&#9670;&nbsp;</a></span>display_equipment_player()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void display_equipment_player </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a>&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche l'équipement du joueur. </p>
+<p>Si la tête, la main gauche, la main droite ou le corps du joueur sont équipés, indique avec quels items en précisant leurs positions dans l'inventaire. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a4d4996c52c0585012b5efe58652892ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d4996c52c0585012b5efe58652892ee">&#9670;&nbsp;</a></span>equip_player()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void equip_player </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Equipe le joueur, au bon endroit, avec un item de son inventaire qu'il choisit. </p>
+<p>L'item doit être équipable. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspond au joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="aae5f9602614f22807a8f2719fb015bdd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae5f9602614f22807a8f2719fb015bdd">&#9670;&nbsp;</a></span>is_equipped()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int is_equipped </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a>&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a>&#160;</td>
+          <td class="paramname"><em>item</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indique si le joueur est équipé de l'item passé en paramètre. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Joueur </td></tr>
+    <tr><td class="paramname">item</td><td>Item </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un <em>int</em> : si le joueur n'est pas équipé de l'item retourne 0 (<a class="el" href="commun_8h.html#a6764330ff4f04cee324e30f775960f02" title="NOT_EQUIPPED indique qu&#39;un item n&#39;est pas équipé ">NOT_EQUIPPED</a>), sinon retourne où l'item est équipé sur le joueur (<a class="el" href="commun_8h.html#a2eff09387fb5d20d8af4fa186ae37c4d" title="LEFT_HAND indique qu&#39;un item est équipé sur la main gauche du joueur. ">LEFT_HAND</a> = 1, <a class="el" href="commun_8h.html#a5d1d275cfec76197e014fe4d58f2e569" title="RIGHT_HAND indique qu&#39;un item est équipé sur la main droite du joueur. ">RIGHT_HAND</a> = 2, <a class="el" href="commun_8h.html#aa6bdf6a6d9916c343e1e17774d84a156" title="BODY indique qu&#39;un item est équipé sur le corps du joueur. ">BODY</a> = 3, <a class="el" href="commun_8h.html#a110f3b6cdacd45daee818b3e5965f6da" title="HEAD indique qu&#39;un item est équipé sur la tête du joueur. ">HEAD</a> = 4) </dd></dl>
+
+</div>
+</div>
+<a id="afe6c66728ce22be9ff976516f8b77c68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe6c66728ce22be9ff976516f8b77c68">&#9670;&nbsp;</a></span>manage_equipment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void manage_equipment </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction centrale du fichier <a class="el" href="equipment_8c.html" title="Gestion de l&#39;équipement du joueur. ">equipment.c</a> permettant au joueur de gérer son équipement. </p>
+<p>Menu équipement : Possibilité pour le joueur de s'équiper d'un item de son inventaire, de retirer un item de son équipement. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a588235e6d46f215c009c995d07f31ec2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a588235e6d46f215c009c995d07f31ec2">&#9670;&nbsp;</a></span>nb_equipement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int nb_equipement </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a>&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compte le nombre d'item(s) équipé(s) sur le joueur. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un <em>int</em> correspondant au nombre d'équipement(s) (items) actuellement sur le joueur </dd></dl>
+
+</div>
+</div>
+<a id="aee9562729defb895c78533429b4cb649"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee9562729defb895c78533429b4cb649">&#9670;&nbsp;</a></span>nb_items_equipables_non_equipe()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int nb_items_equipables_non_equipe </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a>&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compte le nombre d'item(s) équipable(s) (armes et armures) mais non équipé(s) que le joueur a dans son inventaire. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un <em>int</em> correspondant au nombre d'équipement(s) équipable(s) mais non équipé(s) que le joueur a dans son inventaire </dd></dl>
+
+</div>
+</div>
+<a id="a8b6ea8682d1d39157f54a7a84f7020ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b6ea8682d1d39157f54a7a84f7020ce">&#9670;&nbsp;</a></span>remove_equipment_player()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void remove_equipment_player </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retire un item choisi par le joueur de son équipement. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+<a id="a57d50802c8c7e012de81cff1ddd2082b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57d50802c8c7e012de81cff1ddd2082b">&#9670;&nbsp;</a></span>swap_equipment_player()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void swap_equipment_player </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structperso__t.html">perso_t</a> *&#160;</td>
+          <td class="paramname"><em>player</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structitem__t.html">item_t</a>&#160;</td>
+          <td class="paramname"><em>item</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Echange l'item passé en paramètre avec un item choisi par le joueur figurant dans son équipement. </p>
+<p>Cette fonction est appelée lorsque le joueur souhaite s'équiper d'un item sur une zone de son corps déjà équipée. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspond au joueur </td></tr>
+    <tr><td class="paramname">item</td><td>Item </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Rien </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>
