@@ -301,7 +301,7 @@ stat_t * init_field(){
 
 /**
  * \fn void turn_npc(npc_t * enemy, stat_t * field, perso_t * player)
- * \brief Tour du non-player character (NPC) lors du combat, le comportement du NPC est expliqué sur <a href="PEPEGA">ce schéma</a>
+ * \brief Tour du non-player character (NPC) lors du combat, le comportement du NPC est expliqué sur <a href="https://i.imgur.com/YcOPj8o.png">ce schéma</a>
  * \param enemy Pointeur sur un objet de type npc_t correspondant à l'ennemi
  * \param field Pointeur sur un objet de type stat_t correspondant au champ de bataille
  * \param player Pointeur sur un objet de type perso_t correspondant au joueur
