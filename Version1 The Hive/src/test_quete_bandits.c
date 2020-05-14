@@ -13,7 +13,6 @@
 */
 
 /**
- * \void int main()
  * \brief Programme principal pour tester l'affichage et le bon fonctionnement de la quête bandits
  * \details L'utilisateur choisit son équipement avant de commencer la quête.
 */

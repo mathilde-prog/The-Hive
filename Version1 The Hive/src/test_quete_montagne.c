@@ -13,7 +13,6 @@
 */
 
 /**
- * \void int main()
  * \brief Programme principal pour tester l'affichage et le bon fonctionnement de la quête montagne
  * \details Avant de commencer la quête, l'utilisateur choisit s'il a une corde et/ou un bâton de marche dans son inventaire ou aucun des deux.
 */

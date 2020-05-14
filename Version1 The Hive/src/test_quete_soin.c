@@ -13,7 +13,6 @@
 */
 
 /**
- * \void int main()
  * \brief Programme principal pour tester l'affichage et le bon fonctionnement de la quête soin
  * \details Avant de commencer la quête, l'utilisateur choisit :
     - Inventaire vide

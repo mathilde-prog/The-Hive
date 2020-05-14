@@ -12,7 +12,6 @@
 */
 
 /**
- * \void int main()
  * \brief Programme principal pour tester le calcul des points d'énergie lorsque le joueur veut manger/boire un item
  * \details Objectif : Tester les fonctions #eat_or_drink et #gain_energie.
 */

@@ -13,7 +13,6 @@
 */
 
 /**
- * \void int main()
  * \brief Programme principal pour tester l'affichage et le bon fonctionnement de la quête recherche
  * \details Avant de commencer la quête, l'utilisateur choisit :
     - Première fois sur la quête
@@ -42,8 +41,8 @@ int main(){
   clrscr();
   printf ("\033[34;01m\n   Menu test quête recherche\033[00m\n");
   printf("   1. Première fois sur la quête\n");
-  printf("   2. Recherche de l'item (pas sur une case urbain)\n");
-  printf("   3. Recherche de l'item (case urbain)\n");
+  printf("   2. Recherche de l'item (pas sur une case où l'item peut apparaître)\n");
+  printf("   3. Recherche de l'item (sur une case où l'item peut apparaître)\n");
   printf("   4. Donner l'item (case quête) \n");
   printf("   5. Donner l'item (pas case quête) \n");
   printf("\n   Votre réponse : ");

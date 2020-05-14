@@ -3,8 +3,7 @@
 #include<SDL2/SDL.h>
 #include<SDL2/SDL_ttf.h>
 #include<SDL2/SDL_image.h>
-#include"lib/interface.h"
-
+#include "lib/commun.h"
 /**
  * \file interface_options.c
  * \brief Affichage de l'interface de combat via SDL2

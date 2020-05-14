@@ -3,12 +3,9 @@
 #include <string.h>
 #include <unistd.h>
 #include <time.h>
-#include<SDL2/SDL.h>
-#include<SDL2/SDL_ttf.h>
-#include<SDL2/SDL_image.h>
 #include <getopt.h>
 #include "lib/commun.h"
-#include "lib/interface_options.h"
+
 /**
  * \file game.c
  * \brief Jeu
@@ -225,7 +222,6 @@ void choix_partie(sauv_t * sauv, int demo){
 }
 
 /**
- * \fn int main(int argc, char * argv[], char * env[])
  * \brief Programme principal - Menu début de jeu : choisir une partie pour jouer, effacer une partie ou quitter le jeu
  * \details Exécuter ./game --demo ou ./game -d pour mode demo
  * \param sauv Pointeur sur un objet de type sauv_t correspondant à l'état des sauvegardes

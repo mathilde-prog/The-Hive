@@ -6,6 +6,10 @@
  * \date 2020
 */
 
+#include<SDL2/SDL.h>
+#include<SDL2/SDL_ttf.h>
+#include<SDL2/SDL_image.h>
+
 /*
  * FONCTIONS PRATIQUES (fonctions_pratiques.c)
  */
@@ -323,3 +327,23 @@ void load (perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t * qu
  * DEMO (demo.c)
  */
 void demo_afficher_items(perso_t * player, item_t * Tab_Items, int nb_items_available);
+
+
+/*
+ * INTERFACE GRAPHIQUE
+ */ 
+
+#define N 13
+void init_map_essai(int mapint[N][N]);
+void map_correspondance(cell_t map_cell[D][D], int mapaff[N][N], int position_x, int position_y);
+void relation_hexa_char(char*mapchar[], int mapint[][N]);
+void affichage_case_centrale(SDL_Renderer *renderer);
+void affichage_map(SDL_Renderer *renderer, char *map[], int maptest[N][N], cell_t map1[D][D], perso_t player);
+int interface();
+
+void affichage_personnage(SDL_Renderer *renderer, char *img_perso, int x, int y);
+int combat_bis(TTF_Font *police/*, stat_t * combat_stats, npc_t * npc*/);
+void affichage_help();
+
+int monscanf(char * c);
+int testscanf();

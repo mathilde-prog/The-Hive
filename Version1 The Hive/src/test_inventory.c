@@ -25,7 +25,6 @@ void test_suivant(){
 }
 
 /**
- * \void int main()
  * \brief Programme principal pour tester la gestion de l'inventaire
  * \details
     Tests effectués :

@@ -28,7 +28,6 @@ void simulation_suivante(){
 }
 
 /**
- * \void int main()
  * \brief Programme principal pour tester la génération d'items sur plusieurs hexagones aléatoires
  * \details Objectif : Tester la fonction #scavenge
 */

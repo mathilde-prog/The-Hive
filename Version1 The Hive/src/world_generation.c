@@ -529,7 +529,7 @@ void quest_init(cell_t map[D][D], int quest_map[6][2]){
   quest_map[1][1]=D-1;
   map[quest_map[1][0]][quest_map[1][1]].quest_id=2;
 
-  /*Quête bunker - Hexagone hors bordure de type nature (mais pas un lac) */
+  /*Quête bunker - Hexagone hors bordure de catégorie nature (mais pas un lac) */
   do {
     quest_map[2][0]=range(1,D-2);
     quest_map[2][1]=range(1,D-2);

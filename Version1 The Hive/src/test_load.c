@@ -125,7 +125,6 @@ void load_test (perso_t * player, cell_t map[D][D], int quest_map[6][2], quete_t
 }
 
 /**
- * \void int main()
  * \brief Programme principal pour tester le système de chargement
  * \details Charge la sauvegarde d'une partie test
  * \details

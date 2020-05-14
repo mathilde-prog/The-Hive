@@ -1,4 +1,4 @@
-#include"lib/scan.h"
+#include"lib/commun.h"
 
 int monscanf(char * c){
   int running = 1;

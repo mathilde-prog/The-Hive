@@ -124,7 +124,6 @@ void save_test (perso_t player, cell_t map[D][D], int quest_map[6][2], quete_t q
 }
 
 /**
- * \void int main()
  * \brief Programme principal pour tester le système de sauvegarde
  * \details Crée aléatoirement une carte, des paramètres joueur, remplit l'inventaire du joueur et son équipement puis sauvegarde.
  * \details

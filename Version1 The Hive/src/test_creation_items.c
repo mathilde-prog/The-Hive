@@ -12,7 +12,6 @@
 */
 
 /**
- * \void int main()
  * \brief Programme principal pour tester l'extraction des items à partir du fichier externe "items.csv" (dossier data)
  * \details Objectif : Tester la fonction #creation_tab_item.
 */

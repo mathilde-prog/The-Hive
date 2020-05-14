@@ -13,7 +13,6 @@
 */
 
 /**
- * \void int main()
  * \brief Programme principal pour tester l'affichage et le bon fonctionnement de la quête bunker
  * \details L'utilisateur choisit s'il possède un pass avant de commencer la quête.
 */

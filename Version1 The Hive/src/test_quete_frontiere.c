@@ -13,7 +13,6 @@
 */
 
 /**
- * \void int main()
  * \brief Programme principal pour tester l'affichage et le bon fonctionnement de la quête frontière
  * \details Avant de commencer la quête, l'utilisateur choisit si :
     - Le joueur a aidé l'homme blessé (quête soin)

@@ -12,7 +12,6 @@
 */
 
 /**
- * \void int main()
  * \brief Programme principal pour tester si un item est présent dans l'inventaire du joueur
  * \details Objectif : Tester la fonction #item_in_inventory
 */
