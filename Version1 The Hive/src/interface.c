@@ -5,7 +5,6 @@
 #include<SDL2/SDL_image.h>
 #include<time.h>
 #include"lib/interface.h"
-#include"lib/commun.h"
 
 /**
  * \file interface.c
@@ -30,6 +29,26 @@ void init_map_essai(int mapint[N][N]){
 	}
 }
 
+/**
+ * \fn map_correspondance(cell_t map_cell[D][D], int mapaff[N][N], int position_x, int position_y)
+ * \brief Met en relation la map sur laquelle évolue le personnage et la amtrice gérant l'affichage de celle-ci en prenant en compte les coordonées où se situe le personnage
+ * \param cell_t map_cell[D][D]
+ * \param int mapaff[N][N]
+ * \param int position_x
+ * \param int position_y
+ * \return Rien
+ */
+void map_correspondance(cell_t map_cell[D][D], int mapaff[N][N], int position_x, int position_y){
+	int i,j;
+	for (i=0; i<N ;i++){
+		for (j=0; j<N; j++){
+			if(position_x+i-5 >= 0 && position_x+i-5 <D && position_y+j-6>=0 && position_y+j-6 < D)
+				mapaff[i][j] = map_cell[position_x+i-5][position_y+j-6].type;
+			else
+				mapaff[i][j] = 0;
+		}
+	}
+}
 
 /**
  * \fn void relation_hexa_char(char* mapchar[], int mapint[N][N])
@@ -61,12 +80,12 @@ void relation_hexa_char(char*mapchar[], int mapint[N][N]){
 	}
 }
 /**
- * \fn void affichage_case_centrale(SDL_Renderer **renderer)
+ * \fn void affichage_case_centrale(SDL_Renderer *renderer)
  * \brief Affiche dans la case centrale de l'écran un hilight et le personnage
- * \param SDL_Renderer **renderer
+ * \param SDL_Renderer *renderer
  * \return Rien
  */
-void affichage_case_centrale(SDL_Renderer **renderer){
+void affichage_case_centrale(SDL_Renderer *renderer){
 	SDL_Surface *hilight_surface, *personnage;
 	SDL_Rect dest_centre;
 	SDL_Texture *hilight_txt, *personnage_txt;
@@ -76,89 +95,92 @@ void affichage_case_centrale(SDL_Renderer **renderer){
 	rwop_personnage = SDL_RWFromFile("../data/img/CreBandit03.png","rb");
 	hilight_surface = IMG_LoadPNG_RW(rwop_hilight);
 	personnage = IMG_LoadPNG_RW(rwop_personnage);
-	hilight_txt = SDL_CreateTextureFromSurface(*renderer,hilight_surface);
-	personnage_txt = SDL_CreateTextureFromSurface(*renderer, personnage);
+	hilight_txt = SDL_CreateTextureFromSurface(renderer,hilight_surface);
+	personnage_txt = SDL_CreateTextureFromSurface(renderer, personnage);
 	dest_centre.x = 800;
 	dest_centre.y = 235;
 
 	SDL_QueryTexture(hilight_txt, NULL, NULL, &(dest_centre.w), &(dest_centre.h));
 	SDL_QueryTexture(personnage_txt, NULL, NULL, &(dest_centre.w), &(dest_centre.h));
-	SDL_RenderCopy(*renderer, hilight_txt, NULL, &dest_centre);
-	SDL_RenderCopy(*renderer, personnage_txt, NULL, &dest_centre);
+	SDL_RenderCopy(renderer, hilight_txt, NULL, &dest_centre);
+	SDL_RenderCopy(renderer, personnage_txt, NULL, &dest_centre);
 	SDL_FreeSurface(hilight_surface);
 	SDL_FreeSurface(personnage);
 }
 
 
 /**
- * \fn void affichage_map(SDL_Renderer **renderer, char *map[])
- * \brief Affiche la map, c'est à dire la partie composée d'hexagones
- * \param SDL_Renderer **renderer
+ * \fn void void affichage_map(SDL_Renderer *renderer, char *map[], int maptest[N][N], cell_t map1[D][D], perso_t player)
+ * \brief Affiche la map, c'est à dire la partie composée d'hexagones à partir de la position du personnage
+ * \param SDL_Renderer *renderer
  * \param char *map[]
+ * \param int maptest[N][N]
+ * \param cell_t map1[D][D]
+ * \param perso_t player
  * \return Rien
  */
-void affichage_map(SDL_Renderer **renderer, char *map[]){
-	SDL_Surface *image[N*N];
-	SDL_Rect dest_image[N*N];
-	SDL_Texture *image_tex[N*N];
-	SDL_RWops *rwop[N*N];
-	int mapint[N][N];
-	int i,j,k,l;
-	// x et y sont les coordonées auxquelles on affichera un hexagone
-	int x,y;
+ void affichage_map(SDL_Renderer *renderer, char *map[], int maptest[N][N], cell_t map1[D][D], perso_t player){
+ 	SDL_Surface *image[N*N];
+ 	SDL_Rect dest_image[N*N];
+ 	SDL_Texture *image_tex[N*N];
+ 	SDL_RWops *rwop[N*N];
+ 	//int mapint[N][N];
+ 	int i,j,k,l;
+ 	// x et y sont les coordonées auxquelles on affichera un hexagone
+ 	int x,y;
 
-	init_map_essai(mapint);
-	relation_hexa_char(map,mapint);
+ 	//init_map_essai(mapint);
+ 	map_correspondance(map1, maptest ,player.posX,player.posY);
+ 	relation_hexa_char(map,maptest);
 
-	for (i=0; i<N*N; i++){
-		rwop[i]=SDL_RWFromFile(map[i],"rb");
-		image[i]=IMG_LoadPNG_RW(rwop[i]);
- 		image_tex[i] = SDL_CreateTextureFromSurface(*renderer,image[i]);
-	}
-	x=400;
-	y=-25;
-	dest_image[0].x=x;
-	dest_image[0].y=y;
-	for (k=0;k<N;k++){
-		x=400;
-		for (l=0;l<N;l++){
-			//la premiere case etant deja initialisé on n'y touche pas
-			if (k==0 && l==0)
-				x=480;
-			else {
-				if (l%2==0){
-					dest_image[k*N+l].x = x;
-					dest_image[k*N+l].y = y;
-					x+=80;
-				}
-				else {
-					dest_image[k*N+l].x = x;
-					dest_image[k*N+l].y = y+20;
-					x+=80;
-				}
-			}
-		}
-		y+=40;
-	}
+ 	for (i=0; i<N*N; i++){
+ 		rwop[i]=SDL_RWFromFile(map[i],"rb");
+ 		image[i]=IMG_LoadPNG_RW(rwop[i]);
+  		image_tex[i] = SDL_CreateTextureFromSurface(renderer,image[i]);
+ 	}
+ 	x=400;
+ 	y=-25;
+ 	dest_image[0].x=x;
+ 	dest_image[0].y=y;
+ 	for (k=0;k<N;k++){
+ 		x=400;
+ 		for (l=0;l<N;l++){
+ 			//la premiere case etant deja initialisé on n'y touche pas
+ 			if (k==0 && l==0)
+ 				x=480;
+ 			else {
+ 				if (l%2==0){
+ 					dest_image[k*N+l].x = x;
+ 					dest_image[k*N+l].y = y;
+ 					x+=80;
+ 				}
+ 				else {
+ 					dest_image[k*N+l].x = x;
+ 					dest_image[k*N+l].y = y+20;
+ 					x+=80;
+ 				}
+ 			}
+ 		}
+ 		y+=40;
+ 	}
 
-	// on affiche d'abord les cellules paires car sinon on a le bas de la cellule qui passe au premier plan
-	for (i=0;i<N;i++){
-		for (j=0;j<N;j++){
-			if (j%2==0){
-				SDL_QueryTexture(image_tex[i*N+j], NULL, NULL, &(dest_image[i*N+j].w), &(dest_image[i*N+j].h));
-				SDL_RenderCopy(*renderer, image_tex[i*N+j], NULL, &dest_image[i*N+j]);
-				SDL_FreeSurface(image[i*N+j]);
-			}
-		}
-		for (j=0;j<N;j++){
-			if (j%2){
-				SDL_QueryTexture(image_tex[i*N+j], NULL, NULL, &(dest_image[i*N+j].w), &(dest_image[i*N+j].h));
-				SDL_RenderCopy(*renderer, image_tex[i*N+j], NULL, &dest_image[i*N+j]);
-				SDL_FreeSurface(image[i*N+j]);
-			}
-		}
+ 	// on affiche d'abord les cellules paires car sinon on a le bas de la cellule qui passe au premier plan
+ 	for (i=0;i<N;i++){
+ 		for (j=0;j<N;j++){
+ 			if (j%2==0){
+ 				SDL_QueryTexture(image_tex[i*N+j], NULL, NULL, &(dest_image[i*N+j].w), &(dest_image[i*N+j].h));
+ 				SDL_RenderCopy(renderer, image_tex[i*N+j], NULL, &dest_image[i*N+j]);
+ 				SDL_FreeSurface(image[i*N+j]);
+ 			}
+ 		}
+ 		for (j=0;j<N;j++){
+ 			if (j%2){
+ 				SDL_QueryTexture(image_tex[i*N+j], NULL, NULL, &(dest_image[i*N+j].w), &(dest_image[i*N+j].h));
+ 				SDL_RenderCopy(renderer, image_tex[i*N+j], NULL, &dest_image[i*N+j]);
+ 				SDL_FreeSurface(image[i*N+j]);
+ 			}
+ 		}
 	}
-	affichage_case_centrale(renderer);
 }
 
 
@@ -226,6 +248,13 @@ int interface(){
 		fprintf(stderr, "2 erreur chargement font\n");
 		exit(EXIT_FAILURE);
 	}
+	/* on définit et initialise la map de jeu ainsi que le personnage */
+	perso_t player;
+	cell_t map1[D][D];
+	int quest_map[6][2];
+	map_init(map1,quest_map);
+  init_player(&player,map1);
+	int maptest[N][N];
 
 	/* creation des textures pour afficher le texte des boutons*/
 	texte_help = TTF_RenderUTF8_Blended(police1, " Help", couleurVerte);
@@ -293,7 +322,8 @@ int interface(){
 						/* couleur du reste de la fenetre */
 						SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 						/*affichage de la carte */
-						affichage_map(&renderer, map);
+						affichage_map(renderer, map, maptest, map1, player);
+						affichage_case_centrale(renderer);
 
 						SDL_RenderPresent(renderer);
 
@@ -328,6 +358,13 @@ int interface(){
 							}
 					}
 					break;
+					case SDL_KEYDOWN:
+            switch(event.key.keysym.sym){
+              case SDLK_h:
+              	affichage_help();
+              break;
+            }
+            break;
 				}
 			}
 		}
@@ -342,7 +379,8 @@ int interface(){
   ****************************************************************************/
   SDL_DestroyWindow(ecran);
 
-	TTF_CloseFont(police1); /* Doit être avant TTF_Quit() */
+	TTF_CloseFont(police1);
+	TTF_CloseFont(police2); /* Doit être avant TTF_Quit() */
 	TTF_Quit();
   SDL_Quit();
 	return 0;

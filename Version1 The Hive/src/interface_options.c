@@ -3,7 +3,7 @@
 #include<SDL2/SDL.h>
 #include<SDL2/SDL_ttf.h>
 #include<SDL2/SDL_image.h>
-#include"lib/interface_options.h"
+#include"lib/interface.h"
 
 /**
  * \file interface_options.c
