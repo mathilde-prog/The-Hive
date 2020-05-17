@@ -101,9 +101,9 @@ Fonctions</h2></td></tr>
 <tr class="memitem:a2b60c717462304f30e1266e9a5a9d020"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="items_8c.html#a2b60c717462304f30e1266e9a5a9d020">generate_items</a> (<a class="el" href="structitem__t.html">item_t</a> *Tab_Items, int nb_items_available, <a class="el" href="structperso__t.html">perso_t</a> *player, <a class="el" href="commun_8h.html#a730487a66d035e35d2c63cfa39cea020">categ_hexa</a> categ)</td></tr>
 <tr class="memdesc:a2b60c717462304f30e1266e9a5a9d020"><td class="mdescLeft">&#160;</td><td class="mdescRight">Génère aléatoirement 0 à <a class="el" href="commun_8h.html#a36e5fda7aa9e2b6219f41c354ecc1c93" title="ITEMS_MAX représente le nombre maximum d&#39;items générés sur un hexagone de la carte. ">ITEMS_MAX</a> items en prenant en compte le pourcentage de chance des items d'apparaître dans un type d'hexagone en particulier.  <a href="#a2b60c717462304f30e1266e9a5a9d020">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a2b60c717462304f30e1266e9a5a9d020"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40672738b4eba05b66ae0a8127346356"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="items_8c.html#a40672738b4eba05b66ae0a8127346356">scavenge</a> (<a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>], <a class="el" href="structperso__t.html">perso_t</a> *player, <a class="el" href="structitem__t.html">item_t</a> *Tab_Items, int nb_items_available, <a class="el" href="structquete__t.html">quete_t</a> quete)</td></tr>
-<tr class="memdesc:a40672738b4eba05b66ae0a8127346356"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet au joueur de fouiller l'hexagone sur lequel il se trouve pour récupérer des items.  <a href="#a40672738b4eba05b66ae0a8127346356">Plus de détails...</a><br /></td></tr>
-<tr class="separator:a40672738b4eba05b66ae0a8127346356"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a29eedb46b447fbefd76cc390660a8e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="items_8c.html#a6a29eedb46b447fbefd76cc390660a8e">scavenge</a> (<a class="el" href="structcell__t.html">cell_t</a> map[<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>][<a class="el" href="commun_8h.html#af316c33cc298530f245e8b55330e86b5">D</a>], <a class="el" href="structperso__t.html">perso_t</a> *player, <a class="el" href="structitem__t.html">item_t</a> *Tab_Items, int nb_items_available, <a class="el" href="structquete__t.html">quete_t</a> *quete)</td></tr>
+<tr class="memdesc:a6a29eedb46b447fbefd76cc390660a8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet au joueur de fouiller l'hexagone sur lequel il se trouve pour récupérer des items.  <a href="#a6a29eedb46b447fbefd76cc390660a8e">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a6a29eedb46b447fbefd76cc390660a8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Items (création, affichage, génération aléatoire lors de fouille d'hexagones) </p>
@@ -343,8 +343,8 @@ Fonctions</h2></td></tr>
 
 </div>
 </div>
-<a id="a40672738b4eba05b66ae0a8127346356"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a40672738b4eba05b66ae0a8127346356">&#9670;&nbsp;</a></span>scavenge()</h2>
+<a id="a6a29eedb46b447fbefd76cc390660a8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a29eedb46b447fbefd76cc390660a8e">&#9670;&nbsp;</a></span>scavenge()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -376,7 +376,7 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structquete__t.html">quete_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="structquete__t.html">quete_t</a> *&#160;</td>
           <td class="paramname"><em>quete</em>&#160;</td>
         </tr>
         <tr>
@@ -394,7 +394,7 @@ Fonctions</h2></td></tr>
     <tr><td class="paramname">player</td><td>Pointeur sur un objet de type <a class="el" href="structperso__t.html" title="Structure pour un personnage. ">perso_t</a> correspondant au joueur </td></tr>
     <tr><td class="paramname">Tab_Items</td><td>Tableau contenant tous les items disponibles dans le jeu </td></tr>
     <tr><td class="paramname">nb_items_available</td><td>Nombre d'items disponibles dans le jeu </td></tr>
-    <tr><td class="paramname">quete</td><td>Etat des quêtes </td></tr>
+    <tr><td class="paramname">quete</td><td>Pointeur sur un objet de type <a class="el" href="structquete__t.html" title="Structure de suivi des quêtes. ">quete_t</a> correspondant à l'état des quêtes </td></tr>
   </table>
   </dd>
 </dl>

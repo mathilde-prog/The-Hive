@@ -22,7 +22,7 @@ int exit_game(){
     int rep;
 
     clrscr();
-    printf("\n   Vous venez de trouver la sortie ! Souhaitez-vous quitter la carte ? (Oui = 1, Non = 0)\n");
+    printf("\n   Vous venez de trouver la sortie ! Souhaitez-vous quitter le jeu ? (Oui = 1, Non = 0)\n");
     printf("   Votre réponse : ");
     do {
       scanf("%d", &rep);
@@ -291,7 +291,7 @@ int quete_montagne(perso_t * player, quete_t * quete){
 
                 clrscr();
                 if(conf2==2){
-                    printf("\n   La descente se passe bien. Vous voilà revenu sur terre. Il faut repartir explorer la map maintenant.\n\n");
+                    printf("\n   La descente se passe bien. Vous voilà revenu sur terre. Il faut repartir explorer la carte maintenant.\n\n");
                     entree_pour_continuer();
                     return 0;
                 }
@@ -312,7 +312,7 @@ int quete_montagne(perso_t * player, quete_t * quete){
                     }
                     else if(!sortie){
                         printf("\n   C'est fini ! Malheureusement la difficulté de l'ascension était trop importante...\n");
-                        printf("   Vous n'avez pas réussi à sortir de la map. Vous venez de perdre la vie !\n\n");
+                        printf("   Vous n'avez pas réussi à sortir de la carte. Vous venez de perdre la vie !\n\n");
                         entree_pour_continuer();
                         quete->montagne=1;
                         exit(0);
@@ -322,14 +322,14 @@ int quete_montagne(perso_t * player, quete_t * quete){
         }
         else if(conf1==2){
           clrscr();
-          printf("\n   Vous êtes prudent, continuez d'explorer la map et peut-être trouverez-vous l'équipement parfait pour la gravir plus tard !\n\n");
+          printf("\n   Vous êtes prudent, continuez d'explorer la carte et peut-être trouverez-vous l'équipement parfait pour la gravir plus tard !\n\n");
           entree_pour_continuer();
           return 0;
         }
     }
     else if(choix==2){
         clrscr();
-        printf("\n   Vous êtes prudent, continuez d'explorer la map et peut-être trouverez-vous l'équipement parfait pour la gravir plus tard !\n\n");
+        printf("\n   Vous êtes prudent, continuez d'explorer la carte et peut-être trouverez-vous l'équipement parfait pour la gravir plus tard !\n\n");
         entree_pour_continuer();
         return 0;
     }
@@ -432,7 +432,7 @@ int quete_frontiere(perso_t * player, quete_t * quete){
             quete->frontiere=1;
             switch(sortie){
                 case 0 :    printf("\n   Vous n'avez pas réussi à franchir la frontière malheureusement...\n");
-                            printf("   Retourner explorer la map pour trouver une autre manière d'en sortir.\n\n");
+                            printf("   Retourner explorer la carte pour trouver une autre manière d'en sortir.\n\n");
                             entree_pour_continuer();
                             return 0;
                 case 1 :    printf("\n   Félicitations, vous avez réussi à franchir la frontière ! Vous voilà de l'autre côté !\n\n");
@@ -446,14 +446,14 @@ int quete_frontiere(perso_t * player, quete_t * quete){
         /*Le joueur change d'avis, il ne souhaite plus passer la frontière*/
         else{
             printf("\n   La prudence est une bonne qualité dans cette aventure. La situation sera peut-être plus avantageuse une prochaine fois.\n");
-            printf("   Continuez a explorer la map !\n\n");
+            printf("   Continuez a explorer la carte !\n\n");
             entree_pour_continuer();
             return 0;
         }
     }
     /*Le joueur ne souhaite pas tenter le franchissement de la frontière*/
     else{
-        printf("\n   Vous ne souhaitez pas franchir pas la frontière. Continuez d'explorer la map.\n\n");
+        printf("\n   Vous ne souhaitez pas franchir pas la frontière. Continuez d'explorer la carte.\n\n");
         entree_pour_continuer();
         return 0;
     }
@@ -507,11 +507,11 @@ int quete_bunker(perso_t * player, quete_t * quete){
             printf("   Ca y est vous êtes sauvé ! Vous êtes en sécurité et venez de trouver l'une des sorties !\n\n");
             quete->bunker=1;
             entree_pour_continuer();
-            return exit_game(); //1 si quitte la map, 0 si continue.
+            return exit_game(); //1 si quitte la carte, 0 si continue.
         }
         /*Le joueur décide de ne pas entrer dans le bunker*/
         else {
-           printf("\n   Continuez votre exploration de la map.\n\n");
+           printf("\n   Continuez votre exploration de la carte.\n\n");
            entree_pour_continuer();
            return 0;
         }
@@ -561,12 +561,12 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
     /*Le joueur décide de quitter le camp de bandits*/
     if(choix == 1){
         clrscr();
-        printf("\n   Vous quittez les lieux au pas de course. Vous êtes maintenant loin d'eux, continuez a explorer la map !\n\n");
+        printf("\n   Vous quittez les lieux au pas de course. Vous êtes maintenant loin d'eux, continuez a explorer la carte !\n\n");
         quete->bandits=1;
         entree_pour_continuer();
         return 0;
     }
-    else if(choix==2){
+    else if(choix==2 || choix ==3){
         jump: //jump afin que quand le joueur choisit l'option "voler items" il rencontre les bandits de la même facon que s'il les avait attendus
         clrscr();
 
@@ -621,7 +621,7 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
                 /*Le joueur réussit à s'enfuir*/
                 if(fuir){
                     printf("\n   Vous fuyez le camp  et ses occupants plus vite qu'un éclair, ils n'ont pas eu le temps de vous rattraper !\n");
-                    printf("   Vous avez échappé de justesse à la mort. Continuez a explorer la map.\n\n");
+                    printf("   Vous avez échappé de justesse à la mort. Continuez a explorer la carte.\n\n");
                     quete->bandits=1;
                     random_move(player,map);
                     entree_pour_continuer();
@@ -729,7 +729,7 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
                     }
 
                     printf("\n   Vous avez réussi a combattre les bandits sur leur propre camp, mais vous avez échappé de justesse à la mort !\n");
-                    printf("   Il faut maintenant repartir explorer la map.\n\n");
+                    printf("   Il faut maintenant repartir explorer la carte.\n\n");
                     quete->bandits=1;
                     entree_pour_continuer();
                     return 0;

@@ -101,8 +101,7 @@ void check_the_map(perso_t player, cell_t map[D][D]){
 		display_TEXT(player.posY, player.posX ,map);
 	}
 	else {
-		printf("\n   Pour voir la carte, vous avez besoin d'en avoir une dans votre inventaire. \n");
-		printf("   Pour plus d'informations, allez jeter un oeil à l'aide au menu principal! \n\n");
+		printf("\n   Pour voir la carte, vous avez besoin d'en avoir une dans votre inventaire. \n\n");
 		entree_pour_continuer();
 	}
 }

@@ -57,7 +57,7 @@ int main(){
 
       printf("=== Simulation n°%d === \n", i+1);
       display_player_characteristics(map,player);
-      scavenge(map, &player, Tab_Items, nb_items_available,quete);
+      scavenge(map, &player, Tab_Items, nb_items_available,&quete);
       printf("\n");
       display_inventory(player);
       printf("\n");

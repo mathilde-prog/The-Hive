@@ -233,16 +233,16 @@ void generate_items(item_t * Tab_Items, int nb_items_available, perso_t * player
 }
 
 /**
- * \fn void scavenge(cell_t map[D][D], perso_t * player, item_t * Tab_Items, int nb_items_available, quete_t quete)
+ * \fn void scavenge(cell_t map[D][D], perso_t * player, item_t * Tab_Items, int nb_items_available, quete_t * quete)
  * \brief Permet au joueur de fouiller l'hexagone sur lequel il se trouve pour récupérer des items
  * \param map[D][D] Matrice de la carte
  * \param player Pointeur sur un objet de type perso_t correspondant au joueur
  * \param Tab_Items Tableau contenant tous les items disponibles dans le jeu
  * \param nb_items_available Nombre d'items disponibles dans le jeu
- * \param quete Etat des quêtes
+ * \param quete Pointeur sur un objet de type quete_t correspondant à l'état des quêtes
  * \return Rien
 */
-void scavenge(cell_t map[D][D], perso_t * player, item_t * Tab_Items, int nb_items_available, quete_t quete){
+void scavenge(cell_t map[D][D], perso_t * player, item_t * Tab_Items, int nb_items_available, quete_t * quete){
     categ_hexa categ = map[player->posY][player->posX].categ;
 
     // Si le joueur n'a pas déjà fouillé l'hexagone où il est
@@ -254,9 +254,9 @@ void scavenge(cell_t map[D][D], perso_t * player, item_t * Tab_Items, int nb_ite
       if(categ != other){
         generate_items(Tab_Items, nb_items_available, player, categ);
         // Si la quête recherche est en cours et que le joueur a trouvé l'item recherché par l'homme
-        if((quete.recherche.situation == 0) && (item_in_inventory(*player,quete.recherche.wanted.name) != -1)){
-          printf("\n   Félicitations, vous avez trouvé l'item %s que l'homme vous a demandé ! Il faut maintenant aller le retrouver pour lui donner.\n\n", quete.recherche.wanted.name);
-          quete.recherche.trouve = 1;
+        if((quete->recherche.situation == 0) && (item_in_inventory(*player,quete->recherche.wanted.name) != -1)){
+          printf("\n   Félicitations, vous avez trouvé l'item %s que l'homme vous a demandé ! Il faut maintenant aller le retrouver pour lui donner.\n\n", quete->recherche.wanted.name);
+          quete->recherche.trouve = 1;
           entree_pour_continuer();
         }
       }

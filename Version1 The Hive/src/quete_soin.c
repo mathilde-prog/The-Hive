@@ -142,14 +142,14 @@ int recup_items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t *
                 }
             }
             clrscr();
-            printf("\n   Vous en avez fini avec ce pauvre homme, repartez explorer la map !\n\n");
+            printf("\n   Vous en avez fini avec ce pauvre homme, repartez explorer la carte !\n\n");
             quete->soin=1;
             entree_pour_continuer();
             return 0;
         }
         /*Choix : rien ajouter à l'inventaire*/
         else if(recup==2){
-            printf("\n   Les items restent ici, repartez explorer la map !\n");
+            printf("\n   Les items restent ici, repartez explorer la carte !\n");
             quete->soin=1;
             entree_pour_continuer();
             return 0;
@@ -180,7 +180,7 @@ int recup_items_vole(perso_t * player, int nb_items_vole, npc_t* homme, item_t *
         else{
             printf("\n   Votre choix de ne pas ajouter la carte en plastique a bien été pris en compte.\n");
         }
-        printf("\n   Vous en avez fini avec ce pauvre homme, repartez explorer la map !\n");
+        printf("\n   Vous en avez fini avec ce pauvre homme, repartez explorer la carte !\n");
         quete->soin=1;
         entree_pour_continuer();
         return 0;
@@ -219,7 +219,7 @@ int aider_homme_blesse(perso_t * player, item_t * pass_card, quete_t * quete, in
     /*Recherche du medical_kit dans l'inventaire du joueur*/
     if(item_in_inventory(*player,"kit medical") !=  -1){
             mk = item_in_inventory(*player,"kit medical");
-            ind_items_soin[cpt] = mk;
+            ind_items_soin[cpt++] = mk;
     }
 
     clrscr();
@@ -236,7 +236,7 @@ int aider_homme_blesse(perso_t * player, item_t * pass_card, quete_t * quete, in
         if(cpt>1){
             printf("\n   Vous avez des items en votre possession qui peuvent aider cet homme blessé ! Les voici : \n");
             /*Affichage de la liste des items utiles*/
-            for(i = 0; i <= cpt; i++){ // modif mathilde : mettre < au lieu de <= sinon pb
+            for(i = 0; i < cpt; i++){ // modif mathilde : mettre < au lieu de <= sinon pb
                 printf("   N°%d - %s\n", i, player->inventory[ind_items_soin[i]].name);
             }
             /*Choix du joueur sur l'aide a apporter a l'homme*/
@@ -266,7 +266,7 @@ int aider_homme_blesse(perso_t * player, item_t * pass_card, quete_t * quete, in
 
             /*Le joueur change d'avis, fin de la quete*/
             if(choix==0){
-                printf("\n   Votre choix de ne pas aider cet homme a bien été enregisté. Vous pouvez repartir explorer la map !\n\n");
+                printf("\n   Votre choix de ne pas aider cet homme a bien été enregisté. Vous pouvez repartir explorer la carte !\n\n");
                 entree_pour_continuer();
                 return 0;
             }
@@ -341,11 +341,11 @@ int aider_homme_blesse(perso_t * player, item_t * pass_card, quete_t * quete, in
 
                 printf("\n   Il va beaucoup mieux grâce à vous !\n");
                 printf("   Pour vous remercier de votre bienveillance l'homme vous donne une carte.\n   Elle est en plastique avec un liseret noir sur la longueur et fait la taille d'un carte bancaire.");
-                /*Si le joueur a beaucoup aider l'homme : 2 aliments ou medical_kit ou les 2, des informations sur le nouvel item lui sont donn�es*/
+                /*Si le joueur a beaucoup aider l'homme : 2 aliments ou medical_kit ou les 2, des informations sur le nouvel item lui sont données*/
                 if((choix==2) || (choix==3) || (food==2))
                     printf("\n   \"Prends ceci, cela te sera utile, tu pourras accéder au bunker pour t'y réfugier et donc sauver ta vie.\"\n");
                 add_item_to_inventory(player,*pass_card); //Ajout du pass card à l'inventaire du joueur
-                printf("\n   Après cette rencontre il est temps de retourner explorer la map.\n\n");
+                printf("\n   Après cette rencontre il est temps de retourner explorer la carte.\n\n");
                 entree_pour_continuer();
                 quete->soin=2;
                 return 0;
@@ -376,7 +376,7 @@ int aider_homme_blesse(perso_t * player, item_t * pass_card, quete_t * quete, in
             /*Le joueur change d'avis, fin de la quete*/
             if(choix==1){
                 clrscr();
-                printf("\n   Votre choix de ne pas aider cet homme a bien été enregistré. Repartez explorer la map!\n\n");
+                printf("\n   Votre choix de ne pas aider cet homme a bien été enregistré. Repartez explorer la carte!\n\n");
                 entree_pour_continuer();
                 return 0;
             }
@@ -393,7 +393,7 @@ int aider_homme_blesse(perso_t * player, item_t * pass_card, quete_t * quete, in
                     printf("\n   \"Prends ceci, cela te sera utile, tu pourras acceder au bunker pour t'y refugier et donc sauver ta vie.\"\n");
 
                 add_item_to_inventory(player,*pass_card); //Ajout du pass crad à l'inventaire du joueur
-                printf("   Après cette rencontre il est temps de retourner explorer la map.\n");
+                printf("   Après cette rencontre il est temps de retourner explorer la carte.\n");
                 quete->soin=2;
                 entree_pour_continuer();
                 return 0;
@@ -448,14 +448,14 @@ int quete_soin(perso_t * player, quete_t * quete, item_t * Tab_Items){
 
     /*Si le joueur ignore l'homme blesse*/
     if (choix == 1){
-         printf("\n   Continuons a explorer la map !\n\n");
+         printf("\n   Continuons a explorer la carte !\n\n");
          entree_pour_continuer();
          return 0;
     }
     else{
         /*Creation de l'item pass_card*/
         item_t * pass_card = malloc(sizeof(item_t));
-        pass_card = creer_item("pass card", misc, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+        pass_card = creer_item("pass", misc, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
         /*Si le joueur decide de voler les items du blesse*/
         if (choix == 2){
@@ -495,7 +495,7 @@ int quete_soin(perso_t * player, quete_t * quete, item_t * Tab_Items){
             /*Le joueur renonce a voler les items du npc blesse*/
             else if(conf==2){
                 clrscr();
-                printf("\n   Vous avez choisi de laisser une chance à l'homme de vivre en ne récupérant pas ses items. Il faut maintenant allez explorer la map.\n\n");
+                printf("\n   Vous avez choisi de laisser une chance à l'homme de vivre en ne récupérant pas ses items. Il faut maintenant allez explorer la carte.\n\n");
                 entree_pour_continuer();
                 return 0;
             }
@@ -532,7 +532,7 @@ int quete_soin(perso_t * player, quete_t * quete, item_t * Tab_Items){
               /*Le joueur ne confirme pas son choix initiale, il n'aide pas l'homme*/
               else{
                   clrscr();
-                  printf("\n   Votre choix de renoncer à aider cet homme a bien été enregistré. Repartez explorer la map!\n");
+                  printf("\n   Votre choix de renoncer à aider cet homme a bien été enregistré. Repartez explorer la carte!\n");
                   entree_pour_continuer();
                   return 0;
               }

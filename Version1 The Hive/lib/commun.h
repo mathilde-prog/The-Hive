@@ -294,7 +294,7 @@ void init_Tab_Items_urbain(item_t * Tab_items_search, item_t * Tab_Items, int nb
 /*
  * SCAVENGE (items.c)
  */
-void scavenge(cell_t map[D][D], perso_t * player, item_t * Tab_Items, int nb_items_available, quete_t quete);
+void scavenge(cell_t map[D][D], perso_t * player, item_t * Tab_Items, int nb_items_available, quete_t * quete);
 
 /*
  * SAUVEGARDE ET CHARGEMENT (backup_and_load.c)

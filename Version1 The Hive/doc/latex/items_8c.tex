@@ -11,7 +11,8 @@ Items (création, affichage, génération aléatoire lors de fouille d\textquote
 {\ttfamily \#include $<$string.\+h$>$}\newline
 {\ttfamily \#include $<$time.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}lib/commun.\+h\char`\"{}}\newline
-Graphe des dépendances par inclusion de items.\+c\+:\nopagebreak
+Graphe des dépendances par inclusion de items.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -29,7 +30,7 @@ void \hyperlink{items_8c_af20ce6de62a477209830e29feb783aa1}{display\+\_\+item} (
 \begin{DoxyCompactList}\small\item\em Affiche toutes les caractéristiques d\textquotesingle{}un item (nom, type, valeur d\textquotesingle{}attaque si arme, valeur de défense si armure, équipable ou non, pourcentage de chance de trouver cet item sur un hexagone de catégorie nature, urbain et militaire) \end{DoxyCompactList}\item 
 void \hyperlink{items_8c_a2b60c717462304f30e1266e9a5a9d020}{generate\+\_\+items} (\hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items, int nb\+\_\+items\+\_\+available, \hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{commun_8h_a730487a66d035e35d2c63cfa39cea020}{categ\+\_\+hexa} categ)
 \begin{DoxyCompactList}\small\item\em Génère aléatoirement 0 à \hyperlink{commun_8h_a36e5fda7aa9e2b6219f41c354ecc1c93}{I\+T\+E\+M\+S\+\_\+\+M\+AX} items en prenant en compte le pourcentage de chance des items d\textquotesingle{}apparaître dans un type d\textquotesingle{}hexagone en particulier. \end{DoxyCompactList}\item 
-void \hyperlink{items_8c_a40672738b4eba05b66ae0a8127346356}{scavenge} (\hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, \hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items, int nb\+\_\+items\+\_\+available, \hyperlink{structquete__t}{quete\+\_\+t} quete)
+void \hyperlink{items_8c_a6a29eedb46b447fbefd76cc390660a8e}{scavenge} (\hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, \hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items, int nb\+\_\+items\+\_\+available, \hyperlink{structquete__t}{quete\+\_\+t} $\ast$quete)
 \begin{DoxyCompactList}\small\item\em Permet au joueur de fouiller l\textquotesingle{}hexagone sur lequel il se trouve pour récupérer des items. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -152,11 +153,11 @@ Propose au joueur de récupérer les items générés
 \begin{DoxyReturn}{Renvoie}
 Rien 
 \end{DoxyReturn}
-\mbox{\Hypertarget{items_8c_a40672738b4eba05b66ae0a8127346356}\label{items_8c_a40672738b4eba05b66ae0a8127346356}} 
+\mbox{\Hypertarget{items_8c_a6a29eedb46b447fbefd76cc390660a8e}\label{items_8c_a6a29eedb46b447fbefd76cc390660a8e}} 
 \index{items.\+c@{items.\+c}!scavenge@{scavenge}}
 \index{scavenge@{scavenge}!items.\+c@{items.\+c}}
 \subsubsection{\texorpdfstring{scavenge()}{scavenge()}}
-{\footnotesize\ttfamily void scavenge (\begin{DoxyParamCaption}\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items,  }\item[{int}]{nb\+\_\+items\+\_\+available,  }\item[{\hyperlink{structquete__t}{quete\+\_\+t}}]{quete }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void scavenge (\begin{DoxyParamCaption}\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items,  }\item[{int}]{nb\+\_\+items\+\_\+available,  }\item[{\hyperlink{structquete__t}{quete\+\_\+t} $\ast$}]{quete }\end{DoxyParamCaption})}
 
 
 
@@ -172,7 +173,7 @@ Permet au joueur de fouiller l\textquotesingle{}hexagone sur lequel il se trouve
 \hline
 {\em nb\+\_\+items\+\_\+available} & Nombre d\textquotesingle{}items disponibles dans le jeu \\
 \hline
-{\em quete} & Etat des quêtes \\
+{\em quete} & Pointeur sur un objet de type \hyperlink{structquete__t}{quete\+\_\+t} correspondant à l\textquotesingle{}état des quêtes \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Renvoie}

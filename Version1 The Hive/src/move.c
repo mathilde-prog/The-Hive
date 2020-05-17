@@ -128,7 +128,7 @@ void move (perso_t * player, cell_t map[D][D]){
   printf("             ===========================================================\n\n");
 
   if(player->pa){
-    printf("   Vous avez \033[1;32m%d\033[00m points d'actions.\n\n", player->pa);
+    printf("   Vous avez \033[1;32m%d\033[00m points d'action.\n\n", player->pa);
     printf("   Où souhaitez-vous vous rendre ? Code : ");
     do {
       scanf("%d",&code);

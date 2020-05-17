@@ -35,7 +35,7 @@ void presentation_regle_jeu(){
   printf("   Lors de votre aventure, vous risquez de faire des rencontres (plus ou moins amicales) qui nécessiteront parfois de combattre pour sauver votre vie.\n");
   printf("   Faîtes attention au choix que vous ferez lors des quêtes qui se présenteront à vous, cela aura un impact sur la suite de votre aventure.\n");
   printf("\n   En fouillant la zone, vous devriez trouver certains items utiles à votre survie : armes, armures, objets divers ou nourriture.\n");
-  printf("   Pour le moment, vous n'avez aucun équipement (le maximum possible est de 4)sur vous, juste votre sac à dos. Vide pour l'instant, il a une capacité de 10 items maximum.\n");
+  printf("   Pour le moment, vous n'avez aucun équipement (le maximum possible est de 4) sur vous, juste votre sac à dos. Vide pour l'instant, il a une capacité de 10 items maximum.\n");
   printf("\n\n   \033[1;32m>>> Appuyez sur la touche entrée pour commencer l'aventure !\033[00m");
   while(getchar() != '\n');
 }
@@ -110,7 +110,7 @@ void menu_principal_jeu(perso_t player, cell_t map[D][D], int quest_map[6][2], q
     jump:
     scanf("%d",&choise);
     switch(choise){
-      case 1: clrscr(); scavenge(map,&player,Tab_Items,nb_items_available,quete); clrscr(); break;
+      case 1: clrscr(); scavenge(map,&player,Tab_Items,nb_items_available,&quete); clrscr(); break;
       case 2: clrscr(); manage_inventory(&player); clrscr(); break;
       case 3: clrscr(); manage_equipment(&player); clrscr(); break;
       case 4: clrscr(); move(&player, map); clrscr(); break;

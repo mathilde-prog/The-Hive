@@ -22,7 +22,7 @@
  * \return Rien
 */
 void affichage_quete_search_en_cours(quete_t quete, cell_t map[D][D], perso_t player){
-  //Si la quete "recherche" est en cours + joueur cherche l'item demande par l'homme
+  //Si la quête "recherche" est en cours + joueur cherche l'item demandé par l'homme
   if(quete.recherche.trouve == 0){
     printf("          +-----------------------------------------------------------------+\n");
     printf("          |                         INFORMATIONS                            |\n");
@@ -36,7 +36,7 @@ void affichage_quete_search_en_cours(quete_t quete, cell_t map[D][D], perso_t pl
      printf("          +-----------------------------------------------------------------+\n\n");
    }
   }
-  //Si la quete "recherche" est en cours + joueur a trouvé l'item demandé par l'homme
+  //Si la quête "recherche" est en cours + joueur a trouvé l'item demandé par l'homme
   else if((quete.recherche.trouve == 1) && (quete.recherche.situation == 0)){
     printf("          +-----------------------------------------------------------------+\n");
     printf("          |                         INFORMATIONS                            |\n");
@@ -44,12 +44,12 @@ void affichage_quete_search_en_cours(quete_t quete, cell_t map[D][D], perso_t pl
     printf("          | Retrouver l'homme pour lui donner l'item %-20s   | \n",quete.recherche.wanted.name);
     printf("          +-----------------------------------------------------------------+\n\n");
   }
-  //Si la quete "recherche" est fini
+  //Si la quête "recherche" est finie
   else if(quete.recherche.situation == 1){
     printf("          +-----------------------------------------------------------------+\n");
     printf("          |                         INFORMATIONS                            |\n");
     printf("          +-----------------------------------------------------------------+\n");
-    printf("          | Coordonnées du lieu sécurisé donné par l'homme : X = %2d, Y = %2d |\n",quete.recherche.bunkerX, quete.recherche.bunkerY);
+    printf("          |         Coordonnées du lieu sécurisé : X = %2d, Y = %2d           |\n",quete.recherche.bunkerX, quete.recherche.bunkerY);
     printf("          +-----------------------------------------------------------------+\n\n");
   }
 }
@@ -174,13 +174,13 @@ int quete_recherche(perso_t * player, cell_t map[D][D], quete_t * quete){
               }while(conf<1 || conf>2);
 
               clrscr();
-              /*Le joueur renonce à la requete*/
+              /*Le joueur renonce à la requête*/
               if(conf==2){
                   printf("\n   Vous lui annoncez renoncer à cette requête, il est déçu mais vous laisse repartir explorer la carte.\n\n");
                   entree_pour_continuer();
                   return 0;
               }
-              /*Le joueur continue la requete*/
+              /*Le joueur continue la requête*/
               else if(conf==1){
                   printf("\n   C'est parti, à vous de trouver l'item %s que l'homme vous demande !\n\n", quete->recherche.wanted.name);
                   quete->recherche.trouve=0;
@@ -197,7 +197,7 @@ int quete_recherche(perso_t * player, cell_t map[D][D], quete_t * quete){
         }
         return (-1);
     }
-    /*Si la quete est déjà commencé par le joueur mais qu'il n'a pas trouvé l'item*/
+    /*Si la quête est déjà commencée par le joueur mais qu'il n'a pas trouvé l'item*/
     else if(quete->recherche.trouve==0){
         printf("\n   L'homme vous demande ce que vous faîtes encore ici... \n");
         printf("   Allez trouver l'item %s dans une ville, un marché ou une favela.\n", quete->recherche.wanted.name);
@@ -205,7 +205,7 @@ int quete_recherche(perso_t * player, cell_t map[D][D], quete_t * quete){
         entree_pour_continuer();
         return 0;
     }
-    /*Le joueur a trouvé par l'item, est sur le bon hexagone pour retrouver l'homme*/
+    /*Le joueur a trouvé l'item et est sur le bon hexagone pour retrouver l'homme*/
     else if(quete->recherche.trouve==1){
         printf("\n   Vous êtes dans le lieu où vous avez rencontré l'homme !\n");
         printf("   Il se tient face à vous avec un grand sourire. Vous lui donnez son item, il est au passage retiré de votre inventaire.\n");

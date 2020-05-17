@@ -8,14 +8,16 @@ Tous les prototypes de fonctions, énumérations, structures, macros appelés da
 {\ttfamily \#include $<$S\+D\+L2/\+S\+D\+L.\+h$>$}\newline
 {\ttfamily \#include $<$S\+D\+L2/\+S\+D\+L\+\_\+ttf.\+h$>$}\newline
 {\ttfamily \#include $<$S\+D\+L2/\+S\+D\+L\+\_\+image.\+h$>$}\newline
-Graphe des dépendances par inclusion de commun.\+h\+:\nopagebreak
+Graphe des dépendances par inclusion de commun.\+h\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{commun_8h__incl}
 \end{center}
 \end{figure}
-Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:\nopagebreak
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -208,7 +210,7 @@ int \hyperlink{commun_8h_a383694135dc6ea4c93f6290ea506d752}{compter\+\_\+items\+
 \begin{DoxyCompactList}\small\item\em Compte le nombre d\textquotesingle{}items pouvant être trouvés dans un hexagone de catégorie urbain (pc\+\_\+urban $>$ 0). \end{DoxyCompactList}\item 
 void \hyperlink{commun_8h_ab3150620b999a50e0b971d888263e018}{init\+\_\+\+Tab\+\_\+\+Items\+\_\+urbain} (\hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+items\+\_\+search, \hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items, int nb\+\_\+items\+\_\+urbain)
 \begin{DoxyCompactList}\small\item\em Initialise un tableau contenant tous les items pouvant être trouvés dans un hexagone de catégorie urbain. \end{DoxyCompactList}\item 
-void \hyperlink{commun_8h_a40672738b4eba05b66ae0a8127346356}{scavenge} (\hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, \hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items, int nb\+\_\+items\+\_\+available, \hyperlink{structquete__t}{quete\+\_\+t} quete)
+void \hyperlink{commun_8h_a6a29eedb46b447fbefd76cc390660a8e}{scavenge} (\hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, \hyperlink{structperso__t}{perso\+\_\+t} $\ast$player, \hyperlink{structitem__t}{item\+\_\+t} $\ast$Tab\+\_\+\+Items, int nb\+\_\+items\+\_\+available, \hyperlink{structquete__t}{quete\+\_\+t} $\ast$quete)
 \begin{DoxyCompactList}\small\item\em Permet au joueur de fouiller l\textquotesingle{}hexagone sur lequel il se trouve pour récupérer des items. \end{DoxyCompactList}\item 
 void \hyperlink{commun_8h_abf3bd1684d5f65e10f183757d06706df}{sauvegarder\+\_\+progression} (\hyperlink{structperso__t}{perso\+\_\+t} player, \hyperlink{structcell__t}{cell\+\_\+t} map\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}\mbox{[}\hyperlink{commun_8h_af316c33cc298530f245e8b55330e86b5}{D}\mbox{]}, int quest\+\_\+map\mbox{[}6\mbox{]}\mbox{[}2\mbox{]}, \hyperlink{structquete__t}{quete\+\_\+t} quete, \hyperlink{structsauv__t}{sauv\+\_\+t} sauv)
 \begin{DoxyCompactList}\small\item\em Sauvegarde la progression de la partie actuellement en cours et propose au joueur de continuer ou quitter le jeu. \end{DoxyCompactList}\item 
@@ -1675,11 +1677,11 @@ Informations sur les quêtes \+: sauvegarde des coordonnées de chaque quête et
 \begin{DoxyReturn}{Renvoie}
 Rien 
 \end{DoxyReturn}
-\mbox{\Hypertarget{commun_8h_a40672738b4eba05b66ae0a8127346356}\label{commun_8h_a40672738b4eba05b66ae0a8127346356}} 
+\mbox{\Hypertarget{commun_8h_a6a29eedb46b447fbefd76cc390660a8e}\label{commun_8h_a6a29eedb46b447fbefd76cc390660a8e}} 
 \index{commun.\+h@{commun.\+h}!scavenge@{scavenge}}
 \index{scavenge@{scavenge}!commun.\+h@{commun.\+h}}
 \subsubsection{\texorpdfstring{scavenge()}{scavenge()}}
-{\footnotesize\ttfamily void scavenge (\begin{DoxyParamCaption}\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items,  }\item[{int}]{nb\+\_\+items\+\_\+available,  }\item[{\hyperlink{structquete__t}{quete\+\_\+t}}]{quete }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void scavenge (\begin{DoxyParamCaption}\item[{\hyperlink{structcell__t}{cell\+\_\+t}}]{map\mbox{[}\+D\mbox{]}\mbox{[}\+D\mbox{]},  }\item[{\hyperlink{structperso__t}{perso\+\_\+t} $\ast$}]{player,  }\item[{\hyperlink{structitem__t}{item\+\_\+t} $\ast$}]{Tab\+\_\+\+Items,  }\item[{int}]{nb\+\_\+items\+\_\+available,  }\item[{\hyperlink{structquete__t}{quete\+\_\+t} $\ast$}]{quete }\end{DoxyParamCaption})}
 
 
 
@@ -1695,7 +1697,7 @@ Permet au joueur de fouiller l\textquotesingle{}hexagone sur lequel il se trouve
 \hline
 {\em nb\+\_\+items\+\_\+available} & Nombre d\textquotesingle{}items disponibles dans le jeu \\
 \hline
-{\em quete} & Etat des quêtes \\
+{\em quete} & Pointeur sur un objet de type \hyperlink{structquete__t}{quete\+\_\+t} correspondant à l\textquotesingle{}état des quêtes \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Renvoie}
