@@ -563,6 +563,7 @@ int quete_bandits(perso_t * player, quete_t * quete, item_t * Tab_Items, int nb_
         clrscr();
         printf("\n   Vous quittez les lieux au pas de course. Vous êtes maintenant loin d'eux, continuez a explorer la carte !\n\n");
         quete->bandits=1;
+        random_move(player,map);
         entree_pour_continuer();
         return 0;
     }
