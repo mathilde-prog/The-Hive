@@ -1,1 +1,1 @@
-The Hive
+<b>The Hive</b>
